@@ -36,7 +36,7 @@
   },
   "files": {
     ".env.example": "9c0b2eba56898d613e9cc34907852700f0433e359e4ea302f299b82f6fd7fcb7",
-    ".github/workflows/ci.yml": "2917a37c3bed41ff03a71a0e27d79df3e3f8a56d52778376d7a5313877d19c75",
+    ".github/workflows/ci.yml": "eca2c14b74b33dabe36b350a195e0230772237b42d695772006796e9d8b32f7c",
     ".gitignore": "8c5aaaeafe7e726a7fd4741c5ebc978a38df040b5b136b65fb88c81d4ba1b24a",
     "CHANGELOG.md": "d41e9c9612b44ae22b43cc774a36e8f8aaafa8b197ed8ae6d3fe2a12c7a1f1a5",
     "CLEANUP.md": "dba659d79ebccf708676baac78ae9901e336760f932104e9696b85536ccd1ac5",
@@ -3132,6 +3132,7 @@
     "test/browser/capture_demo.py": "7660cd9defc92fcbfe641ef9edddb9f83390db53b53066f253d223b49b04f54b",
     "test/browser/current-app-runner.test.mjs": "250bc42b36e8203cdac21174af39fbe56ecbab3efdd0f800fd8b4447bc66a6bf",
     "test/browser/current-app.mjs": "488317c34b2713831c47219184ffc51b8fda9546110e33928a63d6fbeca2a7f8",
+    "test/browser/modules-native.mjs": "d6db726cdf51c8a95f29f9ec7e136dfaa62e50eefc8426593bc83ac16185f15d",
     "test/browser/modules.mjs": "a41c3a4ef146d2132a1d5ca4364a1f38ea9c0ee504119d3455abd2bd4fb64f5e",
     "test/browser/optical_browser.py": "b6e0ab1a7b67de6993ea73ba0ac110bd7269c333bc8a73b9d55f3c83d2b0a44d",
     "test/build/compiler-artifacts.test.mjs": "d510ac159beea64c9c6b226789b8d4eae3822667c1fb2538e8ffd55a4dff5814",

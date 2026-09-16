@@ -71,7 +71,40 @@ jobs:
       - name: Current app browser acceptance (separate from native and physical devices)
         run: npm run test:browser
       - name: Module workbench, worker isolation and review controls
+        if: ${{ !cancelled() }}
         run: npm run test:modules:browser
+      - name: Native module installation, state and review browser acceptance
+        if: ${{ !cancelled() }}
+        run: node test/browser/modules-native.mjs
+      - name: Print original, workbench and native browser diagnostics
+        if: always()
+        run: |
+          node --input-type=module <<'NODE'
+          import fs from 'node:fs';
+          import path from 'node:path';
+          const roots = [
+            'reports/production/browser',
+            'reports/production/modules-browser',
+            'reports/production/modules-native-browser',
+          ];
+          for (const root of roots) {
+            const reports = [];
+            const visit = directory => {
+              for (const item of fs.readdirSync(directory, { withFileTypes: true })) {
+                const file = path.join(directory, item.name);
+                if (item.isDirectory()) visit(file);
+                else if (item.isFile() && item.name === 'results.json') reports.push(file);
+              }
+            };
+            if (fs.existsSync(root)) visit(root);
+            if (!reports.length) console.log('No results.json was produced under ' + root + '. This is not a browser pass.');
+            for (const file of reports.sort()) {
+              console.log('::group::Browser diagnostic report: ' + file);
+              console.log(fs.readFileSync(file, 'utf8'));
+              console.log('::endgroup::');
+            }
+          }
+          NODE
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -81,6 +114,7 @@ jobs:
             .local-genesis/validation/
             reports/production/browser/
             reports/production/modules-browser/
+            reports/production/modules-native-browser/
   module-solidity:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
