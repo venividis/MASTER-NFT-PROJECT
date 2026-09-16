@@ -63,6 +63,11 @@
       "deployedBytes": 11453
     },
     {
+      "contract": "ChunkedCartridgeRegistry",
+      "source": "contracts/src/modules/ChunkedCartridgeRegistry.sol",
+      "deployedBytes": 10969
+    },
+    {
       "contract": "House",
       "source": "contracts/src/extensions/experimental/House.sol",
       "deployedBytes": 10956
@@ -103,9 +108,19 @@
       "deployedBytes": 8296
     },
     {
+      "contract": "ModuleArchiveFactory",
+      "source": "contracts/src/modules/ModuleArchiveFactory.sol",
+      "deployedBytes": 8251
+    },
+    {
       "contract": "VestedExitVault",
       "source": "contracts/src/protocol/VestedExitVault.sol",
       "deployedBytes": 8199
+    },
+    {
+      "contract": "TokenModuleRegistry",
+      "source": "contracts/src/modules/TokenModuleRegistry.sol",
+      "deployedBytes": 8084
     },
     {
       "contract": "ContinuousClearingAuction",
@@ -178,6 +193,11 @@
       "deployedBytes": 5966
     },
     {
+      "contract": "ExtensionReleaseRegistry",
+      "source": "contracts/src/modules/ExtensionReleaseRegistry.sol",
+      "deployedBytes": 5922
+    },
+    {
       "contract": "FixedTermCredit",
       "source": "contracts/src/operating/NegotiatedMarkets.sol",
       "deployedBytes": 5520
@@ -246,6 +266,11 @@
       "contract": "GenesisNames",
       "source": "contracts/src/extensions/access/GenesisNames.sol",
       "deployedBytes": 4254
+    },
+    {
+      "contract": "ModuleStateStore",
+      "source": "contracts/src/modules/ModuleStateStore.sol",
+      "deployedBytes": 4235
     },
     {
       "contract": "OwnerLaunchFactory",
@@ -331,6 +356,11 @@
       "contract": "HouseFeedRatio",
       "source": "contracts/src/extensions/experimental/HouseDependencies.sol",
       "deployedBytes": 2056
+    },
+    {
+      "contract": "ModuleWorkbench",
+      "source": "contracts/src/modules/ModuleWorkbench.sol",
+      "deployedBytes": 1800
     },
     {
       "contract": "WakeExitTask",
@@ -540,6 +570,11 @@
     {
       "contract": "Strings",
       "source": "contracts/src/lib/Strings.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "ModuleTypes",
+      "source": "contracts/src/modules/ModuleTypes.sol",
       "deployedBytes": 57
     },
     {
@@ -890,6 +925,26 @@
     {
       "contract": "IAccountExecute",
       "source": "contracts/src/mocks/ReentrantProbe.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IModuleStoredArchive",
+      "source": "contracts/src/modules/ModuleArchiveFactory.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IWorkbenchArchive",
+      "source": "contracts/src/modules/ModuleWorkbench.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IModuleAccount",
+      "source": "contracts/src/modules/TokenModuleRegistry.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IModuleCollection",
+      "source": "contracts/src/modules/TokenModuleRegistry.sol",
       "deployedBytes": 0
     },
     {

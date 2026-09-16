@@ -1,0 +1,17 @@
+{
+  "name": "@anima/modules",
+  "version": "1.0.0",
+  "description": "Portable ANIMA module packaging, verified recovery and unsigned owner-call recipes.",
+  "type": "module",
+  "license": "MIT",
+  "main": "./dist/index.mjs",
+  "module": "./dist/index.mjs",
+  "exports": {
+    ".": "./dist/index.mjs",
+    "./core": "./dist/core.mjs",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "README.md", "LICENSE", "THIRD-PARTY-LICENSES.txt"],
+  "sideEffects": false,
+  "engines": {"node": ">=22.13"}
+}

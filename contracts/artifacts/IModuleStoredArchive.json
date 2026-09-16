@@ -1,0 +1,166 @@
+{
+  "contractName": "IModuleStoredArchive",
+  "sourceName": "contracts/src/modules/ModuleArchiveFactory.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "byteLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "chunkCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contentSha256",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "byteLength()": "02823108",
+    "chunkCount()": "f91f0937",
+    "contentSha256()": "efad39b0"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "byteLength",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "chunkCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "contentSha256",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/modules/ModuleArchiveFactory.sol": "IModuleStoredArchive"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/modules/ModuleArchiveFactory.sol": {
+        "keccak256": "0xde726abeb9c0b6d512b1925e3d17c2d537c744cefbb9ad7c3c8da1b7310134a7",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://d809ce81a0593f81d574c6e010a9476d3c153ade6766447cb4ec3997c36742b2",
+          "dweb:/ipfs/QmXfACBG3H3kUkTmXZtT5h8qcvzKGesx2qFQe9Rs94xbAE"
+        ]
+      },
+      "contracts/src/modules/ModuleTypes.sol": {
+        "keccak256": "0x7bac351f364d0e3c6f3da61ce1ec6e2d43b0997f291252c627b0c86ea7e4e205",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7cb89f9638e77e59f8464dc6857a5492046196bb6629d1003e6db872e0ac4dfd",
+          "dweb:/ipfs/QmbEYkWMSmr9XYS9AQ56efJp5hkvKbzpURBiV6fKcKJ1U4"
+        ]
+      },
+      "contracts/src/protocol/OnchainApp.sol": {
+        "keccak256": "0x0f19554128f60cf5226bbdec049646af2883e9d7bf156d2d4067b087177b873d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://6e371079569b2064c62907c19ec5173ff666c80c7f62a4eb36d488ecd4f4c377",
+          "dweb:/ipfs/QmbzAGrjxVE6NSVWDC5YBukcceYfbDprfRVdbMg1aJrXZz"
+        ]
+      },
+      "contracts/src/protocol/OnchainAppDirectory.sol": {
+        "keccak256": "0xefaffe87de314043d107b3f615725e2b02c8426a10ab93cb28c7eff5cd261a88",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://f543638371a39bf538d68282e5435e5815122cc266d4463c8d612c0987e1ad9b",
+          "dweb:/ipfs/QmSum5hU5uWDyevTdZWcaRupUem1HPwD2zzoVg1AKeRyNn"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

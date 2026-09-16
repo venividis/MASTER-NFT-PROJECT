@@ -1,6 +1,8 @@
 /** Shared product inventory. Source availability is distinct from a verified deployment. */
 export const RELEASE_CAPABILITIES = Object.freeze(
   [
+    {id:'owner-modules',label:'Owner-installed onchain modules',route:'modules',source:['contracts/src/modules/TokenModuleRegistry.sol','contracts/src/modules/ExtensionReleaseRegistry.sol','contracts/src/modules/ModuleStateStore.sol','web/modules/app.mjs'],requires:['Module registry bound to the selected native collection','Published immutable release and compatible host'],boundary:'Installations, state saves and migrations require exact owner-reviewed account calls. Releases and saved state remain recoverable; previous-owner permissions do not survive custody changes.'},
+    {id:'chunked-cartridges',label:'Larger cartridges for the same NFT',route:'cartridges',source:['contracts/src/modules/ChunkedCartridgeRegistry.sol'],requires:['Chunk-backed cartridge registry and account-owned cartridge'],boundary:'The generic owned-cartridge launcher verifies complete self-contained HTML. Its existing sandbox gains no network or wallet bridge. Workshop commissioning has a separate fingerprint boundary.'},
     {id:'functional-modules',label:'Independently versioned onchain software',route:'identity',source:['contracts/src/protocol/OnchainModuleDirectory.sol','web/confluence/module-loader.mjs'],requires:['Minted module directory and immutable archives'],boundary:'Every feature pins its content and dependency versions. Recovery verifies the required graph before running it; editing a hosted interface never replaces an already minted edition.'},
     {
       id: "art",

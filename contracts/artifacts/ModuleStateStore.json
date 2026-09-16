@@ -1,0 +1,1059 @@
+{
+  "contractName": "ModuleStateStore",
+  "sourceName": "contracts/src/modules/ModuleStateStore.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "registry_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "collection_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "factory_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidPage",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidState",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "stateId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "namespace",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "parent",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "schema",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "epoch",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "dataHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "StateStaged",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_DIRECT_BYTES",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_PAGE",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "STATE_DOMAIN",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "moduleKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "schema",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "parent",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "epoch",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "archive",
+              "type": "address"
+            },
+            {
+              "internalType": "uint8",
+              "name": "schema",
+              "type": "uint8"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "storedHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "storedBytes",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "expandedHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "expandedBytes",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "codeHash",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct ModuleTypes.Archive",
+          "name": "archive",
+          "type": "tuple"
+        }
+      ],
+      "name": "append",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "archiveFactory",
+      "outputs": [
+        {
+          "internalType": "contract ModuleArchiveFactory",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collection",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "moduleKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "countOf",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "dataOf",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "moduleKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "cursor",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "limit",
+          "type": "uint256"
+        }
+      ],
+      "name": "historyOf",
+      "outputs": [
+        {
+          "internalType": "bytes32[]",
+          "name": "ids",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "next",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "moduleKey",
+          "type": "bytes32"
+        }
+      ],
+      "name": "namespaceOf",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "record",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "namespace",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "schema",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "parent",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "dataHash",
+              "type": "bytes32"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "archive",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint8",
+                  "name": "schema",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "storedHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "storedBytes",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "expandedHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "expandedBytes",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "codeHash",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct ModuleTypes.Archive",
+              "name": "archive",
+              "type": "tuple"
+            },
+            {
+              "internalType": "uint64",
+              "name": "epoch",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "createdAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct ModuleStateStore.Record",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "registry",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "serviceType",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "50694": [
+      {
+        "length": 32,
+        "start": 432
+      },
+      {
+        "length": 32,
+        "start": 3411
+      }
+    ],
+    "50696": [
+      {
+        "length": 32,
+        "start": 3344
+      },
+      {
+        "length": 32,
+        "start": 4095
+      }
+    ],
+    "50699": [
+      {
+        "length": 32,
+        "start": 1928
+      },
+      {
+        "length": 32,
+        "start": 3517
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60e0346100f057601f6111a838819003918201601f19168301916001600160401b038311848410176100f4578084926060946040528339810103126100f05761004781610108565b90610060604061005960208401610108565b9201610108565b916001600160a01b0381161580156100e7575b80156100de575b6100cf5760805260a0526001600160a01b031660c05260405161108b908161011d82396080518181816101b00152610d53015260a051818181610d100152610fff015260c0518181816107880152610dbd0152f35b63baf3f0f760e01b5f5260045ffd5b50823b1561007a565b50813b15610073565b5f80fd5b634e487b7160e01b5f52604160045260245ffd5b51906001600160a01b03821682036100f05756fe6080806040526004361015610012575f80fd5b5f905f3560e01c90816329ec4d4014610dfc5750806369fc09b914610de157806372040f3d14610d9e57806375b86c1e14610d775780637b10399914610d345780637de1e53614610cf157806399753e4514610b67578063a91e11f314610a55578063b5c645bd14610881578063b6a8360a14610129578063b79ff9021461010c578063bedf9f58146100ea5763db0881a1146100ad575f80fd5b346100e757806003193601126100e75760206040517f7bd04ebac0deb0d42f5100258a74262cc02e5323312d51cc6b202a78cf7001de8152f35b80fd5b50346100e75760206101046100fe36610e34565b90610feb565b604051908152f35b50346100e757806003193601126100e75760206040516180008152f35b5034610821576101a036600319011261082157602435604435606435906084359067ffffffffffffffff82168092036108215760a43567ffffffffffffffff811161082157366023820112156108215780600401359467ffffffffffffffff86116108215736602487840101116108215760e03660c3190112610821576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001633036108595782158015610851575b8015610849575b610825576101f690600435610feb565b9284151580610834575b610825576001600160a01b03610214610f61565b1661077957610221610f2b565b61800087119081156106d2575b506106c3576020876040518860248601823780898101838152039060025afa156106b8578651915b848852600260205260408820549660405160208101907f1b2ef68e70a45fc1d76de03dc57b9c5ddbc6056cadddd05c20af7d0ab4e49f9a82524660408201523060608201528760808201528960a08201528660c08201528860e082015284610100820152856101208201526102ce6101408201610f77565b61020081526102df61022082610e97565b51902097604051906102f082610e4a565b878252602082019087825260408301918a835260608401908882528d60405161031881610e7b565b60c4356001600160a01b03811681036106b457815260e43560ff811681036106b45760208201526101043560408201526101243563ffffffff811681036106b4576060820152610144356080820152610164359363ffffffff851685036106b4578f9396600b97604060c0958e9860a0870152610184358787015260808c0195865260a08c01988952868c019767ffffffffffffffff4216895260e08d019a8b528152806020522099518a555160018a0155516002890155516003880155600487019051906001600160a01b038251168154907fffffffffffffffffffffff00000000000000000000000000000000000000000074ff0000000000000000000000000000000000000000602086015160a01b169216171790556040810151600588015563ffffffff60608201511663ffffffff60068901911663ffffffff198254161790556080810151600788015563ffffffff60a08201511663ffffffff60088901911663ffffffff198254161790550151600986015567ffffffffffffffff600a86019251167fffffffffffffffffffffffffffffffff000000000000000000000000000000006fffffffffffffffff00000000000000008454935160401b16921617179055519101556001600160a01b036104f4610f61565b161561059a575b5050838752600260205260408720805490680100000000000000008210156105865792606092602099610557847fe9f5c644e2ce79f3afee21c3fa23996519a5f66f85517b5735b3f3225321655c9760018d9a97018155610ede565b81929154915060031b9088821b915f19901b1916179055604051928352898301526040820152a4604051908152f35b602489634e487b7160e01b81526041600452fd5b87895260016020528060408a20926105b28454610ef3565b601f8111610664575b508a90601f83116001146105f9578b926105eb575b50508160011b915f199060031b1c19161790555b5f806104fb565b602492500101355f806105d0565b848c5260208c20925090601f1984168c5b818110610649575090846001959493921061062d575b505050811b0190556105e4565b01602401355f19600384901b60f8161c191690555f8080610620565b9193602060018192602488880101358155019501920161060a565b909150838b5260208b20601f840160051c810191602085106106aa575b90601f859493920160051c01905b81811061069c57506105bb565b8c815584935060010161068f565b9091508190610681565b8280fd5b6040513d88823e3d90fd5b60048763baf3f0f760e01b8152fd5b905060405160208101906106e582610f77565b60e081526106f561010082610e97565b5190209060405161075e60208201809360c080916001600160a01b03815116845260ff60208201511660208501526040810151604085015263ffffffff60608201511660608501526080810151608085015263ffffffff60a08201511660a08501520151910152565b60e0815261076e61010082610e97565b51902014155f61022e565b85610825576001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016803b15610821575f60e491604051928380927fe39cb2760000000000000000000000000000000000000000000000000000000082526107e960048301610f77565b5afa801561081657610801575b506101443591610256565b61080e9197505f90610e97565b5f955f6107f6565b6040513d5f823e3d90fd5b5f80fd5b63baf3f0f760e01b5f5260045ffd5b50845f525f6020528360405f20541415610200565b5083156101e6565b5080156101df565b7f82b42900000000000000000000000000000000000000000000000000000000005f5260045ffd5b34610821576020366003190112610821576004355f60e06040516108a481610e4a565b8281528260208201528260408201528260608201526108c1610f2b565b60808201528260a08201528260c082015201526108dd81611040565b5f525f6020526101c060405f20604051906108f782610e4a565b8054825267ffffffffffffffff600182015491602084019283528160028201549160408601928352610a3c6003820154606088019081526040519061093b82610e7b565b60ff60048501546001600160a01b038116845260a01c1660208301526005840154604083015263ffffffff60068501541660608301526007840154608083015263ffffffff60088501541660a0830152600984015460c083015260808901918252600a84015495600b60a08b019587891687528760c08d019960401c16895201549860e08b01998a526040519a518b525160208b01525160408a015251606089015251608088019060c080916001600160a01b03815116845260ff60208201511660208501526040810151604085015263ffffffff60608201511660608501526080810151608085015263ffffffff60a08201511660a08501520151910152565b51166101608501525116610180830152516101a0820152f35b3461082157602036600319011261082157600435610a7281611040565b5f52600160205260405f2060405190815f825492610a8f84610ef3565b8084529360018116908115610b455750600114610b01575b50610ab492500382610e97565b6040519060208252818151918260208301525f5b838110610ae9575050815f6040809484010152601f80199101168101030190f35b60208282018101516040878401015285935001610ac8565b90505f9291925260205f20905f915b818310610b29575050906020610ab49282010184610aa7565b6020919350806001915483858801015201910190918392610b10565b905060209250610ab494915060ff191682840152151560051b82010184610aa7565b3461082157608036600319011261082157606435604435610b8c602435600435610feb565b5f52600260205260405f209082158015610ce7575b8015610cdd575b610cb557815492818403938411610ca157808411610c99575b50610bcb83610eb9565b92610bd96040519485610e97565b808452610be581610eb9565b602085019290601f19013684375f5b828110610c4e5750610c07929350610ed1565b90604051916040830193604084525180945260608301915f945b808610610c3657505082935060208301520390f35b90926020806001928651815201940195019490610c21565b610c61610c5b8284610ed1565b86610ede565b90549060031b1c908651811015610c855760019160208260051b8901015201610bf4565b634e487b7160e01b5f52603260045260245ffd5b925083610bc1565b634e487b7160e01b5f52601160045260245ffd5b7f9ee31996000000000000000000000000000000000000000000000000000000005f5260045ffd5b5081548111610ba8565b5060408311610ba1565b34610821575f3660031901126108215760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b34610821575f3660031901126108215760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461082157610d886100fe36610e34565b5f526002602052602060405f2054604051908152f35b34610821575f3660031901126108215760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b34610821575f36600319011261082157602060405160408152f35b34610821575f36600319011261082157807f1b2ef68e70a45fc1d76de03dc57b9c5ddbc6056cadddd05c20af7d0ab4e49f9a60209252f35b6040906003190112610821576004359060243590565b610100810190811067ffffffffffffffff821117610e6757604052565b634e487b7160e01b5f52604160045260245ffd5b60e0810190811067ffffffffffffffff821117610e6757604052565b90601f8019910116810190811067ffffffffffffffff821117610e6757604052565b67ffffffffffffffff8111610e675760051b60200190565b91908201809211610ca157565b8054821015610c85575f5260205f2001905f90565b90600182811c92168015610f21575b6020831014610f0d57565b634e487b7160e01b5f52602260045260245ffd5b91607f1691610f02565b60405190610f3882610e7b565b5f60c0838281528260208201528260408201528260608201528260808201528260a08201520152565b60c4356001600160a01b03811681036108215790565b60c4356001600160a01b03811680910361082157815260e43560ff81168091036108215760208201526101043560408201526101243563ffffffff81168091036108215760608201526101443560808201526101643563ffffffff81168091036108215760a082015260c061018435910152565b906040519060208201926001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168452604083015260608201526060815261103a608082610e97565b51902090565b5f525f602052600160405f200154156108255756fea2646970667358221220b39fecf77b201a13ccb2a18182b14191be6edb8fec2c0feacc6c95ab94579d9b64736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f905f3560e01c90816329ec4d4014610dfc5750806369fc09b914610de157806372040f3d14610d9e57806375b86c1e14610d775780637b10399914610d345780637de1e53614610cf157806399753e4514610b67578063a91e11f314610a55578063b5c645bd14610881578063b6a8360a14610129578063b79ff9021461010c578063bedf9f58146100ea5763db0881a1146100ad575f80fd5b346100e757806003193601126100e75760206040517f7bd04ebac0deb0d42f5100258a74262cc02e5323312d51cc6b202a78cf7001de8152f35b80fd5b50346100e75760206101046100fe36610e34565b90610feb565b604051908152f35b50346100e757806003193601126100e75760206040516180008152f35b5034610821576101a036600319011261082157602435604435606435906084359067ffffffffffffffff82168092036108215760a43567ffffffffffffffff811161082157366023820112156108215780600401359467ffffffffffffffff86116108215736602487840101116108215760e03660c3190112610821576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001633036108595782158015610851575b8015610849575b610825576101f690600435610feb565b9284151580610834575b610825576001600160a01b03610214610f61565b1661077957610221610f2b565b61800087119081156106d2575b506106c3576020876040518860248601823780898101838152039060025afa156106b8578651915b848852600260205260408820549660405160208101907f1b2ef68e70a45fc1d76de03dc57b9c5ddbc6056cadddd05c20af7d0ab4e49f9a82524660408201523060608201528760808201528960a08201528660c08201528860e082015284610100820152856101208201526102ce6101408201610f77565b61020081526102df61022082610e97565b51902097604051906102f082610e4a565b878252602082019087825260408301918a835260608401908882528d60405161031881610e7b565b60c4356001600160a01b03811681036106b457815260e43560ff811681036106b45760208201526101043560408201526101243563ffffffff811681036106b4576060820152610144356080820152610164359363ffffffff851685036106b4578f9396600b97604060c0958e9860a0870152610184358787015260808c0195865260a08c01988952868c019767ffffffffffffffff4216895260e08d019a8b528152806020522099518a555160018a0155516002890155516003880155600487019051906001600160a01b038251168154907fffffffffffffffffffffff00000000000000000000000000000000000000000074ff0000000000000000000000000000000000000000602086015160a01b169216171790556040810151600588015563ffffffff60608201511663ffffffff60068901911663ffffffff198254161790556080810151600788015563ffffffff60a08201511663ffffffff60088901911663ffffffff198254161790550151600986015567ffffffffffffffff600a86019251167fffffffffffffffffffffffffffffffff000000000000000000000000000000006fffffffffffffffff00000000000000008454935160401b16921617179055519101556001600160a01b036104f4610f61565b161561059a575b5050838752600260205260408720805490680100000000000000008210156105865792606092602099610557847fe9f5c644e2ce79f3afee21c3fa23996519a5f66f85517b5735b3f3225321655c9760018d9a97018155610ede565b81929154915060031b9088821b915f19901b1916179055604051928352898301526040820152a4604051908152f35b602489634e487b7160e01b81526041600452fd5b87895260016020528060408a20926105b28454610ef3565b601f8111610664575b508a90601f83116001146105f9578b926105eb575b50508160011b915f199060031b1c19161790555b5f806104fb565b602492500101355f806105d0565b848c5260208c20925090601f1984168c5b818110610649575090846001959493921061062d575b505050811b0190556105e4565b01602401355f19600384901b60f8161c191690555f8080610620565b9193602060018192602488880101358155019501920161060a565b909150838b5260208b20601f840160051c810191602085106106aa575b90601f859493920160051c01905b81811061069c57506105bb565b8c815584935060010161068f565b9091508190610681565b8280fd5b6040513d88823e3d90fd5b60048763baf3f0f760e01b8152fd5b905060405160208101906106e582610f77565b60e081526106f561010082610e97565b5190209060405161075e60208201809360c080916001600160a01b03815116845260ff60208201511660208501526040810151604085015263ffffffff60608201511660608501526080810151608085015263ffffffff60a08201511660a08501520151910152565b60e0815261076e61010082610e97565b51902014155f61022e565b85610825576001600160a01b037f000000000000000000000000000000000000000000000000000000000000000016803b15610821575f60e491604051928380927fe39cb2760000000000000000000000000000000000000000000000000000000082526107e960048301610f77565b5afa801561081657610801575b506101443591610256565b61080e9197505f90610e97565b5f955f6107f6565b6040513d5f823e3d90fd5b5f80fd5b63baf3f0f760e01b5f5260045ffd5b50845f525f6020528360405f20541415610200565b5083156101e6565b5080156101df565b7f82b42900000000000000000000000000000000000000000000000000000000005f5260045ffd5b34610821576020366003190112610821576004355f60e06040516108a481610e4a565b8281528260208201528260408201528260608201526108c1610f2b565b60808201528260a08201528260c082015201526108dd81611040565b5f525f6020526101c060405f20604051906108f782610e4a565b8054825267ffffffffffffffff600182015491602084019283528160028201549160408601928352610a3c6003820154606088019081526040519061093b82610e7b565b60ff60048501546001600160a01b038116845260a01c1660208301526005840154604083015263ffffffff60068501541660608301526007840154608083015263ffffffff60088501541660a0830152600984015460c083015260808901918252600a84015495600b60a08b019587891687528760c08d019960401c16895201549860e08b01998a526040519a518b525160208b01525160408a015251606089015251608088019060c080916001600160a01b03815116845260ff60208201511660208501526040810151604085015263ffffffff60608201511660608501526080810151608085015263ffffffff60a08201511660a08501520151910152565b51166101608501525116610180830152516101a0820152f35b3461082157602036600319011261082157600435610a7281611040565b5f52600160205260405f2060405190815f825492610a8f84610ef3565b8084529360018116908115610b455750600114610b01575b50610ab492500382610e97565b6040519060208252818151918260208301525f5b838110610ae9575050815f6040809484010152601f80199101168101030190f35b60208282018101516040878401015285935001610ac8565b90505f9291925260205f20905f915b818310610b29575050906020610ab49282010184610aa7565b6020919350806001915483858801015201910190918392610b10565b905060209250610ab494915060ff191682840152151560051b82010184610aa7565b3461082157608036600319011261082157606435604435610b8c602435600435610feb565b5f52600260205260405f209082158015610ce7575b8015610cdd575b610cb557815492818403938411610ca157808411610c99575b50610bcb83610eb9565b92610bd96040519485610e97565b808452610be581610eb9565b602085019290601f19013684375f5b828110610c4e5750610c07929350610ed1565b90604051916040830193604084525180945260608301915f945b808610610c3657505082935060208301520390f35b90926020806001928651815201940195019490610c21565b610c61610c5b8284610ed1565b86610ede565b90549060031b1c908651811015610c855760019160208260051b8901015201610bf4565b634e487b7160e01b5f52603260045260245ffd5b925083610bc1565b634e487b7160e01b5f52601160045260245ffd5b7f9ee31996000000000000000000000000000000000000000000000000000000005f5260045ffd5b5081548111610ba8565b5060408311610ba1565b34610821575f3660031901126108215760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b34610821575f3660031901126108215760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461082157610d886100fe36610e34565b5f526002602052602060405f2054604051908152f35b34610821575f3660031901126108215760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b34610821575f36600319011261082157602060405160408152f35b34610821575f36600319011261082157807f1b2ef68e70a45fc1d76de03dc57b9c5ddbc6056cadddd05c20af7d0ab4e49f9a60209252f35b6040906003190112610821576004359060243590565b610100810190811067ffffffffffffffff821117610e6757604052565b634e487b7160e01b5f52604160045260245ffd5b60e0810190811067ffffffffffffffff821117610e6757604052565b90601f8019910116810190811067ffffffffffffffff821117610e6757604052565b67ffffffffffffffff8111610e675760051b60200190565b91908201809211610ca157565b8054821015610c85575f5260205f2001905f90565b90600182811c92168015610f21575b6020831014610f0d57565b634e487b7160e01b5f52602260045260245ffd5b91607f1691610f02565b60405190610f3882610e7b565b5f60c0838281528260208201528260408201528260608201528260808201528260a08201520152565b60c4356001600160a01b03811681036108215790565b60c4356001600160a01b03811680910361082157815260e43560ff81168091036108215760208201526101043560408201526101243563ffffffff81168091036108215760608201526101443560808201526101643563ffffffff81168091036108215760a082015260c061018435910152565b906040519060208201926001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168452604083015260608201526060815261103a608082610e97565b51902090565b5f525f602052600160405f200154156108255756fea2646970667358221220b39fecf77b201a13ccb2a18182b14191be6edb8fec2c0feacc6c95ab94579d9b64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "MAX_DIRECT_BYTES()": "b79ff902",
+    "MAX_PAGE()": "69fc09b9",
+    "STATE_DOMAIN()": "29ec4d40",
+    "append(uint256,bytes32,bytes32,bytes32,uint64,bytes,(address,uint8,bytes32,uint32,bytes32,uint32,bytes32))": "b6a8360a",
+    "archiveFactory()": "72040f3d",
+    "collection()": "7de1e536",
+    "countOf(uint256,bytes32)": "75b86c1e",
+    "dataOf(bytes32)": "a91e11f3",
+    "historyOf(uint256,bytes32,uint256,uint256)": "99753e45",
+    "namespaceOf(uint256,bytes32)": "bedf9f58",
+    "record(bytes32)": "b5c645bd",
+    "registry()": "7b103999",
+    "serviceType()": "db0881a1"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "registry_",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "collection_",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "factory_",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidPage",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidState",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "Unauthorized",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "stateId",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "namespace",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "parent",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "schema",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint64",
+              "name": "epoch",
+              "type": "uint64"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "dataHash",
+              "type": "bytes32"
+            }
+          ],
+          "name": "StateStaged",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "MAX_DIRECT_BYTES",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "MAX_PAGE",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "STATE_DOMAIN",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "moduleKey",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "schema",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "parent",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "epoch",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "archive",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint8",
+                  "name": "schema",
+                  "type": "uint8"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "storedHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "storedBytes",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "expandedHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "expandedBytes",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "codeHash",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct ModuleTypes.Archive",
+              "name": "archive",
+              "type": "tuple"
+            }
+          ],
+          "name": "append",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "archiveFactory",
+          "outputs": [
+            {
+              "internalType": "contract ModuleArchiveFactory",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "collection",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "moduleKey",
+              "type": "bytes32"
+            }
+          ],
+          "name": "countOf",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "name": "dataOf",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "moduleKey",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "cursor",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "limit",
+              "type": "uint256"
+            }
+          ],
+          "name": "historyOf",
+          "outputs": [
+            {
+              "internalType": "bytes32[]",
+              "name": "ids",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "uint256",
+              "name": "next",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "moduleKey",
+              "type": "bytes32"
+            }
+          ],
+          "name": "namespaceOf",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "name": "record",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "namespace",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "schema",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "parent",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "dataHash",
+                  "type": "bytes32"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "archive",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint8",
+                      "name": "schema",
+                      "type": "uint8"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "storedHash",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "uint32",
+                      "name": "storedBytes",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "expandedHash",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "uint32",
+                      "name": "expandedBytes",
+                      "type": "uint32"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "codeHash",
+                      "type": "bytes32"
+                    }
+                  ],
+                  "internalType": "struct ModuleTypes.Archive",
+                  "name": "archive",
+                  "type": "tuple"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "epoch",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "createdAt",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "index",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct ModuleStateStore.Record",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "registry",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "serviceType",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "No publisher, program or external caller can mutate state here. Selection lives in TokenModuleRegistry so release/state activation is atomic. Public chain bytes are public; encryption and recoverable keys are the client's responsibility.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Append-only snapshots; only the bound installation registry can append.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/modules/ModuleStateStore.sol": "ModuleStateStore"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/modules/ModuleArchiveFactory.sol": {
+        "keccak256": "0xde726abeb9c0b6d512b1925e3d17c2d537c744cefbb9ad7c3c8da1b7310134a7",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://d809ce81a0593f81d574c6e010a9476d3c153ade6766447cb4ec3997c36742b2",
+          "dweb:/ipfs/QmXfACBG3H3kUkTmXZtT5h8qcvzKGesx2qFQe9Rs94xbAE"
+        ]
+      },
+      "contracts/src/modules/ModuleStateStore.sol": {
+        "keccak256": "0x0b4508548b068c605902acb9819b6342ea5f75f5aa53d6eb4b80dc46fdabf5f8",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ee60013069b49be477604c5de14e08aa883aa31c4f673fb9771dabcb70bb54f",
+          "dweb:/ipfs/QmeAPNh2DKvyHAGnEtZDSpBgEHU5UkYMwLjdWmpJPy6wT4"
+        ]
+      },
+      "contracts/src/modules/ModuleTypes.sol": {
+        "keccak256": "0x7bac351f364d0e3c6f3da61ce1ec6e2d43b0997f291252c627b0c86ea7e4e205",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7cb89f9638e77e59f8464dc6857a5492046196bb6629d1003e6db872e0ac4dfd",
+          "dweb:/ipfs/QmbEYkWMSmr9XYS9AQ56efJp5hkvKbzpURBiV6fKcKJ1U4"
+        ]
+      },
+      "contracts/src/protocol/OnchainApp.sol": {
+        "keccak256": "0x0f19554128f60cf5226bbdec049646af2883e9d7bf156d2d4067b087177b873d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://6e371079569b2064c62907c19ec5173ff666c80c7f62a4eb36d488ecd4f4c377",
+          "dweb:/ipfs/QmbzAGrjxVE6NSVWDC5YBukcceYfbDprfRVdbMg1aJrXZz"
+        ]
+      },
+      "contracts/src/protocol/OnchainAppDirectory.sol": {
+        "keccak256": "0xefaffe87de314043d107b3f615725e2b02c8426a10ab93cb28c7eff5cd261a88",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://f543638371a39bf538d68282e5435e5815122cc266d4463c8d612c0987e1ad9b",
+          "dweb:/ipfs/QmSum5hU5uWDyevTdZWcaRupUem1HPwD2zzoVg1AKeRyNn"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

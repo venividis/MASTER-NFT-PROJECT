@@ -1,13 +1,19 @@
 {
-  "name": "i-dont-fucking-believe-it",
-  "version": "6.2.0",
+  "name": "master-nft-project",
+  "version": "7.0.0",
   "private": true,
   "type": "module",
-  "description": "Anima Genesis: a continuous living object with reviewed onchain instruments.",
+  "description": "ANIMA MASTER: immutable NFT identity with owner-selected onchain modules, persistent state and reviewed instruments.",
   "engines": {
     "node": ">=22.13"
   },
   "scripts": {
+    "modules:build": "node scripts/modules-build-workbench.mjs",
+    "modules:package": "node scripts/modules-package.mjs",
+    "modules:recover": "node scripts/modules-recover.mjs",
+    "test:modules": "node --test --test-concurrency=2 test/modules/*.test.mjs",
+    "master:local": "npm run compile:local && npm run compile:v4 && npm run build && npm run archive:confluence && node scripts/master-local.mjs",
+    "master:start": "node scripts/master-local.mjs",
     "compile": "node scripts/compile.mjs",
     "audit:static": "node scripts/static-audit.mjs",
     "test:contracts": "node --test test/contracts.integration.test.mjs",
@@ -97,7 +103,13 @@
     "history:test:browser": "python test/memory/browser_regression.py && python test/memory/browser_operating.py && python test/memory/browser_memory.py",
     "history:inspect:operating": "node scripts/operating-package-check.mjs",
     "test:owner-safety": "node --test test/security/*.test.mjs",
-    "build:capabilities": "node scripts/build-capabilities.mjs"
+    "build:capabilities": "node scripts/build-capabilities.mjs",
+    "modules:deployment": "node scripts/modules-deployment.mjs",
+    "modules:recover-workbench": "node scripts/modules-recover-workbench.mjs",
+    "test:modules:native": "node scripts/test-modules-native.mjs",
+    "test:modules:browser": "node test/browser/modules.mjs",
+    "modules:sdk": "node scripts/build-module-sdk.mjs",
+    "modules:plan": "node scripts/modules-plan-package.mjs"
   },
   "dependencies": {
     "ethers": "6.15.0",

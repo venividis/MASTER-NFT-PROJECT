@@ -1,0 +1,45 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import os from 'node:os';
+import path from 'node:path';
+import {execFile} from 'node:child_process';
+import {promisify} from 'node:util';
+import {createHash} from 'node:crypto';
+import {buildModuleSDK} from '../../scripts/build-module-sdk.mjs';
+
+const root=path.resolve(import.meta.dirname,'../..'),run=promisify(execFile);
+test('npm distributable SDK imports outside the source tree with no installed dependencies and verifies exact module bytes',async t=>{
+  const built=await buildModuleSDK({output:null}),base=fs.mkdtempSync(path.join(os.tmpdir(),'anima-portable-sdk-'));
+  t.after(()=>fs.rmSync(base,{recursive:true,force:true}));
+  const installed=path.join(base,'node_modules/@anima/modules');fs.mkdirSync(path.join(installed,'dist'),{recursive:true});
+  const packageFile=path.join(root,'packages/modules/package.json'),pkg=JSON.parse(fs.readFileSync(packageFile));
+  assert.equal(pkg.name,'@anima/modules');assert.equal(pkg.version,'1.0.0');assert.equal(pkg.dependencies,undefined);
+  for(const name of ['package.json',...pkg.files.filter(name=>name!=='dist')])fs.copyFileSync(path.join(root,'packages/modules',name),path.join(installed,name));
+  for(const [file,bytes] of Object.entries(built.files))fs.writeFileSync(path.join(installed,'dist',file),bytes);
+  assert.deepEqual(Object.keys(pkg.exports).sort(),['.','./core','./package.json']);
+  assert.equal(built.manifest.files['index.mjs'].sha256,'0x'+createHash('sha256').update(built.files['index.mjs']).digest('hex'));
+  const proof=`
+import assert from 'node:assert/strict';
+import {packageFiles,verifyArchive,parseManifest,canonicalManifest,manifestHash,sha256,releaseInput,releaseIdFor,moduleKeyFor,descriptorFromManifest} from '@anima/modules';
+import {sha256 as coreHash} from '@anima/modules/core';
+const source='export const sum = (a,b) => a+b;';
+const publisher='0x'+'11'.repeat(20);
+const packed=await packageFiles([{path:'sum.mjs',mime:'text/javascript',bytes:source}],{name:'portable-sum',version:1,publisher,entrypoint:'sum.mjs'},{compression:'gzip'});
+assert.equal(sha256('abc'),'0xba7816bf8f01cfea414140de5dae2223b00361a396177a9cb410ff61f20015ad');
+assert.equal(coreHash('abc'),sha256('abc'));
+assert.deepEqual(parseManifest(new TextEncoder().encode(canonicalManifest(packed.manifest)),packed.manifestHash),packed.manifest);
+const recovered=await verifyArchive(packed.manifest,packed.archive);
+assert.equal(new TextDecoder().decode(recovered.files[0].bytes),source);
+assert.equal(manifestHash(recovered.manifest),packed.manifestHash);
+const descriptor=descriptorFromManifest(packed.manifest,'0x'+'22'.repeat(20),1,'0x'+'33'.repeat(32));
+const input=releaseInput(packed.manifest,descriptor),releaseId=releaseIdFor(publisher,input,packed.manifest);
+assert.match(releaseId,/^0x[0-9a-f]{64}$/);assert.match(moduleKeyFor(publisher,input.moduleId),/^0x[0-9a-f]{64}$/);
+const corrupt=packed.archive.slice();corrupt[0]^=1;await assert.rejects(()=>verifyArchive(packed.manifest,corrupt),/hash or length mismatch/);
+await assert.rejects(()=>import('@anima/modules/deployment'),/not defined by "exports"/);
+console.log(JSON.stringify({package:'@anima/modules',releaseId,manifestHash:packed.manifestHash,verifiedBytes:recovered.files[0].bytes.length}));
+`;
+  const script=path.join(base,'consumer.mjs');fs.writeFileSync(script,proof);
+  const child=await run(process.execPath,[script],{cwd:base,timeout:30000,maxBuffer:1024*1024,env:{...process.env,NODE_PATH:''}});
+  const result=JSON.parse(child.stdout);assert.equal(result.package,'@anima/modules');assert.equal(result.verifiedBytes,32);
+});

@@ -17,10 +17,13 @@ import {
 } from "./lib/runtime-graph.mjs";
 import { verifyCompilation } from "./lib/compiler-artifacts.mjs";
 import { verifyV4Compilation } from "./lib/v4-compilation.mjs";
+import { buildWorkbench } from './modules-build-workbench.mjs';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 verifyCompilation(root);
 verifyV4Compilation(root);
 for (const script of [
+  "build-module-sdk.mjs",
+  "build-modules.mjs",
   "build-v4.mjs",
   "build-launch-chain.mjs",
   "build-hook-launch.mjs",
@@ -87,7 +90,9 @@ function featureBuildInputs(prefix) {
   return result;
 }
 const inputs = [
+  ...listFiles(path.join(root, "web/modules")).map(file=>"web/modules/"+file),
   ...[
+    "packages/modules",
     "packages/communication",
     "packages/crosschain",
     "integrations/official-launch",
@@ -126,6 +131,8 @@ const result = await atomicDirectory(path.join(root, "dist"), async (stage) => {
     fs.writeFileSync(file, bytes);
   };
   write("index.html", composed.html);
+  const workbench = await buildWorkbench();
+  write("modules.html", workbench.html);
   // One deliberate visual comparison fixture. It is never an active build input.
   write(
     "original.html",

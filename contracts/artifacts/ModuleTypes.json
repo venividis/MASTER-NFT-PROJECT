@@ -1,0 +1,59 @@
+{
+  "contractName": "ModuleTypes",
+  "sourceName": "contracts/src/modules/ModuleTypes.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea264697066735822122047587429cf78876d2ef7776a1e32af9ab65aef9a3d1b722954e5f31a15e3d05f64736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea264697066735822122047587429cf78876d2ef7776a1e32af9ab65aef9a3d1b722954e5f31a15e3d05f64736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Shared, versioned ABI for immutable extension payloads and releases.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/modules/ModuleTypes.sol": "ModuleTypes"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/modules/ModuleTypes.sol": {
+        "keccak256": "0x7bac351f364d0e3c6f3da61ce1ec6e2d43b0997f291252c627b0c86ea7e4e205",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7cb89f9638e77e59f8464dc6857a5492046196bb6629d1003e6db872e0ac4dfd",
+          "dweb:/ipfs/QmbEYkWMSmr9XYS9AQ56efJp5hkvKbzpURBiV6fKcKJ1U4"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

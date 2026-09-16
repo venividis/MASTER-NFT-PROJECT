@@ -1,5 +1,14 @@
 # Start here
 
+For version 7's complete local mint, module examples and persistent Ethereum chain:
+
+```sh
+npm run setup:full
+npm run master:local
+```
+
+Use the printed workbench URL and local wallet configuration. Restart with `npm run master:start`. [README.md](README.md) describes the new module system; [the implementation map](docs/MODULES-IMPLEMENTATION.md) maps the approved plan to source and tests. The original application instructions follow.
+
 Install Node.js 22.13 or newer (Node 24 is recommended):
 
 ```sh

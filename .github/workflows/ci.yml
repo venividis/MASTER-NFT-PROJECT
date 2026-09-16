@@ -4,6 +4,9 @@ on:
   pull_request:
 permissions:
   contents: read
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 jobs:
   complete-local-suite:
     runs-on: ubuntu-24.04
@@ -48,6 +51,8 @@ jobs:
             dist/build-manifest.json
             contracts/artifacts/index.json
             SOURCE-SHA256.json
+            .local-genesis/validation-*/deployment.json
+            .local-genesis/validation-*/module-receipts.jsonl
   current-browser:
     runs-on: ubuntu-24.04
     timeout-minutes: 150
@@ -58,11 +63,15 @@ jobs:
           node-version: 24.19.0
           cache: npm
       - name: Build current browser candidate with recorded partial validation evidence
-        run: npm run validate:release -- --install --stages=integrity,syntax,compile-core,compile-v4,build,verify-compilation
+        # The complete-local-suite independently recompiles this same source.
+        # This browser job verifies and reuses the committed source-bound artifacts.
+        run: npm run validate:release -- --install --stages=integrity,syntax,build,verify-compilation
       - name: Install pinned browser engine and Linux dependencies
         run: npx --no-install playwright install --with-deps chromium
       - name: Current app browser acceptance (separate from native and physical devices)
         run: npm run test:browser
+      - name: Module workbench, worker isolation and review controls
+        run: npm run test:modules:browser
       - uses: actions/upload-artifact@v4
         if: always()
         with:
@@ -71,3 +80,26 @@ jobs:
           path: |
             .local-genesis/validation/
             reports/production/browser/
+            reports/production/modules-browser/
+  module-solidity:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: v1.7.1
+          cache: false
+      - name: Execute native Solidity tests and fixed-seed fuzz cases
+        run: FORGE_BIN="$(command -v forge)" npm run test:modules:native
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: module-solidity-evidence
+          include-hidden-files: true
+          path: .local-genesis/modules-native/

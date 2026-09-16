@@ -1,0 +1,15 @@
+[profile.default]
+# Only module fixtures and their imports are compiled; production artifacts are untouched.
+# The runner substitutes absolute paths into a per-run copy of this template.
+src = "@NATIVE_SOURCE@"
+test = "@MODULE_FIXTURES@"
+allow_paths = ["@PROJECT_ROOT@"]
+libs = []
+optimizer = true
+optimizer_runs = 1000
+via_ir = true
+evm_version = "shanghai"
+auto_detect_solc = false
+
+[profile.default.fuzz]
+runs = 64

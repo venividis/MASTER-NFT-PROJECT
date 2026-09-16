@@ -47,6 +47,7 @@ export const PRIMARY_CAPABILITIES = Object.freeze(
   ].map(Object.freeze),
 );
 export const ADVANCED_ROUTES = Object.freeze([
+  "modules",
   "governance",
   "crosschain",
   "extensions",
@@ -69,6 +70,7 @@ export function resolveCapabilityRoute(key) {
   );
 }
 const legacyCatalog = {
+  modules: ["Module workbench", "Install, open and evolve owner-selected onchain tools"],
   security: [
     "Authority & recovery",
     "Inspect permissions, agent ownership and unresolved assets",

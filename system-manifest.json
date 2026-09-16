@@ -1,6 +1,6 @@
 {
   "schema": "awe.confluence/system-architecture/2",
-  "version": "6.1.0",
+  "version": "7.0.0",
   "identity": {
     "kind": "preserved-custom-NFT-account",
     "canonicalERC6551Compliance": false,
@@ -91,7 +91,7 @@
         "contracts/src/protocol/GenesisLaunchpad.sol"
       ],
       "limitations": "Local contract transactions and interface tests are evidence of implementation, not public deployment. Immediate v4 retained tokens are not automatically vested; LP shares remain redeemable. Official CCA/Doppler strategies and automatic auction-to-DEX migration are not integrated.",
-      "entrance": "Launch → Create / My launches / Community / Auctions / Fee streams / Private wallet / Setup",
+      "entrance": "Launch \u2192 Create / My launches / Community / Auctions / Fee streams / Private wallet / Setup",
       "route": "launch"
     },
     {
@@ -116,7 +116,7 @@
         "packages/privacy/src/runtime.mjs"
       ],
       "limitations": "Private execution requires synchronized shielded funds and configured services. Automatic output locking is not included in every v4 swap route.",
-      "entrance": "Swap → public/private execution choice",
+      "entrance": "Swap \u2192 public/private execution choice",
       "route": "v4"
     },
     {
@@ -176,7 +176,7 @@
         "web/genesis/live-protocol.mjs"
       ],
       "limitations": "Only the encrypted conversation route protects message contents. PrivacyKeys/EpochGroupChat and registered encryption identities must be configured; no memory-handover contract is required just for chat.",
-      "entrance": "Commons → Conversations / Encryption keys / Setup; Public rooms ↗",
+      "entrance": "Commons \u2192 Conversations / Encryption keys / Setup; Public rooms \u2197",
       "route": "commons"
     },
     {
@@ -196,7 +196,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Independent ANIMA uniform-price streaming mechanism with 64 standing orders. No Uniswap CCA compliance or automatic liquidity migration.",
-      "entrance": "Launch → Auctions",
+      "entrance": "Launch \u2192 Auctions",
       "route": "launch"
     },
     {
@@ -217,7 +217,7 @@
       ],
       "authority": "The current NFT owner proposes; the addressed recipient decrypts, verifies and explicitly accepts. Sale alone never transfers the private key.",
       "limitations": "Recipient-confirmed content verification, not ERC-7857 or zero-knowledge handover. Old content may remain with the seller.",
-      "entrance": "Atlas → Advanced → Specialist instruments → Private communication"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments \u2192 Private communication"
     },
     {
       "id": "agent-execution",
@@ -234,7 +234,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Bound-account scoped operator. Arbitrary autonomous decision-making and Sovereign-mode proof generation are not supplied.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "omnichain",
@@ -251,7 +251,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Requires real LayerZero endpoints, explicit DVNs/libraries/executor configuration and peer deployments. Tests use local endpoint doubles.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "private-chat",
@@ -273,7 +273,7 @@
       ],
       "authority": "Wallet-signed recipient consent and manager-controlled membership/rotation. NFT sale never transfers chat keys or history.",
       "limitations": "Up to 32 members. Custom P-256/HKDF/AES-GCM epoch protocol, not MLS or forward secrecy. Members retain previously decrypted contents; long-term recipient-key compromise can expose historical packages. Membership, sender, timing and approximate size remain public.",
-      "entrance": "Commons → Conversations / Encryption keys / Setup",
+      "entrance": "Commons \u2192 Conversations / Encryption keys / Setup",
       "privacy": "Plaintext and private keys stay in the private browser surface; only encrypted packages and padded ciphertext reach contracts.",
       "route": "commons"
     },
@@ -292,13 +292,13 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "A disclosed immutable registrar attests unique people; this does not cryptographically eliminate Sybil identities or collusion.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "sponsored-actions",
       "label": "Sponsored account actions",
       "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
-      "explanation": "Have a relayer pay transaction gas using an exact owner-and-sponsor signed request and the sponsor’s funded budget.",
+      "explanation": "Have a relayer pay transaction gas using an exact owner-and-sponsor signed request and the sponsor\u2019s funded budget.",
       "sources": [
         "contracts/src/extensions/access/SessionSponsor.sol",
         "web/extensions/access.mjs"
@@ -308,8 +308,8 @@
         "connected signer"
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
-      "limitations": "Native account-session relay, not an ERC-4337 paymaster. Capped reimbursement with fixed overhead may not cover the relayer’s whole cost.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "limitations": "Native account-session relay, not an ERC-4337 paymaster. Capped reimbursement with fixed overhead may not cover the relayer\u2019s whole cost.",
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "library",
@@ -506,7 +506,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Test-network gate; lender-funded isolated spot leverage, not the original pooled synthetic book. Oracle, venue and liquidity are external.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "wager",
@@ -523,7 +523,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Test-network gate. Question, source, resolver, arbiter and all cutoffs are fixed per market; those authorities can be wrong.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "wake",
@@ -540,7 +540,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Test-network gate. Exclusivity covers the adapter route; underlying permissionless exits remain callable.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "memory",
@@ -675,7 +675,7 @@
       ],
       "authority": "The current owner signs custody-bound calls; scoped grants and exact temporary allowances do not give arbitrary token access.",
       "limitations": "Compatible operations require the verified account edition and current custody epoch. Private wallets, burner wallets and chat encryption identities remain separate. Same-collection master-NFT nesting is forbidden.",
-      "entrance": "Launch → Funding account; Atlas → Advanced → Developer console"
+      "entrance": "Launch \u2192 Funding account; Atlas \u2192 Advanced \u2192 Developer console"
     },
     {
       "id": "vault-live",
@@ -732,7 +732,7 @@
       "authority": "Public wallet or supported NFT-account execution with review; shielded execution uses its separate private wallet.",
       "privacy": "Public pools, tokens, amounts, fees and timings. Configured private routes shield supported funding/output linkage without guaranteeing anonymity.",
       "limitations": "Actual local PoolManager execution exists, including creator-hook integration. Public deployment and funded proof/broadcaster end-to-end verification remain outstanding.",
-      "entrance": "Swap; Launch → My launches / Private wallet",
+      "entrance": "Swap; Launch \u2192 My launches / Private wallet",
       "route": "v4"
     },
     {
@@ -751,7 +751,7 @@
       ],
       "privacy": "Recovery keys and plaintext notes stay offchain. Screen concealment is a separate display control, not transaction privacy.",
       "limitations": "Locking does not cancel a transaction already broadcast or erase data retained by another application.",
-      "entrance": "Launch → Private wallet; Atlas → Private wallet",
+      "entrance": "Launch \u2192 Private wallet; Atlas \u2192 Private wallet",
       "route": "privacy"
     },
     {
@@ -775,7 +775,7 @@
       ],
       "privacy": "The token, pool, supply, amounts, prices, timing and public hook/recipient configuration remain visible. Funding and recipient linkage can still be inferred from external observations.",
       "limitations": "Local adapter/hook tests do not prove a funded RAILGUN proof or broadcaster submission. Circuit access, synchronization, POI/RPC services, compatible deployments and funded private balances remain necessary.",
-      "entrance": "Swap → Private; Launch → Create → Private funding",
+      "entrance": "Swap \u2192 Private; Launch \u2192 Create \u2192 Private funding",
       "route": "v4"
     },
     {
@@ -796,7 +796,7 @@
       ],
       "authority": "The hook owner controls future fees and recipients. Existing deposited splitter entitlements remain with their recorded beneficiaries.",
       "limitations": "No mandatory project recipient. Weights apply when fees enter the splitter. Automatic payout-asset conversion and reinvestment adapters are not supplied; earned fees are claimed in their actual currencies.",
-      "entrance": "Launch → Fee streams; Launch → Create → Creator fees",
+      "entrance": "Launch \u2192 Fee streams; Launch \u2192 Create \u2192 Creator fees",
       "route": "launch"
     },
     {
@@ -903,7 +903,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "x402 v2 exact EVM EIP-3009 through official SDK; separate ERC-8183 draft non-hooked kernel. Requires supported token and configured service.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "provider-directory",
@@ -920,7 +920,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "ANIMA-native directory, not an ERC-8004 implementation. Signatures authenticate wallets, not quality, personhood or claims.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "generated-instruments",
@@ -938,7 +938,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Human approval and browser isolation do not prove arbitrary code safe. No default wallet bridge; exact proposals need separate review.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "quote-proof",
@@ -955,7 +955,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Groth16 development setup; one-hop NativeMarket arithmetic only. Full EVM execution, gas, token behavior and future state are not proved.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "shared-world",
@@ -973,13 +973,13 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Working multiplayer civilization slice, not a complete mature MMO. Operator-authoritative game state and game coins have no onchain withdrawal.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "named-mint",
       "label": "ENS named mint entry",
       "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
-      "explanation": "Mint an NFT and its deterministic subname together, then resolve that name back to the NFT’s real account.",
+      "explanation": "Mint an NFT and its deterministic subname together, then resolve that name back to the NFT\u2019s real account.",
       "sources": [
         "contracts/src/extensions/access/GenesisNames.sol",
         "web/extensions/access.mjs"
@@ -990,7 +990,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Requires an explicitly delegated ENS parent. Does not purchase or renew a .eth domain; ancestor control and expiry remain applicable.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "whole-nft-shares",
@@ -1007,7 +1007,7 @@
       ],
       "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
       "limitations": "Only unused Bound NFTs qualify. Account execution freezes while fractionalized; shares do not transfer private keys or every possible external right.",
-      "entrance": "Atlas → Advanced → Specialist instruments"
+      "entrance": "Atlas \u2192 Advanced \u2192 Specialist instruments"
     },
     {
       "id": "full-evm-proof",
@@ -1020,7 +1020,7 @@
       "id": "adaptive-agent-reasoning",
       "label": "General autonomous agent decisions",
       "state": "RESEARCH_NOT_IMPLEMENTED",
-      "explanation": "Have an agent independently choose new multi-step actions while proving they follow the owner’s intent.",
+      "explanation": "Have an agent independently choose new multi-step actions while proving they follow the owner\u2019s intent.",
       "limitations": "Research remains. The delivered operator runs exact owner-approved calls with onchain limits; it does not supply unrestricted adaptive reasoning or Sovereign-mode proofs."
     },
     {
@@ -1047,7 +1047,7 @@
         "web/genesis/live-protocol.mjs",
         "web/genesis/live-desk.mjs"
       ],
-      "entrance": "Commons → Public rooms ↗",
+      "entrance": "Commons \u2192 Public rooms \u2197",
       "route": "live"
     },
     {
@@ -1060,14 +1060,14 @@
         "explicit read RPC or connected wallet provider",
         "funded signing wallet for participation"
       ],
-      "authority": "Participant transactions use the signing wallet; they do not inherit the creator desk’s NFT funding choice.",
+      "authority": "Participant transactions use the signing wallet; they do not inherit the creator desk\u2019s NFT funding choice.",
       "privacy": "Public sale and auction state. No wallet is requested for explicit read-only RPC access; the chosen provider can observe those requests.",
       "limitations": "Links cover community sales and ANIMA streaming auctions. They do not certify the creator, promise returns or automatically migrate auction liquidity.",
       "sources": [
         "web/launchpad/links.mjs",
         "web/launchpad/participant.mjs"
       ],
-      "entrance": "Launch → Community / Auctions → Copy participant link",
+      "entrance": "Launch \u2192 Community / Auctions \u2192 Copy participant link",
       "route": "participant"
     },
     {
@@ -1085,7 +1085,7 @@
         "web/commons/desk.mjs",
         "web/privacy/bridge.mjs"
       ],
-      "entrance": "Screen privacy controls; Commons → Lock"
+      "entrance": "Screen privacy controls; Commons \u2192 Lock"
     }
   ],
   "surfaceGaps": [
@@ -1276,6 +1276,15 @@
   "extensions": {
     "guide": "docs/genesis/extensions/DEPLOYMENT.md",
     "entry": "web/extensions/desk.mjs",
+    "publicDeployment": null
+  },
+  "modularExtensions": {
+    "schema": "anima.extension-release/1",
+    "authority": "Explicit current-owner reviewed NFT account calls",
+    "publication": "Immutable releases and exact dependency commitments",
+    "state": "Per-NFT, module and schema; staged snapshots with atomic activation",
+    "legacy": "Chunk-backed cartridges use the existing generic HTML launcher",
+    "workbench": "Independent immutable onchain document, also included in new editions",
     "publicDeployment": null
   }
 }

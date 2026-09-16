@@ -1,0 +1,210 @@
+{
+  "schema": "anima.module-workbench/1",
+  "compression": "raw",
+  "byteLength": 705150,
+  "sha256": "0xc6ae8166ccd88b498c684b06a07c97371e7a7dd61babc46c338ed974a39e76ab",
+  "chunks": [
+    {
+      "file": "chunks/000.bin",
+      "byteLength": 23000,
+      "sha256": "0xeadaf9c523d40f82fb90cc7d4126b82448c19b301d9df4e114c7bc9a1a3a9cbf"
+    },
+    {
+      "file": "chunks/001.bin",
+      "byteLength": 23000,
+      "sha256": "0xe98f2c89c54057861ab7f6d1805e317d6c8e48ecc19497efcf6de9d2bf3df778"
+    },
+    {
+      "file": "chunks/002.bin",
+      "byteLength": 23000,
+      "sha256": "0x1ea39dfdca8c84871ed6460867b253dc8ba4003a4cbd8e3f26cb36e607e9a2e6"
+    },
+    {
+      "file": "chunks/003.bin",
+      "byteLength": 23000,
+      "sha256": "0x9889d872794525577ff1233ed854508635564946a620df7e2b4c9b30b2b46c06"
+    },
+    {
+      "file": "chunks/004.bin",
+      "byteLength": 23000,
+      "sha256": "0xc35eb59533f92deba8e8caf81a545ce93b6951e844c7162de932a86472098ff0"
+    },
+    {
+      "file": "chunks/005.bin",
+      "byteLength": 23000,
+      "sha256": "0x6fcedfa482ba7a9eb5b81b0505ea5d8ea852adb572fcf4e8e8370465c96c5784"
+    },
+    {
+      "file": "chunks/006.bin",
+      "byteLength": 23000,
+      "sha256": "0xb445599bc71a461c8ef334b76dcadfc42ed2628ee016d95b06b26bd0f0c1a499"
+    },
+    {
+      "file": "chunks/007.bin",
+      "byteLength": 23000,
+      "sha256": "0x69d186170713b21d7471e931545220634f096ec663efcb32026ccca2495e91f6"
+    },
+    {
+      "file": "chunks/008.bin",
+      "byteLength": 23000,
+      "sha256": "0xc6c43aabc445d63abef927f2ab104f17756123fc561be208fce9691e720fa2ca"
+    },
+    {
+      "file": "chunks/009.bin",
+      "byteLength": 23000,
+      "sha256": "0x264199f7eb38c1e7118f3b4f10ddc197f4e2ae3fdb1250cc720b4352d873c539"
+    },
+    {
+      "file": "chunks/010.bin",
+      "byteLength": 23000,
+      "sha256": "0x78981090e36f14b364df4ecab301d83da0794986cb584532fdfc5b64cd44cb4a"
+    },
+    {
+      "file": "chunks/011.bin",
+      "byteLength": 23000,
+      "sha256": "0x524eda0d1693d7fe98f32ae8a4aeb22197f8e8ac20770405adb972e2e663b87f"
+    },
+    {
+      "file": "chunks/012.bin",
+      "byteLength": 23000,
+      "sha256": "0x53aa52c8a10053328ff8ca9f334282fe80b9a159241b815528d0c43f968f69c9"
+    },
+    {
+      "file": "chunks/013.bin",
+      "byteLength": 23000,
+      "sha256": "0x20139e6533ce6e1f5acec1f326a0e59a5307ff67e0c3d957dbc15c274a1f0fc6"
+    },
+    {
+      "file": "chunks/014.bin",
+      "byteLength": 23000,
+      "sha256": "0xf3f49b4c1b03741ce76e754d522cb48e66ac83e7eb609abd5d7f04f664e0fb8b"
+    },
+    {
+      "file": "chunks/015.bin",
+      "byteLength": 23000,
+      "sha256": "0x2ae320df444fefcb402f4a0bd8fc8b133379e2954b001b94eaa3985da142ca45"
+    },
+    {
+      "file": "chunks/016.bin",
+      "byteLength": 23000,
+      "sha256": "0x2329af04155f99d7672bed1d158247eea68649f3e36cd366bd7ed0f42ae0483a"
+    },
+    {
+      "file": "chunks/017.bin",
+      "byteLength": 23000,
+      "sha256": "0xcbf91f7d26248261dba8ee6ed75f1bc5e819d839bb993ca469367a1c818224a7"
+    },
+    {
+      "file": "chunks/018.bin",
+      "byteLength": 23000,
+      "sha256": "0xc6dfa37d5627302e0e6f6898c84b64a5e6bfd00dcb7067e37e646d88b2d4c9ca"
+    },
+    {
+      "file": "chunks/019.bin",
+      "byteLength": 23000,
+      "sha256": "0x0d6c7b9611f24e544a7a367a817cbf60623d00e39ccfc6553c019620135ca021"
+    },
+    {
+      "file": "chunks/020.bin",
+      "byteLength": 23000,
+      "sha256": "0xcb4abfa04c79215ae1ecb0623f88bd9b7793cf87e80b7ea138e59728a3ce3307"
+    },
+    {
+      "file": "chunks/021.bin",
+      "byteLength": 23000,
+      "sha256": "0x89e4444a778f5f8cce49a036cd4401a9cecd1832123f54f71e7e049f6cbce8b1"
+    },
+    {
+      "file": "chunks/022.bin",
+      "byteLength": 23000,
+      "sha256": "0x180df5a0286b5b87f84f1ea091b59f795d384865bc97564f6f6393010c2c2adc"
+    },
+    {
+      "file": "chunks/023.bin",
+      "byteLength": 23000,
+      "sha256": "0x397ac9d35f280c82b85d69fb49dfe9787c2627786aef9ba012ec44edf1eb510f"
+    },
+    {
+      "file": "chunks/024.bin",
+      "byteLength": 23000,
+      "sha256": "0x1acb70ccf48cc64bc6aee428c5e54c5c8b1ff069cf098541c8a4f404c7a2a328"
+    },
+    {
+      "file": "chunks/025.bin",
+      "byteLength": 23000,
+      "sha256": "0x9637309f54575f0e8b5637791bb75f36ce845cbbaa3a32fda8398df6e4181905"
+    },
+    {
+      "file": "chunks/026.bin",
+      "byteLength": 23000,
+      "sha256": "0x8b957258b72bc23e1826cf5fb22ec624e2ccf137c2400397f76b0f1be2a14ccb"
+    },
+    {
+      "file": "chunks/027.bin",
+      "byteLength": 23000,
+      "sha256": "0x64db18854c4db5803b7e405c094230570861b6c4209f940c12d4f254407ed177"
+    },
+    {
+      "file": "chunks/028.bin",
+      "byteLength": 23000,
+      "sha256": "0xf6f4beb109b1e9980208d2b09f2d6402d0b0bb55508251aeda5ac520437e58a9"
+    },
+    {
+      "file": "chunks/029.bin",
+      "byteLength": 23000,
+      "sha256": "0x58717b13d9a3cff24a4fc77cc207747145f4f2a8e33f29f44a7a5ca0838f4e5b"
+    },
+    {
+      "file": "chunks/030.bin",
+      "byteLength": 15150,
+      "sha256": "0xf4ea89ed42fa360ea222efe7d167361bc639655a9a2f4ba2768d26dee0292d43"
+    }
+  ],
+  "inputs": {
+    "node_modules/entities/dist/esm/decode-codepoint.js": "0x5d8ee93923d609724c69c8c356147176af5226585d4f343c87a5eec6590ebca9",
+    "node_modules/entities/dist/esm/decode.js": "0x8af227bae5682a686bf9e9a6547af8c388274f41cb857ff39592fe74fc848d25",
+    "node_modules/entities/dist/esm/escape.js": "0x50528d67b2fb87687f0658cfab58eb640ebbcd7e3bcfe8e5e2863e8293ae65b7",
+    "node_modules/entities/dist/esm/generated/decode-data-html.js": "0xb035b71d6969983297e39df1a06d760f2a8000a0f98444c4fe845fe1155da451",
+    "node_modules/entities/dist/esm/generated/decode-data-xml.js": "0xe28599f48fddd869435e44e6ae8644e70a610450d97562e33c869c056e3b129f",
+    "node_modules/parse5/dist/common/doctype.js": "0x855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
+    "node_modules/parse5/dist/common/error-codes.js": "0xb38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
+    "node_modules/parse5/dist/common/foreign-content.js": "0x129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
+    "node_modules/parse5/dist/common/html.js": "0xe6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
+    "node_modules/parse5/dist/common/token.js": "0x52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
+    "node_modules/parse5/dist/common/unicode.js": "0x69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
+    "node_modules/parse5/dist/index.js": "0xb825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
+    "node_modules/parse5/dist/parser/formatting-element-list.js": "0xa6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
+    "node_modules/parse5/dist/parser/index.js": "0x23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
+    "node_modules/parse5/dist/parser/open-element-stack.js": "0xfe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
+    "node_modules/parse5/dist/serializer/index.js": "0xbb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
+    "node_modules/parse5/dist/tokenizer/index.js": "0x738969a05c4e7d3c0ce566225e742d730d248db82972a84e517828cd97bc3bb4",
+    "node_modules/parse5/dist/tokenizer/preprocessor.js": "0x12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
+    "node_modules/parse5/dist/tree-adapters/default.js": "0x14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
+    "packages/modules/chain.mjs": "0xdb985d99701a0bee5a6f940e7ac9a15e48ee1519a85678608ca22d3a0e5a9e33",
+    "packages/modules/core.mjs": "0xb0837d1e7468c92b8d67469a0f8b7c33716ef6e1d785477fbe2fe18f455d09e3",
+    "packages/modules/hash.mjs": "0xc990ea1a3b3cb461e21e5a4359dcb322dcaa76b5d836cb192d50ce99eb3f17e6",
+    "packages/modules/sdk.mjs": "0x5a08805ced461b99ab1861a07b7827fc29d02d65c3bed2a33e795e80af5313cf",
+    "scripts/modules-build-workbench.mjs": "0xde7f7ffbf442e34a3a1006b96ae0146787fa9a389084485b28e885e0dc443ef4",
+    "web/confluence/minted-identity.mjs": "0x62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+    "web/confluence/wallet.mjs": "0xb7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+    "web/evm.mjs": "0xcb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+    "web/extensions/proof.mjs": "0xad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+    "web/extensions/service-origin.mjs": "0x3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+    "web/genesis/live-protocol.mjs": "0xed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+    "web/kingdom/model.mjs": "0xb239c0da9731aacab6c87d5426bb5a52afa1b38b42b8e44c3944c11b612c1e8c",
+    "web/memory/crypto.mjs": "0x9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523",
+    "web/modules/adapter.mjs": "0xde6da2ffa5404b8726b77941cecc4f6848f7fcc527635b4166592ec7e3929af9",
+    "web/modules/app.mjs": "0x509b51d20f403a5597b1dd5d8b1cfea2aa055f1b7f35ecc19a760646bdcc6a1b",
+    "web/modules/examples.mjs": "0x4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
+    "web/modules/host.mjs": "0xb90554e54642b054eb404d47893c6aae4fbcaedaa75653dde5fe286ce044c793",
+    "web/modules/html-worker.mjs": "0xc6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",
+    "web/modules/index.html": "0xa5e44f9a102e116a541f9b7eac0760fa0e054627678a8d51564b4a29687c4273",
+    "web/modules/journal.mjs": "0xf848056fb66177e343b93a1a63a222854a52485583c7bb601113e8573a5554de",
+    "web/modules/runtime.mjs": "0x0c49176c56a9ca2cdf9252315f17f44a4b06fcf839429891f35957e2c2d0313d",
+    "web/modules/standalone.mjs": "0xfc87712b2f9c6e453d3dc576a5d5fcea0e1a2b7668ebb7988201637a00461386",
+    "web/modules/workbench.css": "0xd5cabe4ca137bb89ce382fe24107dee07edc91ba64545fe14c8d8cd7c9763759",
+    "web/rehearsal/client.mjs": "0x2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+    "web/rehearsal/intent.mjs": "0x8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+    "web/vendor/ethers.min.js": "0x66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea"
+  }
+}

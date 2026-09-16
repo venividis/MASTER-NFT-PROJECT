@@ -27,6 +27,7 @@ export function validationStages(root, integrityRoot = root) {
     node('archive', 'Archive current runtime modules', ['scripts/archive-confluence.mjs'], ['build'], 20),
     node('verify-archive', 'Verify exact recoverable runtime bytes', ['scripts/verify-confluence.mjs'], ['archive'], 15),
     node('local-mint', 'Disposable local NFT mint and immutable runtime recovery', ['scripts/deploy-confluence-local.mjs'], ['verify-archive'], 45),
+    node('master-mint', 'Mint complete original application, install modules, save state and recover the same NFT', ['scripts/master-local.mjs', '--once'], ['verify-archive'], 45, {env: {MASTER_INSTANCE: 'validation-' + Date.now().toString(36)}}),
     node('fee-router', 'Standalone local fee-router splits, conversions and factory flows', ['integrations/console/protocol/fee-router/test/normal-flows.cjs'], ['setup'], 30),
     node('v4-launch', 'Standalone local v4 launch lifecycle', [`${v4}/test/launchpad-flows.cjs`], ['compile-v4'], 30),
     node('v4-hooks', 'Standalone local creator-hook launch lifecycle', [`${v4}/test/hooked-launch-flows.cjs`], ['compile-v4'], 30),
@@ -61,6 +62,10 @@ export const candidateInputPolicy = {
   excludedDirectoryNames: ['node_modules', 'target', '.git', '__pycache__', '.cache', '.local-genesis'],
   generatedDirectories: ['integrations/console/protocol/v4-hook/artifacts', 'integrations/console/protocol/fee-router/artifacts', 'integrations/official-launch/artifacts'],
   generatedFiles: {
+    'packages/modules/dist/index.mjs': 'scripts/build-module-sdk.mjs',
+    'packages/modules/dist/core.mjs': 'scripts/build-module-sdk.mjs',
+    'packages/modules/dist/build-manifest.json': 'scripts/build-module-sdk.mjs',
+    'web/modules/embedded.mjs': 'scripts/build-modules.mjs',
     'contracts/src/confluence/ConfluenceLoader.sol': 'scripts/compile.mjs -> scripts/build-chain-loader.mjs',
     'web/v4/artifacts.mjs': 'scripts/build-v4.mjs',
     'web/launchpad/deployments.mjs': 'scripts/build-launch-chain.mjs',

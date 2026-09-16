@@ -1,4 +1,5 @@
 import { RELEASE_CAPABILITIES } from "./release-capabilities.mjs";
+import { mountWorkbench } from "../modules/embedded.mjs";
 import { selectedContext } from "./selected-context.mjs";
 import {
   CAPABILITY_CATALOG,
@@ -102,6 +103,7 @@ let visualSeed = null,
   clock;
 let navigationTicket = 0,
   interior;
+let moduleWorkbench = null;
 const selectionInput = () => ({
   preview: visualSeed,
   connected: wallet.connected,
@@ -262,6 +264,8 @@ function stage(next) {
   } catch {}
 }
 function closePanels() {
+  moduleWorkbench?.destroy();
+  moduleWorkbench = null;
   extensionDesk.lock();
   workshop.invalidate();
   v4Desk.invalidate();
@@ -375,6 +379,14 @@ async function open(next, { preserveLaunchLink = false } = {}) {
   if (next === "participant") participant.mount($("#cf-content"));
   if (next === "governance") governanceDesk.mount($("#cf-content"));
   if (next === "crosschain") crosschainDesk.mount($("#cf-content"));
+  if (next === "modules") moduleWorkbench = mountWorkbench($("#cf-module-workbench"), {
+    onClose: () => open("home"),
+    initial: {
+      collection: wallet.collection || window.AWE_CHAIN_IDENTITY?.collection || "",
+      tokenId: wallet.tokenId?.toString() || window.AWE_CHAIN_IDENTITY?.tokenId || "1",
+      chainId: wallet.chainId?.toString() || window.AWE_CHAIN_IDENTITY?.chainId || "31337",
+    },
+  });
 }
 
 function paintIdentity() {
@@ -440,6 +452,7 @@ function atlasPage() {
         "burners",
         "exit-live",
         "workshop",
+        "modules",
         "governance",
         "crosschain",
         "security",
@@ -597,6 +610,7 @@ const extensionDesk = new ExtensionDesk(
   note,
 );
 const pages = {
+  modules: () => '<div id="cf-module-workbench"></div>',
   extensions: () => extensionDesk.render(),
   workshop: () => workshop.render(),
   v4: () => v4Desk.render("swap"),

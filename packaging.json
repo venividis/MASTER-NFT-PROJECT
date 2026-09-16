@@ -1,17 +1,13 @@
 {
-  "version": "5.2.0",
+  "version": "7.0.0",
   "entry": "dist/index.html",
   "standalone": "onchain-app/confluence/runtime.html",
-  "runtimeBytes": 699081,
-  "runtimeSha256": "8aef626daa3eebabb7be72b9e279aeb38fa0aff55d1f1c79fa3832f34ab326f8",
-  "nodeChecks": {
-    "passed": 326,
-    "failed": 0
-  },
-  "nativeGraphicsChecks": 22,
-  "browserDeviceTested": false,
-  "compiledSolidity": true,
+  "runtimeManifest": "onchain-app/confluence/manifest.json",
+  "workbench": "onchain-app/module-workbench/index.html",
+  "workbenchManifest": "onchain-app/module-workbench/manifest.json",
+  "compilerManifest": "contracts/artifacts/index.json",
   "publicChainDeployed": false,
-  "validation": "docs/genesis/BUILD-5.2.md",
-  "historicalEvidence": "All older reports keep their historical scope; they are not current certification."
+  "validation": "docs/MASTER-BUILD.md",
+  "testEvidencePolicy": "Read exact command, candidate and outcome from current evidence; no inherited historical test counts.",
+  "historicalEvidence": "Older reports retain their own version scope and are not current certification."
 }
