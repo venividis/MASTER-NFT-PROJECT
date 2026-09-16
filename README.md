@@ -19,7 +19,7 @@ Connect a separate development wallet using the printed public development mnemo
 
 Select releases from **Discover** or **Installed** to use the published modules. The separate **Local examples** cards are browser previews. Aurora Notebook can save a browser draft; **Saved state & migration → Review chain snapshot** publishes a separately approved public snapshot. Gift of Light proposes a transfer from the NFT account and opens a transaction review. In **Journal**, paste the printed `contracts.MemoryLedger` address into **Existing MemoryLedger**, choose public or encrypted publication, and review the exact inscription. For encrypted entries, export the packet and keep its passphrase; **Recover an encrypted journal packet** opens an exact local preview.
 
-Stop with Ctrl+C; restart the existing chain with `npm run master:start`. For a fresh edition after source changes, choose a new name: `MASTER_INSTANCE=edition-2 npm run master:local`. Existing chain directories are retained. For automated deployment/recovery acceptance without leaving servers running: `npm run master:start -- --once`.
+Stop with Ctrl+C; restart the existing chain with `npm run master:start`. For a fresh edition after source changes, choose a new name: `MASTER_INSTANCE=edition-2 npm run master:local`. Restart that same edition with `MASTER_INSTANCE=edition-2 npm run master:start`; the instance name must be supplied again. Existing chain directories are retained. For automated deployment/recovery acceptance without leaving servers running: `npm run master:start -- --once`.
 
 ## Mint another NFT on the local chain
 

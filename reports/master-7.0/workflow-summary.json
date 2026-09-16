@@ -1,0 +1,35 @@
+{
+  "id": 35159655831,
+  "head_sha": "5ac555093f288a898935cc8d2e94bccb47e5e4e8",
+  "head_branch": "main",
+  "status": "completed",
+  "conclusion": "success",
+  "created_at": "2026-09-16T22:51:21Z",
+  "updated_at": "2026-09-16T23:23:27Z",
+  "html_url": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35159655831",
+  "run_attempt": 1,
+  "gitTree": "3fcae5caeda6ae1ddc1739d4764672ab2277c58f",
+  "artifacts": [
+    {
+      "id": 10473174342,
+      "name": "complete-local-validation-evidence",
+      "size_in_bytes": 552609,
+      "digest": "sha256:5d4e572f25d3d6dc81c89aa59c5848810e60c7a384cd694a755afda199c3efcb",
+      "created_at": "2026-09-16T23:23:21Z"
+    },
+    {
+      "id": 10472790277,
+      "name": "module-solidity-evidence",
+      "size_in_bytes": 97850,
+      "digest": "sha256:21d0fced6dbbc531d2ed319db48c9b9388ad3df17f81ae4e97843296485298ff",
+      "created_at": "2026-09-16T22:52:30Z"
+    },
+    {
+      "id": 10472243324,
+      "name": "current-browser-evidence",
+      "size_in_bytes": 12948853,
+      "digest": "sha256:99ceab9480cb7351e6cfd570052a29a0e934e0befa67ceda37a825506e8a833c",
+      "created_at": "2026-09-16T22:58:08Z"
+    }
+  ]
+}

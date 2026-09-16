@@ -1,0 +1,171 @@
+{
+  "schema": "anima.browser-acceptance-summary/1",
+  "status": "passed",
+  "remoteCommit": "5ac555093f288a898935cc8d2e94bccb47e5e4e8",
+  "tree": "3fcae5caeda6ae1ddc1739d4764672ab2277c58f",
+  "workflowRun": 35159655831,
+  "url": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35159655831",
+  "browserJob": 105007301492,
+  "browser": "Chromium 151.0.7922.34",
+  "cases": [
+    {
+      "suite": "browser",
+      "name": "navigation-desktop",
+      "status": "passed"
+    },
+    {
+      "suite": "browser",
+      "name": "navigation-phone-emulation",
+      "status": "passed"
+    },
+    {
+      "suite": "browser",
+      "name": "navigation-landscape-emulation",
+      "status": "passed"
+    },
+    {
+      "suite": "browser",
+      "name": "wallet-absent",
+      "status": "passed"
+    },
+    {
+      "suite": "browser",
+      "name": "wallet-connection-rejected-fixture",
+      "status": "passed"
+    },
+    {
+      "suite": "browser",
+      "name": "wallet-review-cancel-reject-fixture",
+      "status": "passed"
+    },
+    {
+      "suite": "browser",
+      "name": "local-rehearsal-review-cancel",
+      "status": "passed"
+    },
+    {
+      "suite": "modules-browser",
+      "name": "desktop-workbench-draft-and-inert-gift",
+      "status": "passed"
+    },
+    {
+      "suite": "modules-browser",
+      "name": "phone-workbench",
+      "status": "passed"
+    },
+    {
+      "suite": "modules-browser",
+      "name": "html-worker-state-proposal-and-large-dependency",
+      "status": "passed"
+    },
+    {
+      "suite": "modules-browser",
+      "name": "html-worker-navigation-network-and-wallet-boundary",
+      "status": "passed"
+    },
+    {
+      "suite": "modules-browser",
+      "name": "html-worker-illegal-dom-and-message-flood-cleanup",
+      "status": "passed"
+    },
+    {
+      "suite": "modules-native-browser",
+      "name": "native-workbench-reviewed-install-save-disable-and-recovery",
+      "status": "passed"
+    }
+  ],
+  "counts": {
+    "original": 7,
+    "workbench": 5,
+    "native": 1,
+    "total": 13,
+    "failed": 0,
+    "notRun": 0
+  },
+  "native": {
+    "browserExecuted": true,
+    "fixtureOnly": false,
+    "provider": "Injected top-level EIP-1193 forwarding exclusively to disposable local Ganache",
+    "reviewedTransactions": [
+      {
+        "operation": "activate",
+        "reviewedAt": "2026-09-16T22:57:55.751Z",
+        "hash": "0xb16050d66e8985a6b55a830103c4206c638973a5ea140d270094eed7d5face30",
+        "blockNumber": "0x14",
+        "blockHash": "0x5d74f82f1b0da54815bf7364cc811cb7b9b1fca703bb63910e4950087677a7d0",
+        "gasUsed": "0x5bc4c"
+      },
+      {
+        "operation": "writeState",
+        "reviewedAt": "2026-09-16T22:57:58.480Z",
+        "hash": "0xf752656c1d7263b6f9c7da7f1c9695daf9da9673701da70409c0ce5b2adc4fb4",
+        "blockNumber": "0x15",
+        "blockHash": "0xa38f56231a2646ec6f7eead03f65976558823900ad865b0e25d923c322742feb",
+        "gasUsed": "0x97895"
+      },
+      {
+        "operation": "disable",
+        "reviewedAt": "2026-09-16T22:58:01.580Z",
+        "hash": "0x6e134cd9a945cf9d32001cd9688ec82165d445f9e22a8d2948a67fdd53cdd1fd",
+        "blockNumber": "0x16",
+        "blockHash": "0x81c7e0789fb8074333688304189282f6582d0b8a60e544061ea3404c1198876c",
+        "gasUsed": "0x37dbd"
+      }
+    ],
+    "checkpoints": [
+      "Real owner connected and exact catalog package recovered without a transaction",
+      "Cancelled installation review sent nothing",
+      "Explicit installation signature executed through the native account",
+      "Draft stayed local until signature; UI and independent SDK recovered exact saved chain bytes",
+      "Reviewed disable mined; another live UI session closed and disabled relaunch was rejected",
+      "Receipts, disabled installation, retained state and original native identity independently rechecked"
+    ],
+    "recovery": {
+      "stateHead": "0x9bf1fbffc7bf0fa0d1ef04d1d9dee0fbf5a0b964ae5fbabf0cdf3e4614198d9d",
+      "stateSha256": "0x2d962bf0626605dac108544f107e0beec7caa5b8e599a033c33db6970435c368",
+      "historyOperations": [
+        1,
+        3,
+        2
+      ],
+      "masterSupply": "1",
+      "finalActionNonce": "3"
+    },
+    "workbench": {
+      "manifestSha256": "ef7f8bf2e9b22a95d288e6144f3d978f507550a4e7269435687dad28e4e5fef4",
+      "htmlSha256": "b7aa26711e53783e4bb2046c874dbbed9a44fadf261a75091245b877d05b7844",
+      "byteLength": 705642
+    },
+    "authoredInputSha256": "1831571d84ffdf26190ec1f3dadec226102a77de28845a53e6fa65abc784a463",
+    "authoredInputAfterSha256": "1831571d84ffdf26190ec1f3dadec226102a77de28845a53e6fa65abc784a463",
+    "candidateChanges": {
+      "changed": [],
+      "removed": [],
+      "added": []
+    }
+  },
+  "nativeSolidity": {
+    "job": 105007301410,
+    "status": "passed",
+    "tests": 7,
+    "failed": 0,
+    "skipped": 0,
+    "fuzzRuns": 64
+  },
+  "artifact": {
+    "id": 10472243324,
+    "name": "current-browser-evidence",
+    "zipSha256": "99ceab9480cb7351e6cfd570052a29a0e934e0befa67ceda37a825506e8a833c"
+  },
+  "evidenceProvenance": "Results JSON extracted from decoded GitHub job log diagnostic groups; not byte-for-byte artifact ZIP downloads.",
+  "limits": [
+    "The complete-local-suite job is separate and is not certified by this browser summary.",
+    "Phone and landscape viewports are emulated, not physical devices.",
+    "Injected provider, not an extension or hardware wallet.",
+    "Native browser fixture uses genuine Bound-mode NFT/account contracts and OnchainRenderer, not the entire original Genesis runtime or proof-authorized flow.",
+    "Legacy 48 KiB cartridge launcher compatibility remains a Node DOM harness assertion.",
+    "Personal journal browser inscription was not tested end-to-end; encryption/packet and actual ABI mode checks are separate tests.",
+    "No public deployment, funded testnet transaction, independent audit or production certification.",
+    "Browser process/memory bounds remain best effort; worker DOM support is restricted."
+  ]
+}

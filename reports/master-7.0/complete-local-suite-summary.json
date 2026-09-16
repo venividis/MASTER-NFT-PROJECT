@@ -1,0 +1,166 @@
+{
+  "schema": "anima.ci-full-validation-evidence/1",
+  "runId": 35159655831,
+  "headSha": "5ac555093f288a898935cc8d2e94bccb47e5e4e8",
+  "runUrl": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35159655831",
+  "jobId": 105007301631,
+  "jobUrl": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35159655831/job/105007301631",
+  "jobConclusion": "success",
+  "startedAt": "2026-09-16T22:51:43Z",
+  "completedAt": "2026-09-16T23:23:27Z",
+  "elapsedSeconds": 1904,
+  "status": "passed-local-validation",
+  "fullLocalValidationPassed": true,
+  "verdictEvidence": "The decoded job log contains the final passed-local-validation verdict and every expected stage passed; job API conclusion is success.",
+  "counts": {
+    "passed": 24,
+    "failed": 0,
+    "blocked": 0,
+    "notSelected": 0
+  },
+  "stages": [
+    {
+      "id": "integrity",
+      "status": "passed"
+    },
+    {
+      "id": "setup",
+      "status": "passed"
+    },
+    {
+      "id": "syntax",
+      "status": "passed"
+    },
+    {
+      "id": "static",
+      "status": "passed"
+    },
+    {
+      "id": "compile-core",
+      "status": "passed"
+    },
+    {
+      "id": "compile-v4",
+      "status": "passed"
+    },
+    {
+      "id": "v4-encoder",
+      "status": "passed"
+    },
+    {
+      "id": "build",
+      "status": "passed"
+    },
+    {
+      "id": "verify-compilation",
+      "status": "passed"
+    },
+    {
+      "id": "javascript",
+      "status": "passed"
+    },
+    {
+      "id": "archive",
+      "status": "passed"
+    },
+    {
+      "id": "verify-archive",
+      "status": "passed"
+    },
+    {
+      "id": "local-mint",
+      "status": "passed"
+    },
+    {
+      "id": "master-mint",
+      "status": "passed"
+    },
+    {
+      "id": "fee-router",
+      "status": "passed"
+    },
+    {
+      "id": "v4-launch",
+      "status": "passed"
+    },
+    {
+      "id": "v4-hooks",
+      "status": "passed"
+    },
+    {
+      "id": "v4-normal",
+      "status": "passed"
+    },
+    {
+      "id": "v4-strategies",
+      "status": "passed"
+    },
+    {
+      "id": "official-launch",
+      "status": "passed"
+    },
+    {
+      "id": "communication",
+      "status": "passed"
+    },
+    {
+      "id": "privacy-offline",
+      "status": "passed"
+    },
+    {
+      "id": "native-keccak",
+      "status": "passed"
+    },
+    {
+      "id": "rust",
+      "status": "passed"
+    }
+  ],
+  "testSummaries": {
+    "validationRunner": {
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "javascript": {
+      "tests": 755,
+      "pass": 755,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "officialLaunch": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "communication": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "rust": {
+      "passed": 9,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "logFile": "complete-local-suite-log.txt",
+  "logSha256": "8c163ae935465a83d76d3e01f31755aaff3f6be46d52657214bf4372552b2489",
+  "runnerEvidencePath": "/home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT/.local-genesis/validation/2026-09-16T22-52-15-185Z-BusrQy/status.json",
+  "limits": [
+    "No public-chain deployment or funded transaction.",
+    "This is not an independent security audit or production certification.",
+    "Browser/native Solidity gates are recorded separately."
+  ]
+}

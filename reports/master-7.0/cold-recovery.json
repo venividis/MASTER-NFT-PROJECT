@@ -1,0 +1,121 @@
+{
+  "schema": "anima.cold-recovery-acceptance/1",
+  "scope": "Read-only CLI recovery from persisted local chain; recovered HTML never executed",
+  "startedAt": "2026-09-16T22:58:52Z",
+  "gitCommit": "932cc95e07bd905708d60520e1fb6e035e8d27c6",
+  "status": "passed",
+  "steps": [
+    {
+      "name": "workbench-help",
+      "command": [
+        "node",
+        "scripts/modules-recover-workbench.mjs",
+        "--help"
+      ],
+      "exitCode": 0,
+      "milliseconds": 214
+    },
+    {
+      "name": "token-help",
+      "command": [
+        "node",
+        "scripts/modules-recover.mjs",
+        "--help"
+      ],
+      "exitCode": 0,
+      "milliseconds": 64
+    },
+    {
+      "name": "workbench-recover",
+      "command": [
+        "node",
+        "scripts/modules-recover-workbench.mjs",
+        "--rpc",
+        "http://127.0.0.1:8545",
+        "--chain",
+        "31337",
+        "--workbench",
+        "0x67baFF31318638F497f4c4894Cd73918563942c8",
+        "--token-id",
+        "1",
+        "--expect-sha256",
+        "0xb7aa26711e53783e4bb2046c874dbbed9a44fadf261a75091245b877d05b7844",
+        "--output",
+        "/workspace/scratch/e4d9197db84d/master-build-evidence/cold-recovery-final/workbench"
+      ],
+      "exitCode": 0,
+      "milliseconds": 3323
+    },
+    {
+      "name": "token-recover",
+      "command": [
+        "node",
+        "scripts/modules-recover.mjs",
+        "--rpc",
+        "http://127.0.0.1:8545",
+        "--chain",
+        "31337",
+        "--registry",
+        "0x2d13826359803522cCe7a4Cfa2c1b582303DD0B4",
+        "--token",
+        "1",
+        "--output",
+        "/workspace/scratch/e4d9197db84d/master-build-evidence/cold-recovery-final/token"
+      ],
+      "exitCode": 0,
+      "milliseconds": 615
+    }
+  ],
+  "chainBefore": {
+    "chainId": "0x7a69",
+    "blockNumber": "0x1b1",
+    "ownerNonce": "0x1ae"
+  },
+  "workbench": {
+    "byteLength": 705642,
+    "sha256": "0xb7aa26711e53783e4bb2046c874dbbed9a44fadf261a75091245b877d05b7844",
+    "chunkCount": 31,
+    "exactSourceMatch": true,
+    "snapshot": {
+      "chainId": "31337",
+      "block": "0x1b1",
+      "blockHash": "0x45e3cc782b304182510b6be53b0af1083855b9d02f9a0c96f64749981ae70339"
+    }
+  },
+  "token": {
+    "collection": "0x4daf17c8142a483b2e2348f56ae0f2cfdae22cee",
+    "tokenId": "1",
+    "releaseCount": 4,
+    "stateCount": 3,
+    "expandedBytes": 3346,
+    "exactExpectedReleaseClosure": true,
+    "allSavedStatesVerified": true,
+    "snapshot": {
+      "block": "0x1b1",
+      "blockHash": "0x45e3cc782b304182510b6be53b0af1083855b9d02f9a0c96f64749981ae70339",
+      "chainId": "31337"
+    },
+    "cliSummary": {
+      "output": "/workspace/scratch/e4d9197db84d/master-build-evidence/cold-recovery-final/token",
+      "recovered": true,
+      "releaseCount": 4,
+      "snapshot": {
+        "block": "0x1b1",
+        "blockHash": "0x45e3cc782b304182510b6be53b0af1083855b9d02f9a0c96f64749981ae70339",
+        "chainId": "31337"
+      },
+      "stateCount": 3,
+      "tokenId": "1"
+    }
+  },
+  "chainAfter": {
+    "chainId": "0x7a69",
+    "blockNumber": "0x1b1",
+    "ownerNonce": "0x1ae"
+  },
+  "deploymentRecordUnchanged": true,
+  "noTransactionsOrNewMint": true,
+  "chainShutdownExitCode": 0,
+  "finishedAt": "2026-09-16T22:58:58Z",
+  "deploymentRecordSha256": "52df3208181ef6a095c7d4a4ebac00e6c0afa3d7dd08dd7fae90babc75ff9f26"
+}

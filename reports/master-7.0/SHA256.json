@@ -1,0 +1,21 @@
+{
+  "algorithm": "sha256",
+  "files": {
+    "browser-results.json": "347abcf77a4b6946f938723f361dddc692edd17c799a63b56b1a0b350dffc695",
+    "browser-summary.json": "a514238fc7e614e2b1463fcddcb0850c7cfdc78fef355c4750e96dfa0dd2c67f",
+    "cold-recovery.json": "95529bbea611afb71ec4b3c85946bdd429c5951c7bd22edeef060a36cefdda4c",
+    "complete-local-suite-log.txt": "8c163ae935465a83d76d3e01f31755aaff3f6be46d52657214bf4372552b2489",
+    "complete-local-suite-summary.json": "85a993e811f07d86cd44021ddf9a535b53ab98fed8d53f3466ac7060a29e8694",
+    "local-mint-status.json": "06abfa9b9a54d9aff99228c769f0edc5c578d30cbe9977938693d0983be29323",
+    "local-mint.json": "52df3208181ef6a095c7d4a4ebac00e6c0afa3d7dd08dd7fae90babc75ff9f26",
+    "local-module-receipts.jsonl": "6dd521d152c29105a1a16ea4ed1f615f0c67c108caae2ac0809cd6581066e749",
+    "local-restart-status.json": "97e5542fb3434ad1afdefe471e6c95d0b00d5821efcb78eaea5032bffe56373e",
+    "module-solidity-log.txt": "403850ea039d0313df446d10b0f4c9f6a96b3f80d80e1610c0ef31443abce238",
+    "module-solidity-summary.json": "c0a0c58590182be03be8c655b83c7a0052d921922746e612d853301d23249021",
+    "modules-browser-results.json": "cfb05d8a61552bbe72bfc90d178307d4918cbe516945f251e81866296768bd9b",
+    "modules-native-browser-results.json": "d90e06c0da57d2a794a624bd717b1871e3543b9022aa36f5ae930965c5549bae",
+    "summary.json": "b683eb47d078e7ae7f11b56326e9f23a9e94e477f55e329cb0a64f928c779057",
+    "unsigned-plan-verification.json": "987d2aad52d0c31d40264316f6e2438cc0e2843018894afdcc6e203060a33e40",
+    "workflow-summary.json": "4d2bf010bd760c0fc75df29a15b26b092f474dcf796b402b0016cddbcdd897c6"
+  }
+}

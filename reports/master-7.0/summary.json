@@ -1,0 +1,158 @@
+{
+  "schema": "anima.master-build-evidence/1",
+  "scope": "Solidity/EVM implementation and completed local validation; no public-chain deployment or independent audit",
+  "repository": "https://github.com/venividis/MASTER-NFT-PROJECT",
+  "testedImplementation": {
+    "remoteCommit": "5ac555093f288a898935cc8d2e94bccb47e5e4e8",
+    "localCommit": "932cc95e07bd905708d60520e1fb6e035e8d27c6",
+    "gitTree": "3fcae5caeda6ae1ddc1739d4764672ab2277c58f",
+    "pathCount": 3443
+  },
+  "evidenceCommitScope": "A later documentation/evidence-only commit adds this report without changing executable or built artifacts.",
+  "baseline": {
+    "commit": "e0d9877ffa4399e22304d64cde63014ace1bb3ae",
+    "originalFiles": 3314,
+    "archiveSha256": "4538894773518622bc553fa15107f9ee84b297199e298f67b4611f9620152a57"
+  },
+  "ci": {
+    "runId": 35159655831,
+    "url": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35159655831",
+    "completeLocalSuite": {
+      "status": "passed-local-validation",
+      "job": 105007301631,
+      "stageCounts": {
+        "passed": 24,
+        "failed": 0,
+        "blocked": 0,
+        "notSelected": 0
+      },
+      "testSummaries": {
+        "validationRunner": {
+          "tests": 14,
+          "pass": 14,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "javascript": {
+          "tests": 755,
+          "pass": 755,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "officialLaunch": {
+          "tests": 11,
+          "pass": 11,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "communication": {
+          "tests": 1,
+          "pass": 1,
+          "fail": 0,
+          "cancelled": 0,
+          "skipped": 0,
+          "todo": 0
+        },
+        "rust": {
+          "passed": 9,
+          "failed": 0,
+          "ignored": 0
+        }
+      },
+      "evidence": "complete-local-suite-summary.json"
+    },
+    "browser": {
+      "status": "passed",
+      "job": 105007301492,
+      "counts": {
+        "original": 7,
+        "workbench": 5,
+        "native": 1,
+        "total": 13,
+        "failed": 0,
+        "notRun": 0
+      },
+      "evidence": "browser-summary.json"
+    },
+    "nativeSolidity": {
+      "job": 105007301410,
+      "status": "passed",
+      "tests": 7,
+      "failed": 0,
+      "skipped": 0,
+      "fuzzRuns": 64,
+      "evidence": "module-solidity-summary.json"
+    },
+    "status": "success",
+    "evidence": "workflow-summary.json"
+  },
+  "localMint": {
+    "status": "passed",
+    "chainId": 31337,
+    "collection": "0x4DAf17c8142A483B2E2348f56ae0F2cFDAe22ceE",
+    "tokenId": "1",
+    "account": "0x1795cD5F166392a061Dc944f44824cB2d5077c66",
+    "workbench": "0x67baFF31318638F497f4c4894Cd73918563942c8",
+    "workbenchSha256": "0xb7aa26711e53783e4bb2046c874dbbed9a44fadf261a75091245b877d05b7844",
+    "verification": {
+      "originalRuntimeRoundtrip": true,
+      "moduleRecovery": true,
+      "tokenRecovery": true,
+      "legacyContentHash": true
+    },
+    "evidence": "local-mint.json",
+    "exitEvidence": "local-mint-status.json"
+  },
+  "localRestart": {
+    "status": "passed",
+    "exitCode": 0,
+    "durationSeconds": 2.2962849140167236,
+    "sameDeploymentRecord": true,
+    "publicDeployment": false,
+    "evidence": "local-restart-status.json"
+  },
+  "coldRecovery": {
+    "status": "passed",
+    "workbenchBytes": 705642,
+    "chunks": 31,
+    "releaseCount": 4,
+    "stateCount": 3,
+    "exactSourceMatch": true,
+    "noTransactionsOrNewMint": true,
+    "evidence": "cold-recovery.json"
+  },
+  "unsignedDeploymentPlan": {
+    "status": "passed",
+    "summary": {
+      "transactions": 37,
+      "externalCreations": 36,
+      "internalCreations": 3,
+      "storedBytes": 705642,
+      "chunkCount": 31,
+      "uniqueChunks": 31
+    },
+    "scope": "Unsigned offline plan using dummy addresses; no RPC, signature or broadcast.",
+    "evidence": "unsigned-plan-verification.json"
+  },
+  "limits": [
+    "The complete-local-suite job is separate and is not certified by this browser summary.",
+    "Phone and landscape viewports are emulated, not physical devices.",
+    "Injected provider, not an extension or hardware wallet.",
+    "Native browser fixture uses genuine Bound-mode NFT/account contracts and OnchainRenderer, not the entire original Genesis runtime or proof-authorized flow.",
+    "Legacy 48 KiB cartridge launcher compatibility remains a Node DOM harness assertion.",
+    "Personal journal browser inscription was not tested end-to-end; encryption/packet and actual ABI mode checks are separate tests.",
+    "No public deployment, funded testnet transaction, independent audit or production certification.",
+    "Browser process/memory bounds remain best effort; worker DOM support is restricted.",
+    "Public-chain gas/RPC performance and extension/hardware/physical-device acceptance remain separate.",
+    "Permissionless factory CREATE nonces can change between planning and signing; reconciliation does not reserve them.",
+    "The complete original Genesis runtime was locally minted; the native browser fixture separately uses OnchainRenderer."
+  ],
+  "generatedAt": "2026-09-16T23:25:54.280347+00:00",
+  "status": "passed-local-validation"
+}

@@ -1,0 +1,76 @@
+{
+  "status": "passed",
+  "phases": [
+    {
+      "phase": "create",
+      "exitCode": 0
+    },
+    {
+      "phase": "verify",
+      "exitCode": 0
+    }
+  ],
+  "planFileSha256": "972ecf73e2453271d56d6b8b2950a9ae34dc192e116459f6e06a0546ccee57ea",
+  "planSha256": "0xeb077248923d1ed78708e8c7671fc056e21597262d1579a1ffbdf04765863e98",
+  "workbench": {
+    "sha256": "0xb7aa26711e53783e4bb2046c874dbbed9a44fadf261a75091245b877d05b7844",
+    "byteLength": 705642,
+    "manifestSha256": "0xef7f8bf2e9b22a95d288e6144f3d978f507550a4e7269435687dad28e4e5fef4",
+    "inputs": {
+      "node_modules/entities/dist/esm/decode-codepoint.js": "0x5d8ee93923d609724c69c8c356147176af5226585d4f343c87a5eec6590ebca9",
+      "node_modules/entities/dist/esm/decode.js": "0x8af227bae5682a686bf9e9a6547af8c388274f41cb857ff39592fe74fc848d25",
+      "node_modules/entities/dist/esm/escape.js": "0x50528d67b2fb87687f0658cfab58eb640ebbcd7e3bcfe8e5e2863e8293ae65b7",
+      "node_modules/entities/dist/esm/generated/decode-data-html.js": "0xb035b71d6969983297e39df1a06d760f2a8000a0f98444c4fe845fe1155da451",
+      "node_modules/entities/dist/esm/generated/decode-data-xml.js": "0xe28599f48fddd869435e44e6ae8644e70a610450d97562e33c869c056e3b129f",
+      "node_modules/parse5/dist/common/doctype.js": "0x855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
+      "node_modules/parse5/dist/common/error-codes.js": "0xb38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
+      "node_modules/parse5/dist/common/foreign-content.js": "0x129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
+      "node_modules/parse5/dist/common/html.js": "0xe6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
+      "node_modules/parse5/dist/common/token.js": "0x52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
+      "node_modules/parse5/dist/common/unicode.js": "0x69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
+      "node_modules/parse5/dist/index.js": "0xb825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
+      "node_modules/parse5/dist/parser/formatting-element-list.js": "0xa6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
+      "node_modules/parse5/dist/parser/index.js": "0x23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
+      "node_modules/parse5/dist/parser/open-element-stack.js": "0xfe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
+      "node_modules/parse5/dist/serializer/index.js": "0xbb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
+      "node_modules/parse5/dist/tokenizer/index.js": "0x738969a05c4e7d3c0ce566225e742d730d248db82972a84e517828cd97bc3bb4",
+      "node_modules/parse5/dist/tokenizer/preprocessor.js": "0x12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
+      "node_modules/parse5/dist/tree-adapters/default.js": "0x14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
+      "packages/modules/chain.mjs": "0xc0b8c573c332505e177bb074f62254661f7d7fe257721e170d9f8d202c6a8719",
+      "packages/modules/core.mjs": "0xb0837d1e7468c92b8d67469a0f8b7c33716ef6e1d785477fbe2fe18f455d09e3",
+      "packages/modules/hash.mjs": "0xc990ea1a3b3cb461e21e5a4359dcb322dcaa76b5d836cb192d50ce99eb3f17e6",
+      "packages/modules/sdk.mjs": "0x5a08805ced461b99ab1861a07b7827fc29d02d65c3bed2a33e795e80af5313cf",
+      "scripts/modules-build-workbench.mjs": "0xde7f7ffbf442e34a3a1006b96ae0146787fa9a389084485b28e885e0dc443ef4",
+      "web/confluence/minted-identity.mjs": "0x62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+      "web/confluence/wallet.mjs": "0xb7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+      "web/evm.mjs": "0xcb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+      "web/extensions/proof.mjs": "0xad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+      "web/extensions/service-origin.mjs": "0x3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+      "web/genesis/live-protocol.mjs": "0xed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+      "web/kingdom/model.mjs": "0xb239c0da9731aacab6c87d5426bb5a52afa1b38b42b8e44c3944c11b612c1e8c",
+      "web/memory/crypto.mjs": "0x9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523",
+      "web/modules/adapter.mjs": "0xc12aac427109adda29b975ea5efeda393634f2134528b2ac13671c86ffda258a",
+      "web/modules/app.mjs": "0x509b51d20f403a5597b1dd5d8b1cfea2aa055f1b7f35ecc19a760646bdcc6a1b",
+      "web/modules/examples.mjs": "0x4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
+      "web/modules/host.mjs": "0xb90554e54642b054eb404d47893c6aae4fbcaedaa75653dde5fe286ce044c793",
+      "web/modules/html-worker.mjs": "0xc6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",
+      "web/modules/index.html": "0xa5e44f9a102e116a541f9b7eac0760fa0e054627678a8d51564b4a29687c4273",
+      "web/modules/journal.mjs": "0xf848056fb66177e343b93a1a63a222854a52485583c7bb601113e8573a5554de",
+      "web/modules/runtime.mjs": "0x0c49176c56a9ca2cdf9252315f17f44a4b06fcf839429891f35957e2c2d0313d",
+      "web/modules/standalone.mjs": "0xfc87712b2f9c6e453d3dc576a5d5fcea0e1a2b7668ebb7988201637a00461386",
+      "web/modules/workbench.css": "0xd5cabe4ca137bb89ce382fe24107dee07edc91ba64545fe14c8d8cd7c9763759",
+      "web/rehearsal/client.mjs": "0x2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+      "web/rehearsal/intent.mjs": "0x8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+      "web/vendor/ethers.min.js": "0x66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea"
+    }
+  },
+  "summary": {
+    "transactions": 37,
+    "externalCreations": 36,
+    "internalCreations": 3,
+    "storedBytes": 705642,
+    "chunkCount": 31,
+    "uniqueChunks": 31
+  },
+  "scope": "Unsigned offline plan using dummy addresses; no RPC, signature or broadcast."
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "anima.ci-native-evidence/1",
+  "runId": 35159655831,
+  "headSha": "5ac555093f288a898935cc8d2e94bccb47e5e4e8",
+  "jobId": 105007301410,
+  "conclusion": "success",
+  "passed": 7,
+  "failed": 0,
+  "skipped": 0,
+  "fuzzRuns": 64,
+  "logFile": "module-solidity-log.txt",
+  "source": "Decoded GitHub Actions job log via GitHub connector"
+}
