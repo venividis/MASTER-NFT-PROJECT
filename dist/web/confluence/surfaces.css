@@ -67,6 +67,13 @@ body.anima-genesis.confluence .cf-orbits {
     padding: 18px !important;
   }
 }
+/* Short surfaces must let their header scroll away with the content. This
+   final Genesis layer otherwise overrides the base dialog's landscape rule. */
+@media (max-height: 500px) {
+  body.anima-genesis.confluence .ab-surface > header {
+    position: static !important;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   body.anima-genesis.confluence .ab-surface {
     animation: none;

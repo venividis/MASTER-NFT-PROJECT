@@ -1,8 +1,8 @@
 {
   "schema": "anima.module-workbench/1",
   "compression": "raw",
-  "byteLength": 705630,
-  "sha256": "0x4c5c23d3b7c073bc8dc6f9e62e438fa4bd5087bf68454442c5aedef6d29ec47c",
+  "byteLength": 705642,
+  "sha256": "0xb7aa26711e53783e4bb2046c874dbbed9a44fadf261a75091245b877d05b7844",
   "chunks": [
     {
       "file": "chunks/000.bin",
@@ -102,85 +102,85 @@
     {
       "file": "chunks/019.bin",
       "byteLength": 23000,
-      "sha256": "0xdbecdb3a8da1b6849c25e9a60fa7b0cf44ed944a24985657742215627aba73be"
+      "sha256": "0x4223a2c97ad3d9b42944b25f939544184677fcb8320d1bd850694970b8b64f07"
     },
     {
       "file": "chunks/020.bin",
       "byteLength": 23000,
-      "sha256": "0x506e49918394edbc414d214cc6575f793ee9de5d32ef5d2c81b5fc45c880cb66"
+      "sha256": "0x68e7e258960436395b3ed60886bba72eb40f32f74ca8479a99dd89bd36b9812b"
     },
     {
       "file": "chunks/021.bin",
       "byteLength": 23000,
-      "sha256": "0xc8b2c52a5b7f2fbbb126504913df2cd232221e338517496f4c30c242536d98ad"
+      "sha256": "0x50ffaa65ed526f2edd46d26c8a490dad00cdfa8dd2acdf722992ce84b0bc6137"
     },
     {
       "file": "chunks/022.bin",
       "byteLength": 23000,
-      "sha256": "0xc584cf71443b6a7bef65086c5d73630e64d7ae1bd325a94ae4c9a8f8666ad6e0"
+      "sha256": "0x20e04f0b7e9e94d9a62c7e27ef91898262f96fe2e3060b02355e4dbc34e77d2d"
     },
     {
       "file": "chunks/023.bin",
       "byteLength": 23000,
-      "sha256": "0x2a9d01a28b226a159842518d2738eedbf22cd16d3cffd057de1e046247649331"
+      "sha256": "0x82826769d7e065e55461dea161bda1a102a361827a92760f414205ef64a3724b"
     },
     {
       "file": "chunks/024.bin",
       "byteLength": 23000,
-      "sha256": "0x1879984e6bc2b19262a8cac8b73ac99b4a4873851ebe425543497a8c7e4066bd"
+      "sha256": "0xda139612b67c88ace0cb00c7eca602fcc3f49ea2457f7c3e91105b1781496648"
     },
     {
       "file": "chunks/025.bin",
       "byteLength": 23000,
-      "sha256": "0xc72be717f926c5d5b5e5641157bf0b73c3f45e849688c74b0963c8be195cad75"
+      "sha256": "0x53cbaf6ab87d657aa5a60cc19d9989464f436588a0619954859152849f3f89db"
     },
     {
       "file": "chunks/026.bin",
       "byteLength": 23000,
-      "sha256": "0xb4b5a462edd0839a47acdc6832519318d2ef8e6813005d3e9b4e330834e5945b"
+      "sha256": "0xbdb87db4f23184a7d06abf5889760976dc019eea1f1d0516caab99f13fc30507"
     },
     {
       "file": "chunks/027.bin",
       "byteLength": 23000,
-      "sha256": "0x9ac535c3f7a337aa0551b2f60ed923b01a83d84be24b2aa04bc04ff33b7c37da"
+      "sha256": "0xfff4c529969e53dfdec16777fab250493095d8e87b9e89713cbc90b6c24727fe"
     },
     {
       "file": "chunks/028.bin",
       "byteLength": 23000,
-      "sha256": "0x42c9a8b8acf3aa379e59bde5ed8156a98fb3c9b38f12919c65ce72a97215f3c0"
+      "sha256": "0xd28b40b6d6557999bee69381cb1bd4d21bcaf974ce8354f364e75e01d57aa7b1"
     },
     {
       "file": "chunks/029.bin",
       "byteLength": 23000,
-      "sha256": "0x0bf24d36ce89b9916715f5e776a4085e5ccab36bb0348c8ec4df0177c603dad0"
+      "sha256": "0x2864d5e4a8d80875616504e894a8331864d24ba3151d29068ee253c590d1d978"
     },
     {
       "file": "chunks/030.bin",
-      "byteLength": 15630,
-      "sha256": "0xc168b726229f9549f32269c207d9f10f4a985c92307f7997a77a85f8dd3d06a5"
+      "byteLength": 15642,
+      "sha256": "0xf0f7cfa1ebdea68ef8cc31b0ba85bdf21059a48ef48fa551292fd89f0ebe2c62"
     }
   ],
   "inputs": {
-    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/decode-codepoint.js": "0x5d8ee93923d609724c69c8c356147176af5226585d4f343c87a5eec6590ebca9",
-    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/decode.js": "0x8af227bae5682a686bf9e9a6547af8c388274f41cb857ff39592fe74fc848d25",
-    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/escape.js": "0x50528d67b2fb87687f0658cfab58eb640ebbcd7e3bcfe8e5e2863e8293ae65b7",
-    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/generated/decode-data-html.js": "0xb035b71d6969983297e39df1a06d760f2a8000a0f98444c4fe845fe1155da451",
-    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/generated/decode-data-xml.js": "0xe28599f48fddd869435e44e6ae8644e70a610450d97562e33c869c056e3b129f",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/doctype.js": "0x855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/error-codes.js": "0xb38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/foreign-content.js": "0x129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/html.js": "0xe6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/token.js": "0x52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/unicode.js": "0x69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/index.js": "0xb825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/parser/formatting-element-list.js": "0xa6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/parser/index.js": "0x23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/parser/open-element-stack.js": "0xfe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/serializer/index.js": "0xbb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/tokenizer/index.js": "0x738969a05c4e7d3c0ce566225e742d730d248db82972a84e517828cd97bc3bb4",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/tokenizer/preprocessor.js": "0x12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
-    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/tree-adapters/default.js": "0x14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
-    "packages/modules/chain.mjs": "0xdb985d99701a0bee5a6f940e7ac9a15e48ee1519a85678608ca22d3a0e5a9e33",
+    "node_modules/entities/dist/esm/decode-codepoint.js": "0x5d8ee93923d609724c69c8c356147176af5226585d4f343c87a5eec6590ebca9",
+    "node_modules/entities/dist/esm/decode.js": "0x8af227bae5682a686bf9e9a6547af8c388274f41cb857ff39592fe74fc848d25",
+    "node_modules/entities/dist/esm/escape.js": "0x50528d67b2fb87687f0658cfab58eb640ebbcd7e3bcfe8e5e2863e8293ae65b7",
+    "node_modules/entities/dist/esm/generated/decode-data-html.js": "0xb035b71d6969983297e39df1a06d760f2a8000a0f98444c4fe845fe1155da451",
+    "node_modules/entities/dist/esm/generated/decode-data-xml.js": "0xe28599f48fddd869435e44e6ae8644e70a610450d97562e33c869c056e3b129f",
+    "node_modules/parse5/dist/common/doctype.js": "0x855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
+    "node_modules/parse5/dist/common/error-codes.js": "0xb38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
+    "node_modules/parse5/dist/common/foreign-content.js": "0x129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
+    "node_modules/parse5/dist/common/html.js": "0xe6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
+    "node_modules/parse5/dist/common/token.js": "0x52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
+    "node_modules/parse5/dist/common/unicode.js": "0x69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
+    "node_modules/parse5/dist/index.js": "0xb825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
+    "node_modules/parse5/dist/parser/formatting-element-list.js": "0xa6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
+    "node_modules/parse5/dist/parser/index.js": "0x23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
+    "node_modules/parse5/dist/parser/open-element-stack.js": "0xfe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
+    "node_modules/parse5/dist/serializer/index.js": "0xbb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
+    "node_modules/parse5/dist/tokenizer/index.js": "0x738969a05c4e7d3c0ce566225e742d730d248db82972a84e517828cd97bc3bb4",
+    "node_modules/parse5/dist/tokenizer/preprocessor.js": "0x12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
+    "node_modules/parse5/dist/tree-adapters/default.js": "0x14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
+    "packages/modules/chain.mjs": "0xc0b8c573c332505e177bb074f62254661f7d7fe257721e170d9f8d202c6a8719",
     "packages/modules/core.mjs": "0xb0837d1e7468c92b8d67469a0f8b7c33716ef6e1d785477fbe2fe18f455d09e3",
     "packages/modules/hash.mjs": "0xc990ea1a3b3cb461e21e5a4359dcb322dcaa76b5d836cb192d50ce99eb3f17e6",
     "packages/modules/sdk.mjs": "0x5a08805ced461b99ab1861a07b7827fc29d02d65c3bed2a33e795e80af5313cf",

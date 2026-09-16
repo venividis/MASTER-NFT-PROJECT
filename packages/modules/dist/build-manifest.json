@@ -2,7 +2,7 @@
   "schema": "anima.module-sdk-build/1",
   "esbuild": "0.25.12",
   "inputs": {
-    "packages/modules/chain.mjs": "0xdb985d99701a0bee5a6f940e7ac9a15e48ee1519a85678608ca22d3a0e5a9e33",
+    "packages/modules/chain.mjs": "0xc0b8c573c332505e177bb074f62254661f7d7fe257721e170d9f8d202c6a8719",
     "packages/modules/core.mjs": "0xb0837d1e7468c92b8d67469a0f8b7c33716ef6e1d785477fbe2fe18f455d09e3",
     "packages/modules/hash.mjs": "0xc990ea1a3b3cb461e21e5a4359dcb322dcaa76b5d836cb192d50ce99eb3f17e6",
     "packages/modules/package.json": "0xd0b922704296e27c05517fa3fdc6e7bf0faed04399395a9c87b069ec1199abb0",
@@ -12,8 +12,8 @@
   },
   "files": {
     "index.mjs": {
-      "byteLength": 405054,
-      "sha256": "0x18bfa9bd2921108cf667f97c97a2f84b7030d5455b9672c0a60a8d701a82b35c"
+      "byteLength": 405066,
+      "sha256": "0xde64c8de5cf765f55a7e4e349196b311bf7860453bbcf27409608ea9a259d188"
     },
     "core.mjs": {
       "byteLength": 11631,
