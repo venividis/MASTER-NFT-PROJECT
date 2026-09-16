@@ -1,0 +1,18 @@
+{
+  "status": "passed",
+  "environment": "in-process Ganache; no external RPC or broadcast",
+  "scenarios": 11,
+  "passed": [
+    "Native deposits and direct sends allocate immediately; split changes preserve old claims; partial treasury accounting remains backed.",
+    "A third-party caller can execute a payout only to the beneficiary’s own address.",
+    "Standard ERC20 accounting conserves deposits including deterministic rounding; recipients may claim partially to a chosen destination.",
+    "Recipient-chosen ERC20 conversion measures output, debits only that recipient and resets the exact-input allowance.",
+    "ERC20-to-native and native-to-ERC20 conversion preserve unrelated native claims and avoid double-crediting converter output.",
+    "Same-token settlement needs no converter; new payments can be converted first and split into output-token claims.",
+    "Expired quotes and unmet output minimums reject without changing earned claims.",
+    "Plain withdrawals remain available after converter removal; explicitly allocated direct-transfer surplus remains fully backed.",
+    "Two-step ownership handover changes future configuration authority without changing old allocations.",
+    "Permissionless launches create fixed-supply ERC20s at the chosen recipient; only the creator updates descriptive hook/pool commitments.",
+    "Final native and both ERC20 balances exactly reconcile with outstanding claims across the complete normal-flow sequence."
+  ]
+}

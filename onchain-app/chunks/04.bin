@@ -1,0 +1,201 @@
+cos(6.28318*(c*x+d));}\n\n  float field(vec3 p, out float orbit){\n    float scale=1.;\n    float d=10.;\n    orbit=10.;\n    vec3 q=p;\n    for(int i=0;i\u003c8;i++){\n      q.xy*=rot(.36+genome.x*.8+sin(t*.07)*.04);\n      q.yz*=rot(.22+state.y*.55);\n      q=abs(q)-vec3(.46+.12*seed.x,.38+.08*genome.z,.34+.1*state.w);\n      float k=clamp(dot(q,q),.18,1.15);\n      q=q/k-vec3(.76+.17*seed.z,.55+.14*state.x,.43+.1*genome.y);\n      scale*=k;\n      orbit=min(orbit,length(q.xy));\n      d=min(d,(length(q)-.11-.035*sin(float(i)+t*.8))/scale);\n    }\n    return d;\n  }\n\n  vec3 render(vec2 uv){\n    vec2 m=(pointer-.5)*.3;\n    vec3 ro=vec3(m*1.25,3.2+.25*sin(t*.11));\n    vec3 rd=normalize(vec3(uv,-1.7));\n    rd.xy*=rot((pointer.x-.5)*.32);\n    float travel=0.;\n    float glow=0.;\n    float minOrbit=10.;\n    vec3 col=vec3(0.);\n    for(int i=0;i\u003c88;i++){\n      vec3 p=ro+rd*travel;\n      p.xy*=rot(t*.045*(sovereign>.5?-1.:1.)+seed.w*PI);\n      float orbit;\n      float d=field(p,orbit);\n      minOrbit=min(minOrbit,orbit);\n      glow+=exp(-18.*abs(d))*.018;\n      if(abs(d)\u003c.0015||travel>7.)break;\n      travel+=max(.006,abs(d)*.45);\n    }\n    float body=exp(-4.2*travel);\n    float halo=1./(1.+35.*minOrbit*minOrbit);\n    float rings=.5+.5*cos(42.*length(uv)+t*1.4+state.z*20.);\n    vec3 a=vec3(.09,.06,.18);\n    vec3 b=sovereign>.5?vec3(.95,.18,.38):vec3(.22,.8,.95);\n    vec3 c=vec3(1.,.78,.25);\n    vec3 pal=palette(travel*.13+genome.w, a, b, vec3(1.,.7,.5), vec3(seed.x,state.y,genome.z));\n    col+=pal*(body*2.2+glow*3.4+halo*.52);\n    col+=b*rings*pow(max(0.,1.-length(uv)*.72),9.)*.08;\n    col+=vec3(1.)*pulse*exp(-8.*length(uv))*.7;\n    float stars=step(.9975,hash21(floor((uv+4.)*r.y*.18)))*(.3+.7*hash21(uv*400.));\n    col+=stars*vec3(.65,.7,1.)*(1.-smoothstep(0.,1.5,length(uv)));\n    col*=1.-.32*dot(uv,uv);\n    col=pow(max(col,0.),vec3(.78));\n    return col;\n  }\n\n  void main(){\n    vec2 uv=(gl_FragCoord.xy-.5*r.xy)/r.y;\n    vec3 col=vec3(0.);\n    col+=render(uv+vec2(.0015,0.))*vec3(1.,.35,.25);\n    col+=render(uv)*vec3(.2,.62,1.);\n    col+=render(uv-vec2(.0015,0.))*vec3(.2,.1,.55);\n    col/=1.7;\n    float vignette=smoothstep(1.25,.18,length(uv));\n    col*=.52+.48*vignette;\n    outColor=vec4(col,1.);\n  }`;\n\n  const compile = (type, source) => {\n    const shader = gl.createShader(type);\n    gl.shaderSource(shader, source);\n    gl.compileShader(shader);\n    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) throw new Error(gl.getShaderInfoLog(shader));\n    return shader;\n  };\n  const program = gl.createProgram();\n  gl.attachShader(program, compile(gl.VERTEX_SHADER, vertex));\n  gl.attachShader(program, compile(gl.FRAGMENT_SHADER, fragment));\n  gl.linkProgram(program);\n  if (!gl.getProgramParameter(program, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(program));\n  gl.useProgram(program);\n  const buffer = gl.createBuffer();\n  gl.bindBuffer(gl.ARRAY_BUFFER, buffer);\n  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);\n  const position = gl.getAttribLocation(program, \"p\");\n  gl.enableVertexAttribArray(position);\n  gl.vertexAttribPointer(position, 2, gl.FLOAT, false, 0, 0);\n  const uniforms = Object.fromEntries([\"r\",\"t\",\"seed\",\"genome\",\"state\",\"pointer\",\"sovereign\",\"pulse\"].map((name) => [name, gl.getUniformLocation(program, name)]));\n\n  function resize() {\n    const ratio = Math.min(devicePixelRatio || 1, 2);\n    const width = Math.floor(innerWidth * ratio);\n    const height = Math.floor(innerHeight * ratio);\n    if (canvas.width !== width || canvas.height !== height) {\n      canvas.width = width; canvas.height = height; gl.viewport(0, 0, width, height);\n    }\n  }\n  const start = performance.now();\n  function frame(now) {\n    resize();\n    state.pulse *= .94;\n    gl.uniform2f(uniforms.r, canvas.width, canvas.height);\n    gl.uniform1f(uniforms.t, (now - start) / 1000);\n    gl.uniform4fv(uniforms.seed, vectorFromHex(state.seed, 0));\n    gl.uniform4fv(uniforms.genome, vectorFromHex(state.genome, 7));\n    gl.uniform4fv(uniforms.state, vectorFromHex(state.state, 13));\n    gl.uniform2f(uniforms.pointer, pointer[0], pointer[1]);\n    gl.uniform1f(uniforms.sovereign, state.sovereign ? 1 : 0);\n    gl.uniform1f(uniforms.pulse, state.pulse);\n    gl.drawArrays(gl.TRIANGLES, 0, 3);\n    requestAnimationFrame(frame);\n  }\n  requestAnimationFrame(frame);\n} else {\n  const context = canvas.getContext(\"2d\");\n  function fallback(now = 0) {\n    canvas.width = innerWidth; canvas.height = innerHeight;\n    const gradient = context.createRadialGradient(innerWidth/2, innerHeight/2, 10, innerWidth/2, innerHeight/2, Math.min(innerWidth,innerHeight)*.46);\n    gradient.addColorStop(0, state.sovereign ? \"#ff547d\" : \"#72f7ff\");\n    gradient.addColorStop(.25, \"#392a6b\");\n    gradient.addColorStop(1, \"#05050a\");\n    context.fillStyle = gradient; context.fillRect(0,0,innerWidth,innerHeight);\n    requestAnimationFrame(fallback);\n  }\n  fallback();\n}\n\nrenderState();\nlog(\"AWAKEN\", `local organism initialized / ${short(state.seed)}`);\nlog(\"ACCOUNT\", \"deterministic token-bound authority surface ready\");\nlog(\"RENDER\", \"body synthesized from seed + genome + state + audit\", \"proof\");\n\n})().catch(error=>{console.error(error); document.body.dataset.previewError=error.message;});\n\u003c/script>\n\u003c/body>\n\u003c/html>\n"};</script><script>(function(){
+"use strict";
+/**
+ * Sensory iteration 1.1 — deterministic, unsigned BROWSER SIMULATION.
+ * SHA-256 receipts provide local consistency checks, NOT blockchain finality,
+ * attestation, signature authentication, or zero-knowledge proofs.
+ * No wallet, network, DOM, model inference, or plaintext memory is used here.
+ */
+const SCHEMA = 'idontfuckingbelieveit/browser-receipts/1.1';
+const MAX_RECEIPTS = 192;
+const MAX_CHILDREN = 24;
+const HEX = /^0x[0-9a-f]{64}$/;
+const RULES = Object.freeze([
+  'Local target only; value is always zero.',
+  'Every action binds the current nonce and prior state.',
+  'Every accepted action extends the audit digest.',
+  'Sovereignty disables direct entropy and repeat ascension.',
+  'Memory payloads contain commitments, never plaintext.'
+]);
+const KINDS = ['ENTROPY', 'EVOLVE', 'SPAWN', 'SEAL_MEMORY', 'ASCEND'];
+const encoder = new TextEncoder();
+
+function canonical(value) {
+  if (value === null || typeof value === 'string' || typeof value === 'boolean') return JSON.stringify(value);
+  if (typeof value === 'number' && Number.isSafeInteger(value)) return String(value);
+  if (Array.isArray(value)) return '[' + value.map(canonical).join(',') + ']';
+  if (value && typeof value === 'object' && (Object.getPrototypeOf(value) === Object.prototype || Object.getPrototypeOf(value) === null)) {
+    return '{' + Object.keys(value).sort().map(k => JSON.stringify(k) + ':' + canonical(value[k])).join(',') + '}';
+  }
+  throw new Error('Only plain JSON, safe integers, and finite values are allowed.');
+}
+/** Standard SHA-256 fallback for offline/opaque-origin previews. Tested against
+ * Node crypto and published empty/abc vectors; prefer native Web Crypto. */
+function sha256Bytes(input) {
+  const K = [0x428a2f98,0x71374491,0xb5c0fbcf,0xe9b5dba5,0x3956c25b,0x59f111f1,0x923f82a4,0xab1c5ed5,
+    0xd807aa98,0x12835b01,0x243185be,0x550c7dc3,0x72be5d74,0x80deb1fe,0x9bdc06a7,0xc19bf174,
+    0xe49b69c1,0xefbe4786,0x0fc19dc6,0x240ca1cc,0x2de92c6f,0x4a7484aa,0x5cb0a9dc,0x76f988da,
+    0x983e5152,0xa831c66d,0xb00327c8,0xbf597fc7,0xc6e00bf3,0xd5a79147,0x06ca6351,0x14292967,
+    0x27b70a85,0x2e1b2138,0x4d2c6dfc,0x53380d13,0x650a7354,0x766a0abb,0x81c2c92e,0x92722c85,
+    0xa2bfe8a1,0xa81a664b,0xc24b8b70,0xc76c51a3,0xd192e819,0xd6990624,0xf40e3585,0x106aa070,
+    0x19a4c116,0x1e376c08,0x2748774c,0x34b0bcb5,0x391c0cb3,0x4ed8aa4a,0x5b9cca4f,0x682e6ff3,
+    0x748f82ee,0x78a5636f,0x84c87814,0x8cc70208,0x90befffa,0xa4506ceb,0xbef9a3f7,0xc67178f2];
+  const h=new Uint32Array([0x6a09e667,0xbb67ae85,0x3c6ef372,0xa54ff53a,0x510e527f,0x9b05688c,0x1f83d9ab,0x5be0cd19]);
+  const data=new Uint8Array(Math.ceil((input.length+9)/64)*64);data.set(input);data[input.length]=128;
+  const v=new DataView(data.buffer);v.setUint32(data.length-8,Math.floor(input.length/536870912));v.setUint32(data.length-4,(input.length*8)>>>0);
+  const rotr=(x,n)=>(x>>>n)|(x<<(32-n)),w=new Uint32Array(64);
+  for(let offset=0;offset<data.length;offset+=64){
+    for(let i=0;i<16;i++)w[i]=v.getUint32(offset+i*4);
+    for(let i=16;i<64;i++){const x=w[i-15],y=w[i-2];w[i]=(w[i-16]+(rotr(x,7)^rotr(x,18)^(x>>>3))+w[i-7]+(rotr(y,17)^rotr(y,19)^(y>>>10)))>>>0;}
+    let [a,b,c,d,e,f,g,z]=h;
+    for(let i=0;i<64;i++){const t1=(z+(rotr(e,6)^rotr(e,11)^rotr(e,25))+((e&f)^((~e)&g))+K[i]+w[i])>>>0;
+      const t2=((rotr(a,2)^rotr(a,13)^rotr(a,22))+((a&b)^(a&c)^(b&c)))>>>0;
+      z=g;g=f;f=e;e=(d+t1)>>>0;d=c;c=b;b=a;a=(t1+t2)>>>0;
+    }
+    [a,b,c,d,e,f,g,z].forEach((x,i)=>h[i]=(h[i]+x)>>>0);
+  }
+  const result=new Uint8Array(32),view=new DataView(result.buffer);h.forEach((x,i)=>view.setUint32(i*4,x));return result;
+}
+async function digest(domain, value) {
+  const input=encoder.encode(canonical({domain: SCHEMA + '/' + domain, value}));
+  const bytes=globalThis.crypto?.subtle ? new Uint8Array(await crypto.subtle.digest('SHA-256',input)) : sha256Bytes(input);
+  return '0x' + Array.from(bytes, b => b.toString(16).padStart(2, '0')).join('');
+}
+function randomHex() {
+  const b = new Uint8Array(32);
+  crypto.getRandomValues(b);
+  return '0x' + Array.from(b, x => x.toString(16).padStart(2,'0')).join('');
+}
+function assertHex(value) { if (!HEX.test(value)) throw new Error('Expected a lowercase 32-byte hexadecimal digest.'); }
+function exactKeys(object, expected) {
+  if (!object || typeof object !== 'object' || Array.isArray(object) || Object.keys(object).sort().join('|') !== [...expected].sort().join('|')) throw new Error('Unexpected or missing fields.');
+}
+function assertTime(time) {
+  if (!Number.isSafeInteger(time) || time < 0 || time > 8640000000000000) throw new Error('Invalid timestamp.');
+}
+async function genesis(seed = randomHex(), time = Date.now()) {
+  assertHex(seed); assertTime(time);
+  const genome = await digest('genome/genesis', {seed});
+  const memory = await digest('memory/empty', {seed});
+  const policy = await digest('constitution', RULES);
+  const state = {
+    seed, genome, memory, policy, sovereign: false, generation: 0,
+    evolutions: 0, nonce: 0, epoch: 0, children: [], createdAt: time, updatedAt: time,
+    lineage: await digest('lineage/genesis', {seed})
+  };
+  state.root = await digest('state/genesis', state);
+  state.audit = await digest('audit/genesis', {seed, root: state.root, policy, time});
+  return state;
+}
+function checkAction(state, kind, payload, nonce = state.nonce) {
+  if (!KINDS.includes(kind)) throw new Error('Unknown action.');
+  if (nonce !== state.nonce) throw new Error('Stale or replayed nonce.');
+  if (state.nonce >= MAX_RECEIPTS) throw new Error('This local study reached its 192-receipt limit. Export it before starting a new study.');
+  if (state.sovereign && (kind === 'ENTROPY' || kind === 'ASCEND')) throw new Error('Sovereign policy rejects this direct action.');
+  const key = kind === 'SEAL_MEMORY' ? 'commitment' : kind === 'ASCEND' ? 'policy' : 'salt';
+  exactKeys(payload, [key]); assertHex(payload[key]);
+  if (kind === 'ASCEND' && payload.policy !== state.policy) throw new Error('Constitution mismatch.');
+  if (kind === 'SPAWN' && state.children.length >= MAX_CHILDREN) throw new Error('This study supports 24 children. Existing descendants remain inspectable.');
+  return true;
+}
+/** Does not mutate its input. Callers atomically install both outputs. */
+async function transition(state, kind, payload, time = Date.now(), expectedNonce = state.nonce) {
+  checkAction(state, kind, payload, expectedNonce); assertTime(time);
+  if (time < state.updatedAt) throw new Error('An action cannot predate its parent.');
+  const next = structuredClone(state);
+  const intent = { kind, payload, time, nonce: state.nonce, priorStateRoot: state.root,
+    priorAuditRoot: state.audit, policy: state.policy, target: 'browser-local/self', value: '0' };
+  const statement = await digest('intent', intent);
+  if (kind === 'ENTROPY' || kind === 'EVOLVE') {
+    next.genome = await digest('genome/' + kind, {previous: state.genome, statement});
+    if (kind === 'EVOLVE') {
+      next.evolutions++;
+      next.memory = await digest('memory/evolution', {previous: state.memory, statement});
+    }
+  } else if (kind === 'SEAL_MEMORY') {
+    next.memory = await digest('memory/append', {previous: state.memory, commitment: payload.commitment, statement});
+  } else if (kind === 'SPAWN') {
+    const id = await digest('child/identity', {parent: state.seed, genome: state.genome, nonce: state.nonce, salt: payload.salt});
+    next.children.push({id, genome: await digest('child/genome', {parent: state.genome, id}),
+      lineage: await digest('child/lineage', {parent: state.lineage, id}),
+      parentGenome: state.genome, generation: state.generation + 1, bornAt: time});
+  } else if (kind === 'ASCEND') {
+    next.sovereign = true; next.epoch++;
+  }
+  next.nonce++;
+  next.updatedAt = time;
+  const {root: ignoredRoot, audit: ignoredAudit, ...body} = next;
+  next.root = await digest('state/transition', {priorStateRoot: state.root, statement, body});
+  const evidence = await digest('local-consistency', {statement, nextStateRoot: next.root, memoryRoot: next.memory});
+  const receipt = {schema: SCHEMA, index: next.nonce, kind, payload: structuredClone(payload), time,
+    nonce: state.nonce, priorStateRoot: state.root, priorAuditRoot: state.audit,
+    policy: state.policy, statement, evidence, nextStateRoot: next.root, nextMemoryRoot: next.memory,
+    verification: 'unsigned-local-sha256'};
+  next.audit = await digest('audit/append', {previous: state.audit, receipt});
+  receipt.audit = next.audit;
+  return {state: next, receipt};
+}
+function makeBundle(first, receipts, head) {
+  return {schema: SCHEMA, provenance: 'BROWSER SIMULATION — unsigned, not an onchain proof',
+    genesis: {seed: first.seed, time: first.createdAt}, receipts: structuredClone(receipts), expectedAudit: head.audit};
+}
+async function verifyBundle(bundle) {
+  exactKeys(bundle, ['schema','provenance','genesis','receipts','expectedAudit']);
+  if (bundle.schema !== SCHEMA || bundle.provenance !== 'BROWSER SIMULATION — unsigned, not an onchain proof') throw new Error('Unsupported receipt book.');
+  exactKeys(bundle.genesis, ['seed','time']); assertHex(bundle.expectedAudit);
+  if (!Array.isArray(bundle.receipts) || bundle.receipts.length > MAX_RECEIPTS) throw new Error('Receipt limit exceeded.');
+  let current = await genesis(bundle.genesis.seed, bundle.genesis.time);
+  const snapshots = [current];
+  for (const r of bundle.receipts) {
+    if (!r || typeof r !== 'object') throw new Error('Invalid receipt.');
+    const result = await transition(current, r.kind, r.payload, r.time, r.nonce);
+    if (canonical(result.receipt) !== canonical(r)) throw new Error('Receipt ' + (snapshots.length) + ' failed its consistency check.');
+    current = result.state; snapshots.push(current);
+  }
+  if (current.audit !== bundle.expectedAudit) throw new Error('Audit head mismatch.');
+  return {state: current, snapshots, receipts: structuredClone(bundle.receipts)};
+}
+function phenotype(state) {
+  const byte = (h, i) => parseInt(h.slice(2+i*2, 4+i*2),16) / 255;
+  const steps = [0, 3, 5, 7, 10];
+  return {lobes: 3 + Math.floor(byte(state.genome,0) * 3.999),
+    fold: 0.12 + byte(state.genome,1) * 0.20,
+    twist: 1 + byte(state.genome,2) * 2,
+    phase: byte(state.genome,3) * Math.PI*2,
+    pitch: 110 * 2 ** (steps[Math.floor(byte(state.genome,4)*4.999)]/12),
+    memoryPhase: byte(state.memory,0) * Math.PI*2,
+    auditPhase: byte(state.audit,0) * Math.PI*2,
+    sovereignty: state.sovereign ? 1 : 0};
+}
+function shortHash(h, a=8, b=5) { return typeof h === 'string' && h.length > a+b+1 ? h.slice(0,a)+'…'+h.slice(-b) : h; }
+
+
+/** Small, dependency-free Ethereum codec and explicit testnet transaction client.
+ * No private keys, RPC endpoints, automatic accounts requests, or signing shortcuts.
+ */
+const MASK64=(1n<<64n)-1n;
+const RC=[0x1n,0x8082n,0x800000000000808an,0x8000000080008000n,0x808bn,0x80000001n,0x8000000080008081n,0x8000000000008009n,0x8an,0x88n,0x80008009n,0x8000000an,0x8000808bn,0x800000000000008bn,0x8000000000008089n,0x8000000000008003n,0x8000000000008002n,0x8000000000000080n,0x800an,0x800000008000000an,0x8000000080008081n,0x8000000000008080n,0x80000001n,0x8000000080008008n];
+const ROT=[0,1,62,28,27,36,44,6,55,20,3,10,43,25,39,41,45,15,21,8,18,2,61,56,14];
+const rol=(n,r)=>r?((n<<BigInt(r))|(n>>BigInt(64-r)))&MASK64:n;
+function bytesOf(hex){if(typeof hex!=='string'||!/^0x(?:[0-9a-fA-F]{2})*$/.test(hex))throw Error('Invalid hex bytes.');return Uint8Array.from(hex.slice(2).match(/../g)||[],x=>parseInt(x,16));}
+function hexOf(bytes){return '0x'+Array.from(bytes,x=>x.toString(16).padStart(2,'0')).join('');}
+function keccak256(input){const data=typeof input==='string'?new TextEncoder().encode(input):input;if(!(data instanceof Uint8Array))throw Error('Expected UTF-8 text or bytes.');const rate=136,pad=new Uint8Array(Math.ceil((data.length+1)/rate)*rate);pad.set(data);pad[data.length]=1;pad[pad.length-1]|=128;const a=Array(25).fill(0n);for(let off=0;off<pad.length;off+=rate){for(let i=0;i<rate;i++)a[i>>3]^=BigInt(pad[off+i])<<BigInt((i%8)*8);for(const rc of RC){const c=Array.from({length:5},(_,x)=>a[x]^a[x+5]^a[x+10]^a[x+15]^a[x+20]),d=c.map((_,x)=>c[(x+4)%5]^rol(c[(x+1)%5],1));for(let y=0;y<5;y++)for(let x=0;x<5;x++)a[x+y*5]^=d[x];const b=Array(25).fill(0n);for(let y=0;y<5;y++)for(let x=0;x<5;x++)b[y+((2*x+3*y)%5)*5]=rol(a[x+y*5],ROT[x+y*5]);for(let y=0;y<5;y++)for(let x=0;x<5;x++)a[x+y*5]=b[x+y*5]^((~b[(x+1)%5+y*5])&b[(x+2)%5+y*5]);a[0]^=rc;}}
+ const out=new Uint8Array(32);for(let i=0;i<32;i++)out[i]=Number((a[i>>3]>>BigInt((i%8)*8))&255n);return hexOf(out);}
+function address(value){if(typeof value!=='string'||!/^0x[0-9a-fA-F]{40}$/.test(value)||/^0x0{40}$/i.test(value))throw Error('Enter a nonzero 20-byte address.');return value.toLowerCase();}
+function quantity(value){const n=BigInt(value);if(n<0n)throw Error('Negative quantity.');return '0x'+n.toString(16);}
+const word=n=>{n=BigInt(n);if(n<0n||n>=1n<<256n)throw Error('ABI integer out of range.');return n.toString(16).padStart(64,'0');};
+function fixed(type,value){if(Array.isArray(type)){if(!Array.isArray(value)||type.length!==value.length)throw Error('Tuple shape mismatch.');return type.map((t,i)=>fixed(t,value[i])).join('');}if(type==='address')return address(value).slice(2).padStart(64,'0');if(type==='bool'){if(typeof value!=='boolean')throw Error('Expected boolean.');return word(value?1:0);}if(/^uint(?:[0-9]+)?$/.test(type)){const bits=Number(type.slice(4)||256);if(bits<8||bits>256||bits%8)throw Error('Unsupported integer width.');const n=BigInt(value);if(n<0n||n>=(1n<<BigInt(bits)))throw Error('ABI integer out of range.');return word(n);}if(/^bytes\d+$/.test(type)){const size=Number(type.slice(5)),b=bytesOf(value);if(size<1||size>32||b.length!==size)throw Error('ABI fixed bytes size mismatch.');return value.slice(2).padEnd(64,'0');}throw Error('Unsupported static ABI type: '+type);}
+function abiEncode(types,values){if(types.length!==values.length)throw Error('ABI arity mismatch.');const dynamic=t=>t==='bytes'||t==='string';let offset=types.reduce((n,t)=>n+(Array.isArray(t)?t.length:1)*32,0);const head=[],tail=[];types.forEach((t,i)=>{if(dynamic(t)){const b=t==='bytes'?bytesOf(values[i]):new TextEncoder().encode(values[i]);const body=word(b.length)+hexOf(b).slice(2).padEnd(Math.ceil(b.length/32)*64,'0');head.push(word(offset));tail.push(body);offset+=body.length/2;}else head.push(fixed(t,values[i]));});return '0x'+head.join('')+tail.join('');}
+function callData(signature,types,values){return keccak256(signature).slice(0,10)+abiEncode(types,values).slice(2);}
+function words(data,count){bytesOf(data);if(data.length!==2+count*64)throw Error('Unexpected contract response length.');return Array.from({length:count},(_,i)=>'0x'+data.slice(2+i*64,66+i*64));}
+function safeNumber(v){const n=BigInt(v);if(n>BigInt(Number.MAX_SAFE_INTEGER))throw Error('Value exceeds the client safe-integer range.');return Number(n);}
+const TEST_CHAINS=new Map([[31337,'LOCAL EVM'],[11155111,'SEPOLIA'],[84532,'BASE SEPOLIA']]);
+const INTENT_TYPES=['address','uint256','bytes32','uint256','uint48','uint48','bytes32','bytes32','bytes32','bytes32','bytes32','uint32'];
+const INTENT_FIELDS=['target','value','dataHash','nonce','validAfter','validUntil','priorStateRoot','nextStateRoot','nextMemoryRoot','policyHash','evidenceHash','verifierId'];
+const intentValues=i=>INTENT_FIELDS.map(k=>i[k]);
+const VERIFIED_SIG='executeVerified((address,uint256,bytes32,uint256,uint48,uint48,bytes32,bytes32,bytes32,bytes32,bytes32,uint32),bytes,bytes)';
+function encodeVerified(intent,data,proof){if(keccak256(bytesOf(data))!==intent.dataHash.toLowerCase())throw Error('Intent does not bind this calldata.');return callData(VERIFIED_SIG,[INTENT_TYPES,'bytes','bytes'],[intentValues(intent),data,proof]);}
+class TestnetClient {
+ constructor(provider,onChange=()=>{}){if(!provider?.request)throw Error('No injected Ethereum wallet found. Open in a wallet-enabled browser.');this.provider=provider;this.onChange=onChange;this.revision=0;this.pending=false;this.connected=false;this.handle=()=>{this.revision++;this.connected=false;this.onChange('Wallet account or network changed. Reconnect before continuing.');};provider.on?.('accountsChanged',this.handle);provider.on?.('chainChanged',this.handle);provider.on?.('disconnect',this.handle);}
+ async connect(collection,requestAccounts=true){this.collection=address(collection);const rev=this.revision;this.chainId=Number(BigInt(await this.provider.request({method:'eth_chainId'})));if(!TEST_CHAINS.has(this.chainId))throw Error('Mainnet and unknown chains are blocked. Select Sepolia, Base Sepolia, or local chain 31337.');const accounts=await this.provider.request({method:requestAccounts?'eth_requestAccounts':'eth_accounts'});if(!accounts?.length)throw Error('Wallet did not provide an account.');this.owner=address(accounts[0]);const code=await this.provider.request({method:'eth_getCode',params:[this.collection,'latest']});if(!code||code==='0x')throw Error('No collection contract exists at that address on this chain.');if(rev!==this.revision)throw Error('Wallet changed while connecting.');this.connected=true;return this;}
+ async assertContext(){if(!this.connected)throw Error('Reconnect the wallet.');const [chain,accounts]=await Promise.all([this.provider.request({method:'eth_chainId'}),this.provider.request({method:'eth_accounts'})]);if(Number(BigInt(chain))!==this.chainId||!accounts?.length||address(accounts[0])!==this.owner){this.handle();throw Error('Wallet context ch

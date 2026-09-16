@@ -1,0 +1,11 @@
+{
+  "inputHash": "7c38368b31c2092abc3006c630870a8110a958e221e925905bdef6fe7ff89184",
+  "files": {
+    "OfficialCCALauncher": "7839ca9f8be58ff35f72f05f30a0e3d02fb08d6b870fa46d938a64e2440f36fd",
+    "ProtocolFeeController": "af57ef3249ae913a9d52508f73b2f7423e819e2a1c1ae751797723e099388d8c",
+    "LBPStrategy": "2138cf48fac6f0e02573cc29bf0b45c13d4ce411ee502138f4c3df8defd114ad",
+    "PositionManager": "211960ffe7ef7269b4fb8f599c4f28f55b39cba26243daa288d7f563019405b6",
+    "ContinuousClearingAuction": "480a58e3f70b5040ab9ead3be354404c840205ccbbbf73f04d40236e1f42fde9",
+    "ContinuousClearingAuctionFactory": "6c98cd88a779561669ff18274fb96b66cf7d813cfb7d684a7d4ac2306070f8a3"
+  }
+}

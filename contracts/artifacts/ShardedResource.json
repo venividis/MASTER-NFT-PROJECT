@@ -1,0 +1,545 @@
+{
+  "contractName": "ShardedResource",
+  "sourceName": "contracts/src/protocol/ShardedResource.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "shards_",
+          "type": "address[]"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "compressedSha256_",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "contentSha256_",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint256",
+          "name": "byteLength_",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "byteLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "compressedByteLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "compressedSha256",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "compression",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contentSha256",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mimeType",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "schemaVersion",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "shardByteLengths",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "shardChunkCounts",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "shardCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "shardSha256",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "shards",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "totalChunkCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "59459": [
+      {
+        "length": 32,
+        "start": 863
+      }
+    ],
+    "59461": [
+      {
+        "length": 32,
+        "start": 1084
+      }
+    ],
+    "59463": [
+      {
+        "length": 32,
+        "start": 921
+      }
+    ],
+    "59465": [
+      {
+        "length": 32,
+        "start": 688
+      }
+    ],
+    "59467": [
+      {
+        "length": 32,
+        "start": 436
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x610120806040523461040557610b69803803809161001d8285610647565b83398101906080818303126104055780516001600160401b03811161040557810182601f82011215610405578051926001600160401b0384116102cb578360051b91604051946100706020850187610647565b855260208086019382010191821161040557602001915b8183106106275750505060208101519160606040830151920151908051801515908161061b575b50156105e457811515806105d6575b156105a15783151580610598575b15610563575f9391928492839283929091835b83518510156104c357600585901b8401602001516001600160a01b0316803b1561047e5760405163f91f093760e01b8152602081600481855afa908115610411575f9161044d575b506040516250462160e31b8152602081600481865afa908115610411575f9161041c575b50604051630efad39b60e41b815292602084600481845afa938415610411575f946103da575b5082158015806103cf575b1561039857838310159081610369575b50156103245783156102df575f54680100000000000000008110156102cb57600181015f555f548110156102b7575f80527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b0319169091179055600154680100000000000000008110156102cb5761022f610219826001859401600155600161066a565b819391549060031b91821b915f19901b19161790565b9055600254680100000000000000008110156102cb5761025b610219826001869401600255600261066a565b905560035490680100000000000000008210156102cb57600182016003556003548210156102b7576001946102ae948e8d6102a89560035f5260205f2001928354921b911617905561067f565b9761067f565b940193946100de565b634e487b7160e01b5f52603260045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b60405162461bcd60e51b815260206004820152601360248201527f5245534f555243455f53484152445f48415348000000000000000000000000006044820152606490fd5b60405162461bcd60e51b815260206004820152601360248201527f5245534f555243455f53484152445f53495a45000000000000000000000000006044820152606490fd5b6159d88581029250858304141715610384578211155f61018b565b634e487b7160e01b5f52601160045260245ffd5b60405162461bcd60e51b815260206004820152600f60248201526e5245534f555243455f4348554e4b5360881b6044820152606490fd5b50604084111561017b565b9093506020813d8211610409575b816103f560209383610647565b810103126104055751925f610170565b5f80fd5b3d91506103e8565b6040513d5f823e3d90fd5b90506020813d8211610445575b8161043660209383610647565b8101031261040557515f61014a565b3d9150610429565b90506020813d8211610476575b8161046760209383610647565b8101031261040557515f610126565b3d915061045a565b60405162461bcd60e51b815260206004820152601360248201527f5245534f555243455f53484152445f434f4445000000000000000000000000006044820152606490fd5b8786916302000000811161051e5760805260a05260c05260e052610100526040516104dc908161068d82396080518161035f015260a0518161043c015260c05181610399015260e051816102b0015261010051816101b40152f35b60405162461bcd60e51b815260206004820152601860248201527f5245534f555243455f434f4d505245535345445f53495a4500000000000000006044820152606490fd5b60405162461bcd60e51b815260206004820152600d60248201526c0a48aa69eaaa4868abe9082a69609b1b6044820152606490fd5b508215156100cb565b60405162461bcd60e51b815260206004820152600d60248201526c5245534f555243455f53495a4560981b6044820152606490fd5b5063040000008211156100bd565b60405162461bcd60e51b815260206004820152600f60248201526e5245534f555243455f53484152445360881b6044820152606490fd5b6040915011155f6100ae565b82516001600160a01b038116810361040557815260209283019201610087565b601f909101601f19168101906001600160401b038211908210176102cb57604052565b80548210156102b7575f5260205f2001905f90565b919082018092116103845756fe6080806040526004361015610012575f80fd5b5f3560e01c90816302823108146104275750806304e9c77a1461040b57806316faae90146103bc5780631b02192e1461038257806320d169ff146103485780634e2ce6d31461032d5780636c1fb5ba146102d3578063b3db775814610299578063cabb75c014610231578063e2345b11146101d7578063efad39b01461019d578063fc0eb28b1461011d5763fcd5661c146100ab575f80fd5b3461011957602036600319011261011957600435600354811015610119576003548110156101055760035f527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0154604051908152602090f35b634e487b7160e01b5f52603260045260245ffd5b5f80fd5b34610119575f36600319011261011957604051604081019080821067ffffffffffffffff8311176101895761018591604052601681527f6170706c69636174696f6e2f6a6176617363726970740000000000000000000060208201526040519182918261045f565b0390f35b634e487b7160e01b5f52604160045260245ffd5b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b3461011957602036600319011261011957600435600154811015610119576001548110156101055760015f527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf60154604051908152602090f35b34610119575f36600319011261011957604051604081019080821067ffffffffffffffff8311176101895761018591604052600481527f677a69700000000000000000000000000000000000000000000000000000000060208201526040519182918261045f565b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b3461011957602036600319011261011957600435600254811015610119576002548110156101055760025f527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0154604051908152602090f35b34610119575f36600319011261011957602060405160018152f35b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b34610119576020366003190112610119576004355f54811015610119575f548110156101055773ffffffffffffffffffffffffffffffffffffffff6020915f8052825f20015416604051908152f35b34610119575f3660031901126101195760205f54604051908152f35b34610119575f366003190112610119576020907f00000000000000000000000000000000000000000000000000000000000000008152f35b9190916020815282518060208301525f5b818110610490575060409293505f838284010152601f8019910116010190565b806020809287010151604082860101520161047056fea26469706673582212207a32f4d1bb50ce9b3dac830216a98598ddcb20632b8e73edcc1cf357216053a364736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c90816302823108146104275750806304e9c77a1461040b57806316faae90146103bc5780631b02192e1461038257806320d169ff146103485780634e2ce6d31461032d5780636c1fb5ba146102d3578063b3db775814610299578063cabb75c014610231578063e2345b11146101d7578063efad39b01461019d578063fc0eb28b1461011d5763fcd5661c146100ab575f80fd5b3461011957602036600319011261011957600435600354811015610119576003548110156101055760035f527fc2575a0e9e593c00f959f8c92f12db2869c3395a3b0502d05e2516446f71f85b0154604051908152602090f35b634e487b7160e01b5f52603260045260245ffd5b5f80fd5b34610119575f36600319011261011957604051604081019080821067ffffffffffffffff8311176101895761018591604052601681527f6170706c69636174696f6e2f6a6176617363726970740000000000000000000060208201526040519182918261045f565b0390f35b634e487b7160e01b5f52604160045260245ffd5b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b3461011957602036600319011261011957600435600154811015610119576001548110156101055760015f527fb10e2d527612073b26eecdfd717e6a320cf44b4afac2b0732d9fcbe2b7fa0cf60154604051908152602090f35b34610119575f36600319011261011957604051604081019080821067ffffffffffffffff8311176101895761018591604052600481527f677a69700000000000000000000000000000000000000000000000000000000060208201526040519182918261045f565b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b3461011957602036600319011261011957600435600254811015610119576002548110156101055760025f527f405787fa12a823e0f2b7631cc41b3ba8828b3321ca811111fa75cd3aa3bb5ace0154604051908152602090f35b34610119575f36600319011261011957602060405160018152f35b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b34610119575f3660031901126101195760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b34610119576020366003190112610119576004355f54811015610119575f548110156101055773ffffffffffffffffffffffffffffffffffffffff6020915f8052825f20015416604051908152f35b34610119575f3660031901126101195760205f54604051908152f35b34610119575f366003190112610119576020907f00000000000000000000000000000000000000000000000000000000000000008152f35b9190916020815282518060208301525f5b818110610490575060409293505f838284010152601f8019910116010190565b806020809287010151604082860101520161047056fea26469706673582212207a32f4d1bb50ce9b3dac830216a98598ddcb20632b8e73edcc1cf357216053a364736f6c634300081e0033",
+  "methodIdentifiers": {
+    "byteLength()": "02823108",
+    "compressedByteLength()": "20d169ff",
+    "compressedSha256()": "b3db7758",
+    "compression()": "cabb75c0",
+    "contentSha256()": "efad39b0",
+    "mimeType()": "fc0eb28b",
+    "schemaVersion()": "4e2ce6d3",
+    "shardByteLengths(uint256)": "e2345b11",
+    "shardChunkCounts(uint256)": "6c1fb5ba",
+    "shardCount()": "04e9c77a",
+    "shardSha256(uint256)": "fcd5661c",
+    "shards(uint256)": "16faae90",
+    "totalChunkCount()": "1b02192e"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address[]",
+              "name": "shards_",
+              "type": "address[]"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "compressedSha256_",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "contentSha256_",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "byteLength_",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "byteLength",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "compressedByteLength",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "compressedSha256",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "compression",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "contentSha256",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "mimeType",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "schemaVersion",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "shardByteLengths",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "shardChunkCounts",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "shardCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "shardSha256",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "shards",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "totalChunkCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Each OnchainApp constructor verifies its own bytes. The directory snapshots      their hashes and lengths; clients MUST verify the complete compressed and      expanded hashes before executing. This contract never assembles the full      resource in one call. Shard implementations are supplied by the deployer;      a dishonest/unavailable shard can prevent retrieval, never bypass a digest.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Immutable directory for a gzip resource split across OnchainApp archives.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/protocol/ShardedResource.sol": "ShardedResource"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/ShardedResource.sol": {
+        "keccak256": "0x64b918c0441dc4641f91fa4e92558558500f8426ab50a2f73119dc0370d5bda5",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://29db2f60f9894db53b38ef9d6c6985c475e674832081ca844c012897ea852fdf",
+          "dweb:/ipfs/QmRkL7Y9mvnz4uj8jLqpMmvheJVaJVR5k1h2NTAu4nuEsz"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

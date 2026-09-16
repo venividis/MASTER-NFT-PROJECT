@@ -1,0 +1,11 @@
+{
+  "version": "1.4.0",
+  "candidateZipCrc": "passed",
+  "cleanExtractionUiTests": {
+    "passed": 99,
+    "failed": 0
+  },
+  "rebuildByteIdentical": true,
+  "previewSha256": "9c68a6d83fd39d7f0f46bf77c83a5ba2e3d2035ff2cd985f00e6416442ae0402",
+  "scope": "Clean ZIP extraction, JavaScript/model tests, exact UI rebuild. No Solidity/EVM validation."
+}

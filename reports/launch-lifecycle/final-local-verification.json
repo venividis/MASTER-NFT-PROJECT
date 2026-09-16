@@ -1,0 +1,70 @@
+{
+  "verifiedAt": "2026-09-13T16:39:50.960339+00:00",
+  "scope": "Local contract/client verification, not public Ethereum deployment evidence",
+  "chainId": 31337,
+  "networks": [
+    "Anvil",
+    "Ganache"
+  ],
+  "runs": [
+    {
+      "command": "node --test test/launchpad/nft-sale-auction.integration.test.mjs",
+      "passed": 1,
+      "failed": 0,
+      "durationMs": 51239.239389
+    },
+    {
+      "command": "node --test test/launchpad/lifecycle.integration.test.mjs test/launchpad/participant.integration.test.mjs",
+      "passed": 7,
+      "failed": 0,
+      "durationMs": 58873.58219
+    },
+    {
+      "command": "node --test test/launchpad/lifecycle.integration.test.mjs",
+      "passed": 3,
+      "failed": 0,
+      "exitCode": 0,
+      "durationMs": 49427.297973,
+      "coverage": "Includes shared-sign receipt application, idempotence, cold-desk hydration and changed-block rejection.",
+      "log": "reports/launch-lifecycle/lifecycle-final-test.log"
+    },
+    {
+      "command": "node --test test/launchpad/nft-sale-auction.integration.test.mjs",
+      "passed": 1,
+      "failed": 0,
+      "exitCode": 0,
+      "durationMs": 42853.882472,
+      "coverage": "Includes NFTAuctionFactory setup application through the shared receipt handler.",
+      "log": "reports/launch-lifecycle/nft-final-test.log"
+    }
+  ],
+  "sourceSha256": {
+    "contracts/src/extensions/launch/LaunchRegistry.sol": "d09dc416ce144ab74d5b794ab75a0363d44ddd84d1b777bd947eafe715a32c7f",
+    "contracts/src/extensions/launch/LaunchAllocationComposer.sol": "96be83f8e6be1052993d3b3e196023bc4b65a972a8e55b7521a8200f95bafb91",
+    "contracts/src/extensions/launch/NFTAuctionFactory.sol": "67b7dcaaabff5c2442e81c60e9edf1ef2a38239f1eaaf990119d9ed7546a64f1",
+    "web/launchpad/lifecycle-client.mjs": "b191a3cef3f5cdb3b903ebd0deacf904e9c449589a1fe0be3fb750938a7044ba",
+    "web/launchpad/lifecycle.mjs": "8146a35fd7e9f90be212a11d964dfd92e4030d7b2b633c690805687ca25289d3",
+    "web/launchpad/pool-participant.mjs": "d449cfdc004aaf3e178d924bc0c1f0f404b20c2ac8d64cb516d9dcdff425007a",
+    "web/launchpad/participant.mjs": "92a591dc022f7e987b4dce9e0e08ea10edc106cfbb385866169dab2064d8f368",
+    "web/launchpad/links.mjs": "fb3a7a9037dbcfde364de0ad081bea0cd1dbe3f66e1fa40b2aceb0d8cbd9709d",
+    "web/launchpad/sale-client.mjs": "908c9afd0feb89a7097b6e282f288d5cb6e98f276cda2cc6293b39f0e33dc6b1",
+    "web/launchpad/auction-client.mjs": "09de23b87aac9973ccc0eeff00df6d85adeba687bc33a3bd997a5d404c53ba2a",
+    "web/launchpad/account-session.mjs": "f53186f69bf07324e4268ad00b8771d54c77b6829884656355f57280b46bc80d",
+    "web/launchpad/lifecycle-artifacts.mjs": "9dfe03001aa9a3c700a72d7cff6928e5bbf1afcddc17fb21385e081f946dd52e",
+    "web/launchpad/deployments.mjs": "875ac33ccc1785f41fca2f7e0e5da03bbffcd3a80402413e1c1aefb997026e4c",
+    "web/v4/artifacts.mjs": "6be95aea60cdd0701a89cc629f44b653127abf57cc3bcdd1bb99ce9dc5ef1a5f",
+    "test/launchpad/lifecycle.integration.test.mjs": "247ae6d43af057fc04e6b9d048698fa806d4137d083032c2b524796a75094724",
+    "test/launchpad/nft-sale-auction.integration.test.mjs": "98460d26c806e90bb2cef122c3cf4b9d8769f3eb84685be7d6f325e7f111cdfa",
+    "test/launchpad/participant.integration.test.mjs": "51793e03859d7b25a7093cd07ba19211dbeb4468cbd107cd78a78e34f31d63ac",
+    "web/launchpad/chain.mjs": "1c8f3038746d666ba160840120b6eb635842a973aa2a67bad73f517a63688fb0",
+    "web/extensions/artifacts.mjs": "0cd831d2ea26f9e87e8444f6c52f5bc3eb31eb5e1c3ec964218064581c9568a6",
+    "web/launchpad/auction-artifacts.mjs": "aad26786c72fc93211d6f95af4868f4a62b7dcf455f87300254e0f0db9a38994",
+    "web/launchpad/hook-artifacts.mjs": "8e39d765493778851d8720a956fb457b88eb13276fe65efd77a75d35ee956aa6"
+  },
+  "limits": [
+    "No funded public Ethereum deployment or shielded ZK proof transaction was executed by these tests.",
+    "No physical-phone interaction test was performed.",
+    "Official CCA/Doppler funded migration execution has a separate integration suite."
+  ],
+  "uniqueTestsPassed": 8
+}

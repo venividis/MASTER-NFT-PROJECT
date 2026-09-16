@@ -1,0 +1,154 @@
+.ll-desk {
+  color: #eef7ff;
+  max-width: 1160px;
+  margin: auto;
+  padding: clamp(16px, 3vw, 34px);
+  font:
+    15px/1.6 system-ui,
+    sans-serif;
+}
+.ll-desk h2 {
+  font-size: clamp(26px, 4vw, 42px);
+  letter-spacing: -0.04em;
+  line-height: 1.1;
+  margin: 10px 0 18px;
+}
+.ll-desk h3 {
+  margin: 0 0 14px;
+}
+.ll-desk p {
+  color: #b5cbdc;
+}
+.ll-eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.23em;
+  color: #8be4ef;
+}
+.ll-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+}
+.ll-card,
+.ll-review {
+  padding: 22px;
+  margin: 18px 0;
+  border: 1px solid #a0d9ed26;
+  border-radius: 22px;
+  background: linear-gradient(145deg, #152b409c, #071421d9);
+}
+.ll-field {
+  display: grid;
+  gap: 6px;
+  margin: 13px 0;
+}
+.ll-field span,
+.ll-facts dt {
+  font-size: 12px;
+  color: #95b4c8;
+}
+.ll-desk input,
+.ll-desk select {
+  box-sizing: border-box;
+  width: 100%;
+  min-width: 0;
+  padding: 12px;
+  border: 1px solid #83c9de40;
+  background: #06121bd9;
+  color: #e9f8ff;
+  border-radius: 10px;
+  font: inherit;
+}
+.ll-desk input[type="checkbox"] {
+  width: auto;
+  accent-color: #85e5e7;
+}
+.ll-desk button,
+.ll-desk a {
+  display: inline-block;
+  border: 1px solid #9adce448;
+  border-radius: 11px;
+  padding: 11px 15px;
+  margin: 3px;
+  background: #153747;
+  color: #e6fbff;
+  cursor: pointer;
+  text-decoration: none;
+  font: inherit;
+}
+.ll-desk button:hover,
+.ll-desk a:hover {
+  background: #215466;
+}
+.ll-desk button:focus-visible,
+.ll-desk a:focus-visible,
+.ll-desk input:focus-visible {
+  outline: 2px solid #a8edfa;
+  outline-offset: 3px;
+}
+.ll-actions {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  margin: 14px 0;
+}
+.ll-record {
+  width: 100%;
+  display: grid !important;
+  text-align: left;
+  gap: 4px;
+}
+.ll-record span,
+.ll-record small {
+  font-size: 12px;
+  overflow-wrap: anywhere;
+  color: #adc8da;
+}
+.ll-facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+.ll-facts div {
+  min-width: 0;
+}
+.ll-facts dd {
+  margin: 3px 0 0;
+  overflow-wrap: anywhere;
+}
+.ll-desk pre {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  font:
+    12px/1.6 ui-monospace,
+    monospace;
+  color: #c6e1ed;
+  max-height: 360px;
+  overflow: auto;
+}
+.ll-desk fieldset {
+  margin: 18px 0;
+  border: 1px solid #a0d9ed30;
+  border-radius: 14px;
+  padding: 15px;
+}
+.ll-desk summary {
+  cursor: pointer;
+  font-weight: 600;
+}
+.ll-review {
+  border-color: #b9efbb70;
+  background: #12292bd9;
+}
+@media (max-width: 760px) {
+  .ll-grid {
+    grid-template-columns: 1fr;
+  }
+  .ll-card {
+    padding: 17px;
+  }
+  .ll-actions button {
+    flex-grow: 1;
+    min-height: 46px;
+  }
+}

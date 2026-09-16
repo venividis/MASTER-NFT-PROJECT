@@ -1,0 +1,27 @@
+{
+  "contractName": "GenesisPayment",
+  "sourceName": "src/GenesisV4Launchpad.sol",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  },
+  "abi": [],
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220b1ee026b8c501bac7807cf059367059f6396354549ae41dc29ec9dacb261a76464736f6c634300081a0033",
+  "immutableReferences": {},
+  "deployedBytecode": "0x5f80fdfea2646970667358221220b1ee026b8c501bac7807cf059367059f6396354549ae41dc29ec9dacb261a76464736f6c634300081a0033"
+}

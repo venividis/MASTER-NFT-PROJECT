@@ -1,0 +1,261 @@
+{
+  "schema": "idfbi/offline-dependency-plan/1.6",
+  "executed": false,
+  "addresses": null,
+  "order": [
+    "core-collection",
+    "pool-manager",
+    "supported-assets",
+    "commission-escrow",
+    "cell-factory",
+    "experiment-gate",
+    "reviewed-strategy",
+    "world-ledger",
+    "edition-registry",
+    "fixed-basket",
+    "fixed-credit",
+    "covered-calls",
+    "bonded-shelf",
+    "time-vault",
+    "launchpad",
+    "v4-market",
+    "strategy-adapter",
+    "matched-rights",
+    "launch-hook",
+    "gift-router",
+    "instrument-router",
+    "install-hook",
+    "commitment-index",
+    "estate-exchange",
+    "configure-estate",
+    "seal-ledger"
+  ],
+  "nodes": [
+    {
+      "id": "core-collection",
+      "requires": [],
+      "externalOrCorePrerequisite": true,
+      "address": null
+    },
+    {
+      "id": "pool-manager",
+      "requires": [],
+      "externalOrCorePrerequisite": true,
+      "address": null
+    },
+    {
+      "id": "supported-assets",
+      "requires": [],
+      "externalOrCorePrerequisite": true,
+      "address": null
+    },
+    {
+      "id": "reviewed-strategy",
+      "requires": [
+        "supported-assets"
+      ],
+      "externalOrCorePrerequisite": true,
+      "address": null
+    },
+    {
+      "id": "world-ledger",
+      "requires": [
+        "core-collection"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "time-vault",
+      "requires": [
+        "world-ledger"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "launchpad",
+      "requires": [
+        "world-ledger"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "v4-market",
+      "requires": [
+        "world-ledger",
+        "pool-manager"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "launch-hook",
+      "requires": [
+        "pool-manager",
+        "v4-market"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "install-hook",
+      "requires": [
+        "launch-hook",
+        "v4-market"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "edition-registry",
+      "requires": [
+        "core-collection"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "commission-escrow",
+      "requires": [],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "cell-factory",
+      "requires": [],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "experiment-gate",
+      "requires": [],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "strategy-adapter",
+      "requires": [
+        "experiment-gate",
+        "reviewed-strategy"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "fixed-basket",
+      "requires": [
+        "experiment-gate",
+        "supported-assets"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "matched-rights",
+      "requires": [
+        "experiment-gate",
+        "reviewed-strategy"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "fixed-credit",
+      "requires": [
+        "experiment-gate",
+        "supported-assets"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "covered-calls",
+      "requires": [
+        "experiment-gate",
+        "supported-assets"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "bonded-shelf",
+      "requires": [
+        "experiment-gate",
+        "core-collection"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "gift-router",
+      "requires": [
+        "world-ledger",
+        "v4-market",
+        "time-vault"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "instrument-router",
+      "requires": [
+        "world-ledger",
+        "v4-market",
+        "time-vault"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "commitment-index",
+      "requires": [
+        "cell-factory",
+        "time-vault",
+        "edition-registry",
+        "commission-escrow",
+        "strategy-adapter",
+        "fixed-basket",
+        "matched-rights",
+        "fixed-credit",
+        "covered-calls",
+        "bonded-shelf",
+        "gift-router",
+        "instrument-router"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "estate-exchange",
+      "requires": [
+        "world-ledger",
+        "commitment-index"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "configure-estate",
+      "requires": [
+        "estate-exchange",
+        "world-ledger"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    },
+    {
+      "id": "seal-ledger",
+      "requires": [
+        "configure-estate",
+        "install-hook",
+        "launchpad",
+        "time-vault"
+      ],
+      "externalOrCorePrerequisite": false,
+      "address": null
+    }
+  ],
+  "note": "Dependency ordering only, not a successful deployment, constructor validation, ABI check, source verification or security proof."
+}

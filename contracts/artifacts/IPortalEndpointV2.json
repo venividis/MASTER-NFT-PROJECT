@@ -1,0 +1,834 @@
+{
+  "contractName": "IPortalEndpointV2",
+  "sourceName": "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "eid",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "lib",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "eid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "configType",
+          "type": "uint32"
+        }
+      ],
+      "name": "getConfig",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "eid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getReceiveLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "eid",
+          "type": "uint32"
+        }
+      ],
+      "name": "getSendLibrary",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "eid",
+          "type": "uint32"
+        }
+      ],
+      "name": "isDefaultSendLibrary",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "lib",
+          "type": "address"
+        }
+      ],
+      "name": "isRegisteredLibrary",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "dstEid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "receiver",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "message",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "options",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bool",
+              "name": "payInLzToken",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct PortalMessagingParams",
+          "name": "params",
+          "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        }
+      ],
+      "name": "quote",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "nativeFee",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lzTokenFee",
+              "type": "uint256"
+            }
+          ],
+          "internalType": "struct PortalMessagingFee",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "dstEid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "receiver",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "message",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "options",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bool",
+              "name": "payInLzToken",
+              "type": "bool"
+            }
+          ],
+          "internalType": "struct PortalMessagingParams",
+          "name": "params",
+          "type": "tuple"
+        },
+        {
+          "internalType": "address",
+          "name": "refundAddress",
+          "type": "address"
+        }
+      ],
+      "name": "send",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "guid",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "nonce",
+              "type": "uint64"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "nativeFee",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "lzTokenFee",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct PortalMessagingFee",
+              "name": "fee",
+              "type": "tuple"
+            }
+          ],
+          "internalType": "struct PortalMessagingReceipt",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "lib",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "configType",
+              "type": "uint32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "config",
+              "type": "bytes"
+            }
+          ],
+          "internalType": "struct PortalSetConfigParam[]",
+          "name": "params",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "setConfig",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "eid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "lib",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "gracePeriod",
+          "type": "uint256"
+        }
+      ],
+      "name": "setReceiveLibrary",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "oapp",
+          "type": "address"
+        },
+        {
+          "internalType": "uint32",
+          "name": "eid",
+          "type": "uint32"
+        },
+        {
+          "internalType": "address",
+          "name": "lib",
+          "type": "address"
+        }
+      ],
+      "name": "setSendLibrary",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "eid()": "416ecebf",
+    "getConfig(address,address,uint32,uint32)": "2b3197b9",
+    "getReceiveLibrary(address,uint32)": "402f8468",
+    "getSendLibrary(address,uint32)": "b96a277f",
+    "isDefaultSendLibrary(address,uint32)": "dc93c8a2",
+    "isRegisteredLibrary(address)": "dc706a62",
+    "quote((uint32,bytes32,bytes,bytes,bool),address)": "ddc28c58",
+    "send((uint32,bytes32,bytes,bytes,bool),address)": "2637a450",
+    "setConfig(address,address,(uint32,uint32,bytes)[])": "6dbd9f90",
+    "setReceiveLibrary(address,uint32,address,uint256)": "6a14d715",
+    "setSendLibrary(address,uint32,address)": "9535ff30"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "eid",
+          "outputs": [
+            {
+              "internalType": "uint32",
+              "name": "",
+              "type": "uint32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "lib",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "configType",
+              "type": "uint32"
+            }
+          ],
+          "name": "getConfig",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            }
+          ],
+          "name": "getReceiveLibrary",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            }
+          ],
+          "name": "getSendLibrary",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            }
+          ],
+          "name": "isDefaultSendLibrary",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "lib",
+              "type": "address"
+            }
+          ],
+          "name": "isRegisteredLibrary",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint32",
+                  "name": "dstEid",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "receiver",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "message",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "options",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "payInLzToken",
+                  "type": "bool"
+                }
+              ],
+              "internalType": "struct PortalMessagingParams",
+              "name": "params",
+              "type": "tuple"
+            },
+            {
+              "internalType": "address",
+              "name": "sender",
+              "type": "address"
+            }
+          ],
+          "name": "quote",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "nativeFee",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "lzTokenFee",
+                  "type": "uint256"
+                }
+              ],
+              "internalType": "struct PortalMessagingFee",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint32",
+                  "name": "dstEid",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "receiver",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "message",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "options",
+                  "type": "bytes"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "payInLzToken",
+                  "type": "bool"
+                }
+              ],
+              "internalType": "struct PortalMessagingParams",
+              "name": "params",
+              "type": "tuple"
+            },
+            {
+              "internalType": "address",
+              "name": "refundAddress",
+              "type": "address"
+            }
+          ],
+          "name": "send",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "guid",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "nonce",
+                  "type": "uint64"
+                },
+                {
+                  "components": [
+                    {
+                      "internalType": "uint256",
+                      "name": "nativeFee",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "lzTokenFee",
+                      "type": "uint256"
+                    }
+                  ],
+                  "internalType": "struct PortalMessagingFee",
+                  "name": "fee",
+                  "type": "tuple"
+                }
+              ],
+              "internalType": "struct PortalMessagingReceipt",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "lib",
+              "type": "address"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "uint32",
+                  "name": "eid",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "configType",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "bytes",
+                  "name": "config",
+                  "type": "bytes"
+                }
+              ],
+              "internalType": "struct PortalSetConfigParam[]",
+              "name": "params",
+              "type": "tuple[]"
+            }
+          ],
+          "name": "setConfig",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "lib",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "gracePeriod",
+              "type": "uint256"
+            }
+          ],
+          "name": "setReceiveLibrary",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "oapp",
+              "type": "address"
+            },
+            {
+              "internalType": "uint32",
+              "name": "eid",
+              "type": "uint32"
+            },
+            {
+              "internalType": "address",
+              "name": "lib",
+              "type": "address"
+            }
+          ],
+          "name": "setSendLibrary",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol": "IPortalEndpointV2"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol": {
+        "keccak256": "0xdf021522327f71fc74a63392dd86cca7766a2599e732f76a8a2ae9f9eb93e5a4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://82a199e999ce2838b1a5d7ede5b718475243127d45f0493684a644e436cc0170",
+          "dweb:/ipfs/QmYDge7hzpL16rvUPGNjD9g1G7hxDNRoxFgzGaf1a9mjRK"
+        ]
+      },
+      "contracts/src/extensions/privacy/PrivacyKeys.sol": {
+        "keccak256": "0x5b8f20fe689d349759ff39805fd443c43ab633d921d73da4478ceb13f2e6e9f4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://b0b68c7dbe19da5843f860ae79b575ca8ddeda7239cc54db588200117c23da34",
+          "dweb:/ipfs/QmUM4P7aFCCYnNxHEJFDT95LDVU8WjfbbBupzFukqNkhEU"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

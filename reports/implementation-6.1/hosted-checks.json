@@ -1,0 +1,13 @@
+{
+  "schema": "anima.hosted-checks/1",
+  "version": "6.1.0",
+  "assets": 19,
+  "modules": 88,
+  "canonicalFiles": 97,
+  "duplicateIds": 0,
+  "syntax": "passed",
+  "moduleClosure": "passed",
+  "canonicalParity": "passed",
+  "walletGates": "removed",
+  "scope": "Static and source checks; no physical phone or browser interaction claim"
+}

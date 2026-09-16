@@ -1,0 +1,84 @@
+.lp-strategies {
+  display: grid;
+  gap: 1rem;
+}
+.lp-strategies > header h3 {
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  margin: 0.35rem 0;
+}
+.lp-strategies details {
+  border: 1px solid rgba(119, 198, 232, 0.22);
+  border-radius: 16px;
+  background: linear-gradient(
+    145deg,
+    rgba(55, 115, 150, 0.1),
+    rgba(10, 18, 33, 0.22)
+  );
+  padding: 1rem 1.2rem;
+}
+.lp-strategies summary {
+  cursor: pointer;
+  font-weight: 650;
+  letter-spacing: 0.025em;
+  padding: 0.25rem 0;
+}
+.lp-strategies details[open] summary {
+  margin-bottom: 0.85rem;
+  color: #bceaff;
+}
+.lp-strategies .lp-fields {
+  margin: 0.75rem 0;
+}
+.lp-strategies .lp-field {
+  display: grid;
+  gap: 0.4rem;
+  margin: 0.6rem 0;
+}
+.lp-strategies small,
+.lp-strategies .lp-note {
+  color: rgba(215, 231, 244, 0.73);
+  line-height: 1.55;
+}
+.lp-strategies .lp-actions {
+  display: flex;
+  gap: 0.55rem;
+  flex-wrap: wrap;
+  margin: 0.75rem 0;
+}
+.strategy-facts {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid rgba(119, 198, 232, 0.2);
+}
+.strategy-facts > div {
+  display: grid;
+  grid-template-columns: minmax(110px, 1fr) minmax(0, 2fr);
+  gap: 0.8rem;
+  padding: 0.65rem 0;
+  border-bottom: 1px solid rgba(119, 198, 232, 0.13);
+}
+.strategy-facts dt {
+  color: rgba(215, 231, 244, 0.7);
+  text-transform: capitalize;
+}
+.strategy-facts dd {
+  margin: 0;
+  overflow-wrap: anywhere;
+  font-variant-numeric: tabular-nums;
+}
+.lp-strategies button:disabled {
+  opacity: 0.55;
+  cursor: wait;
+}
+@media (max-width: 520px) {
+  .lp-strategies details {
+    padding: 0.8rem;
+  }
+  .lp-strategies .lp-actions > button {
+    flex: 1 1 100%;
+  }
+  .strategy-facts > div {
+    grid-template-columns: 1fr;
+    gap: 0.25rem;
+  }
+}

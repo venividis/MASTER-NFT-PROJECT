@@ -1,0 +1,388 @@
+{
+  "contractName": "WakeExitTask",
+  "sourceName": "contracts/src/extensions/experimental/WakeExitTask.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "vault_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "wake",
+          "type": "address"
+        }
+      ],
+      "name": "Bound",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "wake_",
+          "type": "address"
+        }
+      ],
+      "name": "bind",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "installer",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "task",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "keeper",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "perform",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "receipt",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vault",
+      "outputs": [
+        {
+          "internalType": "contract IWakeExitVault",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vaultCodeHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "wake",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "24513": [
+      {
+        "length": 32,
+        "start": 125
+      },
+      {
+        "length": 32,
+        "start": 992
+      },
+      {
+        "length": 32,
+        "start": 1348
+      },
+      {
+        "length": 32,
+        "start": 1573
+      }
+    ],
+    "24515": [
+      {
+        "length": 32,
+        "start": 694
+      },
+      {
+        "length": 32,
+        "start": 1540
+      }
+    ],
+    "24517": [
+      {
+        "length": 32,
+        "start": 196
+      },
+      {
+        "length": 32,
+        "start": 280
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60e0346100da57601f6107d838819003918201601f19168301916001600160401b038311848410176100de578084926020946040528339810103126100da57516001600160a01b0381168082036100da57813b156100ad576080523f60a0523360c0526040516106e590816100f38239608051818181607d015281816103e0015281816105440152610625015260a0518181816102b60152610604015260c05181818160c401526101180152f35b60405162461bcd60e51b8152602060048201526005602482015264159055531560da1b6044820152606490fd5b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f3560e01c90816302358f99146102fe5750806326080b4e146102d95780637ff79e0f1461029f57806381bac14f146100e8578063b0f9287c146100a55763fbfa77cf1461005e575f80fd5b346100a1575f3660031901126100a15760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b5f80fd5b346100a1575f3660031901126100a15760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100a15760203660031901126100a1576004356001600160a01b038116908181036100a1576001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000163314908161028c575b81610281575b50806101e5575b156101a157807fffffffffffffffffffffffff00000000000000000000000000000000000000005f5416175f557f453252f51cf66f2c547ca2ed4b477a448496fc868fe3692f98620a683fe38cde5f80a2005b606460405162461bcd60e51b815260206004820152600460248201527f42494e44000000000000000000000000000000000000000000000000000000006044820152fd5b506040517f95e2a9b8000000000000000000000000000000000000000000000000000000008152602081600481855afa908115610276575f91610234575b506001600160a01b0316301461014e565b90506020813d60201161026e575b8161024f60209383610660565b810103126100a157516001600160a01b03811681036100a15782610223565b3d9150610242565b6040513d5f823e3d90fd5b90503b151582610147565b5f546001600160a01b0316159150610141565b346100a1575f3660031901126100a15760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100a1575f3660031901126100a15760206001600160a01b035f5416604051908152f35b346100a15760603660031901126100a1576024356001600160a01b0381168091036100a1576044359167ffffffffffffffff83116100a157366023840112156100a15782600401359067ffffffffffffffff82116100a157818401913660248401116100a1576001600160a01b035f5416908133149182610656575b5081610602575b816105f7575b50156105b55750604090839003126100a15760446024830135920135916040516020810190828252846040820152604081526103c4606082610660565b5190206004351480610501575b156104bd576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001691604051937f318b07600000000000000000000000000000000000000000000000000000000085528260048601528060248601526020856044815f885af1908115610276575f91610488575b602095506040519386850195865260408501526060840152608083015260a082015260a0815261047d60c082610660565b519020604051908152f35b90506020853d6020116104b5575b816104a360209383610660565b810103126100a157602094519061044c565b3d9150610496565b606460405162461bcd60e51b815260206004820152600460248201527f5441534b000000000000000000000000000000000000000000000000000000006044820152fd5b506040517f81d961e40000000000000000000000000000000000000000000000000000000081528160048201528360248201526020816044816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa908115610276575f9161057a575b506103d1565b90506020813d6020116105ad575b8161059560209383610660565b810103126100a1575180151581036100a15784610574565b3d9150610588565b8062461bcd60e51b6064925260206004820152600660248201527f43414c4c455200000000000000000000000000000000000000000000000000006044820152fd5b604091501485610387565b7f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03163f149150610381565b151591508661037a565b90601f8019910116810190811067ffffffffffffffff82111761068257604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffdfea26469706673582212200780bf46b7d797cff66d5d175f02ab2334eaba7c374d57c57506c29882413cf464736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c90816302358f99146102fe5750806326080b4e146102d95780637ff79e0f1461029f57806381bac14f146100e8578063b0f9287c146100a55763fbfa77cf1461005e575f80fd5b346100a1575f3660031901126100a15760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b5f80fd5b346100a1575f3660031901126100a15760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100a15760203660031901126100a1576004356001600160a01b038116908181036100a1576001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000163314908161028c575b81610281575b50806101e5575b156101a157807fffffffffffffffffffffffff00000000000000000000000000000000000000005f5416175f557f453252f51cf66f2c547ca2ed4b477a448496fc868fe3692f98620a683fe38cde5f80a2005b606460405162461bcd60e51b815260206004820152600460248201527f42494e44000000000000000000000000000000000000000000000000000000006044820152fd5b506040517f95e2a9b8000000000000000000000000000000000000000000000000000000008152602081600481855afa908115610276575f91610234575b506001600160a01b0316301461014e565b90506020813d60201161026e575b8161024f60209383610660565b810103126100a157516001600160a01b03811681036100a15782610223565b3d9150610242565b6040513d5f823e3d90fd5b90503b151582610147565b5f546001600160a01b0316159150610141565b346100a1575f3660031901126100a15760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100a1575f3660031901126100a15760206001600160a01b035f5416604051908152f35b346100a15760603660031901126100a1576024356001600160a01b0381168091036100a1576044359167ffffffffffffffff83116100a157366023840112156100a15782600401359067ffffffffffffffff82116100a157818401913660248401116100a1576001600160a01b035f5416908133149182610656575b5081610602575b816105f7575b50156105b55750604090839003126100a15760446024830135920135916040516020810190828252846040820152604081526103c4606082610660565b5190206004351480610501575b156104bd576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001691604051937f318b07600000000000000000000000000000000000000000000000000000000085528260048601528060248601526020856044815f885af1908115610276575f91610488575b602095506040519386850195865260408501526060840152608083015260a082015260a0815261047d60c082610660565b519020604051908152f35b90506020853d6020116104b5575b816104a360209383610660565b810103126100a157602094519061044c565b3d9150610496565b606460405162461bcd60e51b815260206004820152600460248201527f5441534b000000000000000000000000000000000000000000000000000000006044820152fd5b506040517f81d961e40000000000000000000000000000000000000000000000000000000081528160048201528360248201526020816044816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa908115610276575f9161057a575b506103d1565b90506020813d6020116105ad575b8161059560209383610660565b810103126100a1575180151581036100a15784610574565b3d9150610588565b8062461bcd60e51b6064925260206004820152600660248201527f43414c4c455200000000000000000000000000000000000000000000000000006044820152fd5b604091501485610387565b7f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03163f149150610381565b151591508661037a565b90601f8019910116810190811067ffffffffffffffff82111761068257604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffdfea26469706673582212200780bf46b7d797cff66d5d175f02ab2334eaba7c374d57c57506c29882413cf464736f6c634300081e0033",
+  "methodIdentifiers": {
+    "bind(address)": "81bac14f",
+    "installer()": "b0f9287c",
+    "perform(bytes32,address,bytes)": "02358f99",
+    "vault()": "fbfa77cf",
+    "vaultCodeHash()": "7ff79e0f",
+    "wake()": "26080b4e"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "vault_",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "wake",
+              "type": "address"
+            }
+          ],
+          "name": "Bound",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "wake_",
+              "type": "address"
+            }
+          ],
+          "name": "bind",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "installer",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "task",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "keeper",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "name": "perform",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "receipt",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "vault",
+          "outputs": [
+            {
+              "internalType": "contract IWakeExitVault",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "vaultCodeHash",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "wake",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Exclusivity covers this adapter. An underlying permissionless vault remains callable directly; this seat cannot suppress those routes and makes no MEV-exclusivity promise.",
+        "kind": "dev",
+        "methods": {
+          "perform(bytes32,address,bytes)": {
+            "details": "Implementations must require msg.sender == their authorized Wake deployment. No root account permission, token approval, native value or caller-selected target is sent."
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Concrete Wake job adapter for the existing vested-exit vault.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/experimental/WakeExitTask.sol": "WakeExitTask"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/experimental/ExperimentalLedger.sol": {
+        "keccak256": "0x769fe0a7ff0ab098d7f3a14519d6cd5732605316e3094e0708fa4c21027f83d4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://da8b57092d8b0524a9f49343525728dced7d0b82eb4f36955340776b2f773ab6",
+          "dweb:/ipfs/QmXDVtcFaE3y5QLrNxjfBaCLz73V2hxmNGBf6FYkvp1Kad"
+        ]
+      },
+      "contracts/src/extensions/experimental/Wake.sol": {
+        "keccak256": "0x0a119379ac59c1d5fd90533183e5ccab0bd554acf3fdddbffef4e31af0ed4710",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://02a165f434332d787c8e4d3eff7e3fbbc54b1e84e6064a5597e5acabf1057805",
+          "dweb:/ipfs/QmYUXs8GBjvHRry44BcmsxRmZHSMJbPT98VmYuaM918jmc"
+        ]
+      },
+      "contracts/src/extensions/experimental/WakeExitTask.sol": {
+        "keccak256": "0x87c799a727441467474d2e5689a9e4252fd8f829fccd6dbbb7e6c7e3cdf514f9",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://81a7621202b87d4582c2817ee421b96fd5c7962917ede965070300bcfcd7f9cb",
+          "dweb:/ipfs/QmZRD2BDhCev3Uqoh45RFanQo4cx1f77dPe685TdSHF7ef"
+        ]
+      },
+      "contracts/src/operating/ExperimentalAdapters.sol": {
+        "keccak256": "0x60229b8e5f5359d65cc872a5a99b992c4a9f5df3c2ef2ec79f427f14de5d00a8",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://bb774e51f40ed12dce2aa87db7ff26e6a2ad00456650b6e154d12a1dcb9f988e",
+          "dweb:/ipfs/QmWLWwBweqytd9gR5rCngp9cVtQJmG6M5bCn64xm9Fvz11"
+        ]
+      },
+      "contracts/src/operating/OperatingInterfaces.sol": {
+        "keccak256": "0x6df7c29abfd8e566180eef689dfc6289a37317e46c2c6ab65b6d73198b3124ba",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0eeedcf0d4e2b2a6375af6fa908e9fec3f90d4f952c71866bfbd99e921ca5e37",
+          "dweb:/ipfs/QmVLwzBzMtfKsABHVq6VroNQfAem1kTyfDxToVJrrtgWCA"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

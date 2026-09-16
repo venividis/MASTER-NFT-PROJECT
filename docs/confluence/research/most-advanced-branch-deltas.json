@@ -1,0 +1,45 @@
+[
+  {
+    "ref": "origin/claude/advanced-3d-nft-gui-6490lk",
+    "sha": "ef1b0e3ac65cf7bf3c75b023ee4043515384cff2",
+    "date": "2026-08-23T15:00:22-07:00",
+    "subject": "The repository learns to explain itself, speak across chains, and open its doors",
+    "diff_from_default": []
+  },
+  {
+    "ref": "origin/claude/claude-md-docs-8vvyc8",
+    "sha": "8fe69315258532ed90ccc1722d6c343050531ad7",
+    "date": "2026-08-24T04:34:55Z",
+    "subject": "A message from another chain renders in the console, labeled and live",
+    "diff_from_default": [
+      "M\tCONSOLE.md",
+      "M\tDEPLOYMENTS.md",
+      "M\tINTERFACE.md",
+      "M\tINVARIANTS.md",
+      "M\tOMNICHAIN.md",
+      "M\tdeployments/base-sepolia.json",
+      "M\tengine/console-lanes.js",
+      "M\tsrc/ConsoleRead.sol",
+      "M\tsrc/PageConsole.sol",
+      "M\ttools/redeploy-site.mjs",
+      "M\ttools/site.mjs",
+      "M\ttools/verify-console.mjs"
+    ]
+  },
+  {
+    "ref": "origin/idfbi-isolated-ci-20260904",
+    "sha": "2779d97b315a5da80ceab5b5262ba392c876de69",
+    "date": "2026-09-04T15:02:36-07:00",
+    "subject": "Run the isolated IDFBI Foundry verification payload",
+    "diff_from_default": [
+      "A\t.github/workflows/idfbi-isolated-ci.yml",
+      "A\t.idfbi-ci/payload.00",
+      "A\t.idfbi-ci/payload.01",
+      "A\t.idfbi-ci/payload.02",
+      "A\t.idfbi-ci/payload.03",
+      "A\t.idfbi-ci/payload.04",
+      "A\t.idfbi-ci/payload.05",
+      "A\t.idfbi-ci/payload.06"
+    ]
+  }
+]

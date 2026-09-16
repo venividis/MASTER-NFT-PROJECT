@@ -1,0 +1,87 @@
+{
+  "scope": "Source text and import path checks only; not parsed or executed Solidity",
+  "sourceFiles": 40,
+  "preparedCompiler": "0.8.30",
+  "target": "cancun",
+  "passed": 19,
+  "checks": [
+    {
+      "name": "Cell rejects root and self adapters",
+      "passed": true
+    },
+    {
+      "name": "Cell has explicit ownership-epoch permission",
+      "passed": true
+    },
+    {
+      "name": "Cell exact token allowances reset",
+      "passed": true
+    },
+    {
+      "name": "Cell output balance minimum checked",
+      "passed": true
+    },
+    {
+      "name": "Cell current controller cannot bypass sovereign owner policy",
+      "passed": true
+    },
+    {
+      "name": "Cell root identity rechecked after callback",
+      "passed": true
+    },
+    {
+      "name": "Cell snapshot mandatory regardless roster contents",
+      "passed": true
+    },
+    {
+      "name": "Index includes remote counterparty changes in the cell",
+      "passed": true
+    },
+    {
+      "name": "Index roster bounded",
+      "passed": true
+    },
+    {
+      "name": "Exchange pre/post callback inventory checks",
+      "passed": true
+    },
+    {
+      "name": "Exchange checks account nonce and instrument revision",
+      "passed": true
+    },
+    {
+      "name": "Gift construction does not require a presealed ledger",
+      "passed": true
+    },
+    {
+      "name": "Gift calls still require sealed matching modules",
+      "passed": true
+    },
+    {
+      "name": "Instrument router construction breaks seal cycle",
+      "passed": true
+    },
+    {
+      "name": "Instrument router execution refuses unsealed module sets",
+      "passed": true
+    },
+    {
+      "name": "Grant binds exact calldata and custody epoch",
+      "passed": true
+    },
+    {
+      "name": "Account can receive external collectibles without accepting root safe-nesting",
+      "passed": true
+    },
+    {
+      "name": "No arbitrary code execution in local operating engine",
+      "passed": true
+    },
+    {
+      "name": "Original layer preservation manifest exists",
+      "passed": true
+    }
+  ],
+  "compilerInputSha256": "fe89a43ae5cbdca1fc7e39337ed36e6996ee7fccfa2a1c6a0ce2727b45d22414",
+  "compilationPerformed": false
+}

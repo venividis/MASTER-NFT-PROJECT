@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "scope": "Bundled browser cryptography executed in Node VM; no network or browser automation; no funded ZK transaction",
+  "checks": [
+    "Real SDK private wallet derivation",
+    "Encrypted wallet mnemonic round trip",
+    "Same address restored into a new volatile database",
+    "Real SDK encrypted return notes for multiple future ERC20 addresses",
+    "Canonical RelayAdapt ABI encodes a require-success inner multicall and zero-value full-balance shields"
+  ],
+  "versions": {
+    "wallet": "10.9.0",
+    "engine": "9.6.0",
+    "snarkjs": "0.7.6"
+  }
+}

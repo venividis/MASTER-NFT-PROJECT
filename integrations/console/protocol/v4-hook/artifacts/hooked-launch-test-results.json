@@ -1,0 +1,16 @@
+{
+  "status": "passed",
+  "environment": "Disposable local Anvil Cancun chain 31337 with pinned real Uniswap v4 PoolManager and V4Quoter; no external transactions",
+  "scenarios": 7,
+  "hookFlags": "0x00c8",
+  "saltMiningAttempts": 58646,
+  "passed": [
+    "Browser unsigned builders deploy the separate factory, splitter, CREATE2 factory and correctly flagged known hook; runtime/manager/owner verification and mining cancellation work.",
+    "Human quote-per-token ranges map to address-sorted ticks; a single launch creates its predicted fixed-supply token, initializes and funds a genuine hook pool, assigns redeemable LP shares and refunds unused budgets; reused salts, invalid hooks and underfunded launches reject atomically.",
+    "Real v4 quoter calls with bounded hookData prepare both swap directions; swaps debit gross input, return output and accrue exact fee claims backed by PoolManager ERC6909 balances.",
+    "A fee increase beyond the user-signed swap cap rejects before funds move; nonowners cannot configure the hook.",
+    "Anyone can flush only to the recorded splitter; the configured 3:1 split conserves funds, each beneficiary claims only their own amount, later weight changes preserve existing claims and hook allowances are cleared.",
+    "Changing a fee route preserves prior hook accrual buckets; direct-recipient flushes pay only that beneficiary, while old splitter accrual follows weights current at flush time.",
+    "Hooked liquidity remains represented by the unchanged transferable position shares; separate holders redeem their principal plus ordinary LP fees, and nonholders cannot withdraw."
+  ]
+}

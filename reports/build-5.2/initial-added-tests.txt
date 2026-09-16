@@ -1,0 +1,50 @@
+✔ every chamber is a finite reachable viewpoint, distinct origins change architecture (61.912996ms)
+✔ free flight remains bounded under long and diagonal input, input is frame-rate stable (19.139396ms)
+✖ guided travel takes the short yaw path and reduced motion arrives immediately (0.995359ms)
+✔ perspective projection clips points behind the camera and keeps the central source visible (0.201553ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/86e81b3cd436/Anima-Genesis/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/86e81b3cd436/Anima-Genesis/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ live desk settles native/token swaps, atomic journaled fills, real locks, personal memories and NFT messages (10320.60229ms)
+✔ live desk rejects foreign modules, invalid minima, unconsented publication and changed custody reviews (3890.204887ms)
+✔ disconnect during preparation cannot restore a stale spend review; reconnect failure closes old authority (0.953397ms)
+ℹ tests 7
+ℹ suites 0
+ℹ pass 6
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 14502.87535
+
+✖ failing tests:
+
+test at test/genesis/interior.test.mjs:21:1
+✖ guided travel takes the short yaw path and reduced motion arrives immediately (0.995359ms)
+  AssertionError [ERR_ASSERTION]: Expected values to be strictly equal:
+  + actual - expected
+
+  + -0.8915368246663267
+  - -0.8915368246663268
+                      ^
+
+      at TestContext.<anonymous> (file:///workspace/scratch/86e81b3cd436/genesis-source/test/genesis/interior.test.mjs:24:86)
+      at Test.runInAsyncScope (node:async_hooks:227:14)
+      at Test.run (node:internal/test_runner/test:1382:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:960:18)
+      at Test.postRun (node:internal/test_runner/test:1522:19)
+      at Test.run (node:internal/test_runner/test:1447:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:960:7) {
+    generatedMessage: true,
+    code: 'ERR_ASSERTION',
+    actual: -0.8915368246663267,
+    expected: -0.8915368246663268,
+    operator: 'strictEqual',
+    diff: 'simple'
+  }

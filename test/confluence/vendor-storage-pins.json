@@ -1,0 +1,5 @@
+{
+  "contracts/src/confluence/vendor/solady/tokens/ERC1155.sol": "0a03cac293e41267dde8d525281046ede2eb0d3481b2b913946e728831fb1ae8",
+  "contracts/src/confluence/vendor/solady/tokens/ERC721.sol": "e6e83b87598b230481b1ec764c440f1443cfc6e50f9b2b37a16dc894715b0676",
+  "contracts/src/confluence/vendor/solady/utils/ReentrancyGuard.sol": "aeeda18221419e3409255c6505e0eb78fe13e3bd8329663cfa56a0316a970eaf"
+}

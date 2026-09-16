@@ -1,0 +1,8 @@
+{
+  "consistent": true,
+  "receipts": 5,
+  "head": "0x6822f095a961a764d26fed8e8aeb85d9acfbea3b7dbc2fed4d9ba0c862aa2ced",
+  "state": "0x3c4765a943c326456a9d7a35b95020681c9eedc466e398a9de4e84d73c3e29cb",
+  "mode": "sovereign",
+  "guarantee": "Unsigned browser-state consistency only. No authenticity, ZK, TEE, or onchain finality."
+}

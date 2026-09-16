@@ -1,0 +1,1281 @@
+{
+  "schema": "awe.confluence/system-architecture/2",
+  "version": "6.1.0",
+  "identity": {
+    "kind": "preserved-custom-NFT-account",
+    "canonicalERC6551Compliance": false,
+    "originalSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6"
+  },
+  "execution": {
+    "browser": "Source-verified wallet/NFT execution with explicit review and receipt recovery; local economic models have separate rehearsal routes.",
+    "solidity": "Compiler and contract sizes are recorded in reports/contract-sizes.json; no public deployment is implied.",
+    "evmTested": "See docs/CAPABILITIES-6.1.md and the release validation records. Local EVM execution does not establish public Ethereum deployment.",
+    "deployment": null,
+    "liveWalletAdapter": true,
+    "chainId": null,
+    "independentAudit": false
+  },
+  "separation": [
+    "published content",
+    "current-custody authority",
+    "fixed counterparty obligations",
+    "historical authorship",
+    "main account assets",
+    "explicitly funded laboratory cell",
+    "personal encrypted bodies and keys",
+    "admitted activity-only visual projection",
+    "dedicated funded vesting-exit escrow",
+    "independently encrypted mint EOA per project"
+  ],
+  "activation": {
+    "allLiveAddresses": null,
+    "experimentalDefault": "closed",
+    "sourceGateAllowlistedChainIds": [
+      31337,
+      84532,
+      11155111
+    ],
+    "newRiskGateDoesNotDisableExits": true,
+    "jurisdictionEligibilityImplemented": false,
+    "mainnetEnablement": false,
+    "sourceVersionRequiresNewDeployment": true,
+    "cellOnlyAdmissionEnforcedAtModuleContract": false,
+    "isolationScope": "cell route; generic Bound owner execution and independent direct module calls remain possible",
+    "independentMintWalletChains": [
+      1,
+      11155111,
+      31337,
+      1337
+    ],
+    "liveExitKeeperConfigured": false,
+    "supportedPublicWalletNetworks": [
+      1,
+      42161,
+      137
+    ],
+    "mainnetEnablementMeaning": "No deployed public release is attested by this source manifest."
+  },
+  "moduleUniverse": {
+    "immutable": true,
+    "maximumCommitmentAdapters": 16,
+    "mandatoryCellInventory": true,
+    "includeBothRootAndCellClaims": true,
+    "unknownExternalLiabilitiesDiscovered": false,
+    "untrackedApprovalsRevokedBySeal": false
+  },
+  "modules": [
+    {
+      "id": "launch",
+      "label": "Token launches, community sales and streaming auctions",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "dependencies": [
+        "compatible deployed mechanism contracts",
+        "connected signing wallet",
+        "funded wallet or verified NFT account for compatible v4 operations",
+        "private services and shielded funds when selected"
+      ],
+      "authority": "The signing wallet approves each call. Compatible v4 launches, swaps and redemptions can use the verified NFT account; community and auction participant actions use the signing wallet.",
+      "privacy": "Public launch outputs and economics. Optional shielded funding for supported v4 launches, including configured creator hooks; community contributions and auction bids remain public.",
+      "exit": "v4 LP redemption; community withdrawal before close and failure refunds; auction cancellation of unfilled bids and pull claims",
+      "economics": "Separate mechanisms: immediate v4 liquidity, proportional community settlement in NativeMarket, and ANIMA streaming lots. Not interchangeable and not official Uniswap CCA.",
+      "explanation": "Create and fund a token market, run a community raise, or release auction lots. Participants can open an exact launch link, read terms, contribute and claim through their wallets.",
+      "sources": [
+        "web/launchpad/desk.mjs",
+        "web/launchpad/chain.mjs",
+        "web/launchpad/account-session.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/participant.mjs",
+        "integrations/console/protocol/v4-hook/src/GenesisV4Launchpad.sol",
+        "integrations/console/protocol/v4-hook/src/GenesisV4HookLaunchpad.sol",
+        "contracts/src/protocol/GenesisLaunchpad.sol"
+      ],
+      "limitations": "Local contract transactions and interface tests are evidence of implementation, not public deployment. Immediate v4 retained tokens are not automatically vested; LP shares remain redeemable. Official CCA/Doppler strategies and automatic auction-to-DEX migration are not integrated.",
+      "entrance": "Launch → Create / My launches / Community / Auctions / Fee streams / Private wallet / Setup",
+      "route": "launch"
+    },
+    {
+      "id": "swap",
+      "label": "v4 swap with explicit funding privacy",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "dependencies": [
+        "compatible PoolManager and router",
+        "actual quote provider",
+        "signing wallet or funded private wallet",
+        "RAILGUN services when private"
+      ],
+      "authority": "Reviewed exact input, minimum output, deadline and selected funding account. No silent public fallback.",
+      "privacy": "User selects public or shielded execution; the underlying pool and trading activity remain public.",
+      "exit": "atomic revert; no post-swap undo",
+      "economics": "Primary Swap opens the actual v4 desk. The advanced NativeMarket journal route is a distinct mechanism.",
+      "explanation": "Choose tokens, an amount and your privacy route, then inspect the real transaction before signing or proving it.",
+      "sources": [
+        "web/v4/desk.mjs",
+        "web/v4/client.mjs",
+        "web/privacy/bridge.mjs",
+        "packages/privacy/src/runtime.mjs"
+      ],
+      "limitations": "Private execution requires synchronized shielded funds and configured services. Automatic output locking is not included in every v4 swap route.",
+      "entrance": "Swap → public/private execution choice",
+      "route": "v4"
+    },
+    {
+      "id": "gift",
+      "label": "Consent-based future gift",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "sealed ledger",
+        "market",
+        "vault"
+      ],
+      "authority": "donor funds; recipient accepts; fixed beneficiary",
+      "privacy": "public",
+      "exit": "donor recall until acceptance; permissionless expiry return; no early exit after acceptance",
+      "explanation": "Put aside a gift for someone. They choose whether to accept it, and you choose when it becomes available.",
+      "sources": [
+        "contracts/src/instruments/ConsentGiftRouter.sol"
+      ]
+    },
+    {
+      "id": "marketplace",
+      "label": "Declared-content artifact sale",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "account",
+        "exchange",
+        "vault",
+        "immutable commitment index",
+        "edition and account revision",
+        "known root and cell obligations"
+      ],
+      "authority": "escrow and two inventory checks",
+      "privacy": "public",
+      "exit": "cancel listing; no reversal of completed purchase",
+      "limitations": "Bounded declared module universe, not discovery of all external liabilities. Local exact hashes differ from contract predicates.",
+      "explanation": "Sell the main NFT together with the belongings and promises that its configured inventory knows about.",
+      "sources": [
+        "contracts/src/kingdom/EstateExchange.sol"
+      ]
+    },
+    {
+      "id": "world",
+      "label": "Commons: encrypted conversations and public rooms",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "dependencies": [
+        "PrivacyKeys and EpochGroupChat for encrypted conversations",
+        "WorldLedger and NFT account for public rooms"
+      ],
+      "authority": "Encrypted chat identity is the signing wallet and its encryption key. Public-room writes use verified NFT account authority.",
+      "privacy": "Encrypted group contents; group metadata remains public. The separate public-room route publishes readable text.",
+      "exit": "leave/mute without deleting others' history",
+      "explanation": "Open private conversations directly, discover invitations and groups, or deliberately enter clearly marked public rooms.",
+      "sources": [
+        "web/commons/desk.mjs",
+        "web/commons/client.mjs",
+        "web/extensions/privacy.mjs",
+        "web/genesis/live-protocol.mjs"
+      ],
+      "limitations": "Only the encrypted conversation route protects message contents. PrivacyKeys/EpochGroupChat and registered encryption identities must be configured; no memory-handover contract is required just for chat.",
+      "entrance": "Commons → Conversations / Encryption keys / Setup; Public rooms ↗",
+      "route": "commons"
+    },
+    {
+      "id": "cca",
+      "label": "Continuous clearing auction",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Keep a standing bid while new sale inventory is released. Claim purchased tokens and recover unused bids.",
+      "sources": [
+        "contracts/src/extensions/markets/ContinuousClearingAuction.sol",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/desk.mjs",
+        "web/launchpad/participant.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Independent ANIMA uniform-price streaming mechanism with 64 standing orders. No Uniswap CCA compliance or automatic liquidity migration.",
+      "entrance": "Launch → Auctions",
+      "route": "launch"
+    },
+    {
+      "id": "private-agent",
+      "label": "Encrypted memory handover",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Encrypt an agent memory for its recipient. They decrypt and verify it before accepting the NFT in one transaction.",
+      "sources": [
+        "contracts/src/extensions/privacy/PrivateMemoryHandover.sol",
+        "web/extensions/privacy.mjs",
+        "web/extensions/privacy/desk.mjs"
+      ],
+      "dependencies": [
+        "PrivacyKeys and PrivateMemoryHandover",
+        "compatible NFT collection",
+        "registered sender and recipient keys",
+        "exact NFT approval and recipient signature"
+      ],
+      "authority": "The current NFT owner proposes; the addressed recipient decrypts, verifies and explicitly accepts. Sale alone never transfers the private key.",
+      "limitations": "Recipient-confirmed content verification, not ERC-7857 or zero-knowledge handover. Old content may remain with the seller.",
+      "entrance": "Atlas → Advanced → Specialist instruments → Private communication"
+    },
+    {
+      "id": "agent-execution",
+      "label": "Continuous scoped agent",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Let a running operator repeat an exact owner-approved action with a spending limit, waiting time and expiry.",
+      "sources": [
+        "contracts/src/extensions/agents/AgentPolicyGuard.sol",
+        "web/extensions/agents.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "configured local or hosted service"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Bound-account scoped operator. Arbitrary autonomous decision-making and Sovereign-mode proof generation are not supplied.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "omnichain",
+      "label": "Authenticated cross-chain witnesses",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Carry an NFT state observation through a sealed authenticated route without granting remote spending power.",
+      "sources": [
+        "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol",
+        "web/extensions/privacy.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Requires real LayerZero endpoints, explicit DVNs/libraries/executor configuration and peer deployments. Tests use local endpoint doubles.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "private-chat",
+      "label": "Encrypted group chat",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Discover your groups and invitations, accept membership, restore encrypted history, rotate group keys, and encrypt each message before wallet review.",
+      "sources": [
+        "contracts/src/extensions/privacy/PrivacyKeys.sol",
+        "contracts/src/extensions/privacy/EpochGroupChat.sol",
+        "web/extensions/privacy.mjs",
+        "web/commons/client.mjs",
+        "web/commons/desk.mjs"
+      ],
+      "dependencies": [
+        "verified PrivacyKeys and EpochGroupChat, or wallet-signed deployment",
+        "registered wallet encryption public key",
+        "matching encryption key or encrypted backup",
+        "wallet gas"
+      ],
+      "authority": "Wallet-signed recipient consent and manager-controlled membership/rotation. NFT sale never transfers chat keys or history.",
+      "limitations": "Up to 32 members. Custom P-256/HKDF/AES-GCM epoch protocol, not MLS or forward secrecy. Members retain previously decrypted contents; long-term recipient-key compromise can expose historical packages. Membership, sender, timing and approximate size remain public.",
+      "entrance": "Commons → Conversations / Encryption keys / Setup",
+      "privacy": "Plaintext and private keys stay in the private browser surface; only encrypted packages and padded ciphertext reach contracts.",
+      "route": "commons"
+    },
+    {
+      "id": "public-goods",
+      "label": "Funded public-goods matching",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Add a funded matching pot to capped contributions and pay each project its calculated share.",
+      "sources": [
+        "contracts/src/extensions/markets/PublicGoodsMatching.sol",
+        "web/extensions/markets.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "A disclosed immutable registrar attests unique people; this does not cryptographically eliminate Sybil identities or collusion.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "sponsored-actions",
+      "label": "Sponsored account actions",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Have a relayer pay transaction gas using an exact owner-and-sponsor signed request and the sponsor’s funded budget.",
+      "sources": [
+        "contracts/src/extensions/access/SessionSponsor.sol",
+        "web/extensions/access.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Native account-session relay, not an ERC-4337 paymaster. Capped reimbursement with fixed overhead may not cover the relayer’s whole cost.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "library",
+      "label": "Publish, adopt and grant an instrument",
+      "tier": "core",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "edition registry",
+        "custody epoch",
+        "finite router"
+      ],
+      "authority": "Public code is not permission. Seven-day adoption; exact caller, calldata, target, per-call/lifetime ceiling and expiry.",
+      "exit": "Immediate revocation; custody change invalidates grant.",
+      "limitations": "Local recipes include the existing action vocabulary. Dedicated onchain router implements swap/direct lock; no arbitrary bytecode or AI executor.",
+      "explanation": "Publish an instrument recipe, adopt an edition, and separately give an exact, limited permission to use funds.",
+      "sources": [
+        "contracts/src/operating/EditionRegistry.sol",
+        "contracts/src/operating/InstrumentRouter.sol"
+      ]
+    },
+    {
+      "id": "commission",
+      "label": "Prefunded work and acceptance",
+      "tier": "core",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "commission escrow",
+        "fixed reviewer",
+        "deliverable hash"
+      ],
+      "authority": "Worker accepts a fixed personal reviewer and deadline/refund policy. Selling the NFT does not change either person.",
+      "exit": "Payment on acceptance or refund after rejection/timeout.",
+      "limitations": "Human judgment is not verified task correctness. No appeals or automatic compensation. Source stores a deliverable digest; local model additionally binds its edition author.",
+      "explanation": "Set aside a fixed payment for a job, choose the worker and reviewer, and pay or refund after the decision or deadline.",
+      "sources": [
+        "contracts/src/operating/CommissionEscrow.sol"
+      ]
+    },
+    {
+      "id": "shelves",
+      "label": "Artifact-owned bonded sell shelves",
+      "tier": "core",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "item custody",
+        "fixed ask",
+        "fixed bond"
+      ],
+      "authority": "Item and proceeds held separately; market operating rights follow the artifact.",
+      "exit": "After fixed bond, return unsold item or withdraw proceeds.",
+      "limitations": "One fixed-price sell shelf; not a buy wall, two-sided AMM or a whole-artifact exchange. Rehearsal collectibles are fictional.",
+      "explanation": "Put one item on a fixed-price shelf. Later collect the sale money or take back the unsold item after its waiting period.",
+      "sources": [
+        "contracts/src/operating/BondedShelf.sol"
+      ]
+    },
+    {
+      "id": "commitments",
+      "label": "Commitment-aware artifact exchange",
+      "tier": "core",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "module adapters",
+        "cell factory",
+        "pre/post transfer checks"
+      ],
+      "authority": "Listing commits to known gifts, grants, work, cells, venues and schedules.",
+      "exit": "Seller refreshes a changed manifest; old buyer review cannot execute.",
+      "limitations": "New deployments and explicit configuration required. Old immutable accounts and exchanges are unchanged.",
+      "explanation": "Inspect the promises attached to an NFT before selling it. The sale checks the configured promises again.",
+      "sources": [
+        "contracts/src/operating/CommitmentIndex.sol"
+      ]
+    },
+    {
+      "id": "granary",
+      "label": "Strategy-share conversion",
+      "tier": "experimental",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "isolated cell",
+        "reviewed ERC-4626 vault",
+        "minimum outputs"
+      ],
+      "authority": "Only explicitly funded cell assets; recipient pinned to that cell.",
+      "exit": "Redeem subject to the underlying strategy; no promise of liquidity.",
+      "limitations": "Local model is not a live strategy and promises no yield. External vault solvency remains separate.",
+      "explanation": "An experimental adapter exchanges assets for shares in a chosen vault. It cannot promise profits or instant withdrawal.",
+      "sources": [
+        "contracts/src/operating/ExperimentalAdapters.sol"
+      ]
+    },
+    {
+      "id": "issue",
+      "label": "Fixed basket issuance",
+      "tier": "experimental",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "isolated cell",
+        "two supported assets",
+        "ceil/floor accounting"
+      ],
+      "authority": "Round deposits up and redemptions down; measure exact receipts.",
+      "exit": "Redeem shares against specified backing.",
+      "limitations": "Not the original underfunded Issue implementation. Simplified two-asset basket; source dust has a fixed beneficiary.",
+      "explanation": "An experimental two-asset basket lets people deposit the required ingredients and redeem shares for backing.",
+      "sources": [
+        "contracts/src/operating/ExperimentalAdapters.sol"
+      ]
+    },
+    {
+      "id": "strips",
+      "label": "Matched principal / income study",
+      "tier": "experimental",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "isolated cell",
+        "matched share accounting"
+      ],
+      "authority": "Proportional recombination of matched pairs including losses.",
+      "exit": "Return proportional remaining backing; no nominal-principal priority.",
+      "limitations": "Not separately tradable principal/yield tokens or a live yield market.",
+      "explanation": "An experimental accounting study separates matched claims and recombines them against the remaining backing.",
+      "sources": [
+        "contracts/src/operating/ExperimentalAdapters.sol"
+      ]
+    },
+    {
+      "id": "counter",
+      "label": "Negotiated collateralized credit",
+      "tier": "experimental",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "isolated cell",
+        "escrow collateral",
+        "fixed dates"
+      ],
+      "authority": "Named parties, collateral and exact repayment; no oracle or root-NFT pawn authority.",
+      "exit": "Repay before due; collateral to lender at/after default deadline.",
+      "limitations": "Not flash liquidity, dynamic liquidation, unrestricted lending or a safety endorsement.",
+      "explanation": "An experimental loan agreement records the lender, borrower, collateral, repayment amount, and due date.",
+      "sources": [
+        "contracts/src/operating/NegotiatedMarkets.sol"
+      ]
+    },
+    {
+      "id": "scrivener",
+      "label": "Physically covered calls",
+      "tier": "experimental",
+      "state": "LOCAL_AND_COMPILED_SOURCE",
+      "dependencies": [
+        "isolated cell",
+        "escrow cover",
+        "fixed strike/premium"
+      ],
+      "authority": "Full cover at creation; only named holder exercises before expiry.",
+      "exit": "Writer cancellation before sale; unsatisfied expiry returns cover.",
+      "limitations": "No naked options, oracle pricing or promised fair premium.",
+      "explanation": "An experimental covered option reserves the asset first, then gives a named holder the choice to buy before expiry.",
+      "sources": [
+        "contracts/src/operating/NegotiatedMarkets.sol"
+      ]
+    },
+    {
+      "id": "site-editions",
+      "label": "Application-edition commitments",
+      "tier": "core",
+      "state": "LOCAL_ONLY",
+      "dependencies": [
+        "content hash",
+        "byte count",
+        "prepared immutable archive"
+      ],
+      "authority": "Records identify a version; no uploaded program is evaluated.",
+      "exit": "Read-only version history.",
+      "limitations": "The local Applications panel stores commitments. Full immutable application storage is the separate onchain-runtime capability. No public-chain deployment is claimed.",
+      "explanation": "The local Applications panel records a version fingerprint. The separate immutable runtime archive stores the actual application bytes.",
+      "sources": [
+        "web/operating/engine.mjs"
+      ]
+    },
+    {
+      "id": "house",
+      "label": "House leveraged spot positions",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Borrow into an isolated real spot position, repay or sell it, and divide losses by an explicit order.",
+      "sources": [
+        "contracts/src/extensions/experimental/House.sol",
+        "web/extensions/experimental.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Test-network gate; lender-funded isolated spot leverage, not the original pooled synthetic book. Oracle, venue and liquidity are external.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "wager",
+      "label": "Wager outcome markets",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Fund and trade binary outcomes, challenge an answer and reclaim funds if the named authority misses its deadline.",
+      "sources": [
+        "contracts/src/extensions/experimental/Wager.sol",
+        "web/extensions/experimental.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Test-network gate. Question, source, resolver, arbiter and all cutoffs are fixed per market; those authorities can be wrong.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "wake",
+      "label": "Wake keeper windows",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Prepay a keeper seat, compensate a replaced keeper and allow public help when the holder stalls.",
+      "sources": [
+        "contracts/src/extensions/experimental/Wake.sol",
+        "web/extensions/experimental.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Test-network gate. Exclusivity covers the adapter route; underlying permissionless exits remain callable.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "memory",
+      "label": "Decision journal and general memories",
+      "tier": "core",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "dependencies": [
+        "append-only envelope",
+        "exact-plan binding",
+        "actual successful fill",
+        "original authorship"
+      ],
+      "authority": "Writing does not authorize a trade. Reflections belong to the original author; NFT sale does not transfer a decryption key.",
+      "privacy": "Explicit public body or client-encrypted AES-GCM body. Headers and timing are not confidential.",
+      "exit": "Export a complete archive; keep the passphrase separately. No recovery from the discarded original Seal Memory.",
+      "limitations": "Local encrypted journal and configurable public onchain memory desk. Keys do not transfer with the NFT. No funded public deployment is claimed.",
+      "explanation": "Keep a decision or memory, add later reflections, or deliberately publish a public memory to the NFT ledger.",
+      "sources": [
+        "web/memory/engine.mjs",
+        "contracts/src/memory/MemoryLedger.sol",
+        "web/genesis/live-protocol.mjs"
+      ]
+    },
+    {
+      "id": "lived-form",
+      "label": "Activity-shaped optical form",
+      "tier": "presentation",
+      "state": "LOCAL_ONLY",
+      "dependencies": [
+        "admitted local receipts",
+        "versioned bounded reducer",
+        "shared GLSL/Wasm field"
+      ],
+      "authority": "A view projection, not account authority, rarity, reputation or financial value.",
+      "privacy": "No interpretation or display of private words. Optional memory imprint can be omitted; action metadata remain visible.",
+      "exit": "Compare original or inspect an earlier activity layer without undoing actions.",
+      "limitations": "History uses the current base genome. Finite visual parameters are not collision-resistant identity. Full protocol-wide onchain event admission, reorg handling and metadata linkage are not implemented.",
+      "explanation": "Local activity adds a bounded visual layer to the blue object. This decoration grants no extra spending rights.",
+      "sources": [
+        "web/memory/renderer-bridge.js",
+        "web/memory/engine.mjs"
+      ]
+    },
+    {
+      "id": "journal-swap-source",
+      "label": "Atomic onchain journaled swap",
+      "tier": "protocol",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "dependencies": [
+        "MemoryLedger",
+        "JournalSwapRouter",
+        "installed NativeMarket",
+        "NFT account execution",
+        "explicit public-text consent"
+      ],
+      "authority": "Exact nonce, input, minimum output, deadline, temporary allowance and caller-account recipient.",
+      "privacy": "Contract stores full public bytes or supplied ciphertext; it receives no decryption key and cannot certify encryption.",
+      "limitations": "Typed NativeMarket wallet path and local EVM tests exist. The live desk publishes a consented public note; its optional local output-lock model is not an atomic journaled-swap-and-lock route.",
+      "explanation": "Make the trade and write its note in one transaction, so the note cannot claim a trade that failed.",
+      "sources": [
+        "contracts/src/memory/JournalSwapRouter.sol",
+        "web/genesis/live-protocol.mjs"
+      ]
+    },
+    {
+      "id": "vesting-exits",
+      "label": "Vesting exits + decision receipts",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "dependencies": [
+        "funded exit escrow",
+        "compatible market",
+        "separate live executor"
+      ],
+      "authority": "fixed input, per-slice minimum, expiry and NFT recipient; owner epoch bound",
+      "exit": "cancel sales; recover only matured cancelled/expired slices",
+      "limitations": "local clock does not execute; live deployment and keeper not configured",
+      "explanation": "Fund a schedule that sells only eligible matured slices, with your minimum prices and deadline. A running keeper must trigger automatic sales.",
+      "sources": [
+        "contracts/src/protocol/VestedExitVault.sol",
+        "web/exit/live.mjs",
+        "agent/exit-keeper.mjs"
+      ]
+    },
+    {
+      "id": "mint-sanctuary",
+      "label": "Mint sanctuary",
+      "state": "RESTRICTED_WALLET",
+      "dependencies": [
+        "encrypted backup",
+        "trusted Ethereum-model RPC",
+        "supported direct collection mint"
+      ],
+      "authority": "independent EOA, exact reviews, narrow calldata grammar and application budget",
+      "limitations": "cannot observe other browser tabs; exported keys or compromised browser can bypass app caps",
+      "explanation": "Use a separate small wallet for a project mint, with encrypted backup and a review of each supported action.",
+      "sources": [
+        "web/burners/desk.mjs",
+        "web/burners/policy.mjs",
+        "web/burners/vault.mjs"
+      ]
+    },
+    {
+      "id": "original-nft",
+      "label": "Original NFT identity and evolution",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Mint an identity, evolve it, commit a memory, add entropy, create a descendant, or review an irreversible authority change. The original local preview also rehearses these actions.",
+      "sources": [
+        "contracts/src/core/IDontFuckingBelieveIt.sol",
+        "web/model.mjs"
+      ],
+      "dependencies": [
+        "compatible collection",
+        "owner wallet or required verifier"
+      ],
+      "authority": "Ownership and proof rules are enforced by the deployed contracts.",
+      "limitations": "A visually similar projection is possible. The identity digest is authoritative; shared seeds and downloaded app code are public."
+    },
+    {
+      "id": "nft-account",
+      "label": "NFT-controlled account and permissions",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Your NFT can hold assets and execute reviewed calls. Choose NFT funding for compatible v4 launches, swaps and liquidity redemption so their assets belong to the NFT account.",
+      "sources": [
+        "contracts/src/core/SovereignAccount.sol",
+        "web/confluence/wallet.mjs",
+        "web/launchpad/account-session.mjs",
+        "web/launchpad/chain.mjs"
+      ],
+      "dependencies": [
+        "canonical collection account",
+        "current owner"
+      ],
+      "authority": "The current owner signs custody-bound calls; scoped grants and exact temporary allowances do not give arbitrary token access.",
+      "limitations": "Compatible operations require the verified account edition and current custody epoch. Private wallets, burner wallets and chat encryption identities remain separate. Same-collection master-NFT nesting is forbidden.",
+      "entrance": "Launch → Funding account; Atlas → Advanced → Developer console"
+    },
+    {
+      "id": "vault-live",
+      "label": "Cliff and linear token locks",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Put coins in a time box. Open it at one chosen time, or let the available amount grow gradually.",
+      "sources": [
+        "contracts/src/protocol/TimeVault.sol",
+        "web/genesis/live-protocol.mjs"
+      ],
+      "dependencies": [
+        "sealed TimeVault",
+        "owner wallet"
+      ],
+      "authority": "The lock beneficiary and vesting math control releases.",
+      "exit": "Release the matured amount; the interface cannot make an immature amount available."
+    },
+    {
+      "id": "interior",
+      "label": "Blue-object interior and controls",
+      "state": "IMPLEMENTED_BROWSER",
+      "explanation": "Move the camera into and out of the original optical object while retaining the same artwork identity and original turning controls.",
+      "sources": [
+        "web/genesis/interior.mjs",
+        "web/genesis/interior-space.mjs",
+        "web/genesis/interior-gestures.mjs",
+        "web/genesis/interior-kernel.mjs"
+      ],
+      "dependencies": [
+        "compatible browser"
+      ],
+      "limitations": "The original flat glow has an explicit depth continuation. No alternate object is substituted at the surface. Physical phone/browser/wallet interaction verification remains separate from source and renderer tests.",
+      "entrance": "Pinch/spread, wheel or Interior; return through the same scene",
+      "route": "interior"
+    },
+    {
+      "id": "v4-exchange",
+      "label": "v4 swaps, launch and liquidity redemption",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Create a fixed-supply token and a pool, trade through it, and redeem liquidity shares for their available assets.",
+      "sources": [
+        "web/v4/desk.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/desk.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/launchpad/account-session.mjs"
+      ],
+      "dependencies": [
+        "deployed compatible v4 stack",
+        "PoolManager",
+        "quote services",
+        "wallet"
+      ],
+      "authority": "Public wallet or supported NFT-account execution with review; shielded execution uses its separate private wallet.",
+      "privacy": "Public pools, tokens, amounts, fees and timings. Configured private routes shield supported funding/output linkage without guaranteeing anonymity.",
+      "limitations": "Actual local PoolManager execution exists, including creator-hook integration. Public deployment and funded proof/broadcaster end-to-end verification remain outstanding.",
+      "entrance": "Swap; Launch → My launches / Private wallet",
+      "route": "v4"
+    },
+    {
+      "id": "private-wallet",
+      "label": "Encrypted private wallet and recovery",
+      "state": "IMPLEMENTED_BROWSER",
+      "explanation": "Unlock a separate private wallet, preserve an encrypted backup, inspect shielded funds and prepare supported private operations.",
+      "sources": [
+        "web/privacy/vault.mjs",
+        "web/privacy/bridge.mjs",
+        "web/v4/desk.mjs"
+      ],
+      "dependencies": [
+        "browser cryptography",
+        "separately saved recovery backup"
+      ],
+      "privacy": "Recovery keys and plaintext notes stay offchain. Screen concealment is a separate display control, not transaction privacy.",
+      "limitations": "Locking does not cancel a transaction already broadcast or erase data retained by another application.",
+      "entrance": "Launch → Private wallet; Atlas → Private wallet",
+      "route": "privacy"
+    },
+    {
+      "id": "shielded-execution",
+      "label": "Shielded execution integration",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Use shielded inputs and return supported token, LP-share and refund outputs to the shielded wallet, including a configured creator-hook launch route.",
+      "sources": [
+        "web/privacy/bridge.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/hook-client.mjs",
+        "packages/privacy/src/runtime.mjs"
+      ],
+      "dependencies": [
+        "RAILGUN runtime",
+        "funded shielded wallet",
+        "compatible deployments",
+        "circuit artifacts",
+        "RPC and proof services",
+        "broadcaster"
+      ],
+      "privacy": "The token, pool, supply, amounts, prices, timing and public hook/recipient configuration remain visible. Funding and recipient linkage can still be inferred from external observations.",
+      "limitations": "Local adapter/hook tests do not prove a funded RAILGUN proof or broadcaster submission. Circuit access, synchronization, POI/RPC services, compatible deployments and funded private balances remain necessary.",
+      "entrance": "Swap → Private; Launch → Create → Private funding",
+      "route": "v4"
+    },
+    {
+      "id": "owner-fees",
+      "label": "Owner-chosen fee distribution",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Choose creator-fee recipients and weights, inspect fees accrued in their actual input assets, flush earned fees and claim recorded shares.",
+      "sources": [
+        "contracts/src/confluence/fees/OwnerFeeRouter.sol",
+        "integrations/console/protocol/v4-hook/src/OwnerV4FeeHook.sol",
+        "web/launchpad/hook-client.mjs",
+        "web/launchpad/desk.mjs"
+      ],
+      "dependencies": [
+        "verified creator hook and hooked launch factory",
+        "verified fee splitter when selected",
+        "wallet review and actual accrued fee balances"
+      ],
+      "authority": "The hook owner controls future fees and recipients. Existing deposited splitter entitlements remain with their recorded beneficiaries.",
+      "limitations": "No mandatory project recipient. Weights apply when fees enter the splitter. Automatic payout-asset conversion and reinvestment adapters are not supplied; earned fees are claimed in their actual currencies.",
+      "entrance": "Launch → Fee streams; Launch → Create → Creator fees",
+      "route": "launch"
+    },
+    {
+      "id": "rehearsal",
+      "label": "Pinned-block transaction rehearsal",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Try a supported public action on a disposable copy of the blockchain and inspect what changed before signing.",
+      "sources": [
+        "agent/rehearsal/engine.mjs",
+        "web/rehearsal/client.mjs"
+      ],
+      "dependencies": [
+        "local authenticated rehearsal service",
+        "Anvil",
+        "historical source RPC"
+      ],
+      "privacy": "Private shielded payloads never enter this public-intent service.",
+      "limitations": "A measured local simulation is not a cryptographic proof or a guarantee about a later block."
+    },
+    {
+      "id": "workshop",
+      "label": "Commissioned calendar instruments",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Ask a chosen provider to make a release calendar, check its exact output, and acquire it as a frozen cartridge NFT held by your main NFT.",
+      "sources": [
+        "web/workshop/client.mjs",
+        "web/workshop/calendar.mjs",
+        "contracts/src/confluence/cartridges/CommissionedCartridges.sol"
+      ],
+      "dependencies": [
+        "CommissionEscrow",
+        "CommissionedCartridges",
+        "CartridgeRegistry",
+        "chosen worker and evaluator"
+      ],
+      "authority": "Acquiring an instrument grants no spending permission.",
+      "limitations": "This original recipe remains deterministic. New instruments separately supports arbitrary source review, provider discovery and paid-service adapters."
+    },
+    {
+      "id": "cartridges",
+      "label": "Owned executable cartridges",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Hold a supported game or instrument NFT, verify its code, and open it in a separate play area.",
+      "sources": [
+        "contracts/src/confluence/cartridges/CartridgeRegistry.sol",
+        "web/confluence/app.js"
+      ],
+      "dependencies": [
+        "owned compatible cartridge",
+        "content hash",
+        "sandboxed browser frame"
+      ],
+      "authority": "Sandboxed opaque-origin frame; no wallet bridge by default. Browser isolation does not certify arbitrary programs safe.",
+      "limitations": "Compatible HTML cartridges and bundled local games are supported. Owning an arbitrary NFT does not make its game executable."
+    },
+    {
+      "id": "onchain-runtime",
+      "label": "Immutable application and wallet thumbnail",
+      "state": "IMMUTABLE_ARCHIVE_SOURCE",
+      "explanation": "The NFT carries a recoverable copy of its application and a seed-shaped wallet picture in immutable contract storage.",
+      "sources": [
+        "contracts/src/confluence/GenesisSVG.sol",
+        "contracts/src/confluence/ConfluenceRenderer.sol",
+        "contracts/src/protocol/OnchainApp.sol",
+        "web/confluence/chain-loader.mjs"
+      ],
+      "dependencies": [
+        "new renderer deployment",
+        "immutable application chunks",
+        "read provider"
+      ],
+      "authority": "Everyone can read public application bytes; the owner controls protected transactions.",
+      "limitations": "Browser rendering and chain reads are still required. Updating a website does not replace bytes in an older immutable mint."
+    },
+    {
+      "id": "immutable-resources",
+      "label": "Sealed modules and privacy worker shards",
+      "state": "IMMUTABLE_ARCHIVE_SOURCE",
+      "explanation": "A sealed directory tells the NFT where its tools are. Its large privacy worker is stored in checked fragments and rebuilt when needed.",
+      "sources": [
+        "contracts/src/confluence/GenesisManifest.sol",
+        "contracts/src/protocol/ShardedResource.sol",
+        "web/privacy/recover-resource.mjs"
+      ],
+      "dependencies": [
+        "sealed module manifest",
+        "worker shards",
+        "read provider"
+      ],
+      "limitations": "Worker bytes are archived; proving circuits, RPC, synchronization, proof services and broadcasters remain external."
+    },
+    {
+      "id": "agent-commerce",
+      "label": "Paid services and job escrow",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Review and pay for a supported x402 service, or fund a separately reviewed provider job and its delivery rules.",
+      "sources": [
+        "contracts/src/extensions/agents/AgentCommerce.sol",
+        "web/extensions/agents.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "configured local or hosted service"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "x402 v2 exact EVM EIP-3009 through official SDK; separate ERC-8183 draft non-hooked kernel. Requires supported token and configured service.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "provider-directory",
+      "label": "Open provider discovery",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Browse signed provider entries and compare attributable feedback from funded jobs.",
+      "sources": [
+        "contracts/src/extensions/agents/ProviderDirectory.sol",
+        "web/extensions/agents.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "configured local or hosted service"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "ANIMA-native directory, not an ERC-8004 implementation. Signatures authenticate wallets, not quality, personhood or claims.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "generated-instruments",
+      "label": "Commission arbitrary programs",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Commission a new HTML and JavaScript tool, inspect its exact source, approve it and acquire a frozen cartridge.",
+      "sources": [
+        "contracts/src/confluence/cartridges/CommissionedCartridges.sol",
+        "worlds/instruments.mjs",
+        "web/extensions/worlds.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "configured local or hosted service"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Human approval and browser isolation do not prove arbitrary code safe. No default wallet bridge; exact proposals need separate review.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "quote-proof",
+      "label": "Cryptographically proved quote",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Prove the exact integer math of a supported swap and bind it to the current NFT and market state before signing.",
+      "sources": [
+        "contracts/src/extensions/proof/NativeQuoteRehearsal.sol",
+        "web/extensions/proof.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "configured local or hosted service"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Groth16 development setup; one-hop NativeMarket arithmetic only. Full EVM execution, gas, token behavior and future state are not proved.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "shared-world",
+      "label": "Persistent shared world",
+      "state": "LOCAL_SERVICE_AND_CONTRACTS",
+      "explanation": "Meet other players, gather, craft, fight, found towns and trade in a persistent hosted world.",
+      "sources": [
+        "agent/worlds/server.mjs",
+        "worlds/model.mjs",
+        "web/extensions/worlds.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "configured local or hosted service"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Working multiplayer civilization slice, not a complete mature MMO. Operator-authoritative game state and game coins have no onchain withdrawal.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "named-mint",
+      "label": "ENS named mint entry",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Mint an NFT and its deterministic subname together, then resolve that name back to the NFT’s real account.",
+      "sources": [
+        "contracts/src/extensions/access/GenesisNames.sol",
+        "web/extensions/access.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Requires an explicitly delegated ENS parent. Does not purchase or renew a .eth domain; ancestor control and expiry remain applicable.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "whole-nft-shares",
+      "label": "Whole-NFT custody shares",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Wrap an unused NFT, share its economic custody, vote on a funded buyout or reunite every share to recover it.",
+      "sources": [
+        "contracts/src/extensions/markets/WholeNFTShares.sol",
+        "web/extensions/markets.mjs"
+      ],
+      "dependencies": [
+        "reviewed extension deployment",
+        "connected signer"
+      ],
+      "authority": "Exact contract permissions and explicit wallet reviews; NFT custody invalidates applicable account sessions.",
+      "limitations": "Only unused Bound NFTs qualify. Account execution freezes while fractionalized; shares do not transfer private keys or every possible external right.",
+      "entrance": "Atlas → Advanced → Specialist instruments"
+    },
+    {
+      "id": "full-evm-proof",
+      "label": "Arbitrary EVM effect proofs",
+      "state": "RESEARCH_NOT_IMPLEMENTED",
+      "explanation": "Prove every relevant effect of an arbitrary contract transaction instead of trusting an execution service.",
+      "limitations": "Research remains. The delivered quote circuit proves only bounded NativeMarket arithmetic and current-state binding."
+    },
+    {
+      "id": "adaptive-agent-reasoning",
+      "label": "General autonomous agent decisions",
+      "state": "RESEARCH_NOT_IMPLEMENTED",
+      "explanation": "Have an agent independently choose new multi-step actions while proving they follow the owner’s intent.",
+      "limitations": "Research remains. The delivered operator runs exact owner-approved calls with onchain limits; it does not supply unrestricted adaptive reasoning or Sovereign-mode proofs."
+    },
+    {
+      "id": "complete-mmo",
+      "label": "Complete mature MMO civilization",
+      "state": "RESEARCH_NOT_IMPLEMENTED",
+      "explanation": "Build a production-scale multiplayer civilization with a complete content, progression and economic system.",
+      "limitations": "Broader project remains. This release supplies a persistent playable multiplayer slice, not a finished MMORPG."
+    },
+    {
+      "id": "public-commons",
+      "label": "Public rooms and membership-controlled posting",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Read public chain messages, create a room, invite and accept members, post with consent, or moderate your room through NFT account reviews.",
+      "dependencies": [
+        "configured WorldLedger",
+        "verified NFT account for writes"
+      ],
+      "authority": "Room administrator/moderator powers and accepted posting membership; current NFT custody governs applicable account permissions.",
+      "privacy": "Public readable text, even when posting requires an invitation.",
+      "limitations": "Leaving or hiding content in the interface does not erase its chain history. Use encrypted conversations for confidential message contents.",
+      "sources": [
+        "contracts/src/protocol/WorldLedger.sol",
+        "web/genesis/live-protocol.mjs",
+        "web/genesis/live-desk.mjs"
+      ],
+      "entrance": "Commons → Public rooms ↗",
+      "route": "live"
+    },
+    {
+      "id": "launch-participation",
+      "label": "Shareable participant launch pages",
+      "state": "CONFIGURABLE_WALLET_AND_CONTRACTS",
+      "explanation": "Open a link to an exact community sale or auction, read its verified terms, then connect your wallet to contribute, bid, withdraw or claim.",
+      "dependencies": [
+        "chain-qualified launch link",
+        "explicit read RPC or connected wallet provider",
+        "funded signing wallet for participation"
+      ],
+      "authority": "Participant transactions use the signing wallet; they do not inherit the creator desk’s NFT funding choice.",
+      "privacy": "Public sale and auction state. No wallet is requested for explicit read-only RPC access; the chosen provider can observe those requests.",
+      "limitations": "Links cover community sales and ANIMA streaming auctions. They do not certify the creator, promise returns or automatically migrate auction liquidity.",
+      "sources": [
+        "web/launchpad/links.mjs",
+        "web/launchpad/participant.mjs"
+      ],
+      "entrance": "Launch → Community / Auctions → Copy participant link",
+      "route": "participant"
+    },
+    {
+      "id": "screen-concealment",
+      "label": "Screen concealment and local key lock",
+      "state": "IMPLEMENTED_BROWSER",
+      "explanation": "Hide nearby-visible amounts or cover the screen, and separately lock private keys and erase displayed private fields.",
+      "dependencies": [
+        "browser interface"
+      ],
+      "privacy": "Display concealment does not encrypt transactions or messages. Encryption operations have their own independent controls.",
+      "limitations": "Locking cannot cancel an already submitted transaction or erase messages another member retained.",
+      "sources": [
+        "web/confluence/app.js",
+        "web/commons/desk.mjs",
+        "web/privacy/bridge.mjs"
+      ],
+      "entrance": "Screen privacy controls; Commons → Lock"
+    }
+  ],
+  "surfaceGaps": [
+    "funded public-chain Genesis/v4/private lifecycle verification",
+    "protocol-wide live activity indexing and reorg handling",
+    "independent task quality or dispute proof",
+    "autonomous private agent runtime",
+    "supported physical phone/browser/wallet verification"
+  ],
+  "modelContractDifferences": [
+    "Local instant credits versus onchain pull claims",
+    "Model native ETH versus two-ERC20 credit/option contracts",
+    "Local personal worker edition ownership check versus contract deliverable digest",
+    "Local exact known state versus configured onchain predicates",
+    "Local exits after transfer versus source cell explicit target readoption",
+    "Local cell dust versus source fixed beneficiary",
+    "Local matched AUR backing versus source strategy-share ownership"
+  ],
+  "memory": {
+    "bodyModes": [
+      "explicit-public",
+      "client-encrypted-AES-256-GCM"
+    ],
+    "keyTransferOnNftSale": false,
+    "originalSealMemoryRecoverable": false,
+    "localAppendOnlyIsAuthenticated": false,
+    "encryptedPayloadRoundtrip": "tested native Node Web Crypto",
+    "secureBrowserEncryptionE2E": "not exercised; managed browser lacks native subtle crypto",
+    "maxLocalEntries": 1000,
+    "onchainSourceStoresFullBytes": true,
+    "journaledSwapAndLockSourceComplete": false
+  },
+  "form": {
+    "version": "lived-field/1.7",
+    "parameters": 8,
+    "maxAbsoluteParameter": 0.4,
+    "source": "admitted local activity since chapter start",
+    "wealthOrProfitMultiplier": false,
+    "historyScope": "activity layer on current base genome",
+    "visualUniquenessGuaranteed": false,
+    "fullOnchainActivityAdapter": false,
+    "metadataUpdateIntegration": false
+  },
+  "confluence": {
+    "capabilities": [
+      "interior",
+      "live",
+      "trade",
+      "launch",
+      "vault",
+      "give",
+      "market",
+      "world",
+      "journal",
+      "library",
+      "work",
+      "ledger",
+      "lab",
+      "routes",
+      "cartridges",
+      "agents",
+      "commons",
+      "participant",
+      "privacy",
+      "v4"
+    ],
+    "identity": "keccak256 chain-qualified seed with 16-dimensional visual projection",
+    "visualCollisionImpossible": false,
+    "equalCapabilities": true,
+    "mandatoryFeeRecipient": null,
+    "wallet": "Explicit signing-wallet/NFT-account funding selection, current-custody validation, call simulation and transaction receipt/replacement recovery.",
+    "cartridges": "NFT-held SHA256-verified HTML; sandbox; two bundled local games",
+    "onchainArchive": "onchain-app/confluence/manifest.json",
+    "sourceAudit": "docs/ACTUAL-NFT-AUDIT.md",
+    "historicalBaseManifest": "docs/confluence/research/base-system-manifest-1.7.json",
+    "currentCapabilities": "docs/CAPABILITIES-6.1.md"
+  },
+  "genesis": {
+    "title": "Anima Genesis",
+    "startsIn": "approved blue original interface",
+    "field": "Original optical field with fixed depth continuation of the exterior glow; the seed/genome/state remains fixed during navigation.",
+    "formationSeconds": 0,
+    "atlas": "original actions, all extended capabilities, and secondary instrument views",
+    "browserTested": false,
+    "publicChainDeployed": false,
+    "interior": "One camera moves through the fixed optical scene. The original glow is continued in depth; no second spherical object or surface image crossfade is introduced.",
+    "interiorDestinations": 0,
+    "interiorNavigation": "Original turning controls with pinch/spread, wheel and keyboard zoom; captured home-camera return and interior resume. Physical phone verification remains outstanding.",
+    "currentArchiveManifest": "onchain-app/confluence/manifest.json",
+    "chambers": null,
+    "gui": "Independent function panels; private text is excluded from optical formation effects."
+  },
+  "release52": {
+    "testsPassed": 326,
+    "testsFailed": 0,
+    "nativeRenderCasesPassed": 22,
+    "localDeploymentEntries": 59,
+    "rustTest": "not rerun; cargo unavailable",
+    "report": "docs/genesis/BUILD-5.2.md"
+  },
+  "release53": {
+    "testsPassed": 330,
+    "testsFailed": 0,
+    "nativeRenderCasesPassed": 25,
+    "softwareParityCasesPassed": 3,
+    "maxSoftwareParityByteError": 1,
+    "localDeploymentEntries": 59,
+    "browserTested": false,
+    "rustTest": "not rerun; unchanged",
+    "report": "docs/genesis/BUILD-5.3.md"
+  },
+  "release54": {
+    "testsPassed": 333,
+    "testsFailed": 0,
+    "gestureLifecycleTestsPassed": 11,
+    "localArchiveRecovery": true,
+    "browserTested": false,
+    "report": "docs/genesis/BUILD-5.4.md"
+  },
+  "privacy": {
+    "execution": "RAILGUN v2 cross-contract calls through Waku broadcaster; fail-closed; no NFT identity ledger",
+    "fundedEndToEndTest": false,
+    "publicDeployment": null,
+    "privateLaunch": "Public v4 token/pool and optionally public creator-hook configuration; supported funding, retained tokens, LP shares and refunds use the configured shielded route.",
+    "localStorage": "AES-256-GCM / PBKDF2-SHA256 600000; volatile worker wallet database",
+    "runtime": "SHA256-pinned worker, recoverable from immutable resource shards; external proving circuits and services remain required.",
+    "independentAudit": false,
+    "encryptedChat": {
+      "route": "Commons",
+      "contracts": [
+        "PrivacyKeys",
+        "EpochGroupChat"
+      ],
+      "memoryHandoverRequired": false,
+      "maxMembers": 32,
+      "forwardSecrecy": false,
+      "nftSaleTransfersKeys": false,
+      "ciphertextOnlyTransactions": true,
+      "publicMetadata": [
+        "wallet identities",
+        "membership",
+        "sender",
+        "timing",
+        "epoch and sequence",
+        "approximate size"
+      ],
+      "localIntegrationEvidence": "Real Ganache transactions and native WebCrypto; not public deployment."
+    },
+    "screenConcealment": "Display-only, separate from shielded execution and encrypted message contents."
+  },
+  "v4": {
+    "compiler": "0.8.26, viaIR, Cancun",
+    "contracts": [
+      "GenesisV4Launchpad",
+      "GenesisV4Position",
+      "GenesisV4Router",
+      "GenesisV4HookLaunchpad",
+      "OwnerV4FeeHook",
+      "OwnerFeeRouter"
+    ],
+    "poolManagerTests": "Real pinned PoolManager and official V4Quoter; local Anvil 1.7.1",
+    "supportedPrivateChains": [
+      1,
+      42161,
+      137
+    ],
+    "fundingRoutes": [
+      "signing wallet",
+      "verified NFT account for compatible public operations",
+      "separate shielded wallet for supported private operations"
+    ]
+  },
+  "release55": {
+    "testsPassed": 348,
+    "testsFailed": 0,
+    "v4LaunchpadScenariosPassed": 10,
+    "retainedV4HookScenariosPassed": 9,
+    "offlinePrivacySDKChecks": "passed; no funded proof transaction",
+    "archiveBytes": 744221,
+    "archiveChunks": 33,
+    "archiveSha256": "b412bdc9de19218c970845b1949797e38f7c386a55705ce9aace3b056e675716",
+    "localArchiveRecovery": true,
+    "browserTested": false,
+    "report": "docs/genesis/BUILD-5.5.md"
+  },
+  "capabilityCatalog": "web/instruments/capabilities.json",
+  "functionGuide": "docs/CAPABILITIES-6.1.md",
+  "extensions": {
+    "guide": "docs/genesis/extensions/DEPLOYMENT.md",
+    "entry": "web/extensions/desk.mjs",
+    "publicDeployment": null
+  }
+}

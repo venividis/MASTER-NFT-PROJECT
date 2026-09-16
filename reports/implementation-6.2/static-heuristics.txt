@@ -1,0 +1,1 @@
+Static heuristic scan passed. Three exact-hash pinned Solady files permit intentional assembly storage; this is not a security audit.

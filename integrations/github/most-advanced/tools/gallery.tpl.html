@@ -1,0 +1,414 @@
+<title>IPSEITY Instrument Plates</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500;600&family=IBM+Plex+Sans+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@300;400&display=swap">
+
+<style>
+/*  The palette is not chosen for this page. It is the palette the contract
+    emits: --void and the greys come out of the engine's own stylesheet, and
+    --h is whichever token is on the stage. Pick another plate and the page
+    is retinted by the state it is looking at, exactly as the instrument is. */
+@property --h { syntax: "<number>"; inherits: true; initial-value: 34; }
+
+:root{
+  --h: 34;
+  --a: hsl(var(--h) 92% 66%);
+  --a-dim: hsl(var(--h) 62% 44%);
+  --a-ghost: hsl(var(--h) 92% 66% / .10);
+  --a-line: hsl(var(--h) 40% 26%);
+  --b: hsl(calc(var(--h) + 186) 74% 62%);
+
+  --void:#05060b; --plate:#0a0c14; --plate-2:#0d1120;
+  --rule:#161b28; --rule-2:#232b3c; --rule-3:#333d52;
+  --dim:#606a83; --mid:#8b95ad; --txt:#c4ccde; --lit:#eef2fb;
+  --ok:#5fe3b4; --warn:#ffc95c;
+
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  --cond:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+
+  --gut: clamp(20px, 5vw, 56px);
+  --col: 1180px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  transition: --h .7s var(--ease);
+}
+@media (prefers-reduced-motion: reduce){ :root{ transition:none } *{ animation:none !important } }
+
+*{ box-sizing:border-box }
+body{
+  margin:0; background:var(--void); color:var(--txt);
+  font-family:var(--sans); font-weight:300; font-size:15px; line-height:1.65;
+  -webkit-font-smoothing:antialiased;
+}
+img{ max-width:100%; display:block }
+a{ color:var(--a); text-underline-offset:3px; text-decoration-thickness:1px }
+:focus-visible{ outline:2px solid var(--a); outline-offset:3px }
+
+.wrap{ max-width:var(--col); margin-inline:auto; padding-inline:var(--gut) }
+.k{ font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--dim) }
+.num{ font-family:var(--mono); font-variant-numeric:tabular-nums }
+
+/*──────────────────── nameplate ────────────────────*/
+.head{ padding:clamp(48px,9vh,104px) 0 40px; border-bottom:1px solid var(--rule) }
+.head .k{ color:var(--a-dim) }
+.mark{
+  font-family:var(--mono); font-weight:600;
+  font-size:clamp(34px,7.2vw,74px); line-height:1; letter-spacing:.22em;
+  color:var(--lit); margin:14px 0 0; text-indent:.22em;
+}
+.lede{
+  max-width:62ch; margin:22px 0 0; font-size:clamp(16px,1.6vw,19px);
+  line-height:1.62; color:var(--mid); text-wrap:pretty;
+}
+.lede b{ color:var(--txt); font-weight:400 }
+
+.strip{ display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
+        grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); margin-top:38px }
+.cell{ background:var(--plate); padding:16px 18px 18px }
+.cell .v{ font-family:var(--mono); font-variant-numeric:tabular-nums;
+          font-size:23px; color:var(--lit); margin-top:8px; letter-spacing:-.01em }
+.cell .u{ font-size:12px; color:var(--dim); margin-top:2px; font-family:var(--mono) }
+
+/*──────────────────── section furniture ────────────────────*/
+section{ padding:clamp(44px,7vh,84px) 0 }
+section + section{ border-top:1px solid var(--rule) }
+h2{ font-family:var(--cond); font-weight:600; font-size:clamp(22px,3vw,31px);
+    letter-spacing:-.01em; color:var(--lit); margin:10px 0 0; text-wrap:balance }
+.sub{ max-width:60ch; margin:12px 0 0; color:var(--mid); font-size:15px }
+
+/*──────────────────── the rig ────────────────────*/
+.rigbar{ display:flex; flex-wrap:wrap; align-items:baseline; gap:10px 20px;
+         padding:0 0 14px; border-bottom:1px solid var(--rule-2); margin-top:30px }
+.now{ font-family:var(--cond); font-weight:600; font-size:19px; color:var(--lit); letter-spacing:.01em }
+.now em{ font-style:normal; color:var(--a) }
+.now-sub{ font-family:var(--mono); font-size:11.5px; color:var(--dim); letter-spacing:.04em }
+.views{ margin-left:auto; display:flex; gap:1px; background:var(--rule-2); border:1px solid var(--rule-2) }
+.views button{
+  font-family:var(--mono); font-size:10.5px; letter-spacing:.16em; text-transform:uppercase;
+  background:var(--plate); color:var(--mid); border:0; padding:8px 14px; cursor:pointer;
+  transition:color .18s var(--ease), background .18s var(--ease);
+}
+.views button:hover{ color:var(--lit) }
+.views button[aria-pressed="true"]{ background:var(--a-ghost); color:var(--a) }
+
+.stage{
+  position:relative; margin-top:20px; background:#04050a;
+  border:1px solid var(--rule-2); box-shadow:0 0 0 1px var(--void), 0 40px 90px -50px #000;
+  overflow:hidden; transition:width .35s var(--ease);
+}
+.stage[data-view="desk"]{ width:100%; aspect-ratio:16/10 }
+.stage[data-view="phone"]{ width:min(390px,100%); aspect-ratio:390/844; margin-inline:auto }
+.stage[data-view="full"]{ position:fixed; inset:0; width:100vw; height:100vh; aspect-ratio:auto;
+                          z-index:90; margin:0; border:0 }
+.stage iframe{ width:100%; height:100%; border:0; display:block; background:#04050a }
+.stage .cover{ position:absolute; inset:0; display:grid; place-items:center; background:#04050a }
+/*  [hidden] is display:none from the UA sheet, and a class selector beats it.
+    Say it again here or the cover never goes away. */
+.stage .cover[hidden]{ display:none }
+.stage .cover img{ position:absolute; inset:0; width:100%; height:100%; object-fit:contain;
+                   opacity:.4; filter:blur(1px) }
+.stage[hidden]{ display:none }
+
+.start{
+  position:relative; font-family:var(--mono); font-size:12px; letter-spacing:.2em;
+  text-transform:uppercase; color:var(--lit); background:hsl(var(--h) 92% 66% / .10);
+  border:1px solid var(--a-line); padding:15px 26px; cursor:pointer; backdrop-filter:blur(3px);
+  transition:background .2s var(--ease), border-color .2s var(--ease);
+}
+.start:hover{ background:hsl(var(--h) 92% 66% / .2); border-color:var(--a) }
+.start small{ display:block; font-size:10px; letter-spacing:.1em; text-transform:none;
+              color:var(--mid); margin-top:6px }
+.escape{ position:fixed; top:16px; right:16px; z-index:91; display:none }
+.stage[data-view="full"] ~ .escape{ display:block }
+.hint{ margin-top:14px; font-family:var(--mono); font-size:11.5px; color:var(--dim);
+       display:flex; flex-wrap:wrap; gap:6px 20px }
+.hint span::before{ content:"— "; color:var(--rule-3) }
+
+/*──────────────────── the plates ────────────────────*/
+.plates{ display:grid; gap:14px; margin-top:30px;
+         grid-template-columns:repeat(2,1fr) }
+@media (min-width:640px){ .plates{ grid-template-columns:repeat(4,1fr) } }
+.plate{
+  background:var(--plate); border:1px solid var(--rule); padding:0; cursor:pointer;
+  text-align:left; color:inherit; font:inherit; display:block;
+  transition:border-color .2s var(--ease), transform .2s var(--ease), background .2s var(--ease);
+}
+.plate:hover{ border-color:var(--rule-3); transform:translateY(-2px) }
+.plate[aria-current="true"]{ border-color:hsl(var(--ph) 40% 34%); background:var(--plate-2) }
+.plate[aria-current="true"] .pid{ color:hsl(var(--ph) 92% 66%) }
+.plate img{ width:100%; aspect-ratio:1; background:#04050a }
+.plate .meta{ padding:11px 12px 13px; border-top:1px solid var(--rule) }
+.pid{ font-family:var(--mono); font-size:11px; letter-spacing:.14em; color:var(--mid) }
+.pname{ font-family:var(--cond); font-weight:600; font-size:14.5px; color:var(--lit);
+        margin-top:2px; letter-spacing:.005em }
+.pfacts{ font-family:var(--mono); font-size:10.5px; color:var(--dim); margin-top:6px;
+         font-variant-numeric:tabular-nums; display:flex; gap:9px; flex-wrap:wrap }
+.pfacts .seal{ color:var(--warn) }
+.pfacts .whole{ color:var(--ok) }
+
+/*──────────────────── record ────────────────────*/
+.record{ display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
+         margin-top:30px; grid-template-columns:repeat(auto-fit,minmax(290px,1fr)) }
+.panel{ background:var(--plate); padding:20px 22px 24px; min-width:0 }
+.panel h3{ font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.26em;
+           text-transform:uppercase; color:var(--dim); margin:0 0 14px }
+.rows{ font-family:var(--mono); font-size:12.5px; font-variant-numeric:tabular-nums }
+.row{ display:flex; justify-content:space-between; gap:16px; padding:6px 0;
+      border-bottom:1px dotted var(--rule) }
+.row:last-child{ border-bottom:0 }
+.row dt{ color:var(--dim); white-space:nowrap }
+.row dd{ margin:0; color:var(--lit); text-align:right }
+pre.state{ font-family:var(--mono); font-size:11.5px; line-height:1.75; color:var(--txt);
+           background:#04050a; border:1px solid var(--rule); padding:14px;
+           margin:0; overflow-x:auto; white-space:pre; max-height:340px; overflow-y:auto }
+pre.state .kk{ color:var(--a) } pre.state .vv{ color:var(--b) }
+
+/*──────────────────── elevations ────────────────────*/
+.four{ margin-top:26px; border:1px solid var(--rule-2); background:#04050a }
+.four img{ width:100% }
+
+/*──────────────────── close ────────────────────*/
+footer{ border-top:1px solid var(--rule); padding:56px 0 90px; color:var(--mid) }
+footer h2{ font-size:clamp(19px,2.4vw,25px) }
+footer p{ max-width:64ch; margin:16px 0 0 }
+footer .k{ color:var(--dim) }
+.notes{ display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); margin-top:30px }
+.notes p{ margin:8px 0 0; font-size:14px }
+</style>
+
+<div class="wrap">
+
+<header class="head">
+  <p class="k">Fully on chain · Ethereum · nothing fetched at run time</p>
+  <h1 class="mark">IPSEITY</h1>
+  <p class="lede">A four-dimensional solid, an instrument for turning it, and one contract
+    holding both. <b>Every plate below came back out of a contract call</b> — the stills were
+    drawn by Solidity, and the instrument on the stage is the exact document a marketplace
+    receives when it asks for <span class="num">tokenURI()</span>.</p>
+  <div class="strip" id="strip"></div>
+</header>
+
+<section id="rig">
+  <p class="k">The instrument</p>
+  <h2>What the holder opens</h2>
+  <p class="sub">Press start and the page inflates itself in your browser, reads the state
+    block the renderer wrote into it, and draws. Drag to turn the solid; the slider under
+    the field moves the cutting plane through w.</p>
+
+  <div class="rigbar">
+    <div>
+      <div class="now" id="now">—</div>
+      <div class="now-sub" id="nowsub">—</div>
+    </div>
+    <div class="views" role="group" aria-label="Stage size">
+      <button type="button" data-view="desk" aria-pressed="true">Desk</button>
+      <button type="button" data-view="phone" aria-pressed="false">Phone</button>
+      <button type="button" data-view="full" aria-pressed="false">Full</button>
+    </div>
+  </div>
+
+  <div class="stage" id="stage" data-view="desk">
+    <iframe id="frame" title="IPSEITY instrument" sandbox="allow-scripts" allow="fullscreen"></iframe>
+    <div class="cover" id="cover">
+      <img id="coverimg" alt="">
+      <button class="start" id="start" type="button">Start the instrument
+        <small>WebGL2 · about 170 KB, inflated in the frame</small></button>
+    </div>
+  </div>
+  <button class="start escape" id="escape" type="button">Close</button>
+
+  <div class="hint">
+    <span>drag the field to turn the solid</span>
+    <span>the slider cuts through w</span>
+    <span>the rail on the left opens the instruments</span>
+    <span>sealed nodes stay shut until a holder pays to open them</span>
+    <span>no chain behind this frame, so nothing can be signed</span>
+  </div>
+</section>
+
+<section id="rail">
+  <p class="k">The stills</p>
+  <h2>Eight solids, eight plates</h2>
+  <p class="sub">One token per solid. Each square is the SVG the contract returns as the
+    token's image — no raster, no server, drawn from the same 128-bit word the instrument
+    reads. Pick one and the stage and the page follow it.</p>
+  <div class="plates" id="plates"></div>
+</section>
+
+<section id="record">
+  <p class="k">The record</p>
+  <h2 id="recname">—</h2>
+  <p class="sub">The traits a marketplace reads, what each facet costs to pull off the
+    chain, and the state block the renderer wrote into the gap between the head and the
+    body of the document.</p>
+  <div class="record">
+    <div class="panel"><h3>Traits</h3><dl class="rows" id="traits"></dl></div>
+    <div class="panel"><h3>Measured</h3><dl class="rows" id="measured"></dl></div>
+    <div class="panel"><h3>The state block</h3><pre class="state" id="state"></pre></div>
+  </div>
+</section>
+
+<section id="elev">
+  <p class="k">Facet 2</p>
+  <h2>Four elevations of the same section</h2>
+  <p class="sub">ERC-7160 lets a token carry more than one face. This is the second: the
+    same solid, cut at four values of w, so the shape's behaviour through the fourth axis
+    is legible in a single still.</p>
+  <figure class="four"><img id="quartet" alt="Four elevations of the selected token"></figure>
+</section>
+
+<footer>
+  <p class="k">What you are looking at</p>
+  <h2>All of it is on chain, and none of it is on a chain right now</h2>
+  <div class="notes">
+    <div>
+      <p class="k">Real</p>
+      <p>The stills, the elevations, the traits, the state blocks and the document on the
+        stage were all produced by running the contracts on an EVM at Cancun and reading
+        the results back. Nothing on this page was drawn by hand.</p>
+    </div>
+    <div>
+      <p class="k">Not real yet</p>
+      <p>There is no deployed collection behind this frame. The instrument will find no
+        wallet and no endpoint, so every control that would write to a chain reports that
+        it has nowhere to write to. Everything that only looks, works.</p>
+    </div>
+    <div>
+      <p class="k">Sealed and open</p>
+      <p>A token is born with six of its twelve instruments unsealed. Half the plates here
+        have had all twelve opened, half are as minted — the difference is visible in the
+        rail down the left of the stage.</p>
+    </div>
+  </div>
+</footer>
+
+</div>
+
+<script>
+const DATA = __DATA__;
+const T = DATA.tokens;
+
+const $ = (id) => document.getElementById(id);
+const fmt = (n) => n.toLocaleString("en-US");
+const kb  = (n) => (n / 1024).toFixed(1) + " KB";
+const mgas = (n) => (n / 1e6).toFixed(2) + "M";
+
+/*──── the strip ────*/
+const heaviest = T.reduce((a, t) => Math.max(a, t.gas.instrument), 0);
+[["Bytes on chain", fmt(DATA.storedBytes), "gzip, stored in contract code"],
+ ["Document", fmt(DATA.inflatedSize), "bytes after the frame inflates it"],
+ ["Heaviest read", mgas(heaviest), "gas, inside every node's eth_call cap"],
+ ["Plates", String(T.length), "one per solid, all eight"],
+ ["Requests at run time", "0", "no CDN, no IPFS, no gateway"]
+].forEach(([k, v, u]) => {
+  const d = document.createElement("div");
+  d.className = "cell";
+  d.innerHTML = '<div class="k"></div><div class="v"></div><div class="u"></div>';
+  d.children[0].textContent = k; d.children[1].textContent = v; d.children[2].textContent = u;
+  $("strip").append(d);
+});
+
+/*──── the rail ────*/
+const buttons = T.map((t) => {
+  const b = document.createElement("button");
+  b.type = "button"; b.className = "plate"; b.style.setProperty("--ph", t.deg);
+  b.innerHTML =
+    '<img alt=""><div class="meta">' +
+    '<div class="pid"></div><div class="pname"></div>' +
+    '<div class="pfacts"><span class="w"></span><span class="o"></span></div></div>';
+  const img = b.querySelector("img");
+  img.src = "data:image/svg+xml;base64," + t.sigil;
+  img.alt = t.name + " — the still drawn on chain";
+  b.querySelector(".pid").textContent = "#" + t.id;
+  b.querySelector(".pname").textContent = t.solid;
+  b.querySelector(".w").textContent =
+    "hue " + t.hue + " · w " + (t.w >= 0 ? "+" : "") + t.w.toFixed(2);
+  const o = b.querySelector(".o");
+  const n = t.open.toString(2).split("").filter((c) => c === "1").length;
+  o.textContent = n + "/12 open";
+  o.className = n === 12 ? "whole" : "seal";
+  b.addEventListener("click", () => select(t.id));
+  $("plates").append(b);
+  return b;
+});
+
+/*──── selection ────*/
+let current = null, started = false;
+
+function paintState(src){
+  const esc = (s) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;");
+  $("state").innerHTML = esc(src)
+    .replace(/^(\s*)([A-Za-z0-9_]+):/gm, '$1<span class="kk">$2</span>:');
+}
+
+function select(id){
+  const t = T.find((x) => x.id === id);
+  if (!t || current === id) return;
+  current = id;
+  /*  One byte on chain, spread across the circle exactly as the engine
+      spreads it, so this page and the instrument are the same colour. */
+  document.documentElement.style.setProperty("--h", t.deg);
+  buttons.forEach((b, i) => b.setAttribute("aria-current", T[i].id === id ? "true" : "false"));
+
+  $("now").innerHTML = "";
+  const strong = document.createElement("em");
+  strong.textContent = t.name;
+  $("now").append(strong, document.createTextNode("  ·  " + t.solid));
+  const n = t.open.toString(2).split("").filter((c) => c === "1").length;
+  $("nowsub").textContent =
+    "word 0x" + BigInt(t.word).toString(16).padStart(32, "0") +
+    "   ·   hue " + t.hue + " (" + t.deg + "\u00b0)   ·   " + n + " of 12 instruments open";
+
+  $("recname").textContent = t.name + " — " + t.solid;
+  $("quartet").src = "data:image/svg+xml;base64," + t.quartet;
+  $("coverimg").src = "data:image/svg+xml;base64," + t.sigil;
+
+  const dl = (el, rows) => {
+    el.innerHTML = "";
+    rows.forEach(([k, v]) => {
+      const d = document.createElement("div"); d.className = "row";
+      const dt = document.createElement("dt"); dt.textContent = k;
+      const dd = document.createElement("dd"); dd.textContent = v;
+      d.append(dt, dd); el.append(d);
+    });
+  };
+  dl($("traits"), t.attributes.map((a) => [a.trait_type, String(a.value)]));
+  dl($("measured"), [
+    ["instrument", kb(t.bytes.instrument) + "  ·  " + mgas(t.gas.instrument) + " gas"],
+    ["still", kb(t.bytes.still) + "  ·  " + mgas(t.gas.still) + " gas"],
+    ["elevations", kb(t.bytes.quartet) + "  ·  " + mgas(t.gas.quartet) + " gas"],
+    ["bound account", t.account.slice(0, 10) + "…" + t.account.slice(-6)],
+    ["open bitmap", "0x" + t.open.toString(16)]
+  ]);
+  paintState(t.state);
+
+  if (started) load(t);
+}
+
+function load(t){
+  started = true;
+  $("cover").hidden = true;
+  $("frame").srcdoc = atob(t.doc);
+}
+
+$("start").addEventListener("click", () => load(T.find((x) => x.id === current)));
+
+/*──── stage size ────*/
+document.querySelectorAll(".views button").forEach((b) => {
+  b.addEventListener("click", () => {
+    document.querySelectorAll(".views button")
+      .forEach((o) => o.setAttribute("aria-pressed", String(o === b)));
+    $("stage").dataset.view = b.dataset.view;
+    document.body.style.overflow = b.dataset.view === "full" ? "hidden" : "";
+  });
+});
+const leaveFull = () => {
+  if ($("stage").dataset.view !== "full") return;
+  document.querySelector('.views button[data-view="desk"]').click();
+};
+$("escape").addEventListener("click", leaveFull);
+addEventListener("keydown", (e) => { if (e.key === "Escape") leaveFull(); });
+
+select(T[0].id);
+</script>

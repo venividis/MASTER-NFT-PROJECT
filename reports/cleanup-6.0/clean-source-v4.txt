@@ -1,0 +1,76 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> i-dont-fucking-believe-it@6.0.0 compile:v4
+> node integrations/console/protocol/v4-hook/scripts/compile.cjs && node scripts/build-v4.mjs
+
+{
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "evmVersion": "cancun",
+  "optimizer": {
+    "enabled": true,
+    "runs": 200
+  },
+  "contracts": [
+    {
+      "contract": "GenesisFixedToken",
+      "runtimeBytes": 1554
+    },
+    {
+      "contract": "GenesisPayment",
+      "runtimeBytes": 57
+    },
+    {
+      "contract": "GenesisV4Launchpad",
+      "runtimeBytes": 15436
+    },
+    {
+      "contract": "GenesisV4Position",
+      "runtimeBytes": 8664
+    },
+    {
+      "contract": "IGenesisToken",
+      "runtimeBytes": 0
+    },
+    {
+      "contract": "GenesisV4Router",
+      "runtimeBytes": 3346
+    },
+    {
+      "contract": "HookCreate2Factory",
+      "runtimeBytes": 412
+    },
+    {
+      "contract": "IFeeDepositReceiver",
+      "runtimeBytes": 0
+    },
+    {
+      "contract": "OwnerV4FeeHook",
+      "runtimeBytes": 5427
+    }
+  ],
+  "dependencies": {
+    "v4-core": {
+      "repository": "https://github.com/Uniswap/v4-core.git",
+      "commit": "46c6834698c48bc4a463a86d8420f4eb1d7f3b75",
+      "path": "vendor/v4-core"
+    },
+    "v4-periphery": {
+      "repository": "https://github.com/Uniswap/v4-periphery.git",
+      "commit": "dce236d4e2057422d0791d9a973a58765eb46f65",
+      "path": "vendor/v4-periphery"
+    },
+    "permit2": {
+      "repository": "https://github.com/Uniswap/permit2.git",
+      "commit": "cc56ad0f3439c502c246fc5cfcc3db92bb8b7219",
+      "path": "vendor/v4-periphery/lib/permit2"
+    },
+    "solmate": {
+      "repository": "https://github.com/transmissions11/solmate.git",
+      "commit": "4b47a19038b798b4a33d9749d25e570443520647",
+      "path": "vendor/v4-core/lib/solmate"
+    }
+  },
+  "warnings": []
+}
+
+v4 ABI and runtime fingerprints built.

@@ -1,0 +1,15 @@
+{
+  "name": "@awe/owner-fee-router",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Owner-configurable fee allocation and fixed-supply launch building blocks",
+  "scripts": {
+    "build": "node scripts/compile.cjs",
+    "test": "node test/normal-flows.cjs"
+  },
+  "devDependencies": {
+    "ethers": "6.17.0",
+    "ganache": "7.9.2",
+    "solc": "0.8.24"
+  }
+}

@@ -1,0 +1,66 @@
+{
+  "group": "doppler",
+  "file": "src/governance/LaunchpadGovernanceFactory.sol",
+  "name": "LaunchpadGovernanceFactory",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "create",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "governance",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "timelockController",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x6080806040523460135760ab908160188239f35b5f80fdfe60808060405260043610156011575f80fd5b5f3560e01c63a3f697ba146023575f80fd5b3460a757604036600319011260a7576004356001600160a01b0381160360a7576024356001600160401b03811160a7573660238201121560a75760048101356001600160401b03811160a757810136602482011160a7576020908290031260a757602401359060018060a01b03821680920360a75760409161dead82526020820152f35b5f80fd",
+  "creationHash": "0x3ece56e105ff99e69a092390d9080869bde506842b406cfbdbc54578a9fc2763",
+  "bytes": 171,
+  "normalizedHash": "0xefce8ac4a6fe83ae3dd1c3cfebc0e370e1595a66608bed5610ffdd1f291b7f63",
+  "masks": [],
+  "immutableGroups": [],
+  "sourceInputSha256": "e4377f61fefda48f68abd776bdd22ce67cb68c96dd5f2d4f1ed98772a9e5ff48",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 0
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "metadata": {
+      "bytecodeHash": "none",
+      "appendCBOR": false
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  }
+}

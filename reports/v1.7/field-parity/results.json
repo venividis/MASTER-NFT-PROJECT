@@ -1,0 +1,48 @@
+{
+  "scope": "Native GLES vs actual Wasm; not browser WebGL certification",
+  "resolution": [
+    180,
+    120
+  ],
+  "criteria": "mean RGB absolute error <= 2 out of 255",
+  "passed": 6,
+  "failed": 0,
+  "cases": [
+    {
+      "case": "zero",
+      "meanRGBError": 0.49882716049382714,
+      "maxRGBError": 19,
+      "passed": true
+    },
+    {
+      "case": "one-decision",
+      "meanRGBError": 0.5031018518518519,
+      "maxRGBError": 16,
+      "passed": true
+    },
+    {
+      "case": "mixed-life",
+      "meanRGBError": 0.49583333333333335,
+      "maxRGBError": 5,
+      "passed": true
+    },
+    {
+      "case": "negative-limit",
+      "meanRGBError": 0.4609104938271605,
+      "maxRGBError": 22,
+      "passed": true
+    },
+    {
+      "case": "positive-limit",
+      "meanRGBError": 0.5009413580246913,
+      "maxRGBError": 13,
+      "passed": true
+    },
+    {
+      "case": "alternating",
+      "meanRGBError": 0.5027006172839507,
+      "maxRGBError": 20,
+      "passed": true
+    }
+  ]
+}

@@ -1,0 +1,140 @@
+{
+  "contractName": "ISettlementConverter",
+  "sourceName": "contracts/src/confluence/fees/interfaces/ISettlementConverter.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenIn",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amountIn",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "minAmountOut",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "deadline",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "route",
+          "type": "bytes"
+        }
+      ],
+      "name": "convert",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "convert(address,address,uint256,uint256,uint256,bytes)": "9b1b5fd4"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenIn",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOut",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amountIn",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "minAmountOut",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "deadline",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes",
+              "name": "route",
+              "type": "bytes"
+            }
+          ],
+          "name": "convert",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "address(0) means native currency. The adapter is responsible for enforcing its route, deadline and minAmountOut; the router independently checks balances.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Exact-input adapter. Output must be returned to msg.sender (the router).",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/fees/interfaces/ISettlementConverter.sol": "ISettlementConverter"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/fees/interfaces/ISettlementConverter.sol": {
+        "keccak256": "0x48db54ad1d52534714709c9d5db05603ae8b493fbe713603e13dc663ac8554af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://30fb80f4f67991d206311ef731a308c4859b21504d5cb832bed86567a2dd3fed",
+          "dweb:/ipfs/QmdrYDGxLjq2mJNKS7XaBNByGckJWoXR4tUxkGrJ8JGXMU"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

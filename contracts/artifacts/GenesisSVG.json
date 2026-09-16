@@ -1,0 +1,76 @@
+{
+  "contractName": "GenesisSVG",
+  "sourceName": "contracts/src/confluence/GenesisSVG.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea26469706673582212200b8df64888e141e56af57f1cb038a86a1dbb8d9953d232b0262addbcd319ef3564736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea26469706673582212200b8df64888e141e56af57f1cb038a86a1dbb8d9953d232b0262addbcd319ef3564736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "details": "All SVG bytes are generated from the onchain snapshot; no scripts, images, fonts or network dependencies. Animation is decorative: frame zero is complete. The legacy OnchainRenderer remains unchanged for existing collections.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "A deterministic vector portrait of Anima's blue living body.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/GenesisSVG.sol": "GenesisSVG"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/GenesisSVG.sol": {
+        "keccak256": "0xfb1fbd0d5b75ee5f2947e3a0fe0dbf0ece7285a9479731e7cf27705bd2d63fa9",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://e2250f5d17962cd5eaf8f7c802cb38768b7f396e2d7d4f3f9769feb65264cf9c",
+          "dweb:/ipfs/QmWNdsK1WGYzc7vqieTLnHE14fyiiHA6wYG771AJwiDPmU"
+        ]
+      },
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      },
+      "contracts/src/lib/Strings.sol": {
+        "keccak256": "0x7b756b0be7e3b12c3addd9817c804115d300fc541c607c22c17a907daa64730d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://77abd4021b4bc71b2ce20a1b7cbe9951d4ba096c8094f93b381f888212288d09",
+          "dweb:/ipfs/QmUy3TMyegVUwUWe9yC26qnBeLPmrsy3pEdYYp91XriqSW"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

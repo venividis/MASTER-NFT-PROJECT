@@ -1,0 +1,68 @@
+{
+  "schema": "anima.runtime-directory-verification/1",
+  "scope": "Local Ganache chain31337; no public deployment or funded user transaction",
+  "archiveVersions": {
+    "legacy": {
+      "version": 1,
+      "maxChunks": 64,
+      "maxStoredBytes": 1472000
+    },
+    "directory": {
+      "version": 2,
+      "maxLeaves": 16,
+      "maxChunksPerLeaf": 32,
+      "maxChunks": 512,
+      "maxStoredBytes": 11776000
+    }
+  },
+  "actualDirectoryFixture": {
+    "distinctChunks": 65,
+    "leaves": 3,
+    "checkedFlatIndices": [
+      0,
+      31,
+      32,
+      63,
+      64
+    ],
+    "fullRecovery": true,
+    "corruptResponseRejected": true,
+    "wrongFullHashRejected": true,
+    "changedLeafCodeRejected": true,
+    "mintedMetadataVersion": 2,
+    "legacyRendererFallback": 1
+  },
+  "tests": {
+    "directoryAndDeploymentPlan": {
+      "passed": 8,
+      "failed": 0
+    },
+    "archiveReader": {
+      "passed": 4,
+      "failed": 0,
+      "maxChunkCountExercised": 512,
+      "overLimitRejected": 513
+    }
+  },
+  "integrity": "Original OnchainApp constructors verify each leaf SHA-256. The directory pins the full expected digest and snapshots leaf metadata/code hashes. The browser verifies full length and SHA-256 before returning HTML for execution.",
+  "artifacts": {
+    "OnchainApp": {
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "evmVersion": "shanghai",
+      "runtimeBytes": 1027,
+      "artifactSha256": "c7bce1780fa18183af83f88256dcdfedcca9aebee0841e783632f5a702fad12d"
+    },
+    "OnchainAppDirectory": {
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "evmVersion": "shanghai",
+      "runtimeBytes": 2333,
+      "artifactSha256": "431ddad4171b9514a5cef2e0f21a90f2fe7a5231a0e88810b050ba8265660c2e"
+    },
+    "ConfluenceRenderer": {
+      "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+      "evmVersion": "shanghai",
+      "runtimeBytes": 22825,
+      "artifactSha256": "3ff514bb462ea3956d71a2e6f29e4bf08bacdc8ffb31c952929357cd4f3c3672"
+    }
+  }
+}

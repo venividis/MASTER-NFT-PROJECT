@@ -1,0 +1,192 @@
+{
+  "contractName": "FrozenVerifierPretender",
+  "sourceName": "contracts/src/test/CoreCleanupHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "frozen",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "signerCount",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "threshold",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "name": "verify",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60808060405234601557610103908161001a8239f35b5f80fdfe60808060405260043610156011575f80fd5b5f3560e01c908163054f7d9c14609d57508063258ae58214604757806342cde4e814604357637ca548c6146043575f80fd5b60b4565b34609957604036600319011260995760243567ffffffffffffffff811160995736602382011215609957806004013567ffffffffffffffff811160995736910160240111609957602060405160018152f35b5f80fd5b346099575f36600319011260995780600160209252f35b346099575f366003190112609957602060405160018152f3fea2646970667358221220e1c32e4d72491eeb95ed9e3499ba3902502ffcf4770019d8c5f94ad08755e98564736f6c634300081e0033",
+  "deployedBytecode": "0x60808060405260043610156011575f80fd5b5f3560e01c908163054f7d9c14609d57508063258ae58214604757806342cde4e814604357637ca548c6146043575f80fd5b60b4565b34609957604036600319011260995760243567ffffffffffffffff811160995736602382011215609957806004013567ffffffffffffffff811160995736910160240111609957602060405160018152f35b5f80fd5b346099575f36600319011260995780600160209252f35b346099575f366003190112609957602060405160018152f3fea2646970667358221220e1c32e4d72491eeb95ed9e3499ba3902502ffcf4770019d8c5f94ad08755e98564736f6c634300081e0033",
+  "methodIdentifiers": {
+    "frozen()": "054f7d9c",
+    "signerCount()": "7ca548c6",
+    "threshold()": "42cde4e8",
+    "verify(bytes32,bytes)": "258ae582"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "frozen",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "signerCount",
+          "outputs": [
+            {
+              "internalType": "uint16",
+              "name": "",
+              "type": "uint16"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "threshold",
+          "outputs": [
+            {
+              "internalType": "uint16",
+              "name": "",
+              "type": "uint16"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "name": "verify",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "pure",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Test-only counterfeit freeze claim. The runtime must not qualify for promotion.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/CoreCleanupHarness.sol": "FrozenVerifierPretender"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/test/CoreCleanupHarness.sol": {
+        "keccak256": "0xa48336facc99eb5bed1eacbfec5fa89f470cdfebc34354eeabca4a40c8027193",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://8e261898c7dd613ced4cd8b3b74ee4c0a48572789566f7f9c725e397fbe2d9e8",
+          "dweb:/ipfs/QmQF22zWLtwg8CFAPKzZjmpuWqRgr86ffDkoPJuN3iUiRk"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

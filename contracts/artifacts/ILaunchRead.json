@@ -1,0 +1,232 @@
+{
+  "contractName": "ILaunchRead",
+  "sourceName": "contracts/src/kingdom/V4GenesisMarket.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "launchInfo",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint112",
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint112",
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint112",
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint112",
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "launchInfo(uint256)": "6aef1576"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "launchInfo",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint112",
+              "name": "",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint112",
+              "name": "",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint112",
+              "name": "",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint112",
+              "name": "",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/kingdom/V4GenesisMarket.sol": "ILaunchRead"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/kingdom/PhoenixLaunchHook.sol": {
+        "keccak256": "0xa23c0e5a43fc885478bf18a0a445b200aac664a460489e248540a9870e8b521c",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://c8f3408585a61bc8967303f5fdc684b76f62a3596e33991ee33622fcd0119370",
+          "dweb:/ipfs/QmZw7bV53njw1YqM88FLkNZDuVNZRD8Ea4zCZtBtZfc8NX"
+        ]
+      },
+      "contracts/src/kingdom/V4Boundary.sol": {
+        "keccak256": "0x899d3fd1cd5e2e0f40680270d600c289562dbcc0dc26bfdc0ad010afff9cf3d0",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://d3240447455060c957fe1ab9cbdec0f9cc4acdfcb62883ece35ff3b8f1e2eaf1",
+          "dweb:/ipfs/Qmd4xRjg56vUsovRwUGwviWVijeVNSuSFXpNYTWaHTuvLM"
+        ]
+      },
+      "contracts/src/kingdom/V4GenesisMarket.sol": {
+        "keccak256": "0xc1ed66694f10bb445d9131b8d9b23d4c10b1026c96cead3103f37a2d381db237",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://2fabd37971b5d35d35f952f93d3b67cafd715138394440d38afbc4ab4b1b9704",
+          "dweb:/ipfs/QmTPSbJKTDaGykmqwB5Nz9VxKFVW1xyyTvBSim6WTjjJUb"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/protocol/TimeVault.sol": {
+        "keccak256": "0xb42073ab373c662d741c24a696c7377b8d4dec24f6a79440b3056e4651891863",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://fda8936d6e6a01ad01a0ff78ba72ee36ccc3ad5b75cdfc9d3337b0fb151397ad",
+          "dweb:/ipfs/QmZ4iXB1pdnFB4YDqVoeQVejSBP67pQNVA24u29Lbv5A8C"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

@@ -1,0 +1,73 @@
+name: anima-local-validation
+on:
+  push:
+  pull_request:
+permissions:
+  contents: read
+jobs:
+  complete-local-suite:
+    runs-on: ubuntu-24.04
+    # Sequential viaIR builds and real local-chain suites can take hours.
+    # Each stage has its own timeout and saves evidence when interrupted.
+    timeout-minutes: 240
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            agent/extensions/package-lock.json
+            packages/*/package-lock.json
+            integrations/console/protocol/v4-hook/package-lock.json
+            integrations/official-launch/package-lock.json
+      - uses: dtolnay/rust-toolchain@1.98.1
+      - name: Verify orchestrator failure, skip, partial-run and process cleanup behavior
+        run: npm run test:validation-runner
+      - name: Install locked dependencies and execute complete local validation
+        # Input inventory is verified before installs/builds. Intentional release
+        # edits require a reviewed candidate inventory update; CI never creates
+        # an inventory to erase a mismatch. Public/browser readiness is separate.
+        run: npm run validate:release -- --install
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: complete-local-validation-evidence
+          include-hidden-files: true
+          path: |
+            .local-genesis/validation/
+            reports/implementation-6.2/local-deployment.json
+            reports/contract-sizes.json
+            reports/privacy/offline-crypto.json
+            reports/keccak-reference.json
+            integrations/console/protocol/v4-hook/artifacts/*test*.json
+            integrations/console/protocol/v4-hook/artifacts/position-encoder-verification.json
+            integrations/console/protocol/fee-router/artifacts/test-results.json
+            integrations/official-launch/artifacts/*evidence.json
+            dist/build-manifest.json
+            contracts/artifacts/index.json
+            SOURCE-SHA256.json
+  current-browser:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+      - name: Build current browser candidate with recorded partial validation evidence
+        run: npm run validate:release -- --install --stages=integrity,syntax,compile-core,compile-v4,build,verify-compilation
+      - name: Install pinned browser engine and Linux dependencies
+        run: npx --no-install playwright install --with-deps chromium
+      - name: Current app browser acceptance (separate from native and physical devices)
+        run: npm run test:browser
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: current-browser-evidence
+          include-hidden-files: true
+          path: |
+            .local-genesis/validation/
+            reports/production/browser/

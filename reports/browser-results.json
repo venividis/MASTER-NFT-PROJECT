@@ -1,0 +1,229 @@
+{
+  "version": "1.2.0",
+  "previewSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+  "browser": "144.0.7559.96",
+  "backend": "WASM optical field",
+  "passed": 49,
+  "checks": [
+    {
+      "name": "actual artifact boots without a wallet request",
+      "passed": true
+    },
+    {
+      "name": "audio does not autoplay",
+      "passed": true
+    },
+    {
+      "name": "actual field pixels rendered",
+      "passed": true
+    },
+    {
+      "name": "renderer reports its real backend",
+      "passed": true
+    },
+    {
+      "name": "no HTTP requests during initial preview",
+      "passed": true
+    },
+    {
+      "name": "gesture starts procedural audio",
+      "passed": true
+    },
+    {
+      "name": "mute is explicit",
+      "passed": true
+    },
+    {
+      "name": "evolution changes actual genome and root",
+      "passed": true
+    },
+    {
+      "name": "evolution does not show a blocking progress modal",
+      "passed": true
+    },
+    {
+      "name": "memory digest changes without changing genome",
+      "passed": true
+    },
+    {
+      "name": "memory text is discarded from the editor",
+      "passed": true
+    },
+    {
+      "name": "receipt export never contains the thought",
+      "passed": true
+    },
+    {
+      "name": "memory content is not interpreted as markup",
+      "passed": true
+    },
+    {
+      "name": "descendant has an inherited parent genome",
+      "passed": true
+    },
+    {
+      "name": "descendant has its own genome",
+      "passed": true
+    },
+    {
+      "name": "descendant opens a read-only form",
+      "passed": true
+    },
+    {
+      "name": "returning from descendant preserves the parent head",
+      "passed": true
+    },
+    {
+      "name": "history restores exact genesis roots",
+      "passed": true
+    },
+    {
+      "name": "history disables writes",
+      "passed": true
+    },
+    {
+      "name": "returning to present preserves nonce and audit",
+      "passed": true
+    },
+    {
+      "name": "fourth-axis view does not change ownership state",
+      "passed": true
+    },
+    {
+      "name": "immersive view hides control panels",
+      "passed": true
+    },
+    {
+      "name": "controls can be restored",
+      "passed": true
+    },
+    {
+      "name": "ascension requires explicit consent",
+      "passed": true
+    },
+    {
+      "name": "cancelled ascension does not mutate state",
+      "passed": true
+    },
+    {
+      "name": "confirmed local ascension advances the epoch",
+      "passed": true
+    },
+    {
+      "name": "direct entropy and repeated ascension become unavailable",
+      "passed": true
+    },
+    {
+      "name": "permitted local evolution remains available after ascension",
+      "passed": true
+    },
+    {
+      "name": "actual receipt-book download is valid JSON",
+      "passed": true
+    },
+    {
+      "name": "actual portrait export contains rendered pixels",
+      "passed": true
+    },
+    {
+      "name": "browser independently recomputes its local history",
+      "passed": true
+    },
+    {
+      "name": "corrupt history import is rejected without overwriting the head",
+      "passed": true
+    },
+    {
+      "name": "valid import asks before replacing the current identity",
+      "passed": true
+    },
+    {
+      "name": "confirmed import reconstructs exact history",
+      "passed": true
+    },
+    {
+      "name": "application restores verified storage through a test adapter",
+      "passed": true
+    },
+    {
+      "name": "corrupt existing save is preserved rather than overwritten",
+      "passed": true
+    },
+    {
+      "name": "original v1.0 is available inside the artifact",
+      "passed": true
+    },
+    {
+      "name": "comparison does not alter the current state",
+      "passed": true
+    },
+    {
+      "name": "opening connection settings does not request an account",
+      "passed": true
+    },
+    {
+      "name": "connection failure is shown, not replaced with a fake chain state",
+      "passed": true
+    },
+    {
+      "name": "reduced-motion preference disables automatic motion",
+      "passed": true
+    },
+    {
+      "name": "mobile layout does not overflow horizontally",
+      "passed": true
+    },
+    {
+      "name": "mobile control remains reachable: evolve",
+      "passed": true
+    },
+    {
+      "name": "mobile control remains reachable: memory",
+      "passed": true
+    },
+    {
+      "name": "mobile control remains reachable: spawn",
+      "passed": true
+    },
+    {
+      "name": "mobile control remains reachable: ascend",
+      "passed": true
+    },
+    {
+      "name": "mobile control remains reachable: mobile-panel",
+      "passed": true
+    },
+    {
+      "name": "mobile inspector opens",
+      "passed": true
+    },
+    {
+      "name": "no unhandled page exceptions",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "requestsObserved": [
+    "blob:null/ece5046f-bed8-4ad6-98ba-a11004d6dbbf",
+    "blob:null/ece5046f-bed8-4ad6-98ba-a11004d6dbbf",
+    "blob:null/ece5046f-bed8-4ad6-98ba-a11004d6dbbf",
+    "blob:null/ece5046f-bed8-4ad6-98ba-a11004d6dbbf",
+    "blob:null/1cafa350-7274-4ac7-bdab-2abc109b3b10",
+    "blob:null/1cafa350-7274-4ac7-bdab-2abc109b3b10",
+    "blob:null/1cafa350-7274-4ac7-bdab-2abc109b3b10",
+    "blob:null/1cafa350-7274-4ac7-bdab-2abc109b3b10",
+    "blob:null/ffa4dd94-7b10-409a-bcbb-0f2eee20381b",
+    "blob:null/ffa4dd94-7b10-409a-bcbb-0f2eee20381b",
+    "blob:null/ffa4dd94-7b10-409a-bcbb-0f2eee20381b",
+    "blob:null/ffa4dd94-7b10-409a-bcbb-0f2eee20381b",
+    "blob:null/456fe89d-b2d2-4ebb-9a7b-941defdffa56",
+    "blob:null/456fe89d-b2d2-4ebb-9a7b-941defdffa56",
+    "blob:null/456fe89d-b2d2-4ebb-9a7b-941defdffa56",
+    "blob:null/456fe89d-b2d2-4ebb-9a7b-941defdffa56",
+    "blob:null/4c870521-9ee7-49a2-96a8-3f35803b451e",
+    "blob:null/4c870521-9ee7-49a2-96a8-3f35803b451e",
+    "blob:null/4c870521-9ee7-49a2-96a8-3f35803b451e",
+    "blob:null/4c870521-9ee7-49a2-96a8-3f35803b451e"
+  ],
+  "scope": "Actual standalone HTML via set_content. Storage restoration uses an injected in-memory adapter. Browser WebGL is not forced. No real wallet, public chain, or Solidity execution is claimed."
+}

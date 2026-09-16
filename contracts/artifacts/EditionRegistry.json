@@ -1,0 +1,639 @@
+{
+  "contractName": "EditionRegistry",
+  "sourceName": "contracts/src/operating/EditionRegistry.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "collection_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidEdition",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "leaf",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "length",
+          "type": "uint256"
+        }
+      ],
+      "name": "Inscribed",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "edition",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "publisher",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "identity",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "contentHash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "parent",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Published",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "accountCommitment",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collection",
+      "outputs": [
+        {
+          "internalType": "contract IProtocolCollection",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "edition",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "publisher",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "custodian",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "identity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint64",
+              "name": "epoch",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "publishedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "contentHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "declaredInterface",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "parent",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "leaves",
+              "type": "bytes32[]"
+            }
+          ],
+          "internalType": "struct EditionRegistry.Edition",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "editionCommitment",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "inscribe",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "name": "leaf",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "identity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "string",
+          "name": "title",
+          "type": "string"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "orderedLeaves",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "declaredInterface",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "parent",
+          "type": "bytes32"
+        }
+      ],
+      "name": "publish",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "id",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "50270": [
+      {
+        "length": 32,
+        "start": 185
+      },
+      {
+        "length": 32,
+        "start": 2077
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60a034608257601f610ed038819003918201601f19168301916001600160401b03831184841017608657808492602094604052833981010312608257516001600160a01b038116908181036082573b15607357608052604051610e35908161009b823960805181818160b9015261081d0152f35b63720874cf60e01b5f5260045ffd5b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f3560e01c9081631cd8e4e614610b885750806343d5860f14610b4d578063449b2cf6146109a15780635882c395146103055780637109fd25146100dd5780637de1e5361461009a5763e6c9834f14610069575f80fd5b34610096576020366003190112610096576004355f5260016020526020600460405f200154604051908152f35b5f80fd5b34610096575f3660031901126100965760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100965760203660031901126100965760606101206040516100ff81610cfc565b5f81525f60208201525f60408201525f838201525f60808201525f60a08201525f60c08201525f60e08201528261010082015201526004355f52600160205260405f2060405161014e81610cfc565b6001600160a01b0382541681526001600160a01b036001830154169160208201928352600281015490604083019182526003810154606084019067ffffffffffffffff8116825267ffffffffffffffff608086019160401c168152600483015460a0860190815260058401549160c0870192835260068501549360e088019485526008604051966101ed886101e68160078501610c7b565b0389610d19565b6101008a0197885201966040519788602082549182815201915f5260205f20905f5b8181106102ef575050508890036102269089610d19565b6101208901978852604051998a9960208b52516001600160a01b031660208b0152516001600160a01b031660408a01525160608901525167ffffffffffffffff1660808801525167ffffffffffffffff1660a08701525160c08601525160e085015251610100840152516101208301610140905261016083016102a891610bd6565b905190601f198382030161014084015281519081815260200191602001905f5b8181106102d6575050500390f35b82518452859450602093840193909201916001016102c8565b825484526020909301926001928301920161020f565b346100965760a03660031901126100965760043560243567ffffffffffffffff811161009657610339903690600401610c15565b916044359167ffffffffffffffff831161009657366023840112156100965782600401359067ffffffffffffffff82116100965760248401948260051b94602486369201011161009657606435926084359282158015610997575b801561098f575b8015610985575b801561097d575b61076c5733925f97876107dd575b851515806107c0575b61076c57604051602081019160608352601960808301527f49444642495f45444954494f4e5f434f4e54454e545f315f360000000000000060a083015288604083015260a060608301528560c08301527f07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff86116100965760e08282610455938f8484013781010301601f198101835282610d19565b519020955f5b848110610794575061046e368385610d3b565b602081519101209860405167ffffffffffffffff60208201924684523060408401523360608401528b60808401526001600160a01b03891660a0840152169a8b60c08301528960e08301528861010083015261012082015261012081526104d761014082610d19565b51902098895f5260016020526001600160a01b0360405f20541661076c57895f52600160205260405f20956001600160a01b03331673ffffffffffffffffffffffffffffffffffffffff198854161787556001600160a01b0360018801911673ffffffffffffffffffffffffffffffffffffffff1982541617905588600287015560038601908154907fffffffffffffffffffffffffffffffff000000000000000000000000000000006fffffffffffffffff00000000000000004260401b169216171790558660048601556005850155846006850155600784019167ffffffffffffffff82116106e6576105d6826105d08554610c43565b85610d81565b5f90601f83116001146107055761060492915f91836106fa575b50508160011b915f199060031b1c19161790565b90559590955b60085f9701965b8181106106915750505060209450335f526002855260405f205460405186810191825285604082015260408152610649606082610d19565b519020335f526002865260405f205560405191825284820152827f13f7bce5a6bd9ab5f6a5757c492ec3e1bc50a686492d3da0102f38ed35b70cbb60403393a4604051908152f35b61069c818385610def565b3590885491680100000000000000008310156106e65760018301808b558310156106d2576001928a5f5260205f20015501610611565b634e487b7160e01b5f52603260045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b013590508b806105f0565b601f19831691845f5260205f20925f5b818110610754575090846001959493921061073b575b505050811b01905595909561060a565b01355f19600384901b60f8161c191690558a808061072b565b91936020600181928787013581550195019201610715565b7f720874cf000000000000000000000000000000000000000000000000000000005f5260045ffd5b61079f81868d610def565b355f525f6020526107b360405f2054610c43565b1561076c5760010161045b565b50855f5260016020526001600160a01b0360405f205416156103c0565b975092506040517f8f4e43210000000000000000000000000000000000000000000000000000000081528660048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa908115610924575f9161095e575b506001600160a01b033391160361076c576040517fb387ef92000000000000000000000000000000000000000000000000000000008152602081600481335afa908115610924575f9161092f575b50926040517fcee9047a000000000000000000000000000000000000000000000000000000008152602081600481335afa908115610924575f916108e1575b50976103b7565b90506020813d60201161091c575b816108fc60209383610d19565b81010312610096575167ffffffffffffffff81168103610096578a6108da565b3d91506108ef565b6040513d5f823e3d90fd5b610951915060203d602011610957575b6109498183610d19565b810190610dd0565b8961089b565b503d61093f565b610977915060203d602011610957576109498183610d19565b8961084d565b5084156103a9565b50601082116103a2565b50811561039b565b5060608311610394565b346100965760203660031901126100965760043567ffffffffffffffff8111610096576109d2903690600401610c15565b9081158015610b42575b61076c576109eb368383610d3b565b6020815191012090815f525f602052610a0760405f2054610c43565b15610a18575b602082604051908152f35b815f525f60205260405f209267ffffffffffffffff81116106e657838392610a4c83610a4660209854610c43565b84610d81565b5f90601f8411600114610ab95791610a9e84807f5257d1c8839d144c76ec3ed58ed3ef2854517efdc299aa2a2ee386c31637b37a96948a965f92610aae5750508160011b915f199060031b1c19161790565b90555b604051908152a282610a0d565b013590508a806105f0565b601f19841691835f52875f20925f5b818110610b285750918593917f5257d1c8839d144c76ec3ed58ed3ef2854517efdc299aa2a2ee386c31637b37a968a969410610b0f575b505050600182811b019055610aa1565b01355f19600385901b60f8161c19169055878080610aff565b828401358555889750600190940193918901918901610ac8565b5061400082116109dc565b34610096576020366003190112610096576004356001600160a01b038116809103610096575f526002602052602060405f2054604051908152f35b3461009657602036600319011261009657610bd2906004355f525f602052610bbe81610bb78160405f20610c7b565b0382610d19565b604051918291602083526020830190610bd6565b0390f35b91908251928382525f5b848110610c00575050825f602080949584010152601f8019910116010190565b80602080928401015182828601015201610be0565b9181601f840112156100965782359167ffffffffffffffff8311610096576020838186019501011161009657565b90600182811c92168015610c71575b6020831014610c5d57565b634e487b7160e01b5f52602260045260245ffd5b91607f1691610c52565b5f9291815491610c8a83610c43565b8083529260018116908115610cdf5750600114610ca657505050565b5f9081526020812093945091925b838310610cc5575060209250010190565b600181602092949394548385870101520191019190610cb4565b915050602093945060ff929192191683830152151560051b010190565b610140810190811067ffffffffffffffff8211176106e657604052565b90601f8019910116810190811067ffffffffffffffff8211176106e657604052565b92919267ffffffffffffffff82116106e65760405191610d65601f8201601f191660200184610d19565b829481845281830111610096578281602093845f960137010152565b601f8211610d8e57505050565b5f5260205f20906020601f840160051c83019310610dc6575b601f0160051c01905b818110610dbb575050565b5f8155600101610db0565b9091508190610da7565b9081602091031261009657516001600160a01b03811681036100965790565b91908110156106d25760051b019056fea2646970667358221220d9c17a51a6e991a8fa17bdde7c272d45cb87ec9559165078bc2632149c3d455264736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081631cd8e4e614610b885750806343d5860f14610b4d578063449b2cf6146109a15780635882c395146103055780637109fd25146100dd5780637de1e5361461009a5763e6c9834f14610069575f80fd5b34610096576020366003190112610096576004355f5260016020526020600460405f200154604051908152f35b5f80fd5b34610096575f3660031901126100965760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100965760203660031901126100965760606101206040516100ff81610cfc565b5f81525f60208201525f60408201525f838201525f60808201525f60a08201525f60c08201525f60e08201528261010082015201526004355f52600160205260405f2060405161014e81610cfc565b6001600160a01b0382541681526001600160a01b036001830154169160208201928352600281015490604083019182526003810154606084019067ffffffffffffffff8116825267ffffffffffffffff608086019160401c168152600483015460a0860190815260058401549160c0870192835260068501549360e088019485526008604051966101ed886101e68160078501610c7b565b0389610d19565b6101008a0197885201966040519788602082549182815201915f5260205f20905f5b8181106102ef575050508890036102269089610d19565b6101208901978852604051998a9960208b52516001600160a01b031660208b0152516001600160a01b031660408a01525160608901525167ffffffffffffffff1660808801525167ffffffffffffffff1660a08701525160c08601525160e085015251610100840152516101208301610140905261016083016102a891610bd6565b905190601f198382030161014084015281519081815260200191602001905f5b8181106102d6575050500390f35b82518452859450602093840193909201916001016102c8565b825484526020909301926001928301920161020f565b346100965760a03660031901126100965760043560243567ffffffffffffffff811161009657610339903690600401610c15565b916044359167ffffffffffffffff831161009657366023840112156100965782600401359067ffffffffffffffff82116100965760248401948260051b94602486369201011161009657606435926084359282158015610997575b801561098f575b8015610985575b801561097d575b61076c5733925f97876107dd575b851515806107c0575b61076c57604051602081019160608352601960808301527f49444642495f45444954494f4e5f434f4e54454e545f315f360000000000000060a083015288604083015260a060608301528560c08301527f07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff86116100965760e08282610455938f8484013781010301601f198101835282610d19565b519020955f5b848110610794575061046e368385610d3b565b602081519101209860405167ffffffffffffffff60208201924684523060408401523360608401528b60808401526001600160a01b03891660a0840152169a8b60c08301528960e08301528861010083015261012082015261012081526104d761014082610d19565b51902098895f5260016020526001600160a01b0360405f20541661076c57895f52600160205260405f20956001600160a01b03331673ffffffffffffffffffffffffffffffffffffffff198854161787556001600160a01b0360018801911673ffffffffffffffffffffffffffffffffffffffff1982541617905588600287015560038601908154907fffffffffffffffffffffffffffffffff000000000000000000000000000000006fffffffffffffffff00000000000000004260401b169216171790558660048601556005850155846006850155600784019167ffffffffffffffff82116106e6576105d6826105d08554610c43565b85610d81565b5f90601f83116001146107055761060492915f91836106fa575b50508160011b915f199060031b1c19161790565b90559590955b60085f9701965b8181106106915750505060209450335f526002855260405f205460405186810191825285604082015260408152610649606082610d19565b519020335f526002865260405f205560405191825284820152827f13f7bce5a6bd9ab5f6a5757c492ec3e1bc50a686492d3da0102f38ed35b70cbb60403393a4604051908152f35b61069c818385610def565b3590885491680100000000000000008310156106e65760018301808b558310156106d2576001928a5f5260205f20015501610611565b634e487b7160e01b5f52603260045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b013590508b806105f0565b601f19831691845f5260205f20925f5b818110610754575090846001959493921061073b575b505050811b01905595909561060a565b01355f19600384901b60f8161c191690558a808061072b565b91936020600181928787013581550195019201610715565b7f720874cf000000000000000000000000000000000000000000000000000000005f5260045ffd5b61079f81868d610def565b355f525f6020526107b360405f2054610c43565b1561076c5760010161045b565b50855f5260016020526001600160a01b0360405f205416156103c0565b975092506040517f8f4e43210000000000000000000000000000000000000000000000000000000081528660048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa908115610924575f9161095e575b506001600160a01b033391160361076c576040517fb387ef92000000000000000000000000000000000000000000000000000000008152602081600481335afa908115610924575f9161092f575b50926040517fcee9047a000000000000000000000000000000000000000000000000000000008152602081600481335afa908115610924575f916108e1575b50976103b7565b90506020813d60201161091c575b816108fc60209383610d19565b81010312610096575167ffffffffffffffff81168103610096578a6108da565b3d91506108ef565b6040513d5f823e3d90fd5b610951915060203d602011610957575b6109498183610d19565b810190610dd0565b8961089b565b503d61093f565b610977915060203d602011610957576109498183610d19565b8961084d565b5084156103a9565b50601082116103a2565b50811561039b565b5060608311610394565b346100965760203660031901126100965760043567ffffffffffffffff8111610096576109d2903690600401610c15565b9081158015610b42575b61076c576109eb368383610d3b565b6020815191012090815f525f602052610a0760405f2054610c43565b15610a18575b602082604051908152f35b815f525f60205260405f209267ffffffffffffffff81116106e657838392610a4c83610a4660209854610c43565b84610d81565b5f90601f8411600114610ab95791610a9e84807f5257d1c8839d144c76ec3ed58ed3ef2854517efdc299aa2a2ee386c31637b37a96948a965f92610aae5750508160011b915f199060031b1c19161790565b90555b604051908152a282610a0d565b013590508a806105f0565b601f19841691835f52875f20925f5b818110610b285750918593917f5257d1c8839d144c76ec3ed58ed3ef2854517efdc299aa2a2ee386c31637b37a968a969410610b0f575b505050600182811b019055610aa1565b01355f19600385901b60f8161c19169055878080610aff565b828401358555889750600190940193918901918901610ac8565b5061400082116109dc565b34610096576020366003190112610096576004356001600160a01b038116809103610096575f526002602052602060405f2054604051908152f35b3461009657602036600319011261009657610bd2906004355f525f602052610bbe81610bb78160405f20610c7b565b0382610d19565b604051918291602083526020830190610bd6565b0390f35b91908251928382525f5b848110610c00575050825f602080949584010152601f8019910116010190565b80602080928401015182828601015201610be0565b9181601f840112156100965782359167ffffffffffffffff8311610096576020838186019501011161009657565b90600182811c92168015610c71575b6020831014610c5d57565b634e487b7160e01b5f52602260045260245ffd5b91607f1691610c52565b5f9291815491610c8a83610c43565b8083529260018116908115610cdf5750600114610ca657505050565b5f9081526020812093945091925b838310610cc5575060209250010190565b600181602092949394548385870101520191019190610cb4565b915050602093945060ff929192191683830152151560051b010190565b610140810190811067ffffffffffffffff8211176106e657604052565b90601f8019910116810190811067ffffffffffffffff8211176106e657604052565b92919267ffffffffffffffff82116106e65760405191610d65601f8201601f191660200184610d19565b829481845281830111610096578281602093845f960137010152565b601f8211610d8e57505050565b5f5260205f20906020601f840160051c83019310610dc6575b601f0160051c01905b818110610dbb575050565b5f8155600101610db0565b9091508190610da7565b9081602091031261009657516001600160a01b03811681036100965790565b91908110156106d25760051b019056fea2646970667358221220d9c17a51a6e991a8fa17bdde7c272d45cb87ec9559165078bc2632149c3d455264736f6c634300081e0033",
+  "methodIdentifiers": {
+    "accountCommitment(address)": "43d5860f",
+    "collection()": "7de1e536",
+    "edition(bytes32)": "7109fd25",
+    "editionCommitment(bytes32)": "e6c9834f",
+    "inscribe(bytes)": "449b2cf6",
+    "leaf(bytes32)": "1cd8e4e6",
+    "publish(uint256,string,bytes32[],bytes32,bytes32)": "5882c395"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "collection_",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidEdition",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "leaf",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "length",
+              "type": "uint256"
+            }
+          ],
+          "name": "Inscribed",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "edition",
+              "type": "bytes32"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "publisher",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "identity",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "contentHash",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "parent",
+              "type": "bytes32"
+            }
+          ],
+          "name": "Published",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "accountCommitment",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "collection",
+          "outputs": [
+            {
+              "internalType": "contract IProtocolCollection",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "name": "edition",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "publisher",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "custodian",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "identity",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "epoch",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "publishedAt",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "contentHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "declaredInterface",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "parent",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "string",
+                  "name": "title",
+                  "type": "string"
+                },
+                {
+                  "internalType": "bytes32[]",
+                  "name": "leaves",
+                  "type": "bytes32[]"
+                }
+              ],
+              "internalType": "struct EditionRegistry.Edition",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "name": "editionCommitment",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "name": "inscribe",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "name": "leaf",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "identity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "string",
+              "name": "title",
+              "type": "string"
+            },
+            {
+              "internalType": "bytes32[]",
+              "name": "orderedLeaves",
+              "type": "bytes32[]"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "declaredInterface",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "parent",
+              "type": "bytes32"
+            }
+          ],
+          "name": "publish",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "id",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "A declared interface or simulation hash is metadata, NOT a conformance or safety proof. There is no arbitrary bytecode deployment or automatic spending grant.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Public, immutable content leaves and ordered editions. This contract cannot execute them.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/operating/EditionRegistry.sol": "EditionRegistry"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/operating/EditionRegistry.sol": {
+        "keccak256": "0xd867aba637d017d9df41a99741a943ce8242e955d1266feae7f90d60451dce7d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://bd6623904f25d645ab0175bfd736458530aaac47be05698fa7b0f236b9d98678",
+          "dweb:/ipfs/QmeVmMhWwkqoBacDWDkDDGxzZJCfnY7umytHkrSHVVJs6F"
+        ]
+      },
+      "contracts/src/operating/OperatingInterfaces.sol": {
+        "keccak256": "0x6df7c29abfd8e566180eef689dfc6289a37317e46c2c6ab65b6d73198b3124ba",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0eeedcf0d4e2b2a6375af6fa908e9fec3f90d4f952c71866bfbd99e921ca5e37",
+          "dweb:/ipfs/QmVLwzBzMtfKsABHVq6VroNQfAem1kTyfDxToVJrrtgWCA"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

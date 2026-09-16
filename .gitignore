@@ -1,0 +1,22 @@
+node_modules/
+proof-kernel/target/
+.env
+.env.*
+!.env.example
+.DS_Store
+*.log
+coverage/
+.cache/
+web/deployment.local.json
+
+__pycache__/
+*.pyc
+
+/node_modules
+.sites-runtime/
+.local-genesis/
+
+**/node_modules
+
+# Reproducible binary shards are rebuilt from the pinned, tracked worker.
+/onchain-app/privacy-worker/

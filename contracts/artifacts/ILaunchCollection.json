@@ -1,0 +1,100 @@
+{
+  "contractName": "ILaunchCollection",
+  "sourceName": "contracts/src/extensions/launch/LaunchRegistry.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "accountOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "accountOf(uint256)": "8f4e4321"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "accountOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/launch/LaunchRegistry.sol": "ILaunchCollection"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/launch/LaunchRegistry.sol": {
+        "keccak256": "0xcacd215a48764dc7a690f13d29f4023a897d858db4c0f453ed319eb039a599b2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://6f4c242c34cf14a856205e023a6de2963a88049c2bc5944bb7e48f4aa5ab3db4",
+          "dweb:/ipfs/QmPCx7uj7Wb9ZD5v5TMJJBDb5r6fnsjT95rsubBSNbm4yV"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

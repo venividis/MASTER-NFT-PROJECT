@@ -1,0 +1,13 @@
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/86e81b3cd436/genesis-source/reports/build-5.2/interior/source-desktop.png 2.535 seconds
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/86e81b3cd436/genesis-source/reports/build-5.2/interior/observatory.png 0.237 seconds
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/86e81b3cd436/genesis-source/reports/build-5.2/interior/source-portrait.png 0.101 seconds
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/86e81b3cd436/genesis-source/reports/build-5.2/interior/other-identity.png 0.214 seconds
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/86e81b3cd436/genesis-source/reports/build-5.2/interior/threshold.png 0.145 seconds
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/86e81b3cd436/genesis-source/reports/build-5.2/interior/opposite-side.png 0.059 seconds
+PASS: 6 native 3D interior render cases

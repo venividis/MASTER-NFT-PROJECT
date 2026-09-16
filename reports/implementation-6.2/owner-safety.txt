@@ -1,0 +1,20 @@
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ exact token budgets reject changed recipient, excess spend, replay, revoke and old custody (62222.349003ms)
+✔ unreadable tracked token remains disclosed while quarantined unrelated operations and recovery work (9237.028687ms)
+✔ agent binding verifies selected registry ownership and live custody; stale links can be replaced (7906.995622ms)
+ℹ tests 3
+ℹ suites 0
+ℹ pass 3
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81976.327953

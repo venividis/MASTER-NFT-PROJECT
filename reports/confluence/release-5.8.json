@@ -1,0 +1,231 @@
+{
+  "version": "5.8.0",
+  "baseCommit": "9222776db69648c0261094008249dc40b2311013",
+  "tests": {
+    "selected": 197,
+    "passed": 197,
+    "failed": 0,
+    "skipped": 0,
+    "new": 15,
+    "fullInheritedSuiteRerun": false
+  },
+  "capabilityGroups": 43,
+  "explanationEntries": 271,
+  "archive": {
+    "schema": "awe.onchain-runtime/1",
+    "compression": "gzip",
+    "expandedBytes": 1781989,
+    "byteLength": 804005,
+    "sha256": "c610c0941e6082037a48f506c13b131b43957e612ddc673a02a226b8dd6e3172",
+    "chunks": [
+      {
+        "file": "chunks/00.bin",
+        "bytes": 23000,
+        "sha256": "9ab68b511c1ffdc98a95ca738f1cd4da03335fabb19d817f90a44962e7780706"
+      },
+      {
+        "file": "chunks/01.bin",
+        "bytes": 23000,
+        "sha256": "d2295027e2065c3ed3f79924cc51f0374794e4877d2924db0053c269d4e1bca9"
+      },
+      {
+        "file": "chunks/02.bin",
+        "bytes": 23000,
+        "sha256": "5902f05a5e4ca3d8ed2694f81b7f3268eb513f155bea93413c4b64357916d4b8"
+      },
+      {
+        "file": "chunks/03.bin",
+        "bytes": 23000,
+        "sha256": "1cc09adde390b3f19ea3fa7a12d8d2f0e8ba3c6b8b043ad9ba551d0ad03f1a91"
+      },
+      {
+        "file": "chunks/04.bin",
+        "bytes": 23000,
+        "sha256": "9458d8a5e7b1d2413f743a92c747168982cb61b3682a478c6d6685c6a3a62848"
+      },
+      {
+        "file": "chunks/05.bin",
+        "bytes": 23000,
+        "sha256": "6de10e6effdcd4a9955f2bce31ab3f1d5d0fc69180cd87e1425eb4ddf1abf767"
+      },
+      {
+        "file": "chunks/06.bin",
+        "bytes": 23000,
+        "sha256": "4b6fa54a37b9cc8db3b10daed94a99cd1fe3eda086071bfdc8cfb3703e560abe"
+      },
+      {
+        "file": "chunks/07.bin",
+        "bytes": 23000,
+        "sha256": "7d1bcfee30569a8aa4e877f1f152ee4c50a1dabf367ff0c388e4d18563c4d933"
+      },
+      {
+        "file": "chunks/08.bin",
+        "bytes": 23000,
+        "sha256": "9246abb055d041125215aac2dc6b5f5497150b8f7f68f7fc8c14c8317366efcc"
+      },
+      {
+        "file": "chunks/09.bin",
+        "bytes": 23000,
+        "sha256": "eab06059559a472c236fd1d4f006e58d05d2466ef1ea54fd2afbe74963f671b7"
+      },
+      {
+        "file": "chunks/10.bin",
+        "bytes": 23000,
+        "sha256": "36aaec03c97166c70a24815bebbf431a986fe3baa64bdc77ef477b5babafe3cd"
+      },
+      {
+        "file": "chunks/11.bin",
+        "bytes": 23000,
+        "sha256": "caa7f6bb93c72926494f2fa2a63d5ac3afe5795bfd8419c88eb9bc60993a75d3"
+      },
+      {
+        "file": "chunks/12.bin",
+        "bytes": 23000,
+        "sha256": "0f8eff60e4b9f6f4eb149253d8a6b2385326526969a29bf1762fdd0dc386221d"
+      },
+      {
+        "file": "chunks/13.bin",
+        "bytes": 23000,
+        "sha256": "e0dfafec5a1e06a673a73647a05ec5677c39fe2dc0521083ef32d74321b73126"
+      },
+      {
+        "file": "chunks/14.bin",
+        "bytes": 23000,
+        "sha256": "1b0cb767478bf4125db2c03266f0ee2135b46405709a849870aaa12d6334e4d2"
+      },
+      {
+        "file": "chunks/15.bin",
+        "bytes": 23000,
+        "sha256": "b37fcfbd5a398dc15601c02e57aa181685c2758330d373328a0e4db82c4fd8ad"
+      },
+      {
+        "file": "chunks/16.bin",
+        "bytes": 23000,
+        "sha256": "05a7dcf0001f74f9474e7a61a44a4234a4249ccb83d593e225e1b570b26acb80"
+      },
+      {
+        "file": "chunks/17.bin",
+        "bytes": 23000,
+        "sha256": "8917d5719fb4861005cfa2a48824165fa4ef65b78347d5c4f3e6799c97638b79"
+      },
+      {
+        "file": "chunks/18.bin",
+        "bytes": 23000,
+        "sha256": "3500143871cdf9fe189656272e3b3fbb34292c5731ed6ff6656825a2b42f1793"
+      },
+      {
+        "file": "chunks/19.bin",
+        "bytes": 23000,
+        "sha256": "8f90e4e0ffae4678045a2c1c5b95411f1f6fc1457459b000f93b40fbe8ddbf4c"
+      },
+      {
+        "file": "chunks/20.bin",
+        "bytes": 23000,
+        "sha256": "a984632850861326a86c07aa20aa7f8fa2af8b3f1e5eca566ab70b1dd72d7ebf"
+      },
+      {
+        "file": "chunks/21.bin",
+        "bytes": 23000,
+        "sha256": "e908fecfaa1c3999737841504a9315c1a9d1b127ac678389d6bc222d540a6b88"
+      },
+      {
+        "file": "chunks/22.bin",
+        "bytes": 23000,
+        "sha256": "d0701d35ab2da31528900e18249eed914eaa9ea34eae991d79288d82c2249311"
+      },
+      {
+        "file": "chunks/23.bin",
+        "bytes": 23000,
+        "sha256": "83f70b393ea4d8f610598f5d8865aace7591da5d7f3457fad1d6b1281ea870d5"
+      },
+      {
+        "file": "chunks/24.bin",
+        "bytes": 23000,
+        "sha256": "645c8eb5497bdd1d4358b517d5abb4a4a7a8171bb36d4690ed073c43e85f774b"
+      },
+      {
+        "file": "chunks/25.bin",
+        "bytes": 23000,
+        "sha256": "b41b5a5df1ae39ad51c4d24b949d5b10d91fcd32920e89e16a5a1a450b22c492"
+      },
+      {
+        "file": "chunks/26.bin",
+        "bytes": 23000,
+        "sha256": "d176af3f593d640ad45cf636506e5219344bb2e61f0eb00f0ab08a8532b417ea"
+      },
+      {
+        "file": "chunks/27.bin",
+        "bytes": 23000,
+        "sha256": "61fc56a944142fb4f212409575ca27729a434ea99c10d065faadf9c4ff7110ba"
+      },
+      {
+        "file": "chunks/28.bin",
+        "bytes": 23000,
+        "sha256": "d4f9800ecdbcb2ff03454a4c04fb83ed3e823a50cda11c11b2fe9188e0d6c5ab"
+      },
+      {
+        "file": "chunks/29.bin",
+        "bytes": 23000,
+        "sha256": "b482a36fbbac41e3daffe3f657704f9695b4d98bbb7454c26962def514c02572"
+      },
+      {
+        "file": "chunks/30.bin",
+        "bytes": 23000,
+        "sha256": "321155afcf8001e896dbf30659cea55d5542a1622bb2f2f143d48be4dd99e379"
+      },
+      {
+        "file": "chunks/31.bin",
+        "bytes": 23000,
+        "sha256": "ae5dfc16241575708c1856548e10ce8b7a1608bc562a0a13e148e9f826b1b229"
+      },
+      {
+        "file": "chunks/32.bin",
+        "bytes": 23000,
+        "sha256": "35c37cf8a772d3ae9770b9f785b5fc5d5dd0e72d30210e9ad9739bdbfb0107fa"
+      },
+      {
+        "file": "chunks/33.bin",
+        "bytes": 23000,
+        "sha256": "ea2a923f060262037f2bf1a0dbce7f5f968209aa071ff50260ac1402d43f8512"
+      },
+      {
+        "file": "chunks/34.bin",
+        "bytes": 22005,
+        "sha256": "f26a62a7fce97897de2b5aa51c8d9570a9dd64b48bd0ee64ba1834210ab01827"
+      }
+    ]
+  },
+  "localMint": {
+    "chainId": 31337,
+    "coreRoundtrip": true,
+    "workerRoundtrip": true,
+    "manifestSealed": true,
+    "workerBytes": 15010237,
+    "workerCompressedBytes": 4570220,
+    "workerChunks": 199,
+    "workerShards": 7
+  },
+  "deploymentPreparation": {
+    "exampleOnly": true,
+    "verifiedAgainstFinalArchive": true,
+    "summary": {
+      "transactionCount": 277,
+      "createCount": 270,
+      "configurationCount": 7,
+      "firstNonce": 17,
+      "nextNonce": 294,
+      "totalArchiveChunks": 234,
+      "totalStoredArchiveBytes": 5374225,
+      "totalCompressedArchiveBytes": 5172685,
+      "totalTransactionDataBytes": 5706346,
+      "transferValueWei": "0",
+      "gasAndFees": "unestimated"
+    }
+  },
+  "publicChainDeployed": false,
+  "fundedShieldedE2E": false,
+  "websitePublished": false,
+  "browserVerification": "blocked local URL: ERR_BLOCKED_BY_CLIENT",
+  "nativeRenderingRerun": false,
+  "report": "docs/genesis/BUILD-5.8.md"
+}

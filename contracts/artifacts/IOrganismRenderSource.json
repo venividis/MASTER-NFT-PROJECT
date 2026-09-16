@@ -1,0 +1,274 @@
+{
+  "contractName": "IOrganismRenderSource",
+  "sourceName": "contracts/src/interfaces/Interfaces.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "renderSnapshot",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "seed",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "genome",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "stateRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "memoryRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "lineageRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "auditRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "constitutionHash",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "bornAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "evolvedAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint32",
+              "name": "generation",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "evolutions",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint256",
+              "name": "parentId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "actionNonce",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bool",
+              "name": "sovereign",
+              "type": "bool"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "owner",
+              "type": "address"
+            }
+          ],
+          "internalType": "struct OrganismRenderData",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "renderSnapshot(uint256)": "9cd363d2"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "renderSnapshot",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "seed",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "genome",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "stateRoot",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "memoryRoot",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "lineageRoot",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "auditRoot",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "constitutionHash",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "bornAt",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "evolvedAt",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "generation",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint32",
+                  "name": "evolutions",
+                  "type": "uint32"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "parentId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "actionNonce",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bool",
+                  "name": "sovereign",
+                  "type": "bool"
+                },
+                {
+                  "internalType": "address",
+                  "name": "account",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "owner",
+                  "type": "address"
+                }
+              ],
+              "internalType": "struct OrganismRenderData",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/interfaces/Interfaces.sol": "IOrganismRenderSource"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

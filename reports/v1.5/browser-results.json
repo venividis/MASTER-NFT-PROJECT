@@ -1,0 +1,268 @@
+{
+  "version": "1.5.0",
+  "browser": "144.0.7559.96",
+  "htmlSha256": "90c544548f8bf5b6b2e26aa8978cb912fb788ca84c264f187ce47f45948caea0",
+  "passed": 64,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Original and instruments boot together",
+      "passed": true
+    },
+    {
+      "name": "Original optical Wasm or normal WebGL actually initialized",
+      "passed": true
+    },
+    {
+      "name": "New modal is closed by default",
+      "passed": true
+    },
+    {
+      "name": "No replacement crystal canvas exists",
+      "passed": true
+    },
+    {
+      "name": "Storage works without a spurious corruption notice",
+      "passed": true
+    },
+    {
+      "name": "Financial context is explicitly local",
+      "passed": true
+    },
+    {
+      "name": "Outcome is reviewed before state change",
+      "passed": true
+    },
+    {
+      "name": "Review contains minimum output and schedule",
+      "passed": true
+    },
+    {
+      "name": "Swap output is locked",
+      "passed": true
+    },
+    {
+      "name": "Original audit did not mutate from using a financial rehearsal",
+      "passed": true
+    },
+    {
+      "name": "Future slider is strictly read-only",
+      "passed": true
+    },
+    {
+      "name": "New lock is not released by projection",
+      "passed": true
+    },
+    {
+      "name": "Direct native lock creates a schedule",
+      "passed": true
+    },
+    {
+      "name": "Giving first creates an offer, not acceptance",
+      "passed": true
+    },
+    {
+      "name": "Donor cannot click recipient acceptance",
+      "passed": true
+    },
+    {
+      "name": "Recipient acceptance records fixed-date rights",
+      "passed": true
+    },
+    {
+      "name": "Accepted gift has no return button",
+      "passed": true
+    },
+    {
+      "name": "Accepted gift has disabled early release",
+      "passed": true
+    },
+    {
+      "name": "Receipt trace contains actual swap and offer",
+      "passed": true
+    },
+    {
+      "name": "Discussion references a receipt",
+      "passed": true
+    },
+    {
+      "name": "Untrusted message remains literal text",
+      "passed": true
+    },
+    {
+      "name": "Chat did not generate a fake LAUNCHED record",
+      "passed": true
+    },
+    {
+      "name": "Invitation initially unaccepted",
+      "passed": true
+    },
+    {
+      "name": "Room member explicitly accepts",
+      "passed": true
+    },
+    {
+      "name": "Removal preserves earlier authorship",
+      "passed": true
+    },
+    {
+      "name": "Removed member cannot submit room post",
+      "passed": true
+    },
+    {
+      "name": "Room removal does not remove World access",
+      "passed": true
+    },
+    {
+      "name": "Launch also creates its commons",
+      "passed": true
+    },
+    {
+      "name": "Contribution is recorded",
+      "passed": true
+    },
+    {
+      "name": "Withdrawal works before close",
+      "passed": true
+    },
+    {
+      "name": "Clock close alone does not settle",
+      "passed": true
+    },
+    {
+      "name": "Settlement produces market and locked allocations",
+      "passed": true
+    },
+    {
+      "name": "Allocation is claimable",
+      "passed": true
+    },
+    {
+      "name": "Launch commons is directly navigable",
+      "passed": true
+    },
+    {
+      "name": "Marketplace future lens also leaves actual state unchanged",
+      "passed": true
+    },
+    {
+      "name": "Acquisition changes controller and keeps schedules",
+      "passed": true
+    },
+    {
+      "name": "Listing escrows control",
+      "passed": true
+    },
+    {
+      "name": "Cancellation returns control to recorded seller",
+      "passed": true
+    },
+    {
+      "name": "Gift releases to intended personal wallet, not caller or selected NFT",
+      "passed": true
+    },
+    {
+      "name": "Unbuilt mechanisms are visibly identified",
+      "passed": true
+    },
+    {
+      "name": "Export is a tagged unsigned local archive",
+      "passed": true
+    },
+    {
+      "name": "Actual browser reconstructs stored instruments",
+      "passed": true
+    },
+    {
+      "name": "Corrupt save reports and preserves original bytes",
+      "passed": true
+    },
+    {
+      "name": "Valid import can explicitly replace a corrupt saved archive",
+      "passed": true
+    },
+    {
+      "name": "Closing returns focus to the original instrument button",
+      "passed": true
+    },
+    {
+      "name": "Original Evolve remains usable",
+      "passed": true
+    },
+    {
+      "name": "Historical view blocks new spending rehearsal",
+      "passed": true
+    },
+    {
+      "name": "Sovereignty cannot be bypassed through new utility controls",
+      "passed": true
+    },
+    {
+      "name": "Mobile trade has no document horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile trade content fits its panel width",
+      "passed": true
+    },
+    {
+      "name": "Mobile launch has no document horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile launch content fits its panel width",
+      "passed": true
+    },
+    {
+      "name": "Mobile vault has no document horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile vault content fits its panel width",
+      "passed": true
+    },
+    {
+      "name": "Mobile give has no document horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile give content fits its panel width",
+      "passed": true
+    },
+    {
+      "name": "Mobile market has no document horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile market content fits its panel width",
+      "passed": true
+    },
+    {
+      "name": "Mobile world has no document horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile world content fits its panel width",
+      "passed": true
+    },
+    {
+      "name": "No automatic wallet requests",
+      "passed": true
+    },
+    {
+      "name": "No automatic network requests in recorded new flows",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true
+    },
+    {
+      "name": "Unavailable Storage is not misreported as corrupt saved data",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "automaticNetworkRequests": [],
+  "scope": "Actual standalone HTML set_content; memory Storage adapter; local rehearsal and preserved optical renderer. No EVM/wallet/deployment validation."
+}

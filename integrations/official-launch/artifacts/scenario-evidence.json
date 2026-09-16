@@ -1,0 +1,85 @@
+{
+  "source": "Actual pinned contracts on isolated funded Anvil; no public RPC",
+  "evidence": [
+    {
+      "mechanism": "cca",
+      "outcome": "success",
+      "steps": 11,
+      "conservation": {
+        "totalSupply": "1000000000000000000000000",
+        "trackedTokens": "1000000000000000000000000",
+        "tokenResidual": "0",
+        "initialNative": "99999986449150678673700",
+        "trackedNative": "99999986412029658572044",
+        "nativeGasPaid": "1841328020101656",
+        "nativeBurned": "37121020101656",
+        "nativeResidual": "0",
+        "note": "Native conservation includes all ten local wallets, contracts and miner; gas paid is separate from sale economics. Burned base fees are accounted. Token and LP residuals must be zero."
+      }
+    },
+    {
+      "mechanism": "cca",
+      "outcome": "failed-minimum",
+      "steps": 8,
+      "conservation": {
+        "totalSupply": "1000000000000000000000000",
+        "trackedTokens": "1000000000000000000000000",
+        "tokenResidual": "0",
+        "initialNative": "99999986449134843443124",
+        "trackedNative": "99999986412014155593912",
+        "nativeGasPaid": "1072245687849212",
+        "nativeBurned": "37120687849212",
+        "nativeResidual": "0",
+        "note": "Native conservation includes all ten local wallets, contracts and miner; gas paid is separate from sale economics. Burned base fees are accounted. Token and LP residuals must be zero."
+      }
+    },
+    {
+      "mechanism": "cca",
+      "outcome": "migration-failure",
+      "steps": 11,
+      "conservation": {
+        "totalSupply": "1000000000000000000000000",
+        "trackedTokens": "1000000000000000000000000",
+        "tokenResidual": "0",
+        "initialNative": "99999986449141250111087",
+        "trackedNative": "99999986412020358937017",
+        "nativeGasPaid": "1524741891174070",
+        "nativeBurned": "37120891174070",
+        "nativeResidual": "0",
+        "note": "Native conservation includes all ten local wallets, contracts and miner; gas paid is separate from sale economics. Burned base fees are accounted. Token and LP residuals must be zero."
+      }
+    },
+    {
+      "mechanism": "doppler",
+      "outcome": "success",
+      "steps": 13,
+      "conservation": {
+        "totalSupply": "100000000000000000000000",
+        "trackedTokens": "100000000000000000000000",
+        "tokenResidual": "0",
+        "initialNative": "99999984047667424563313",
+        "trackedNative": "99999983870885873865461",
+        "nativeGasPaid": "1778011550697852",
+        "nativeBurned": "176781550697852",
+        "nativeResidual": "0",
+        "note": "Native conservation includes all ten local wallets, contracts and miner; gas paid is separate from sale economics. Burned base fees are accounted. Token and LP residuals must be zero."
+      }
+    },
+    {
+      "mechanism": "doppler",
+      "outcome": "failed-minimum",
+      "steps": 8,
+      "conservation": {
+        "totalSupply": "100000000000000000000000",
+        "trackedTokens": "100000000000000000000000",
+        "tokenResidual": "0",
+        "initialNative": "99999984047665157076181",
+        "trackedNative": "99999983902064248554361",
+        "nativeGasPaid": "1491875908521820",
+        "nativeBurned": "145600908521820",
+        "nativeResidual": "0",
+        "note": "Native conservation includes all ten local wallets, contracts and miner; gas paid is separate from sale economics. Burned base fees are accounted. Token and LP residuals must be zero."
+      }
+    }
+  ]
+}

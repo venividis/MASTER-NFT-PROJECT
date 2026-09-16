@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> i-dont-fucking-believe-it@6.0.0 audit:static
+> node scripts/static-audit.mjs
+
+Static heuristic scan passed. Three exact-hash pinned Solady files permit intentional assembly storage; this is not a security audit.

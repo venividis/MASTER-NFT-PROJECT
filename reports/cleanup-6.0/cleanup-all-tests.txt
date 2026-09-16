@@ -1,0 +1,771 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> i-dont-fucking-believe-it@6.0.0 test:javascript
+> node scripts/test-all.mjs --suite=javascript
+
+Suite javascript: 74 JavaScript test files; concurrency 2. Python/browser, Rust, v4 launch flows and privacy SDK offline checks are separate commands.
+✔ agent planning is deterministic, ABI-ready, and sensitive to evidence (11.486266ms)
+✔ constitutional hashing ignores object insertion order (0.247213ms)
+✔ MCP surface exposes tools and produces a serializable plan (2.788458ms)
+✔ real words and field values produce destinations; completion enables native controls (3.960347ms)
+✔ keyboard and identity reflow preserve focused ready input without making it inert (2.246059ms)
+✔ input estimate updates do not restart creation; rapid route changes coalesce (2.522658ms)
+✔ reduced motion and Original handoff leave no hidden or inert controls (0.661378ms)
+✔ all original fold and ray-march equations are retained byte-for-byte (0.982202ms)
+✔ one central instrument fits phone, keyboard, embedded and desktop viewports (8.465817ms)
+✔ every flight starts and ends exactly, including early contour arrivals (0.791244ms)
+✔ allocation conserves particle count across text, outline and empty masks (1.217628ms)
+✔ projection stays finite and origin changes aesthetics without changing capabilities (0.944605ms)
+✔ original shader interface links and optical/particle passes run in the strict test double (20.773563ms)
+✔ fresh interactive fallback on {"badFramebuffer":true} (23.183871ms)
+✔ fresh interactive fallback on {"failLink":true} (18.626663ms)
+✔ fresh interactive fallback on {"noGL":true} (16.10637ms)
+✔ opening is slow, finishing is immediate, and interrupted matter starts where it was captured (46.942187ms)
+✔ identity and viewport changes notify the semantic creation coordinator (27.290849ms)
+✔ failed context restoration falls back and continues forming (23.339026ms)
+✔ unrestored context completes pending controls through bounded fallback (13.317529ms)
+✔ real Base64 libraries retain distinct identities and compiler freshness rejects source/output/recipe drift (399.789208ms)
+✔ module closure includes side effects, reexports, literal dynamic imports and cycles; ignores comments (17.049884ms)
+✔ module closure rejects computed imports, missing dependencies and root escapes (2.388294ms)
+✔ atomic replacement removes stale files, preserves old output on generation failure (1.678223ms)
+✔ source freshness rejects source edits, output edits and orphaned files (2.380793ms)
+✔ current source composition pins optical assets and uses current original-wallet source (176.131619ms)
+✔ model imports compile as ESM and controller boot registers one shared frame callback (82.699415ms)
+✔ release packages keep authored inputs and required v4 dependencies, archive donor trees and omit test bundles from runtime (0.950394ms)
+✔ release integrity works without git and detects changed, missing and unlisted source or generated outputs (12.164339ms)
+✔ release integrity refuses symlinks and detects changed exclusion policy (1.131898ms)
+✔ the emitted v4 import closure catches changed upstream dependencies and runtime artifacts (18.040859ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ mint grammar refuses broad spending and always fixes supported recipient arguments (24.526207ms)
+✔ origin and gas-budget gates reject mismatches, insecure URLs, disguised suffixes and unsupported fee models (0.686716ms)
+✔ independent encrypted project wallet mints, inspects, preserves uncertain broadcasts and recovers without the mint target (10151.635955ms)
+✔ receipt discovery ignores unrelated contracts and reports transfers without certifying safety (3.812416ms)
+✔ locking the mint desk replaces already rendered sensitive metadata (0.514096ms)
+✔ archive reader checks content digest, fixed block and chain without wallet authority (77.585697ms)
+✔ full archive restores checked organism and instruments, rejects mixed origins and rolls back quota errors (456.010605ms)
+✔ archive recovery supports 64 chunks and rejects 65 before requesting their contents (7.285616ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ master NFT owns configurable routing and cartridge rights; custody changes preserve claims (7277.147534ms)
+✔ threshold-two verifier boots safely and requires two distinct signatures (261.475083ms)
+✔ onchain Base64 preserves every byte including short and partial groups (361.659292ms)
+✔ identity is reproducible, chain-qualified, and preserves all capabilities across origins (156.286902ms)
+✔ sixteen-coordinate rotation stays finite over long clocks (0.691254ms)
+✔ every exact split conserves all raw units including dust and large values (0.535668ms)
+✔ routing accepts user-selected arbitrary token and rejects invalid/duplicate recipients (0.316488ms)
+✔ launch definitions do not impose founder shares or platform allocations (0.718425ms)
+✔ Prism Relay reaches a valid conclusion with score and move accounting (5.536636ms)
+✔ world import rejects disconnected corner starts (0.219261ms)
+✔ ABI supports native zero token but not malformed addresses (0.372212ms)
+✔ disconnect and local state changes preserve minted identity unless preview is explicit (1.211398ms)
+✔ minted owners cannot substitute another token, collection or network (0.519033ms)
+✔ legacy snapshots may update a minted form only when every binding matches (0.219562ms)
+✔ mobile shader stages explicitly agree on every shared uniform and varying (13.961662ms)
+✔ failed linking moves to a fresh canvas, renders and preserves orbit/zoom controls (15.076904ms)
+✔ a failed context restoration resumes through fallback on a rebound canvas (10.540058ms)
+✔ devices without WebGL initialize the same functional canvas path (11.088746ms)
+✔ one selected identity permits local life only for local preview, never chain or another visual seed (0.832727ms)
+✔ selection notifications react to identity changes once and cannot mutate authority through a subscriber (0.307474ms)
+✔ memory renderer drops local deformation immediately when chain selection appears, even with legacy disconnected (1.886137ms)
+✔ normal navigation resolves to coherent workflows and retains seven consistent names (0.613716ms)
+✔ original mutations cannot apply a local rehearsal to a selected chain NFT (0.529359ms)
+✔ the shared sound engine resolves the selected NFT instead of a local rehearsal and supplies complete sound inputs (0.207954ms)
+✔ confirmed refresh pins render, custody and balance to the same block and publishes new visual roots (1.438521ms)
+✔ unavailable refresh keeps a marked stale snapshot; custody change discards authority and selection (0.675139ms)
+✔ an in-flight refresh cannot replace a newly selected NFT (0.266332ms)
+✔ included receipt survives failed snapshot refresh, while a successful send updates the source immediately (2.698112ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ the organism awakens, evolves, becomes sovereign, and carries authority with itself (17024.290291ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ former-author reflections retain history without invalidating the current owner journal or swap (1220.12757ms)
+✔ room membership and moderation require current grantor and recipient custody plus renewed consent (1816.96413ms)
+✔ Ethereum Keccak matches known empty, abc, and function selector vectors (3.839134ms)
+✔ hex, address and integer codecs reject malformed or truncated values (0.970104ms)
+✔ ABI known transfer encoding matches independent expected words (0.52327ms)
+✔ dynamic ABI offsets account for multi-word static tuples (0.239301ms)
+✔ UTF-8 ABI string length counts bytes rather than UTF-16 units (0.206252ms)
+✔ wallet construction has no side effects or account requests (0.215425ms)
+✔ mainnet is rejected before accounts exposure (1.281043ms)
+✔ snapshot reads one block and decodes exactly the requested token (2.853216ms)
+✔ preparing an action simulates and estimates but never sends (3.971144ms)
+✔ RPC simulation failure prevents signing (1.330338ms)
+✔ successful included receipt is checked against its canonical block (2.2064ms)
+✔ reverted receipt never produces an INCLUDED success event (2.212028ms)
+✔ reorganized receipt block is rejected (1.874048ms)
+✔ wallet rejection releases the pending guard without claiming execution (2.195023ms)
+✔ a stale network or account review cannot be signed (1.578522ms)
+✔ account switch during re-simulation is rejected before send (2.270887ms)
+✔ unannounced chain change is also rejected (1.722289ms)
+✔ pending timeout reports the hash, not a fabricated success (2.091056ms)
+✔ sovereign evolution builds an exact request without generating a proof (5.784981ms)
+✔ proof execution binds calldata and deployment rather than importing arbitrary transactions (7.186086ms)
+✔ sovereign spawn and metadata paths refuse owner bypass (2.417028ms)
+✔ provider disconnect invalidates prepared transactions and cleanup removes listeners (1.213732ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ real NativeMarket token/native exits conserve segregated plans, clear allowances, and update inventory commitments (5761.681397ms)
+✔ failed minimum and malicious adapter reports roll back funds, status, allowance and commitment (2947.258538ms)
+✔ NFT custody changes, away-and-back epochs and receiver callbacks suspend standing sales (3066.749351ms)
+✔ market callback cannot change custody or reenter a funded installment (1499.40197ms)
+✔ cancellation and expiry preserve maturity and return only to the fixed NFT account (3585.775379ms)
+✔ funding refuses direct EOAs, impossible output contracts, zero minimums and early dates (380.078648ms)
+✔ live funding authenticates reviewed vault runtime before trusting collection and market getters (335.514715ms)
+✔ original archives migrate without rewriting memories, locks or custody (152.732448ms)
+✔ normal buy-AUR/sell-ETH schedule funds exact escrow, not free or ordinary lock balances (349.70659ms)
+✔ journal + swap + funding commit atomically and every later fill traces the original decision (580.084292ms)
+✔ time and projections never execute sales (291.963546ms)
+✔ minimum failures leave pools, free funds, escrow, notes and receipts byte-identical (332.643ms)
+✔ keeper cannot execute early, repeat a slice, or redirect proceeds (407.631455ms)
+✔ cancellation preserves original maturity, recovery is fixed and repeat-proof (398.913185ms)
+✔ expiry excludes a sale and enables matured-token recovery (417.254474ms)
+✔ listing includes funded exits; changed custody requires reauthorization then resume (545.592371ms)
+✔ changes to exit state invalidate an already-reviewed swap (249.706225ms)
+✔ vault projections disclose escrow and only add cancelled/expired matured recovery (173.295704ms)
+✔ percentages, nonzero minima, dates, zero-sized allocations and dust are bounded (0.434927ms)
+✔ rehashed outer archive cannot invent state or erase its funded schedule (348.712605ms)
+✔ exit funding/control/recovery grow only the commitment channel (0.56313ms)
+✔ live schedule compiler uses raw units and actual chain timestamp, bounded distinct dates (0.492644ms)
+✔ schedule controls round-trip whole and fractional minima and cannot opt out of a dedicated exit silently (2.900658ms)
+✔ human schedule amounts preserve distinct token decimals and enforce original schedule bounds (1.348155ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ F07 owner and sponsor exact signatures pay gas from deposited budget, with replay, tamper, cancellation and custody rejection (3187.705717ms)
+✔ F07 failed authorized call consumes voucher and bounded refund, insufficient and expired vouchers cannot spend (2488.155865ms)
+✔ F16 delegated ENS subname resolves the exact NFT account and live owner; mint and naming are atomic (1830.679516ms)
+✔ F16 expired mint endowment is recoverable when the parent is unavailable (653.062836ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ F03 live operator uses real account sessions, exact reviewed action, rate/budget limits and audit receipts (20115.621112ms)
+✔ Every agent workbench form matches the compiled contract argument types (1.083345ms)
+✔ F11 ERC-8183 lifecycle protects funding, submitted work, evaluator decisions, refunds and replay (2537.564546ms)
+✔ F12 signed provider discovery rejects impersonation/replay and honors paid-job review attribution and revocation (1764.603705ms)
+✔ F11 x402 SDK exact authorization settles real local tokens and rejects replay, forged receipt, mismatched price and overspend (223.847358ms)
+✔ Provider directory pagination filters a chain snapshot without making endpoint requests (8.103851ms)
+✔ Provider metadata is verified byte-for-byte and full service claims remain data (1.164968ms)
+✔ Provider feedback validates paid job source, attribution, withdrawal and reviewer scope (4.395453ms)
+✔ Provider registration signatures bind exact metadata, current signer, registry, chain, expiry and nonce (84.092827ms)
+✔ Provider directory UI paginates, compares, verifies card data, reports errors and requires signing consent (264.934729ms)
+✔ Agent host authenticates, pins origins, exposes reviewable scope and consumes purchase approval once (46.62662ms)
+✔ Agent workbench exposes explicit creation, revocation, job review and provider feedback actions (0.455117ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ the release compiler emits deployable empty immutable maps for every previously blocked real extension (131.356518ms)
+✔ extension planner constructs exact dependency-aware CREATE/call sequence and detects every tampered request (24.716694ms)
+✔ extension deployment validation fails closed on keys, missing terms, forward dependencies and invalid payable use (4.082652ms)
+✔ actual local deployment receipts produce observed immutable runtime hashes and reject incomplete or mismatched evidence (394.277638ms)
+✔ pinned external contracts retain their identities and external mutations are checked against the supplied ABI (132.008437ms)
+✔ Generic workbench renders and edits all released actions in a real DOM without swallowing fields or preserving stale reviews (38.291441ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ Workbench parses exact payable auction args without injecting native value into the ABI; rejects unsafe or ambiguous inputs (6.849828ms)
+✔ Every offered generic action encodes the released contract ABI with exact field count and payable separation (82.580022ms)
+✔ Workbench accepts only immutable-slot substitution and rejects opcode, length, malformed-hex and invalid-mask tampering (2.608997ms)
+✔ Workbench enforces the inspected full codehash even when the rendered target is passed explicitly (5.612591ms)
+✔ Rendered workbench forms expose every declared field once and preserve textarea/boolean controls as actual HTML (39.982713ms)
+✔ Workbench discards a simulation when its amount or destination changes before review completes (0.46369ms)
+✔ Workbench funds computed House principal through real SovereignAccount.executeUtility and resets its exact approval atomically (5177.666135ms)
+✔ Workbench personal-wallet funding reviews exact ERC20 approval first, then the intended action; a partial allowance resets before replacement (5474.63422ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ House buys real spot with borrowed principal, realizes profit, and conserves isolated claims after gate closes (3601.013086ms)
+✔ House adverse gap has borrower-first loss, disclosed lender debt shortfall, and no first-closer reserve advantage (5228.920117ms)
+✔ House blocks stale/future/out-of-entry-bound prices, dishonest venue receipts and inadequate fills; refunds remain live (2523.52812ms)
+✔ House repay and predetermined in-kind expiry need neither oracle nor venue, including disabled entries (5239.041488ms)
+✔ House feed ratio normalizes 6/8/18 decimals and rejects stale, negative and source decimal mutation (868.393243ms)
+✔ House rejects a reentrant state mutation during the actual funded-token transfer (3996.721329ms)
+✔ Wager executes a funded outcome trade and pays the new winner; unchallenged bond and pull claims conserve funds (4802.64532ms)
+✔ Wager challenged result gives the correct challenger both bonds; losing side cannot double-claim (3266.172966ms)
+✔ Wager authority ends before void at exact deadlines; missing resolver, missing arbiter and invalid answer refund all escrows (7631.057531ms)
+✔ Wager unfilled cancel and hostile token withdrawal callback cannot seize another claim (2360.538586ms)
+✔ Wager accepts the last permitted proposal, preserves its full challenge window and never expires an earned claim (3134.96467ms)
+✔ Wake fractional rent is independent of checkpoint partitioning and views include unposted accrual (4114.015434ms)
+✔ Wake takeover credits a rejecting incumbent, refunds unused rent, invalidates epochs, and gate closure leaves releases open (2338.063896ms)
+✔ Wake forbids other keepers during exclusivity, permits stalled-holder fallback, and cannot renew expiry or replay task (3129.779502ms)
+✔ Wake concrete exit adapter binds once and executes a real task transition without granting account authority (920.544254ms)
+✔ Experimental typed review binds live funding, caller, deployment version and gate without signing (2055.01258ms)
+✔ All experimental executor runtimes fit EIP-170 (0.244248ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ F01 settles incrementally, obeys limits, retires fills once, and exactly conserves both escrows (7504.263497ms)
+✔ F01 undersubscribed final supply clears at reserve and seller can cancel before start (3304.32085ms)
+✔ F06 cumulative identity matching amplifies distinct people without overspending the fixed pot (1999.572617ms)
+✔ F06 donors can exit, cancelled budgets refund exactly, and zero-match budgets return to sponsor (1149.82846ms)
+✔ F17 real master NFT custody invalidates old sessions and issues transferable shares with no issuer drain (4015.30328ms)
+✔ F17 rejects used accounts; funded buyout counts each locked share once and pays the whole pool (5710.98399ms)
+✔ F17 rejected votes and rejecting NFT recipients unlock shares and refund the funded offer (4189.760417ms)
+✔ typed owner-review actions match every contract selector and reject malformed escrow and stale wallet context (130.434597ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ F02: real NFT transfers only after recipient decryption, content verification, consent and custody-bound receipt (5344.250619ms)
+✔ F02: wrong plaintext and AEAD tampering fail before recipient can prepare acceptance (3106.809513ms)
+✔ F05: group consent, epoch rotation, ciphertext transport, revocation, replay rejection and encrypted recovery (2606.575728ms)
+✔ F02/F05: locking cancels pending private-key creation and backup restoration (181.022121ms)
+✔ F04: two local chains authenticate endpoint + source domain, wait source blocks, reject replay and stale custody (7864.942734ms)
+✔ Every existing setup artifact requires explicit replacement, even without transient build manifest (28.552888ms)
+✔ Fresh checkout setup command fails before invoking tooling or writing build files (65.228518ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ Groth16 verifies exact rounding and every public signal is cryptographically bound (1137.161611ms)
+ERROR:  4 Error in template NativeQuote_85 line: 51
+
+ERROR:  4 Error in template Num2Bits_0 line: 38
+Error in template NativeQuote_85 line: 38
+
+ERROR:  4 Error in template NativeQuote_85 line: 45
+
+ERROR:  4 Error in template Num2Bits_3 line: 38
+Error in template NativeQuote_85 line: 53
+
+ERROR:  4 Error in template NativeQuote_85 line: 44
+
+✔ the circuit itself rejects impossible minimum, reserve overflow, zero output and out-of-range context (896.884931ms)
+✔ prover artifact integrity and canonical input restrictions reject substitutions (1.387113ms)
+✔ real NativeMarket swap proof verifies onchain and matches actual account reserve and token effects (23680.736916ms)
+✔ proof survives unrelated blocks but rejects changed reserves, custody epoch, expired anchors and unsupported routes (4002.953123ms)
+✔ proof service authenticates exact allowed origin and returns a genuinely verifiable proof (653.752531ms)
+✔ Bearer host rejects remote plaintext, lookalike loopback, credential URLs and cross-origin routes before fetch (2.618642ms)
+✔ HTTPS and exact loopback preserve bearer review controls, no credentials or redirects (1.07343ms)
+✔ an external participant with no NFT can prepare and send a payable EOA transaction; NFT path still spends through its account (10.296179ms)
+✔ external review rejects changed account, chain, revision and runtime code before broadcasting (1.909792ms)
+✔ an external review expires after five minutes even though its timestamp is sealed (0.691444ms)
+✔ a fresh injected signer connects without selecting or owning an NFT and registers account invalidation (6.742146ms)
+✔ external review rechecks wallet context after final simulation; an account switch during that await cannot broadcast (0.761769ms)
+✔ edited external transaction bytes or value cannot bypass the exact reviewed payload (1.842711ms)
+✔ external preparation refuses an EOA target, malformed calldata, negative value and context changes during simulation (0.56998ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ arbitrary generated source is content-pinned, separately reviewed, and has no inherited transaction authority (12.88694ms)
+✔ generated commission goes through real escrow payment and exact frozen onchain cartridge acquisition; rejection and expiry refund (15042.484384ms)
+✔ real HTTP clients share authoritative movement, crafting, combat, towns, escrowed trade, signed receipts and persistent reconnect (1206.989006ms)
+✔ auth fails closed for forged signatures, reused nonces, origins, request floods and non-owner guests (71.131958ms)
+✔ Guest churn beyond 128 durable characters does not exhaust live presence; concurrent admission stays bounded (627.471479ms)
+✔ Guest resume survives restart, hides its credential hash, and retains offline seller goods and proceeds (67.180905ms)
+✔ Expired presence frees capacity without deleting a traveller or allowing its old session to act (141.182915ms)
+✔ Wasm field instantiates with only pure math imports (3.12683ms)
+✔ portable field produces deterministic nonempty RGBA pixels (42.561207ms)
+✔ four independently evaluated tiles exactly match a full framebuffer (36.272254ms)
+✔ genome, sovereignty, fourth axis, and time each change actual pixels (84.164878ms)
+✔ rendering rejects invalid sizes and out-of-bounds tile requests (0.930224ms)
+✔ GLSL source contains the exact shared optical field rather than a different fallback (0.576601ms)
+✔ all original Atlas routes invoke the retained original control after close (2.096925ms)
+✔ disabled controls and unknown routes cannot bypass native checks (0.755991ms)
+✔ secondary views include form, venues, applications, clock and both original/extended launch entry (0.248385ms)
+✔ full original radiance is retained byte-for-byte, only main projection is extended (0.347895ms)
+✔ blue projection uploads lived traits, restores after init and never schedules an original RAF (0.98722ms)
+✔ chain selection owns sovereignty, trace uniforms and atmospheric lineage in GL, CPU and Original projections (2.203726ms)
+✔ capability inventory keeps source evidence and deployment claims separate (2.290568ms)
+✔ capability cards escape explanations and display unknown states conservatively (1.475006ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ Commons uses real NFT reviews, public room reads, explicit acceptance and bounded pages (13638.122335ms)
+✔ Commons moderators require acceptance; only the admin can change peers, and bans revoke write access (11361.765543ms)
+✔ Commons rejects reviewed writes and in-flight snapshots after NFT custody changes (8946.762589ms)
+✔ Commons escapes room controls, hides flagged text without claiming deletion, and invalidates late reads (1.311009ms)
+✔ reading settings hydrates the selected room, clears text consent and scopes defaults to the active ledger and wallet (0.511793ms)
+✔ a late Commons preparation is withheld while its final context checks await RPC (0.230218ms)
+✔ Commons directory reads use one block and reject a changed block hash (0.431271ms)
+✔ real words and field values produce destinations; native controls remain usable throughout formation (5.106387ms)
+✔ keyboard and identity reflow preserve focused ready input without making it inert (1.143286ms)
+✔ input estimate updates do not restart creation; rapid route changes coalesce (2.23296ms)
+✔ reduced motion and Original handoff leave no hidden or inert controls (0.670361ms)
+✔ private surfaces never rasterize recovery data or confidential text into the optical canvas (0.351751ms)
+✔ ceremonial reveal is optional and repeats stay quick without inert inputs (0.869221ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ deployment choices reject mainnet, missing decisions, duplicate attesters and impossible royalty/threshold settings (4.299449ms)
+✔ offline plan predicts CREATE addresses across configuration nonces and reconstructs exact reviewed bytes (1583.697371ms)
+✔ archive validation rejects corruption, path traversal, substituted runtime and worker integrity drift (223.905505ms)
+✔ compiler identity is required even before deployment bytecode is encoded (8.165674ms)
+✔ CLI refuses broadcast and refuses replacing a configuration file (595.349791ms)
+✔ the unsigned sequence executes on an isolated EVM with exact archives, complete constructor wiring and immutable manifest (3448.828158ms)
+✔ pinch zoom and two-finger pan continue when a pointer lifts without a camera jump (1.660497ms)
+✔ double-tap moves in, two-finger tap moves out, and cancellation does neither (0.266012ms)
+✔ mouse double click and wheel work while cancelled/long drags cannot become taps (0.239311ms)
+✔ an interrupted entry reverses continuously and repeated exits settle once (6.271726ms)
+✔ manual zoom interrupts entry at the current camera and remains available with motion paused (1.8488ms)
+✔ zoom from the exterior activates free exploration without an automatic destination (1.554456ms)
+✔ hiding the page completes a pending exit instead of leaving navigation waiting (0.96731ms)
+✔ functions preserve the exact explored position and return without an outside reset (1.55048ms)
+✔ entry changes depth and camera together on its first frame (0.972388ms)
+✔ camera follow converges equally at 30, 60 and 120 Hz across the yaw seam (0.338741ms)
+✔ navigation lowers work immediately, remains stable between input events, and settles once (1.436227ms)
+✔ one stalled frame does not degrade quality, while sustained slow rendering does (0.335987ms)
+✔ recovery requires sustained headroom and only increases one step at a time (0.560837ms)
+✔ alternating marginal windows stay in the hysteresis band rather than oscillating (0.415067ms)
+✔ hidden pages, long gaps, duplicate exports, and restarted clocks cannot fabricate performance (3.502847ms)
+✔ all explicit quality modes adapt but remain bounded and finite under prolonged overload (2.532772ms)
+✔ zoom can travel through the entire object and back beyond its membrane (1.870393ms)
+✔ flight crosses either side of the membrane and keeps manual controls finite (17.063774ms)
+✔ pan is camera-relative and all six directions remain available (0.300534ms)
+✔ software volume remains deterministic and responds to identity (108.142767ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ live desk settles native/token swaps, atomic journaled fills, real locks, personal memories and NFT messages (11874.573054ms)
+✔ live desk rejects foreign modules, invalid minima, unconsented publication and changed custody reviews (4635.940226ms)
+✔ disconnect during preparation cannot restore a stale spend review; reconnect failure closes old authority (1.091588ms)
+✔ transparent Genesis layer draws only particles; blue optics belong to the original renderer (20.76521ms)
+✔ fresh interactive fallback on {"failLink":true} (20.004232ms)
+✔ fresh interactive fallback on {"noGL":true} (18.78977ms)
+✔ ceremonial opening remains slow, finishing is immediate, and interrupted matter starts where it was captured (47.949689ms)
+✔ identity and viewport changes notify the semantic creation coordinator (21.844159ms)
+✔ failed context restoration falls back and continues forming (16.230827ms)
+✔ unrestored context completes pending controls through bounded fallback (18.879023ms)
+✔ ordinary instrument formation completes in under a second (16.24585ms)
+✔ approved original remains byte-identical as a comparison fixture (38.792298ms)
+✔ current source composition preserves every original optical/audio-reference asset (140.539212ms)
+✔ preparing a typed result does not mutate the live rehearsal (82.921851ms)
+✔ swap-and-lock debits only input and credits output only to escrow (48.470915ms)
+✔ bound plan rejects a changed original audit anchor without mutation (51.550495ms)
+✔ tampering with reviewed amount rejects even before execution (25.207684ms)
+✔ a valid plan cannot be replayed after nonce and balance change (77.915496ms)
+✔ persona, selected NFT, and pool changes invalidate prior review (79.947823ms)
+✔ unrelated public chat does not invalidate an unchanged financial plan (50.991981ms)
+✔ a review expires at the explicit deadline (26.908202ms)
+✔ clock movement cannot silently shift a reviewed fixed-date gift (54.209857ms)
+✔ slippage failure is atomic across balances, pools, receipts, and gifts (26.270079ms)
+✔ unknown routes and same-input swaps are rejected (23.597335ms)
+✔ strict plans reject undeclared fields, invalid units, and oversized periods (3.326681ms)
+✔ an offer does not opt a recipient into chat, membership, or immediate ownership (49.221388ms)
+✔ only designated personal recipient can accept before expiry (49.559358ms)
+✔ acceptance permanently removes the donor recall path (69.508948ms)
+✔ projection never releases funds or changes a receipt (26.447887ms)
+✔ accepted gift rejects early release, pays exact amount once after date (51.006714ms)
+✔ anyone can return an expired offer only to original donor account (50.945961ms)
+✔ donor recall before acceptance leaves the already executed swap intact (51.307517ms)
+✔ direct-asset offers need no swap and preserve token supply (3.120089ms)
+✔ personal gift does not follow a subsequent donor NFT sale (54.572255ms)
+✔ artifact recipient follows custody; acceptance requires its current controller (7.518793ms)
+✔ causal gift trace links the swap, offer, acceptance and specific discussion (53.925178ms)
+✔ local identity transfer does not reattribute old messages (4.962319ms)
+✔ World filters do not ban another person or forge an activity receipt (2.479392ms)
+✔ stale room invitation after transfer cannot grant posting (4.440052ms)
+✔ all four gift phases export and restore consistently (471.145502ms)
+✔ recomputed outer checksum cannot hide an altered gift origin or status (295.967745ms)
+✔ tampered archive, negative balance, invalid recipient, future acceptance rejected (184.994547ms)
+✔ 100 sequential swap-gift lifecycle trials conserve ETH and AUR exactly (1444.441966ms)
+✔ integer proportional allocations conserve supply with explicit bounded dust (10.773971ms)
+✔ splitting one proportional bid cannot improve its aggregate floor allocation (0.415407ms)
+✔ fee ramp is bounded and non-increasing at every second (2.142393ms)
+✔ capabilities never relabel research as deployed or mainnet-enabled (0.451572ms)
+✔ decimal codec preserves 18 places without floating-point (12.945549ms)
+✔ v4 address permissions are exactly the four implemented callbacks (0.125019ms)
+✔ immutable fee ramp boundaries and exact midpoint (0.125469ms)
+✔ fee ramp is bounded and monotone over 86,401 timestamps (4.585651ms)
+✔ launch has fixed supply and exact allocation conservation (7.26122ms)
+✔ launch rejects duplicates, unsupported terms and arbitrary markup as ticker (3.569888ms)
+✔ launch contribution cannot cross immutable cap (19.367531ms)
+✔ contribution withdrawal restores balance before closing (4.49206ms)
+✔ early settlement and late contribution reject (4.680324ms)
+✔ successful settlement creates market and founder plus treasury locks (6.164834ms)
+✔ failed launch refunds exactly, cannot claim twice (6.223553ms)
+✔ slippage rejection rolls back input, reserves, receipts and locks (12.202387ms)
+✔ expired transaction is rejected atomically (11.01838ms)
+✔ swap updates both sides using integer math (2.799496ms)
+✔ atomic swap-and-lock does not put output into spendable balance (2.79606ms)
+✔ token-to-token swap takes two distinct markets and preserves integer outputs (5.590057ms)
+✔ vault has no early release, future lens is a read only projection (2.817242ms)
+✔ linear vesting releases partially and does not double pay (4.203725ms)
+✔ whole-estate purchase transfers control, not locked-asset schedules (3.65704ms)
+✔ escrow disables old owner spending (3.734286ms)
+✔ external change to declared contents rejects the purchase (11.852139ms)
+✔ wrong manifest and expired listing cannot be purchased (3.285128ms)
+✔ old events retain previous custody after purchase (5.309434ms)
+✔ presence grants no treasury spending power (3.23342ms)
+✔ active lease blocks a marketplace listing (4.238327ms)
+✔ public world is open and cannot be globally censored by personal controls (3.10109ms)
+✔ room invitations require acceptance and removal revokes future writing only (3.763ms)
+✔ stale invitations do not survive custody epoch changes (3.6109ms)
+✔ posts cannot fabricate trusted protocol activity (3.023453ms)
+✔ receipt discussions reference existing actions without reattributing them (2.520019ms)
+✔ slow mode and UTF-8 limits are enforced (4.434132ms)
+✔ cross-room replies are rejected and user markup remains literal (2.635188ms)
+✔ reactions toggle, not multiply on repeat (2.223566ms)
+✔ integrity checked restore and corrupt export rejection (37.01757ms)
+✔ rewritten receipt digest is not accepted merely because outer checksum matches (14.427204ms)
+✔ recomputed outer checksum cannot inject markup through numeric identity IDs (15.249456ms)
+✔ recomputed checksum cannot inject a CSS value through a room color (14.894761ms)
+✔ recomputed checksum cannot import unsupported balance keys or negative balances (30.475596ms)
+✔ recomputed checksum cannot inject markup through reply targets (18.109312ms)
+✔ recomputed checksum cannot turn a non-person string into a room member (19.830029ms)
+✔ paused kingdom repaint follows camera edits and then returns idle (2.705133ms)
+✔ Locking private bodies clears volatile text, query, passphrase and private review (2.027781ms)
+✔ Locking memory does not cancel an unrelated ordinary trade review (1.983534ms)
+✔ A decryption finishing after lock cannot reopen the private session (1.197757ms)
+✔ A decryption finishing after persona change cannot expose its result (0.696781ms)
+✔ A private draft finishing after lock cannot restore its passphrase (0.860669ms)
+✔ Initial chapter has zero deformation and no invented memories (22.314539ms)
+✔ Optional unjournaled swap works and gives a persistent activity trace (144.551678ms)
+✔ Creating and encrypting a draft do not execute a trade (229.078537ms)
+✔ AES-GCM recovers exact Unicode text (185.583256ms)
+✔ Ciphertext never includes recognizable plaintext and pads to 1 KiB (92.499727ms)
+✔ Independent encryptions use independent salt and IV (201.439657ms)
+✔ Wrong passphrase fails authentication without mutation (180.88519ms)
+✔ Header changes are authenticated, not just the ciphertext (186.595003ms)
+✔ Ciphertext corruption is rejected (227.564927ms)
+✔ No weak passphrase or unsupported plaintext fallback (28.140281ms)
+✔ Memory schema limits bytes and rejects unknown inferred psychology fields (0.29146ms)
+✔ Public memory is an explicit separate payload (7.192755ms)
+✔ A general memory is recoverable and causes no financial transfer (9.426718ms)
+✔ Opting a memory out leaves the form unchanged (8.528782ms)
+✔ Before entry, successful fill and binding are ordered and atomic (337.085594ms)
+✔ A before-note cannot be appended without its swap (65.673439ms)
+✔ Stale financial review appends no misleading memory or fill (203.37937ms)
+✔ Changed original identity audit is refused without memory mutation (194.010074ms)
+✔ Journal binds the exact plan, not another swap (66.503421ms)
+✔ Replayed memory context cannot overwrite or append twice (8.384765ms)
+✔ Reflections preserve the original and link under original authorship (93.218532ms)
+✔ Different persona cannot pose as original reflector (8.974615ms)
+✔ Custody changes do not reveal a private key or rewrite the speaker (314.81358ms)
+✔ Original author may reflect after sale without influencing new owner form (20.156752ms)
+✔ Archive ciphertext and own body can be restored without the passphrase (311.318808ms)
+✔ Outer checksum is not enough: changed inner author is rejected (80.355364ms)
+✔ Binding cannot claim a fabricated received amount (272.785689ms)
+✔ Explicit v1.6 import starts a fresh form chapter without modifying old history (86.869336ms)
+✔ Time projection and financial clock alone do not grow the body (6.909669ms)
+✔ Creation, commitment, communication, and laboratory use have separate channels (10.702054ms)
+✔ Deterministic replay has identical parameters and rooted history (91.202531ms)
+✔ Order affects morphology without needing larger amounts (15.190723ms)
+✔ Historical form inspection changes no financial, permission or memory state (75.250268ms)
+✔ Many repeated operations remain bounded, no unbounded size escalation (255.398326ms)
+✔ Separate artifacts have separate activity-derived forms (6.699862ms)
+✔ Zero lived deformation is byte-identical to actual original Wasm pixels (66.457878ms)
+✔ Living traits change actual luminance structure, not merely metadata (74.606397ms)
+✔ Shape source is shared between Wasm and GLSL and preserves original inclusion (0.952547ms)
+✔ Excluded memory does not indirectly alter a later identical swap projection (272.922976ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ new EVM suite: deposit ceiling cannot underfund split basket claims (3061.873918ms)
+✔ new EVM suite: matched early exits divide an impairment rather than pay nominal principal first (1995.218074ms)
+✔ new EVM suite: a disabled entry gate cannot seize active loan collateral or block repayment (2667.230768ms)
+✔ new EVM suite: accepted covered-call exercise remains available after new-risk gate closes (1949.902211ms)
+✔ new EVM suite: custody retires cell adapter grants; reauthorization is explicit and allowances reset (2206.973027ms)
+✔ fresh operating model has a separate fictional Guest account and unchanged original identity semantics (17.362677ms)
+✔ edition publication changes neither treasury nor execution permissions (109.973158ms)
+✔ immutable recipe normalization rejects arbitrary opcodes and extra fields (11.911027ms)
+✔ adoption does not skip the seven-day review (12.792038ms)
+✔ a grant requires the adopted edition, not just the same caller (11.874824ms)
+✔ exact edition execution records actual trigger, original custodian and spend budget (10.536533ms)
+✔ grant rejects another caller and never allocates funds on rejection (107.619065ms)
+✔ maximum calls and cumulative budget cannot be reset by reusing an edition (90.767821ms)
+✔ immediate revoke blocks a future execution (9.306166ms)
+✔ expiry uses a nonoverlapping cutoff (8.235871ms)
+✔ sale preserves adopted content but retires old grants (15.742551ms)
+✔ cancelling a listing does not revive pre-listing permissions (14.155766ms)
+✔ base typed reviews work polymorphically through the operating archive (107.813778ms)
+✔ a changed module budget invalidates a previously prepared financial review (71.897408ms)
+✔ counterparty gift acceptance makes an old marketplace manifest stale without blocking the gift (15.04652ms)
+✔ only the original seller can refresh an escrow manifest (8.558899ms)
+✔ funded commission debits once and fixes reviewer independently of NFT ownership (13.597964ms)
+✔ accepted work -> authored edition -> named reviewer -> personal payment conserves funds (9.974595ms)
+✔ work cannot submit another authors edition (10.110991ms)
+✔ silent-review deadline has a refund path and no late reviewer race (11.081876ms)
+✔ lab rejects execution without capital allocation and without per-module opt-in (6.748516ms)
+✔ locked modules cannot self-enable through a generic string (6.61307ms)
+✔ strategy output is pinned to its funding cell (9.703095ms)
+✔ minimum shares and assets failure leaves the entire operation unchanged (157.674416ms)
+✔ root funds are unavailable even when a cell has an insufficient balance (60.189668ms)
+✔ basket repeated tiny mints remain reserve covered (24.695294ms)
+✔ ceil-input floor-output partition invariant: 10000 deterministic vectors (2.840748ms)
+✔ paired loss recombination is proportional before maturity (12.287626ms)
+✔ matched early exits across 5000 partitions cannot exceed remaining assets (1.761379ms)
+✔ reserved strategy and collateral principal cannot be withdrawn as free funds (8.498628ms)
+✔ credit lifecycle is isolated and conserves ETH and AUR (13.383321ms)
+✔ loan repayment and default do not overlap at the maturity boundary (12.644254ms)
+✔ unfunded loan collateral can be cancelled without changing root authority (12.399835ms)
+✔ covered option is physically settled and conserves both assets (12.369129ms)
+✔ writer cannot recall accepted option cover and cannot race expiry (12.933491ms)
+✔ bonded venue inventory and proceeds are included in a sale manifest (11.45512ms)
+✔ venue preserves bond and fixed fee recipient across control changes (8.365145ms)
+✔ application manifest never executes uploaded code or changes active runtime (5.668656ms)
+✔ new archive round trip covers lab, publications and escrow snapshots (175.607152ms)
+✔ old v1.5 archive import preserves original history and does not invent manifests (30.379403ms)
+✔ recomputed outer checksums do not permit malformed grant budgets or unsafe enabled modules (142.194011ms)
+✔ read-only complete ledger does not change any balances, time or commitments (85.074367ms)
+✔ cell entry permissions retire on sale but existing positions can still exit (20.830581ms)
+✔ privacy worker downloads omit referrers and reject altered or oversized code before execution (107.177408ms)
+✔ locking terminates the worker, rejects pending requests and clears session identity (0.708039ms)
+✔ minted resource failure cannot silently fetch or execute an HTTPS worker (1.054431ms)
+✔ worker receives a persistence acknowledgment only after encrypted receipt storage completes (48.498591ms)
+✔ private desk never renders a recovery phrase and hides private addresses until explicitly revealed (1.315986ms)
+✔ locking clears decrypted notes, drafts, address display, pending reviews and public session state (0.752456ms)
+✔ an auxiliary session failure cannot prevent private vault locking (0.294535ms)
+✔ integer price conversion handles currency sorting and 6 versus 18 token decimals (1.478722ms)
+✔ TickMath matches canonical extremes and integer roots preserve exact rounding (0.355487ms)
+✔ budget liquidity never exceeds supported core delta limits (0.33129ms)
+✔ unshield fee gross-up covers exact input and always leaves less than two units of rounding refund (0.253703ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/package.json
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+Full 32-chunk OnchainApp constructor estimated gas: 7514931
+✔ real immutable shards recover exact worker bytes and expose correct selector ABI (13576.38038ms)
+✔ reconstructs and verifies gzip bytes spread across several shards at one block (23.526087ms)
+✔ rejects another chain before reading any contract (0.84147ms)
+✔ rejects a compressed SHA-256 mismatch (2.165398ms)
+✔ rejects expanded bytes whose SHA-256 does not match both trusted and onchain metadata (4.18731ms)
+✔ rejects a corrupted individual shard hash (0.909252ms)
+✔ rejects changed chunk bytes even when their ABI encoding and length remain valid (1.761899ms)
+✔ rejects more expanded bytes than pinned while decompressing despite matching descriptor and directory lengths (3.195383ms)
+✔ rejects fewer expanded bytes than pinned while decompressing despite matching descriptor and directory lengths (2.935251ms)
+✔ SHA-256 fallback matches standard vectors and Node crypto across padding boundaries (4.369545ms)
+✔ rejects an unsupported schema (0.638463ms)
+✔ rejects zero shards (0.527616ms)
+✔ rejects too many shards (0.340083ms)
+✔ rejects zero chunks in a shard (0.737352ms)
+✔ rejects too many chunks in a shard (0.300673ms)
+✔ rejects unsafe shard count (0.365452ms)
+✔ rejects unsafe chunk count (0.649591ms)
+✔ rejects compressed size above the cap (0.298871ms)
+✔ rejects expanded size above the cap (0.235235ms)
+✔ rejects a directory chunk-total mismatch (0.561538ms)
+✔ rejects a directory shard-length mismatch (0.545263ms)
+✔ rejects a directory shard-hash mismatch (0.627337ms)
+✔ rejects readChunk response with incorrect ABI offset (0.926298ms)
+✔ rejects readChunk response with truncated ABI header (0.858005ms)
+✔ rejects readChunk response with declared length beyond returned bytes (0.842672ms)
+✔ rejects readChunk response with unsafe ABI byte length (2.796721ms)
+✔ rejects readChunk response with non-hex ABI data (1.061613ms)
+✔ respects the configured maximum simultaneous provider requests (75.757449ms)
+✔ a pre-aborted signal fails without making provider requests (0.672224ms)
+✔ abort during concurrent chunk reads stops queued requests (1.312771ms)
+✔ recovery requires the exact reviewed relay transaction, matching chain and two confirmations (3.958565ms)
+✔ broadcaster hash persists inside encryption and remains recoverable after lock and restart (168.652784ms)
+✔ private desk reserves before broadcast and refuses duplicate submissions or blind pending clearing (81.456911ms)
+✔ only one tab can reserve from the same encrypted private-wallet revision (278.826185ms)
+✔ an observed broadcaster receipt completes its encrypted save after lock without reopening keys (166.044417ms)
+✔ observed broadcaster hash merges across a legitimate second-tab note edit without losing either (261.878977ms)
+✔ a queued stale note snapshot cannot overwrite an observed receipt merged in the same tab (174.309902ms)
+✔ private backups authenticate contents, randomize ciphertext and conceal recovery, RPC credentials and drafts (412.025525ms)
+✔ encrypted vault restores exact data, saves updated drafts and does not overwrite an existing wallet (258.537204ms)
+✔ locking during decryption cannot reopen the vault (81.097579ms)
+✔ hostile KDF work factors and malformed backups reject before expensive decryption (0.797643ms)
+▶ a failed requested rehearsal retires the old signing review and leaves no unbound replacement
+  ✔ configuration (1.482899ms)
+  ✔ service (0.315366ms)
+✔ a failed requested rehearsal retires the old signing review and leaves no unbound replacement (2.606273ms)
+✔ a pending rehearsal cannot be signed; success exposes only the matching bound plan (11.335328ms)
+▶ reverted or mismatched reports cannot expose a signing plan
+  ✔ reverted (1.23867ms)
+  ✔ mismatched (1.558953ms)
+✔ reverted or mismatched reports cannot expose a signing plan (3.329394ms)
+✔ late completion of an invalidated rehearsal cannot clear or replace a newer reviewed transaction (0.876923ms)
+✔ preparation failure clears a previously displayed review immediately (0.444932ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ pinned fork measures actual minted-NFT swaps and vesting without writing the source chain (15182.669956ms)
+✔ rehearsal server rejects untrusted origins and missing credentials before execution (36.751398ms)
+✔ fork source proxy cannot forward signing, impersonation or write requests (17.351698ms)
+✔ portable SHA-256 matches published empty and abc vectors (1.609229ms)
+✔ portable SHA-256 matches Node at padding boundaries and random lengths (38.74086ms)
+✔ canonical JSON is ordered and rejects unsafe data (0.557261ms)
+✔ hash commitments are domain separated and avoid delimiter ambiguity (5.602947ms)
+✔ genesis is deterministic and binds seed and timestamp (3.526472ms)
+✔ evolution changes genome, memory, state and audit atomically, without mutating input (1.704803ms)
+✔ same state and action reproduce exactly the same receipt (2.399401ms)
+✔ entropy is not counted as verified evolution (1.241704ms)
+✔ memory appends only a digest and does not alter genome (1.540475ms)
+✔ a thought receives distinct commitments under different salts (0.544602ms)
+✔ children inherit lineage but have different genomes; existing child records stay immutable (2.837973ms)
+✔ ascension invalidates direct entropy and cannot be repeated (1.777703ms)
+✔ nonce replay and backwards timestamps are rejected (1.138137ms)
+✔ unknown operations and unexpected payload fields are rejected (0.758295ms)
+✔ exported receipt books rebuild all historical snapshots (4.112918ms)
+✔ modified output roots, payloads, policy, evidence, and audit fail verification (21.608483ms)
+✔ reordered, replayed, removed, and added receipts are detected against the expected head (6.02958ms)
+✔ trailing unknown fields and wrong schema are rejected (3.757711ms)
+✔ changing genesis invalidates existing receipts (2.554386ms)
+✔ presentation-only phenotype is deterministic and within documented ranges (1.97435ms)
+✔ the optical uniform vector is deterministic and uses both halves of each commitment (0.369438ms)
+✔ local study and child limits are enforced (15.886928ms)
+✔ mixed lifecycle: 100 valid transitions remain independently reproducible (67.68115ms)
+✔ phone, tall embedded, keyboard and desktop surfaces stay within their usable viewport (7.093466ms)
+✔ the same origin reproduces a dense finite body and seeded surface; another origin changes both (6.213138ms)
+✔ all shared particle uniforms and varyings have matching explicit precision (1.535548ms)
+✔ volume, composite and two particle passes execute with the expected particle count (14.525583ms)
+✔ renderer initialization recovers on a fresh interactive Canvas: {"badFramebuffer":true} (12.445623ms)
+✔ renderer initialization recovers on a fresh interactive Canvas: {"failLink":true} (12.41695ms)
+✔ renderer initialization recovers on a fresh interactive Canvas: {"noGL":true} (8.437755ms)
+✔ framebuffer failure after context restoration resumes the fallback with one listener set (13.02592ms)
+✔ quality resize failure also recovers (10.670414ms)
+✔ identity and keyboard changes keep input coordinates synchronized with particle coordinates (41.985147ms)
+✔ formed surfaces include transaction consent and restore normal visibility in Original (1.3843ms)
+✔ independent receipt CLI verifies an exported study (67.052961ms)
+✔ independent receipt CLI rejects malformed input and missing arguments (122.322528ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ SP1 and RISC Zero adapters bind proof receipts to the exact action statement (531.393157ms)
+✔ interface keeps a full-screen scene and exposes every advertised action (1.155093ms)
+✔ preview has no automatic network or wallet activity (1.541797ms)
+✔ current source bundle has inline optical assets and preserves the original reference (150.470826ms)
+✔ GPU resources are recoverable and CPU fallback uses the actual field program (0.480185ms)
+✔ static server serves modules and rejects forbidden methods (39.442479ms)
+✔ static server rejects traversal and malformed paths (15.054151ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ commissioned calendar becomes a frozen NFT cartridge with no grants; current master NFT owner controls it (16876.934981ms)
+✔ bad provider submissions can be rejected; expired work refunds without grants or leftover ERC20 allowance (12511.341355ms)
+✔ calendar mathematics use exact raw integers, cliffs and already released amounts (3.017735ms)
+ℹ tests 543
+ℹ suites 0
+ℹ pass 543
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 237347.290461

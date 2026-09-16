@@ -1,0 +1,74 @@
+/* The living field remains fixed. Independent surfaces keep controls readable at every depth. */
+body.anima-genesis.confluence .ab-surface {
+  left: auto !important;
+  right: 30px !important;
+  top: 106px !important;
+  width: min(760px, 58vw) !important;
+  height: calc(100dvh - 224px) !important;
+  border: 1px solid #bfdcff32 !important;
+  border-radius: 26px !important;
+  background:
+    radial-gradient(ellipse at 8% 0%, #41638d33, transparent 50%),
+    linear-gradient(150deg, #121d30f7, #080f1ffa 65%, #16162afb) !important;
+  box-shadow:
+    0 28px 100px #0009,
+    inset 0 1px #f0f5ff12 !important;
+  backdrop-filter: blur(24px) !important;
+  overflow-x: hidden !important;
+  overscroll-behavior: contain;
+  animation: anima-surface-in 0.38s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+body.anima-genesis.confluence .ab-surface > header {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 4;
+  background: #101a2df0 !important;
+  backdrop-filter: blur(18px) !important;
+}
+body.anima-genesis.confluence .ab-surface h2 {
+  font-family: Georgia, serif;
+  font-weight: 400;
+}
+body.anima-genesis.confluence .ab-surface :focus-visible {
+  outline: 2px solid #bae2ff;
+  outline-offset: 3px;
+}
+body.anima-genesis .cf-orbits {
+  transition: opacity 0.25s;
+}
+body.anima-genesis.confluence .cf-orbits {
+  opacity: 0;
+  pointer-events: none;
+}
+@keyframes anima-surface-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (max-width: 780px) {
+  body.anima-genesis.confluence .ab-surface {
+    left: 10px !important;
+    right: 10px !important;
+    top: 82px !important;
+    width: auto !important;
+    height: calc(100dvh - 188px) !important;
+    border-radius: 20px !important;
+  }
+  body.anima-genesis.confluence .ab-surface > header {
+    padding: 16px 18px !important;
+  }
+  .anima-genesis #cf-content,
+  .anima-genesis .ab-surface #ix-content {
+    padding: 18px !important;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  body.anima-genesis.confluence .ab-surface {
+    animation: none;
+  }
+}

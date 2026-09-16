@@ -1,0 +1,33 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {ZeroAddress,parseEther} from 'ethers';
+import {mintedFixture} from '../helpers/minted-fixture.mjs';
+import {rehearse} from '../../agent/rehearsal/engine.mjs';
+import {publicIntent,intentHash} from '../../web/rehearsal/intent.mjs';
+import {bindRehearsal,assertRehearsal} from '../../web/rehearsal/client.mjs';
+
+test('pinned fork measures actual minted-NFT swaps and vesting without writing the source chain',async t=>{
+  const x=await mintedFixture(t),{api,w,market,token,rpc,provider,vault}=x;
+  const sourceMethods=[],source={request:q=>{sourceMethods.push(q.method);return rpc.request(q);}};
+  const prepared=await api.swap({market:market.target,input:ZeroAddress,output:token.target,amount:'0.1'});
+  const before=await provider.getBalance(w.account),head=await rpc.request({method:'eth_blockNumber',params:[]});
+  const report=await rehearse(source,publicIntent(prepared.plan));
+  assert.equal(report.status,'succeeded');assert.equal(report.intentHash,intentHash(publicIntent(prepared.plan)));
+  assert.equal(report.balances.find(b=>b.address===w.account&&b.asset===ZeroAddress).delta,String(-parseEther('.1')));
+  assert.ok(BigInt(report.balances.find(b=>b.address===w.account&&b.asset===token.target).delta)>0n);
+  assert.equal(BigInt(report.authority.after.nonce),BigInt(report.authority.before.nonce)+1n);
+  assert.equal(await provider.getBalance(w.account),before);assert.equal(await token.balanceOf(w.account),0n);assert.equal(await rpc.request({method:'eth_blockNumber',params:[]}),head);
+  assert.ok(sourceMethods.every(m=>!m.includes('send')&&!m.startsWith('anvil_')&&!m.startsWith('evm_')));
+  bindRehearsal(prepared.plan,report);await assertRehearsal(prepared.plan,provider,w.contract);await w.send();
+  assert.equal(String(await token.balanceOf(w.account)),report.balances.find(b=>b.address===w.account&&b.asset===token.target).after);
+  await assert.rejects(assertRehearsal(prepared.plan,provider,w.contract),/state changed/);
+  const lock=await api.lock({vault:vault.target,asset:token.target,amount:'2',days:'1'}),locked=await rehearse(source,publicIntent(lock.plan));
+  assert.equal(locked.status,'succeeded');assert.equal(locked.locks.length,1);assert.equal(locked.locks[0].after[1],w.account);assert.equal(locked.locks[0].after[3],String(parseEther('2')));
+  assert.ok(locked.allowances.every(a=>a.after==='0'));assert.equal(await vault.lockCount(),0n);
+  await w.send();await rpc.request({method:'evm_setTime',params:[(lock.end+1)*1000]});await rpc.request({method:'evm_mine',params:[]});
+  const release=await api.release({vault:vault.target,id:'1'}),released=await rehearse(source,publicIntent(release.plan));
+  assert.equal(released.locks[0].after[4],String(parseEther('2')));assert.equal((await vault.lockInfo(1))[4],0n);
+  const wrong=publicIntent(release.plan);wrong.owner=await x.next.getAddress();wrong.transaction.from=wrong.owner;
+  await assert.rejects(rehearse(source,wrong),/custody/);
+  const seeds=await Promise.all([1,2,3].map(async id=>(await x.stack.collection.organismOf(id)).seed));assert.equal(new Set(seeds).size,3);
+});

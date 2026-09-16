@@ -1,0 +1,65 @@
+✔ agent planning is deterministic, ABI-ready, and sensitive to evidence (8.617483ms)
+✔ constitutional hashing ignores object insertion order (0.325988ms)
+✔ MCP surface exposes tools and produces a serializable plan (5.656303ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/sites/awe-confluence/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/sites/awe-confluence/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ master NFT owns configurable routing and cartridge rights; custody changes preserve claims (5910.529054ms)
+✔ threshold-two verifier boots safely and requires two distinct signatures (250.777692ms)
+✔ onchain Base64 preserves every byte including short and partial groups (328.392688ms)
+✔ identity is reproducible, chain-qualified, and preserves all capabilities across origins (236.195321ms)
+✔ sixteen-coordinate rotation stays finite over long clocks (0.607591ms)
+✔ every exact split conserves all raw units including dust and large values (0.588423ms)
+✔ routing accepts user-selected arbitrary token and rejects invalid/duplicate recipients (0.322463ms)
+✔ launch definitions do not impose founder shares or platform allocations (1.161663ms)
+✔ Prism Relay reaches a valid conclusion with score and move accounting (11.706893ms)
+✔ world import rejects disconnected corner starts (0.513162ms)
+✔ ABI supports native zero token but not malformed addresses (0.400858ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/sites/awe-confluence/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/sites/awe-confluence/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ the organism awakens, evolves, becomes sovereign, and carries authority with itself (14933.896176ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/sites/awe-confluence/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/sites/awe-confluence/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ new EVM suite: deposit ceiling cannot underfund split basket claims (2690.561161ms)
+✔ new EVM suite: matched early exits divide an impairment rather than pay nominal principal first (1881.895741ms)
+✔ new EVM suite: a disabled entry gate cannot seize active loan collateral or block repayment (2229.020917ms)
+✔ new EVM suite: accepted covered-call exercise remains available after new-risk gate closes (1648.544354ms)
+✔ new EVM suite: custody retires cell adapter grants; reauthorization is explicit and allowances reset (2503.869657ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/sites/awe-confluence/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/sites/awe-confluence/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ SP1 and RISC Zero adapters bind proof receipts to the exact action statement (592.182665ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 15253.418433

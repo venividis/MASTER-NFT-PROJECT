@@ -1,0 +1,4037 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,maximum-scale=1,user-scalable=no">
+<meta name="color-scheme" content="dark">
+<title>IPSEITY</title>
+<style>
+/*═══════════════════════════════════════════════════════════════════════════
+  IPSEITY · the surface
+
+  Every colour in this sheet is a function of one number held on chain.
+  --a is the token's hue; the entire interface is tinted by the state it
+  is currently editing. Change the hue, and the instrument changes with
+  the thing it measures.
+═══════════════════════════════════════════════════════════════════════════*/
+:root{
+  --h:34;                      /* token hue, overwritten from chain state */
+  --a:hsl(var(--h) 92% 66%);   /* accent  — the token's own colour        */
+  --a-dim:hsl(var(--h) 62% 44%);
+  --a-ghost:hsl(var(--h) 92% 66% / .10);
+  --b:hsl(calc(var(--h) + 186) 78% 64%);  /* counter-accent               */
+
+  --void:#04050a; --void-2:#070912; --void-3:#0b0e18;
+  --rule:#151a26; --rule-2:#212838; --rule-3:#2e3648;
+  --dim:#5d6780; --mid:#8b95ad; --txt:#c8d0e2; --lit:#eef2fb;
+  --ok:#5fe3b4; --warn:#ffc95c; --bad:#ff6b63;
+
+  --mono:ui-monospace,"SF Mono",SFMono-Regular,"Cascadia Mono",Menlo,Consolas,"Liberation Mono",monospace;
+  --rail:44px;
+  --dock:104px;
+  --sheet:min(408px,100vw);
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --safeT:env(safe-area-inset-top,0px);
+  --safeB:env(safe-area-inset-bottom,0px);
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:var(--void);color:var(--txt);
+  font-family:var(--mono);font-size:13px;line-height:1.45;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"zero" 1;
+  overscroll-behavior:none;text-rendering:optimizeLegibility;
+  -webkit-font-smoothing:antialiased}
+body{opacity:0;transition:opacity .9s var(--ease)}
+body.up{opacity:1}
+/*  The field is the whole field. Two custom properties used to hold the
+    strip the deck had taken off the right or the bottom, and every size
+    here was written against them — `calc(100% - var(--fx,0px))`, which
+    with nothing setting it resolves to exactly 100% and reads like
+    something conditional. It was not dead code while the deck existed;
+    it is now, and dead code that still computes is worse than dead code
+    that does not, because it survives a search for what is unused.   */
+/*  Sized by calc rather than by insets. A canvas is a replaced element:
+    given left, right and `width:auto` together, CSS drops the right offset
+    and uses the intrinsic width — which for an untouched canvas is 2px,
+    and resize() then reads that 2px back and keeps it. Measured, not
+    reasoned about: the first build of this laid out an 1180x860 field as
+    2x2 and drew nothing.                                              */
+canvas#field{position:fixed;left:0;top:0;
+  width:100%;height:100%;
+  display:block;touch-action:none;z-index:0}
+svg#wires{position:fixed;left:0;top:0;
+  width:100%;height:100%;
+  pointer-events:none;z-index:2}
+
+/*──────────────────────────── type ────────────────────────────*/
+.k{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.v{font-size:12px;letter-spacing:.01em;color:var(--lit)}
+.n{font-size:11px;letter-spacing:.05em;color:var(--txt)}
+.s{font-size:10px;letter-spacing:.08em;color:var(--mid)}
+.acc{color:var(--a)}
+.mut{color:var(--dim)}
+hr{border:0;height:1px;background:var(--rule);margin:12px 0}
+::selection{background:var(--a);color:var(--void)}
+
+/*──────────────────────── scrollbars ────────────────────────*/
+*::-webkit-scrollbar{width:4px;height:4px}
+*::-webkit-scrollbar-track{background:transparent}
+*::-webkit-scrollbar-thumb{background:var(--rule-2);border-radius:2px}
+*::-webkit-scrollbar-thumb:hover{background:var(--rule-3)}
+
+/*──────────────────────────── rail ────────────────────────────*/
+#rail{position:fixed;top:0;left:0;right:0;z-index:7;display:flex;align-items:stretch;
+  height:calc(var(--rail) + var(--safeT));padding-top:var(--safeT);
+  background:linear-gradient(180deg,rgba(4,5,10,.92) 40%,rgba(4,5,10,0));
+  pointer-events:none;backdrop-filter:blur(2px)}
+#rail>*{pointer-events:auto}
+.cell{display:flex;flex-direction:column;justify-content:center;gap:1px;padding:0 13px;
+  border-right:1px solid var(--rule);min-width:0}
+.cell:last-child{border-right:0}
+#c-id{flex:0 0 auto}
+#c-form{flex:0 0 auto}
+#c-net{flex:1 1 auto;overflow:hidden}
+#c-net .v{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+#link{border:0;background:transparent;border-left:1px solid var(--rule);color:var(--a);
+  font:inherit;font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  padding:0 15px;cursor:pointer;transition:background .2s var(--ease);white-space:nowrap}
+#link:hover,#link:focus-visible{background:var(--a-ghost);outline:none}
+#link.live{color:var(--ok)}
+.led{width:5px;height:5px;border-radius:50%;background:var(--dim);display:inline-block;
+  margin-right:7px;vertical-align:middle;transition:background .3s,box-shadow .3s}
+.led.live{background:var(--ok);box-shadow:0 0 9px var(--ok)}
+.led.ro{background:var(--a);box-shadow:0 0 9px var(--a-dim)}
+
+/*──────────────────────── where the deck was ────────────────────────*/
+/*  A deck stood here: up to four contract-rendered pages loaded at once
+    and shown one at a time, in a strip beside the field. It is gone, and
+    what it cost is worth writing down where the next person will find it.
+
+    A pane was a whole second document. Open `/door` in one and the site's
+    front page arrived, which lists the collection; follow a token from
+    there and you reached `/token/<id>/live`, which is an entire second
+    instrument — a different token, its own ring, its own rotor bank, its
+    own raymarcher, running inside the first. That instrument carried the
+    same control that opened the deck, so it went round again, and the
+    reader who found it put it exactly right: it is interesting, and you
+    cannot tell where the copies came from. Every level was byte-identical
+    to the top one. Nothing said whose token you were looking at or how
+    far in you had walked.
+
+    The heat was the arithmetic of that. Three 4-D distance fields at the
+    quality ladder's top tier, on one main thread, on a phone.
+
+    So the ring is the navigation and a node opens a native plate — this
+    document, this token, one thread. Leaving is a navigation, which
+    replaces the document rather than stacking one on another. Looking at
+    somebody else's token is a thing the flat side should do well and
+    legibly; it is not a thing that should happen four deep by accident. */
+/*──────────────────────── node labels ────────────────────────*/
+#nodes{position:fixed;left:0;top:0;
+  width:100%;height:100%;
+  z-index:3;pointer-events:none}
+.nd{position:absolute;transform:translate(-50%,-50%);pointer-events:auto;cursor:pointer;
+  padding:5px 10px;white-space:nowrap;font-size:9px;letter-spacing:.21em;
+  text-transform:uppercase;color:var(--mid);background:rgba(4,5,10,.62);
+  border:1px solid transparent;transition:color .22s,border-color .22s,background .22s,transform .22s;
+  user-select:none;will-change:transform,opacity}
+.nd:hover{color:var(--lit);border-color:var(--rule-3);background:rgba(4,5,10,.86)}
+.nd.on{color:var(--void);background:var(--a);border-color:var(--a);font-weight:600}
+.nd.hi{color:var(--lit);border-color:var(--a);background:rgba(4,5,10,.9)}
+.nd.shut{color:#3d4457}
+.nd.shut::after{content:" ·";color:var(--a-dim)}
+
+/*──────── the plate: a sealed node, answered where you tapped ────────
+
+    A modal sheet used to slide up from the bottom of the screen to say
+    that a node had not been opened. Four hundred pixels of chrome, over
+    the artwork, anchored to nothing, to deliver one sentence about the
+    dim thing you had just tapped in the opposite corner.
+
+    The plate is that sentence, put where the question was asked.
+
+    It does NOT follow the orbit. That is the same rule the rail follows
+    and it is not laziness: a target that drifts while a thumb is on its
+    way to it is not a target. So the plate is placed once, stays, and
+    draws a wire to wherever its node has since gone — which also means
+    the node may orbit behind the solid without stranding the reader.  */
+#plate{position:fixed;z-index:7;width:min(268px,calc(100vw - 28px));
+  padding:13px 14px 12px;background:rgba(7,9,18,.96);border:1px solid var(--rule-3);
+  border-left:1px solid var(--a);
+  transform-origin:left center;pointer-events:auto;
+  opacity:0;transform:scale(.96);transition:opacity .2s var(--ease),transform .2s var(--ease)}
+#plate.on{opacity:1;transform:scale(1)}
+#plate[hidden]{display:none}
+#plname{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--a);
+  padding-right:18px}
+#plblurb{font-size:11px;line-height:1.6;color:var(--mid);margin:7px 0 0}
+/*  The cost is stated before the button, never after it, and never in a
+    tone lighter than the thing it describes: this is irreversible.   */
+#plnote{font-size:10px;line-height:1.55;color:var(--dim);margin:9px 0 0}
+#plgo{display:block;width:100%;margin-top:11px;padding:9px;cursor:pointer;
+  background:transparent;border:1px solid var(--a);color:var(--a);
+  font:inherit;font-size:9px;letter-spacing:.24em;text-transform:uppercase;
+  transition:background .2s,color .2s}
+#plgo:hover{background:var(--a);color:var(--void)}
+#plno{position:absolute;top:6px;right:6px;background:transparent;border:0;
+  padding:3px 6px;cursor:pointer;font:inherit;font-size:12px;color:var(--dim)}
+#plno:hover{color:var(--lit)}
+
+/*──────────────────────── ticker ────────────────────────*/
+#tick{position:fixed;left:0;z-index:6;
+  bottom:calc(var(--dock) + var(--safeB));
+  padding:6px 13px;max-width:min(56vw,440px);pointer-events:none;
+  font-size:10px;letter-spacing:.06em;color:var(--mid);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  transition:opacity .4s var(--ease)}
+#tick b{color:var(--a);font-weight:400}
+#tick.err{color:var(--bad)}
+#tick.ok{color:var(--ok)}
+
+/*──────────────────────── the dock: 4D controls ────────────────────────*/
+#dock{position:fixed;left:0;right:0;bottom:0;z-index:6;
+  padding:0 13px calc(9px + var(--safeB));
+  background:linear-gradient(0deg,rgba(4,5,10,.94) 46%,rgba(4,5,10,0));
+  pointer-events:none;user-select:none}
+#dock>*{pointer-events:auto}
+
+#planes{display:flex;gap:5px;align-items:flex-end;margin-bottom:8px;
+  overflow-x:auto;scrollbar-width:none;padding-top:14px}
+#planes::-webkit-scrollbar{display:none}
+.pl{flex:0 0 auto;border:1px solid var(--rule-2);background:rgba(7,9,18,.8);
+  padding:5px 8px 4px;cursor:pointer;min-width:52px;
+  transition:border-color .2s,background .2s;position:relative;overflow:hidden}
+.pl:hover{border-color:var(--rule-3)}
+.pl.on{border-color:var(--a);background:var(--a-ghost)}
+.pl.w{border-style:dashed}
+.pl .pn{font-size:10px;letter-spacing:.16em;color:var(--mid);text-transform:uppercase}
+.pl.on .pn{color:var(--a)}
+.pl .pv{font-size:9px;letter-spacing:.04em;color:var(--dim);margin-top:1px}
+.pl .bar{position:absolute;left:0;bottom:0;height:1px;background:var(--a);width:0;
+  transition:width .12s linear}
+.pl .spin{position:absolute;right:3px;top:3px;width:4px;height:4px;border-radius:50%;
+  background:var(--b);opacity:0;transition:opacity .25s}
+.pl.rot .spin{opacity:.9}
+
+#wrow{display:flex;align-items:center;gap:11px;height:30px}
+#wrow .k{flex:0 0 auto}
+#wtrack{flex:1 1 auto;height:30px;position:relative;cursor:ew-resize;touch-action:none}
+#wtrack::before{content:"";position:absolute;left:0;right:0;top:14px;height:1px;background:var(--rule-2)}
+#wticks{position:absolute;inset:0;pointer-events:none}
+#wticks i{position:absolute;top:10px;width:1px;height:9px;background:var(--rule)}
+#wticks i.mid{height:14px;top:8px;background:var(--rule-3)}
+#whead{position:absolute;top:5px;width:2px;height:20px;background:var(--a);
+  box-shadow:0 0 12px var(--a);pointer-events:none;transition:none}
+#wval{flex:0 0 auto;width:62px;text-align:right;font-size:11px;color:var(--lit)}
+#wauto{flex:0 0 auto;border:1px solid var(--rule-2);background:transparent;color:var(--dim);
+  font:inherit;font-size:9px;letter-spacing:.18em;text-transform:uppercase;padding:5px 8px;
+  cursor:pointer;transition:.2s var(--ease)}
+#wauto.on{color:var(--a);border-color:var(--a-dim)}
+
+/*──────────────────────── sheet ────────────────────────*/
+#sheet{position:fixed;z-index:8;background:var(--void-2);
+  border-left:1px solid var(--rule-2);display:flex;flex-direction:column;
+  transition:transform .42s var(--ease);will-change:transform}
+@media (min-width:781px){
+  #sheet{top:0;right:0;bottom:0;width:var(--sheet);transform:translateX(101%)}
+  #sheet.open{transform:none}
+  #grip{display:none}
+}
+@media (max-width:780px){
+  #sheet{left:0;right:0;bottom:0;max-height:min(78vh,660px);
+    border-left:0;border-top:1px solid var(--rule-2);transform:translateY(101%)}
+  #sheet.open{transform:none}
+  #tick{max-width:74vw}
+}
+#grip{height:22px;display:flex;align-items:center;justify-content:center;cursor:grab;
+  touch-action:none;flex:0 0 auto}
+#grip::after{content:"";width:34px;height:2px;background:var(--rule-3);border-radius:2px}
+#shead{display:flex;align-items:center;justify-content:space-between;gap:10px;
+  padding:11px 15px;border-bottom:1px solid var(--rule);flex:0 0 auto}
+#shead .t{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--lit)}
+#shut{border:0;background:transparent;color:var(--dim);font:inherit;font-size:15px;
+  cursor:pointer;padding:2px 5px;line-height:1;transition:color .2s}
+#shut:hover{color:var(--lit)}
+#sbody{flex:1 1 auto;overflow-y:auto;overscroll-behavior:contain;
+  padding:14px 15px calc(20px + var(--safeB))}
+.blurb{font-size:11px;line-height:1.62;color:var(--mid);margin-bottom:14px}
+
+/*──────────────────────── controls ────────────────────────*/
+label.f{display:block;margin:10px 0 4px}
+input[type=text],input[type=number],textarea,select{
+  width:100%;background:var(--void);border:1px solid var(--rule-2);color:var(--lit);
+  font:inherit;font-size:12px;padding:8px 10px;outline:none;
+  transition:border-color .18s;border-radius:0;-webkit-appearance:none;appearance:none}
+input:focus,textarea:focus,select:focus{border-color:var(--a)}
+input::placeholder,textarea::placeholder{color:#3f4759}
+textarea{resize:vertical;min-height:64px;line-height:1.5}
+select{background-image:linear-gradient(45deg,transparent 50%,var(--dim) 50%),
+  linear-gradient(135deg,var(--dim) 50%,transparent 50%);
+  background-position:calc(100% - 15px) 15px,calc(100% - 11px) 15px;
+  background-size:4px 4px,4px 4px;background-repeat:no-repeat;padding-right:30px}
+button.b{display:block;width:100%;margin-top:12px;padding:11px;border:1px solid var(--a);
+  background:transparent;color:var(--a);font:inherit;font-size:10px;letter-spacing:.24em;
+  text-transform:uppercase;cursor:pointer;transition:.2s var(--ease)}
+button.b:hover:not(:disabled){background:var(--a);color:var(--void)}
+button.b:disabled{opacity:.32;cursor:not-allowed}
+button.b.g{border-color:var(--rule-3);color:var(--mid)}
+button.b.g:hover:not(:disabled){background:var(--rule);color:var(--lit)}
+.row{display:flex;gap:8px}
+.row>*{flex:1 1 0;min-width:0}
+
+/* range */
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:22px;
+  background:transparent;cursor:pointer;margin:2px 0}
+input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--rule-2)}
+input[type=range]::-moz-range-track{height:1px;background:var(--rule-2)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:2px;height:18px;
+  background:var(--a);margin-top:-8px;box-shadow:0 0 10px var(--a);border-radius:0}
+input[type=range]::-moz-range-thumb{width:2px;height:18px;background:var(--a);border:0;
+  border-radius:0;box-shadow:0 0 10px var(--a)}
+
+/* readouts */
+.kv{display:flex;justify-content:space-between;gap:12px;padding:6px 0;
+  border-bottom:1px solid var(--rule);align-items:baseline}
+.kv:last-child{border-bottom:0}
+.kv .vv{font-size:11px;color:var(--lit);text-align:right;
+  overflow-wrap:anywhere;min-width:0}
+pre.code{background:var(--void);border:1px solid var(--rule);padding:9px 10px;
+  font-size:10px;line-height:1.55;color:var(--mid);overflow-x:auto;
+  white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0;max-height:190px}
+pre.code b{color:var(--a);font-weight:400}
+.chips{display:flex;flex-wrap:wrap;gap:5px;margin:8px 0}
+.chip{border:1px solid var(--rule-2);padding:5px 9px;font-size:9px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--mid);cursor:pointer;transition:.18s var(--ease)}
+.chip:hover{border-color:var(--rule-3);color:var(--lit)}
+.chip.on{border-color:var(--a);color:var(--a);background:var(--a-ghost)}
+.chip.shut{opacity:.4;cursor:not-allowed}
+
+/*──────────────────────── confirm slab ────────────────────────*/
+#confirm{position:fixed;inset:0;z-index:12;background:rgba(4,5,10,.82);
+  backdrop-filter:blur(7px);display:none;align-items:center;justify-content:center;
+  padding:18px}
+#confirm.open{display:flex}
+#cbox{width:min(468px,100%);max-height:88vh;overflow-y:auto;background:var(--void-2);
+  border:1px solid var(--rule-3);padding:18px}
+#cbox h3{font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--a);
+  font-weight:400;margin-bottom:4px}
+#cbox .plain{font-size:12px;line-height:1.6;color:var(--lit);margin:10px 0 14px;
+  padding-left:11px;border-left:1px solid var(--a)}
+
+/*──────────────────────── nest (token inside token) ────────────────────────*/
+#nest{position:fixed;z-index:4;pointer-events:none;
+  transform-style:preserve-3d;perspective:900px;display:none}
+#nest.on{display:block}
+#nestbox{position:absolute;border:1px solid var(--a-dim);background:#000;
+  box-shadow:0 0 44px rgba(0,0,0,.72), 0 0 0 1px rgba(0,0,0,.55);
+  overflow:hidden;pointer-events:auto;transform-origin:0 0}
+#nestbox iframe{width:100%;height:100%;border:0;display:block;background:#000}
+#nestbar{position:absolute;top:-19px;left:0;font-size:8px;letter-spacing:.2em;
+  text-transform:uppercase;color:var(--a);white-space:nowrap}
+
+/*  The two the thumb needs. `/` opens the command list on a keyboard and
+    there is no keyboard on a phone, so the list gets a button; and the
+    door nodes orbit, which means on a narrow screen they can be behind
+    you when you want them, so the way out to the 2-D site is always on
+    the rail as well.                                                    */
+/*  The rail is a row of fixed cells and a phone is 412 points wide, so
+    without this the two buttons on the end are simply past the edge —
+    which is how the way out of the instrument came to be unreachable on
+    the device most people hold. The buttons hug the right, and the one
+    cell that is decoration rather than navigation stands aside when
+    there is no room for it.                                           */
+#link{margin-left:auto;flex:none}
+#r2d,#rcmd{flex:none}
+/*  The identity cells give way before the actions do: a chain name can be
+    an ellipsis and still tell you what you need, but a button past the
+    edge is a button that does not exist.                              */
+.cell{flex:0 1 auto;overflow:hidden}
+/*  The chain cell used to take every spare point on the rail (`flex:1`,
+    an id selector, so nothing a class says can argue). On a desk that is
+    invisible; on a phone it pushed the two buttons past the right edge,
+    which is how the way out of the instrument came to be missing on the
+    device most people use. It takes what it needs now.                */
+#c-net{flex:0 1 auto}
+.cell .v{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+@media (max-width:560px){ #c-form{display:none} }
+#r2d,#rcmd{background:none;border:0;border-left:1px solid var(--rule);
+  color:var(--mid);font:600 11px/1 var(--mono);letter-spacing:.14em;
+  padding:0 14px;cursor:pointer;align-self:stretch}
+#r2d:hover,#rcmd:hover,#r2d:focus-visible,#rcmd:focus-visible{color:var(--a);outline:none}
+#r2d[hidden]{display:none}
+/*──────────────────────── palette ────────────────────────*/
+#pal{position:fixed;inset:0;z-index:13;background:rgba(4,5,10,.7);backdrop-filter:blur(6px);
+  display:none;align-items:flex-start;justify-content:center;padding:12vh 16px 16px}
+#pal.open{display:flex}
+#palbox{width:min(520px,100%);background:var(--void-2);border:1px solid var(--rule-3)}
+#palq{width:100%;background:transparent;border:0;border-bottom:1px solid var(--rule-2);
+  padding:14px 16px;font:inherit;font-size:14px;color:var(--lit);outline:none}
+#pallist{max-height:52vh;overflow-y:auto}
+.pi{display:flex;align-items:baseline;gap:11px;padding:9px 16px;cursor:pointer;
+  border-bottom:1px solid var(--rule)}
+.pi:last-child{border-bottom:0}
+.pi.sel{background:var(--a-ghost)}
+.pi .pt{font-size:12px;color:var(--lit);flex:0 0 auto}
+.pi .pd{font-size:10px;color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pi .pk{margin-left:auto;font-size:9px;color:var(--dim);letter-spacing:.14em;flex:0 0 auto}
+
+/*──────────────────────── coach ────────────────────────*/
+#coach{position:fixed;left:50%;bottom:calc(var(--dock) + 34px + var(--safeB));
+  transform:translateX(-50%);z-index:9;pointer-events:none;text-align:center;
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase;color:var(--mid);
+  background:rgba(4,5,10,.76);padding:7px 15px;border:1px solid var(--rule);
+  opacity:0;transition:opacity .55s var(--ease);max-width:88vw}
+#coach.on{opacity:1}
+#coach b{color:var(--a);font-weight:400}
+
+/*──────────────────────── boot ────────────────────────*/
+#boot{position:fixed;inset:0;z-index:20;background:var(--void);display:flex;
+  flex-direction:column;align-items:center;justify-content:center;gap:15px;
+  transition:opacity .7s var(--ease)}
+#boot.gone{opacity:0;pointer-events:none}
+#boot .mark{font-size:11px;letter-spacing:.72em;color:var(--a);text-indent:.72em}
+#boot .sub{font-size:9px;letter-spacing:.26em;color:var(--dim);text-transform:uppercase}
+#bootbar{width:150px;height:1px;background:var(--rule-2);overflow:hidden}
+#bootbar i{display:block;height:100%;width:0;background:var(--a);transition:width .3s linear}
+
+/*──────────────────────── fatal ────────────────────────*/
+#fatal{position:fixed;inset:0;z-index:30;background:var(--void);display:none;
+  align-items:center;justify-content:center;padding:24px;text-align:center}
+#fatal.on{display:flex}
+#fatal div{max-width:420px;font-size:11px;line-height:1.7;color:var(--mid)}
+#fatal h4{color:var(--bad);font-size:10px;letter-spacing:.26em;text-transform:uppercase;
+  font-weight:400;margin-bottom:10px}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition-duration:.01ms !important}
+}
+</style>
+</head>
+<body>
+
+<canvas id="field"></canvas>
+
+<svg id="wires" aria-hidden="true"></svg>
+<div id="nodes"></div>
+<div id="plate" hidden role="dialog" aria-labelledby="plname"><button id="plno" type="button" aria-label="Dismiss">×</button><div id="plname"></div><div id="plblurb"></div><p id="plnote"></p><button id="plgo" type="button"></button></div>
+
+<div id="rail">
+  <div class="cell" id="c-id"><span class="k">Token</span><span class="v" id="v-id">—</span></div>
+  <div class="cell" id="c-form"><span class="k">Section</span><span class="v" id="v-form">—</span></div>
+  <div class="cell" id="c-net"><span class="k">Chain</span><span class="v" id="v-net">—</span></div>
+  <button id="link" type="button"><span class="led" id="v-led"></span><span id="v-link">Connect</span></button>
+  <button id="r2d" type="button" hidden>2D</button>
+  <button id="rcmd" type="button" title="every command">&#8230;</button>
+</div>
+
+<div id="tick" role="status" aria-live="polite">Drag the field to orbit. The slider moves you through the fourth axis.</div>
+
+<div id="dock">
+  <div id="planes" role="tablist" aria-label="Rotation planes"></div>
+  <div id="wrow">
+    <span class="k">Section&nbsp;w</span>
+    <div id="wtrack" role="slider" tabindex="0" aria-label="Position of the 3-space section along the w axis"
+         aria-valuemin="-1.6" aria-valuemax="1.6" aria-valuenow="0">
+      <div id="wticks"></div><div id="whead"></div>
+    </div>
+    <span id="wval" class="n">+0.000</span>
+    <button id="wauto" class="on" type="button">Drift</button>
+  </div>
+</div>
+
+<div id="coach"></div>
+
+<div id="nest"><div id="nestbox"><div id="nestbar"></div><iframe id="nestframe" title="This token, one section deeper"
+  sandbox="allow-scripts allow-same-origin" referrerpolicy="no-referrer"></iframe></div></div>
+
+<aside id="sheet" aria-hidden="true">
+  <div id="grip"></div>
+  <header id="shead"><span class="t" id="s-title">—</span>
+    <button id="shut" type="button" aria-label="Close">&#215;</button></header>
+  <div id="sbody"></div>
+</aside>
+
+<div id="confirm" role="dialog" aria-modal="true"><div id="cbox"></div></div>
+
+<div id="pal" role="dialog" aria-modal="true">
+  <div id="palbox">
+    <input id="palq" type="text" placeholder="Type a command…" autocomplete="off" spellcheck="false">
+    <div id="pallist"></div>
+  </div>
+</div>
+
+<div id="boot">
+  <div class="mark">IPSEITY</div>
+  <div id="bootbar"><i></i></div>
+  <div class="sub" id="bootmsg">assembling the section</div>
+</div>
+
+<div id="fatal"><div><h4>The field cannot be drawn</h4>
+  <p id="fatalmsg"></p>
+  <p style="margin-top:12px;color:#3f4759">This token's state is intact on chain regardless of what this
+  device can render. Open it in a browser with WebGL and it will return.</p></div></div>
+
+<script>
+/*═══════════════════════════════════════════════════════════════════════════
+
+   I P S E I T Y   ·   the property of being oneself
+
+   A token whose metadata is its own instrument.
+
+   What is on screen is a three-dimensional section of a four-dimensional
+   solid. The solid is never visible; only the 3-space that currently cuts
+   it. Moving w slides that space along the fourth axis, and the section
+   changes shape — a tesseract passes through cube, truncated cube,
+   hexagon, point. Nothing about the solid changed. Only where you stood.
+
+   The instrument you are using to move it is emitted by the same contract
+   that stores the solid's orientation. Commit a rotation and the contract
+   rewrites what every future viewer's section will be — including the
+   section inside this page, which can open itself, inside itself, at
+   depth, until the plane runs out of room.
+
+   Nothing here is fetched. No IPFS, no gateway, no CDN, no font, no
+   library, no build step. Every byte was returned by an eth_call.
+
+═══════════════════════════════════════════════════════════════════════════*/
+"use strict";
+
+/*───────────────────────────────────────────────────────────────────────────
+  0 · STATE
+  window.IPSE is written between <head> and <body> by tokenURI(). The
+  object below is only what this page falls back to when it is opened
+  outside the chain that owns it.
+───────────────────────────────────────────────────────────────────────────*/
+const S = Object.assign({
+  id: 0,
+  collection: "0x0000000000000000000000000000000000000000",
+  chainId: 1,
+  owner: "0x0000000000000000000000000000000000000000",
+  account: "0x0000000000000000000000000000000000000000",
+  pool: "0x0000000000000000000000000000000000000000",
+  seed: "0x0000000000000000000000000000000000000000000000000000000000000000",
+  hue: 34,
+  form: 0,
+  rot: [0, 0, 0, 0, 0, 0],   // six plane angles, 0..65535 → 0..2π
+  w: 32768,                  // section offset, 0..65535 → -1.6..1.6
+  ops: 0,
+  xfers: 0,
+  strata: 0,
+  open: 0xFFFF,
+  block: 0,
+  depth: 0,
+  rpc: ""
+}, window.IPSE || {});
+
+const DEPTH = Math.max(0, S.depth | 0);
+const ROOT  = DEPTH === 0;
+
+/* the eleven instruments carried by the token */
+const MODULES = [
+  { id:"SELF",   name:"Self",    ring:0, key:"1",
+    blurb:"The token reads itself. Owner, orientation, section, operation count and bound account — pulled live, by eth_call, from the contract that returned this page." },
+  { id:"ROTATE", name:"Rotate",  ring:0, key:"2",
+    blurb:"Commit the orientation you are looking at. Four-dimensional rotation happens in a plane, not about an axis, and there are six planes. Three of them contain w; turning in those changes the shape of the section itself. What you commit becomes what every future viewer sees first." },
+  { id:"SECTION",name:"Section", ring:0, key:"3",
+    blurb:"Choose the solid this token is a section of, and where along w the section is cut. Eight solids; only four of them have any three-dimensional analogue at all." },
+  { id:"SEND",   name:"Send",    ring:0, key:"4",
+    blurb:"Move native value — from your wallet, or from the token's own bound account, in which case the token is the sender and you are only its hand." },
+  { id:"ERC20",  name:"Assets",  ring:0, key:"5",
+    blurb:"Read and move ERC-20 balances. Every byte of calldata is hashed and encoded in this frame, by a keccak-256 implementation carried inside the token." },
+  { id:"CALL",   name:"Call",    ring:0, key:"6",
+    blurb:"Raw execution. Type a human-readable signature and its arguments; the selector is hashed and the parameters ABI-encoded here, then shown to you in full before anything is signed. Any contract, any function." },
+  { id:"SIGN",   name:"Sign",    ring:1, key:"7",
+    blurb:"Produce signatures. A plain message, or EIP-712 typed data — with the domain separator and struct hash computed in this page so you can check them against the wallet's own display." },
+  { id:"SCAN",   name:"Scan",    ring:1, key:"8",
+    blurb:"Interrogate the chain. Block, fees, balances, deployed bytecode, arbitrary storage slots at any address." },
+  { id:"VAULT",  name:"Vault",   ring:1, key:"9",
+    blurb:"Two ERC-6551 accounts, at two salts, both derived here by CREATE2 rather than asked for. The Reach acts and can be emptied by its holder. The Grip receives and has no function that spends — what it holds, it holds forever. Both travel with the token." },
+  { id:"MINT",   name:"Issue",   ring:1, key:"0",
+    blurb:"The token issues its siblings. Minting from inside one token draws the next from the same contract, seeded by the block that carried the call." },
+  { id:"MARKET", name:"Market",  ring:1, key:"m",
+    blurb:"This token is an exchange. Its market holds two assets and anyone may trade against them; the holder is the only one who puts inventory in or takes it out, and the only one who earns the fee. Selling the token sells the market with it. The curve is the solid: how far it has been turned through w sets how tightly the liquidity is concentrated." },
+  { id:"NEST",   name:"Nest",    ring:1, key:"n",
+    blurb:"Open this token inside this token. The frame loads a live instance of itself one section deeper, which can do the same, until the plane runs out of room." }
+];
+const NN = MODULES.length;
+
+/*  The door ring. When this frame is served from the collection's own
+    origin — a web3:// browser or any gateway in front of it — relative
+    paths resolve into the 2-D site, and the instrument becomes the door:
+    eight more vertices in a slower orbit, each opening one surface. In a
+    marketplace's data: sandbox no origin can answer, so the ring simply
+    never forms. These ride outside the shader's twelve — labels, wires
+    and the picking ray know them; the field does not.                  */
+const DOORED = /^(https?|web3):$/.test(location.protocol);
+/*  Where `/connect` goes, and it is now the console rather than the flat
+    site's front page.
+
+    A FUNCTION, because the id is part of the address. `/door` was one
+    string for every token, which is exactly what was wrong with it: a
+    holder who typed /connect arrived at a page about the collection and
+    then had to find their own token in it. `/c/<id>` is a page about the
+    thing they were just holding, and it is the same address whether they
+    typed the word, pressed the control, or were sent the link by
+    somebody else.
+
+    Named in one place because a route spelled in three is a route that
+    will be right in two of them.                                     */
+const LANDING = () => "/c/" + S.id;
+/*  Leaving is `top`, not `window`, and the difference is the whole reason
+    the instruments stacked. A section opened inside itself runs in a frame
+    of its host's document; a console navigated from inside that frame would
+    be a console inside an instrument, which is the arrangement this design
+    just spent a commit removing. `top` moves the document that is actually
+    on screen.
+
+    A marketplace that frames this token from another origin will refuse to
+    hand over `top` — the throw IS the refusal, and in that case this frame
+    is the only document there is to move, so it moves itself.          */
+const leave = (to) => { try { top.location.href = to; } catch(e){ location.href = to; } };
+/*  A ring of seven door nodes used to orbit here, each carrying a route
+    into the flat site. They were the deck's entrances and nothing else:
+    with no deck to enter, a node whose whole definition is `door:"/swap"`
+    is a button that cannot be pressed.
+
+    Removing them shrinks the orbit back to the instrument's own twelve,
+    which is what the geometry was drawn for — the outer shell existed to
+    hold doors, and doors are now something you go through by leaving. */
+
+/* the eight solids. names, and how each behaves as w moves */
+const FORMS = [
+  { n:"Tesseract",       g:"8-cell",         d:"Cube → truncated cube → hexagon → point." },
+  { n:"Hexadecachoron",  g:"16-cell",        d:"Octahedron → cuboctahedron → octahedron." },
+  { n:"Icositetrachoron",g:"24-cell",        d:"Self-dual. Has no three-dimensional analogue." },
+  { n:"Duocylinder",     g:"D²×D²",          d:"Two flat circles' product. Neither is the surface." },
+  { n:"Clifford torus",  g:"S¹×S¹ ⊂ S³",     d:"A flat torus. Flat, in four dimensions, exactly." },
+  { n:"Tiger",           g:"((II)(II))",      d:"A torus of tori. Sections come apart into rings." },
+  { n:"Ditorus",         g:"(((II)I)I)",      d:"A torus whose tube is a torus." },
+  { n:"Quaternion Julia",g:"z ← z² + c",     d:"A four-dimensional fractal. Sections never repeat." }
+];
+
+const TAU = Math.PI * 2;
+const PLANES = [
+  { n:"xy", i:0, w:false }, { n:"xz", i:1, w:false }, { n:"yz", i:2, w:false },
+  { n:"xw", i:3, w:true  }, { n:"yw", i:4, w:true  }, { n:"zw", i:5, w:true  }
+];
+
+/* fixed-point helpers: the chain stores integers, the field wants reals */
+const u16ToAngle = v => (v / 65536) * TAU;
+const angleToU16 = a => ((Math.round((a / TAU) * 65536) % 65536) + 65536) % 65536;
+const u16ToW     = v => (v / 65535) * 3.2 - 1.6;
+const wToU16     = w => Math.max(0, Math.min(65535, Math.round((w + 1.6) / 3.2 * 65535)));
+
+/* live, unsigned view of the token — what you are editing before you commit */
+const L = {
+  rot:  S.rot.map(u16ToAngle),
+  w:    u16ToW(S.w),
+  form: S.form | 0,
+  hue:  S.hue | 0,
+  dirty: false
+};
+/* the last committed view, for the A→B morph */
+const C = { rot: L.rot.slice(), w: L.w, form: L.form, hue: L.hue };
+
+const $  = s => document.querySelector(s);
+const $$ = s => Array.from(document.querySelectorAll(s));
+const clamp = (v,a,b) => v < a ? a : v > b ? b : v;
+const lerp  = (a,b,t) => a + (b-a)*t;
+const fmt   = (v,d=3) => (v<0?"":"+") + v.toFixed(d);
+
+document.documentElement.style.setProperty("--h", String(Math.round(L.hue * 360 / 255)));
+
+/*───────────────────────────────────────────────────────────────────────────
+  1 · FOUR-DIMENSIONAL ROTATION
+
+  In three dimensions a rotation is named by the axis it fixes. In four
+  there is no such axis — a rotation is named by the plane it turns, and
+  there are six of them. Three (xy, xz, yz) leave w alone and merely spin
+  the section you already see. Three (xw, yw, zw) turn part of the solid
+  out of this 3-space and pull unseen part of it in: those are the ones
+  that change the section's shape.
+
+  Rotations compose as Givens matrices; their product is orthonormal, so
+  a signed distance measured in the rotated frame is still exact. That is
+  the whole reason sphere tracing a 4D field through a 3-plane is sound.
+───────────────────────────────────────────────────────────────────────────*/
+const PLANE_IJ = [[0,1],[0,2],[1,2],[0,3],[1,3],[2,3]];
+
+function rot4(angles){
+  /* column-major 4×4, ready for gl.uniformMatrix4fv(loc,false,m) */
+  const m = new Float32Array([1,0,0,0, 0,1,0,0, 0,0,1,0, 0,0,0,1]);
+  for(let p = 0; p < 6; p++){
+    const a = angles[p];
+    if(a === 0) continue;
+    const [i,j] = PLANE_IJ[p], c = Math.cos(a), s = Math.sin(a);
+    /* left-multiply by the Givens rotation G(i,j,a) — touches rows i and j */
+    for(let col = 0; col < 4; col++){
+      const oi = col*4 + i, oj = col*4 + j;
+      const vi = m[oi], vj = m[oj];
+      m[oi] = c*vi - s*vj;
+      m[oj] = s*vi + c*vj;
+    }
+  }
+  return m;
+}
+function applyRot4(m, v){
+  return [
+    m[0]*v[0] + m[4]*v[1] + m[8]*v[2]  + m[12]*v[3],
+    m[1]*v[0] + m[5]*v[1] + m[9]*v[2]  + m[13]*v[3],
+    m[2]*v[0] + m[6]*v[1] + m[10]*v[2] + m[14]*v[3],
+    m[3]*v[0] + m[7]*v[1] + m[11]*v[2] + m[15]*v[3]
+  ];
+}
+
+/* small 3-vector kit */
+const V = {
+  sub:(a,b)=>[a[0]-b[0],a[1]-b[1],a[2]-b[2]],
+  add:(a,b)=>[a[0]+b[0],a[1]+b[1],a[2]+b[2]],
+  mul:(a,s)=>[a[0]*s,a[1]*s,a[2]*s],
+  dot:(a,b)=>a[0]*b[0]+a[1]*b[1]+a[2]*b[2],
+  cross:(a,b)=>[a[1]*b[2]-a[2]*b[1],a[2]*b[0]-a[0]*b[2],a[0]*b[1]-a[1]*b[0]],
+  norm:a=>{const l=Math.hypot(a[0],a[1],a[2])||1;return [a[0]/l,a[1]/l,a[2]/l];}
+};
+
+/* the seed, unpacked into the eight floats the field needs */
+function seedFloats(hex){
+  const h = String(hex).replace(/^0x/,"").padStart(64,"0");
+  const out = [];
+  for(let i=0;i<8;i++) out.push(parseInt(h.substr(i*8,8),16) / 4294967295);
+  return out;
+}
+const SEED = seedFloats(S.seed);
+
+/*───────────────────────────────────────────────────────────────────────────
+  2 · THE FIELD
+
+  One raymarch pass into a floating-point buffer, a temporal accumulator
+  that turns stillness into resolution, a five-level bloom pyramid, and a
+  filmic composite. Every stage is written out here because the token is
+  not allowed to ask anyone for a shader.
+───────────────────────────────────────────────────────────────────────────*/
+
+const VS3 = `#version 300 es
+in vec2 p; out vec2 vUv;
+void main(){ vUv = p * 0.5 + 0.5; gl_Position = vec4(p, 0.0, 1.0); }`;
+
+const HEAD3 = `#version 300 es
+precision highp float; precision highp int;
+in vec2 vUv; out vec4 oCol;
+`;
+
+/*── the raymarcher ──────────────────────────────────────────────────────*/
+const FS_FIELD = HEAD3 + `
+uniform vec2  uRes;
+uniform float uTime;
+uniform vec3  uEye, uFwd, uRight, uUp;
+uniform vec2  uJit;          // sub-pixel jitter, drives free antialiasing
+uniform float uLens;         // aperture; stillness opens it
+uniform float uFocus;
+uniform mat4  uRotL, uRotC;  // live orientation, and the committed one
+uniform float uWL, uWC;
+uniform float uFormL, uFormC;
+uniform float uHue;
+uniform float uOps, uPulse, uStrata, uGhost, uAura, uDepth;
+uniform float uSteps, uFlags;
+uniform vec4  uSeedA, uSeedB;
+uniform vec4  uNode[12];
+uniform float uSel;
+
+#define PI  3.141592653589793
+#define TAU 6.283185307179586
+#define F_SHADOW 1.0
+#define F_DISP   2.0
+#define F_AO     4.0
+#define F_AURA   8.0
+bool flag(float b){ return mod(floor(uFlags / b), 2.0) > 0.5; }
+
+float vmax4(vec4 v){ return max(max(v.x, v.y), max(v.z, v.w)); }
+mat2  rot2(float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }
+
+/*───────── four-dimensional solids ─────────
+  Every one of these is an exact Euclidean distance in R⁴, or a bound
+  that is never larger than the true distance. Because the orientation
+  matrix is orthonormal, that property survives the rotation — which is
+  what makes it legal to sphere-trace a 4D field along a ray that only
+  ever lives in a 3-space section of it.                                */
+
+float sdTesseract(vec4 q, float b){            // 8-cell — exact
+  vec4 d = abs(q) - b;
+  return length(max(d, 0.0)) + min(vmax4(d), 0.0);
+}
+float sdCrossPolytope(vec4 q, float s){        // 16-cell — safe bound
+  return (dot(abs(q), vec4(1.0)) - s) * 0.5;   // ‖∇‖ of the L¹ norm is 2 in R⁴
+}
+float sd24Cell(vec4 q, float b){               // 24-cell — tesseract ∩ 16-cell
+  return max(sdTesseract(q, b), sdCrossPolytope(q, 2.0 * b));
+}
+float sdDuocylinder(vec4 q, float a, float b){ // D²×D² — exact
+  vec2 d = vec2(length(q.xy) - a, length(q.zw) - b);
+  return min(max(d.x, d.y), 0.0) + length(max(d, 0.0));
+}
+float sdCliffordTorus(vec4 q, float c, float r){   // tube on S¹×S¹ ⊂ S³ — exact
+  return length(vec2(length(q.xy) - c, length(q.zw) - c)) - r;
+}
+float sdTiger(vec4 q, float r1, float r2, float r){ // ((II)(II)) — exact
+  return length(vec2(length(q.xy) - r1, length(q.zw) - r2)) - r;
+}
+float sdDitorus(vec4 q, float r1, float r2, float r){ // (((II)I)I) — exact
+  float a = length(vec2(length(q.xy) - r1, q.z));
+  return length(vec2(a - r2, q.w)) - r;
+}
+vec4 qSquare(vec4 a){                           // Hamilton product a·a
+  return vec4(a.x * a.x - dot(a.yzw, a.yzw), 2.0 * a.x * a.yzw);
+}
+float sdJulia(vec4 q, vec4 c){                  // z ← z² + c, Hart's estimator
+  vec4  z  = q;
+  float md = 1.0;
+  float m  = dot(z, z);
+  for(int i = 0; i < 9; i++){
+    md *= 4.0 * m;
+    z   = qSquare(z) + c;
+    m   = dot(z, z);
+    if(m > 8.0) break;
+  }
+  return 0.25 * sqrt(m / md) * log(max(m, 1e-8));
+}
+
+/* per-solid step safety: exact fields take the whole distance */
+float formStep(float f){ return f > 6.5 ? 0.72 : 1.0; }
+
+float solid(vec3 p, float w, mat4 R, float f){
+  vec4 q = R * vec4(p, w);
+  int  i = int(f + 0.5);
+  if(i == 0) return sdTesseract(q, 0.82);
+  if(i == 1) return sdCrossPolytope(q, 1.42);
+  if(i == 2) return sd24Cell(q, 0.90);
+  if(i == 3) return sdDuocylinder(q, 0.92, 0.92);
+  if(i == 4) return sdCliffordTorus(q, 0.80, 0.30);
+  if(i == 5) return sdTiger(q, 0.86, 0.62, 0.24);
+  if(i == 6) return sdDitorus(q, 0.86, 0.38, 0.16);
+  vec4 c = vec4(-0.44, 0.34, 0.10, 0.06)
+         + vec4(uSeedA.x - 0.5, uSeedA.y - 0.5, uSeedA.z - 0.5, uSeedA.w - 0.5) * 0.34;
+  return sdJulia(q * 1.30, c) / 1.30;
+}
+
+/* the field the eye is actually in: the live, uncommitted orientation */
+float live(vec3 p){ return solid(p, uWL, uRotL, uFormL); }
+
+/*───────── the instrument shell ─────────*/
+float ring(vec3 p, float rad, float tube, float tilt, float yaw){
+  vec3 q = p;
+  q.yz *= rot2(tilt);
+  q.xz *= rot2(yaw);
+  return length(vec2(length(q.xz) - rad, q.y)) - tube;
+}
+
+/* x: distance · y: material (1 solid · 2 rail · 10+i node) */
+vec2 map(vec3 p){
+  vec2 res = vec2(live(p) * formStep(uFormL), 1.0);
+
+  float t  = uTime * 0.05;
+  float rA = ring(p, 2.62, 0.0040,  0.34,  t);
+  float rB = ring(p, 2.02, 0.0032, -0.78, -t * 1.37);
+  float r  = min(rA, rB);
+  if(r < res.x) res = vec2(r, 2.0);
+
+  for(int i = 0; i < 12; i++){
+    vec4  n = uNode[i];
+    float k = 0.052 + (n.w > 0.5 ? 0.020 : 0.0) + (n.w > 1.5 ? 0.034 : 0.0);
+    float d = length(p - n.xyz) - k;
+    if(d < res.x) res = vec2(d, 10.0 + float(i));
+  }
+  return res;
+}
+
+/* 3-space gradient, tetrahedral — four taps, not six.
+   The offset has to grow with distance. A fixed epsilon rounds off detail
+   up close, and far away it falls under the relative precision of a float,
+   where the normal degenerates into noise. */
+vec3 grad3(vec3 p, float t){
+  vec2 e = vec2(1.0, -1.0) * max(t * 0.0011, 8e-5);
+  return normalize(
+    e.xyy * map(p + e.xyy).x + e.yyx * map(p + e.yyx).x +
+    e.yxy * map(p + e.yxy).x + e.xxx * map(p + e.xxx).x);
+}
+
+/* how far the surface leans out of this 3-space: ∂f/∂w at the hit.
+   Zero means the surface is perpendicular to our section and will slide
+   sideways as w moves; one means it is about to leave entirely.        */
+float leanW(vec3 p){
+  float e = 0.0016;
+  return (solid(p, uWL + e, uRotL, uFormL) - solid(p, uWL - e, uRotL, uFormL)) / (2.0 * e);
+}
+
+float shadow(vec3 ro, vec3 rd, float k){
+  float res = 1.0, t = 0.035;
+  for(int i = 0; i < 26; i++){
+    float h = map(ro + rd * t).x;
+    if(h < 0.0006) return 0.0;
+    res = min(res, k * h / t);
+    /* no lower clamp: flooring the step in a shadow march walks the ray
+       straight through thin geometry and drops the shadow entirely */
+    t  += min(max(h, 1e-4), 0.22);
+    if(t > 5.0) break;
+  }
+  return clamp(res, 0.0, 1.0);
+}
+
+float ao(vec3 p, vec3 n){
+  float o = 0.0, s = 1.0;
+  for(int i = 0; i < 5; i++){
+    float h = 0.012 + 0.11 * float(i);
+    o += (h - map(p + n * h).x) * s;
+    s *= 0.72;
+  }
+  return clamp(1.0 - 1.5 * o, 0.0, 1.0);
+}
+
+vec3 hsl(float h, float s, float l){
+  vec3 k = mod(vec3(0.0, 8.0, 4.0) + h * 12.0, 12.0);
+  return l - s * min(l, 1.0 - l) * clamp(min(k - 3.0, 9.0 - k), -1.0, 1.0);
+}
+
+/* the space the solid hangs in — a slow hyperlattice seen edge on */
+vec3 backdrop(vec3 rd, vec3 warm, vec3 cool){
+  float h  = rd.y * 0.5 + 0.5;
+  vec3  c  = mix(vec3(0.006, 0.008, 0.016), vec3(0.014, 0.018, 0.034), h);
+  c += cool * 0.020 * pow(max(0.0, 1.0 - abs(rd.y)), 6.0);
+  /* dust: fixed to direction, so it reads as depth and not as noise */
+  vec3  s  = rd * 62.0;
+  vec3  ic = floor(s);
+  float rn = fract(sin(dot(ic, vec3(12.9898, 78.233, 37.719))) * 43758.5453);
+  float st = smoothstep(0.9975, 1.0, rn) * 0.55;
+  c += warm * st;
+  return c;
+}
+
+void main(){
+  vec2 frag = gl_FragCoord.xy + uJit;
+  vec2 uv   = (frag - 0.5 * uRes) / uRes.y;
+
+  vec3 warm = hsl(uHue, 0.86, 0.62);
+  vec3 cool = hsl(fract(uHue + 0.52), 0.62, 0.60);
+
+  /* a whisper of aperture: when nothing moves, the accumulator turns
+     these offsets into real depth of field instead of noise */
+  vec3 ro = uEye;
+  vec3 rd = normalize(uFwd * 1.42 + uRight * uv.x + uUp * uv.y);
+  if(uLens > 0.0001){
+    float a = fract(sin(dot(frag, vec2(41.71, 289.13)) + uTime * 91.7) * 24634.6345) * TAU;
+    float r = sqrt(fract(sin(dot(frag, vec2(93.99, 17.05)) + uTime * 53.1) * 12933.7) ) * uLens;
+    vec3  o = uRight * cos(a) * r + uUp * sin(a) * r;
+    vec3  f = ro + rd * uFocus;
+    ro += o;
+    rd  = normalize(f - ro);
+  }
+
+  float t = 0.0, halo = 0.0, aura = 0.0, ghost = 0.0, mat = -1.0;
+  vec3  hp = ro;
+  int   N  = int(uSteps);
+
+  /* one signed offset per frame; the accumulator sums both sides for us */
+  float side = mod(floor(uTime * 60.0), 2.0) * 2.0 - 1.0;
+
+  for(int i = 0; i < 220; i++){
+    if(i >= N) break;
+    hp = ro + rd * t;
+    vec2 m = map(hp);
+    float d = m.x;
+
+    halo += 0.0042 / (0.026 + abs(d) * 7.5);
+
+    if(flag(F_AURA) && uAura > 0.001){
+      /* the neighbouring sections, one to each side along w — the part of
+         the solid this 3-space is about to meet, or has just left */
+      float g = solid(hp, uWL + side * 0.30, uRotL, uFormL);
+      aura += 0.0030 / (0.052 + abs(g) * 12.0);
+    }
+    if(uGhost > 0.001){
+      /* where the chain still believes the solid is */
+      float g = solid(hp, uWC, uRotC, uFormC);
+      ghost += 0.0026 / (0.030 + abs(g) * 15.0);
+    }
+
+    if(d < 0.0009 * (1.0 + t * 0.35)){ mat = m.y; break; }
+    t += d;
+    if(t > 18.0) break;
+  }
+
+  vec3 col = backdrop(rd, warm, cool);
+
+  if(mat > 0.0){
+    vec3 n = grad3(hp, t);
+    vec3 v = -rd;
+    float fres = pow(1.0 - clamp(dot(n, v), 0.0, 1.0), 4.2);
+    vec3  key  = normalize(vec3(0.48, 0.86, 0.40));
+    vec3  fill = normalize(vec3(-0.72, -0.14, -0.58));
+    float kd   = max(dot(n, key), 0.0);
+    float fd   = max(dot(n, fill), 0.0);
+    float sh   = flag(F_SHADOW) ? shadow(hp + n * 0.006, key, 12.0) : 1.0;
+    float occ  = flag(F_AO)     ? ao(hp, n) : 1.0;
+
+    if(mat < 1.5){
+      /*── the solid ──*/
+      vec4  q4   = uRotL * vec4(hp, uWL);
+      float dw   = leanW(hp);
+      float lean = dw / sqrt(dot(n, n) + dw * dw + 1e-6);   // −1..1
+
+      /* base: warm where the surface faces this 3-space, cool where it
+         is angled out of it into w */
+      vec3 base = mix(warm, cool, clamp(abs(lean), 0.0, 1.0) * 0.92);
+
+      col  = base * (0.055 + kd * 0.62 * sh) * occ;
+      col += cool * fd * 0.20 * occ;
+      col += mix(warm, cool, 0.5) * fres * 1.55;
+
+      /* contours of the fourth coordinate: each band is a place where the
+         surface sits at the same depth along w. They are the only direct
+         evidence on screen that there is a fourth axis at all. */
+      float band = abs(fract(q4.w * 3.6 - uTime * 0.045) - 0.5) * 2.0;
+      float line = smoothstep(0.90, 1.0, band);
+      col += mix(warm, cool, 0.35) * line * 0.30 * (0.4 + occ * 0.6);
+
+      /* strata: one fold for every operation this token has performed */
+      if(uStrata > 0.5){
+        float sBand = sin(dot(q4, vec4(6.1, 4.7, 5.3, 3.9)) + uStrata * 0.7);
+        col += warm * 0.045 * smoothstep(0.93, 1.0, sBand) * min(uStrata / 24.0, 1.0);
+      }
+
+      /* dispersion: three wavelengths refracted through the body, each
+         losing a different amount to Beer–Lambert absorption on the way */
+      if(flag(F_DISP)){
+        vec3 acc = vec3(0.0);
+        for(int c = 0; c < 3; c++){
+          float ior = 1.34 + float(c) * 0.028;
+          vec3  rr  = refract(rd, n, 1.0 / ior);
+          if(dot(rr, rr) < 0.5) continue;
+          vec3  ip  = hp - n * 0.010;
+          float it  = 0.0;
+          for(int k = 0; k < 40; k++){
+            float dd = -live(ip + rr * it) * formStep(uFormL);
+            if(dd < 0.0008) break;
+            it += max(dd, 0.006);
+            if(it > 4.2) break;
+          }
+          vec3 ex = ip + rr * it;
+          vec3 en = -grad3(ex, t);
+          vec3 ot = refract(rr, en, ior / 1.0);
+          if(dot(ot, ot) < 0.5) ot = reflect(rr, en);
+          vec3 bg = backdrop(normalize(ot), warm, cool) * 7.0;
+          float absorb = exp(-it * (0.62 + float(c) * 0.30));
+          acc[c] = dot(bg, vec3(0.33)) * absorb;
+        }
+        col += acc * 0.55 * (0.25 + fres);
+      }
+
+      col += warm * uPulse * 0.85;
+
+    } else if(mat < 2.5){
+      /*── the rails the instrument hangs from ──*/
+      col = mix(vec3(0.24, 0.28, 0.38), warm * 0.5, fres) * (0.65 + fres * 1.5);
+    } else {
+      /*── the instrument nodes ──*/
+      float idx = mat - 10.0;
+      float st  = 0.0;
+      for(int i = 0; i < 12; i++){ if(abs(float(i) - idx) < 0.5) st = uNode[i].w; }
+      vec3 nc = st < 0.5 ? vec3(0.13, 0.15, 0.21)
+              : st < 1.5 ? cool * 0.80
+                         : warm * 1.55;
+      col = nc * (0.30 + kd * 0.72 * sh + fres * 2.1) * occ;
+      if(st > 1.5) col += warm * (0.55 + 0.35 * sin(uTime * 3.4));
+    }
+  }
+
+  col += warm * halo  * (0.52 + uOps * 0.42);
+  col += cool * halo  * 0.16;
+  col += cool * aura  * uAura * 1.30;         // the sections on either side
+  col += vec3(0.62, 0.66, 0.78) * ghost * uGhost * 0.85;  // the committed truth
+
+  /* recursion tint — each section deeper is measurably colder */
+  col = mix(col, col * vec3(0.74, 0.84, 1.0), clamp(uDepth * 0.22, 0.0, 0.66));
+
+  oCol = vec4(max(col, 0.0), 1.0);
+}`;
+
+/*── temporal accumulator: stillness is resolution ──────────────────────*/
+const FS_ACC = HEAD3 + `
+uniform sampler2D uCur, uHist;
+uniform float uBlend;
+void main(){
+  vec3 c = texture(uCur,  vUv).rgb;
+  vec3 h = texture(uHist, vUv).rgb;
+  oCol = vec4(mix(h, c, uBlend), 1.0);
+}`;
+
+/*── bright pass + downsample (Kawase dual filter) ──────────────────────*/
+const FS_DOWN = HEAD3 + `
+uniform sampler2D uSrc;
+uniform vec2  uTexel;
+uniform float uThresh;   // > 0 only on the first level
+void main(){
+  vec2 o = uTexel;
+  vec3 s = texture(uSrc, vUv).rgb * 4.0
+         + texture(uSrc, vUv + vec2(-o.x, -o.y)).rgb
+         + texture(uSrc, vUv + vec2( o.x, -o.y)).rgb
+         + texture(uSrc, vUv + vec2(-o.x,  o.y)).rgb
+         + texture(uSrc, vUv + vec2( o.x,  o.y)).rgb;
+  s /= 8.0;
+  if(uThresh > 0.0){
+    float l = dot(s, vec3(0.2126, 0.7152, 0.0722));
+    s *= max(l - uThresh, 0.0) / max(l, 1e-4);
+  }
+  oCol = vec4(s, 1.0);
+}`;
+
+const FS_UP = HEAD3 + `
+uniform sampler2D uSrc;
+uniform vec2 uTexel;
+void main(){
+  vec2 o = uTexel;
+  vec3 s = texture(uSrc, vUv + vec2(-o.x * 2.0, 0.0)).rgb
+         + texture(uSrc, vUv + vec2(-o.x, o.y)).rgb * 2.0
+         + texture(uSrc, vUv + vec2(0.0, o.y * 2.0)).rgb
+         + texture(uSrc, vUv + vec2( o.x, o.y)).rgb * 2.0
+         + texture(uSrc, vUv + vec2( o.x * 2.0, 0.0)).rgb
+         + texture(uSrc, vUv + vec2( o.x, -o.y)).rgb * 2.0
+         + texture(uSrc, vUv + vec2(0.0, -o.y * 2.0)).rgb
+         + texture(uSrc, vUv + vec2(-o.x, -o.y)).rgb * 2.0;
+  oCol = vec4(s / 12.0, 1.0);
+}`;
+
+/*── composite: bloom, aberration, ACES, grain, dither ──────────────────*/
+const FS_POST = HEAD3 + `
+uniform sampler2D uScene, uBloom;
+uniform vec2  uRes;
+uniform float uTime, uBloomAmt, uExposure, uVig, uGrain, uAberr;
+
+vec3 aces(vec3 x){                       // Narkowicz's fit of the RRT+ODT
+  const float a = 2.51, b = 0.03, c = 2.43, d = 0.59, e = 0.14;
+  return clamp((x * (a * x + b)) / (x * (c * x + d) + e), 0.0, 1.0);
+}
+float hash(vec2 p){
+  p = fract(p * vec2(443.897, 441.423));
+  p += dot(p, p.yx + 19.19);
+  return fract((p.x + p.y) * p.x);
+}
+void main(){
+  vec2  uv = vUv;
+  vec2  d  = uv - 0.5;
+  float r2 = dot(d, d);
+
+  /* the lens is not achromatic at the edge of the frame */
+  vec3 s;
+  if(uAberr > 0.0001){
+    vec2 k = d * r2 * uAberr;
+    s = vec3(texture(uScene, uv + k).r,
+             texture(uScene, uv).g,
+             texture(uScene, uv - k).b);
+  } else {
+    s = texture(uScene, uv).rgb;
+  }
+
+  s += texture(uBloom, uv).rgb * uBloomAmt;
+  s *= uExposure;
+  s *= 1.0 - uVig * r2 * 1.35;                     // vignette
+  s  = aces(s);
+  s  = pow(max(s, 0.0), vec3(1.0 / 2.2));          // to sRGB
+
+  float g = hash(gl_FragCoord.xy + fract(uTime) * 91.7);
+  s += (g - 0.5) * uGrain;                          // grain
+  s += (hash(gl_FragCoord.xy * 1.7) - 0.5) / 255.0; // ordered-enough dither
+
+  oCol = vec4(clamp(s, 0.0, 1.0), 1.0);
+}`;
+
+/*───────────────────────────────────────────────────────────────────────────
+  3 · THE ENGINE
+───────────────────────────────────────────────────────────────────────────*/
+const cvs = $("#field");
+let gl = null, hasFloat = false, MIPS = 5;
+const P = {};        // programs
+let parallel = null;
+const FB = {};       // framebuffers
+let scale = 1, dpr = 1, W = 1, H = 1;
+
+/* quality ladder — climbs when the frame budget allows, falls when it doesn't */
+const TIERS = [
+  { steps: 64,  flags: 4,           bloom: 0.26, aberr: 0.0000, disp: false },
+  { steps: 96,  flags: 4 | 8,       bloom: 0.34, aberr: 0.0016, disp: false },
+  { steps: 140, flags: 1 | 4 | 8,   bloom: 0.40, aberr: 0.0030, disp: false },
+  { steps: 190, flags: 1|2|4|8,     bloom: 0.46, aberr: 0.0042, disp: true  }
+];
+
+/*───────────────────── what the ladder may not do ─────────────────────
+
+  The quality ladder climbs while the frame rate holds and falls when it
+  does not. That is the correct rule for a desktop and the wrong one for
+  something held in a hand, because it optimises for frames and pays in
+  watts: a capable phone sustains sixty frames at the top tier, so the
+  ladder settles there and stays — a hundred and ninety raymarch steps per
+  pixel, at full resolution, for as long as the page is open.
+
+  Sustaining sixty frames and being pleasant to hold are different goals
+  and the ladder only knew the first one. It was reported as heat, which
+  is what a device says when it has been asked for everything it has.
+
+  So the ladder gets a ceiling rather than a new algorithm. It still falls
+  the moment a device struggles; it simply may not climb past what a
+  handheld should be asked to sustain.                                  */
+const HANDHELD = matchMedia("(pointer:coarse)").matches || innerWidth < 781;
+const CALM = matchMedia("(prefers-reduced-motion:reduce)").matches;
+const TIER_CEIL  = CALM ? 1 : (HANDHELD ? 2 : TIERS.length - 1);
+const SCALE_CEIL = CALM ? 0.7 : (HANDHELD ? 0.85 : 1);
+
+/*  And a rate the loop drops to once the accumulator has converged and
+    nothing has changed. It never stopped drawing: after ninety-six still
+    frames each new one contributes a ninety-seventh of itself, and it
+    kept computing a whole picture, sixty times a second, to add almost
+    nothing to a picture that was already finished.
+
+    Not zero, because the field is not static — four things in the shader
+    move on uTime. They move slowly enough (0.045 to 0.05 a second) that
+    ten frames a second is the same image to an eye and a sixth of the
+    work to a battery.                                                  */
+const IDLE_HZ = CALM ? 4 : 10;
+const IDLE_MS = 1000 / IDLE_HZ;
+const CONVERGED = 96;
+let lastDraw = 0;
+
+/*  Two documents, one thread.
+
+    The throttle above answers a loop that is idle. It could never answer
+    the other half of the heat, because in that half the loop is not idle
+    — it is busy, and correctly so. When the token is opened inside
+    itself there are two complete raymarchers on one main thread, each
+    asking a phone for everything it has, and each one's quality ladder
+    reading the other's cost as its own device being slow.
+
+    Which of the two is being looked at is not ambiguous. The inner
+    section is the picture; the host is the frame around it. So the host
+    yields: it keeps drawing, because an inner section hanging in a field
+    frozen mid-turn reads as broken, but it draws at a walking pace and
+    spends the rest of the thread on the copy in front of it.
+
+    Kept on the class rather than beside it. `on` is what puts the inner
+    section on the screen, so there is one fact and one place holding it,
+    and no way for the yield and the picture to disagree.              */
+const NEST_HZ = CALM ? 2 : 5;
+const NEST_MS = 1000 / NEST_HZ;
+let nestBox = null;
+const nestUp = () =>
+  (nestBox || (nestBox = document.getElementById("nest"))).classList.contains("on");
+/*  Clamped, not just initialised: on a handheld the default was already
+    the ceiling, and under reduced motion it started one above it and
+    would only have come down by failing to keep up.                   */
+let tier = Math.min(2, TIER_CEIL);
+
+function compile(type, src){
+  const s = gl.createShader(type);
+  gl.shaderSource(s, src);
+  gl.compileShader(s);
+  if(!gl.getShaderParameter(s, gl.COMPILE_STATUS)){
+    const log = gl.getShaderInfoLog(s) || "";
+    const line = (log.match(/(\d+):(\d+)/) || [])[2];
+    throw new Error("shader " + (line ? "line " + line + ": " : "") + log.split("\n")[0]);
+  }
+  return s;
+}
+function program(fs, uniforms){
+  const p = gl.createProgram();
+  gl.attachShader(p, compile(gl.VERTEX_SHADER, VS3));
+  gl.attachShader(p, compile(gl.FRAGMENT_SHADER, fs));
+  gl.bindAttribLocation(p, 0, "p");
+  gl.linkProgram(p);
+  if(!gl.getProgramParameter(p, gl.LINK_STATUS)) throw new Error(gl.getProgramInfoLog(p));
+  const u = {};
+  for(const n of uniforms) u[n] = gl.getUniformLocation(p, n);
+  return { p, u };
+}
+
+function target(w, h, float){
+  const tex = gl.createTexture();
+  gl.bindTexture(gl.TEXTURE_2D, tex);
+  const [ifmt, type] = float ? [gl.RGBA16F, gl.HALF_FLOAT] : [gl.RGBA8, gl.UNSIGNED_BYTE];
+  gl.texImage2D(gl.TEXTURE_2D, 0, ifmt, w, h, 0, gl.RGBA, type, null);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+  gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+  const fb = gl.createFramebuffer();
+  gl.bindFramebuffer(gl.FRAMEBUFFER, fb);
+  gl.framebufferTexture2D(gl.FRAMEBUFFER, gl.COLOR_ATTACHMENT0, gl.TEXTURE_2D, tex, 0);
+  const ok = gl.checkFramebufferStatus(gl.FRAMEBUFFER) === gl.FRAMEBUFFER_COMPLETE;
+  gl.bindFramebuffer(gl.FRAMEBUFFER, null);
+  return { tex, fb, w, h, ok };
+}
+
+function initGL(){
+  /* Without preventDefault the context is never restored, and a browser
+     that runs out of contexts - which is exactly what nesting this token
+     inside itself risks - takes the oldest one back silently. */
+  cvs.addEventListener("webglcontextlost", e => {
+    e.preventDefault();
+    paused = true;
+    say("The GPU took this context back. Waiting for it.", "err");
+  }, false);
+  cvs.addEventListener("webglcontextrestored", () => {
+    try {
+      initGL(); W = H = 1; resize(); paused = false; accFrames = 0;
+      say("Context restored.", "ok");
+    } catch(e){ fatal(String(e.message || e)); }
+  }, false);
+
+  gl = cvs.getContext("webgl2", {
+    antialias: false, alpha: false, depth: false, stencil: false,
+    premultipliedAlpha: false, preserveDrawingBuffer: false,
+    powerPreference: "high-performance", desynchronized: true
+  });
+  if(!gl) throw new Error("This browser has no WebGL2 context to give.");
+
+  /* Two different extensions, and neither one is a promise. RGBA16F is
+     what this pipeline asks for, and it is filterable in WebGL2 core, so
+     half-float alone is enough - but the only trustworthy check is to
+     build a target and ask the driver whether it worked. A device that
+     advertises the extension and then hands back an incomplete
+     framebuffer renders black, not badly. */
+  hasFloat = !!gl.getExtension("EXT_color_buffer_float")
+          || !!gl.getExtension("EXT_color_buffer_half_float");
+  gl.getExtension("OES_texture_float_linear");
+  parallel = gl.getExtension("KHR_parallel_shader_compile");
+
+  const buf = gl.createBuffer();
+  gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+  gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1,-1, 3,-1, -1,3]), gl.STATIC_DRAW);
+  gl.enableVertexAttribArray(0);
+  gl.vertexAttribPointer(0, 2, gl.FLOAT, false, 0, 0);
+
+  P.field = program(FS_FIELD, [
+    "uRes","uTime","uEye","uFwd","uRight","uUp","uJit","uLens","uFocus",
+    "uRotL","uRotC","uWL","uWC","uFormL","uFormC","uHue","uOps","uPulse",
+    "uStrata","uGhost","uAura","uDepth","uSteps","uFlags","uSeedA","uSeedB","uSel"
+  ]);
+  for(let i = 0; i < NN; i++) P.field.u["uNode" + i] = gl.getUniformLocation(P.field.p, "uNode[" + i + "]");
+
+  P.acc  = program(FS_ACC,  ["uCur","uHist","uBlend"]);
+  P.down = program(FS_DOWN, ["uSrc","uTexel","uThresh"]);
+  P.up   = program(FS_UP,   ["uSrc","uTexel"]);
+  P.post = program(FS_POST, ["uScene","uBloom","uRes","uTime","uBloomAmt","uExposure","uVig","uGrain","uAberr"]);
+
+  gl.disable(gl.DEPTH_TEST);
+  gl.disable(gl.BLEND);
+  return true;
+}
+
+function allocate(w, h){
+  if(hasFloat){
+    /* one probe, once: if RGBA16F will not attach on this device, drop the
+       whole pipeline to 8-bit rather than discovering it a frame later */
+    const probe = target(4, 4, true);
+    if(!probe.ok) hasFloat = false;
+    gl.deleteTexture(probe.tex);
+    gl.deleteFramebuffer(probe.fb);
+  }
+  for(const k of Object.keys(FB)){
+    const t = FB[k];
+    if(Array.isArray(t)) t.forEach(x => { gl.deleteTexture(x.tex); gl.deleteFramebuffer(x.fb); });
+    else { gl.deleteTexture(t.tex); gl.deleteFramebuffer(t.fb); }
+    delete FB[k];
+  }
+  const f = hasFloat;
+  FB.scene = target(w, h, f);
+  FB.accA  = target(w, h, f);
+  FB.accB  = target(w, h, f);
+  FB.mip   = [];
+  let mw = w, mh = h;
+  for(let i = 0; i < MIPS; i++){
+    mw = Math.max(2, mw >> 1); mh = Math.max(2, mh >> 1);
+    FB.mip.push(target(mw, mh, f));
+  }
+  FB.up = [];
+  for(let i = 0; i < MIPS - 1; i++) FB.up.push(target(FB.mip[i].w, FB.mip[i].h, f));
+  if(!FB.scene.ok || !FB.accA.ok)
+    throw new Error("this device would not give the field a buffer to draw into");
+  accFrames = 0;
+}
+
+/*  The field's own rectangle, which stopped being the window's the day the
+    deck could take a strip off one edge. Everything that used to read
+    innerWidth/innerHeight — the framebuffer, the projection, the picking
+    ray, the label clamp — reads these instead, so a pane makes the solid
+    smaller rather than hiding half of it, and every gesture keeps working
+    on the part that is left. The canvas is inset by --fx/--fy in CSS; its
+    origin is still (0,0), which is why `pick()` needs no offset at all.  */
+let FW = innerWidth, FH = innerHeight, fieldDirty = true;
+/*  Reading offsetWidth forces a synchronous layout, and resize() runs once
+    a frame. Measuring there unconditionally put a forced layout in the
+    frame loop for a number that changes only when the window changes or
+    the deck moves — so it is measured on those two events instead, which
+    is exactly when it can differ.                                      */
+const remeasure = () => { fieldDirty = true; };
+addEventListener("resize", remeasure);
+
+function resize(){
+  dpr = Math.min(window.devicePixelRatio || 1, 2);
+  if(fieldDirty){
+    fieldDirty = false;
+    FW = Math.max(2, cvs.offsetWidth  || innerWidth);
+    FH = Math.max(2, cvs.offsetHeight || innerHeight);
+  }
+  const w = Math.max(2, Math.round(FW * dpr * scale));
+  const h = Math.max(2, Math.round(FH * dpr * scale));
+  if(w === W && h === H) return;
+  W = w; H = h;
+  cvs.width = w; cvs.height = h;
+  allocate(w, h);
+}
+
+function bind(t){
+  gl.bindFramebuffer(gl.FRAMEBUFFER, t ? t.fb : null);
+  gl.viewport(0, 0, t ? t.w : cvs.width, t ? t.h : cvs.height);
+}
+function tex(unit, t){ gl.activeTexture(gl.TEXTURE0 + unit); gl.bindTexture(gl.TEXTURE_2D, t); }
+const tri = () => gl.drawArrays(gl.TRIANGLES, 0, 3);
+
+/*───────────────────────────────────────────────────────────────────────────
+  4 · CAMERA, SHELL, FRAME
+───────────────────────────────────────────────────────────────────────────*/
+const cam = { yaw: 0.62, pitch: 0.26, dist: 5.4, ty: 0.62, tp: 0.26, td: 5.4, drift: true };
+let basis = { eye: [0, 0, 5], fwd: [0, 0, -1], right: [1, 0, 0], up: [0, 1, 0] };
+
+function updateCam(dt){
+  if(cam.drift) cam.ty += dt * 0.038;
+  const k = 1 - Math.pow(0.0008, dt);
+  cam.yaw   += (cam.ty - cam.yaw)   * k;
+  cam.pitch += (cam.tp - cam.pitch) * k;
+  cam.dist  += (cam.td - cam.dist)  * k;
+  const cp  = Math.cos(cam.pitch);
+  const eye = [Math.sin(cam.yaw) * cp * cam.dist,
+               Math.sin(cam.pitch) * cam.dist,
+               Math.cos(cam.yaw) * cp * cam.dist];
+  const fwd   = V.norm(V.mul(eye, -1));
+  const right = V.norm(V.cross(fwd, [0, 1, 0]));
+  basis = { eye, fwd, right, up: V.cross(right, fwd) };
+}
+
+/* the twelve instruments, hung on two counter-tilted shells */
+const nodes = MODULES.map((m, i) => ({ ...m, i, pos: [0, 0, 0], st: 0 }));
+function placeNodes(time){
+  const shell = (list, rad, tilt, spin, phase) => list.forEach((n, k) => {
+    const a = phase + spin * time + (k / list.length) * TAU;
+    const x = Math.cos(a) * rad, z = Math.sin(a) * rad;
+    const c = Math.cos(tilt), s = Math.sin(tilt);
+    n.pos = [x, -z * s, z * c];
+  });
+  shell(nodes.filter(n => n.ring === 0), 2.62,  0.33,  0.052, 0);
+  shell(nodes.filter(n => n.ring === 1), 2.02, -0.76, -0.071, 0.86);
+  shell(nodes.filter(n => n.ring === 2), 3.30,  0.58,  0.026, 1.9);
+}
+
+function project(p){
+  const v = V.sub(p, basis.eye);
+  const z = V.dot(v, basis.fwd);
+  if(z <= 0.06) return null;
+  const x = V.dot(v, basis.right) / (z * 1.42);
+  const y = V.dot(v, basis.up)    / (z * 1.42);
+  return { x: FW * 0.5 + x * FH, y: FH * 0.5 - y * FH, z };
+}
+function pick(sx, sy){
+  const ux = (sx - FW * 0.5) / FH;
+  const uy = (FH * 0.5 - sy) / FH;
+  const rd = V.norm(V.add(V.mul(basis.fwd, 1.42),
+             V.add(V.mul(basis.right, ux), V.mul(basis.up, uy))));
+  let best = null, bt = 1e9;
+  for(const n of nodes){
+    const oc = V.sub(basis.eye, n.pos);
+    const b  = V.dot(oc, rd), c = V.dot(oc, oc) - 0.0324;
+    const h  = b * b - c;
+    if(h < 0) continue;
+    const t = -b - Math.sqrt(h);
+    if(t > 0 && t < bt){ bt = t; best = n; }
+  }
+  return best;
+}
+
+/* live visual state */
+const VIS = { pulse: 0, sel: -1, aura: 0.55, ghost: 0, spin: [0,0,0,0,0,0], plane: 3 };
+function shock(){ VIS.pulse = 1; accFrames = 0; }
+
+const halton = (i, b) => { let f = 1, r = 0; while(i > 0){ f /= b; r += f * (i % b); i = Math.floor(i / b); } return r; };
+
+let accFrames = 0, accPing = 0;
+let last = performance.now(), t0 = last, fps = 60, fCount = 0, fAcc = 0, frameNo = 0;
+let paused = false, lastKey = "", good = 0;
+
+function stateKey(){
+  return cam.yaw.toFixed(4) + cam.pitch.toFixed(4) + cam.dist.toFixed(4) +
+         L.w.toFixed(4) + L.form + L.rot.map(a => a.toFixed(4)).join("") +
+         VIS.sel + VIS.pulse.toFixed(3) + VIS.ghost.toFixed(2) + W + H;
+}
+
+function frame(now){
+  requestAnimationFrame(frame);
+  if(paused) return;
+
+  const dt = Math.min(0.05, (now - last) / 1000); last = now;
+  const time = (now - t0) / 1000;
+  frameNo++;
+
+  /* frame budget → quality ladder */
+  /* Asymmetric on purpose. Falling has to be quick or a slow device never
+     recovers; climbing has to be slow or the resolution visibly pumps up
+     and down forever around whatever the device can just barely do. */
+  fAcc += dt; fCount++;
+  if(fAcc > 0.9){
+    fps = fCount / fAcc; fCount = 0; fAcc = 0;
+    if(fps < 26){
+      good = 0;
+      if(tier > 0) tier--;
+      else if(scale > 0.52){ scale = Math.max(0.52, scale - 0.14); resize(); }
+    } else if(fps > 54){
+      if(++good >= 4){
+        good = 0;
+        if(scale < SCALE_CEIL){ scale = Math.min(SCALE_CEIL, scale + 0.08); resize(); }
+        else if(tier < TIER_CEIL) tier++;
+      }
+    } else good = 0;
+  }
+  /*  A ladder measuring frames per second cannot tell a slow device from
+      a busy one. With an inner section open it would read the copy's
+      cost as the device failing and climb down — or, worse, read a
+      thread the copy happened to leave free and climb up into it. It
+      sits at the bottom until the section is closed and then earns its
+      way back the ordinary way.                                      */
+  if(nestUp() && tier > 0){ tier = 0; good = 0; }
+
+  VIS.pulse *= Math.pow(0.05, dt);
+  VIS.ghost += ((L.dirty ? 1 : 0) - VIS.ghost) * Math.min(1, dt * 4);
+
+  /* free-running rotation for any plane the holder set spinning */
+  for(let i = 0; i < 6; i++) if(VIS.spin[i] !== 0){ L.rot[i] = (L.rot[i] + VIS.spin[i] * dt + TAU) % TAU; markDirty(); }
+
+  updateCam(dt);
+  placeNodes(time);
+  resize();
+
+  const key = stateKey();
+  const still = key === lastKey;
+  lastKey = key;
+  if(!still) accFrames = 0;
+
+  /*  The whole saving. Everything above this line is arithmetic on a
+      handful of numbers; everything below it is the GPU. The nodes still
+      orbit — `layout` is DOM transforms and an SVG line, which is what a
+      browser does cheaply — so the piece keeps moving while the field
+      holds the frame it already finished.                              */
+  /*  Ahead of the idle throttle, and not folded into it: the host is
+      NOT still while an inner section is open — the nodes orbit, the
+      solid turns — so every condition the idle path tests is false and
+      it would have drawn every frame of the one moment it must not. */
+  if(nestUp() && now - lastDraw < NEST_MS){ layout(); return; }
+  if(still && accFrames >= CONVERGED && now - lastDraw < IDLE_MS){ layout(); return; }
+  lastDraw = now;
+
+  const T = TIERS[tier];
+  const converged = Math.min(accFrames, 96);
+  const blend = accFrames === 0 ? 1 : 1 / (converged + 1);
+  /* stillness buys aperture: the accumulator turns jitter into real optics */
+  const lens  = still ? Math.min(0.030, 0.0030 * accFrames) : 0;
+
+  /*── 1 · the field ─────────────────────────────────────────*/
+  const F = P.field;
+  gl.useProgram(F.p);
+  bind(FB.scene);
+  gl.uniform2f(F.u.uRes, W, H);
+  gl.uniform1f(F.u.uTime, time);
+  gl.uniform3fv(F.u.uEye, basis.eye);
+  gl.uniform3fv(F.u.uFwd, basis.fwd);
+  gl.uniform3fv(F.u.uRight, basis.right);
+  gl.uniform3fv(F.u.uUp, basis.up);
+  gl.uniform2f(F.u.uJit, halton(accFrames + 1, 2) - 0.5, halton(accFrames + 1, 3) - 0.5);
+  gl.uniform1f(F.u.uLens, lens);
+  gl.uniform1f(F.u.uFocus, cam.dist);
+  gl.uniformMatrix4fv(F.u.uRotL, false, rot4(L.rot));
+  gl.uniformMatrix4fv(F.u.uRotC, false, rot4(C.rot));
+  gl.uniform1f(F.u.uWL, L.w);
+  gl.uniform1f(F.u.uWC, C.w);
+  gl.uniform1f(F.u.uFormL, L.form);
+  gl.uniform1f(F.u.uFormC, C.form);
+  gl.uniform1f(F.u.uHue, (L.hue % 256) / 255);
+  gl.uniform1f(F.u.uOps, Math.min(1, (S.ops | 0) / 48));
+  gl.uniform1f(F.u.uPulse, VIS.pulse);
+  gl.uniform1f(F.u.uStrata, S.strata | 0);
+  gl.uniform1f(F.u.uGhost, VIS.ghost);
+  gl.uniform1f(F.u.uAura, VIS.aura);
+  gl.uniform1f(F.u.uDepth, DEPTH);
+  gl.uniform1f(F.u.uSteps, T.steps);
+  gl.uniform1f(F.u.uFlags, T.flags);
+  gl.uniform4f(F.u.uSeedA, SEED[0], SEED[1], SEED[2], SEED[3]);
+  gl.uniform4f(F.u.uSeedB, SEED[4], SEED[5], SEED[6], SEED[7]);
+  gl.uniform1f(F.u.uSel, VIS.sel);
+  for(let i = 0; i < NN; i++){
+    const n = nodes[i];
+    n.st = VIS.sel === i ? 2 : (isOpen(i) ? 1 : 0);
+    gl.uniform4f(F.u["uNode" + i], n.pos[0], n.pos[1], n.pos[2], n.st);
+  }
+  tri();
+
+  /*── 2 · accumulate ────────────────────────────────────────*/
+  const cur = accPing ? FB.accB : FB.accA;
+  const prv = accPing ? FB.accA : FB.accB;
+  gl.useProgram(P.acc.p);
+  bind(cur);
+  tex(0, FB.scene.tex); gl.uniform1i(P.acc.u.uCur, 0);
+  tex(1, prv.tex);      gl.uniform1i(P.acc.u.uHist, 1);
+  gl.uniform1f(P.acc.u.uBlend, blend);
+  tri();
+  accPing ^= 1;
+  accFrames++;
+
+  /*── 3 · bloom pyramid ─────────────────────────────────────*/
+  gl.useProgram(P.down.p);
+  let src = cur;
+  for(let i = 0; i < MIPS; i++){
+    const dst = FB.mip[i];
+    bind(dst);
+    tex(0, src.tex); gl.uniform1i(P.down.u.uSrc, 0);
+    gl.uniform2f(P.down.u.uTexel, 1 / src.w, 1 / src.h);
+    gl.uniform1f(P.down.u.uThresh, i === 0 ? 0.85 : 0);
+    tri();
+    src = dst;
+  }
+  gl.useProgram(P.up.p);
+  gl.enable(gl.BLEND);
+  gl.blendFunc(gl.ONE, gl.ONE);
+  for(let i = MIPS - 2; i >= 0; i--){
+    const dst = FB.mip[i];
+    bind(dst);
+    tex(0, src.tex); gl.uniform1i(P.up.u.uSrc, 0);
+    gl.uniform2f(P.up.u.uTexel, 1 / src.w, 1 / src.h);
+    tri();
+    src = dst;
+  }
+  gl.disable(gl.BLEND);
+
+  /*── 4 · composite ─────────────────────────────────────────*/
+  gl.useProgram(P.post.p);
+  bind(null);
+  tex(0, cur.tex);       gl.uniform1i(P.post.u.uScene, 0);
+  tex(1, FB.mip[0].tex); gl.uniform1i(P.post.u.uBloom, 1);
+  gl.uniform2f(P.post.u.uRes, cvs.width, cvs.height);
+  gl.uniform1f(P.post.u.uTime, time);
+  gl.uniform1f(P.post.u.uBloomAmt, T.bloom);
+  gl.uniform1f(P.post.u.uExposure, 1.16 + VIS.pulse * 0.30);
+  gl.uniform1f(P.post.u.uVig, 0.46);
+  gl.uniform1f(P.post.u.uGrain, still ? 0.008 : 0.016);
+  gl.uniform1f(P.post.u.uAberr, T.aberr);
+  tri();
+
+  layout();
+}
+
+/*───────────────────────────────────────────────────────────────────────────
+  5 · THE OVERLAY — labels tethered to three-dimensional positions
+───────────────────────────────────────────────────────────────────────────*/
+const nodeHost = $("#nodes"), wireHost = $("#wires");
+const isOpen = i => (MODULES[i] && MODULES[i].door) ? true : ((S.open | 0) & (1 << i)) !== 0;
+
+const labels = nodes.map(n => {
+  const d = document.createElement("button");
+  d.className = "nd"; d.type = "button"; d.textContent = n.name;
+  d.setAttribute("aria-label", n.name + " — " + n.blurb.slice(0, 70));
+  d.addEventListener("click", e => { e.stopPropagation(); open(n.i); });
+  nodeHost.appendChild(d);
+  const w = document.createElementNS("http://www.w3.org/2000/svg", "line");
+  w.setAttribute("stroke-width", "1");
+  wireHost.appendChild(w);
+  return { d, w, vis: false };
+});
+
+function layout(){
+  const cx = FW * 0.5, cy = FH * 0.5;
+  for(let i = 0; i < nodes.length; i++){
+    const n = nodes[i], e = labels[i], p = project(n.pos);
+    if(!p){
+      if(e.vis){ e.d.style.display = "none"; e.w.style.display = "none"; e.vis = false; }
+      continue;
+    }
+    if(!e.vis){ e.d.style.display = ""; e.w.style.display = ""; e.vis = true; }
+    const vx = p.x - cx, vy = p.y - cy, len = Math.hypot(vx, vy) || 1;
+    let lx = p.x + (vx / len) * 48, ly = p.y + (vy / len) * 48;
+    /*  A door is a way out, not a decoration, so it is never allowed to
+        drift past the edge and become unreachable. The instrument's own
+        nodes are geometry and stay where the geometry puts them; only
+        the doors are pinned, and the wire still runs to where the node
+        actually is, so nothing is lied about — the handle is just kept
+        inside the room. This is the difference between a phone in
+        portrait and a desk: the field is projected against the taller
+        side, so on a narrow screen the outermost orbit spends most of
+        its time off both edges.                                        */
+    if(n.door){
+      const m = 54;
+      lx = Math.min(Math.max(lx, m), FW - m);
+      ly = Math.min(Math.max(ly, m), FH - m);
+    }
+    /*  Kept as numbers as well as written as a transform, because the deck
+        wire needs this exact point and reading it back out of a CSS string
+        is a parser that can disagree with the thing it parses.        */
+    e.lx = lx; e.ly = ly;
+    e.d.style.transform = "translate(-50%,-50%) translate(" + lx.toFixed(1) + "px," + ly.toFixed(1) + "px)";
+    e.d.style.opacity = clamp(2.3 - p.z * 0.21, 0.34, 1).toFixed(2);
+    e.d.className = "nd" + (VIS.sel === i ? " on" : "") + (isOpen(i) ? "" : " shut");
+    e.w.setAttribute("x1", p.x.toFixed(1)); e.w.setAttribute("y1", p.y.toFixed(1));
+    e.w.setAttribute("x2", lx.toFixed(1));  e.w.setAttribute("y2", ly.toFixed(1));
+    e.w.setAttribute("stroke", VIS.sel === i ? "var(--a)" : "#212838");
+  }
+  if(nestUp()) placeNest();
+  /*  The node moves every frame; a wire drawn only when the deck repaints
+      would lag the thing it points at by however long you do not touch
+      the deck. It is two setAttribute calls against one element.     */
+  if(plateI >= 0) plateWire();
+}
+
+/*───────────────────────────────────────────────────────────────────────────
+  6 · INPUT
+
+  One finger orbits the section. Two pinch. The six chips in the dock are
+  each a small dial: drag one and the solid turns in that plane. Three of
+  them contain w, and turning in those is the only way to change what
+  shape the section is.
+───────────────────────────────────────────────────────────────────────────*/
+function markDirty(){
+  L.dirty = L.form !== C.form || Math.abs(L.w - C.w) > 1e-6 ||
+            L.rot.some((a, i) => Math.abs(a - C.rot[i]) > 1e-6) || L.hue !== C.hue;
+  paintDock();
+}
+
+(function orbit(){
+  let down = false, lx = 0, ly = 0, moved = 0, pinch = 0, idle = 0;
+  const start = (x, y) => { down = true; lx = x; ly = y; moved = 0; cam.drift = false; clearTimeout(idle); };
+  const move  = (x, y, shift) => {
+    if(!down) return;
+    const dx = x - lx, dy = y - ly; lx = x; ly = y;
+    moved += Math.abs(dx) + Math.abs(dy);
+    if(shift){ turn(VIS.plane, dx * 0.0075); return; }
+    cam.ty -= dx * 0.0062;
+    cam.tp  = clamp(cam.tp + dy * 0.0062, -1.38, 1.38);
+  };
+  const end = (x, y) => {
+    if(down && moved < 9){
+      const hit = pick(x, y);
+      if(hit) open(hit.i); else shut();
+    }
+    down = false;
+    idle = setTimeout(() => { if(!down) cam.drift = true; }, 4200);
+  };
+  cvs.addEventListener("pointerdown", e => { cvs.setPointerCapture(e.pointerId); start(e.clientX, e.clientY); });
+  cvs.addEventListener("pointermove", e => move(e.clientX, e.clientY, e.shiftKey));
+  cvs.addEventListener("pointerup",   e => end(e.clientX, e.clientY));
+  cvs.addEventListener("pointercancel", () => { down = false; });
+  cvs.addEventListener("wheel", e => {
+    e.preventDefault();
+    if(e.shiftKey) setW(L.w + e.deltaY * 0.0022);
+    else cam.td = clamp(cam.td + e.deltaY * 0.0038, 2.3, 12);
+  }, { passive: false });
+  cvs.addEventListener("touchstart", e => {
+    if(e.touches.length === 2){
+      down = false;
+      pinch = Math.hypot(e.touches[0].clientX - e.touches[1].clientX,
+                         e.touches[0].clientY - e.touches[1].clientY);
+    }
+  }, { passive: true });
+  cvs.addEventListener("touchmove", e => {
+    if(e.touches.length === 2){
+      const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX,
+                           e.touches[0].clientY - e.touches[1].clientY);
+      cam.td = clamp(cam.td * (pinch / (d || 1)), 2.3, 12);
+      pinch = d;
+    }
+  }, { passive: true });
+})();
+
+function turn(plane, delta){
+  L.rot[plane] = (L.rot[plane] + delta + TAU * 4) % TAU;
+  markDirty();
+}
+function setW(v){
+  L.w = clamp(v, -1.6, 1.6);
+  markDirty();
+  paintW();
+}
+
+/*── the dock ───────────────────────────────────────────────────────────*/
+const planeEls = [];
+(function buildDock(){
+  const host = $("#planes");
+  PLANES.forEach(pl => {
+    const b = document.createElement("div");
+    b.className = "pl" + (pl.w ? " w" : "");
+    b.setAttribute("role", "tab");
+    b.title = pl.w
+      ? "Rotate in the " + pl.n + " plane — turns the solid through the fourth axis, changing the shape of the section. Drag to turn, click to set it spinning."
+      : "Rotate in the " + pl.n + " plane — spins the section without changing its shape. Drag to turn, click to set it spinning.";
+    b.innerHTML = '<div class="spin"></div><div class="pn">' + pl.n +
+                  '</div><div class="pv">0.00</div><div class="bar"></div>';
+    host.appendChild(b);
+    planeEls.push(b);
+
+    let dragging = false, px = 0, travelled = 0;
+    b.addEventListener("pointerdown", e => {
+      b.setPointerCapture(e.pointerId);
+      dragging = true; px = e.clientX; travelled = 0;
+      VIS.plane = pl.i; paintDock();
+    });
+    b.addEventListener("pointermove", e => {
+      if(!dragging) return;
+      const dx = e.clientX - px; px = e.clientX;
+      travelled += Math.abs(dx);
+      turn(pl.i, dx * 0.016);
+    });
+    b.addEventListener("pointerup", e => {
+      dragging = false;
+      if(travelled < 5){
+        VIS.spin[pl.i] = VIS.spin[pl.i] !== 0 ? 0 : (pl.w ? 0.22 : 0.34);
+        paintDock();
+      }
+    });
+    b.addEventListener("dblclick", () => { L.rot[pl.i] = 0; VIS.spin[pl.i] = 0; markDirty(); });
+  });
+
+  const ticks = $("#wticks");
+  for(let i = 0; i <= 16; i++){
+    const t = document.createElement("i");
+    t.style.left = (i / 16 * 100) + "%";
+    if(i === 8) t.className = "mid";
+    ticks.appendChild(t);
+  }
+  const track = $("#wtrack");
+  const fromX = cx => {
+    const r = track.getBoundingClientRect();
+    setW(((cx - r.left) / Math.max(1, r.width)) * 3.2 - 1.6);
+  };
+  let wd = false;
+  track.addEventListener("pointerdown", e => { track.setPointerCapture(e.pointerId); wd = true; $("#wauto").classList.remove("on"); wDrift = false; fromX(e.clientX); });
+  track.addEventListener("pointermove", e => { if(wd) fromX(e.clientX); });
+  track.addEventListener("pointerup",   () => { wd = false; });
+  track.addEventListener("keydown", e => {
+    const s = e.shiftKey ? 0.2 : 0.02;
+    if(e.key === "ArrowLeft")  { setW(L.w - s); e.preventDefault(); }
+    if(e.key === "ArrowRight") { setW(L.w + s); e.preventDefault(); }
+  });
+  $("#wauto").addEventListener("click", () => {
+    wDrift = !wDrift;
+    $("#wauto").classList.toggle("on", wDrift);
+    say(wDrift ? "The section is drifting along w on its own."
+               : "The section is held where you left it.");
+  });
+})();
+
+let wDrift = true, wPhase = 0;
+
+function paintW(){
+  const pct = (L.w + 1.6) / 3.2 * 100;
+  $("#whead").style.left = "calc(" + pct.toFixed(2) + "% - 1px)";
+  $("#wval").textContent = fmt(L.w);
+  $("#wtrack").setAttribute("aria-valuenow", L.w.toFixed(3));
+}
+function paintDock(){
+  for(let i = 0; i < 6; i++){
+    const e = planeEls[i], a = L.rot[i];
+    e.classList.toggle("on",  VIS.plane === i);
+    e.classList.toggle("rot", VIS.spin[i] !== 0);
+    e.querySelector(".pv").textContent = (a / TAU).toFixed(2).replace("0.", ".") + "τ";
+    e.querySelector(".bar").style.width = ((a / TAU) * 100).toFixed(1) + "%";
+  }
+  $("#v-form").textContent = FORMS[L.form].n + (L.dirty ? " ·" : "");
+}
+
+/*── the ticker ─────────────────────────────────────────────────────────*/
+let sayTimer = 0;
+function say(msg, kind){
+  const t = $("#tick");
+  t.className = kind || "";
+  t.innerHTML = msg;
+  t.style.opacity = "1";
+  clearTimeout(sayTimer);
+  sayTimer = setTimeout(() => { t.style.opacity = ".55"; }, 7000);
+}
+
+/*═══════════════════════════════════════════════════════════════════════════
+  7 · THE CHAIN
+
+  Everything below this line is carried inside the token: the sponge, the
+  encoder, the checksum, the transport. A page that has to ask a library
+  what a selector is cannot honestly claim to be on chain.
+═══════════════════════════════════════════════════════════════════════════*/
+
+/*── keccak-256 (the Ethereum variant: 0x01 padding, not SHA-3's 0x06) ──*/
+const K_RC = [
+  0x0000000000000001n, 0x0000000000008082n, 0x800000000000808an, 0x8000000080008000n,
+  0x000000000000808bn, 0x0000000080000001n, 0x8000000080008081n, 0x8000000000008009n,
+  0x000000000000008an, 0x0000000000000088n, 0x0000000080008009n, 0x000000008000000an,
+  0x000000008000808bn, 0x800000000000008bn, 0x8000000000008089n, 0x8000000000008003n,
+  0x8000000000008002n, 0x8000000000000080n, 0x000000000000800an, 0x800000008000000an,
+  0x8000000080008081n, 0x8000000000008080n, 0x0000000080000001n, 0x8000000080008008n];
+const K_ROT = [0,1,62,28,27, 36,44,6,55,20, 3,10,43,25,39, 41,45,15,21,8, 18,2,61,56,14];
+const M64 = (1n << 64n) - 1n;
+const rotl64 = (x, n) => n === 0n ? x : ((x << n) | (x >> (64n - n))) & M64;
+
+function keccakF(A){
+  for(let r = 0; r < 24; r++){
+    const Cc = new Array(5), D = new Array(5);
+    for(let x = 0; x < 5; x++) Cc[x] = A[x] ^ A[x+5] ^ A[x+10] ^ A[x+15] ^ A[x+20];
+    for(let x = 0; x < 5; x++) D[x] = Cc[(x+4) % 5] ^ rotl64(Cc[(x+1) % 5], 1n);
+    for(let x = 0; x < 5; x++) for(let y = 0; y < 5; y++) A[x + 5*y] ^= D[x];
+    const B = new Array(25);
+    for(let x = 0; x < 5; x++) for(let y = 0; y < 5; y++)
+      B[y + 5 * ((2*x + 3*y) % 5)] = rotl64(A[x + 5*y], BigInt(K_ROT[x + 5*y]));
+    for(let x = 0; x < 5; x++) for(let y = 0; y < 5; y++)
+      A[x + 5*y] = B[x + 5*y] ^ ((~B[(x+1) % 5 + 5*y] & M64) & B[(x+2) % 5 + 5*y]);
+    A[0] ^= K_RC[r];
+  }
+}
+function keccak256(bytes){
+  const rate = 136;
+  const A = new Array(25).fill(0n);
+  const padLen = rate - (bytes.length % rate);
+  const P = new Uint8Array(bytes.length + padLen);
+  P.set(bytes);
+  P[bytes.length] |= 0x01;
+  P[P.length - 1] |= 0x80;
+  for(let off = 0; off < P.length; off += rate){
+    for(let i = 0; i < rate / 8; i++){
+      let lane = 0n;
+      for(let b = 7; b >= 0; b--) lane = (lane << 8n) | BigInt(P[off + i*8 + b]);
+      A[i] ^= lane;
+    }
+    keccakF(A);
+  }
+  const out = new Uint8Array(32);
+  for(let i = 0; i < 4; i++){
+    let l = A[i];
+    for(let b = 0; b < 8; b++){ out[i*8 + b] = Number(l & 0xffn); l >>= 8n; }
+  }
+  return out;
+}
+
+const utf8    = s => new TextEncoder().encode(s);
+const toHex   = u => "0x" + Array.from(u, b => b.toString(16).padStart(2, "0")).join("");
+const fromHex = h => {
+  h = String(h).replace(/^0x/, ""); if(h.length % 2) h = "0" + h;
+  const u = new Uint8Array(h.length / 2);
+  for(let i = 0; i < u.length; i++) u[i] = parseInt(h.substr(i*2, 2), 16);
+  return u;
+};
+const khex     = s => toHex(keccak256(utf8(s)));
+const kbytes   = h => toHex(keccak256(fromHex(h)));
+const selector = sig => khex(sig).slice(0, 10);
+
+/*── EIP-55: every address this token prints can be checked by eye ──*/
+function checksum(addr){
+  const a = String(addr).replace(/^0x/, "").toLowerCase();
+  if(!/^[0-9a-f]{40}$/.test(a)) throw new Error("not an address: " + addr);
+  const h = khex(a).slice(2);
+  let o = "0x";
+  for(let i = 0; i < 40; i++) o += parseInt(h[i], 16) >= 8 ? a[i].toUpperCase() : a[i];
+  return o;
+}
+const isAddr  = a => /^0x[0-9a-fA-F]{40}$/.test(String(a || "").trim());
+const short   = a => a ? a.slice(0, 6) + " … " + a.slice(-4) : "—";
+
+/*── ABI ────────────────────────────────────────────────────────────────*/
+const pad  = h => String(h).replace(/^0x/, "").padStart(64, "0");
+const padR = h => String(h).replace(/^0x/, "").padEnd(64, "0");
+const isDyn = t => t === "bytes" || t === "string" || /\[\]$/.test(t);
+
+function encWord(type, v){
+  if(type === "address"){
+    const a = String(v).trim();
+    if(!isAddr(a)) throw new Error("bad address: " + a);
+    return pad(a.slice(2).toLowerCase());
+  }
+  if(type === "bool") return pad(v === true || v === "true" || v === 1 || v === "1" ? "1" : "0");
+  if(/^u?int\d*$/.test(type)){
+    let n = BigInt(String(v).trim());
+    if(n < 0n) n = (1n << 256n) + n;                     // two's complement
+    return pad(n.toString(16));
+  }
+  if(/^bytes([1-9]|[12]\d|3[0-2])$/.test(type)) return padR(String(v));
+  throw new Error("unsupported type: " + type);
+}
+function encDyn(type, v){
+  if(type === "string" || type === "bytes"){
+    const b = type === "string" ? utf8(String(v)) : fromHex(v);
+    let body = "";
+    for(let i = 0; i < b.length; i += 32){
+      body += Array.from(b.subarray(i, i + 32), x => x.toString(16).padStart(2, "0"))
+                   .join("").padEnd(64, "0");
+    }
+    return pad(b.length.toString(16)) + body;
+  }
+  const base = type.slice(0, -2);
+  const arr  = Array.isArray(v) ? v : String(v).split(",").map(s => s.trim()).filter(Boolean);
+  return pad(arr.length.toString(16)) + arr.map(x => encWord(base, x)).join("");
+}
+function encodeParams(types, values){
+  let head = "", tail = "";
+  const headLen = types.length * 32;
+  for(let i = 0; i < types.length; i++){
+    if(isDyn(types[i])){
+      head += pad((headLen + tail.length / 2).toString(16));
+      tail += encDyn(types[i], values[i]);
+    } else head += encWord(types[i], values[i]);
+  }
+  return head + tail;
+}
+/* a human-readable signature is turned into calldata here, in the frame */
+function encodeCall(sig, args){
+  const m = String(sig).trim().match(/^([A-Za-z_$][\w$]*)\((.*)\)$/);
+  if(!m) throw new Error("a signature looks like transfer(address,uint256)");
+  const types = m[2].trim() ? m[2].split(",").map(s => s.trim()) : [];
+  const canonical = m[1] + "(" + types.join(",") + ")";
+  if(types.length !== args.length)
+    throw new Error(types.length + " argument" + (types.length === 1 ? "" : "s") + " expected, " + args.length + " given");
+  return { data: selector(canonical) + encodeParams(types, args), sig: canonical, types };
+}
+
+const word    = (hex, i) => String(hex).replace(/^0x/, "").substr(i * 64, 64);
+const decUint = (hex, i = 0) => BigInt("0x" + (word(hex, i) || "0"));
+const decInt  = (hex, i = 0) => { const v = decUint(hex, i); return v >= (1n << 255n) ? v - (1n << 256n) : v; };
+const decAddr = (hex, i = 0) => checksum("0x" + word(hex, i).slice(24));
+const decBool = (hex, i = 0) => decUint(hex, i) !== 0n;
+function decString(hex){
+  const h = String(hex).replace(/^0x/, "");
+  if(h.length <= 128) return "";
+  const off = Number(BigInt("0x" + h.substr(0, 64))) * 2;
+  const len = Number(BigInt("0x" + h.substr(off, 64)));
+  const b   = fromHex(h.substr(off + 64, len * 2));
+  return new TextDecoder().decode(b);
+}
+/* some contracts answer name()/symbol() with a raw bytes32. accept both. */
+function decStringLoose(hex){
+  const h = String(hex).replace(/^0x/, "");
+  if(!h) return "";
+  if(h.length === 64){
+    const b = fromHex(h).filter(x => x !== 0);
+    return new TextDecoder().decode(new Uint8Array(b));
+  }
+  try { return decString(hex); } catch { return ""; }
+}
+
+/*── units ──────────────────────────────────────────────────────────────*/
+function fmtUnits(v, dec = 18, prec = 6){
+  v = BigInt(v);
+  const neg = v < 0n; if(neg) v = -v;
+  const base = 10n ** BigInt(dec);
+  const whole = v / base;
+  const frac = (v % base).toString().padStart(dec, "0").slice(0, prec).replace(/0+$/, "");
+  /* never round a balance down to a flat zero — dust is still custody */
+  if(v > 0n && whole === 0n && frac === "")
+    return (neg ? ">-" : "<") + "0." + "0".repeat(prec - 1) + "1";
+  return (neg ? "-" : "") + whole.toString() + (frac ? "." + frac : "");
+}
+function toUnits(s, dec = 18){
+  const t = String(s).trim();
+  if(!/^\d*\.?\d*$/.test(t) || t === "" || t === ".") throw new Error("not a number: " + s);
+  const [w, f = ""] = t.split(".");
+  if(f.length > dec) throw new Error("too many decimal places");
+  return BigInt((w || "0") + f.padEnd(dec, "0"));
+}
+const hexQ = n => "0x" + BigInt(n).toString(16);
+const gwei = v => (Number(BigInt(v)) / 1e9).toFixed(3);
+
+/*── the networks this token knows the names of ─────────────────────────*/
+const CHAINS = {
+  1:      { n:"Ethereum",  s:"ETH",  ex:"https://etherscan.io",       rpc:"https://eth.llamarpc.com" },
+  10:     { n:"OP Mainnet",s:"ETH",  ex:"https://optimistic.etherscan.io", rpc:"https://mainnet.optimism.io" },
+  137:    { n:"Polygon",   s:"POL",  ex:"https://polygonscan.com",    rpc:"https://polygon-rpc.com" },
+  8453:   { n:"Base",      s:"ETH",  ex:"https://basescan.org",       rpc:"https://mainnet.base.org" },
+  42161:  { n:"Arbitrum",  s:"ETH",  ex:"https://arbiscan.io",        rpc:"https://arb1.arbitrum.io/rpc" },
+  7777777:{ n:"Zora",      s:"ETH",  ex:"https://explorer.zora.energy", rpc:"https://rpc.zora.energy" },
+  11155111:{n:"Sepolia",   s:"ETH",  ex:"https://sepolia.etherscan.io", rpc:"https://ethereum-sepolia-rpc.publicnode.com" },
+  84532:  { n:"Base Sepolia", s:"ETH", ex:"https://sepolia.basescan.org", rpc:"https://sepolia.base.org" }
+};
+const chainOf = id => CHAINS[Number(id)] || { n: "Chain " + id, s: "ETH", ex: "", rpc: "" };
+
+/*── transport ──────────────────────────────────────────────────────────
+  Injected wallet if one announces itself (EIP-6963, then the legacy
+  window.ethereum), a public endpoint for reading if not, and nothing at
+  all if the frame we are in forbids the network — in which case the
+  field still turns, because the field never needed the network.       */
+const NET = {
+  providers: [],     // [{info, provider}]
+  provider: null,
+  account: null,
+  chainId: Number(S.chainId) || 1,
+  ro: false,         // read-only: no wallet, public RPC
+  dead: false        // no transport at all
+};
+
+/*  EIP-6963 discovery.
+
+    The listener goes on first and stays on forever. Wallets are allowed to
+    announce whenever they like — on load, after an extension wakes up, when
+    a second wallet is installed mid-session — and a page that listens only
+    for the moment after it asks will miss every one of those. The request
+    event is a prompt, not a transaction.
+
+    Providers are keyed by rdns, which is the stable identifier; uuid is
+    regenerated per announcement and using it as the key duplicates wallets.
+
+    This probe doubles as the answer to a question with no direct API: am I
+    somewhere a wallet can reach? Inside a marketplace frame the origin is
+    opaque, no extension injects, and nothing ever announces.               */
+const WALLETS = new Map();
+window.addEventListener("eip6963:announceProvider", e => {
+  const d = e.detail;
+  if(!d || !d.provider || !d.info || !d.info.rdns) return;
+  WALLETS.set(d.info.rdns, d);
+  NET.providers = Array.from(WALLETS.values());
+  paintRail();
+});
+
+function discover(){
+  window.dispatchEvent(new Event("eip6963:requestProvider"));
+  if(!WALLETS.size && window.ethereum){
+    /* nothing announced; fall back to whatever was put on the window */
+    const eth = window.ethereum;
+    const list = Array.isArray(eth.providers) && eth.providers.length ? eth.providers : [eth];
+    list.forEach((p, i) => WALLETS.set("legacy:" + i, {
+      info: { uuid: "legacy-" + i, rdns: "legacy:" + i,
+              name: p.isMetaMask ? "MetaMask" : p.isRabby ? "Rabby" : "Injected wallet" },
+      provider: p
+    }));
+  }
+  NET.providers = Array.from(WALLETS.values());
+  return NET.providers;
+}
+
+/*  Storage throws in an opaque origin, and that is the cheapest reliable
+    way to tell that this document is running inside someone else's frame. */
+const SANDBOXED = (() => {
+  try { window.localStorage.getItem("ipse"); return false; }
+  catch { return true; }
+})();
+
+let rpcId = 0;
+async function rpc(method, params = []){
+  if(NET.provider){
+    return NET.provider.request({ method, params });
+  }
+  const url = S.rpc || chainOf(NET.chainId).rpc;
+  if(!url) throw new Error("no endpoint for chain " + NET.chainId);
+  /* Inside a marketplace frame the origin is opaque, so this goes out with
+     `Origin: null`. A wildcard CORS header still answers it, but only when
+     no credentials are attached - so they are explicitly not. */
+  const r = await fetch(url, {
+    method: "POST",
+    mode: "cors",
+    credentials: "omit",
+    cache: "no-store",
+    headers: { "content-type": "application/json" },
+    body: JSON.stringify({ jsonrpc: "2.0", id: ++rpcId, method, params })
+  });
+  const j = await r.json();
+  if(j.error) throw new Error(j.error.message || JSON.stringify(j.error));
+  return j.result;
+}
+const ethCall = (to, data, from) =>
+  rpc("eth_call", [Object.assign({ to, data }, from ? { from } : {}), "latest"]);
+
+async function readSig(to, sig, args = []){
+  const { data } = encodeCall(sig, args);
+  return ethCall(to, data);
+}
+
+async function connect(pick){
+  const list = NET.providers.length ? NET.providers : discover();
+  if(!list.length){
+    NET.ro = true;
+    try {
+      await rpc("eth_blockNumber");
+      say(SANDBOXED
+        ? "No wallet reaches inside a marketplace frame. Reading the chain directly — open this token in its own tab to sign."
+        : "No wallet announced itself. Reading the chain directly; nothing can be signed.");
+    } catch {
+      NET.dead = true;
+      say("This frame allows no network at all. The section still turns — it never needed one.", "err");
+    }
+    paintRail();
+    return null;
+  }
+  const chosen = pick != null ? list[pick] : list[0];
+  NET.provider = chosen.provider;
+  const accounts = await NET.provider.request({ method: "eth_requestAccounts" });
+  NET.account = checksum(accounts[0]);
+  NET.chainId = Number(await NET.provider.request({ method: "eth_chainId" }));
+  NET.ro = false;
+  NET.provider.on && NET.provider.on("accountsChanged", a => {
+    NET.account = a && a[0] ? checksum(a[0]) : null; paintRail(); refresh();
+  });
+  NET.provider.on && NET.provider.on("chainChanged", c => {
+    NET.chainId = Number(c); paintRail(); refresh();
+  });
+  paintRail();
+  say("Connected as <b>" + short(NET.account) + "</b> on " + chainOf(NET.chainId).n + ".", "ok");
+  return NET.account;
+}
+
+async function requireChain(){
+  if(Number(NET.chainId) === Number(S.chainId)) return true;
+  const want = chainOf(S.chainId);
+  try {
+    await NET.provider.request({ method: "wallet_switchEthereumChain", params: [{ chainId: hexQ(S.chainId) }] });
+    NET.chainId = Number(S.chainId);
+    paintRail();
+    return true;
+  } catch(e){
+    if(e && e.code === 4902 && want.rpc){
+      await NET.provider.request({ method: "wallet_addEthereumChain", params: [{
+        chainId: hexQ(S.chainId), chainName: want.n,
+        nativeCurrency: { name: want.s, symbol: want.s, decimals: 18 },
+        rpcUrls: [want.rpc], blockExplorerUrls: want.ex ? [want.ex] : []
+      }]});
+      NET.chainId = Number(S.chainId);
+      paintRail();
+      return true;
+    }
+    throw new Error("This token lives on " + want.n + ". Switch the wallet there and try again.");
+  }
+}
+
+/*───────────────────────────────────────────────────────────────────────────
+  8 · SIGNING, WITH THE BYTES SHOWN FIRST
+
+  No transaction leaves this page until the calldata that will be sent has
+  been rebuilt from the signature, split into words, priced, and put in
+  front of you in a sentence. A token that asks for a signature without
+  showing what it is asking for is not an instrument, it is a trap.
+───────────────────────────────────────────────────────────────────────────*/
+const REG_6551  = "0x000000006551c19487814612e58FE06813775758";
+/* Two implementations, two salts, two accounts per token. Handed over in
+   IPSE rather than hardcoded, because this collection ships its own —
+   pinning the reference implementation here would derive an address the
+   token does not use. The GRIP salt is keccak("IPSEITY.GRIP.v1"), computed
+   below by this page's own keccak rather than pasted in. */
+const REACH_IMPL = String(S.reachImpl || "0x0000000000000000000000000000000000000000");
+const GRIP_IMPL  = String(S.gripImpl  || "0x0000000000000000000000000000000000000000");
+
+function splitWords(data){
+  const h = String(data).replace(/^0x/, "");
+  const sel = h.slice(0, 8);
+  const out = [];
+  for(let i = 8; i < h.length; i += 64) out.push(h.substr(i, 64));
+  return { sel, out };
+}
+
+function esc(s){
+  return String(s).replace(/[&<>"']/g, c =>
+    ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" }[c]));
+}
+
+let pending = null;
+function propose(tx){
+  /* tx: { to, value, data, sig, args, types, plain, note } */
+  pending = tx;
+  const { sel, out } = splitWords(tx.data || "0x");
+  const rows = out.map((w, i) => {
+    const t = tx.types && tx.types[i] ? tx.types[i] : "";
+    let read = "";
+    if(t === "address") read = short(checksum("0x" + w.slice(24)));
+    else if(/^u?int/.test(t)) read = BigInt("0x" + w).toString();
+    else if(t === "bool") read = BigInt("0x" + w) ? "true" : "false";
+    return "  <b>" + String(i).padStart(2, "0") + "</b>  " + w + (read ? "\n      " + esc(read) : "");
+  }).join("\n");
+
+  $("#cbox").innerHTML =
+    '<h3>Confirm</h3>' +
+    '<div class="plain">' + esc(tx.plain) + '</div>' +
+    '<div class="kv"><span class="k">To</span><span class="vv">' + esc(tx.to) + '</span></div>' +
+    (tx.value && BigInt(tx.value) > 0n
+      ? '<div class="kv"><span class="k">Value</span><span class="vv">' +
+        fmtUnits(tx.value) + " " + chainOf(S.chainId).s + '</span></div>' : "") +
+    (tx.sig ? '<div class="kv"><span class="k">Function</span><span class="vv">' + esc(tx.sig) + '</span></div>' +
+              '<div class="kv"><span class="k">Selector</span><span class="vv">0x' + sel + '</span></div>' : "") +
+    '<div class="kv"><span class="k">Gas</span><span class="vv" id="cgas">estimating…</span></div>' +
+    (out.length ? '<pre class="code">' + rows + '</pre>' : "") +
+    '<pre class="code" style="max-height:96px">' + esc(tx.data || "0x") + '</pre>' +
+    (tx.note ? '<div class="s" style="margin:8px 0;color:var(--warn)">' + esc(tx.note) + '</div>' : "") +
+    '<button class="b" id="cgo">Sign and send</button>' +
+    '<button class="b g" id="cno">Cancel</button>';
+
+  $("#confirm").classList.add("open");
+  $("#cno").onclick = () => { $("#confirm").classList.remove("open"); pending = null; };
+  $("#cgo").onclick = () => fire();
+
+  (async () => {
+    try {
+      const g = await rpc("eth_estimateGas", [{
+        from: NET.account, to: tx.to, data: tx.data || "0x",
+        value: tx.value ? hexQ(tx.value) : "0x0"
+      }]);
+      const el = $("#cgas");
+      if(el) el.textContent = BigInt(g).toLocaleString() + " units";
+      pending && (pending.gas = hexQ((BigInt(g) * 125n) / 100n));
+    } catch(e){
+      const el = $("#cgas");
+      if(el){
+        el.textContent = "would revert";
+        el.style.color = "var(--bad)";
+        el.title = String(e.message || e);
+      }
+    }
+  })();
+}
+
+async function fire(){
+  const tx = pending;
+  if(!tx) return;
+  const go = $("#cgo");
+  go.disabled = true; go.textContent = "waiting for the wallet";
+  try {
+    await requireChain();
+    const params = { from: NET.account, to: tx.to, data: tx.data || "0x" };
+    if(tx.value && BigInt(tx.value) > 0n) params.value = hexQ(tx.value);
+    if(tx.gas) params.gas = tx.gas;
+    const hash = await NET.provider.request({ method: "eth_sendTransaction", params: [params] });
+    $("#confirm").classList.remove("open");
+    pending = null;
+    shock();
+    const ex = chainOf(S.chainId).ex;
+    say("Sent " + (ex ? '<b><a href="' + ex + "/tx/" + hash + '" target="_blank" rel="noreferrer" style="color:inherit">' +
+        hash.slice(0, 12) + "…</a></b>" : "<b>" + hash.slice(0, 12) + "…</b>") + " — waiting for it to land.", "ok");
+    watch(hash, tx.then);
+  } catch(e){
+    go.disabled = false; go.textContent = "Sign and send";
+    const m = String(e && (e.message || e));
+    say(/reject|denied|4001/i.test(m) ? "You declined the signature." : "Refused: " + esc(m.slice(0, 160)), "err");
+  }
+}
+
+async function watch(hash, then){
+  for(let i = 0; i < 90; i++){
+    await new Promise(r => setTimeout(r, 2000));
+    let r = null;
+    try { r = await rpc("eth_getTransactionReceipt", [hash]); } catch { /* keep waiting */ }
+    if(r){
+      const ok = BigInt(r.status || "0x0") === 1n;
+      say(ok ? "Landed in block <b>" + BigInt(r.blockNumber).toString() + "</b>. The token has changed."
+             : "Reverted on chain.", ok ? "ok" : "err");
+      shock();
+      if(ok && then) try { await then(r); } catch(e){ /* the chain is the record, not this frame */ }
+      if(ok) await refresh();
+      return;
+    }
+  }
+  say("Still not mined after three minutes. It may yet land.");
+}
+
+/*── EIP-712, computed here so the wallet's display can be checked ──────*/
+function typeHash(primary, types){
+  const seen = new Set();
+  const collect = t => {
+    if(seen.has(t) || !types[t]) return;
+    seen.add(t);
+    types[t].forEach(f => collect(f.type.replace(/\[\d*\]$/, "")));
+  };
+  collect(primary);
+  const order = [primary, ...Array.from(seen).filter(t => t !== primary).sort()];
+  return khex(order.map(t => t + "(" + types[t].map(f => f.type + " " + f.name).join(",") + ")").join(""));
+}
+function encodeData(primary, data, types){
+  let enc = pad(typeHash(primary, types));
+  for(const f of types[primary]){
+    const v = data[f.name];
+    if(f.type === "string")      enc += pad(khex(String(v)));
+    else if(f.type === "bytes")  enc += pad(kbytes(v));
+    else if(types[f.type])       enc += pad(kbytes("0x" + encodeData(f.type, v, types)));
+    else if(/\[\d*\]$/.test(f.type)){
+      const base = f.type.replace(/\[\d*\]$/, "");
+      enc += pad(kbytes("0x" + (v || []).map(x => encWord(base, x)).join("")));
+    }
+    else enc += encWord(f.type, v);
+  }
+  return enc;
+}
+const hashStruct = (primary, data, types) => kbytes("0x" + encodeData(primary, data, types));
+function domainSeparator(domain){
+  const fields = [];
+  if(domain.name != null)              fields.push({ name:"name", type:"string" });
+  if(domain.version != null)           fields.push({ name:"version", type:"string" });
+  if(domain.chainId != null)           fields.push({ name:"chainId", type:"uint256" });
+  if(domain.verifyingContract != null) fields.push({ name:"verifyingContract", type:"address" });
+  if(domain.salt != null)              fields.push({ name:"salt", type:"bytes32" });
+  return hashStruct("EIP712Domain", domain, { EIP712Domain: fields });
+}
+const digest712 = (domain, primary, message, types) =>
+  kbytes("0x1901" + pad(domainSeparator(domain)) + pad(hashStruct(primary, message, types)));
+
+/*── ERC-6551: the token's two accounts, derived rather than requested ──*/
+const REACH_SALT = pad("0");
+const GRIP_SALT  = khex("IPSEITY.GRIP.v1").slice(2);
+
+function derive6551(impl, salt){
+  /* ERC-1167 minimal proxy with the 6551 footer, hashed per the registry's
+     CREATE2 derivation: salt · chainId · tokenContract · tokenId          */
+  const code = "0x3d60ad80600a3d3981f3363d3d373d3d3d363d73" + impl.slice(2).toLowerCase() +
+               "5af43d82803e903d91602b57fd5bf3" +
+               salt +
+               pad(BigInt(S.chainId).toString(16)) +
+               pad(String(S.collection).slice(2).toLowerCase()) +
+               pad(BigInt(S.id).toString(16));
+  const h = kbytes(code);
+  const create2 = "0xff" + REG_6551.slice(2).toLowerCase() + salt + h.slice(2);
+  return checksum("0x" + kbytes(create2).slice(-40));
+}
+
+/* The Reach — the hand that acts. */
+function account6551(){ return derive6551(REACH_IMPL, REACH_SALT); }
+
+/* The Grip — the hand that only closes. */
+function grip6551(){ return derive6551(GRIP_IMPL, GRIP_SALT); }
+
+/* Whether the address derived in this frame is the address the contract
+   reports. It should never disagree; the point of asking is that a viewer
+   which only reads what it is handed cannot tell a correct answer from a
+   convenient one. */
+function agrees(derived, reported){
+  return /^0x[0-9a-fA-F]{40}$/.test(String(reported || "")) &&
+         String(derived).toLowerCase() === String(reported).toLowerCase();
+}
+
+/*───────────────────────────────────────────────────────────────────────────
+  9 · THE CONTRACT THIS PAGE CAME OUT OF
+
+  The whole orientation of the solid — six plane angles, the position of
+  the section along w, which solid it is, and the hue the interface takes
+  from it — is one 256-bit word. Committing it is a single store.
+
+    bits   0.. 15   angle xy        bits  96..111   section w
+    bits  16.. 31   angle xz        bits 112..119   solid
+    bits  32.. 47   angle yz        bits 120..127   hue
+    bits  48.. 63   angle xw
+    bits  64.. 79   angle yw
+    bits  80.. 95   angle zw
+───────────────────────────────────────────────────────────────────────────*/
+function packSection(rot, w, form, hue){
+  let v = 0n;
+  for(let i = 0; i < 6; i++) v |= BigInt(angleToU16(rot[i])) << BigInt(i * 16);
+  v |= BigInt(wToU16(w))          << 96n;
+  v |= BigInt(form & 0xff)        << 112n;
+  v |= BigInt(hue & 0xff)         << 120n;
+  return v;
+}
+function unpackSection(v){
+  v = BigInt(v);
+  const rot = [];
+  for(let i = 0; i < 6; i++) rot.push(Number((v >> BigInt(i * 16)) & 0xffffn));
+  return {
+    rot, w: Number((v >> 96n) & 0xffffn),
+    form: Number((v >> 112n) & 0xffn), hue: Number((v >> 120n) & 0xffn)
+  };
+}
+const liveWord = () => packSection(L.rot, L.w, L.form, L.hue);
+
+/*───────────────────────────────────────────────────────────────────────────
+ 10 · THE SHEET
+───────────────────────────────────────────────────────────────────────────*/
+const sheet = $("#sheet"), sbody = $("#sbody");
+let current = -1;
+
+
+/*  One gesture, two outcomes, and both are drawn in this document. A node
+    the token has not opened shows the plate — what it is, what opening
+    costs, and the one transaction that does it. A node that is open shows
+    its own control.
+
+    There used to be a third and a fourth outcome here, both of which
+    loaded a web page. That is what made clicking a node unpredictable:
+    four branches on conditions no viewer can see.                     */
+function open(i){
+  if(!isOpen(i)) return plateOpen(i);
+  VIS.sel = i;
+  current = i;
+  const m = MODULES[i];
+  BUILD[m.id](m);
+  accFrames = 0;
+}
+function panel(title, html, sel, after){
+  $("#s-title").textContent = title;
+  sbody.innerHTML = html;
+  sheet.classList.add("open");
+  sheet.setAttribute("aria-hidden", "false");
+  sbody.scrollTop = 0;
+  if(sel != null) VIS.sel = sel;
+  if(after) after();
+}
+function shut(){
+  sheet.classList.remove("open");
+  sheet.setAttribute("aria-hidden", "true");
+  VIS.sel = -1; current = -1;
+}
+$("#shut").onclick = shut;
+/*───────────────────────────────────────────────────────────────────────────
+  10b · THE INSTRUMENT IS NOT A BROWSER
+
+  A deck used to live here: up to four contract-rendered pages, live, in a
+  strip the field gave up. It worked, and it was the wrong idea, and the
+  owner found the reason before the design did.
+
+  Opening a surface left two things running. Not two views of one thing —
+  two documents, each with its own loop, one of them showing a DIFFERENT
+  token from the one you were inside. `visibility:hidden` stops a document
+  painting and not thinking, so the panes behind the visible one went on
+  asking for frames. It was reported as a phone getting hot, and every fix
+  for that was a throttle on a thing that should not have been running.
+
+  So the instrument no longer opens web surfaces at all. A node opens its
+  own control, drawn here, in this document's language; a sealed node shows
+  the plate. Everything else is reached by LEAVING, which is what `/connect`
+  now does — the loop ends with the document rather than being paced down
+  behind another one.
+
+  What this buys, besides the heat: an instrument that is one thing. It was
+  becoming a browser with a picture in it.
+───────────────────────────────────────────────────────────────────────────*/
+
+/*───────────────────── the plate ─────────────────────*/
+
+let plateI = -1, plateLink = null, plateAt = null;
+
+function plateOpen(i){
+  const m = MODULES[i];
+  VIS.sel = i;
+  plateI = i;
+  $("#plname").textContent = m.name;
+  $("#plblurb").textContent = m.blurb;
+  $("#plnote").textContent =
+    "Not opened on this token. Opening it is a transaction against the " +
+    "collection: recorded, and permanent.";
+  $("#plgo").textContent = "Open this node";
+  const el = $("#plate");
+  el.hidden = false;
+  /*  Placed from the node, then clamped into the field with the same
+      margin the doors use, so a node at the very edge of the orbit still
+      answers somewhere a thumb can reach. Measured after unhiding —
+      offsetWidth on a hidden element is zero, and the clamp would put
+      every plate against the right edge.                              */
+  const e = labels[i], w = el.offsetWidth, h = el.offsetHeight, M = 12;
+  const nx = (e && e.vis) ? e.lx : FW * 0.5, ny = (e && e.vis) ? e.ly : FH * 0.5;
+  /*  Toward the middle, so the plate opens over empty field rather than
+      off the side it is already nearest to.                           */
+  const px = clamp(nx + (nx > FW * 0.5 ? -(w + 22) : 22), M, Math.max(M, FW - w - M));
+  const py = clamp(ny - h * 0.5, M, Math.max(M, innerHeight - h - M));
+  el.style.left = px.toFixed(1) + "px";
+  el.style.top  = py.toFixed(1) + "px";
+  plateAt = { x: px, y: py, w, h };
+  requestAnimationFrame(() => el.classList.add("on"));
+  $("#plgo").focus({ preventScroll: true });
+  plateWire();
+  accFrames = 0;
+}
+
+function plateShut(){
+  if(plateI < 0) return;
+  const el = $("#plate");
+  el.classList.remove("on");
+  el.hidden = true;
+  if(plateLink) plateLink.style.display = "none";
+  if(VIS.sel === plateI) VIS.sel = -1;
+  plateI = -1; plateAt = null;
+  accFrames = 0;
+}
+
+/*  The same dashed line the deck draws, for the same reason and with the
+    same rule: hidden the moment the node it points at is not on screen. */
+function plateWire(){
+  if(!plateLink){
+    plateLink = document.createElementNS("http://www.w3.org/2000/svg", "line");
+    plateLink.setAttribute("stroke-width", "1");
+    plateLink.setAttribute("stroke", "var(--a-dim)");
+    plateLink.setAttribute("stroke-dasharray", "1 3");
+    plateLink.setAttribute("data-w", "plate");
+    $("#wires").appendChild(plateLink);
+  }
+  const e = plateI >= 0 ? labels[plateI] : null;
+  if(!e || !e.vis || !plateAt){ plateLink.style.display = "none"; return; }
+  plateLink.style.display = "";
+  plateLink.setAttribute("x1", (e.lx || 0).toFixed(1));
+  plateLink.setAttribute("y1", (e.ly || 0).toFixed(1));
+  /*  To the plate's own edge, the side facing the node, rather than to a
+      corner — a wire into a corner looks like it missed.             */
+  plateLink.setAttribute("x2",
+    (e.lx > plateAt.x + plateAt.w ? plateAt.x + plateAt.w : plateAt.x).toFixed(1));
+  plateLink.setAttribute("y2", (plateAt.y + plateAt.h * 0.5).toFixed(1));
+}
+
+$("#plno").addEventListener("click", plateShut);
+$("#plgo").addEventListener("click", () => { const i = plateI; plateShut(); txOpen(i); });
+/*  Escape, and any tap that is not the plate. Orbiting the solid dismisses
+    it too — the reader has moved on, and a plate left hanging over the
+    field while the artwork turns underneath is litter.               */
+addEventListener("keydown", e => { if(e.key === "Escape" && plateI >= 0) plateShut(); });
+addEventListener("pointerdown", e => {
+  if(plateI >= 0 && !e.target.closest("#plate") && !e.target.closest(".nd")) plateShut();
+}, true);
+
+$("#confirm").addEventListener("click", e => { if(e.target.id === "confirm"){ $("#confirm").classList.remove("open"); pending = null; } });
+
+const kv  = (k, v, id) => '<div class="kv"><span class="k">' + esc(k) + '</span><span class="vv"' +
+                          (id ? ' id="' + id + '"' : "") + '>' + v + '</span></div>';
+const fld = (label, id, ph, val) => '<label class="f k">' + esc(label) + '</label>' +
+  '<input type="text" id="' + id + '" placeholder="' + esc(ph || "") + '" spellcheck="false" ' +
+  'autocomplete="off" value="' + esc(val == null ? "" : val) + '">';
+const val = id => { const e = $("#" + id); return e ? e.value.trim() : ""; };
+
+/*── guards ─────────────────────────────────────────────────────────────*/
+async function needWallet(){
+  if(!NET.account) await connect();
+  if(!NET.account) throw new Error("A wallet has to be connected before anything can be signed.");
+  return NET.account;
+}
+function needOwner(){
+  if(!NET.account) throw new Error("Connect a wallet first.");
+  if(NET.account.toLowerCase() !== String(S.owner).toLowerCase())
+    throw new Error("Only the holder can change this token. It is held by " + short(S.owner) + ".");
+}
+const guard = fn => async (...a) => {
+  try { await fn(...a); }
+  catch(e){ say(esc(String(e && (e.message || e)).slice(0, 200)), "err"); }
+};
+
+/*── commit the section ────────────────────────────────────────────────*/
+const txCommit = guard(async () => {
+  await needWallet(); needOwner();
+  const w = liveWord();
+  const { data, sig, types } = encodeCall("commit(uint256,uint256)", [S.id, w.toString()]);
+  const moved = PLANES.filter(p => Math.abs(L.rot[p.i] - C.rot[p.i]) > 1e-4).map(p => p.n);
+  propose({
+    to: S.collection, data, sig, types, value: 0n,
+    plain: "Write this section into the token. " +
+      (L.form !== C.form ? "The solid becomes the " + FORMS[L.form].n + ". " : "") +
+      (moved.length ? "Turned in " + moved.join(", ") + ". " : "") +
+      (Math.abs(L.w - C.w) > 1e-4 ? "The section moves to w = " + fmt(L.w) + ". " : "") +
+      "Everyone who opens this token afterwards arrives here first.",
+    then: async () => {
+      C.rot = L.rot.slice(); C.w = L.w; C.form = L.form; C.hue = L.hue;
+      L.dirty = false; markDirty();
+    }
+  });
+});
+
+const txOpen = guard(async i => {
+  await needWallet(); needOwner();
+  const fee = await readSig(S.collection, "openFee()").then(decUint).catch(() => 2000000000000000n);
+  const { data, sig, types } = encodeCall("openNode(uint256,uint8)", [S.id, i]);
+  propose({ to: S.collection, data, sig, types, value: fee,
+    plain: "Open the " + MODULES[i].name + " node on this token. It stays open for good, for every holder after you." });
+});
+
+/*───────────────────────────────────────────────────────────────────────────
+ 11 · THE TWELVE
+───────────────────────────────────────────────────────────────────────────*/
+const BUILD = {};
+
+BUILD.SELF = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    kv("Token", "#" + S.id) +
+    kv("Contract", '<a href="' + (chainOf(S.chainId).ex || "#") + "/address/" + S.collection +
+       '" target="_blank" rel="noreferrer" style="color:var(--a)">' + short(S.collection) + "</a>") +
+    kv("Held by", short(S.owner), "u-owner") +
+    kv("Reach", short(account6551()), "u-acct") +
+    kv("Grip", short(grip6551()), "u-grip") +
+    kv("Kernel", "—", "u-kernel") +
+    kv("Solid", FORMS[C.form].n + " · " + FORMS[C.form].g) +
+    kv("Section w", fmt(u16ToW(S.w))) +
+    kv("Operations", S.ops, "u-ops") +
+    kv("Transfers", S.xfers, "u-x") +
+    kv("Strata", S.strata, "u-str") +
+    kv("Seed", "<span title='" + esc(S.seed) + "'>" + String(S.seed).slice(0, 12) + "…</span>") +
+    '<hr><div class="k">Section word, on chain</div>' +
+    '<pre class="code" id="u-word">reading…</pre>' +
+    '<div class="k">This solid</div><p class="s" style="margin:6px 0 0;color:var(--mid)">' +
+      esc(FORMS[C.form].d) + '</p>' +
+    '<button class="b g" id="u-read">Read the contract again</button>', m.i,
+    () => {
+      $("#u-read").onclick = () => refresh(true);
+      /* Three words rather than a tick, because "there is a kernel", "it is
+         sealed to whoever holds this token", and "somebody checked it" are
+         three different facts and only the last one is a promise. */
+      guard(async () => {
+        const [st, pr] = await Promise.all([
+          readSig(S.collection, "kernelStatus(uint256)", [S.id]).then(h => Number(decUint(h))).catch(() => 0),
+          readSig(S.collection, "kernelProved(uint256)", [S.id]).then(h => decUint(h) !== 0n).catch(() => false)
+        ]);
+        $("#u-kernel").textContent =
+          st === 0 ? "none" :
+          st === 1 ? (pr ? "current · proved" : "current · unproved") :
+                     "STALE — sealed to a previous holder";
+      })();
+      refresh(true);
+    });
+};
+
+BUILD.ROTATE = m => {
+  const rows = PLANES.map(p =>
+    '<label class="f k">' + p.n + (p.w ? " · through w" : "") +
+    ' <span class="mut" id="ra' + p.i + '">' + (L.rot[p.i] / TAU).toFixed(3) + 'τ</span></label>' +
+    '<input type="range" id="rr' + p.i + '" min="0" max="6.2831853" step="0.0005" value="' + L.rot[p.i] + '">'
+  ).join("");
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' + rows +
+    '<hr>' + kv("Committed", "—", "r-old") + kv("Live", "—", "r-new") +
+    '<button class="b" id="r-go">Commit this orientation</button>' +
+    '<button class="b g" id="r-rev">Back to the committed one</button>', m.i, () => {
+      const sync = () => {
+        for(const p of PLANES){
+          $("#rr" + p.i).value = L.rot[p.i];
+          $("#ra" + p.i).textContent = (L.rot[p.i] / TAU).toFixed(3) + "τ";
+        }
+        $("#r-old").textContent = "0x" + packSection(C.rot, C.w, C.form, C.hue).toString(16).padStart(34, "0").slice(0, 18) + "…";
+        $("#r-new").textContent = "0x" + liveWord().toString(16).padStart(34, "0").slice(0, 18) + "…";
+        $("#r-go").disabled = !L.dirty;
+      };
+      for(const p of PLANES){
+        $("#rr" + p.i).addEventListener("input", e => {
+          VIS.spin[p.i] = 0;
+          L.rot[p.i] = parseFloat(e.target.value);
+          markDirty(); sync();
+        });
+      }
+      $("#r-go").onclick = txCommit;
+      $("#r-rev").onclick = () => {
+        L.rot = C.rot.slice(); L.w = C.w; L.form = C.form; L.hue = C.hue;
+        VIS.spin = [0,0,0,0,0,0];
+        markDirty(); paintW(); sync();
+        say("Back to what the chain says.");
+      };
+      window.__rsync = sync;
+      sync();
+    });
+};
+
+BUILD.SECTION = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    '<div class="k">Solid</div><div class="chips" id="forms">' +
+      FORMS.map((f, i) => '<span class="chip' + (i === L.form ? " on" : "") + '" data-f="' + i + '" title="' +
+        esc(f.g + " — " + f.d) + '">' + esc(f.n) + '</span>').join("") + '</div>' +
+    '<p class="s" id="f-note" style="color:var(--mid);min-height:30px"></p>' +
+    '<label class="f k">Section along w <span class="mut" id="s-w"></span></label>' +
+    '<input type="range" id="sw" min="-1.6" max="1.6" step="0.001" value="' + L.w + '">' +
+    '<label class="f k">Hue <span class="mut" id="s-h"></span></label>' +
+    '<input type="range" id="sh" min="0" max="255" step="1" value="' + L.hue + '">' +
+    '<hr><button class="b" id="s-go">Commit</button>', m.i, () => {
+      const note = () => {
+        $("#f-note").textContent = FORMS[L.form].g + " — " + FORMS[L.form].d;
+        $("#s-w").textContent = fmt(L.w);
+        $("#s-h").textContent = L.hue + " · " + Math.round(L.hue * 360 / 255) + "°";
+        $("#s-go").disabled = !L.dirty;
+        $$("#forms .chip").forEach(c => c.classList.toggle("on", +c.dataset.f === L.form));
+      };
+      $$("#forms .chip").forEach(c => c.onclick = () => {
+        L.form = +c.dataset.f; markDirty(); note();
+        say("Now sectioning a <b>" + FORMS[L.form].n + "</b>. " + esc(FORMS[L.form].d));
+      });
+      $("#sw").addEventListener("input", e => { wDrift = false; $("#wauto").classList.remove("on"); setW(parseFloat(e.target.value)); note(); });
+      $("#sh").addEventListener("input", e => {
+        L.hue = +e.target.value;
+        document.documentElement.style.setProperty("--h", String(Math.round(L.hue * 360 / 255)));
+        markDirty(); note();
+      });
+      $("#s-go").onclick = txCommit;
+      window.__snote = note;
+      note();
+    });
+};
+
+BUILD.SEND = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    '<div class="chips" id="from"><span class="chip on" data-f="me">From my wallet</span>' +
+    '<span class="chip" data-f="tba">From the token</span></div>' +
+    fld("To", "sd-to", "0x…") +
+    fld("Amount (" + chainOf(S.chainId).s + ")", "sd-amt", "0.01") +
+    kv("Balance", "—", "sd-bal") +
+    '<button class="b" id="sd-go">Review the transfer</button>', m.i, () => {
+      let from = "me";
+      $$("#from .chip").forEach(c => c.onclick = () => {
+        from = c.dataset.f;
+        $$("#from .chip").forEach(x => x.classList.toggle("on", x === c));
+        bal();
+      });
+      const bal = guard(async () => {
+        const who = from === "me" ? NET.account : account6551();
+        if(!who) return $("#sd-bal").textContent = "connect a wallet";
+        const b = await rpc("eth_getBalance", [who, "latest"]);
+        $("#sd-bal").textContent = fmtUnits(BigInt(b)) + " " + chainOf(S.chainId).s;
+      });
+      $("#sd-go").onclick = guard(async () => {
+        await needWallet();
+        const to = val("sd-to"), amt = toUnits(val("sd-amt") || "0");
+        if(!isAddr(to)) throw new Error("That is not an address.");
+        if(from === "me"){
+          propose({ to: checksum(to), value: amt, data: "0x",
+            plain: "Send " + fmtUnits(amt) + " " + chainOf(S.chainId).s + " from your wallet to " + short(to) + "." });
+        } else {
+          needOwner();
+          const { data, sig, types } = encodeCall("execute(address,uint256,bytes,uint8)",
+            [checksum(to), amt.toString(), "0x", 0]);
+          propose({ to: account6551(), data, sig, types, value: 0n,
+            note: "The token's account must exist before it can act. Open Vault and bring it into being first.",
+            plain: "The token sends " + fmtUnits(amt) + " " + chainOf(S.chainId).s + " from its own account to " +
+                   short(to) + ". You are only the hand on the pen." });
+        }
+      });
+      bal();
+    });
+};
+
+BUILD.ERC20 = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    fld("Token contract", "t-addr", "0x…") +
+    '<button class="b g" id="t-read">Read it</button>' +
+    '<div id="t-info" style="margin:12px 0"></div>' +
+    '<hr><div class="k">Move</div>' +
+    fld("To", "t-to", "0x…") + fld("Amount", "t-amt", "1.5") +
+    '<div class="row"><button class="b" id="t-send">Transfer</button>' +
+    '<button class="b g" id="t-appr">Approve</button></div>', m.i, () => {
+      let dec = 18, sym = "";
+      $("#t-read").onclick = guard(async () => {
+        const a = val("t-addr");
+        if(!isAddr(a)) throw new Error("That is not an address.");
+        const [n, s, d] = await Promise.all([
+          readSig(a, "name()").then(decStringLoose).catch(() => "?"),
+          readSig(a, "symbol()").then(decStringLoose).catch(() => "?"),
+          readSig(a, "decimals()").then(h => Number(decUint(h))).catch(() => 18)
+        ]);
+        dec = d; sym = s;
+        let mine = "—";
+        if(NET.account) mine = fmtUnits(decUint(await readSig(a, "balanceOf(address)", [NET.account])), d) + " " + s;
+        let tok = "—";
+        try { tok = fmtUnits(decUint(await readSig(a, "balanceOf(address)", [account6551()])), d) + " " + s; } catch {}
+        $("#t-info").innerHTML = kv("Name", esc(n)) + kv("Symbol", esc(s)) + kv("Decimals", d) +
+          kv("Your balance", esc(mine)) + kv("Token's balance", esc(tok));
+        say("Read <b>" + esc(n) + "</b>.");
+      });
+      const move = fnSig => guard(async () => {
+        await needWallet();
+        const a = val("t-addr"), to = val("t-to");
+        if(!isAddr(a) || !isAddr(to)) throw new Error("Both a token and a recipient are needed.");
+        const amt = toUnits(val("t-amt") || "0", dec);
+        const { data, sig, types } = encodeCall(fnSig, [checksum(to), amt.toString()]);
+        propose({ to: checksum(a), data, sig, types, value: 0n,
+          plain: (fnSig.startsWith("transfer")
+            ? "Move " + fmtUnits(amt, dec) + " " + sym + " to " + short(to) + "."
+            : "Let " + short(to) + " move up to " + fmtUnits(amt, dec) + " " + sym + " out of your wallet, whenever it likes.") });
+      });
+      $("#t-send").onclick = move("transfer(address,uint256)");
+      $("#t-appr").onclick = move("approve(address,uint256)");
+    });
+};
+
+BUILD.CALL = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    fld("Contract", "c-to", "0x…") +
+    fld("Signature", "c-sig", "transfer(address,uint256)") +
+    '<label class="f k">Arguments — one per line</label>' +
+    '<textarea id="c-args" spellcheck="false" placeholder="0xabc…&#10;1000000000000000000"></textarea>' +
+    fld("Value (" + chainOf(S.chainId).s + ")", "c-val", "0") +
+    '<div id="c-out"></div>' +
+    '<div class="row"><button class="b g" id="c-call">Read</button>' +
+    '<button class="b" id="c-send">Send</button></div>', m.i, () => {
+      const build = () => {
+        const args = $("#c-args").value.split("\n").map(s => s.trim()).filter(s => s !== "");
+        return encodeCall(val("c-sig"), args);
+      };
+      const show = enc => {
+        const { sel, out } = splitWords(enc.data);
+        $("#c-out").innerHTML = '<pre class="code"><b>' + enc.sig + '</b>\nselector 0x' + sel + "\n" +
+          out.map((w, i) => "  " + String(i).padStart(2, "0") + "  " + w).join("\n") + "</pre>";
+      };
+      $("#c-sig").addEventListener("input", () => { try { show(build()); } catch { $("#c-out").innerHTML = ""; } });
+      $("#c-args").addEventListener("input", () => { try { show(build()); } catch { $("#c-out").innerHTML = ""; } });
+      $("#c-call").onclick = guard(async () => {
+        const to = val("c-to"); if(!isAddr(to)) throw new Error("That is not an address.");
+        const enc = build(); show(enc);
+        const r = await ethCall(checksum(to), enc.data, NET.account || undefined);
+        const words = splitWords(r).out.concat(r.replace(/^0x/, "").length <= 64 ? [r.replace(/^0x/, "")] : []);
+        $("#c-out").innerHTML += '<pre class="code"><b>returned</b>\n' +
+          (r === "0x" ? "  (nothing)" :
+            String(r).replace(/^0x/, "").match(/.{1,64}/g).map((w, i) =>
+              "  " + String(i).padStart(2, "0") + "  " + w + "\n      uint " + BigInt("0x" + w).toString()).join("\n")) +
+          "</pre>";
+        say("Read " + enc.sig + ".");
+      });
+      $("#c-send").onclick = guard(async () => {
+        await needWallet();
+        const to = val("c-to"); if(!isAddr(to)) throw new Error("That is not an address.");
+        const enc = build();
+        propose({ to: checksum(to), data: enc.data, sig: enc.sig, types: enc.types,
+          value: toUnits(val("c-val") || "0"),
+          plain: "Call " + enc.sig + " on " + short(to) + ". Nothing here was checked for you — read the words." });
+      });
+    });
+};
+
+BUILD.SIGN = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    '<label class="f k">Message</label><textarea id="g-msg" spellcheck="false">Held by the section, not the solid.</textarea>' +
+    '<button class="b" id="g-plain">Sign as text</button>' +
+    '<hr><label class="f k">EIP-712 typed data (JSON)</label>' +
+    '<textarea id="g-712" spellcheck="false" style="min-height:120px"></textarea>' +
+    '<div id="g-hash"></div>' +
+    '<button class="b" id="g-typed">Sign typed data</button>' +
+    '<div id="g-out"></div>' +
+
+    '<hr><div class="k">Speak as the token</div>' +
+    '<p class="s" style="margin:8px 0;color:var(--mid)">A signature the token\u2019s vault will ' +
+    'answer for under ERC-1271 \u2014 so a counterparty asks the <em>Reach</em> whether this is ' +
+    'genuine, not you. It keeps working while the vault is sealed, because the digest is built ' +
+    'under the vault\u2019s own domain and every venue hashes its orders under its own. A sealed ' +
+    'vault can say who it is and cannot sign away what it holds.</p>' +
+    fld("Purpose", "g-purp", "signing in to my own premises") +
+    fld("Payload (bytes32)", "g-pay", "0x…") +
+    '<div id="g-adig"></div>' +
+    '<button class="b" id="g-attest">Sign as the vault</button>' +
+    '<div id="g-aout"></div>', m.i, () => {
+      $("#g-712").value = JSON.stringify({
+        domain: { name: "IPSEITY", version: "1", chainId: Number(S.chainId), verifyingContract: S.collection },
+        primaryType: "Section",
+        types: { Section: [ { name: "tokenId", type: "uint256" }, { name: "word", type: "uint256" } ] },
+        message: { tokenId: Number(S.id), word: liveWord().toString() }
+      }, null, 1);
+      $("#g-plain").onclick = guard(async () => {
+        await needWallet();
+        const msg = $("#g-msg").value;
+        const sig = await NET.provider.request({ method: "personal_sign", params: [toHex(utf8(msg)), NET.account] });
+        $("#g-out").innerHTML = '<pre class="code">' + esc(sig) + "</pre>";
+        say("Signed.", "ok");
+      });
+      const digest = () => {
+        const t = JSON.parse($("#g-712").value);
+        const types = Object.assign({}, t.types); delete types.EIP712Domain;
+        return { t, d: digest712(t.domain, t.primaryType, t.message, types),
+                 ds: domainSeparator(t.domain), hs: hashStruct(t.primaryType, t.message, types) };
+      };
+      $("#g-712").addEventListener("input", () => {
+        try {
+          const { d, ds, hs } = digest();
+          $("#g-hash").innerHTML = '<pre class="code">domain  ' + ds + "\nstruct  " + hs + "\ndigest  <b>" + d + "</b></pre>";
+        } catch { $("#g-hash").innerHTML = '<p class="s" style="color:var(--bad)">not valid JSON yet</p>'; }
+      });
+      $("#g-typed").onclick = guard(async () => {
+        await needWallet();
+        const { t } = digest();
+        const payload = Object.assign({}, t, { types: Object.assign({
+          EIP712Domain: [ { name:"name", type:"string" }, { name:"version", type:"string" },
+                          { name:"chainId", type:"uint256" }, { name:"verifyingContract", type:"address" } ]
+        }, t.types) });
+        const sig = await NET.provider.request({
+          method: "eth_signTypedData_v4", params: [NET.account, JSON.stringify(payload)] });
+        $("#g-out").innerHTML = '<pre class="code">' + esc(sig) + "</pre>";
+        say("Signed the typed data.", "ok");
+      });
+      $("#g-712").dispatchEvent(new Event("input"));
+
+      /*── the vault's own voice ──────────────────────────────────────────
+        The domain is the vault's, not the collection's, and the digest is
+        computed here so it can be checked against what the contract says
+        before anything is signed. Same habit as deriving the addresses: a
+        page that only shows what it is handed cannot tell a correct answer
+        from a convenient one.                                            */
+      const reach = account6551();
+      const aDomain = () => ({
+        name: "IPSEITY_ATTESTATION", version: "1",
+        chainId: Number(S.chainId), verifyingContract: reach
+      });
+      const aTypes = { Attestation: [ { name: "purpose", type: "string" },
+                                      { name: "payload", type: "bytes32" } ] };
+      const aMsg = () => ({
+        purpose: val("g-purp") || "",
+        payload: /^0x[0-9a-fA-F]{64}$/.test(val("g-pay")) ? val("g-pay") : "0x" + "0".repeat(64)
+      });
+
+      const showAttest = guard(async () => {
+        const el = $("#g-adig"); if(!el) return;
+        const here = digest712(aDomain(), "Attestation", aMsg(), aTypes);
+        let there = "—", agrees = null;
+        try {
+          there = await readSig(reach, "attestationDigest(string,bytes32)",
+                                [aMsg().purpose, aMsg().payload]);
+          agrees = String(there).toLowerCase() === String(here).toLowerCase();
+        } catch {}
+        el.innerHTML = '<pre class="code">computed here  ' + here +
+          "\nthe vault says  " + there +
+          (agrees === null ? "" : "\n" + (agrees ? "they agree" : "THEY DISAGREE")) + "</pre>";
+      });
+      $("#g-purp").addEventListener("input", showAttest);
+      $("#g-pay").addEventListener("input", showAttest);
+
+      $("#g-attest").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const m2 = aMsg();
+        const payload = { domain: aDomain(), primaryType: "Attestation",
+          types: Object.assign({ EIP712Domain: [
+            { name:"name", type:"string" }, { name:"version", type:"string" },
+            { name:"chainId", type:"uint256" }, { name:"verifyingContract", type:"address" } ]
+          }, aTypes), message: m2 };
+        const sig = await NET.provider.request({
+          method: "eth_signTypedData_v4", params: [NET.account, JSON.stringify(payload)] });
+
+        /* the vault is handed the preimage, not the hash, so it rebuilds the
+           digest itself rather than taking one on trust */
+        const envelope = encodeParams(["string", "bytes32", "bytes"],
+                                      [m2.purpose, m2.payload, sig]);
+        const dig = digest712(aDomain(), "Attestation", m2, aTypes);
+        let answer = "not deployed yet";
+        try {
+          const r = await readSig(reach, "isValidSignature(bytes32,bytes)", [dig, "0x" + envelope]);
+          answer = String(r).slice(0, 10) === "0x1626ba7e"
+            ? "the vault answers for it" : "the vault does not answer for it";
+        } catch {}
+        $("#g-aout").innerHTML =
+          '<pre class="code">digest    ' + dig + "\nenvelope  0x" + envelope +
+          "\n\n" + esc(answer) + "</pre>" +
+          '<p class="s" style="color:var(--mid)">Hand a verifier the digest and the envelope. ' +
+          'They call <code>isValidSignature</code> on ' + short(reach) + ' and get the answer ' +
+          'from the chain rather than from you.</p>';
+        say("Signed as the vault.", "ok");
+      });
+      showAttest();
+    });
+};
+
+BUILD.SCAN = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    '<div id="k-chain"></div><hr>' +
+    fld("Address", "k-addr", "0x…") +
+    fld("Storage slot (optional)", "k-slot", "0") +
+    '<button class="b g" id="k-go">Interrogate</button>' +
+    '<div id="k-out"></div>', m.i, () => {
+      const chain = guard(async () => {
+        const [bn, gp] = await Promise.all([rpc("eth_blockNumber"), rpc("eth_gasPrice").catch(() => "0x0")]);
+        const blk = await rpc("eth_getBlockByNumber", [bn, false]).catch(() => null);
+        $("#k-chain").innerHTML =
+          kv("Network", esc(chainOf(NET.chainId).n) + " · " + NET.chainId) +
+          kv("Block", BigInt(bn).toLocaleString()) +
+          kv("Gas price", gwei(gp) + " gwei") +
+          (blk && blk.baseFeePerGas ? kv("Base fee", gwei(blk.baseFeePerGas) + " gwei") : "") +
+          (blk ? kv("Timestamp", new Date(Number(BigInt(blk.timestamp)) * 1000).toISOString().replace("T", " ").slice(0, 19)) : "");
+      });
+      $("#k-go").onclick = guard(async () => {
+        const a = val("k-addr"); if(!isAddr(a)) throw new Error("That is not an address.");
+        const [b, c] = await Promise.all([
+          rpc("eth_getBalance", [a, "latest"]),
+          rpc("eth_getCode", [a, "latest"]).catch(() => "0x")
+        ]);
+        let slot = "";
+        if(val("k-slot") !== ""){
+          const s = await rpc("eth_getStorageAt", [a, hexQ(val("k-slot")), "latest"]);
+          slot = kv("Slot " + val("k-slot"), esc(s)) +
+                 kv("… as uint", BigInt(s).toString()) +
+                 kv("… as address", short(checksum("0x" + String(s).slice(-40))));
+        }
+        const code = String(c).replace(/^0x/, "");
+        $("#k-out").innerHTML = kv("Balance", fmtUnits(BigInt(b)) + " " + chainOf(NET.chainId).s) +
+          kv("Kind", code.length ? "contract · " + (code.length / 2).toLocaleString() + " bytes" : "externally owned") +
+          slot + (code.length ? '<pre class="code">' + code.slice(0, 400) + (code.length > 400 ? " …" : "") + "</pre>" : "");
+      });
+      chain();
+    });
+};
+
+BUILD.VAULT = m => {
+  const reach = account6551(), grip = grip6551();
+  const okReach = agrees(reach, S.account), okGrip = agrees(grip, S.grip);
+  const link = (a) => '<a href="' + (chainOf(S.chainId).ex || "#") + "/address/" + a +
+    '" target="_blank" rel="noreferrer" style="color:var(--a)">' + esc(a) + "</a>";
+
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+
+    '<div class="k">The Reach — the hand that acts</div>' +
+    kv("Address", link(reach)) +
+    kv("Deployed", "—", "v-code") +
+    kv("Balance", "—", "v-bal") +
+    kv("Sealed until", "—", "v-seal") +
+    '<p class="s" style="margin:10px 0;color:var(--mid)">Trades, claims, signs. Its holder ' +
+    'can empty it whenever it is not sealed — and while it is, every call is measured: nothing ' +
+    'on its manifest may be smaller after a call than before it, whatever the call was.</p>' +
+    '<button class="b" id="v-make">Bring the Reach into being</button>' +
+
+    '<hr><div class="k">The Grip — the hand that only closes</div>' +
+    kv("Address", link(grip)) +
+    kv("Deployed", "—", "g-code") +
+    kv("Balance", "—", "g-bal") +
+    '<p class="s" style="margin:10px 0;color:var(--mid)">Receives and never spends. There is no ' +
+    '<em>execute</em>, no withdraw, no sweep, no rescue, no admin — not for you, not for anyone, ' +
+    'ever. What it holds is a floor a buyer can price, because no one has a function with which ' +
+    'to move it. <b style="color:var(--warn)">Anything sent here is here permanently.</b></p>' +
+    '<button class="b" id="g-make">Bring the Grip into being</button>' +
+
+    '<hr><div class="k">Derived here, not asked for</div>' +
+    '<p class="s" style="margin:8px 0;color:var(--mid)">Both addresses were computed in this ' +
+    'frame by the same CREATE2 the registry itself uses — registry, implementation, chain, ' +
+    'contract, token id — and then checked against what the contract reports. They are the ' +
+    'token’s addresses whether or not anything has ever been deployed to them.</p>' +
+    kv("Registry", short(REG_6551)) +
+    kv("Reach agrees", okReach ? "yes" : (S.account ? "NO" : "not reported")) +
+    kv("Grip agrees",  okGrip  ? "yes" : (S.grip    ? "NO" : "not reported")) +
+
+    '<hr><div class="k">What the seal is promising</div>' +
+    '<p class="s" style="margin:8px 0;color:var(--mid)">The manifest is the list of assets the ' +
+    'Reach measures either side of every call while sealed. It is <b>not</b> everything the ' +
+    'account holds &mdash; an asset nobody listed can leave freely, which is why this is public ' +
+    'and a buyer should read it rather than assume.</p>' +
+    '<div id="v-man">reading…</div>' +
+    fld("Asset", "v-asset", "0x…") +
+    '<button class="b" id="v-guard">Put it under the seal</button>' +
+    '<button class="b g" id="v-unguard">Take it off</button>' +
+
+    '<hr><div class="k">Act as the token</div>' +
+    '<p class="s" style="margin:8px 0;color:var(--mid)">Through the Reach. The Grip has no ' +
+    'such function to call.</p>' +
+    fld("Target", "v-to", "0x…") + fld("Value", "v-val", "0") +
+    fld("Calldata", "v-data", "0x") +
+    '<button class="b" id="v-exec">Execute from the Reach</button>' +
+
+    '<hr><div class="k">Several acts, or none</div>' +
+    '<p class="s" style="margin:8px 0;color:var(--mid)">One line per call: ' +
+    '<code>target | value | calldata</code>. They land in one transaction or not at all, and ' +
+    'while the vault is sealed the measurement wraps the <em>whole</em> batch &mdash; so a ' +
+    'sequence that is poorer in the middle and whole at the end goes through, which single ' +
+    'calls could never do.</p>' +
+    '<textarea id="v-batch" spellcheck="false" style="min-height:84px" ' +
+    'placeholder="0xabc… | 0 | 0xa9059cbb…"></textarea>' +
+    '<div id="v-bplan"></div>' +
+    '<button class="b" id="v-bgo">Execute them as one act</button>' +
+
+    '<hr><div class="k">Send into the Grip</div>' +
+    fld("Amount", "g-val", "0") +
+    '<button class="b" id="g-send">Send — permanently</button>' +
+
+    '<hr><div class="k">Hand a bounded key to something that is not you</div>' +
+    '<p class="s" style="margin:8px 0;color:var(--mid)">A bot, a keeper, a model. It acts ' +
+    'through the Reach without holding the token, inside four bounds it cannot widen — and it ' +
+    'cannot call the Reach itself, cannot approve a spender you did not name, and has no way ' +
+    'to the Grip, because the Grip has no function that spends. You revoke in one transaction, ' +
+    'with no notice.</p>' +
+    fld("Key", "s-key", "0x…") +
+    fld("Expires in (days)", "s-days", "7") +
+    fld("Spend cap", "s-cap", "0") +
+    fld("Target it may call", "s-tgt", "0x…") +
+    fld("Signature it may call", "s-sel", "transfer(address,uint256)") +
+    kv("Selector", "—", "s-selhex") +
+    '<button class="b" id="s-grant">Grant the key</button>' +
+    '<button class="b g" id="s-revoke">Revoke it</button>', m.i, () => {
+
+      const look = guard(async () => {
+        const [c1, b1, c2, b2] = await Promise.all([
+          rpc("eth_getCode",    [reach, "latest"]).catch(() => "0x"),
+          rpc("eth_getBalance", [reach, "latest"]).catch(() => "0x0"),
+          rpc("eth_getCode",    [grip,  "latest"]).catch(() => "0x"),
+          rpc("eth_getBalance", [grip,  "latest"]).catch(() => "0x0")
+        ]);
+        const live1 = String(c1).length > 2, live2 = String(c2).length > 2;
+        $("#v-code").textContent = live1 ? "yes · " + ((String(c1).length - 2) / 2) + " bytes" : "not yet";
+        $("#g-code").textContent = live2 ? "yes · " + ((String(c2).length - 2) / 2) + " bytes" : "not yet";
+        $("#v-bal").textContent = fmtUnits(BigInt(b1)) + " " + chainOf(S.chainId).s;
+        $("#g-bal").textContent = fmtUnits(BigInt(b2)) + " " + chainOf(S.chainId).s;
+        $("#v-make").disabled = live1; if(live1) $("#v-make").textContent = "The Reach exists";
+        $("#g-make").disabled = live2; if(live2) $("#g-make").textContent = "The Grip exists";
+
+        if(live1){
+          try {
+            const u = Number(decUint(await readSig(reach, "sealedUntil()")));
+            const now = Math.floor(Date.now() / 1000);
+            $("#v-seal").textContent = u === 0 ? "not sealed"
+              : (u > now ? new Date(u * 1000).toISOString().slice(0, 16).replace("T", " ") + " UTC"
+                         : "expired");
+          } catch { $("#v-seal").textContent = "—"; }
+        }
+      });
+
+      const embody = (sig, plain) => guard(async () => {
+        await needWallet();
+        const { data, sig: s, types } = encodeCall(sig, [S.id]);
+        propose({ to: S.collection, data, sig: s, types, value: 0n, plain, then: look });
+      });
+      $("#v-make").onclick = embody("embody(uint256)",
+        "Deploy the Reach — the account this token acts through.");
+      $("#g-make").onclick = embody("embodyGrip(uint256)",
+        "Deploy the Grip — the account this token can receive into and never spend from.");
+
+      /* address[] comes back as offset · length · words */
+      const addrs = (hex) => {
+        const h = String(hex).replace(/^0x/, "");
+        const base = Number(BigInt("0x" + h.substr(0, 64))) * 2;
+        const n = Number(BigInt("0x" + h.substr(base, 64)));
+        const out = [];
+        for (let i = 0; i < n; i++) out.push(checksum("0x" + h.substr(base + 64 + i * 64, 64).slice(24)));
+        return out;
+      };
+
+      const readManifest = guard(async () => {
+        const el = $("#v-man"); if(!el) return;
+        let list = [], blind = [];
+        try {
+          list  = addrs(await readSig(reach, "manifest()"));
+          blind = addrs(await readSig(reach, "unmeasurable()"));
+        } catch { el.innerHTML = '<p class="s" style="color:var(--mid)">The Reach is not deployed yet.</p>'; return; }
+        if(!list.length){ el.innerHTML = '<p class="s" style="color:var(--mid)">Nothing is under the seal.</p>'; return; }
+
+        const bl = blind.map(x => x.toLowerCase());
+        const rows = await Promise.all(list.map(async a2 => {
+          let sym = "?", bal = "—";
+          try { sym = decStringLoose(await readSig(a2, "symbol()")); } catch {}
+          try {
+            const d = Number(decUint(await readSig(a2, "decimals()")));
+            bal = fmtUnits(decUint(await readSig(a2, "balanceOf(address)", [reach])), d);
+          } catch {}
+          const gone = bl.includes(a2.toLowerCase());
+          return '<div class="kv"><span class="k">' + esc(sym) + " " + short(a2) +
+            '</span><span class="vv">' +
+            (gone ? '<b style="color:var(--bad)">not answering</b>' : esc(bal)) + "</span></div>";
+        }));
+        el.innerHTML = rows.join("") + (blind.length
+          ? '<p class="s" style="margin:8px 0;color:var(--bad)">' + blind.length + ' of these ' +
+            'stopped answering <code>balanceOf</code>. The seal cannot promise about an asset it ' +
+            'cannot read, and says so here rather than passing quietly.</p>'
+          : "");
+      });
+
+      $("#v-guard").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const a2 = val("v-asset"); if(!isAddr(a2)) throw new Error("That is not an address.");
+        const { data, sig, types } = encodeCall("guard(address)", [checksum(a2)]);
+        propose({ to: reach, data, sig, types, value: 0n,
+          plain: "Put " + short(a2) + " under the seal. From now on the Reach measures it either " +
+                 "side of every sealed call, and it cannot be taken off while a seal holds.",
+          then: readManifest });
+      });
+
+      $("#v-unguard").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const a2 = val("v-asset"); if(!isAddr(a2)) throw new Error("That is not an address.");
+        const { data, sig, types } = encodeCall("unguard(address)", [checksum(a2)]);
+        propose({ to: reach, data, sig, types, value: 0n,
+          plain: "Take " + short(a2) + " off the manifest. Only possible while the vault is " +
+                 "unsealed — a sealed vault refuses this for everyone, including you.",
+          then: readManifest });
+      });
+
+      /* target | value | calldata, one call per line */
+      const parseBatch = () => {
+        const lines = val("v-batch").split("\n").map(s => s.trim()).filter(Boolean);
+        if(!lines.length) throw new Error("Nothing to do.");
+        if(lines.length > 16) throw new Error("Sixteen calls at most.");
+        return lines.map((ln, i) => {
+          const parts = ln.split("|").map(s => s.trim());
+          if(parts.length < 3) throw new Error("Line " + (i + 1) + ": target | value | calldata");
+          if(!isAddr(parts[0])) throw new Error("Line " + (i + 1) + ": that is not an address.");
+          return { to: checksum(parts[0]), value: toUnits(parts[1] || "0"), data: parts[2] || "0x" };
+        });
+      };
+
+      const showPlan = () => {
+        const el = $("#v-bplan"); if(!el) return;
+        try {
+          const calls = parseBatch();
+          el.innerHTML = '<pre class="code">' + calls.map((k, i) =>
+            (i + 1) + "  " + short(k.to) + "  " + fmtUnits(k.value) + "  " +
+            String(k.data).slice(0, 10) + "…").join("\n") + "</pre>";
+        } catch(e) { el.innerHTML = '<p class="s" style="color:var(--mid)">' + esc(e.message) + "</p>"; }
+      };
+      $("#v-batch").addEventListener("input", showPlan);
+
+      $("#v-bgo").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const calls = parseBatch();
+        /* executeBatch((address,uint256,bytes)[]) — a dynamic array of a
+           struct with a dynamic member, encoded here in the frame */
+        const pad64 = (h) => String(h).replace(/^0x/, "").padStart(64, "0");
+        const bodies = calls.map(k => {
+          const d = String(k.data).replace(/^0x/, "");
+          return pad64(k.to.slice(2).toLowerCase()) + pad64(k.value.toString(16)) +
+                 pad64((96).toString(16)) + pad64((d.length / 2).toString(16)) +
+                 d.padEnd(Math.ceil(d.length / 64) * 64, "0");
+        });
+        let off = calls.length * 32;
+        const heads = bodies.map(b => { const h = pad64(off.toString(16)); off += b.length / 2; return h; });
+        const data = selector("executeBatch((address,uint256,bytes)[])") +
+          pad64((32).toString(16)) + pad64(calls.length.toString(16)) + heads.join("") + bodies.join("");
+        propose({ to: reach, data, sig: "executeBatch((address,uint256,bytes)[])",
+          types: ["(address,uint256,bytes)[]"], value: 0n,
+          plain: calls.length + " calls, in one transaction. If any of them reverts, none of " +
+                 "them happened. While the vault is sealed the whole batch is measured together." });
+      });
+
+      $("#v-exec").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const to = val("v-to"); if(!isAddr(to)) throw new Error("That is not an address.");
+        const { data, sig, types } = encodeCall("execute(address,uint256,bytes,uint8)",
+          [checksum(to), toUnits(val("v-val") || "0").toString(), val("v-data") || "0x", 0]);
+        propose({ to: reach, data, sig, types, value: 0n,
+          plain: "The token calls " + short(to) + " itself. The sender on chain will be the token's Reach, not you." });
+      });
+
+      $("#g-send").onclick = guard(async () => {
+        await needWallet();
+        const v = toUnits(val("g-val") || "0");
+        if(v <= 0n) throw new Error("Nothing to send.");
+        /* said before the calldata is built rather than after, because the
+           thing being warned about cannot be undone afterwards */
+        if(!confirm("Send " + fmtUnits(v) + " " + chainOf(S.chainId).s + " into the Grip?\n\n" +
+                    "There is no function on that contract that can move it out again — not for " +
+                    "you, not for a future owner, not for the collection. This is permanent."))
+          return;
+        propose({ to: grip, data: "0x", sig: "(plain transfer)", types: [], value: v,
+          plain: "Send " + fmtUnits(v) + " " + chainOf(S.chainId).s + " into the token's Grip. It can never leave.",
+          then: look });
+      });
+
+      /* the selector is hashed here, in front of you, before anything is
+         signed — the same keccak the contract will run */
+      const showSel = () => {
+        const s = val("s-sel").trim();
+        try { $("#s-selhex").textContent = s ? selector(s) : "—"; }
+        catch { $("#s-selhex").textContent = "—"; }
+      };
+      $("#s-sel").addEventListener("input", showSel); showSel();
+
+      $("#s-grant").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const key = val("s-key"), tgt = val("s-tgt");
+        if(!isAddr(key)) throw new Error("That key is not an address.");
+        if(!isAddr(tgt)) throw new Error("That target is not an address.");
+        if(checksum(tgt).toLowerCase() === reach.toLowerCase())
+          throw new Error("The Reach cannot be its own session's target — the contract refuses " +
+                          "this too, because a key allowed to call the account can grant itself more.");
+        const days = Math.max(0, Math.floor(Number(val("s-days") || "0")));
+        const expires = (Math.floor(Date.now() / 1000) + days * 86400).toString();
+        const { data, sig, types } = encodeCall(
+          "grantSession(address,uint64,uint128,address[],bytes4[])",
+          [checksum(key), expires, toUnits(val("s-cap") || "0").toString(),
+           [checksum(tgt)], [selector(val("s-sel").trim())]]);
+        propose({ to: reach, data, sig, types, value: 0n,
+          plain: short(key) + " may call " + short(tgt) + " — that one function, nothing else — " +
+                 "for " + days + " days, spending at most " + (val("s-cap") || "0") + " " +
+                 chainOf(S.chainId).s + " in total. It cannot widen any of those." });
+      });
+
+      $("#s-revoke").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const key = val("s-key"); if(!isAddr(key)) throw new Error("That key is not an address.");
+        const { data, sig, types } = encodeCall("revokeSession(address)", [checksum(key)]);
+        propose({ to: reach, data, sig, types, value: 0n,
+          plain: short(key) + " stops being able to act as this token, the moment this lands." });
+      });
+
+      showPlan();
+      readManifest();
+      look();
+    });
+};
+
+BUILD.MINT = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    kv("Issued", "—", "m-sup") + kv("Ceiling", "—", "m-max") + kv("Price", "—", "m-price") +
+    '<p class="s" style="margin:12px 0;color:var(--mid)">The next token’s seed is drawn from the block ' +
+    'that carries this call — so the solid you are about to create does not exist yet, in any form, ' +
+    'anywhere, and cannot be known until it is mined.</p>' +
+    '<button class="b" id="m-go">Draw the next one</button>', m.i, () => {
+      let price = 0n;
+      const look = guard(async () => {
+        const [sup, max, p] = await Promise.all([
+          readSig(S.collection, "totalSupply()").then(decUint).catch(() => 0n),
+          readSig(S.collection, "MAX_SUPPLY()").then(decUint).catch(() => 0n),
+          readSig(S.collection, "price()").then(decUint).catch(() => 0n)
+        ]);
+        price = p;
+        $("#m-sup").textContent = sup.toString();
+        $("#m-max").textContent = max.toString();
+        $("#m-price").textContent = fmtUnits(p) + " " + chainOf(S.chainId).s;
+        if(max > 0n && sup >= max){ $("#m-go").disabled = true; $("#m-go").textContent = "All of them exist"; }
+      });
+      $("#m-go").onclick = guard(async () => {
+        await needWallet();
+        const { data, sig, types } = encodeCall("mint()", []);
+        propose({ to: S.collection, data, sig, types, value: price,
+          plain: "Draw the next token from this contract. Its seed comes from the block that mines this call." });
+      });
+      look();
+    });
+};
+
+/*───────────────────────────────────────────────────────────────────────────
+ 12 · MARKET — the token as an exchange
+
+  Reading is done here in the frame, by eth_call, the same way everything
+  else in this instrument reads. Every trade is quoted first, shown with
+  the price it implies and how far that is from the pool's own spot, and
+  sent with a floor the trader sets — because the holder of a market can
+  re-shape its curve, and a minimum is the only thing that makes that
+  survivable.
+───────────────────────────────────────────────────────────────────────────*/
+const POOL = String(S.pool || "0x0000000000000000000000000000000000000000");
+const hasPool = /^0x[0-9a-fA-F]{40}$/.test(POOL) && !/^0x0{40}$/.test(POOL);
+
+const MKT = { base:null, quote:null, rb:0n, rq:0n, fee:0, open:false,
+              conc:0n, spot:0n, maxOut:[0n,0n], trades:0n, bond:0n,
+              bd:18, qd:18, bs:"?", qs:"?", drift:false, liveConc:0n };
+
+async function readMarket(){
+  const raw = await readSig(POOL, "market(uint256)", [S.id]);
+  MKT.base = decAddr(raw, 0); MKT.quote = decAddr(raw, 1);
+  MKT.rb = decUint(raw, 2);   MKT.rq = decUint(raw, 3);
+  MKT.fee = Number(decUint(raw, 4));
+  MKT.open = decUint(raw, 5) !== 0n;
+  MKT.conc = decUint(raw, 6); MKT.spot = decUint(raw, 7);
+  /* output caps, not input limits — the pool bounds what leaves */
+  MKT.maxOut = [decUint(raw, 8), decUint(raw, 9)];
+  MKT.trades = decUint(raw, 10);
+  MKT.bond = decUint(raw, 11);
+  if(MKT.open){
+    const [bd, qd, bs, qs] = await Promise.all([
+      readSig(MKT.base, "decimals()").then(h => Number(decUint(h))).catch(() => 18),
+      readSig(MKT.quote, "decimals()").then(h => Number(decUint(h))).catch(() => 18),
+      readSig(MKT.base, "symbol()").then(decStringLoose).catch(() => "?"),
+      readSig(MKT.quote, "symbol()").then(decStringLoose).catch(() => "?")
+    ]);
+    MKT.bd = bd; MKT.qd = qd; MKT.bs = bs; MKT.qs = qs;
+    try {
+      const p = await readSig(POOL, "pendingCurve(uint256)", [S.id]);
+      MKT.drift = decUint(p, 0) !== 0n;
+      MKT.liveConc = decUint(p, 2);
+    } catch { MKT.drift = false; }
+  }
+  return MKT;
+}
+
+BUILD.MARKET = m => {
+  if(!hasPool){
+    return panel(m.name,
+      '<div class="blurb">' + esc(m.blurb) + '</div>' +
+      '<p class="s" style="color:var(--warn)">This collection has no market contract set, ' +
+      'so this token cannot hold one. Nothing else about the token is affected.</p>', m.i);
+  }
+
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    '<div id="mk-body"><p class="s">reading the market…</p></div>', m.i, () => paintMarket());
+
+  async function paintMarket(){
+    const host = () => $("#mk-body");
+    try { await readMarket(); }
+    catch(e){
+      host().innerHTML = '<p class="s" style="color:var(--bad)">Could not read the market: ' +
+        esc(String(e.message || e).slice(0, 120)) + "</p>";
+      return;
+    }
+
+    const mine = NET.account && NET.account.toLowerCase() === String(S.owner).toLowerCase();
+
+    if(!MKT.open){
+      host().innerHTML =
+        '<p class="s" style="color:var(--mid);margin-bottom:12px">This token has no market yet.' +
+        (mine ? " Open one and it becomes an exchange." :
+                " Only the holder can open one.") + "</p>" +
+        (mine
+          ? fld("Base token", "mk-b", "0x… the asset being priced") +
+            fld("Quote token", "mk-q", "0x… what it is priced in") +
+            '<label class="f k">Fee <span class="mut" id="mk-fv">0.30%</span></label>' +
+            '<input type="range" id="mk-f" min="0" max="500" step="5" value="30">' +
+            '<button class="b" id="mk-open">Open the market</button>'
+          : "");
+      if(mine){
+        $("#mk-f").addEventListener("input", e =>
+          $("#mk-fv").textContent = (e.target.value / 100).toFixed(2) + "%");
+        $("#mk-open").onclick = guard(async () => {
+          await needWallet(); needOwner();
+          const b = val("mk-b"), q = val("mk-q");
+          if(!isAddr(b) || !isAddr(q)) throw new Error("Both sides need a token address.");
+          const { data, sig, types } = encodeCall("openMarket(uint256,address,address,uint16)",
+            [S.id, checksum(b), checksum(q), $("#mk-f").value]);
+          propose({ to: POOL, data, sig, types, value: 0n,
+            plain: "Open a market on this token. Anyone will be able to trade against whatever " +
+                   "you put in, and you keep the fee. Selling the token sells the market.",
+            then: paintMarket });
+        });
+      }
+      return;
+    }
+
+    const B = MKT.bs, Q = MKT.qs;
+    const price = MKT.spot === 0n ? "—"
+      : fmtUnits(MKT.spot * (10n ** BigInt(MKT.bd)) / (10n ** BigInt(MKT.qd)), 18, 6);
+
+    host().innerHTML =
+      kv("Pair", esc(B) + " / " + esc(Q)) +
+      kv("Price", "1 " + esc(B) + " = " + esc(price) + " " + esc(Q)) +
+      kv("Reserves", fmtUnits(MKT.rb, MKT.bd) + " " + esc(B) + " · " +
+                     fmtUnits(MKT.rq, MKT.qd) + " " + esc(Q)) +
+      kv("Fee", (MKT.fee / 100).toFixed(2) + "%") +
+      kv("Trades", MKT.trades.toString()) +
+      kv("Concentration", MKT.conc.toString() + " bps" +
+         (MKT.conc === 0n ? " · plain constant product" : "")) +
+      kv("Bond", MKT.bond === 0n
+          ? '<span style="color:var(--dim)">none - the holder may withdraw at any moment</span>'
+          : (MKT.bond > BigInt(Math.floor(Date.now() / 1000))
+              ? '<span style="color:var(--ok)">nothing leaves before ' +
+                new Date(Number(MKT.bond) * 1000).toISOString().replace("T", " ").slice(0, 16) +
+                " UTC</span>"
+              : '<span style="color:var(--dim)">expired</span>')) +
+      (MKT.drift
+        ? '<div class="s" style="color:var(--warn);margin:8px 0">The solid has been turned since ' +
+          'the market last took a copy of it. Syncing would move the concentration to <b>' +
+          MKT.liveConc.toString() + '</b> bps.' +
+          (mine ? ' <span class="chip" id="mk-sync" style="margin-left:6px">Sync the curve</span>' : "") +
+          "</div>"
+        : "") +
+      '<hr><div class="k">Trade</div>' +
+      '<div class="chips" id="mk-dir"><span class="chip on" data-d="1">' + esc(B) + " → " + esc(Q) +
+        '</span><span class="chip" data-d="0">' + esc(Q) + " → " + esc(B) + "</span></div>" +
+      fld("Amount in", "mk-amt", "0.0") +
+      '<div id="mk-quote" class="s" style="min-height:34px;color:var(--mid)"></div>' +
+      '<label class="f k">Most you will give up to slippage <span class="mut" id="mk-slipv">1.0%</span></label>' +
+      '<input type="range" id="mk-slip" min="1" max="500" step="1" value="100">' +
+      '<button class="b" id="mk-swap">Review the trade</button>' +
+      (mine
+        ? '<hr><div class="k">The bond</div>' +
+          '<p class="s" style="color:var(--mid);margin-bottom:8px">A promise that nothing ' +
+          'leaves this market before a date. It only ever moves further out, it survives the ' +
+          'sale of the token, and while it holds you cannot withdraw, close, re-price the fee ' +
+          'or re-shape the curve. That is what makes it worth anything to a buyer.</p>' +
+          fld("Days from now", "mk-bond", "30") +
+          '<button class="b g" id="mk-bondgo">Bond the inventory</button>' +
+          '<hr><div class="k">Inventory</div>' +
+          '<div class="row">' + fld("Add " + esc(B), "mk-db", "0.0") + fld("Add " + esc(Q), "mk-dq", "0.0") + "</div>" +
+          '<button class="b g" id="mk-dep">Deposit</button>' +
+          '<div class="row">' + fld("Take " + esc(B), "mk-wb", "0.0") + fld("Take " + esc(Q), "mk-wq", "0.0") + "</div>" +
+          '<button class="b g" id="mk-wd">Withdraw</button>'
+        : "");
+
+    let baseIn = true;
+    $$("#mk-dir .chip").forEach(ch => ch.onclick = () => {
+      baseIn = ch.dataset.d === "1";
+      $$("#mk-dir .chip").forEach(x => x.classList.toggle("on", x === ch));
+      refreshQuote();
+    });
+    $("#mk-slip").addEventListener("input", e =>
+      $("#mk-slipv").textContent = (e.target.value / 100).toFixed(1) + "%");
+
+    let lastQuote = 0n, quoteTimer = 0;
+    const refreshQuote = () => {
+      clearTimeout(quoteTimer);
+      quoteTimer = setTimeout(async () => {
+        const el = $("#mk-quote");
+        if(!el) return;
+        const raw = val("mk-amt");
+        if(!raw){ el.textContent = ""; lastQuote = 0n; return; }
+        let amt;
+        try { amt = toUnits(raw, baseIn ? MKT.bd : MKT.qd); }
+        catch { el.textContent = "not a number"; return; }
+        if(amt === 0n){ el.textContent = ""; return; }
+        /*  The pool caps what LEAVES, not what arrives — so the size to
+            check is the quote, and the cap is on the far side. This used to
+            compare the input against the near side's cap, which is neither
+            the right number nor the right reserve, and would wave through a
+            trade the contract refuses while warning about ones it accepts. */
+        try {
+          lastQuote = decUint(await readSig(POOL, "quote(uint256,bool,uint256)", [S.id, baseIn, amt.toString()]));
+          if(lastQuote > MKT.maxOut[baseIn ? 1 : 0]){
+            el.innerHTML = '<span style="color:var(--warn)">This would take more out than the ' +
+              'market will pay. It caps a single trade at half the outgoing reserve &mdash; ' +
+              fmtUnits(MKT.maxOut[baseIn ? 1 : 0], baseIn ? MKT.qd : MKT.bd) + " " +
+              esc(baseIn ? Q : B) + '.</span>';
+            lastQuote = 0n; return;
+          }
+          const outDec = baseIn ? MKT.qd : MKT.bd;
+          const got = fmtUnits(lastQuote, outDec);
+          // what this trade actually costs against the pool's own spot
+          const ideal = baseIn
+            ? (amt * MKT.spot) / (10n ** 18n)
+            : (amt * (10n ** 18n)) / (MKT.spot === 0n ? 1n : MKT.spot);
+          const slip = ideal === 0n ? 0
+            : Number(((ideal - lastQuote) * 10000n) / ideal) / 100;
+          el.innerHTML = "You receive <b>" + esc(got) + " " + esc(baseIn ? Q : B) + "</b>" +
+            '<br><span style="color:var(--dim)">' + slip.toFixed(2) +
+            "% below this market's spot price, fee included</span>";
+        } catch(e){
+          el.innerHTML = '<span style="color:var(--bad)">' +
+            esc(String(e.message || e).slice(0, 90)) + "</span>";
+          lastQuote = 0n;
+        }
+      }, 220);
+    };
+    $("#mk-amt").addEventListener("input", refreshQuote);
+
+    $("#mk-swap").onclick = guard(async () => {
+      await needWallet();
+      if(lastQuote === 0n) throw new Error("Nothing to trade yet — enter an amount that this market can take.");
+      const amt = toUnits(val("mk-amt"), baseIn ? MKT.bd : MKT.qd);
+      const slipBps = BigInt($("#mk-slip").value);
+      const floor = (lastQuote * (10000n - slipBps)) / 10000n;
+      const { data, sig, types } = encodeCall(
+        "swap(uint256,bool,uint256,uint256,address,uint256)",
+        [S.id, baseIn, amt.toString(), floor.toString(), NET.account,
+         (Math.floor(Date.now() / 1000) + 1800).toString()]);
+      propose({ to: POOL, data, sig, types, value: 0n,
+        note: "You must have approved the pool to take your " + (baseIn ? B : Q) + " first.",
+        plain: "Trade " + fmtUnits(amt, baseIn ? MKT.bd : MKT.qd) + " " + (baseIn ? B : Q) +
+               " for at least " + fmtUnits(floor, baseIn ? MKT.qd : MKT.bd) + " " + (baseIn ? Q : B) +
+               ". The trade fails rather than paying you less. It expires in thirty minutes.",
+        then: paintMarket });
+    });
+
+    const bonded = MKT.bond > BigInt(Math.floor(Date.now() / 1000));
+    if(bonded){
+      ["mk-wd", "mk-sync"].forEach(id => {
+        const e = $("#" + id);
+        if(e){ e.setAttribute("disabled", "disabled"); e.classList.add("shut");
+               e.title = "Frozen while the bond holds."; }
+      });
+    }
+
+    if(MKT.drift && mine && $("#mk-sync") && !bonded){
+      $("#mk-sync").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const { data, sig, types } = encodeCall("syncCurve(uint256)", [S.id]);
+        propose({ to: POOL, data, sig, types, value: 0n,
+          plain: "Copy the solid's current orientation into the market, changing how tightly " +
+                 "the liquidity is concentrated and so what traders are quoted.",
+          then: paintMarket });
+      });
+    }
+
+    if(mine){
+      $("#mk-bondgo").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const days = parseFloat(val("mk-bond"));
+        if(!(days > 0)) throw new Error("How many days?");
+        if(days > 365) throw new Error("A bond cannot run past a year.");
+        const until = Math.floor(Date.now() / 1000) + Math.round(days * 86400);
+        const { data, sig, types } = encodeCall("bond(uint256,uint64)", [S.id, until]);
+        propose({ to: POOL, data, sig, types, value: 0n,
+          note: "This cannot be undone or shortened. Until it expires you cannot take the " +
+                "inventory back out, and neither can anyone you sell the token to.",
+          plain: "Promise that nothing leaves this market until " +
+                 new Date(until * 1000).toISOString().replace("T", " ").slice(0, 16) + " UTC. " +
+                 "Anyone considering buying this token can read that promise on chain.",
+          then: paintMarket });
+      });
+
+      $("#mk-dep").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const b = val("mk-db") ? toUnits(val("mk-db"), MKT.bd) : 0n;
+        const q = val("mk-dq") ? toUnits(val("mk-dq"), MKT.qd) : 0n;
+        if(b === 0n && q === 0n) throw new Error("Nothing to deposit.");
+        const { data, sig, types } = encodeCall("deposit(uint256,uint256,uint256)",
+          [S.id, b.toString(), q.toString()]);
+        propose({ to: POOL, data, sig, types, value: 0n,
+          note: "The pool must be approved to take both tokens first.",
+          plain: "Put " + fmtUnits(b, MKT.bd) + " " + B + " and " + fmtUnits(q, MKT.qd) + " " + Q +
+                 " into this token's market. It stays yours, and travels with the token if you sell it.",
+          then: paintMarket });
+      });
+      $("#mk-wd").onclick = guard(async () => {
+        await needWallet(); needOwner();
+        const b = val("mk-wb") ? toUnits(val("mk-wb"), MKT.bd) : 0n;
+        const q = val("mk-wq") ? toUnits(val("mk-wq"), MKT.qd) : 0n;
+        if(b === 0n && q === 0n) throw new Error("Nothing to withdraw.");
+        const { data, sig, types } = encodeCall("withdraw(uint256,uint256,uint256,address)",
+          [S.id, b.toString(), q.toString(), NET.account]);
+        propose({ to: POOL, data, sig, types, value: 0n,
+          plain: "Take " + fmtUnits(b, MKT.bd) + " " + B + " and " + fmtUnits(q, MKT.qd) + " " + Q +
+                 " back out of this token's market.",
+          then: paintMarket });
+      });
+    }
+  }
+};
+
+/*───────────────────────────────────────────────────────────────────────────
+ 12 · NEST — the token inside the token
+
+  This is not a picture of the token. It is the token: tokenURI() is
+  called on chain, the base64 is decoded here, the depth counter is
+  raised by one and injected, and the result is mounted in a frame
+  positioned in the same three-space as the solid. The instance inside
+  can do this again. Each one is one section deeper and one degree
+  colder, and the recursion is stopped at four because a plane does
+  eventually run out of room.
+───────────────────────────────────────────────────────────────────────────*/
+/* Browsers keep somewhere between eight and sixteen live WebGL contexts
+   per page and drop the oldest without raising anything when they run
+   out. Each section deeper is one more context, so the plane runs out of
+   room well before the idea does. */
+const MAX_DEPTH = 3;
+let nestNode = null;
+
+function placeNest(){
+  const p = project(nestNode ? nestNode.pos : [0, 0, 0]);
+  const box = $("#nestbox");
+  if(!p){ box.style.opacity = "0"; return; }
+  const s = clamp(3.4 / p.z, 0.28, 1.35);
+  const w = 268, h = 178;
+  box.style.opacity = clamp(2.4 - p.z * 0.2, 0.25, 1).toFixed(2);
+  box.style.width = w + "px";
+  box.style.height = h + "px";
+  box.style.transform =
+    "translate(" + (p.x - w * s / 2).toFixed(1) + "px," + (p.y - h * s / 2).toFixed(1) + "px) scale(" + s.toFixed(3) + ")";
+}
+
+BUILD.NEST = m => {
+  panel(m.name,
+    '<div class="blurb">' + esc(m.blurb) + '</div>' +
+    kv("This instance", "section " + DEPTH) +
+    kv("Deepest allowed", MAX_DEPTH) +
+    '<div id="n-out"></div>' +
+    (DEPTH >= MAX_DEPTH
+      ? '<p class="s" style="color:var(--warn);margin-top:12px">The plane has run out of room. ' +
+        'This is the last section that will open.</p>'
+      : '<button class="b" id="n-go">Open this token inside itself</button>' +
+        '<button class="b g" id="n-off">Close it</button>'), m.i, () => {
+      const out = $("#n-out");
+      if(DEPTH >= MAX_DEPTH) return;
+      $("#n-off").onclick = () => {
+        $("#nest").classList.remove("on");
+        $("#nestframe").src = "about:blank";
+        say("The inner section is closed.");
+      };
+      $("#n-go").onclick = guard(async () => {
+        out.innerHTML = '<p class="s">calling tokenURI(' + S.id + ") on chain…</p>";
+        const raw = await readSig(S.collection, "tokenURI(uint256)", [S.id]);
+        const uri = decString(raw);
+        if(!/^data:application\/json;base64,/.test(uri))
+          throw new Error("This contract does not return its metadata inline; there is nothing to open.");
+        const json = JSON.parse(atob(uri.split(",")[1]));
+        const anim = String(json.animation_url || "");
+        if(!/^data:text\/html;base64,/.test(anim))
+          throw new Error("The metadata carries no document to open.");
+        let html = new TextDecoder().decode(
+          Uint8Array.from(atob(anim.split(",")[1]), c => c.charCodeAt(0)));
+        /* raise the depth on the way in, so the inner copy knows where it is */
+        html = html.replace(/depth\s*:\s*\d+/, "depth:" + (DEPTH + 1));
+        if(!/depth\s*:/.test(html)) html = html.replace(/window\.IPSE\s*=\s*\{/, "window.IPSE={depth:" + (DEPTH + 1) + ",");
+        const frame = $("#nestframe");
+        frame.srcdoc = html;
+        nestNode = nodes.find(n => n.id === "NEST");
+        $("#nest").classList.add("on");
+        $("#nestbar").textContent = "IPSEITY #" + S.id + " · section " + (DEPTH + 1);
+        placeNest();
+        out.innerHTML = kv("Bytes returned", (html.length).toLocaleString()) +
+                        kv("Depth now open", DEPTH + 1);
+        say("The token is open inside itself, one section deeper.", "ok");
+        shock();
+      });
+    });
+};
+
+/*───────────────────────────────────────────────────────────────────────────
+ 13 · READING THE TOKEN BACK
+───────────────────────────────────────────────────────────────────────────*/
+async function refresh(loud){
+  if(NET.dead) return;
+  try {
+    const [ownerRaw, wordRaw, opsRaw] = await Promise.all([
+      readSig(S.collection, "ownerOf(uint256)", [S.id]),
+      readSig(S.collection, "sectionOf(uint256)", [S.id]),
+      readSig(S.collection, "statsOf(uint256)", [S.id]).catch(() => null)
+    ]);
+    S.owner = decAddr(ownerRaw);
+    const word = decUint(wordRaw);
+    const u = unpackSection(word);
+    S.w = u.w; S.form = u.form; S.hue = u.hue; S.rot = u.rot;
+    C.rot = u.rot.map(u16ToAngle); C.w = u16ToW(u.w); C.form = u.form; C.hue = u.hue;
+    if(opsRaw){
+      S.ops    = Number(decUint(opsRaw, 0));
+      S.xfers  = Number(decUint(opsRaw, 1));
+      S.strata = Number(decUint(opsRaw, 2));
+      S.open   = Number(decUint(opsRaw, 3));
+    }
+    markDirty();
+    const set = (id, v) => { const e = $("#" + id); if(e) e.textContent = v; };
+    set("u-owner", short(S.owner)); set("u-ops", S.ops); set("u-x", S.xfers); set("u-str", S.strata);
+    const w = $("#u-word");
+    if(w) w.textContent = "0x" + word.toString(16).padStart(64, "0").replace(/(.{32})/g, "$1\n");
+    paintRail();
+    if(loud) say("Read the contract. Section word is <b>0x" + word.toString(16).slice(0, 16) + "…</b>", "ok");
+  } catch(e){
+    if(loud) say("Could not read the contract: " + esc(String(e.message || e).slice(0, 120)), "err");
+  }
+}
+
+function paintRail(){
+  $("#v-id").textContent = "#" + S.id;
+  $("#v-net").textContent = chainOf(NET.chainId).n;
+  const led = $("#v-led"), lbl = $("#v-link");
+  led.className = "led" + (NET.account ? " live" : NET.ro ? " ro" : "");
+  lbl.textContent = NET.account ? short(NET.account) : NET.dead ? "No network" : NET.ro ? "Read only" : "Connect";
+  $("#link").classList.toggle("live", !!NET.account);
+  paintDock();
+}
+
+/*───────────────────────────────────────────────────────────────────────────
+ 14 · COMMAND PALETTE — everything the token can do, in one list
+───────────────────────────────────────────────────────────────────────────*/
+const COMMANDS = [
+  ...MODULES.map(m => ({ t: m.name, d: m.blurb.split(".")[0] + ".", k: m.key, run: () => open(m.i) })),
+  { t: "Commit the section", d: "Write the orientation you are looking at into the token.", k: "⏎", run: () => txCommit() },
+  { t: "Revert to the chain", d: "Throw away the uncommitted turn.", k: "", run: () => {
+      L.rot = C.rot.slice(); L.w = C.w; L.form = C.form; L.hue = C.hue; VIS.spin = [0,0,0,0,0,0];
+      document.documentElement.style.setProperty("--h", String(Math.round(L.hue * 360 / 255)));
+      markDirty(); paintW(); say("Back to what the chain says."); } },
+  { t: "Isoclinic spin", d: "Turn in two orthogonal planes at once — the rotation only four dimensions allow.",
+    k: "i", run: () => { VIS.spin = [0,0,0, 0.26, 0, 0.26]; say("Isoclinic: xw and zw together, at equal rate. In three dimensions there is no such motion."); paintDock(); } },
+  { t: "Stop every rotation", d: "Hold the solid still.", k: "s", run: () => { VIS.spin = [0,0,0,0,0,0]; wDrift = false; $("#wauto").classList.remove("on"); paintDock(); say("Held."); } },
+  { t: "Centre the section", d: "Put the cut back at w = 0.", k: "0", run: () => { setW(0); say("Section returned to the origin."); } },
+  /*  Two verbs, and they document themselves: with nothing typed after
+      them the row's description is the vocabulary. Eight `launch 2D`
+      entries used to sit here, each hard-coding one route and each
+      leaving the document; `open` reaches twenty-three surfaces and
+      leaves nothing.                                                  */
+  /*  The one way out, and it is one thing rather than two. Connecting and
+      arriving used to be separate — a wallet bound in this document, and
+      then, separately, a route opened in a pane beside it. That is why
+      the instrument had to become a browser: because the place you were
+      going had to fit inside it.
+
+      It does not. `/connect` binds a wallet and then LEAVES: the document
+      is replaced, this loop ends with it, and nothing is left running
+      behind anything. The heat that took two passes to chase was mostly
+      this, structurally — two documents alive because neither was allowed
+      to be the whole screen.
+
+      The wallet survives the navigation. A connection is granted to an
+      origin, not to a document, so the surface on the other side finds
+      the same provider already bound.                                 */
+  { t: "connect", d: DOORED
+      ? "Bind a wallet, then leave the instrument for the console."
+      : "Bind a wallet. (This copy is not served from an origin, so there is nowhere to go.)",
+    k: "", run: async () => {
+      await connect();
+      if(!NET.account) return;
+      if(!DOORED) return say("Connected. No origin to leave for.", "ok");
+      say("Connected \u00b7 leaving the instrument\u2026", "ok");
+      /*  One place, named once. When the console is rebuilt this is the
+          only line that moves.                                        */
+      leave(LANDING());
+    } },
+  { t: "Copy this token's URL", d: "The contract, chain and id, as a link.", k: "", run: () => {
+      const u = (chainOf(S.chainId).ex || "") + "/token/" + S.collection + "?a=" + S.id;
+      navigator.clipboard && navigator.clipboard.writeText(u);
+      say("Copied " + esc(u)); } },
+  { t: "Next solid", d: "Step through the eight.", k: "]", run: () => {
+      L.form = (L.form + 1) % FORMS.length; markDirty();
+      say("Sectioning a <b>" + FORMS[L.form].n + "</b>. " + esc(FORMS[L.form].d));
+      if(window.__snote) window.__snote(); } },
+  { t: "Toggle the neighbouring sections", d: "Show what lies just to either side along w.", k: "a", run: () => {
+      VIS.aura = VIS.aura > 0.05 ? 0 : 0.55; accFrames = 0;
+      say(VIS.aura > 0 ? "Showing the sections on either side along w." : "Neighbouring sections hidden."); } }
+];
+
+(function palette(){
+  const box = $("#pal"), q = $("#palq"), list = $("#pallist");
+  let items = COMMANDS, sel = 0;
+  const paint = () => {
+    list.innerHTML = items.map((c, i) =>
+      '<div class="pi' + (i === sel ? " sel" : "") + '" data-i="' + i + '">' +
+      '<span class="pt">' + esc(c.t) + '</span><span class="pd"' +
+      (c.shut ? ' style="color:var(--warn)"' : "") + '>' + esc(c.d) + '</span>' +
+      (c.k ? '<span class="pk">' + esc(c.k) + "</span>" : "") + "</div>").join("");
+    Array.from(list.children).forEach(el => el.onclick = () => run(+el.dataset.i));
+  };
+  const run = i => { const c = items[i]; box.classList.remove("open"); if(c) c.run(); };
+  const show = (seed) => {
+    box.classList.add("open"); q.value = seed || ""; sel = 0;
+    if(seed) q.dispatchEvent(new Event("input")); else { items = COMMANDS; paint(); }
+    q.focus();
+  };
+  /*  A row that will not run says why, in place of its description, and
+      says it again through the ticker when pressed so the reason
+      survives the palette closing. A reason attached to the control beats
+      a reason that arrives after the control failed.                   */
+  const shut = (t, why) => ({ t: t, d: why, k: "", shut: true, run: () => say(why, "err") });
+
+  /*  `open` and `close` used to be parsed here, ahead of the filter,
+      because a row titled "open" can never match "open swap" by substring.
+      Both verbs reached the deck, and there is no deck: the instrument
+      does not open web surfaces any more, it is left.
+
+      What replaced them needs no parser. `/connect` is a row like any
+      other, matched by substring like any other, and the leading slash a
+      person types is already stripped.                                */
+  q.addEventListener("input", () => {
+    const raw = q.value.toLowerCase().trim().replace(/^\//, "");
+    items = raw ? COMMANDS.filter(c => (c.t + " " + c.d).toLowerCase().includes(raw)) : COMMANDS;
+    sel = 0; paint();
+  });
+  q.addEventListener("keydown", e => {
+    if(e.key === "ArrowDown"){ sel = Math.min(items.length - 1, sel + 1); paint(); e.preventDefault(); }
+    if(e.key === "ArrowUp")  { sel = Math.max(0, sel - 1); paint(); e.preventDefault(); }
+    if(e.key === "Enter")    { run(sel); e.preventDefault(); }
+    if(e.key === "Escape")   { box.classList.remove("open"); }
+  });
+  box.addEventListener("click", e => { if(e.target === box) box.classList.remove("open"); });
+  window.__palette = show;
+})();
+
+/*  The two thumb-sized ways in. `/` opens the command list on a keyboard;
+    a phone has none, so the rail carries a button for it. And `2D` is the
+    way out to the flat site — always on the rail, because a door that
+    orbits is a door you sometimes cannot reach.                        */
+(function reach(){
+  const cmd = $("#rcmd"), two = $("#r2d");
+  if(cmd) cmd.addEventListener("click", () => window.__palette());
+  if(!DOORED){ if(two) two.remove(); return; }
+  if(two){
+    two.hidden = false;
+    /*  The same departure the palette offers, on a control instead of a
+        word. It used to open /door in a pane — a second front door,
+        showing a different token, beside the one you were inside.    */
+    two.addEventListener("click", async () => {
+      await connect();
+      if(NET.account) leave(LANDING());
+    });
+  }
+})();
+
+addEventListener("keydown", e => {
+  if(/^(INPUT|TEXTAREA|SELECT)$/.test(e.target.tagName)) return;
+  const k = e.key;
+  if(k === "/" || (k === "k" && (e.metaKey || e.ctrlKey))){ window.__palette(); e.preventDefault(); return; }
+  if(k === "Escape"){
+    /*  Innermost first. Closing everything at once used to be the
+        behaviour and it made the deck a room you could not back out of
+        one step at a time.                                            */
+    if($("#confirm").classList.contains("open")){ $("#confirm").classList.remove("open"); pending = null; return; }
+    if($("#pal").classList.contains("open")){ $("#pal").classList.remove("open"); return; }
+    if(plateI >= 0) return plateShut();
+    if(sheet.classList.contains("open")) return shut();
+    return;
+  }
+  const m = MODULES.find(x => x.key === k);
+  if(m){ open(m.i); return; }
+  if(k === "]") COMMANDS.find(c => c.t === "Next solid").run();
+  if(k === "i") COMMANDS.find(c => c.t === "Isoclinic spin").run();
+  if(k === "s") COMMANDS.find(c => c.t === "Stop every rotation").run();
+  if(k === "a") COMMANDS.find(c => c.t.startsWith("Toggle the neighbouring")).run();
+  if(k === "0") setW(0);
+  if(k === "Enter" && L.dirty) txCommit();
+  if(k === "ArrowLeft")  setW(L.w - (e.shiftKey ? 0.2 : 0.03));
+  if(k === "ArrowRight") setW(L.w + (e.shiftKey ? 0.2 : 0.03));
+});
+
+$("#link").onclick = guard(async () => {
+  if(NET.account) return open(0);
+  const list = discover();
+  if(list.length > 1){
+    panel("Wallets", '<div class="blurb">More than one provider announced itself. Choose which one signs.</div>' +
+      list.map((p, i) => '<button class="b g" data-w="' + i + '">' + esc(p.info.name) + "</button>").join(""),
+      null, () => $$("#sbody [data-w]").forEach(b => b.onclick = guard(async () => {
+        await connect(+b.dataset.w); shut(); refresh();
+      })));
+    return;
+  }
+  await connect(); refresh();
+});
+
+/*── the coach: three sentences, once, then never again ────────────────*/
+const HINTS = [
+  "Drag to orbit. <b>Scroll</b> to come closer.",
+  "The slider under the field moves your 3-space along <b>w</b>. The shape you see is only where it cuts.",
+  "The chips marked <b>xw · yw · zw</b> turn the solid <em>through</em> the fourth axis. Those are the ones that change the section."
+];
+(function coach(){
+  if(!ROOT) return;
+  const el = $("#coach");
+  let i = 0;
+  const next = () => {
+    if(i >= HINTS.length){ el.classList.remove("on"); return; }
+    el.innerHTML = HINTS[i++];
+    el.classList.add("on");
+    setTimeout(() => { el.classList.remove("on"); setTimeout(next, 500); }, 5200);
+  };
+  setTimeout(next, 2400);
+})();
+
+/*───────────────────────────────────────────────────────────────────────────
+ 15 · BOOT
+───────────────────────────────────────────────────────────────────────────*/
+function fatal(msg){
+  $("#fatalmsg").textContent = String(msg);
+  $("#fatal").classList.add("on");
+  $("#boot").classList.add("gone");
+  document.body.classList.add("up");
+}
+
+(async function boot(){
+  const bar = $("#bootbar i"), msg = $("#bootmsg");
+  const step = (pct, text) => { bar.style.width = pct + "%"; if(text) msg.textContent = text; };
+  try {
+    step(12, "compiling the field");
+    initGL();
+    step(38, "allocating the section");
+    resize();
+    paintW(); paintDock(); paintRail();
+    step(56, "placing the instruments");
+    placeNodes(0);
+    layout();
+    step(72, "verifying the sponge");
+    /* the token checks its own hash function before it offers to sign anything */
+    if(khex("") !== "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470")
+      throw new Error("the keccak implementation carried by this token does not agree with Ethereum");
+    step(86, "reaching for the chain");
+    if(ROOT){
+      discover();
+      if(NET.providers.length){
+        try {
+          const acc = await NET.providers[0].provider.request({ method: "eth_accounts" });
+          if(acc && acc.length){ await connect(0); }
+        } catch { /* not yet authorised; that is fine */ }
+      }
+      if(!NET.account) { NET.ro = true; paintRail(); }
+      refresh();
+    }
+    step(100, "");
+    requestAnimationFrame(frame);
+    document.body.classList.add("up");
+    setTimeout(() => $("#boot").classList.add("gone"), 340);
+    setTimeout(() => { const b = $("#boot"); if(b) b.remove(); }, 1400);
+  } catch(e){
+    fatal(String(e && (e.message || e)));
+  }
+})();
+
+/* w drifts on its own until someone takes hold of it */
+setInterval(() => {
+  if(!wDrift || paused) return;
+  wPhase += 0.016;
+  setW(Math.sin(wPhase * 0.21) * 1.12);
+}, 33);
+
+document.addEventListener("visibilitychange", () => { paused = document.hidden; last = performance.now(); });
+/*  A page nobody is looking at should not be drawing. Browsers throttle
+    requestAnimationFrame for a hidden tab, but throttled is not stopped
+    and the throttle varies — and on a phone the common case is not a
+    hidden tab, it is a screen that has just gone dark with this still in
+    the foreground. `paused` already existed and nothing set it.
+
+    accFrames is reset on the way back so the accumulator rebuilds rather
+    than blending a fresh frame into a history from before the pause.  */
+addEventListener("visibilitychange", () => {
+  paused = document.hidden;
+  if(!paused){ accFrames = 0; last = performance.now(); lastDraw = 0; }
+});
+
+addEventListener("resize", () => { accFrames = 0; layout(); });
+</script>
+</body>
+</html>

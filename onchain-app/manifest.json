@@ -1,0 +1,140 @@
+{
+  "schema": "idfbi/local-onchain-app-preparation/1.7",
+  "status": "LOCAL BYTES ONLY; NOT DEPLOYED",
+  "chainId": null,
+  "rootContract": null,
+  "applicationMode": "unsigned local rehearsal; archiving it does not wire a live GUI",
+  "htmlBytes": 409658,
+  "sha256": "1a08e36afe93c0233ed58220b0f2bc62245c22fb765989df013a5aced0b1025c",
+  "chunkCount": 18,
+  "chunkLimit": 23000,
+  "runtimeLayout": "STOP (0x00) followed by chunk bytes",
+  "chunks": [
+    {
+      "file": "chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "9cdf29fab6d9a2f2f2a4a3f8c9afd2c40b70462efd8f0d0cf544ba6afeed1319",
+      "expectedRuntimeCodeHash": "0xac82194d6229f0badbdbdcf0632f662e801bcf73954959a2a7f0cb045252d571",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "5bac8a3c62cf050b27fc4146c3f48e061be706d1fc302a43d41111a5b408883f",
+      "expectedRuntimeCodeHash": "0xd3592aad832d3b31f716f5b9e1f2f560f83be982cde4751b4d3afa376a760ccf",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/02.bin",
+      "bytes": 23000,
+      "sha256": "4c96b76e5e8bae9a03dab48c655e4b7bf2dd2dd988bc5cf9b0f07c4542305dad",
+      "expectedRuntimeCodeHash": "0xd1b0caf4c2a1dd776d872ec5c22064998524592705d1195424564271e72684fd",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/03.bin",
+      "bytes": 23000,
+      "sha256": "8b93d6c79febf59a68943f84b019315c6a9611e03b61ca75960a46b52b1b4373",
+      "expectedRuntimeCodeHash": "0x2f4946ffb8f19d027af5d1180accaba55ace70edc854b2a689a29e13ffe9c15e",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/04.bin",
+      "bytes": 23000,
+      "sha256": "2d33834f11cc538e854bd835220bfd9b6a17f6b237d1b322252d56b653763df7",
+      "expectedRuntimeCodeHash": "0xe0bf530191f67e921b32fd5c5c936ca34fb37cd6dd2cfb711f3e5877760bf2db",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/05.bin",
+      "bytes": 23000,
+      "sha256": "bee22f2f75b2d43f0ffc9f747025e790e5ac9327cd52ed0e5fc9b1965d1753bf",
+      "expectedRuntimeCodeHash": "0xca5d0e6d5b34186e74c2d314a3b982edc28ee769d381c40c285a40f4da34d82f",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/06.bin",
+      "bytes": 23000,
+      "sha256": "17dc2deacc326047346568a1935b30ac98b559b0e39453291716b21a55a0f64b",
+      "expectedRuntimeCodeHash": "0xdafa005057fed3f9fdd4f55fff3c43fac71908474bb522d8fc7dec8329590c8f",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/07.bin",
+      "bytes": 23000,
+      "sha256": "f1b935bdc6c3d96dd41a1aebc5709af64a5adc35ab60a52bb0cdb5a11d990334",
+      "expectedRuntimeCodeHash": "0x90b89d878ba450d5ba3dd2440f0f580c30e3addc02e291d74ede5c948d8207b1",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/08.bin",
+      "bytes": 23000,
+      "sha256": "53d8ab0cd109461807d7cc01ff717115419dc1d5c37cd7f2083d3101ebf57844",
+      "expectedRuntimeCodeHash": "0x7fdcb8ea0df9e506b5b3151217b8f4fe4c6fb0fbf89a8ba94cc164a2aa0723f0",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/09.bin",
+      "bytes": 23000,
+      "sha256": "3357f9aa994bcb02515f34a1818103b9a1a3221fc7b6dcd5c20d4205b4f8afe4",
+      "expectedRuntimeCodeHash": "0xa47b9579c6918ec18e5b790d164dd89df1723cf5115c846960678d6bb28a2e31",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/10.bin",
+      "bytes": 23000,
+      "sha256": "2c49315ec1d881a4b8a5ac10721c7e9fd2e60b03cba575db6bd94ae5722249e4",
+      "expectedRuntimeCodeHash": "0x40fbc22b8232e812d0bba2fef92bebd05f720374628985aa72ec7a2b0636f8c6",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/11.bin",
+      "bytes": 23000,
+      "sha256": "97e1ae1f979aa95c63482c8c411072fc1d7f03602a10642b87b05687992921a5",
+      "expectedRuntimeCodeHash": "0xb41dd732e178bd64279b27d9d75609cc3778606f3d545e7399f52c0eb241c4df",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/12.bin",
+      "bytes": 23000,
+      "sha256": "284850a4ead2f0a2edf03cbb7ba3c40f1b821ac95b60af03bc289c86eba31a3d",
+      "expectedRuntimeCodeHash": "0x7f6c8f2f17817ee3f1689e3f78d9000b7b23de2574fd5e89e8123375732d1f5c",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/13.bin",
+      "bytes": 23000,
+      "sha256": "1fb006b0928971b06e21e23ecf5dc6b9465121022f398008a154e90d684eec1c",
+      "expectedRuntimeCodeHash": "0x14d9265082639293cd9bebbf06a9a6804f984d9e64fe6ace3bf08986af56cdfd",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/14.bin",
+      "bytes": 23000,
+      "sha256": "a865ca8bae7083878bb0364b369a8f7d64649cf600cce59636faaebabdcc1491",
+      "expectedRuntimeCodeHash": "0x2dc7731b1e171691fd43b7cc198ada06e96bdf39dece310926320ca2c291b67d",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/15.bin",
+      "bytes": 23000,
+      "sha256": "a422c158166e62af45d7edb69e89e4f66d5f45adcfd69bbc7e7c1d368f59f00c",
+      "expectedRuntimeCodeHash": "0x51e36cca1652ea1c4dfa7bba9cc4a32ad1e3ab149bc5c02f528da435a0cf4f32",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/16.bin",
+      "bytes": 23000,
+      "sha256": "8ec01d6f919327ca749c981b59a7b30038a9e4fe18decdad98fd81c566d25b3c",
+      "expectedRuntimeCodeHash": "0xc9b9bd369ce9ac6c728bd5371c96af5b5547d5779f42c141f78a3a85153c3e81",
+      "deployedAddress": null
+    },
+    {
+      "file": "chunks/17.bin",
+      "bytes": 18658,
+      "sha256": "6167a6a127e7a3cc5724d69a09240801802955d976a471e94d55b7563de5480f",
+      "expectedRuntimeCodeHash": "0xa30224635c4c509833118f584624cff61e0d8a1725d574c837be8134ad13bdf5",
+      "deployedAddress": null
+    }
+  ]
+}

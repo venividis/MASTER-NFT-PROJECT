@@ -1,0 +1,19 @@
+{
+  "status": "passed",
+  "environment": "local Anvil 1.7.1 / Cancun / 127.0.0.1 only; no public deployment",
+  "coreCommit": "46c6834698c48bc4a463a86d8420f4eb1d7f3b75",
+  "scenarios": 9,
+  "permissionFlags": "0x00c8",
+  "saltMiningAttempts": 4192,
+  "passed": [
+    "A real pinned PoolManager and a CREATE2 hook with validated permission bits deploy on Cancun without changing core source.",
+    "Currency0-to-currency1 exact-input swaps debit exactly gross input and mint the exact configured fee as PoolManager ERC6909 claims.",
+    "Reverse-direction exact-input swaps charge the correct input currency through the same real accounting path.",
+    "Configuration changes preserve prior recipients; permissionless flushes burn real claims, settle PoolManager deltas, fund the splitter or pay the recorded recipient, and clear allowances.",
+    "Unsupported exact-output orders, stale fee caps and expired quotes reject without changing accrued fee claims.",
+    "A price-limited partial fill rejects atomically rather than charging the hook fee on an unfilled gross order.",
+    "The owner can set the hook fee to zero without disabling valid full exact-input swaps.",
+    "Native-input swaps and native claim redemption fund the same configurable splitter using real native PoolManager settlement.",
+    "Two-step ownership transfer changes fee configuration authority while existing fee claims remain payable."
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "originalSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+  "releaseSha256": "1867d04f2ee2399b0d699fa0f7aa81b1e72aea30181601942edf4df24be816e3",
+  "originalRemovedAdditionByteIdentical": true,
+  "assetHashes": {
+    "shader": "2d6d1dbc3dde449173701ca09d09470568cfabe8ab9087501d9a065559b833be",
+    "original": "91e9770eae022cedd283866f9686991a7d8fb67490630b7ebb50b7d318be93b0",
+    "wasm": "5cc710c19647531e2d7bc61e90b18d97068a3e55480f6ef92891620577a1a77d",
+    "referenceHTML": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59"
+  },
+  "bytes": 455670
+}

@@ -1,0 +1,231 @@
+<title>IPSEITY Front Door</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&family=IBM+Plex+Sans+Condensed:wght@500;600&family=IBM+Plex+Sans:wght@300;400&display=swap">
+
+<style>
+/*  The palette is the site's own — these are the values in Chrome.sol, so
+    the page around the frames is made of the same colours as what is inside
+    them. The accent is the site's link blue rather than a token's hue,
+    because this page is about the building and not about one tenant. */
+:root{
+  --void:#07080c; --plate:#0a0d14; --plate-2:#0e1320;
+  --rule:#161c2a; --rule-2:#232c42; --rule-3:#2f3b56;
+  --dim:#6c7689; --mid:#8b95ad; --txt:#c9d3e6; --lit:#eaf1ff;
+  --a:#7fd4ff; --a-dim:#4a86ad; --a-ghost:#7fd4ff1a;
+  --ok:#7fe0a8; --warn:#ffb27f;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  --cond:"IBM Plex Sans Condensed","IBM Plex Sans",system-ui,sans-serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --gut:clamp(18px,4vw,48px);
+  --ease:cubic-bezier(.22,.61,.36,1);
+}
+@media (prefers-reduced-motion: reduce){ *{ animation:none !important; transition:none !important } }
+*{ box-sizing:border-box }
+body{ margin:0; background:var(--void); color:var(--txt);
+  font-family:var(--sans); font-weight:300; font-size:15px; line-height:1.65;
+  -webkit-font-smoothing:antialiased }
+a{ color:var(--a) } :focus-visible{ outline:2px solid var(--a); outline-offset:3px }
+.wrap{ max-width:1240px; margin-inline:auto; padding-inline:var(--gut) }
+.k{ font-family:var(--mono); font-size:10px; font-weight:500; letter-spacing:.26em;
+    text-transform:uppercase; color:var(--dim) }
+
+header{ padding:clamp(44px,8vh,88px) 0 34px; border-bottom:1px solid var(--rule) }
+h1{ font-family:var(--mono); font-weight:500; font-size:clamp(30px,6vw,60px);
+    letter-spacing:.2em; line-height:1; color:var(--lit); margin:14px 0 0; text-indent:.2em }
+.lede{ max-width:62ch; margin:20px 0 0; color:var(--mid); font-size:clamp(15px,1.5vw,18px) }
+.lede b{ color:var(--txt); font-weight:400 }
+.strip{ display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
+        grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); margin-top:32px }
+.cell{ background:var(--plate); padding:14px 16px 16px }
+.cell .v{ font-family:var(--mono); font-variant-numeric:tabular-nums; font-size:21px;
+          color:var(--lit); margin-top:7px; overflow-wrap:anywhere }
+.cell .u{ font-family:var(--mono); font-size:11px; color:var(--dim); margin-top:2px }
+
+section{ padding:clamp(38px,6vh,72px) 0 }
+section + section{ border-top:1px solid var(--rule) }
+h2{ font-family:var(--cond); font-weight:600; font-size:clamp(21px,2.8vw,29px);
+    color:var(--lit); margin:10px 0 0; letter-spacing:-.01em; text-wrap:balance }
+.sub{ max-width:62ch; margin:12px 0 0; color:var(--mid) }
+
+/*──────── the routes ────────*/
+.rig{ display:grid; grid-template-columns:1fr; gap:18px; margin-top:26px }
+@media (min-width:900px){ .rig{ grid-template-columns:250px 1fr } }
+.rail{ display:flex; flex-direction:column; gap:1px; background:var(--rule);
+       border:1px solid var(--rule); align-self:start; max-height:70vh; overflow-y:auto }
+.rail button{ font:inherit; text-align:left; background:var(--plate); border:0; color:var(--mid);
+  padding:9px 12px; cursor:pointer; display:block; width:100%;
+  transition:background .16s var(--ease), color .16s var(--ease) }
+.rail button:hover{ background:var(--plate-2); color:var(--lit) }
+.rail button[aria-current="true"]{ background:var(--a-ghost); color:var(--lit);
+  box-shadow:inset 2px 0 0 var(--a) }
+.rail .p{ font-family:var(--mono); font-size:12.5px }
+.rail .n{ font-size:11px; color:var(--dim); margin-top:1px; line-height:1.4 }
+
+.viewport{ border:1px solid var(--rule-2); background:var(--plate); min-width:0 }
+.bar{ display:flex; flex-wrap:wrap; align-items:baseline; gap:6px 16px;
+      padding:9px 12px; border-bottom:1px solid var(--rule-2); background:var(--plate-2) }
+.bar .p{ font-family:var(--mono); font-size:13px; color:var(--lit) }
+.bar .m{ font-family:var(--mono); font-size:11px; color:var(--dim);
+         font-variant-numeric:tabular-nums; margin-left:auto }
+.bar .m b{ color:var(--a); font-weight:400 }
+.frame{ width:100%; height:min(74vh,760px); border:0; display:block; background:#07080c }
+pre.raw{ margin:0; padding:16px; font-family:var(--mono); font-size:12px; line-height:1.7;
+  color:var(--txt); background:#07080c; overflow:auto; height:min(74vh,760px);
+  white-space:pre-wrap; overflow-wrap:anywhere }
+.note{ font-family:var(--mono); font-size:11.5px; color:var(--dim); margin-top:12px }
+
+/*──────── the walk ────────*/
+.walk{ display:grid; gap:1px; background:var(--rule); border:1px solid var(--rule);
+       grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); margin-top:26px }
+.step{ background:var(--plate); padding:18px 20px 20px }
+.step .k{ color:var(--a-dim) }
+.step p{ margin:9px 0 0; font-size:14px; color:var(--mid) }
+.step code{ font-family:var(--mono); font-size:12px; color:var(--lit) }
+
+footer{ border-top:1px solid var(--rule); padding:44px 0 84px; color:var(--mid) }
+footer p{ max-width:64ch; margin:14px 0 0; font-size:14px }
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="k">ERC-5219 · reached over web3:// · no DNS, no server</p>
+  <h1>IPSEITY</h1>
+  <p class="lede">The site is a contract. Every frame below holds the exact bytes an
+    ERC-5219 client receives from <span class="k" style="letter-spacing:.06em;text-transform:none">request()</span> —
+    <b>rendered by Solidity, not by a template on a machine somewhere</b>. Its job is
+    to be the door to the instrument you own, and the place these objects talk to
+    each other.</p>
+  <div class="strip" id="strip"></div>
+</header>
+
+<section>
+  <p class="k">Every route</p>
+  <h2>The whole site, as the chain returns it</h2>
+  <p class="sub">Pick a route. Links inside the frames resolve against each other, so
+    you can walk the site the way a visitor would. Nothing can be signed here — the
+    frames are sandboxed and there is no wallet and no chain behind them, so every
+    composer and every button reports that it has nowhere to write to.</p>
+  <div class="rig">
+    <div class="rail" id="rail" role="group" aria-label="Routes"></div>
+    <figure class="viewport" style="margin:0">
+      <div class="bar">
+        <span class="p" id="path">/</span>
+        <span class="n" id="what" style="color:var(--dim);font-size:12px"></span>
+        <span class="m" id="cost"></span>
+      </div>
+      <iframe class="frame" id="frame" title="IPSEITY" sandbox="allow-scripts"></iframe>
+      <pre class="raw" id="raw" hidden></pre>
+    </figure>
+  </div>
+  <p class="note" id="note"></p>
+</section>
+
+<section>
+  <p class="k">How a chat with no server behind it is read</p>
+  <h2>The chain is the index</h2>
+  <p class="sub">A message is a log. Logs are cheap to write and miserable to read
+    back — a range query wide enough to hold a conversation is the first request a
+    public endpoint refuses, and the usual answer is an indexer, which is a server.
+    So each message carries the block of the message before it.</p>
+  <div class="walk">
+    <div class="step"><p class="k">1 · ask the contract</p>
+      <p><code>stateOf(room).last</code> is the block number of the newest message in
+        that room. One <code>eth_call</code>.</p></div>
+    <div class="step"><p class="k">2 · ask for one block</p>
+      <p><code>eth_getLogs</code> with <code>fromBlock == toBlock</code>. The narrowest
+        request the method takes, and the one every endpoint answers.</p></div>
+    <div class="step"><p class="k">3 · follow the pointer</p>
+      <p>The oldest log in that block carries <code>prev</code> — the block before.
+        Repeat. Forty messages is forty single-block queries.</p></div>
+    <div class="step"><p class="k">4 · stop</p>
+      <p><code>prev</code> is strictly earlier, because the walk follows the oldest log
+        in a block and not the newest. That is what makes it terminate.</p></div>
+  </div>
+  <p class="note">Measured, not asserted: 405 blocks of history read in three queries,
+    and every query the shipped client makes checked to have fromBlock == toBlock.</p>
+</section>
+
+<footer>
+  <p class="k">What this is and is not</p>
+  <p><b style="color:var(--txt);font-weight:400">Real:</b> every byte in every frame
+    came out of a contract call against the collection running on an EVM at Cancun.
+    The gas figures are measured on the same run.</p>
+  <p><b style="color:var(--txt);font-weight:400">Not real yet:</b> there is no deployed
+    collection. The conversation in the frames is what a test wrote; a live site reads
+    it out of the logs of whichever chain it is on. The pages will find no wallet here,
+    which is exactly what they say.</p>
+</footer>
+
+</div>
+
+<script>
+const PAGES = __PAGES__;
+const FACTS = __FACTS__;
+const $ = (i) => document.getElementById(i);
+
+[["Routes", String(FACTS.routes), "answered by one contract"],
+ ["Contract output", FACTS.bytes.toLocaleString("en-US"), "bytes, in these frames"],
+ ["Requests at run time", "0", "no CDN, no gateway, no server"],
+ ["Message topic", (FACTS.said || "").slice(0, 10) + "…", "derived on chain, not typed"]
+].forEach(([k, v, u]) => {
+  const d = document.createElement("div");
+  d.className = "cell";
+  d.innerHTML = '<div class="k"></div><div class="v"></div><div class="u"></div>';
+  d.children[0].textContent = k; d.children[1].textContent = v; d.children[2].textContent = u;
+  $("strip").append(d);
+});
+
+const buttons = PAGES.map((p, i) => {
+  const b = document.createElement("button");
+  b.type = "button";
+  b.innerHTML = '<div class="p"></div><div class="n"></div>';
+  b.children[0].textContent = p.route;
+  b.children[1].textContent = p.what;
+  b.addEventListener("click", () => show(i));
+  $("rail").append(b);
+  return b;
+});
+
+function show(i) {
+  const p = PAGES[i];
+  buttons.forEach((b, j) => b.setAttribute("aria-current", String(i === j)));
+  $("path").textContent = p.route;
+  $("what").textContent = p.what;
+  $("cost").innerHTML = "";
+  const gas = document.createElement("b");
+  gas.textContent = p.gas + " gas";
+  $("cost").append(gas, document.createTextNode("  ·  " +
+    p.bytes.toLocaleString("en-US") + " B"));
+
+  const text = atob(p.b64);
+  if (p.kind === "json") {
+    $("frame").hidden = true;
+    $("raw").hidden = false;
+    try { $("raw").textContent = JSON.stringify(JSON.parse(text), null, 2); }
+    catch (e) { $("raw").textContent = text; }
+  } else {
+    $("raw").hidden = true;
+    $("frame").hidden = false;
+    $("frame").srcdoc = text;
+  }
+  $("note").textContent = p.kind === "json"
+    ? "Served as application/json. A program reads this instead of the pages."
+    : "Sandboxed, so scripts run and nothing can reach a wallet. "
+      + "The composer will tell you it has nowhere to write to.";
+}
+
+/*  A frame asking to be sent somewhere. The name has to match one this page
+    wrote into the list itself; anything else is ignored rather than
+    followed, because the only thing on the other side of that message is a
+    document and documents do not get to choose. */
+addEventListener("message", (e) => {
+  const want = e.data && e.data.ipseity;
+  if (typeof want !== "string") return;
+  const i = PAGES.findIndex((p) => p.file === want.replace(/^\.?\//, ""));
+  if (i >= 0) { show(i); scrollTo({ top: 0, behavior: "smooth" }); }
+});
+
+show(0);
+</script>

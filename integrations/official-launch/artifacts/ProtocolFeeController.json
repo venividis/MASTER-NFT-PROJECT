@@ -1,0 +1,471 @@
+{
+  "group": "cca",
+  "file": "lib/liquidity-launcher/src/periphery/ProtocolFeeController.sol",
+  "name": "ProtocolFeeController",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_owner",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "AlreadyInitialized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint128",
+          "name": "lowerThreshold",
+          "type": "uint128"
+        }
+      ],
+      "name": "FirstThresholdMustBeZero",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "length",
+          "type": "uint256"
+        }
+      ],
+      "name": "InvalidFeeLength",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "pips",
+          "type": "uint24"
+        },
+        {
+          "internalType": "uint24",
+          "name": "maxPips",
+          "type": "uint24"
+        }
+      ],
+      "name": "InvalidFeePips",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NewOwnerIsZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NoHandoverRequest",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "RecipientNotSet",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint128",
+          "name": "lowerThreshold",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "prevLowerThreshold",
+          "type": "uint128"
+        }
+      ],
+      "name": "ThresholdsNotAscending",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint24",
+          "name": "globalProtocolFeePips",
+          "type": "uint24"
+        }
+      ],
+      "name": "GlobalProtocolFeePipsUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipHandoverCanceled",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipHandoverRequested",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "oldOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint128",
+              "name": "lowerThreshold",
+              "type": "uint128"
+            },
+            {
+              "internalType": "uint24",
+              "name": "protocolFeePips",
+              "type": "uint24"
+            }
+          ],
+          "indexed": false,
+          "internalType": "struct IProtocolFeeController.ProtocolFeeBracket[]",
+          "name": "fees",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "ProtocolFeeBracketsForCurrencyUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "ProtocolFeeRecipientUpdated",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "MAX_PROTOCOL_FEE_TIERS",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "PIPS_DENOMINATOR",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "cancelOwnershipHandover",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "completeOwnershipHandover",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "getProtocolFeeAmount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "protocolFeeAmount",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "currency",
+          "type": "address"
+        }
+      ],
+      "name": "getProtocolFeeBracketsForCurrency",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "uint128",
+              "name": "lowerThreshold",
+              "type": "uint128"
+            },
+            {
+              "internalType": "uint24",
+              "name": "protocolFeePips",
+              "type": "uint24"
+            }
+          ],
+          "internalType": "struct IProtocolFeeController.ProtocolFeeBracket[]",
+          "name": "",
+          "type": "tuple[]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "globalProtocolFeePips",
+      "outputs": [
+        {
+          "internalType": "uint24",
+          "name": "",
+          "type": "uint24"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "result",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "ownershipHandoverExpiresAt",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "result",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "protocolFeeRecipient",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "renounceOwnership",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "requestOwnershipHandover",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint24",
+          "name": "_globalProtocolFeePips",
+          "type": "uint24"
+        }
+      ],
+      "name": "setGlobalProtocolFeePips",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "currency",
+          "type": "address"
+        },
+        {
+          "components": [
+            {
+              "internalType": "uint128",
+              "name": "lowerThreshold",
+              "type": "uint128"
+            },
+            {
+              "internalType": "uint24",
+              "name": "protocolFeePips",
+              "type": "uint24"
+            }
+          ],
+          "internalType": "struct IProtocolFeeController.ProtocolFeeBracket[]",
+          "name": "fees",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "setProtocolFeeBracketsForCurrency",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_recipient",
+          "type": "address"
+        }
+      ],
+      "name": "setProtocolFeeRecipient",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608034608957601f610f7838819003918201601f19168301916001600160401b03831184841017608d57808492602094604052833981010312608957516001600160a01b0381169081900360895780638b78c6d819555f7f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08180a3604051610ed690816100a28239f35b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe60806040526004361015610011575f80fd5b5f3560e01c806325692962146106b857806325d92a8e1461064857806339b7b8d61461062d5780634e5d81cd146105fe57806354d1f13d146105ba5780635bbadc12146104e857806364df049e146104b6578063715018a6146104375780638da5cb5b146103e5578063995e5c74146103c1578063aae49d70146103a4578063cda420b51461020e578063e521cb9214610189578063f04e283e1461013c578063f2fde38b146100ff5763fee81cf4146100c9575f80fd5b346100fb5760206003193601126100fb576100e2610701565b63389a75e1600c525f52602080600c2054604051908152f35b5f80fd5b60206003193601126100fb57610113610701565b61011b610d93565b8060601b1561012f5761012d90610e55565b005b637448fbae5f526004601cfd5b60206003193601126100fb57610150610701565b610158610d93565b63389a75e1600c52805f526020600c20908154421161017c575f61012d9255610e55565b636f5e88185f526004601cfd5b346100fb5760206003193601126100fb5773ffffffffffffffffffffffffffffffffffffffff6101b7610701565b6101bf610d93565b16807fffffffffffffffffffffffff00000000000000000000000000000000000000005f5416175f557fc1b5345cce283376356748dc57f2dfa7120431d016fc7ca9ba641bc65f91411d5f80a2005b346100fb5760206003193601126100fb5773ffffffffffffffffffffffffffffffffffffffff61023c610701565b165f52600160205260405f2080549067ffffffffffffffff821161037757604051917fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0603f8260051b0116830183811067ffffffffffffffff82111761037757604052808352602083019081925f5260205f20915f905b828210610321578486604051918291602083019060208452518091526040830191905f5b8181106102e5575050500390f35b825180516fffffffffffffffffffffffffffffffff16855260209081015162ffffff1681860152869550604090940193909201916001016102d7565b6040516040810181811067ffffffffffffffff82111761037757600192839260209260405262ffffff88546fffffffffffffffffffffffffffffffff8116835260801c16838201528152019401910190926102b3565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b346100fb575f6003193601126100fb576020604051620f42408152f35b346100fb575f6003193601126100fb57602062ffffff5f5460a01c16604051908152f35b346100fb575f6003193601126100fb5760207fffffffffffffffffffffffffffffffffffffffffffffffffffffffff748739275473ffffffffffffffffffffffffffffffffffffffff60405191168152f35b5f6003193601126100fb5761044a610d93565b5f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffff74873927547f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08280a35f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffff7487392755005b346100fb575f6003193601126100fb57602073ffffffffffffffffffffffffffffffffffffffff5f5416604051908152f35b346100fb5760206003193601126100fb5760043562ffffff8116908181036100fb57610512610d93565b620f42408211610587577fffffffffffffffffff000000ffffffffffffffffffffffffffffffffffffffff76ffffff00000000000000000000000000000000000000005f549260a01b169116175f557f1d526dd5b4c4e78a4a7b31dc3841c84558319fe07cb2b853fde2b10c14383a705f80a2005b507fed2d2cf5000000000000000000000000000000000000000000000000000000005f52600452620f424060245260445ffd5b5f6003193601126100fb5763389a75e1600c52335f525f6020600c2055337ffa7b8eab7da67f412cc9575ed43464468f9bfbae89d1675917346ca6d8fe3c925f80a2005b346100fb5760406003193601126100fb57602061062561061c610701565b60243590610c06565b604051908152f35b346100fb575f6003193601126100fb57602060405160038152f35b346100fb5760406003193601126100fb57610661610701565b6024359067ffffffffffffffff82116100fb57366023830112156100fb5781600401359067ffffffffffffffff82116100fb573660248360061b850101116100fb57602461012d936106b1610d93565b019061080c565b5f6003193601126100fb5763389a75e1600c52335f526202a30042016020600c2055337fdbf36a107da19e49527a7176a1babf963b4b0ff8cde35ee35d6cd8f1f9ac7e1d5f80a2005b6004359073ffffffffffffffffffffffffffffffffffffffff821682036100fb57565b60208082528101839052604001915f905b8082106107425750505090565b90919283356fffffffffffffffffffffffffffffffff81168091036100fb57815260208401359062ffffff82168092036100fb57604081600193602083940152019401920190610735565b919081101561079d5760061b0190565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52603260045260245ffd5b3562ffffff811681036100fb5790565b356fffffffffffffffffffffffffffffffff811681036100fb5790565b805482101561079d575f5260205f2001905f90565b73ffffffffffffffffffffffffffffffffffffffff165f81815260016020526040812080549181559193929181610bae575b50508115610b7c5773ffffffffffffffffffffffffffffffffffffffff5f541615610b545760038211610b28575f805b8382106108ae575050907fa85ca16dcdd86e9bb5c554d2fc6116bccd25abc1d7ab877135a5b9a49e4e7be3916108a960405192839283610724565b0390a2565b620f424062ffffff6108cc60206108c686898961078d565b016107ca565b1611610ae15781610a6057506fffffffffffffffffffffffffffffffff6108fc6108f783868661078d565b6107da565b16610a15575b6109106108f782858561078d565b90845f52600160205260405f209061092981868661078d565b918054680100000000000000008110156103775761094c916001820181556107f7565b6109e957826fffffffffffffffffffffffffffffffff61096d6001956107da565b167fffffffffffffffffffffffffff0000000000000000000000000000000000000072ffffff000000000000000000000000000000006109d86020865495857fffffffffffffffffffffffffffffffff000000000000000000000000000000008816178855016107ca565b60801b16921617179055019061086e565b7f4e487b71000000000000000000000000000000000000000000000000000000005f525f60045260245ffd5b6108f7906fffffffffffffffffffffffffffffffff93610a349361078d565b7fefb0f073000000000000000000000000000000000000000000000000000000005f521660045260245ffd5b6fffffffffffffffffffffffffffffffff9081610a816108f785888861078d565b9116918291161115610a935750610902565b6fffffffffffffffffffffffffffffffff610ab26108f784878761078d565b7f4ba1d65e000000000000000000000000000000000000000000000000000000005f521660045260245260445ffd5b62ffffff610af560206108c685888861078d565b7fed2d2cf5000000000000000000000000000000000000000000000000000000005f5216600452620f424060245260445ffd5b507f4bdeb61a000000000000000000000000000000000000000000000000000000005f5260045260245ffd5b7fea6819a0000000000000000000000000000000000000000000000000000000005f5260045ffd5b907fa85ca16dcdd86e9bb5c554d2fc6116bccd25abc1d7ab877135a5b9a49e4e7be3916108a960405192839283610724565b5f5260205f20908101905b8181101561083e575f8155600101610bb9565b91908201809211610bd957565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b919073ffffffffffffffffffffffffffffffffffffffff5f93165f52600160205260405f20908154908115610d77577fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff82018281115f5b848110610c6d575b505050505050565b81610bd957828114610d445760018101808211610bd957610c9f6fffffffffffffffffffffffffffffffff91886107f7565b5054166fffffffffffffffffffffffffffffffff610cbd83896107f7565b50541690036fffffffffffffffffffffffffffffffff8111610bd9576fffffffffffffffffffffffffffffffff1680851115610d3957610d1c90985b610d1662ffffff610d0a858b6107f7565b505460801c168b610dca565b90610bcc565b978403938411610bd9578315610d3457600101610c5d565b610c65565b50610d1c8498610cf9565b610d16945062ffffff9250610d5f9150610d6b9697956107f7565b505460801c1690610dca565b905f8080808080610c65565b915050610d9091925062ffffff5f5460a01c1690610dca565b90565b7fffffffffffffffffffffffffffffffffffffffffffffffffffffffff74873927543303610dbd57565b6382b429005f526004601cfd5b818102907fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff83820990828083109203918083039283620f424011156100fb5714610e49577fde8f6cefed634549b62c77574f722e1ac57e23f24d8fd5cb790fb65668c2613993620f4240910990828211900360fa1b910360061c170290565b5050620f424091500490565b73ffffffffffffffffffffffffffffffffffffffff16807fffffffffffffffffffffffffffffffffffffffffffffffffffffffff74873927547f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e05f80a37fffffffffffffffffffffffffffffffffffffffffffffffffffffffff748739275556",
+  "creationHash": "0x0e635eb3fe9d9498a4400dedc1a15d498d579a185bfee7fd021bbf865f2cbc40",
+  "bytes": 3798,
+  "normalizedHash": "0xe56030142f9300da5dac6cfd07297d69d03d5d0f56ab6ecf26dc656de8947da8",
+  "masks": [],
+  "immutableGroups": [],
+  "sourceInputSha256": "7c38368b31c2092abc3006c630870a8110a958e221e925905bdef6fe7ff89184",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 11111
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "metadata": {
+      "bytecodeHash": "none",
+      "appendCBOR": false
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  }
+}

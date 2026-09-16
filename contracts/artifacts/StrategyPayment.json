@@ -1,0 +1,58 @@
+{
+  "contractName": "StrategyPayment",
+  "sourceName": "contracts/src/extensions/strategies/V4Strategies.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220331a3082692f0cd0a07ac29f25027c126a50608428441d83343bb8dc5a72fd6464736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220331a3082692f0cd0a07ac29f25027c126a50608428441d83343bb8dc5a72fd6464736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/strategies/V4Strategies.sol": "StrategyPayment"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/strategies/V4Strategies.sol": {
+        "keccak256": "0x53b508c945c554de0a29387690f1fb42aeda98a46272207d8be609f27e03e247",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://14fb8936f6e959f89e9a77027e68c393a3d9e1bbf6a77389ab4b0a7c06b47bc3",
+          "dweb:/ipfs/QmaUXYQ9v1GJh5Ya83zY5jgctzfqyi2xZ7GAQsvXD8Frd7"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

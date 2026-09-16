@@ -1,0 +1,24 @@
+✔ all original Atlas routes invoke the retained original control after close (2.634579ms)
+✔ disabled controls and unknown routes cannot bypass native checks (0.985264ms)
+✔ secondary views include form, venues, applications, clock and both original/extended launch entry (0.348565ms)
+✔ full original radiance is retained byte-for-byte, only main projection is extended (0.432622ms)
+✔ blue projection uploads lived traits, restores after init and never schedules an original RAF (0.992956ms)
+✔ real words and field values produce destinations; completion enables native controls (4.390314ms)
+✔ keyboard and identity reflow preserve focused ready input without making it inert (1.520962ms)
+✔ input estimate updates do not restart creation; rapid route changes coalesce (5.574098ms)
+✔ reduced motion and Original handoff leave no hidden or inert controls (0.756019ms)
+✔ transparent Genesis layer draws only particles; blue optics belong to the original renderer (38.374105ms)
+✔ fresh interactive fallback on {"failLink":true} (25.327199ms)
+✔ fresh interactive fallback on {"noGL":true} (24.084176ms)
+✔ opening is slow, finishing is immediate, and interrupted matter starts where it was captured (58.594666ms)
+✔ identity and viewport changes notify the semantic creation coordinator (28.150492ms)
+✔ failed context restoration falls back and continues forming (22.213738ms)
+✔ unrestored context completes pending controls through bounded fallback (12.196846ms)
+ℹ tests 16
+ℹ suites 0
+ℹ pass 16
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 335.292823

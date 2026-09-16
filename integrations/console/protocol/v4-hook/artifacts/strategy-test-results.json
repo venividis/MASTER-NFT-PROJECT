@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "environment": "Local Anvil Cancun with genuine pinned Uniswap v4 PoolManager",
+  "checks": [
+    "Fee-only collection preserves all principal and shares; repeated claims cannot take another holder’s earned fees",
+    "Fee reinvestment adds actual PoolManager liquidity and proportional shares; insufficient fee budgets revert",
+    "Uncollected earnings move with transferred shares, preserving vesting custody",
+    "OwnerFeeRouter converts only caller-owned claims through the actual v4 pool; output and approval accounting verified",
+    "Funded scheduled exits enforce due time and beneficiary; failed prices remain recoverable; owner cancel refunds remaining input and unearned rewards",
+    "Partial share transfer/redemption preserves other holder claims; the final redemption receives residual dividend rounding and leaves no stranded position assets",
+    "Irrevocable hook ceilings and destinations survive ownership transfer; splitter recipient weights cannot change after opt-in commitment",
+    "Opt-in compounder executes actual liquidity reinvestment with prepaid keeper rewards; unauthorized withdrawal fails; pause and full principal/reward recovery succeed",
+    "Extended integer economic model reconciles every real swap output, fee-only payout and reinvestment share amount in the tested sequence against the genuine PoolManager",
+    "Actual browser builders and shared review verify converter/exit/compounder deployment, funded schedule creation, cancellation/reward recovery and revocable LP custody receipts",
+    "No funded public Ethereum or private-proof claim is made"
+  ]
+}

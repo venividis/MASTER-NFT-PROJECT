@@ -1,0 +1,293 @@
+{
+  "release": "1.4.0",
+  "previewSha256": "9c68a6d83fd39d7f0f46bf77c83a5ba2e3d2035ff2cd985f00e6416442ae0402",
+  "scope": "Actual shipped HTML via set_content. Injected in-memory Web Storage. No live wallet, Solidity, EVM or public-chain validation.",
+  "browser": "144.0.7559.96",
+  "passed": 65,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "standalone new interface boots visibly",
+      "passed": true
+    },
+    {
+      "name": "initial view is Sanctum",
+      "passed": true
+    },
+    {
+      "name": "reduced motion is respected",
+      "passed": true
+    },
+    {
+      "name": "no initial wallet call or autoplay",
+      "passed": true
+    },
+    {
+      "name": "scene has computed facets",
+      "passed": true
+    },
+    {
+      "name": "rendered screenshot has broad pixel variation",
+      "passed": true
+    },
+    {
+      "name": "timeglass does not change local data or receipt head",
+      "passed": true
+    },
+    {
+      "name": "future projection is visibly labeled",
+      "passed": true
+    },
+    {
+      "name": "future projection does not enable early release",
+      "passed": true
+    },
+    {
+      "name": "launch requires a separate review",
+      "passed": true
+    },
+    {
+      "name": "allocation is shown in review",
+      "passed": true
+    },
+    {
+      "name": "confirmed local launch creates a sale",
+      "passed": true
+    },
+    {
+      "name": "launch creates a connected commons",
+      "passed": true
+    },
+    {
+      "name": "no pool appears before settlement",
+      "passed": true
+    },
+    {
+      "name": "contribution debits the NFT local treasury",
+      "passed": true
+    },
+    {
+      "name": "settlement creates the market",
+      "passed": true
+    },
+    {
+      "name": "settlement creates founder and treasury schedules",
+      "passed": true
+    },
+    {
+      "name": "claim credits the actual pro-rata model allocation",
+      "passed": true
+    },
+    {
+      "name": "swap review shows minimum and atomic vault destination",
+      "passed": true
+    },
+    {
+      "name": "swap-and-lock creates a claim, not a spendable token credit",
+      "passed": true
+    },
+    {
+      "name": "model has a structured SWAPPED receipt",
+      "passed": true
+    },
+    {
+      "name": "explicit vault deposit creates a sixth schedule",
+      "passed": true
+    },
+    {
+      "name": "three complete estate cards render",
+      "passed": true
+    },
+    {
+      "name": "manifest shows actual declared locked and spendable inventory",
+      "passed": true
+    },
+    {
+      "name": "whole-estate acquisition changes custody",
+      "passed": true
+    },
+    {
+      "name": "acquisition selects the purchased artifact",
+      "passed": true
+    },
+    {
+      "name": "purchase transfers control without accelerating locks",
+      "passed": true
+    },
+    {
+      "name": "rehearsal payment is actually debited",
+      "passed": true
+    },
+    {
+      "name": "message captures identity and custodian-at-time",
+      "passed": true
+    },
+    {
+      "name": "listing places the whole NFT in escrow",
+      "passed": true
+    },
+    {
+      "name": "escrow advances the custody epoch",
+      "passed": true
+    },
+    {
+      "name": "other persona can acquire the estate",
+      "passed": true
+    },
+    {
+      "name": "earlier authorship survives the sale unchanged",
+      "passed": true
+    },
+    {
+      "name": "old owner cannot operate the sold artifact via its form",
+      "passed": true
+    },
+    {
+      "name": "invitation does not silently add an accepted member",
+      "passed": true
+    },
+    {
+      "name": "unaccepted member cannot post in gated room",
+      "passed": true
+    },
+    {
+      "name": "accepted guest can post as their own voice",
+      "passed": true
+    },
+    {
+      "name": "room removal keeps message history intact",
+      "passed": true
+    },
+    {
+      "name": "removed member cannot create another room post",
+      "passed": true
+    },
+    {
+      "name": "chat renders markup as literal text",
+      "passed": true
+    },
+    {
+      "name": "typed launch claim produces SPOKE, not LAUNCHED",
+      "passed": true
+    },
+    {
+      "name": "reaction is stored by participant",
+      "passed": true
+    },
+    {
+      "name": "reaction toggles without duplicating participants",
+      "passed": true
+    },
+    {
+      "name": "personal removal hides only that participant in this view",
+      "passed": true
+    },
+    {
+      "name": "personal removal does not destroy public example messages",
+      "passed": true
+    },
+    {
+      "name": "custom room is created and opened",
+      "passed": true
+    },
+    {
+      "name": "room topic, slow mode and access are customizable",
+      "passed": true
+    },
+    {
+      "name": "downloaded rehearsal is valid JSON with exact head",
+      "passed": true
+    },
+    {
+      "name": "saved state restores through a Web Storage adapter",
+      "passed": true
+    },
+    {
+      "name": "corrupt save is not overwritten",
+      "passed": true
+    },
+    {
+      "name": "corrupt-save warning is visible",
+      "passed": true
+    },
+    {
+      "name": "opt-in motion advances the procedural scene",
+      "passed": true
+    },
+    {
+      "name": "motion pause freezes autonomous scene time",
+      "passed": true
+    },
+    {
+      "name": "original organism remains accessible",
+      "passed": true
+    },
+    {
+      "name": "returning preserves original organism state",
+      "passed": true
+    },
+    {
+      "name": "no wallet RPC method was requested in any new flow",
+      "passed": true
+    },
+    {
+      "name": "sound remains off unless explicitly requested",
+      "passed": true
+    },
+    {
+      "name": "mobile scene respects reduced motion",
+      "passed": true
+    },
+    {
+      "name": "mobile layout fits viewport width",
+      "passed": true
+    },
+    {
+      "name": "mobile marketplace cards remain reachable",
+      "passed": true
+    },
+    {
+      "name": "mobile estate manifest fits viewport",
+      "passed": true
+    },
+    {
+      "name": "mobile World composer remains visible",
+      "passed": true
+    },
+    {
+      "name": "mobile persona switch has a visible route",
+      "passed": true
+    },
+    {
+      "name": "no HTTP or socket requests from the artifact",
+      "passed": true
+    },
+    {
+      "name": "no unhandled browser exceptions",
+      "passed": true
+    }
+  ],
+  "pageErrors": [],
+  "requestsObserved": [
+    "blob:null/387f55b0-a91e-452c-a29a-8df418538e9d",
+    "blob:null/387f55b0-a91e-452c-a29a-8df418538e9d",
+    "blob:null/387f55b0-a91e-452c-a29a-8df418538e9d",
+    "blob:null/387f55b0-a91e-452c-a29a-8df418538e9d",
+    "blob:null/52a03640-17a7-4478-a6e4-20d416d9e3e7",
+    "blob:null/52a03640-17a7-4478-a6e4-20d416d9e3e7",
+    "blob:null/52a03640-17a7-4478-a6e4-20d416d9e3e7",
+    "blob:null/52a03640-17a7-4478-a6e4-20d416d9e3e7",
+    "blob:null/44542f93-c354-46d7-bb4c-f577822bd491",
+    "blob:null/44542f93-c354-46d7-bb4c-f577822bd491",
+    "blob:null/44542f93-c354-46d7-bb4c-f577822bd491",
+    "blob:null/44542f93-c354-46d7-bb4c-f577822bd491",
+    "blob:null/23675477-9d33-4c42-9204-443d5b8a07d1",
+    "blob:null/23675477-9d33-4c42-9204-443d5b8a07d1",
+    "blob:null/23675477-9d33-4c42-9204-443d5b8a07d1",
+    "blob:null/23675477-9d33-4c42-9204-443d5b8a07d1"
+  ],
+  "storage": "test adapter",
+  "fileNavigation": "not tested: managed browser policy blocks file:// navigation",
+  "screenshots": "actual browser capture; not concept art",
+  "solidity": "not executed"
+}

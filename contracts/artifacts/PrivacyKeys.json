@@ -1,0 +1,227 @@
+{
+  "contractName": "PrivacyKeys",
+  "sourceName": "contracts/src/extensions/privacy/PrivacyKeys.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "InvalidKey",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "identity",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "generation",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "KeyRegistered",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "generation",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "identity",
+          "type": "address"
+        }
+      ],
+      "name": "keyOf",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes",
+          "name": "publicKey",
+          "type": "bytes"
+        }
+      ],
+      "name": "register",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x608080604052346015576104f7908161001a8239f35b5f80fdfe6080806040526004361015610012575f80fd5b5f3560e01c9081635a860eca1461043a5750806382fbdc9c146101805763fa073d761461003d575f80fd5b3461017c57602036600319011261017c5760043573ffffffffffffffffffffffffffffffffffffffff811680910361017c575f525f60205260405f20604051905f9080549061008b82610489565b808552916001811690811561015e5750600114610126575b5050819003601f01601f191681019067ffffffffffffffff821181831017610112578160405260208252818151918260208301525f5b8381106100fa575050815f6040809484010152601f80199101168101030190f35b602082820181015160408784010152859350016100d9565b634e487b7160e01b5f52604160045260245ffd5b9091505f5260205f205f905b8282106101485750602091508201015f806100a3565b6001816020925483858801015201910190610132565b9150506020925060ff191682840152151560051b8201015f806100a3565b5f80fd5b3461017c57602036600319011261017c5760043567ffffffffffffffff811161017c573660238201121561017c5780600401359067ffffffffffffffff821161017c576024810190366024848301011161017c57604183148015906103d3575b6103ab57335f525f6020528260405f20916101fb8354610489565b601f811161035b575b505f90601f83116001146102ef575f926102e1575b50508360011b905f198560031b1c19161790555b335f52600160205260405f209081549067ffffffffffffffff82169067ffffffffffffffff82146102cd577fc659290c7bc18a3e6b0b51d12a149845fa9ff1cc656e415c84ebccb1d738639a9367ffffffffffffffff600187940116809467ffffffffffffffff19161790556040519283526040602084015281604084015260608301375f606084830101526060813394601f80199101168101030190a2005b634e487b7160e01b5f52601160045260245ffd5b602492500101358480610219565b909150601f19851691835f528560205f20935f5b81811061033d575010610321575b505050600183811b01905561022d565b01602401355f19600386901b60f8161c19169055838080610311565b84840160240135865560019095019460209384019389935001610303565b909150825f5260205f20601f860160051c810191602087106103a1575b90601f879493920160051c01905b8181106103935750610204565b5f8155869350600101610386565b9091508190610378565b7f76d4e1e8000000000000000000000000000000000000000000000000000000005f5260045ffd5b508215610426577f04000000000000000000000000000000000000000000000000000000000000007fff0000000000000000000000000000000000000000000000000000000000000083351614156101e0565b634e487b7160e01b5f52603260045260245ffd5b3461017c57602036600319011261017c576004359073ffffffffffffffffffffffffffffffffffffffff821680920361017c576020915f526001825267ffffffffffffffff60405f2054168152f35b90600182811c921680156104b7575b60208310146104a357565b634e487b7160e01b5f52602260045260245ffd5b91607f169161049856fea2646970667358221220bf866a6d71e5d1baef7c66aff680d25962714f118bcd2b4f07313bac4f19832264736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081635a860eca1461043a5750806382fbdc9c146101805763fa073d761461003d575f80fd5b3461017c57602036600319011261017c5760043573ffffffffffffffffffffffffffffffffffffffff811680910361017c575f525f60205260405f20604051905f9080549061008b82610489565b808552916001811690811561015e5750600114610126575b5050819003601f01601f191681019067ffffffffffffffff821181831017610112578160405260208252818151918260208301525f5b8381106100fa575050815f6040809484010152601f80199101168101030190f35b602082820181015160408784010152859350016100d9565b634e487b7160e01b5f52604160045260245ffd5b9091505f5260205f205f905b8282106101485750602091508201015f806100a3565b6001816020925483858801015201910190610132565b9150506020925060ff191682840152151560051b8201015f806100a3565b5f80fd5b3461017c57602036600319011261017c5760043567ffffffffffffffff811161017c573660238201121561017c5780600401359067ffffffffffffffff821161017c576024810190366024848301011161017c57604183148015906103d3575b6103ab57335f525f6020528260405f20916101fb8354610489565b601f811161035b575b505f90601f83116001146102ef575f926102e1575b50508360011b905f198560031b1c19161790555b335f52600160205260405f209081549067ffffffffffffffff82169067ffffffffffffffff82146102cd577fc659290c7bc18a3e6b0b51d12a149845fa9ff1cc656e415c84ebccb1d738639a9367ffffffffffffffff600187940116809467ffffffffffffffff19161790556040519283526040602084015281604084015260608301375f606084830101526060813394601f80199101168101030190a2005b634e487b7160e01b5f52601160045260245ffd5b602492500101358480610219565b909150601f19851691835f528560205f20935f5b81811061033d575010610321575b505050600183811b01905561022d565b01602401355f19600386901b60f8161c19169055838080610311565b84840160240135865560019095019460209384019389935001610303565b909150825f5260205f20601f860160051c810191602087106103a1575b90601f879493920160051c01905b8181106103935750610204565b5f8155869350600101610386565b9091508190610378565b7f76d4e1e8000000000000000000000000000000000000000000000000000000005f5260045ffd5b508215610426577f04000000000000000000000000000000000000000000000000000000000000007fff0000000000000000000000000000000000000000000000000000000000000083351614156101e0565b634e487b7160e01b5f52603260045260245ffd5b3461017c57602036600319011261017c576004359073ffffffffffffffffffffffffffffffffffffffff821680920361017c576020915f526001825267ffffffffffffffff60405f2054168152f35b90600182811c921680156104b7575b60208310146104a357565b634e487b7160e01b5f52602260045260245ffd5b91607f169161049856fea2646970667358221220bf866a6d71e5d1baef7c66aff680d25962714f118bcd2b4f07313bac4f19832264736f6c634300081e0033",
+  "methodIdentifiers": {
+    "generation(address)": "5a860eca",
+    "keyOf(address)": "fa073d76",
+    "register(bytes)": "82fbdc9c"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "InvalidKey",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "identity",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint64",
+              "name": "generation",
+              "type": "uint64"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            }
+          ],
+          "name": "KeyRegistered",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "generation",
+          "outputs": [
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "identity",
+              "type": "address"
+            }
+          ],
+          "name": "keyOf",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes",
+              "name": "publicKey",
+              "type": "bytes"
+            }
+          ],
+          "name": "register",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Wallet-authenticated encryption public keys; never private keys.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/privacy/PrivacyKeys.sol": "PrivacyKeys"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/privacy/PrivacyKeys.sol": {
+        "keccak256": "0x5b8f20fe689d349759ff39805fd443c43ab633d921d73da4478ceb13f2e6e9f4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://b0b68c7dbe19da5843f860ae79b575ca8ddeda7239cc54db588200117c23da34",
+          "dweb:/ipfs/QmUM4P7aFCCYnNxHEJFDT95LDVU8WjfbbBupzFukqNkhEU"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

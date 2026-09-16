@@ -1,0 +1,9 @@
+{
+  "dependencies": {
+    "@x402/core": "2.25.0",
+    "@x402/evm": "2.25.0"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.12"
+  }
+}

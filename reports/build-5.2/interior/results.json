@@ -1,0 +1,59 @@
+{
+  "scope": "native Mesa GLES, not browser/device QA",
+  "cases": [
+    {
+      "case": "source-desktop",
+      "size": [
+        960,
+        640
+      ],
+      "pixelStd": 30.597372686801034,
+      "passed": true
+    },
+    {
+      "case": "observatory",
+      "size": [
+        960,
+        640
+      ],
+      "pixelStd": 28.02628611124884,
+      "passed": true
+    },
+    {
+      "case": "source-portrait",
+      "size": [
+        390,
+        720
+      ],
+      "pixelStd": 30.44216511625989,
+      "passed": true
+    },
+    {
+      "case": "other-identity",
+      "size": [
+        960,
+        640
+      ],
+      "pixelStd": 30.361337836365532,
+      "passed": true
+    },
+    {
+      "case": "threshold",
+      "size": [
+        480,
+        320
+      ],
+      "pixelStd": 35.12300937856484,
+      "passed": true
+    },
+    {
+      "case": "opposite-side",
+      "size": [
+        480,
+        320
+      ],
+      "pixelStd": 30.200993133349794,
+      "passed": true
+    }
+  ]
+}

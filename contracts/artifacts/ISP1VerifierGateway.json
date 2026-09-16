@@ -1,0 +1,117 @@
+{
+  "contractName": "ISP1VerifierGateway",
+  "sourceName": "contracts/src/core/ZkVmVerifierAdapters.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "programVKey",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "publicValues",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes",
+          "name": "proofBytes",
+          "type": "bytes"
+        }
+      ],
+      "name": "verifyProof",
+      "outputs": [],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "verifyProof(bytes32,bytes,bytes)": "41493c60"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "programVKey",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "publicValues",
+              "type": "bytes"
+            },
+            {
+              "internalType": "bytes",
+              "name": "proofBytes",
+              "type": "bytes"
+            }
+          ],
+          "name": "verifyProof",
+          "outputs": [],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Minimal gateway surface used by Succinct SP1 verifier contracts.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/core/ZkVmVerifierAdapters.sol": "ISP1VerifierGateway"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/core/ZkVmVerifierAdapters.sol": {
+        "keccak256": "0x757a394c3cf8a098589c585258cd71fe5fed1ed98b3ced0ead899899710e8c95",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://bf7c093c36a0a91840cc52a8db114e3b7596491ec7f7d343203197420b908376",
+          "dweb:/ipfs/QmaqmSsvpLgkrCGWyF8vCUkg5sptc2YmKMfuptyhCBrhh8"
+        ]
+      },
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

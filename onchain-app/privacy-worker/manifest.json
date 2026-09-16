@@ -1,0 +1,1062 @@
+{
+  "schema": "anima.onchain-resource/1",
+  "kind": "privacy-worker",
+  "compression": "gzip",
+  "mimeType": "application/javascript",
+  "scope": "Worker bytes only; RAILGUN circuit artifacts and network services remain external.",
+  "byteLength": 15112663,
+  "sha256": "40ef8c9a7504dd23c108205759dfca7e5219ceecef2ba58737e593e80397341b",
+  "compressedByteLength": 4596329,
+  "compressedSha256": "7fc4f56cfb692a85706d6af29ac90127d573b7951dfb233a361a1b0b6f48ee8a",
+  "shards": [
+    {
+      "index": 0,
+      "byteLength": 736000,
+      "sha256": "e0e18f382c35dc6acbca26dcd4f659fa40a375cd25cf6fc4861ba491cc29007a",
+      "chunks": [
+        {
+          "file": "shards/00/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "cd93679b46acc62a519730c1b3032e7150324088409aabd95dffa8deb4d62587"
+        },
+        {
+          "file": "shards/00/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "6115b12ac0d9a790c894bca78624c5c84371e270e05f7341602cb9346d86b5d0"
+        },
+        {
+          "file": "shards/00/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "89f6f8459e727efb95d9f0aa0e4e865f4ae4ce28d4205cd4f2f226f6adc44974"
+        },
+        {
+          "file": "shards/00/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "43e1a8aba42c70ce42d73319737ec9cb10e131e19365a50729a6b2ddccfb76c2"
+        },
+        {
+          "file": "shards/00/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "6d79b008896f96fe02491e209664d13475aa1e6329713149b99de48f13f7a071"
+        },
+        {
+          "file": "shards/00/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "50e0fd47083377385470d1e660d3a0ef644e8342099231f26d23762a70362e00"
+        },
+        {
+          "file": "shards/00/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "c44a2811158c805482c45fb3454b7a5ee143422dca8f32dc164519e78202360d"
+        },
+        {
+          "file": "shards/00/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "57210f7ad08deb03178f37a8e9d9b449c71c82be8c03a6fe37243e5856ed834b"
+        },
+        {
+          "file": "shards/00/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "f3dd9f535eaaee40003faf5ccdb66cb6047003ebb73b8b398aba3d0429ce9a52"
+        },
+        {
+          "file": "shards/00/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "dd6aab3ec1eb0f1f219a9e7f489f1ff0e322bc2387d5ef199b99d402cd373cbc"
+        },
+        {
+          "file": "shards/00/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "47136f5dff2984ba5ca715b02942404dbae9ab6fa1d5ed432686a8d72e65e9fe"
+        },
+        {
+          "file": "shards/00/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "0f4d43dc1767a2210efcd1149eb947e3b8a7145220a537b8178a7294af859b18"
+        },
+        {
+          "file": "shards/00/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "f3b63495f338bbca6858b714f5bce64101934e3caba76d8ada1e0dfb05c63119"
+        },
+        {
+          "file": "shards/00/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "a3d69d050b6e8cb1c0c604411d3b4088db5ed89f1fc49cf08b32f0413e23140b"
+        },
+        {
+          "file": "shards/00/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "2f98d80772e1b55ea7bc41204974733548c7ccf5d23e7db3cbeed3013a452cfd"
+        },
+        {
+          "file": "shards/00/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "d09d201e8708c226e6ba7e176a7b702fc69fb832e3a47033b9087d034c7f6489"
+        },
+        {
+          "file": "shards/00/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "f0ee75ae868510e9d2bfc3458e70a470e23d10be40b5cacd2c0ed2738ebca086"
+        },
+        {
+          "file": "shards/00/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "c9131ea1e31875fbea8cd7774eec469e7e78184d9c3cf8e6006be06fdc3b5170"
+        },
+        {
+          "file": "shards/00/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "09d6801aab01dc124789fea6e6784c7f6e68240ddd0f0d480d8960fd7eda744f"
+        },
+        {
+          "file": "shards/00/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "045dbbd6c853daba13f3b515d998319490c4a143f30f54b7ac666cc1db8d0099"
+        },
+        {
+          "file": "shards/00/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "ff909c83b544762616e456204722afee4c47da84145d29c938b33e08858fb1c3"
+        },
+        {
+          "file": "shards/00/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "df25f51cdad089722c9ee617cb842b86a3d06d4323e86e81cc80675dd63e7c1e"
+        },
+        {
+          "file": "shards/00/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "20a49bbadbf7101ed1e24483ebfb27278b3c91029917cee4c624092398ea8097"
+        },
+        {
+          "file": "shards/00/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "72ce09e8d63538ad30a959e002175aa1a1dc7a6a28e65ca696460a34b289fa68"
+        },
+        {
+          "file": "shards/00/chunks/24.bin",
+          "bytes": 23000,
+          "sha256": "4c5218d0be4ac41ecafca786dcdc0206fe7b32d36744b391c5c4c0813af5d9e7"
+        },
+        {
+          "file": "shards/00/chunks/25.bin",
+          "bytes": 23000,
+          "sha256": "a756e1621bdccfe4029b7e3030e06031ecd96e040c2bc7d121704cad6ef0b5e6"
+        },
+        {
+          "file": "shards/00/chunks/26.bin",
+          "bytes": 23000,
+          "sha256": "bc2ddc14e6a78fc157fb0a3fb8a0495fe904793de5df99327f13fc9c92a844e9"
+        },
+        {
+          "file": "shards/00/chunks/27.bin",
+          "bytes": 23000,
+          "sha256": "1a23a8138f2217c985fe451c05fcaecca67787aef320519b90b87179d18c79ac"
+        },
+        {
+          "file": "shards/00/chunks/28.bin",
+          "bytes": 23000,
+          "sha256": "fcd2965a61a48cb3a53500c4a9c6ccdeef335f5836188a044020192b5636d87b"
+        },
+        {
+          "file": "shards/00/chunks/29.bin",
+          "bytes": 23000,
+          "sha256": "5edaffbe8bb1240d8ae52b789c54c738684e0c3603c7f3393470872f6bafe720"
+        },
+        {
+          "file": "shards/00/chunks/30.bin",
+          "bytes": 23000,
+          "sha256": "25769b4f1df0142cd5bf0f3c651a4b26970044507e39b07f1ea15b509336c72e"
+        },
+        {
+          "file": "shards/00/chunks/31.bin",
+          "bytes": 23000,
+          "sha256": "75026f5d0e1893df7c49adc8309b029e8d2fc78a788f57e84941e44f03ea3018"
+        }
+      ]
+    },
+    {
+      "index": 1,
+      "byteLength": 736000,
+      "sha256": "b8723ee914eaef96dd4462fea33e801fb36667fc96c3c2d0bfe9d142594a7dcd",
+      "chunks": [
+        {
+          "file": "shards/01/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "1d6e76f42f1c7d424da2840cb42ed58c6ffa9165f2c379b240e551aaab671dbf"
+        },
+        {
+          "file": "shards/01/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "c488b7316f99e387b0f72e7c510f94afdcf653c1c92cb9b496a3b84d4a884353"
+        },
+        {
+          "file": "shards/01/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "3b17ce1dabc59792ac2d14bc62253e90ee7fa33ceaa5221a2f11c29ea13409d9"
+        },
+        {
+          "file": "shards/01/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "b37529233ddecf1688b0c01ee4c363d10b3794756d1de078d08269f2d1e99cac"
+        },
+        {
+          "file": "shards/01/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "9b0992aa27103dc799c9ed72ff357f7b296e01f791955f5204cfcf5d6c737d50"
+        },
+        {
+          "file": "shards/01/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "a33e5e3c8e4cfcdcfda8e36f4d2f7bb705b7e6ec01ec76a66f5ac3c49c03851a"
+        },
+        {
+          "file": "shards/01/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "a52764a1fec8bf3596912c5207475c6f28a09149a765a2febc73da449c76d1cd"
+        },
+        {
+          "file": "shards/01/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "0f3e093b8cabb0c4c41b013774851edead7aea84f54fabdf236b5b520587e177"
+        },
+        {
+          "file": "shards/01/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "e933c9c0711ce071346c3fc59031228ae68d1f423f4849c82df17f5d3a28d6f5"
+        },
+        {
+          "file": "shards/01/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "ddff780555c2cc1633e1c33e73090d33a9631b6993dbfa74a13c30a668397629"
+        },
+        {
+          "file": "shards/01/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "41ba7c677110c5d3e5c4f1b27bdee9f8e6f7d06292512cdb8ecffe10edb73973"
+        },
+        {
+          "file": "shards/01/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "299e26df8eacc76fd00815c638d55e7ffe15d292d72b96f2c077ccdb03b15835"
+        },
+        {
+          "file": "shards/01/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "f7aaead6cfcb1d60915c7190f972c888d88f8a7ad3ef6efb851e57e026636861"
+        },
+        {
+          "file": "shards/01/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "347098b621b3683d618a614456a6b12cd958fea0df2cbfdfb9a425a7055d1690"
+        },
+        {
+          "file": "shards/01/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "195f434375deb1699f3f6ccf430848bd55a56b2ffc81eb5f2a31d5124f1e16af"
+        },
+        {
+          "file": "shards/01/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "907b59bb4a1c2f9d08bbc52fe25aed124c585b22359549b181abc0ce0c07fdd5"
+        },
+        {
+          "file": "shards/01/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "4c8ae8471e94f7a1d86cbb789d54d77ae4fd46fad60a6b35d5c2492b8bb9c9c6"
+        },
+        {
+          "file": "shards/01/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "2ce010651d9c090e0a6a558760359ad2b62a684f1cd26b1a628b383489c74c41"
+        },
+        {
+          "file": "shards/01/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "5bb4e17598f089b8958b4be542d382b1d1ca7fe6be35e7842e2f30af5cce1bc9"
+        },
+        {
+          "file": "shards/01/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "8c1b1fa29d582406cc3fd368173dc280d920379fa53cc1397bf34874311e26e7"
+        },
+        {
+          "file": "shards/01/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "582d4e045b1ff9b960a38b1bb7e2b2d8960ae3af3facaf19981a189d9a0faff7"
+        },
+        {
+          "file": "shards/01/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "3a7b9f8578e109cd82a4edb999a04418af0dfe1577b17c6f225cb37ba38bce67"
+        },
+        {
+          "file": "shards/01/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "6316cffc4cb6f93b325a6256080454deb6f3f1a4ab608bb0d5687d2770545192"
+        },
+        {
+          "file": "shards/01/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "a643adc4ee06f571069359d891752df5b41fee22ff68d9da1b109ea5aa74bcda"
+        },
+        {
+          "file": "shards/01/chunks/24.bin",
+          "bytes": 23000,
+          "sha256": "d04c42b71b203e5d640737379d4dc60d11b1ac3b88e2d7c8beabf24eaa9d91f0"
+        },
+        {
+          "file": "shards/01/chunks/25.bin",
+          "bytes": 23000,
+          "sha256": "31a5fa1e704438e04997b33022dd1c713dd46da8bb94b915d1fc04c85ddb90db"
+        },
+        {
+          "file": "shards/01/chunks/26.bin",
+          "bytes": 23000,
+          "sha256": "3694ca53f2854ab8bea68c645b9943b5b1e93bfcff7598c3c4fd363d467cc87f"
+        },
+        {
+          "file": "shards/01/chunks/27.bin",
+          "bytes": 23000,
+          "sha256": "5aa1173d19d4808743b1393ac694007bd1a4960444df71ebd57a13e5f0803210"
+        },
+        {
+          "file": "shards/01/chunks/28.bin",
+          "bytes": 23000,
+          "sha256": "9de74e606301f95ec3e0143b231d897e0796e7d8289a6724567e2317b861eb71"
+        },
+        {
+          "file": "shards/01/chunks/29.bin",
+          "bytes": 23000,
+          "sha256": "b08025e07baa505e3a6c8a6c9d581de13951908f40ec0a419263d979f16bc23f"
+        },
+        {
+          "file": "shards/01/chunks/30.bin",
+          "bytes": 23000,
+          "sha256": "436aa2801f289c84e9f9eef6bafc4f34e8eb54cc9691fd879d14e0c9b8fd360d"
+        },
+        {
+          "file": "shards/01/chunks/31.bin",
+          "bytes": 23000,
+          "sha256": "ef99c6c1ee188c685dd950906e6b24a0a7ae306f859d84473100eb14f9e93cca"
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "byteLength": 736000,
+      "sha256": "8aa367d5e4427c5118d0206af94a3a4916378bb3858b0490d60d84ce5b9a8a28",
+      "chunks": [
+        {
+          "file": "shards/02/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "f858b01eaa4ffbb6d88418252c3f23e01e1b99275ff8ee475efb71f06a1a562e"
+        },
+        {
+          "file": "shards/02/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "457bccfbb81d55e7e1733d1fe87ca01eefd47398e6e9df679a58d5045cee1ecd"
+        },
+        {
+          "file": "shards/02/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "4c1a34c40a77a08752c3c43d688573c28c1880dc18a3310d74c02606b75570d1"
+        },
+        {
+          "file": "shards/02/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "b9cd71250c22b3b4ddceb43b78550f6d718749db1ee7e748384327e7206d5968"
+        },
+        {
+          "file": "shards/02/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "bddc59a2c60d809ee77f3a6a716023711dfb339802537e08b5e595f8f0bdb365"
+        },
+        {
+          "file": "shards/02/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "fdb24a4b40c94c79ba58f7d1659cc3f0ed35d6a9ca4437dfb1b05c4b5764a09e"
+        },
+        {
+          "file": "shards/02/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "ee771aa0cf6c6a85d50a50617240e56145f6e825b3186b9277646df9cf144d27"
+        },
+        {
+          "file": "shards/02/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "9182c39e01d53e19b6101754c85ae69261f2e02cef9615ece4a4f423e8a84092"
+        },
+        {
+          "file": "shards/02/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "3b74c210e2ecfa9f5c70c66203ad4559f1859c1b46e38426ca58e2c40ab9a65a"
+        },
+        {
+          "file": "shards/02/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "b54b439ae01e0fc7f041d5401953952482352f2541ddc32014456e7abae43f8c"
+        },
+        {
+          "file": "shards/02/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "5f12fc5c3bfada7fc85761fa2b307ec0dc1bae72a3392ff0cfa584210c71c783"
+        },
+        {
+          "file": "shards/02/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "e6261670092e27e7a6a4eb45657a699d55ea472809ac1be4537ab7357eed9594"
+        },
+        {
+          "file": "shards/02/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "b25dff71a5f9718510420e357fd48e70ca0509b85a1a9889ee780911be98022f"
+        },
+        {
+          "file": "shards/02/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "dabf8996c7d28ff535c9595e1c4db53870776773cd8d983af5811a38dd8a680f"
+        },
+        {
+          "file": "shards/02/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "cf166a18a79acedef21784e26b30b12c9687a06e8cd4bff84949be8bea3ceaa1"
+        },
+        {
+          "file": "shards/02/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "59921d50cfbd14ed15bcdb2c0dd655b0a3f01065e5a18352d5b56e713084275a"
+        },
+        {
+          "file": "shards/02/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "4829e9b179b9f84128716654a921c0696778984cb8be29737a7f57ab97f33ece"
+        },
+        {
+          "file": "shards/02/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "74088473fca5454d2b81d053804fd16f423df4f6fe26819f51977c144b3e544e"
+        },
+        {
+          "file": "shards/02/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "b2e28c0913a97bcfeae9d48aaabc1be1315b7d4e59661b36d87c63785680a4d2"
+        },
+        {
+          "file": "shards/02/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "8cac45a128d7d803a67304d7e4414c4ad8022d4b12d3160cdf59236cd7103bfe"
+        },
+        {
+          "file": "shards/02/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "e42c627d15920ade377913f447ea83810db56f999fb9b7433f514ac1c29bcc04"
+        },
+        {
+          "file": "shards/02/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "c97856efa2e71052e583f72ee6d9c60a298906443bc7389207377009ef2f3640"
+        },
+        {
+          "file": "shards/02/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "64aab9128a1835410278446c3d7c24182cc7b3337e54844970bec9af0e7a3d32"
+        },
+        {
+          "file": "shards/02/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "23949545b4c45b52c27d635c66de5c9fce1da53487c2dd24ba88e7536eb14083"
+        },
+        {
+          "file": "shards/02/chunks/24.bin",
+          "bytes": 23000,
+          "sha256": "67f6b8cc980d13969db23a82b3d518840e88790c859ec038b86d52996387ba9d"
+        },
+        {
+          "file": "shards/02/chunks/25.bin",
+          "bytes": 23000,
+          "sha256": "0df1a397f658774bf05a7f61c9b55469d317de3b81d83cbd1c2822de8428fefa"
+        },
+        {
+          "file": "shards/02/chunks/26.bin",
+          "bytes": 23000,
+          "sha256": "9d7cf6bacc643e8a6ccc2f39274f3e6d484c3a29ba3d4cf995ab27f559ed2320"
+        },
+        {
+          "file": "shards/02/chunks/27.bin",
+          "bytes": 23000,
+          "sha256": "752f6f13148345476e6372ee178a5a06d9f1deb2ca66846bac56886c160b3142"
+        },
+        {
+          "file": "shards/02/chunks/28.bin",
+          "bytes": 23000,
+          "sha256": "cda48d57ef81861d31c5413895fd93eb7b51c5f7a622fa27601eae94fc684a46"
+        },
+        {
+          "file": "shards/02/chunks/29.bin",
+          "bytes": 23000,
+          "sha256": "a6c97bb494b335ba02db1dbdb8493b4702b8a43fc906200525cce829d44480b6"
+        },
+        {
+          "file": "shards/02/chunks/30.bin",
+          "bytes": 23000,
+          "sha256": "9c868924b23f277560b8535c44c7c250f4e6b8e942f140feb0ed1a546384573f"
+        },
+        {
+          "file": "shards/02/chunks/31.bin",
+          "bytes": 23000,
+          "sha256": "fef019ffe9b93cdf2f486b0159291ab828ce167a76923f30325dba492ac965b9"
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "byteLength": 736000,
+      "sha256": "73c51809f82d367290a2b1ce51087a68800c1295a063671ff7d0263810baeef4",
+      "chunks": [
+        {
+          "file": "shards/03/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "b811cedba483d6b8cfaa0e8d6f4504a140616668e8cc289cc9ae78166a5c1f68"
+        },
+        {
+          "file": "shards/03/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "3243f66b44608f56a6f221cd0d65bf3b64fd848e1dde319fcfed3c7289a16d3a"
+        },
+        {
+          "file": "shards/03/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "b8090596110eba3277ed42dd7a160a8338984636dbc5e9eb4e20d73ddd018341"
+        },
+        {
+          "file": "shards/03/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "a9fbb37df568a07acec014b33adc605daa80f4f196ee553cab8ea8edc48eead2"
+        },
+        {
+          "file": "shards/03/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "3cabb26dcf2b1be602ee3801d6f603d1a7bb0a3ef004ca5de473b2ccb36d7a0e"
+        },
+        {
+          "file": "shards/03/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "01f750b17669c5a30d335e4b1b1b4dcdf9db3ea268edc07578c56f92762dc295"
+        },
+        {
+          "file": "shards/03/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "93f42ae119d8724bfd83c45f5154e02b19aa57548f5527cecffbeafc82d68eb1"
+        },
+        {
+          "file": "shards/03/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "53f4717f07f92d99a67afd2fde3cf8172e8ce6eb90d4222d4374a5ff92d972cd"
+        },
+        {
+          "file": "shards/03/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "2b406d83d48289a3f409007c3e28a70f1e50a1f58b6d54efc37f711ac6d4cb65"
+        },
+        {
+          "file": "shards/03/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "ca13f91f31db61723ef62b6e4613862685a27f0cdf1829053b7d625027cafeba"
+        },
+        {
+          "file": "shards/03/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "1ac79d6b8b4d6d7c441ca127e0862d0df08f5968475060cb2e7d47299e889292"
+        },
+        {
+          "file": "shards/03/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "e64c36ce33740807dd568729d55a16be51c3c3ebf33ac259fc16c5c677b2d8b7"
+        },
+        {
+          "file": "shards/03/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "05d81f2be3c6e465f980a1ab7a4615ec00ded76e6512b6a953e9404d507fd712"
+        },
+        {
+          "file": "shards/03/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "84924f7631cda91d78bbcbb0c57c910aacb8a9765e37331dc3a04f0f284918bb"
+        },
+        {
+          "file": "shards/03/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "8236c3dcfca5bb781f2a8baca66e9f208a173b6beb01234bf1fe184cb9c968fb"
+        },
+        {
+          "file": "shards/03/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "abfe9b2b1bd0e2156e66ad6c2ebbd95f017a352bae80fa45e0f809ff83b2f9b6"
+        },
+        {
+          "file": "shards/03/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "dc16fe4a682ed56ce18cda6e233e88ff377a495fcb92ceea9bee60c85d782865"
+        },
+        {
+          "file": "shards/03/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "d55238f5a02a332675d0f2d49fa7d9eaae3b13312edd83f4dce0ce5daa0e272d"
+        },
+        {
+          "file": "shards/03/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "f852c241fe1ddc031e033a23a8b44a785fc048afeba46b0a61481efc163c40f3"
+        },
+        {
+          "file": "shards/03/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "c72ac8a9e7f85c2e301eb03acd9118d383a8e651688ebe88ddb1d05d719fe075"
+        },
+        {
+          "file": "shards/03/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "b99b911435559894b5ad265482a2896f6ddb97147a27f52b76f8cfabb69c09fe"
+        },
+        {
+          "file": "shards/03/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "0d8580a197c93ea66961fd99ba7346355356b082b8bf5e21357839666b6d654f"
+        },
+        {
+          "file": "shards/03/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "3a744b023d08ff5ae25d4adcbc006051efac70a0c862f560e2ba77be0f013eb4"
+        },
+        {
+          "file": "shards/03/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "09d6adc6888a5842de85958e490f855e5526cc4a6c835ab8b1b7e62d934fadd9"
+        },
+        {
+          "file": "shards/03/chunks/24.bin",
+          "bytes": 23000,
+          "sha256": "5aa369463d9f4cd259a15eda0c0162250f5ed428930d8cf3215d872f4b2a762e"
+        },
+        {
+          "file": "shards/03/chunks/25.bin",
+          "bytes": 23000,
+          "sha256": "d942383864a9f3310eeb59c0f454c05c472068120c18a02bbfa36c4d073888f7"
+        },
+        {
+          "file": "shards/03/chunks/26.bin",
+          "bytes": 23000,
+          "sha256": "f83e9b1dbeac500edec838d5b2e837e5799ebb6362b3372e43b6b46c45c071cd"
+        },
+        {
+          "file": "shards/03/chunks/27.bin",
+          "bytes": 23000,
+          "sha256": "2affb8eae28cc7d980602f4a1176e03ebd715761b33e15b2891b94cc80dac24b"
+        },
+        {
+          "file": "shards/03/chunks/28.bin",
+          "bytes": 23000,
+          "sha256": "8a3119ad70c8493b267bea36611058818242ccfebd5260a3fcb63e4f27109156"
+        },
+        {
+          "file": "shards/03/chunks/29.bin",
+          "bytes": 23000,
+          "sha256": "eb0ddecb5d6611320d7a81fdbc7f45c82989e21b43e15acd6c2d6ebaa529c520"
+        },
+        {
+          "file": "shards/03/chunks/30.bin",
+          "bytes": 23000,
+          "sha256": "b69b7dd7d7d0fad295bb62610fedbe377812401ad05c23fe13d7799ae15f9521"
+        },
+        {
+          "file": "shards/03/chunks/31.bin",
+          "bytes": 23000,
+          "sha256": "12789197cfd123402fa3a1f53353d76a2446db5d9d8067e1b810b924ff215802"
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "byteLength": 736000,
+      "sha256": "1662cbd6041bb144260adcc6f712b8ea5791c4a0a6c56a3157cdbb7989803cb9",
+      "chunks": [
+        {
+          "file": "shards/04/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "1bbda635c5745046e56f00b587af89f4c249fb9925c8430d5e7b2d33aaade923"
+        },
+        {
+          "file": "shards/04/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "8251500124a35140b10eaf10010553ebaff0794c2327ab1a42727227346f0c20"
+        },
+        {
+          "file": "shards/04/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "4def80227dbc3f24c7997e8f5091b7993824435c29de16b4aff342d77f6b936b"
+        },
+        {
+          "file": "shards/04/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "d54a17f3c1556f9b2e4b14371e72a2752ff5e04e8bf3fd25fac30620ffc0aeec"
+        },
+        {
+          "file": "shards/04/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "4fbb0a15a3d279df1c233276379affef9066f8f9633e7c3d845592e4ee738339"
+        },
+        {
+          "file": "shards/04/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "f637952b24379c4eea5a8d8e3f98d3ce1a83e03954ce73c9e3016d5eee0ef95a"
+        },
+        {
+          "file": "shards/04/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "a13defccc0a0de4f81ccf63c41889cd64cbabe20c9f7d9e9f57d39b6bd1f4864"
+        },
+        {
+          "file": "shards/04/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "5c6fcf9ae9fe45685ff4d15683c9add3f96bb32803e44854c0004d17bdd37cc5"
+        },
+        {
+          "file": "shards/04/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "2e0e89a3a4cafb8439de2d2efde9cf5db929e8ca647f8a982f6e596240694649"
+        },
+        {
+          "file": "shards/04/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "39679a5d3133c2904fc0ca16a65cf67b2372f04b462125dd482daf65aaefe3d1"
+        },
+        {
+          "file": "shards/04/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "b2e8e60b75c801a81a84b68210dfed807500f9d391936f68ab378c95a0f2738f"
+        },
+        {
+          "file": "shards/04/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "30370dd12e8dc73cc76c8c5db1dcbe470e92a94c88eb0bc8ccdd66914aeb45d5"
+        },
+        {
+          "file": "shards/04/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "9c9eabfb9d7e0d18dd2b33a521d320973db6eb32d986ffb58478e852cf37a083"
+        },
+        {
+          "file": "shards/04/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "7977f4574704e95ff6b6246b32979a9ed5a38188b11a871e169eedb24c1644af"
+        },
+        {
+          "file": "shards/04/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "0583c335c27ae7eb5e9307ee6a368d9c313ce00ee9b172a628f32cba8b2c4469"
+        },
+        {
+          "file": "shards/04/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "56955a5984bd73aa0a40628a71cc877031faa955874a28534797091718fab2f7"
+        },
+        {
+          "file": "shards/04/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "b52ce7c8122cce37f626356d5133a5cdc58fda573d351c25bec2e7dede4e3b65"
+        },
+        {
+          "file": "shards/04/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "8345f00740e34be46c84dce140e3522e125da487b7f4032037c3a948f2dbba9d"
+        },
+        {
+          "file": "shards/04/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "c6d805eaeaf8c1acdd2c8f9aaf85d69831f3fc8d73293a8cd51bfffead6bca2d"
+        },
+        {
+          "file": "shards/04/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "59f27af77651aa1148c92718a0e76cd2dc1321a99864e3a802165cfec88bf754"
+        },
+        {
+          "file": "shards/04/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "bcd2632029174ef51b5b96ff6b96ed8bd24764c4e1a49bbedf4fb969b9801e26"
+        },
+        {
+          "file": "shards/04/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "03f95618a1cd0858e16d5203388b6d205076fa54503805681be20d7b2f36597c"
+        },
+        {
+          "file": "shards/04/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "fb2667e9ba7dec1b16410fb773fc074ce069cbda5ebb7ce2792df262111b70bf"
+        },
+        {
+          "file": "shards/04/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "87e285305680f22180faccbeebb58fdacc5e59a8c0e6669194471248a6fa83f4"
+        },
+        {
+          "file": "shards/04/chunks/24.bin",
+          "bytes": 23000,
+          "sha256": "41b6fd77750f0b06d4aa6b8c2f8cee281f1a9b641a6efd9725811a1ed14ad715"
+        },
+        {
+          "file": "shards/04/chunks/25.bin",
+          "bytes": 23000,
+          "sha256": "3aedddc4767da7506bcee788c2ba0700ce3dae77056a881667dc4542075bd53e"
+        },
+        {
+          "file": "shards/04/chunks/26.bin",
+          "bytes": 23000,
+          "sha256": "4c65d141c1f88e85073a755300749b203e2d64d0b2a82dd4720a268b4bbf2714"
+        },
+        {
+          "file": "shards/04/chunks/27.bin",
+          "bytes": 23000,
+          "sha256": "b6c126b2d4af5609479201b7ae7ab356c8884522904aea2b080623bf08042f5b"
+        },
+        {
+          "file": "shards/04/chunks/28.bin",
+          "bytes": 23000,
+          "sha256": "3231b11afde362a4dea028d4e677ed48c1c95c46a96944ee44a3d1277c98c69f"
+        },
+        {
+          "file": "shards/04/chunks/29.bin",
+          "bytes": 23000,
+          "sha256": "fe14f6a315328d4a35883c6a0655c31aafa14d43d35a2ea118a205f3287360eb"
+        },
+        {
+          "file": "shards/04/chunks/30.bin",
+          "bytes": 23000,
+          "sha256": "42b6b961e899b950dacb6cbc4d4fd5250bc715a373d6d2833cb5ee970b26770f"
+        },
+        {
+          "file": "shards/04/chunks/31.bin",
+          "bytes": 23000,
+          "sha256": "36fbad493cc4a2be2e7fd42c2772f73efd23c180dad367d5912bbd7ccc058379"
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "byteLength": 736000,
+      "sha256": "9d2d1567270c676b9ddbe21ef0f9e65226fb34059e228238c535c11643051c81",
+      "chunks": [
+        {
+          "file": "shards/05/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "5d9ed588f29346f64268f7d7fba3a4f584915945bd700e48423bd8904cebc9b2"
+        },
+        {
+          "file": "shards/05/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "db36b5c996dc06eb0bd5bde52e6c78cb19106430988f33eb3e081fa3ee563104"
+        },
+        {
+          "file": "shards/05/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "e2f3d12aa88024a2343c40286a37186d60419ad45c52c3c27c5de9b79d180200"
+        },
+        {
+          "file": "shards/05/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "67c3956a3e191f57e76113d85abd377dfec02cce3564293ccdd031f5ede43fbe"
+        },
+        {
+          "file": "shards/05/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "e84bf96a3f5bb11db091dd0c5b4f6f5886fe1a32ba1130c78b62235957f86f06"
+        },
+        {
+          "file": "shards/05/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "0710f33f738910bf247f3742c708ad1bfea518cc6fad404a7eac68f5cc0366fb"
+        },
+        {
+          "file": "shards/05/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "baa9635c7f73dd90ace26d1eb3edcfdc1c216a7d54ff795291ffe89d0284f208"
+        },
+        {
+          "file": "shards/05/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "72a15efe53bae32f67eb6119963ed6bc9efbbce65a0887f9ded03aba3148940c"
+        },
+        {
+          "file": "shards/05/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "c7474abdc2d5bc74f2a7cddd641c6497d48316e3388945dd36729fc997d5d3cc"
+        },
+        {
+          "file": "shards/05/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "69ddc7aafbe4489a887f4e51f0b69707b4dc7e7aee8b48c3382a0438fc4ea2b1"
+        },
+        {
+          "file": "shards/05/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "cabd0f7099893ad320927d22e07959ffdaf8e141e084a4ab96db97121140dd71"
+        },
+        {
+          "file": "shards/05/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "5f363d3ace0975d0f914cb4e81b2aee039227dd54203fd78258beebc4e6dfe3c"
+        },
+        {
+          "file": "shards/05/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "3ca4e6ae9d9a4064d2ce95ff2acc8859183ebb2446ad78a3216673ac67bd9b5c"
+        },
+        {
+          "file": "shards/05/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "ff6d942c38e1d9380a72e7f1f3121fbb512622be4f8a6145a0ed15a9cba50d82"
+        },
+        {
+          "file": "shards/05/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "a1083b6d4ce2e7f66de512fcb3becc82bd0764bb733b9d8218ad9cfc556b2d9e"
+        },
+        {
+          "file": "shards/05/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "dc1ac0523f2ec81defad049ef5a1935fa1f3c6253d81ded258a66a990f498fe6"
+        },
+        {
+          "file": "shards/05/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "97b757a1407386219b00d00a059bd75f2787f31df7cc31a14474d52e046b12ed"
+        },
+        {
+          "file": "shards/05/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "269d0e82588f400ffb4ef006077c0449161d8a8e5a82ff2070942a42c947964c"
+        },
+        {
+          "file": "shards/05/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "4557e160e578ffedd6a088aaa56c2d9e042a798114ee153d53c832e6ac9f3a3a"
+        },
+        {
+          "file": "shards/05/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "12042fa957d5241172537fd6044eb0ec37c59a240d6f26e35cc16eccd3f4c1ed"
+        },
+        {
+          "file": "shards/05/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "de73a4de6c33140f0ac93ce3c5392b667e2176b51644b69fa7a08d715b0f30be"
+        },
+        {
+          "file": "shards/05/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "dbe0093f8e83ac6655c450554f3cd3576bc6a65296144d64fb47a94f7f288cb2"
+        },
+        {
+          "file": "shards/05/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "23f4eeb285e8d014c469199f750ba4d047557b22f624a52454037660158d2351"
+        },
+        {
+          "file": "shards/05/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "4c0b3f6bea0f2233cb9ea05c47354618787ee2cc84976c644db35a050fbecf76"
+        },
+        {
+          "file": "shards/05/chunks/24.bin",
+          "bytes": 23000,
+          "sha256": "92019df2b4b769320a20763f3d546b52adf242dd72462be805969acb8b3a46a6"
+        },
+        {
+          "file": "shards/05/chunks/25.bin",
+          "bytes": 23000,
+          "sha256": "d1a17049e2f6a9769f1e4e4ae8add209209a39c1b4038cb2622f4141cbd35e1b"
+        },
+        {
+          "file": "shards/05/chunks/26.bin",
+          "bytes": 23000,
+          "sha256": "90dba32d2c466049be95e044d0f631fafb9e400a776ea86069e1314d258bc43f"
+        },
+        {
+          "file": "shards/05/chunks/27.bin",
+          "bytes": 23000,
+          "sha256": "1d7dbe1e78f67d953480ebceb899cfe182ca4a2cf7532c2784f59cbb1054dc34"
+        },
+        {
+          "file": "shards/05/chunks/28.bin",
+          "bytes": 23000,
+          "sha256": "7aa4eb5e5c9f85e325ad2426936bf737a20bbcd42a2317a38d4cbe5f19663ac3"
+        },
+        {
+          "file": "shards/05/chunks/29.bin",
+          "bytes": 23000,
+          "sha256": "3b97e3ec1f4d98af17a8d1456abcf0131167d3fa4106df64b22b58fa8b2298cf"
+        },
+        {
+          "file": "shards/05/chunks/30.bin",
+          "bytes": 23000,
+          "sha256": "c8d3fde076603d68f1c8d69e13bed672c464ac889d32ccd44704a6f287de25f5"
+        },
+        {
+          "file": "shards/05/chunks/31.bin",
+          "bytes": 23000,
+          "sha256": "9e9768c12345dfd436623b4763064ac8d664348c74e9591409448216d6e44822"
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "byteLength": 180329,
+      "sha256": "8e5073be4095d9a8403e54e96c34b0bcc8ea446d73ae15a0fe37ad16359c21c5",
+      "chunks": [
+        {
+          "file": "shards/06/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "1f975bc00e08479b040acfa07ed9dd0ae9147b4269d70c631ec427e4faea41e6"
+        },
+        {
+          "file": "shards/06/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "b6bda32ed9be0e7565682e27afecd2d9e7cda6dd35c0bd384b4559c4482d525a"
+        },
+        {
+          "file": "shards/06/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "4c7be3090e160ca95561f0d7935ddbe20b2a4dc93f1733c2d04b45b7dbb07ac6"
+        },
+        {
+          "file": "shards/06/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "2d0b80b2c4c93ca4c680c1f297d18395cb32151c24f864777b7b6231e7c032b8"
+        },
+        {
+          "file": "shards/06/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "d4e94230285658362e29c2320bbbe8d3ae1a79b6bc8cb337e1752c66bd8f5f73"
+        },
+        {
+          "file": "shards/06/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "a445f9fb5e4fc44df75acb428880b2d24f7ccdc0cc40867f0e6c0c68e2d8e58f"
+        },
+        {
+          "file": "shards/06/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "b9c8186e0b0786918ac4590c1984819b2e4583ab7ebfdd5894227dd890e0d706"
+        },
+        {
+          "file": "shards/06/chunks/07.bin",
+          "bytes": 19329,
+          "sha256": "11be5f83f88a08e69106181a07886a8d5c7d185cf69a367df78c7cb22db6b921"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "name": "@anima-genesis/privacy-runtime",
+  "version": "5.5.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@railgun-community/shared-models": "8.0.1",
+    "@railgun-community/waku-broadcaster-client-web": "9.1.1",
+    "@railgun-community/wallet": "10.9.0",
+    "memdown": "6.1.1",
+    "snarkjs": "0.7.6",
+    "@railgun-community/engine": "9.6.0",
+    "ethers": "6.14.3",
+    "assert": "2.0.0",
+    "crypto-browserify": "3.12.0"
+  },
+  "devDependencies": {
+    "esbuild": "0.25.12",
+    "esbuild-plugin-polyfill-node": "0.3.0"
+  },
+  "overrides": {
+    "axios": "1.20.0",
+    "dset": "3.1.4",
+    "js-yaml@>=4 <5": "4.3.2",
+    "ws@>=8": "8.21.3",
+    "ws@>=1 <6": "5.2.5",
+    "form-data@<3": "2.5.6",
+    "bn.js@<5": "4.12.3"
+  }
+}

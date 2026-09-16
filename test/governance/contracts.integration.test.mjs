@@ -1,0 +1,77 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import fs from 'node:fs';
+import ganache from 'ganache';
+import {BrowserProvider,Contract,ContractFactory,ZeroAddress,ZeroHash,keccak256,toUtf8Bytes,parseEther,AbiCoder} from 'ethers';
+import {compileGovernance} from './compile.mjs';
+
+const fixture=`// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.24;
+contract GovToken {
+ mapping(address=>uint256) public balanceOf;mapping(address=>mapping(address=>uint256)) public allowance;
+ function mint(address who,uint256 amount) external {balanceOf[who]+=amount;}
+ function burn(address who,uint256 amount) external {balanceOf[who]-=amount;}
+ function approve(address who,uint256 amount) external returns(bool){allowance[msg.sender][who]=amount;return true;}
+ function transfer(address to,uint256 amount) external returns(bool){balanceOf[msg.sender]-=amount;balanceOf[to]+=amount;return true;}
+ function transferFrom(address from,address to,uint256 amount) external returns(bool){allowance[from][msg.sender]-=amount;balanceOf[from]-=amount;balanceOf[to]+=amount;return true;}
+}
+contract GovTarget {
+ uint256 public quote=10;uint256 public calls;
+ function setQuote(uint256 value) external {quote=value;}
+ function trade(address token,address output,uint256 take,uint256 give) external {GovToken(token).transferFrom(msg.sender,address(this),take);GovToken(output).mint(msg.sender,give);calls++;}
+ function steal(address token,uint256 amount) external {GovToken(token).burn(msg.sender,amount);calls++;}
+ function native() external payable {calls++;}
+ function fail(address token,uint256 amount) external {GovToken(token).transferFrom(msg.sender,address(this),amount);revert('deliberate');}
+}
+contract RejectNFT {function onERC721Received(address,address,uint256,bytes calldata) external pure returns(bytes4){revert('reject');}}
+`;
+const compiled=compileGovernance({'test/governance/Fixture.sol':{content:fixture}});
+const artifact=name=>compiled[name]||JSON.parse(fs.readFileSync(new URL(`../../contracts/artifacts/${name}.json`,import.meta.url),'utf8'));
+const hash=text=>keccak256(toUtf8Bytes(text));
+const reject=async fn=>assert.rejects(async()=>{const tx=await fn();if(tx?.wait)await tx.wait();});
+async function deploy(name,signer,args=[]){const a=artifact(name);const c=await new ContractFactory(a.abi,a.bytecode,signer).deploy(...args);await c.waitForDeployment();return c;}
+async function setup(t){
+ const rpc=ganache.provider({logging:{quiet:true},wallet:{totalAccounts:7,defaultBalance:1000},chain:{chainId:31337,hardfork:'shanghai'},miner:{blockGasLimit:30000000}});t.after(()=>rpc.disconnect());const provider=new BrowserProvider(rpc,undefined,{cacheTimeout:-1});provider.pollingInterval=10;const signers=await Promise.all([0,1,2,3,4,5].map(i=>provider.getSigner(i))),addresses=await Promise.all(signers.map(s=>s.getAddress()));const [admin,owner]=signers;
+ const router=await deploy('ProofRouter',admin,[addresses[0]]),renderer=await deploy('OnchainRenderer',admin),registry=await deploy('OmnichainWitnessRegistry',admin,[addresses[0]]),collection=await deploy('IDontFuckingBelieveIt',admin,[addresses[0],await renderer.getAddress(),await router.getAddress(),await registry.getAddress(),addresses[0],500]),factory=await deploy('SovereignAccountFactory',admin,[await collection.getAddress(),await router.getAddress()]);await(await collection.setAccountFactory(await factory.getAddress())).wait();const secret=hash('operating-custody-real-nft');await(await collection.connect(owner).commitAwakening(await collection.commitmentFor(addresses[1],secret,addresses[1]))).wait();await provider.send('evm_mine',[]);await provider.send('evm_mine',[]);await(await collection.connect(owner).revealAwakening(secret,addresses[1])).wait();const account=new Contract(await collection.accountOf(1),artifact('SovereignAccount').abi,owner);
+ const input=await deploy('GovToken',admin),output=await deploy('GovToken',admin),other=await deploy('GovToken',admin),target=await deploy('GovTarget',admin);const policy={quorum:5000,support:6000,buyout:8000,proposal:100,voting:86400,delay:3600,minimumBuyout:parseEther('1')};
+ const gov=await deploy('OperatingNFTGovernance',owner,[await collection.getAddress(),1,addresses[1],addresses.slice(1,4),[70,20,10],[await input.getAddress(),await output.getAddress(),await other.getAddress()],policy,hash('No inherited liabilities; explicit operating custody and protected tokens.')]);const shares=new Contract(await gov.shares(),artifact('OperatingVotingShares').abi,owner);await(await collection.connect(owner).approve(await gov.getAddress(),1)).wait();await(await gov.connect(owner).deposit()).wait();await(await input.mint(await account.getAddress(),1000)).wait();await(await other.mint(await account.getAddress(),1000)).wait();await(await owner.sendTransaction({to:await account.getAddress(),value:parseEther('10')})).wait();
+ const c={rpc,provider,signers,addresses,collection,account,input,output,other,target,gov,shares};c.time=async n=>{await provider.send('evm_increaseTime',[n]);await provider.send('evm_mine',[]);};c.action=async overrides=>({target:await target.getAddress(),targetCodeHash:keccak256(await provider.getCode(await target.getAddress())),inputAsset:await input.getAddress(),maxInput:100,value:0,outputAsset:await output.getAddress(),minOutput:50,expectedNonce:await account.actionNonce(),deadline:(await provider.getBlock('latest')).timestamp+40*86400,data:target.interface.encodeFunctionData('trade',[await input.getAddress(),await output.getAddress(),100,50]),conditionTarget:ZeroAddress,conditionCodeHash:ZeroHash,conditionData:'0x',conditionResultHash:ZeroHash,priorObligations:ZeroHash,nextObligations:ZeroHash,...overrides});
+ c.pass=async(id,{buyout=false}={})=>{await(await gov.connect(signers[1]).vote(id,true)).wait();if(buyout)await(await gov.connect(signers[2]).vote(id,true)).wait();await c.time(86401);await(await gov.queue(id)).wait();await c.time(3601);};c.propose=async a=>{await(await gov.connect(owner).proposeAction(a)).wait();return gov.proposalCount();};return c;
+}
+
+test('operating custody is a separately deployable governance and checkpoints defeat transferred-share double voting',async t=>{
+ assert.ok(compiled.OperatingNFTGovernance.runtimeBytes<=24576,`governance runtime ${compiled.OperatingNFTGovernance.runtimeBytes}`);assert.ok(compiled.OperatingVotingShares.runtimeBytes<=24576);const c=await setup(t),{gov,account,shares,addresses,signers,collection}=c;
+ assert.equal(await collection.ownerOf(1),await gov.getAddress());assert.equal(await account.currentOwner(),await gov.getAddress());assert.equal(await account.sessionEpoch(),2n);assert.equal(await shares.totalSupply(),100n);assert.equal(await shares.balanceOf(addresses[1]),70n);
+ await reject(()=>account.execute(c.target.getAddress(),0,'0x'));await reject(()=>gov.connect(signers[1]).deposit());await reject(()=>shares.activate());await reject(()=>shares.burn(addresses[1],1));
+ const a=await c.action(),id=await c.propose(a);await(await shares.transfer(addresses[4],70)).wait();await reject(()=>gov.connect(signers[4]).vote(id,true));await(await gov.connect(signers[1]).vote(id,true)).wait();await reject(()=>gov.connect(signers[1]).vote(id,true));assert.equal((await gov.proposal(id)).yes,70n);
+ await reject(()=>gov.execute(id));await c.time(86401);await(await gov.queue(id)).wait();await reject(()=>gov.execute(id));await c.time(3601);await(await gov.execute(id)).wait();assert.equal(await c.input.balanceOf(await account.getAddress()),900n);assert.equal(await c.output.balanceOf(await account.getAddress()),50n);assert.equal(await c.input.allowance(await account.getAddress(),await c.target.getAddress()),0n);await reject(()=>gov.execute(id));
+});
+
+test('failed quorum, exact input budget, minimum output, precondition and account nonce remain enforced atomically',async t=>{
+ const c=await setup(t),{gov,account,input,output,other,target,signers}=c;let a=await c.action(),id=await c.propose(a);await(await gov.connect(signers[2]).vote(id,true)).wait();await c.time(86401);assert.equal(await gov.successful(id),false);await reject(()=>gov.queue(id));await(await gov.cancel(id)).wait();
+ a=await c.action({data:target.interface.encodeFunctionData('trade',[await input.getAddress(),await output.getAddress(),101,50])});id=await c.propose(a);await c.pass(id);await reject(()=>gov.execute(id));assert.equal(await account.actionNonce(),0n);assert.equal(await input.balanceOf(await account.getAddress()),1000n);
+ a=await c.action({minOutput:51});id=await c.propose(a);await c.pass(id);await reject(()=>gov.execute(id));assert.equal(await output.balanceOf(await account.getAddress()),0n);assert.equal(await input.allowance(await account.getAddress(),await target.getAddress()),0n);
+ a=await c.action({data:target.interface.encodeFunctionData('steal',[await other.getAddress(),10]),minOutput:0});id=await c.propose(a);await c.pass(id);await reject(()=>gov.execute(id));assert.equal(await other.balanceOf(await account.getAddress()),1000n);
+ a=await c.action({conditionTarget:await target.getAddress(),conditionCodeHash:keccak256(await c.provider.getCode(await target.getAddress())),conditionData:target.interface.encodeFunctionData('quote'),conditionResultHash:keccak256(AbiCoder.defaultAbiCoder().encode(['uint256'],[10]))});id=await c.propose(a);await c.pass(id);await(await target.setQuote(11)).wait();await reject(()=>gov.execute(id));assert.equal(await account.actionNonce(),0n);
+ const first=await c.propose(await c.action()),second=await c.propose(await c.action());await(await gov.connect(signers[1]).vote(first,true)).wait();await(await gov.connect(signers[1]).vote(second,true)).wait();await c.time(86401);await(await gov.queue(first)).wait();await(await gov.queue(second)).wait();await c.time(3601);await(await gov.execute(first)).wait();await reject(()=>gov.execute(second));assert.equal(await account.actionNonce(),1n);
+ await reject(async()=>c.propose(await c.action({target:await account.getAddress(),targetCodeHash:keccak256(await c.provider.getCode(await account.getAddress()))})));
+ await reject(async()=>c.propose(await c.action({target:await input.getAddress(),targetCodeHash:keccak256(await c.provider.getCode(await input.getAddress())),inputAsset:ZeroAddress,maxInput:0,minOutput:0,data:input.interface.encodeFunctionData('approve',[await target.getAddress(),1000])})));
+});
+
+test('repeat operators keep exact calldata, finite call/input budgets, caller and revocation boundaries',async t=>{
+ const c=await setup(t),{gov,signers,addresses,account,target}=c;const a=await c.action(),expires=(await c.provider.getBlock('latest')).timestamp+40*86400;await(await gov.connect(signers[1]).proposeOperator(addresses[4],a,300,3,expires)).wait();let id=await gov.proposalCount();await c.pass(id);await(await gov.execute(id)).wait();await reject(()=>gov.connect(signers[3]).executeOperator(id));await(await gov.connect(signers[4]).executeOperator(id)).wait();assert.equal((await gov.operator(id)).remaining,200n);assert.equal((await gov.operator(id)).callsRemaining,2n);assert.equal(await account.actionNonce(),1n);
+ await(await gov.connect(signers[1]).proposeRevocation(id)).wait();const revoke=await gov.proposalCount();await c.pass(revoke);await(await gov.execute(revoke)).wait();await reject(()=>gov.connect(signers[4]).executeOperator(id));assert.equal(await target.calls(),1n);
+ const next=await c.action();await(await gov.connect(signers[1]).proposeOperator(addresses[4],next,200,2,expires)).wait();id=await gov.proposalCount();await c.pass(id);await(await gov.execute(id)).wait();await(await gov.connect(signers[4]).executeOperator(id)).wait();await(await gov.connect(signers[4]).executeOperator(id)).wait();await reject(()=>gov.connect(signers[4]).executeOperator(id));assert.equal((await gov.operator(id)).remaining,0n);
+});
+
+test('funded supermajority buyout transfers the real NFT, invalidates ownership epoch and conserves proceeds for minority holders',async t=>{
+ const c=await setup(t),{gov,signers,addresses,account,collection,shares}=c;await reject(()=>gov.connect(signers[4]).proposeBuyout(addresses[4],{value:1}));await(await gov.connect(signers[4]).proposeBuyout(addresses[4],{value:parseEther('2')})).wait();let id=await gov.proposalCount();await(await gov.connect(signers[1]).vote(id,true)).wait();await c.time(86401);assert.equal(await gov.successful(id),false);await(await gov.cancel(id)).wait();assert.equal(await gov.refunds(addresses[4]),parseEther('2'));await(await gov.connect(signers[4]).claimRefund(addresses[4])).wait();assert.equal(await gov.outstandingNative(),0n);
+ await(await gov.connect(signers[4]).proposeBuyout(addresses[4],{value:parseEther('3')})).wait();id=await gov.proposalCount();await c.pass(id,{buyout:true});const epoch=await account.sessionEpoch();await(await gov.execute(id)).wait();assert.equal(await collection.ownerOf(1),addresses[4]);assert.equal(await account.sessionEpoch(),epoch+1n);assert.equal(await c.provider.getBalance(await account.getAddress()),parseEther('10'));assert.equal(await gov.redemptionPool(),parseEther('3'));await reject(()=>gov.connect(signers[1]).proposeAction(c.action()));
+ const before=await c.provider.getBalance(addresses[5]);await(await gov.connect(signers[3]).redeem(10,addresses[5])).wait();assert.equal(await c.provider.getBalance(addresses[5])-before,parseEther('.3'));await(await gov.connect(signers[2]).redeem(20,addresses[5])).wait();await(await gov.connect(signers[1]).redeem(70,addresses[5])).wait();assert.equal(await c.provider.getBalance(addresses[5])-before,parseEther('3'));assert.equal(await gov.redemptionPool(),0n);assert.equal(await gov.outstandingNative(),0n);assert.equal(await shares.totalSupply(),0n);await reject(()=>gov.connect(signers[3]).redeem(10,addresses[5]));
+});
+
+test('stale or rejecting buyouts recover their escrow and unanimous ownership can recover the NFT without an outsider offer blocking it',async t=>{
+ const c=await setup(t),{gov,shares,signers,addresses,collection,account}=c;const rejection=await deploy('RejectNFT',signers[0]);await(await gov.connect(signers[4]).proposeBuyout(await rejection.getAddress(),{value:parseEther('1')})).wait();let id=await gov.proposalCount();await c.pass(id,{buyout:true});await reject(()=>gov.execute(id));assert.equal(await gov.exited(),false);await c.time(7*86400+1);await(await gov.cancel(id)).wait();assert.equal(await gov.refunds(addresses[4]),parseEther('1'));
+ await(await gov.connect(signers[4]).proposeBuyout(addresses[4],{value:parseEther('1')})).wait();const stale=await gov.proposalCount(),operation=await c.propose(await c.action());await(await gov.connect(signers[1]).vote(stale,true)).wait();await(await gov.connect(signers[2]).vote(stale,true)).wait();await(await gov.connect(signers[1]).vote(operation,true)).wait();await c.time(86401);await(await gov.queue(stale)).wait();await(await gov.queue(operation)).wait();await c.time(3601);await(await gov.execute(operation)).wait();await reject(()=>gov.execute(stale));assert.equal(await account.actionNonce(),1n);
+ await(await shares.connect(signers[2]).transfer(addresses[1],20)).wait();await(await shares.connect(signers[3]).transfer(addresses[1],10)).wait();await(await gov.connect(signers[1]).redeemWhole(addresses[1])).wait();assert.equal(await collection.ownerOf(1),addresses[1]);await(await gov.cancel(stale)).wait();assert.equal(await gov.refunds(addresses[4]),parseEther('2'));await(await gov.connect(signers[4]).claimRefund(addresses[4])).wait();assert.equal(await gov.outstandingNative(),0n);
+});

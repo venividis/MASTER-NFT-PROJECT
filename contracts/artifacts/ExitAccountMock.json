@@ -1,0 +1,310 @@
+{
+  "contractName": "ExitAccountMock",
+  "sourceName": "contracts/src/test/ExitHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "who",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "who",
+          "type": "address"
+        }
+      ],
+      "name": "change",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "currentOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bool",
+          "name": "on",
+          "type": "bool"
+        }
+      ],
+      "name": "flip",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mode",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "run",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "sessionEpoch",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "transferOnReceive",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x608034607457601f6104e638819003918201601f19168301916001600160401b03831184841017607857808492602094604052833981010312607457516001600160a01b038116908190036074575f80546001600160e01b031916909117600160a01b179055604051610459908161008d8239f35b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe60806040526004361015610075575b3615610018575f80fd5b5f5460ff8160e81c1661002757005b7fffffffff0000000000000000ffffffffffffffffffffffffffffffffffffffff67ffffffffffffffff60a01b61006a67ffffffffffffffff8460a01c166103f0565b60a01b169116175f55005b5f3560e01c80631d263f671461035f5780631e77933e146102b8578063295a52121461029657806343de0a3d14610272578063a3d6bde914610125578063b387ef92146100f35763cee9047a0361000e57346100ef575f3660031901126100ef57602067ffffffffffffffff5f5460a01c16604051908152f35b5f80fd5b346100ef575f3660031901126100ef57602073ffffffffffffffffffffffffffffffffffffffff5f5416604051908152f35b60403660031901126100ef576101396103cd565b60243567ffffffffffffffff81116100ef57366023820112156100ef5780600401359167ffffffffffffffff83116100ef5736602484840101116100ef5773ffffffffffffffffffffffffffffffffffffffff5f541633036100ef5760245f93928385946040519384930183378101848152039134905af13d1561026a573d9067ffffffffffffffff82116102565760405191601f8101601f19908116603f0116830167ffffffffffffffff8111848210176102565760405282523d5f602084013e5b1561024e576040519060208252818151918260208301525f5b838110610236575050815f6040809484010152601f80199101168101030190f35b60208282018101516040878401015285935001610215565b602081519101fd5b634e487b7160e01b5f52604160045260245ffd5b6060906101fc565b346100ef575f3660031901126100ef57602060ff5f5460e81c166040519015158152f35b346100ef575f3660031901126100ef57602060ff5f5460e01c16604051908152f35b346100ef5760203660031901126100ef5773ffffffffffffffffffffffffffffffffffffffff6102e66103cd565b165f54907fffffffff0000000000000000000000000000000000000000000000000000000067ffffffffffffffff60a01b61035167ffffffffffffffff847fffffffffffffffffffffffff000000000000000000000000000000000000000087161760a01c166103f0565b60a01b16921617175f555f80f35b346100ef5760203660031901126100ef576004358015158091036100ef577fffff00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7dff00000000000000000000000000000000000000000000000000000000005f549260e81b169116175f555f80f35b6004359073ffffffffffffffffffffffffffffffffffffffff821682036100ef57565b67ffffffffffffffff1667ffffffffffffffff811461040f5760010190565b634e487b7160e01b5f52601160045260245ffdfea2646970667358221220b331f4d87e55b594c67647b66a0db3fb8788443e6f00a52266eda3309376979e64736f6c634300081e0033",
+  "deployedBytecode": "0x60806040526004361015610075575b3615610018575f80fd5b5f5460ff8160e81c1661002757005b7fffffffff0000000000000000ffffffffffffffffffffffffffffffffffffffff67ffffffffffffffff60a01b61006a67ffffffffffffffff8460a01c166103f0565b60a01b169116175f55005b5f3560e01c80631d263f671461035f5780631e77933e146102b8578063295a52121461029657806343de0a3d14610272578063a3d6bde914610125578063b387ef92146100f35763cee9047a0361000e57346100ef575f3660031901126100ef57602067ffffffffffffffff5f5460a01c16604051908152f35b5f80fd5b346100ef575f3660031901126100ef57602073ffffffffffffffffffffffffffffffffffffffff5f5416604051908152f35b60403660031901126100ef576101396103cd565b60243567ffffffffffffffff81116100ef57366023820112156100ef5780600401359167ffffffffffffffff83116100ef5736602484840101116100ef5773ffffffffffffffffffffffffffffffffffffffff5f541633036100ef5760245f93928385946040519384930183378101848152039134905af13d1561026a573d9067ffffffffffffffff82116102565760405191601f8101601f19908116603f0116830167ffffffffffffffff8111848210176102565760405282523d5f602084013e5b1561024e576040519060208252818151918260208301525f5b838110610236575050815f6040809484010152601f80199101168101030190f35b60208282018101516040878401015285935001610215565b602081519101fd5b634e487b7160e01b5f52604160045260245ffd5b6060906101fc565b346100ef575f3660031901126100ef57602060ff5f5460e81c166040519015158152f35b346100ef575f3660031901126100ef57602060ff5f5460e01c16604051908152f35b346100ef5760203660031901126100ef5773ffffffffffffffffffffffffffffffffffffffff6102e66103cd565b165f54907fffffffff0000000000000000000000000000000000000000000000000000000067ffffffffffffffff60a01b61035167ffffffffffffffff847fffffffffffffffffffffffff000000000000000000000000000000000000000087161760a01c166103f0565b60a01b16921617175f555f80f35b346100ef5760203660031901126100ef576004358015158091036100ef577fffff00ffffffffffffffffffffffffffffffffffffffffffffffffffffffffff7dff00000000000000000000000000000000000000000000000000000000005f549260e81b169116175f555f80f35b6004359073ffffffffffffffffffffffffffffffffffffffff821682036100ef57565b67ffffffffffffffff1667ffffffffffffffff811461040f5760010190565b634e487b7160e01b5f52601160045260245ffdfea2646970667358221220b331f4d87e55b594c67647b66a0db3fb8788443e6f00a52266eda3309376979e64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "change(address)": "1e77933e",
+    "currentOwner()": "b387ef92",
+    "flip(bool)": "1d263f67",
+    "mode()": "295a5212",
+    "run(address,bytes)": "a3d6bde9",
+    "sessionEpoch()": "cee9047a",
+    "transferOnReceive()": "43de0a3d"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "who",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "who",
+              "type": "address"
+            }
+          ],
+          "name": "change",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "currentOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bool",
+              "name": "on",
+              "type": "bool"
+            }
+          ],
+          "name": "flip",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "mode",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "name": "run",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "sessionEpoch",
+          "outputs": [
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "transferOnReceive",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "stateMutability": "payable",
+          "type": "receive"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/ExitHarness.sol": "ExitAccountMock"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/test/ExitHarness.sol": {
+        "keccak256": "0xb0959425a539cc6f6b1fb44cbb74543d7433b866bf83659d2bc21578a1341ad6",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://ee7019b67f0c92e14e5a6dee8e44c083e8e91f31d730a34fdd047e2f73700b0a",
+          "dweb:/ipfs/QmQ5daVRUe6UMgd5JpiepziqV19F4Qp6pKvvmKA3VHT1xK"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

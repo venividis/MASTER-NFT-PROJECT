@@ -1,0 +1,23 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+test = "test"
+script = "script"
+solc_version = "0.8.36"
+optimizer = true
+optimizer_runs = 800
+# The renderer builds a hundred kilobytes of string in one view call and the
+# sigil turns sixteen four-vectors by six Givens rotations each. Both run out
+# of stack slots without the IR pipeline.
+via_ir = true
+evm_version = "cancun"
+fs_permissions = [{ access = "read", path = "./dist" }]
+fuzz = { runs = 512 }
+invariant = { runs = 64, depth = 32, fail_on_revert = false }
+
+[rpc_endpoints]
+mainnet = "${ETH_RPC_URL}"
+base = "https://mainnet.base.org"
+sepolia = "https://ethereum-sepolia-rpc.publicnode.com"
+base_sepolia = "https://sepolia.base.org"

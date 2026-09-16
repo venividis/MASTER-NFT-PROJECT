@@ -1,0 +1,220 @@
+{
+  "contractName": "SafeTransferLib",
+  "sourceName": "contracts/src/confluence/vendor/solady/utils/SafeTransferLib.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "ApproveFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ETHTransferFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Permit2AmountOverflow",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Permit2ApproveFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Permit2Failed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Permit2LockdownFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TotalSupplyQueryFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferFailed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "TransferFromFailed",
+      "type": "error"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220428ffb557d85bb0bd43eb5eb685fc39db3c60f37b7e4ce6977f35c022d6a252364736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220428ffb557d85bb0bd43eb5eb685fc39db3c60f37b7e4ce6977f35c022d6a252364736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "ApproveFailed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "ETHTransferFailed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "Permit2AmountOverflow",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "Permit2ApproveFailed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "Permit2Failed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "Permit2LockdownFailed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "TotalSupplyQueryFailed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "TransferFailed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "TransferFromFailed",
+          "type": "error"
+        }
+      ],
+      "devdoc": {
+        "author": "Solady (https://github.com/vectorized/solady/blob/main/src/utils/SafeTransferLib.sol)Modified from Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/SafeTransferLib.sol)Permit2 operations from (https://github.com/Uniswap/permit2/blob/main/src/libraries/Permit2Lib.sol)",
+        "details": "Note: - For ETH transfers, please use `forceSafeTransferETH` for DoS protection.",
+        "errors": {
+          "ApproveFailed()": [
+            {
+              "details": "The ERC20 `approve` has failed."
+            }
+          ],
+          "ETHTransferFailed()": [
+            {
+              "details": "The ETH transfer has failed."
+            }
+          ],
+          "Permit2AmountOverflow()": [
+            {
+              "details": "The Permit2 amount must be less than `2**160 - 1`."
+            }
+          ],
+          "Permit2ApproveFailed()": [
+            {
+              "details": "The Permit2 approve operation has failed."
+            }
+          ],
+          "Permit2Failed()": [
+            {
+              "details": "The Permit2 operation has failed."
+            }
+          ],
+          "Permit2LockdownFailed()": [
+            {
+              "details": "The Permit2 lockdown operation has failed."
+            }
+          ],
+          "TotalSupplyQueryFailed()": [
+            {
+              "details": "The ERC20 `totalSupply` query has failed."
+            }
+          ],
+          "TransferFailed()": [
+            {
+              "details": "The ERC20 `transfer` has failed."
+            }
+          ],
+          "TransferFromFailed()": [
+            {
+              "details": "The ERC20 `transferFrom` has failed."
+            }
+          ]
+        },
+        "kind": "dev",
+        "methods": {},
+        "stateVariables": {
+          "DAI_DOMAIN_SEPARATOR": {
+            "details": "The unique EIP-712 domain separator for the DAI token contract."
+          },
+          "ETH_MOVER": {
+            "details": "The canonical address of the `SELFDESTRUCT` ETH mover. See: https://gist.github.com/Vectorized/1cb8ad4cf393b1378e08f23f79bd99fa [Etherscan](https://etherscan.io/address/0x00000000000073c48c8055bD43D1A53799176f0D)"
+          },
+          "GAS_STIPEND_NO_GRIEF": {
+            "details": "Suggested gas stipend for contract receiving ETH to perform a few storage reads and writes, but low enough to prevent griefing."
+          },
+          "GAS_STIPEND_NO_STORAGE_WRITES": {
+            "details": "Suggested gas stipend for contract receiving ETH that disallows any storage writes."
+          },
+          "PERMIT2": {
+            "details": "The canonical Permit2 address. [Github](https://github.com/Uniswap/permit2) [Etherscan](https://etherscan.io/address/0x000000000022D473030F116dDEE9F6B43aC78BA3)"
+          },
+          "WETH9": {
+            "details": "The address for the WETH9 contract on Ethereum mainnet."
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Safe ETH and ERC20 transfer library that gracefully handles missing return values.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/vendor/solady/utils/SafeTransferLib.sol": "SafeTransferLib"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/vendor/solady/utils/SafeTransferLib.sol": {
+        "keccak256": "0xf53a25143307304d9de7186f93f11faae3cc4f722c4b088aed6f4f8f87a02f7a",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://b722c08826ece540bbc4ee9f825aac501282c0900a0a2caa618154d77f23223d",
+          "dweb:/ipfs/QmeMsPT5S4vV8f7DYC2eZ7TBCrtRi9cKMsoW6Ca62Uaqwg"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

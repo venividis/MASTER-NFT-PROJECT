@@ -1,0 +1,78 @@
+    Updating crates.io index
+     Locking 24 packages to latest compatible versions
+      Adding generic-array v0.14.7 (available: v0.14.9)
+      Adding sha3 v0.10.9 (available: v0.12.0)
+ Downloading crates ...
+  Downloaded block-buffer v0.10.4
+  Downloaded generic-array v0.14.7
+  Downloaded proc-macro2 v1.0.107
+  Downloaded hex v0.4.3
+  Downloaded itoa v1.0.18
+  Downloaded keccak v0.1.6
+  Downloaded quote v1.0.47
+  Downloaded crypto-common v0.1.7
+  Downloaded digest v0.10.7
+  Downloaded version_check v0.9.5
+  Downloaded unicode-ident v1.0.24
+  Downloaded serde_core v1.0.229
+  Downloaded thiserror-impl v2.0.20
+  Downloaded serde_derive v1.0.229
+  Downloaded zmij v1.0.23
+  Downloaded thiserror v2.0.20
+  Downloaded serde v1.0.229
+  Downloaded typenum v1.20.1
+  Downloaded memchr v2.8.3
+  Downloaded serde_json v1.0.151
+  Downloaded syn v3.0.5
+  Downloaded sha3 v0.10.9
+   Compiling proc-macro2 v1.0.107
+   Compiling version_check v0.9.5
+   Compiling unicode-ident v1.0.24
+   Compiling quote v1.0.47
+   Compiling typenum v1.20.1
+   Compiling serde_core v1.0.229
+   Compiling zmij v1.0.23
+   Compiling serde v1.0.229
+   Compiling thiserror v2.0.20
+   Compiling serde_json v1.0.151
+   Compiling memchr v2.8.3
+   Compiling generic-array v0.14.7
+   Compiling keccak v0.1.6
+   Compiling itoa v1.0.18
+   Compiling hex v0.4.3
+   Compiling syn v3.0.5
+   Compiling crypto-common v0.1.7
+   Compiling block-buffer v0.10.4
+   Compiling digest v0.10.7
+   Compiling sha3 v0.10.9
+   Compiling serde_derive v1.0.229
+   Compiling thiserror-impl v2.0.20
+   Compiling idontfuckingbelieveit-proof-kernel v1.0.0 (/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/proof-kernel)
+    Finished `test` profile [unoptimized + debuginfo] target(s) in 15.26s
+     Running unittests src/lib.rs (/workspace/scratch/3b7470161c8a/rust-check/target/debug/deps/idontfuckingbelieveit_proof_kernel-a2a3091766c11e0d)
+
+running 9 tests
+test tests::policy_commitment_matches_independent_javascript_vector ... ok
+test tests::exact_statement_matches_cross_language_vector ... ok
+test tests::accepts_a_valid_policy_witness ... ok
+test tests::rejects_permissive_policy_substitution_without_recommitting ... ok
+test tests::rejects_replayed_or_stale_windows ... ok
+test tests::policy_commitment_normalizes_order_duplicates_and_hex_case ... ok
+test tests::rejects_policy_substitution ... ok
+test tests::rejects_malformed_policy_entries_and_evm_width_overflow ... ok
+test tests::rejects_action_preimage_and_selector_substitution ... ok
+
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+     Running unittests src/main.rs (/workspace/scratch/3b7470161c8a/rust-check/target/debug/deps/idfb_proof-9595499e285e488d)
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+
+   Doc-tests idontfuckingbelieveit_proof_kernel
+
+running 0 tests
+
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+

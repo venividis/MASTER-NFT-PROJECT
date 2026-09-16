@@ -1,0 +1,16 @@
+{
+  "name": "@awe/owner-v4-hook",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "build": "node scripts/compile.cjs",
+    "test": "node test/normal-flows.cjs",
+    "mine": "node scripts/mine-salt.cjs",
+    "verify:encoder": "node scripts/verify-encoder.cjs"
+  },
+  "devDependencies": {
+    "@foundry-rs/anvil": "1.7.1",
+    "ethers": "6.17.0",
+    "solc": "0.8.26"
+  }
+}

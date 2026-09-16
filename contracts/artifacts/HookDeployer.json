@@ -1,0 +1,161 @@
+{
+  "contractName": "HookDeployer",
+  "sourceName": "contracts/src/kingdom/HookDeployer.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "deployed",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "initCodeHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "Deployed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "initCode",
+          "type": "bytes"
+        }
+      ],
+      "name": "deploy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "deployed",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x608080604052346015576101d0908161001a8239f35b5f80fdfe6080600436101561000e575f80fd5b5f3560e01c63cdcb760a14610021575f80fd5b34610196576040366003190112610196576024359060043567ffffffffffffffff8311610196573660238401121561019657826004013567ffffffffffffffff811161019657366024828601011161019657601f8101601f19908116603f0116830167ffffffffffffffff811184821017610169575f91602091604052808552806024838701970187378401015273ffffffffffffffffffffffffffffffffffffffff818351855ff51691821561010b577f9f9c566772ebd31147263ece7c6da0220df641c474d0fb11b7691471022ca1f9602080958593519020604051908152a3604051908152f35b60646040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600e60248201527f435245415445325f4641494c45440000000000000000000000000000000000006044820152fd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b5f80fdfea2646970667358221220bf7be6a97cb8b77504cab01dfc743fa46d6dcba388ad3c2cef52671786bdf24964736f6c634300081e0033",
+  "deployedBytecode": "0x6080600436101561000e575f80fd5b5f3560e01c63cdcb760a14610021575f80fd5b34610196576040366003190112610196576024359060043567ffffffffffffffff8311610196573660238401121561019657826004013567ffffffffffffffff811161019657366024828601011161019657601f8101601f19908116603f0116830167ffffffffffffffff811184821017610169575f91602091604052808552806024838701970187378401015273ffffffffffffffffffffffffffffffffffffffff818351855ff51691821561010b577f9f9c566772ebd31147263ece7c6da0220df641c474d0fb11b7691471022ca1f9602080958593519020604051908152a3604051908152f35b60646040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600e60248201527f435245415445325f4641494c45440000000000000000000000000000000000006044820152fd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b5f80fdfea2646970667358221220bf7be6a97cb8b77504cab01dfc743fa46d6dcba388ad3c2cef52671786bdf24964736f6c634300081e0033",
+  "methodIdentifiers": {
+    "deploy(bytes32,bytes)": "cdcb760a"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "deployed",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "salt",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "initCodeHash",
+              "type": "bytes32"
+            }
+          ],
+          "name": "Deployed",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "salt",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "initCode",
+              "type": "bytes"
+            }
+          ],
+          "name": "deploy",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "deployed",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Generic CREATE2 deployment utility. No upgrades or owner privileges.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/kingdom/HookDeployer.sol": "HookDeployer"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/kingdom/HookDeployer.sol": {
+        "keccak256": "0x9509dfdd3a44a7a3087f1b0f959dbc14fb61267b01bf53bee61649d5bc37db97",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://cf5b7bcfe40dbb58b7540f01d850866eb6b8ace970e17f0ef36d60c85e80e683",
+          "dweb:/ipfs/QmfSFQuXfvZBBveTha44iLxtMhrqtSte5ZPRcDr8oQKn6z"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "contractName": "IPortalWitnessRegistry",
+  "sourceName": "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "identity",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "uint32",
+          "name": "remoteDomain",
+          "type": "uint32"
+        },
+        {
+          "internalType": "uint64",
+          "name": "nonce",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "stateRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "messageId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "submitWitness",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "submitWitness(bytes32,uint32,uint64,bytes32,bytes32)": "2cdfb85e"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "identity",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "uint32",
+              "name": "remoteDomain",
+              "type": "uint32"
+            },
+            {
+              "internalType": "uint64",
+              "name": "nonce",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "stateRoot",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "messageId",
+              "type": "bytes32"
+            }
+          ],
+          "name": "submitWitness",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol": "IPortalWitnessRegistry"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol": {
+        "keccak256": "0xdf021522327f71fc74a63392dd86cca7766a2599e732f76a8a2ae9f9eb93e5a4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://82a199e999ce2838b1a5d7ede5b718475243127d45f0493684a644e436cc0170",
+          "dweb:/ipfs/QmYDge7hzpL16rvUPGNjD9g1G7hxDNRoxFgzGaf1a9mjRK"
+        ]
+      },
+      "contracts/src/extensions/privacy/PrivacyKeys.sol": {
+        "keccak256": "0x5b8f20fe689d349759ff39805fd443c43ab633d921d73da4478ceb13f2e6e9f4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://b0b68c7dbe19da5843f860ae79b575ca8ddeda7239cc54db588200117c23da34",
+          "dweb:/ipfs/QmUM4P7aFCCYnNxHEJFDT95LDVU8WjfbbBupzFukqNkhEU"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

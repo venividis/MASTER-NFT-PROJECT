@@ -1,0 +1,50 @@
+{
+  "version": "1.6.0",
+  "checks": [
+    {
+      "command": "npm run validate:ui",
+      "exitCode": 0,
+      "log": "reports/v1.6/fresh-ui-tests.log"
+    },
+    {
+      "command": "npm run app:archive",
+      "exitCode": 0,
+      "log": "reports/v1.6/fresh-archive.log"
+    },
+    {
+      "command": "node scripts/operating-package-check.mjs",
+      "exitCode": 0,
+      "log": "reports/v1.6/fresh-source-boundaries.log"
+    }
+  ],
+  "freshNodeTests": {
+    "passed": 178,
+    "failed": 0
+  },
+  "previewRebuildByteIdentical": true,
+  "archiveReassemblyByteIdentical": true,
+  "htmlSha256": "3a6c5fb132c42223d1388ccfd4ede7b2bf885c73a5bfa4461b53c503dfb36e6a",
+  "originalPreservation": {
+    "originalSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+    "releaseSha256": "3a6c5fb132c42223d1388ccfd4ede7b2bf885c73a5bfa4461b53c503dfb36e6a",
+    "originalRemovedAdditionByteIdentical": true,
+    "assetHashes": {
+      "shader": "2d6d1dbc3dde449173701ca09d09470568cfabe8ab9087501d9a065559b833be",
+      "original": "91e9770eae022cedd283866f9686991a7d8fb67490630b7ebb50b7d318be93b0",
+      "wasm": "5cc710c19647531e2d7bc61e90b18d97068a3e55480f6ef92891620577a1a77d",
+      "referenceHTML": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59"
+    },
+    "bytes": 345155
+  },
+  "sourceBoundaryChecks": 19,
+  "browserAssertions": {
+    "regression": 64,
+    "newOperating": 66,
+    "failed": 0
+  },
+  "applicationChunks": 16,
+  "solidityCompiled": false,
+  "evmTestsExecuted": false,
+  "deploymentPerformed": false,
+  "scope": "Fresh working-copy rebuild, local Node models, recorded actual browser scenarios and source tripwires. The accompanying clean-extraction JSON independently records the final ZIP extraction. No Solidity/EVM/deployment certification."
+}

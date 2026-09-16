@@ -1,0 +1,13 @@
+{
+  "name": "@anima/crosschain",
+  "private": true,
+  "type": "module",
+  "version": "1.0.0",
+  "dependencies": {
+    "@layerzerolabs/oft-evm": "4.0.1",
+    "@layerzerolabs/lz-evm-protocol-v2": "3.0.168",
+    "@openzeppelin/contracts": "4.9.6",
+    "@openzeppelin/contracts-upgradeable": "4.9.6",
+    "@layerzerolabs/lz-evm-messagelib-v2": "3.0.168"
+  }
+}

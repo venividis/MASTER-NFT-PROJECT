@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AWE Console connection sample</title>
+<style>body{margin:0;padding:32px;background:#10141b;color:#e9edf4;font:16px system-ui;line-height:1.5}main{max-width:720px;margin:auto}h1{font-size:26px}button{background:#def09f;border:0;border-radius:6px;padding:12px 18px;margin:8px 8px 8px 0;cursor:pointer}button:disabled{opacity:.4}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#19202b;padding:20px;border-radius:8px}small{color:#a9b6c8}</style></head>
+<body><main><small>AWE CONSOLE V1 · CONNECTION SAMPLE</small><h1>A cartridge connected to its console.</h1><p id="status">Connecting to the parent console…</p><button id="info" disabled>Read console information</button><button id="world" disabled>Read granted world</button><pre id="result">No request sent.</pre><p>This sample requests read access only. It does not access a wallet or issue transactions.</p></main>
+<script>
+const connectConsoleV1 = (function connectConsoleV1({ expectedParentOrigin, window: gameWindow = globalThis.window, timeoutMs = 10000, retryMs = 300 }) {
+  const origin = new URL(expectedParentOrigin);
+  if (!["http:", "https:"].includes(origin.protocol) || origin.origin !== expectedParentOrigin) throw new Error("Configure the exact parent HTTP(S) origin");
+  if (!gameWindow || gameWindow.parent === gameWindow) return Promise.reject(new Error("Console cartridge must be framed by its configured host"));
+  return new Promise((resolve, reject) => {
+    let port;
+    let session;
+    let connected = false;
+    let closed = false;
+    const pending = new Map();
+    let retries;
+    const timeout = setTimeout(() => close(new Error("Console v1 handshake timed out")), timeoutMs);
+    const fits = value => { try { return new TextEncoder().encode(JSON.stringify(value)).length <= 65536; } catch { return false; } };
+    function close(error = new Error("Console v1 bridge closed")) {
+      if (closed) return;
+      closed = true; clearTimeout(timeout); clearInterval(retries); port?.close();
+      gameWindow.removeEventListener("message", onMessage);
+      for (const request of pending.values()) { clearTimeout(request.timeout); request.reject(error); }
+      pending.clear(); reject(error);
+    }
+    function hello() {
+      if (!closed && !connected) gameWindow.parent.postMessage({ type: "awe:hello", version: 1 }, expectedParentOrigin);
+    }
+    function onMessage(event) {
+      if (closed || connected || event.source !== gameWindow.parent || event.origin !== expectedParentOrigin) return;
+      const data = event.data;
+      if (data?.type !== "awe:connected" || data.version !== 1 || typeof data.session !== "string" || !data.session || data.session.length > 128 || event.ports?.length !== 1) return;
+      connected = true; session = data.session; port = event.ports[0];
+      clearTimeout(timeout); clearInterval(retries);
+      port.onmessage = ({ data: response }) => {
+        if (closed || response?.session !== session || typeof response.id !== "string" || !fits(response)) return;
+        const request = pending.get(response.id);
+        if (!request || (typeof response.error !== "string" && !Object.prototype.hasOwnProperty.call(response, "result"))) return;
+        pending.delete(response.id); clearTimeout(request.timeout);
+        if (typeof response.error === "string") request.reject(new Error(response.error)); else request.resolve(response.result);
+      };
+      port.start();
+      resolve({
+        profile: "awe.console.opaque/1",
+        get session() { return session; },
+        request(method, params = {}) {
+          if (closed) return Promise.reject(new Error("Console v1 bridge is closed"));
+          if (typeof method !== "string" || !method || method.length > 60) return Promise.reject(new Error("Invalid Console method"));
+          if (pending.size >= 8) return Promise.reject(new Error("Too many pending Console requests"));
+          const id = globalThis.crypto.randomUUID();
+          const message = { id, session, method, params };
+          if (!fits(message)) return Promise.reject(new Error("Console request exceeds JSON byte budget"));
+          return new Promise((resolveRequest, rejectRequest) => {
+            const requestTimeout = setTimeout(() => { pending.delete(id); rejectRequest(new Error("Console request timed out; reconnect after a host session change")); }, timeoutMs);
+            pending.set(id, { resolve: resolveRequest, reject: rejectRequest, timeout: requestTimeout });
+            port.postMessage(message);
+          });
+        },
+        close
+      });
+    }
+    gameWindow.addEventListener("message", onMessage);
+    retries = setInterval(hello, retryMs);
+    hello();
+  });
+});
+(async () => {
+  const status = document.getElementById('status');
+  const output = document.getElementById('result');
+  try {
+    // Browser-supplied referrer, never an origin copied from a handshake message.
+    // Installations that suppress the referrer must configure a fixed origin here.
+    if (!document.referrer) throw new Error('Configure the expected parent origin when the host suppresses document.referrer.');
+    const expectedParentOrigin = new URL(document.referrer).origin;
+    const client = await connectConsoleV1({ expectedParentOrigin });
+    status.textContent = 'Connected through the Console v1 opaque-frame profile.';
+    for (const [id, method] of [['info', 'console.info'], ['world', 'world.read']]) {
+      const button = document.getElementById(id);
+      button.disabled = false;
+      button.onclick = async () => {
+        try { output.textContent = JSON.stringify(await client.request(method), null, 2); }
+        catch (error) { output.textContent = error.message; }
+      };
+    }
+  } catch (error) { status.textContent = error.message; }
+})();
+</script></body></html>

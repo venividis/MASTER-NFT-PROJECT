@@ -1,0 +1,58 @@
+{
+  "contractName": "Strings",
+  "sourceName": "contracts/src/lib/Strings.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea26469706673582212204a0c7fe7e329ac143cf377f355e08e0a6f025cc1c6e6aa1d7165ea0ef61701fc64736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea26469706673582212204a0c7fe7e329ac143cf377f355e08e0a6f025cc1c6e6aa1d7165ea0ef61701fc64736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/lib/Strings.sol": "Strings"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/lib/Strings.sol": {
+        "keccak256": "0x7b756b0be7e3b12c3addd9817c804115d300fc541c607c22c17a907daa64730d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://77abd4021b4bc71b2ce20a1b7cbe9951d4ba096c8094f93b381f888212288d09",
+          "dweb:/ipfs/QmUy3TMyegVUwUWe9yC26qnBeLPmrsy3pEdYYp91XriqSW"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

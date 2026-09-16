@@ -1,0 +1,325 @@
+{
+  "contractName": "OnchainApp",
+  "sourceName": "contracts/src/protocol/OnchainApp.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "chunks_",
+          "type": "address[]"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "expectedSha",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "byteLength",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "chunkCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "chunks",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "contentSha256",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mimeType",
+      "outputs": [
+        {
+          "internalType": "string",
+          "name": "",
+          "type": "string"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "readAll",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "readChunk",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "57712": [
+      {
+        "length": 32,
+        "start": 255
+      }
+    ],
+    "57714": [
+      {
+        "length": 32,
+        "start": 521
+      },
+      {
+        "length": 32,
+        "start": 702
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60c0604052346103bb5761082680380380610019816103bf565b9283398101906040818303126103bb5780516001600160401b0381116103bb57810182601f820112156103bb578051926001600160401b038411610196578360051b9160208061006a8186016103bf565b8097815201938201019182116103bb57602001915b81831061039b57846020850151908051801515908161038f575b501561035c57602091905f90604090825b815184101561022e57600584901b8201602001516001600160a01b0316803b91906001831180610222575b156101f2576100e3856103bf565b6001815260208101908936833760015f83853c51156101de57517fff00000000000000000000000000000000000000000000000000000000000000166101aa575f54680100000000000000008110156101965780600161014592015f556103ff565b81546001600160a01b0360039290921b91821b191692901b9190911790555f1982019182116101825760019161017a91610415565b9301926100aa565b634e487b7160e01b5f52601160045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b845162461bcd60e51b815260206004820152600d60248201526c4e4f545f444154415f434f444560981b6044820152606490fd5b634e487b7160e01b5f52603260045260245ffd5b845162461bcd60e51b81526020600482015260096024820152684241445f4348554e4b60b81b6044820152606490fd5b506159d98311156100d5565b8491508060a052610246610241826103e4565b6103bf565b90808252610256601f19916103e4565b013660208301375f8054815b818310610316575050508251908051905f5b82811061030357505081805f9260209401838152039060025afa156102f957805f51036102c35760805251610403908161042382396080518160ff015260a05181818161020901526102be0152f35b815162461bcd60e51b815260206004820152600f60248201526e0a69082646a6cbe9a92a69a82a8869608b1b6044820152606490fd5b50513d5f823e3d90fd5b8060208092840101518186015201610274565b61031f836103ff565b90546001600160a01b0360039290921b1c16803b5f198101908111610182578281600161035494602082978b0101903c610415565b920191610262565b60405162461bcd60e51b815260206004820152600b60248201526a10d2155392d7d0d3d5539560aa1b6044820152606490fd5b60409150111583610099565b82516001600160a01b03811681036103bb5781526020928301920161007f565b5f80fd5b6040519190601f01601f191682016001600160401b0381118382101761019657604052565b6001600160401b03811161019657601f01601f191660200190565b5f548110156101de575f805260205f2001905f90565b919082018092116101825756fe6080806040526004361015610012575f80fd5b5f3560e01c90816302823108146102a95750806341f654f7146101f45780635a2bc22d146101a75780638f5281bf14610122578063efad39b0146100e8578063f91f0937146100cc5763fc0eb28b14610069575f80fd5b346100c8575f3660031901126100c8576100c4610086604061034a565b601781527f746578742f68746d6c3b636861727365743d7574662d3800000000000000000060208201526040519182916020835260208301906102e1565b0390f35b5f80fd5b346100c8575f3660031901126100c85760205f54604051908152f35b346100c8575f3660031901126100c85760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100c85760203660031901126100c85773ffffffffffffffffffffffffffffffffffffffff610153600435610320565b90549060031b1c16803b905f198201918211610193578160016101786100c4946103a0565b9260208401903c6040519182916020835260208301906102e1565b634e487b7160e01b5f52601160045260245ffd5b346100c85760203660031901126100c8576004355f548110156100c85773ffffffffffffffffffffffffffffffffffffffff6101e4602092610320565b90549060031b1c16604051908152f35b346100c8575f3660031901126100c85761022d7f00000000000000000000000000000000000000000000000000000000000000006103a0565b5f905f915f54905b81841061025257604051602080825281906100c4908201866102e1565b73ffffffffffffffffffffffffffffffffffffffff61027085610320565b90549060031b1c16803b905f1982019082821161019357600190602085880101903c81015f190190811061019357600190930192610235565b346100c8575f3660031901126100c8576020907f00000000000000000000000000000000000000000000000000000000000000008152f35b91908251928382525f5b84811061030b575050825f602080949584010152601f8019910116010190565b806020809284010151828286010152016102eb565b5f54811015610336575f805260205f2001905f90565b634e487b7160e01b5f52603260045260245ffd5b6040519190601f01601f1916820167ffffffffffffffff81118382101761037057604052565b634e487b7160e01b5f52604160045260245ffd5b67ffffffffffffffff811161037057601f01601f191660200190565b906103b26103ad83610384565b61034a565b82815280926103c3601f1991610384565b019060203691013756fea2646970667358221220287bae8a8dc63c063fb5bd6f3fa4b826442b09d620c3e786bb84bc5ceffdb2da64736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c90816302823108146102a95750806341f654f7146101f45780635a2bc22d146101a75780638f5281bf14610122578063efad39b0146100e8578063f91f0937146100cc5763fc0eb28b14610069575f80fd5b346100c8575f3660031901126100c8576100c4610086604061034a565b601781527f746578742f68746d6c3b636861727365743d7574662d3800000000000000000060208201526040519182916020835260208301906102e1565b0390f35b5f80fd5b346100c8575f3660031901126100c85760205f54604051908152f35b346100c8575f3660031901126100c85760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100c85760203660031901126100c85773ffffffffffffffffffffffffffffffffffffffff610153600435610320565b90549060031b1c16803b905f198201918211610193578160016101786100c4946103a0565b9260208401903c6040519182916020835260208301906102e1565b634e487b7160e01b5f52601160045260245ffd5b346100c85760203660031901126100c8576004355f548110156100c85773ffffffffffffffffffffffffffffffffffffffff6101e4602092610320565b90549060031b1c16604051908152f35b346100c8575f3660031901126100c85761022d7f00000000000000000000000000000000000000000000000000000000000000006103a0565b5f905f915f54905b81841061025257604051602080825281906100c4908201866102e1565b73ffffffffffffffffffffffffffffffffffffffff61027085610320565b90549060031b1c16803b905f1982019082821161019357600190602085880101903c81015f190190811061019357600190930192610235565b346100c8575f3660031901126100c8576020907f00000000000000000000000000000000000000000000000000000000000000008152f35b91908251928382525f5b84811061030b575050825f602080949584010152601f8019910116010190565b806020809284010151828286010152016102eb565b5f54811015610336575f805260205f2001905f90565b634e487b7160e01b5f52603260045260245ffd5b6040519190601f01601f1916820167ffffffffffffffff81118382101761037057604052565b634e487b7160e01b5f52604160045260245ffd5b67ffffffffffffffff811161037057601f01601f191660200190565b906103b26103ad83610384565b61034a565b82815280926103c3601f1991610384565b019060203691013756fea2646970667358221220287bae8a8dc63c063fb5bd6f3fa4b826442b09d620c3e786bb84bc5ceffdb2da64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "byteLength()": "02823108",
+    "chunkCount()": "f91f0937",
+    "chunks(uint256)": "5a2bc22d",
+    "contentSha256()": "efad39b0",
+    "mimeType()": "fc0eb28b",
+    "readAll()": "41f654f7",
+    "readChunk(uint256)": "8f5281bf"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address[]",
+              "name": "chunks_",
+              "type": "address[]"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "expectedSha",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "byteLength",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "chunkCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "chunks",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "contentSha256",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "mimeType",
+          "outputs": [
+            {
+              "internalType": "string",
+              "name": "",
+              "type": "string"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "readAll",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            }
+          ],
+          "name": "readChunk",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Browsers still execute the recovered code offchain; storage being onchain is not execution.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Immutable, complete HTML/Wasm/shader archive. Not a mutable URL or an IPFS-only pointer.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/protocol/OnchainApp.sol": "OnchainApp"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/OnchainApp.sol": {
+        "keccak256": "0x0f19554128f60cf5226bbdec049646af2883e9d7bf156d2d4067b087177b873d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://6e371079569b2064c62907c19ec5173ff666c80c7f62a4eb36d488ecd4f4c377",
+          "dweb:/ipfs/QmbzAGrjxVE6NSVWDC5YBukcceYfbDprfRVdbMg1aJrXZz"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

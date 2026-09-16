@@ -1,0 +1,104 @@
+{
+  "originalPreviewUnchanged": true,
+  "originalPreviewSha256": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59",
+  "solidityFiles": 16,
+  "changedSolidityFiles": 3,
+  "comparison": [
+    {
+      "path": "lib/Strings.sol",
+      "originalSha256": "4fdbabc1beb9b80a172a8548e6cd4db572602a61b391edd3f734055e9bf40825",
+      "newSha256": "4fdbabc1beb9b80a172a8548e6cd4db572602a61b391edd3f734055e9bf40825",
+      "unchanged": true
+    },
+    {
+      "path": "lib/Base64.sol",
+      "originalSha256": "c411c7ef294a6735ca82c89aa791601955d0eaf1e1e6a318a423b477d005e4b2",
+      "newSha256": "c411c7ef294a6735ca82c89aa791601955d0eaf1e1e6a318a423b477d005e4b2",
+      "unchanged": true
+    },
+    {
+      "path": "lib/Administrated.sol",
+      "originalSha256": "3e8269e089aea91ffab2aa104cdc102d74597ee3a9143d5c54a216e522c7d4b9",
+      "newSha256": "3e8269e089aea91ffab2aa104cdc102d74597ee3a9143d5c54a216e522c7d4b9",
+      "unchanged": true
+    },
+    {
+      "path": "lib/Crypto.sol",
+      "originalSha256": "3301af4a1b551b68dd8afb97b084ae5a9d46a8074a12c396f5cc8f3a0c483a3f",
+      "newSha256": "3301af4a1b551b68dd8afb97b084ae5a9d46a8074a12c396f5cc8f3a0c483a3f",
+      "unchanged": true
+    },
+    {
+      "path": "interfaces/Interfaces.sol",
+      "originalSha256": "71f3a4843825ea27a0c9575b90ad3cfb1e2433b2e597cecb27df66e7d8e493fb",
+      "newSha256": "139bdc89f579c8f85e232152e56dffacbebb63d2e6a722b31a5bdbca2fffd6b8",
+      "unchanged": false
+    },
+    {
+      "path": "mocks/MockZkGateways.sol",
+      "originalSha256": "ea24f6a25e22e552a8df072fcc18e25341e86131394a76c66293641607ec8f23",
+      "newSha256": "ea24f6a25e22e552a8df072fcc18e25341e86131394a76c66293641607ec8f23",
+      "unchanged": true
+    },
+    {
+      "path": "mocks/ReentrantProbe.sol",
+      "originalSha256": "6f6d09490e84bf976a1f588ac16798235b6ea3673f41caa31285995cdf4bf79e",
+      "newSha256": "6f6d09490e84bf976a1f588ac16798235b6ea3673f41caa31285995cdf4bf79e",
+      "unchanged": true
+    },
+    {
+      "path": "mocks/MockTarget.sol",
+      "originalSha256": "d946391a67c733d1a58617217a0cc11fa94f786d4f4df10db112a541ede4e23a",
+      "newSha256": "d946391a67c733d1a58617217a0cc11fa94f786d4f4df10db112a541ede4e23a",
+      "unchanged": true
+    },
+    {
+      "path": "core/OnchainRenderer.sol",
+      "originalSha256": "10c267206deb8884dda2fbe2b02b039c386d0ea17260461de5e545203a8e8257",
+      "newSha256": "10c267206deb8884dda2fbe2b02b039c386d0ea17260461de5e545203a8e8257",
+      "unchanged": true
+    },
+    {
+      "path": "core/OmnichainWitnessRegistry.sol",
+      "originalSha256": "2cd1fcab401c06699cd0cc05df51a6707b01e13e1c14e11be080b78e9e1743e3",
+      "newSha256": "2cd1fcab401c06699cd0cc05df51a6707b01e13e1c14e11be080b78e9e1743e3",
+      "unchanged": true
+    },
+    {
+      "path": "core/ZkVmVerifierAdapters.sol",
+      "originalSha256": "85779181c314dcdddc3612642fbfb3ce9feda75be025077fd2735ee0addcc8b8",
+      "newSha256": "85779181c314dcdddc3612642fbfb3ce9feda75be025077fd2735ee0addcc8b8",
+      "unchanged": true
+    },
+    {
+      "path": "core/ProofRouter.sol",
+      "originalSha256": "bef9a561de36ba78305e2205bb30a6ba56d583a509099e05092874cdf148ea61",
+      "newSha256": "bef9a561de36ba78305e2205bb30a6ba56d583a509099e05092874cdf148ea61",
+      "unchanged": true
+    },
+    {
+      "path": "core/SovereignAccountFactory.sol",
+      "originalSha256": "9f44bf8988352e1ef13d97dfc5015bc4752e276cc5e80f8210ec791331367f62",
+      "newSha256": "9f44bf8988352e1ef13d97dfc5015bc4752e276cc5e80f8210ec791331367f62",
+      "unchanged": true
+    },
+    {
+      "path": "core/SovereignAccount.sol",
+      "originalSha256": "ce5469fed58e38001e48a34e7e053e3a91501f64437d8d119ffcb2a31a6260c7",
+      "newSha256": "08b37d9a0d02aeb29a493aab3ffefd6f2899a49f5b2dfa1fd07fb7081b9b4cf2",
+      "unchanged": false
+    },
+    {
+      "path": "core/ThresholdAttestationVerifier.sol",
+      "originalSha256": "1a1f1618aabf5dd8384265e5818ea822c859d226f4d6b12fe67af7e2d2129c4d",
+      "newSha256": "1a1f1618aabf5dd8384265e5818ea822c859d226f4d6b12fe67af7e2d2129c4d",
+      "unchanged": true
+    },
+    {
+      "path": "core/IDontFuckingBelieveIt.sol",
+      "originalSha256": "cf4f80af11baeae651ade751b9ca157cb64eb4a83fabf2699bfa46735a62e50f",
+      "newSha256": "989cb23c495ccf55db55e4b6b6747e96136ebbd03fd3c17dd4a4de26b93344ca",
+      "unchanged": false
+    }
+  ]
+}

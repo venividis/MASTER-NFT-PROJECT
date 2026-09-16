@@ -1,0 +1,20 @@
+{
+  "version": "5.3.0",
+  "tests": {
+    "passed": 330,
+    "failed": 0,
+    "skipped": 0
+  },
+  "exteriorCases": 16,
+  "interiorCases": 9,
+  "softwareParityCases": 3,
+  "syntax": "passed",
+  "assets": "passed",
+  "embeddedModules": 34,
+  "archiveBytes": 707805,
+  "archiveChunks": 31,
+  "archiveRoundtrip": "passed on fresh local EVM",
+  "deploymentEntries": 59,
+  "browserTested": false,
+  "publicChainDeployed": false
+}

@@ -1,0 +1,60 @@
+{
+  "scope": "SOURCE-TEXT TRIPWIRES AND TRANSLATED ARITHMETIC ONLY; NOT COMPILE OR EVM EXECUTION",
+  "checks": [
+    {
+      "name": "hook flags correspond to four declared callbacks",
+      "passed": true
+    },
+    {
+      "name": "hook guards actual deployed address permission bits",
+      "passed": true
+    },
+    {
+      "name": "zero-delta fee collection is not blocked by negative-principal hook",
+      "passed": true
+    },
+    {
+      "name": "all four enabled hook callbacks are present",
+      "passed": true
+    },
+    {
+      "name": "hook does not invoke the social ledger",
+      "passed": true
+    },
+    {
+      "name": "adapter calls the actual manager settlement ABI",
+      "passed": true
+    },
+    {
+      "name": "legacy custom AMM is not imported as v4",
+      "passed": true
+    },
+    {
+      "name": "ERC4906 event parameters are not indexed",
+      "passed": true
+    },
+    {
+      "name": "ERC4906 interface advertised",
+      "passed": true
+    },
+    {
+      "name": "account internal call accepts constructed memory bytes",
+      "passed": true
+    },
+    {
+      "name": "exchange has no general execution or signature surface",
+      "passed": true
+    },
+    {
+      "name": "social source stores original custody and epoch",
+      "passed": true
+    },
+    {
+      "name": "translated integer sqrt agrees with independent math.isqrt on 5011 inputs",
+      "passed": true
+    }
+  ],
+  "passed": 13,
+  "failed": 0,
+  "arithmeticInputs": 5011
+}

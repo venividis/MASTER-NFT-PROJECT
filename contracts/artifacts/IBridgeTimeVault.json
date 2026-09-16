@@ -1,0 +1,178 @@
+{
+  "contractName": "IBridgeTimeVault",
+  "sourceName": "contracts/src/extensions/crosschain/AnimaOFTComposer.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint112",
+          "name": "",
+          "type": "uint112"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        },
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "deposit",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "deposit(address,uint112,address,uint64,uint64,uint64,bool,uint256)": "042ae869"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "uint112",
+              "name": "",
+              "type": "uint112"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            },
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "deposit",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/crosschain/AnimaOFTComposer.sol": "IBridgeTimeVault"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/crosschain/AnimaOFTComposer.sol": {
+        "keccak256": "0xc891682b68e4191ea4415fbb9b35f9ee8d55d9be6aa332adcb335abe11dac44d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://ecbf69bd0b712c09e6a97baf90124642da77fbeba9822a72ade37a59bd7967a4",
+          "dweb:/ipfs/QmakmqbWJPWLqYvqNfTWM3L22eKptLYcuLJhcCaTxT2uHk"
+        ]
+      },
+      "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol": {
+        "keccak256": "0x2d3d9d909716d5b18e39af5dc546afc13076ce435c7907b76dc7d2af7fa623a7",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0b145633ff37fa76aeed135c5e47c93745ee5365bdbfda638ace7afc77be5657",
+          "dweb:/ipfs/QmXmxfKsecUr6BB2CxrvvatuDCv2Amx1Xw3hNBDAExwEei"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

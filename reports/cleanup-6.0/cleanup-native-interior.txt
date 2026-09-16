@@ -1,0 +1,36 @@
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/within-the-field.png 1.458 seconds
+PASS within-the-field
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/membrane.png 0.449 seconds
+PASS membrane
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/portrait.png 0.479 seconds
+PASS portrait
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/other-genome.png 0.488 seconds
+PASS other-genome
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/lived-fold-event.png 0.459 seconds
+PASS lived-fold-event
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/outside-volume.png 0.116 seconds
+PASS outside-volume
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/crossing.png 0.488 seconds
+PASS crossing
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/return-blend.png 0.079 seconds
+PASS return-blend
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/opposite-side.png 0.477 seconds
+PASS opposite-side
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/parity-base.png 0.03 seconds
+PASS CPU/GPU base 0.00026041666666666666 0.0
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/parity-life.png 0.038 seconds
+PASS CPU/GPU life 0.0006510416666666666 0.0
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/workspace/scratch/3b7470161c8a/ANIMA-NFT-cleanup/reports/cleanup-6.0/interior/parity-time-audio.png 0.032 seconds
+PASS CPU/GPU time-audio 0.00026041666666666666 0.0

@@ -1,0 +1,1560 @@
+{
+  "contractName": "LaunchRegistry",
+  "sourceName": "contracts/src/extensions/launch/LaunchRegistry.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "Bounds",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidRecord",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "Unauthorized",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "kind",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "referenceId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "beneficiary",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "detail",
+          "type": "bytes32"
+        }
+      ],
+      "name": "LaunchLinked",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "payer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "registrar",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "mechanism",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "mechanismId",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "termsHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "LaunchRegistered",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "payer",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "registrar",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "allowed",
+          "type": "bool"
+        }
+      ],
+      "name": "RegistrarAuthorization",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "VERSION",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "kind",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "referenceId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "detail",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct LaunchRegistry.Link[]",
+          "name": "additions",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "append",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "registrar",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "allowed",
+          "type": "bool"
+        }
+      ],
+      "name": "authorizeRegistrar",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "payer",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "registrar",
+          "type": "address"
+        }
+      ],
+      "name": "authorizedRegistrar",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "count",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "get",
+      "outputs": [
+        {
+          "components": [
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "payer",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "collection",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "mechanism",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "target",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "mechanismId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "position",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "poolId",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "termsHash",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Descriptor",
+              "name": "descriptor",
+              "type": "tuple"
+            },
+            {
+              "internalType": "address",
+              "name": "registrar",
+              "type": "address"
+            },
+            {
+              "internalType": "uint64",
+              "name": "createdAt",
+              "type": "uint64"
+            },
+            {
+              "internalType": "uint64",
+              "name": "createdBlock",
+              "type": "uint64"
+            }
+          ],
+          "internalType": "struct LaunchRegistry.Record",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "collection",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "mechanism",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "mechanismId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "position",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "poolId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "termsHash",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct LaunchRegistry.Descriptor",
+          "name": "d",
+          "type": "tuple"
+        }
+      ],
+      "name": "identityOf",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "linkAt",
+      "outputs": [
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "kind",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "referenceId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "detail",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct LaunchRegistry.Link",
+          "name": "",
+          "type": "tuple"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "linkCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "payer",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "payerAt",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "payer",
+          "type": "address"
+        }
+      ],
+      "name": "payerCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "recordFor",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "components": [
+            {
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "collection",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "mechanism",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "mechanismId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "position",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "poolId",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "termsHash",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct LaunchRegistry.Descriptor",
+          "name": "d",
+          "type": "tuple"
+        },
+        {
+          "components": [
+            {
+              "internalType": "bytes32",
+              "name": "kind",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "referenceId",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "detail",
+              "type": "bytes32"
+            }
+          ],
+          "internalType": "struct LaunchRegistry.Link[]",
+          "name": "initialLinks",
+          "type": "tuple[]"
+        }
+      ],
+      "name": "register",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "index",
+          "type": "uint256"
+        }
+      ],
+      "name": "tokenAt",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        }
+      ],
+      "name": "tokenCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60808060405234601557611327908161001a8239f35b5f80fdfe6080806040526004361015610012575f80fd5b5f3560e01c90816306661abd14610cd8575080630e84e41a14610ca25780631428ba1e14610c785780632b2d9f6f14610c3e5780634df711bb14610bf557806356225a0914610bbd57806360f771f614610ad557806366ae6e0a14610ab15780638eb074b214610a795780639507d39a1461083a578063de40b3d914610312578063e05389d314610204578063e1f9a232146101da578063eac1e50f146100e05763ffa1ad74146100c1575f80fd5b346100dc575f3660031901126100dc57602060405160018152f35b5f80fd5b346100dc5760403660031901126100dc575f60c060405161010081610dfd565b8281528260208201528260408201528260608201528260808201528260a082015201526004355f52600360205260e061013e60243560405f20610f8f565b5060405161014b81610dfd565b8154918282526001600160a01b038060018301541660208401908152816002840154604086019081528160038601541690606087019182528280600488015416946080890195865260c0600660058a01549960a08c019a8b5201549901988952604051998a525116602089015251604088015251166060860152511660808401525160a08301525160c0820152f35b346100dc5760203660031901126100dc576004355f526003602052602060405f2054604051908152f35b346100dc5760403660031901126100dc5760043560243567ffffffffffffffff81116100dc57610238903690600401610d1d565b919081158015610308575b6102a157815f5260016020526102656001600160a01b0360405f205416611145565b821580156102fe575b80156102c9575b6102a1575f5b83811061028457005b8061029b6102956001938786610f7f565b8561119b565b0161027b565b7fc899e836000000000000000000000000000000000000000000000000000000005f5260045ffd5b50815f52600360205260405f20548381018091116102ea5761010010610275565b634e487b7160e01b5f52601160045260245ffd5b506040831161026e565b505f548211610243565b346100dc57366003190161016081126100dc57610140136100dc576101443567ffffffffffffffff81116100dc5761034e903690600401610d1d565b9061035f61035a610e3b565b611145565b6001600160a01b0361036f610e3b565b1615801561082a575b801561081a575b8015610810575b8015610805575b80156107fb575b6106f6576001600160a01b036103a8610e7d565b161515806107eb575b6106f6576001600160a01b036103c5610e93565b16610705576044356106f6575b6103da610ebd565b91825f52600260205260405f20546106f6575f545f1981146102ea5760010192835f555f5260026020528260405f205560405161041681610dc4565b6040519061042382610de0565b61042b610cf1565b8252610435610d07565b602083015260443560408301526064356001600160a01b03811681036100dc5760608301526084359081608084015260a4356001600160a01b03811681036100dc5760a084015260c4358060c085015260e435906001600160a01b03821682036100dc576001600160a01b038060a0928a957fd7cd601e822131277d283604045eb0e9cbe39f299a8b15704d0f59292a24dff99560e08a0152610104356101008a0152610124359889610120820152815267ffffffffffffffff600b602083019233845260408101938342168552606082019484431686528b5f52600160205261012060405f2093518980825116166001600160a01b0319865416178555896020820151168a6001870191166001600160a01b031982541617905560408101516002860155896060820151168a6003870191166001600160a01b031982541617905560808101516004860155898c820151168a6005870191166001600160a01b031982541617905560c081015160068601558960e0820151168a6007870191166001600160a01b03198254161790556101008101516008860155015160098401558780600a8501935116166001600160a01b0319835416178255517fffffffff0000000000000000ffffffffffffffffffffffffffffffffffffffff7bffffffffffffffff00000000000000000000000000000000000000008354928c1b1691161790550191511667ffffffffffffffff1982541617905581610656610e3b565b165f52600460205261066b8660405f20610f46565b81610674610e51565b165f5260056020526106898660405f20610f46565b610691610e3b565b9761069a610e51565b91836106a4610e67565b6040519a338c5260208c01521660408a01526060890152608088015216951693a45f5b8181106106d957602084604051908152f35b806106f06106ea6001938587610f7f565b8661119b565b016106c7565b63f2a3e8db60e01b5f5260045ffd5b61070d610e93565b3b15801561072a575b156103d25763f2a3e8db60e01b5f5260045ffd5b50602460206001600160a01b0361073f610e93565b16604051928380927f8f4e432100000000000000000000000000000000000000000000000000000000825260443560048301525afa9081156107e0575f9161079e575b506001600160a01b0380610794610e3b565b1691161415610716565b90506020813d6020116107d8575b816107b960209383610e19565b810103126100dc57516001600160a01b03811681036100dc5783610782565b3d91506107ac565b6040513d5f823e3d90fd5b506107f4610e7d565b3b156103b1565b5060408211610394565b50610124351561038d565b5060843515610386565b50610823610e67565b3b1561037f565b50610833610e51565b3b15610378565b346100dc5760203660031901126100dc576004355f606060405161085d81610dc4565b60405161086981610de0565b83815283602082015283604082015283838201528360808201528360a08201528360c08201528360e082015283610100820152836101208201528152826020820152826040820152015280158015610a6f575b6102a1575f52600160205260405f206040516108d781610dc4565b604051916108e483610de0565b80546001600160a01b0316835260018101546001600160a01b0316906020840191825260028101546040850190815260038201546001600160a01b03166060860190815260048301546080870190815260058401546001600160a01b031660a0880190815260068501549060c0890191825260078601546001600160a01b03169260e08a019384526008870154946101008b019586526009880154966101208c019788528b8b52600a8901549960208c01996001600160a01b038c168b5260408d019b60a01c67ffffffffffffffff168c52600b015467ffffffffffffffff169b6060019b8c526040519c516001600160a01b03168d52516001600160a01b031660208d01525160408c0152516001600160a01b031660608b01525160808a0152516001600160a01b031660a08901525160c0880152516001600160a01b031660e08701525161010086015251610120850152516001600160a01b03166101408401525167ffffffffffffffff166101608301525167ffffffffffffffff166101808201526101a090f35b505f5481116108bc565b346100dc5760203660031901126100dc576001600160a01b03610a9a610cf1565b165f526004602052602060405f2054604051908152f35b346100dc576101403660031901126100dc576020610acd610ebd565b604051908152f35b346100dc5760403660031901126100dc57610aee610cf1565b602435908115158092036100dc576001600160a01b03169081158015610bb4575b6106f657610b1c33611026565b60405190604082019082821067ffffffffffffffff831117610ba05760019160405283835260208301908152335f52600660205260405f20855f5260205260405f209251151560ff80198554169116178355519101556040519081527fe68cb580d1cb45394333dd4123c4a850baf3e78826d68b5f470892afbb7c8d3660203392a3005b634e487b7160e01b5f52604160045260245ffd5b50338214610b0f565b346100dc5760203660031901126100dc576001600160a01b03610bde610cf1565b165f526005602052602060405f2054604051908152f35b346100dc5760403660031901126100dc576001600160a01b03610c16610cf1565b165f5260056020526020610c2f60243560405f20610d9b565b90549060031b1c604051908152f35b346100dc5760403660031901126100dc576001600160a01b03610c5f610cf1565b165f5260046020526020610c2f60243560405f20610d9b565b346100dc5760203660031901126100dc576004355f526002602052602060405f2054604051908152f35b346100dc5760403660031901126100dc576020610cce610cc0610cf1565b610cc8610d07565b90610d4e565b6040519015158152f35b346100dc575f3660031901126100dc576020905f548152f35b600435906001600160a01b03821682036100dc57565b602435906001600160a01b03821682036100dc57565b9181601f840112156100dc5782359167ffffffffffffffff83116100dc5760208085019460e085020101116100dc57565b906001600160a01b0382165f5260066020526001600160a01b0360405f2091165f5260205260405f209060ff8254169182610d8857505090565b600101549150610d9790611026565b1490565b8054821015610db0575f5260205f2001905f90565b634e487b7160e01b5f52603260045260245ffd5b6080810190811067ffffffffffffffff821117610ba057604052565b610140810190811067ffffffffffffffff821117610ba057604052565b60e0810190811067ffffffffffffffff821117610ba057604052565b90601f8019910116810190811067ffffffffffffffff821117610ba057604052565b6004356001600160a01b03811681036100dc5790565b6064356001600160a01b03811681036100dc5790565b60a4356001600160a01b03811681036100dc5790565b60e4356001600160a01b03811681036100dc5790565b6024356001600160a01b03811681036100dc5790565b356001600160a01b03811681036100dc5790565b6004356001600160a01b038116908181036100dc57506064356001600160a01b038116908181036100dc575060a4356001600160a01b038116908181036100dc57506040519160208301934685523060408501526060840152608083015260843560a083015260c082015260c43560e082015260e08152610f4061010082610e19565b51902090565b805468010000000000000000811015610ba057610f6891600182018155610d9b565b819291549060031b91821b915f19901b1916179055565b9190811015610db05760e0020190565b8054821015610db0575f52600760205f20910201905f90565b3d15610fe2573d9067ffffffffffffffff8211610ba05760405191610fd7601f8201601f191660200184610e19565b82523d5f602084013e565b606090565b91908251928382525f5b848110611011575050825f602080949584010152601f8019910116010190565b80602080928401015182828601015201610ff1565b803b15611140575f8060405160208101907fb387ef9200000000000000000000000000000000000000000000000000000000825260048152611069602482610e19565b5190845afa5f80611078610fa8565b9360405160208101907fcee9047a000000000000000000000000000000000000000000000000000000008252600481526110b3602482610e19565b51915afa906110c0610fa8565b9181611138575b508061112d575b80611122575b1561111c57610f4061110e916040519283916110fc6020840196604088526060850190610fe7565b838103601f1901604085015290610fe7565b03601f198101835282610e19565b50505f90565b5060208151146110d4565b5060208251146110ce565b90505f6110c7565b505f90565b6001600160a01b0381163314159081611188575b5061116057565b7f82b42900000000000000000000000000000000000000000000000000000000005f5260045ffd5b61119491503390610d4e565b155f611159565b9080359182156106f6575f818152600360205260409020805492908368010000000000000000811015610ba0576111d791600182018155610f8f565b9190916112de5781600660c092877f983c8f6028348e01c85044a438ebf5fd88f9ad657e658a93131a19068f2cd8c195556001600160a01b03602082019361121e85610ea9565b826001830191166001600160a01b0319825416179055816040840135918260028201556112b76112b16112ab60608801996112588b610ea9565b866003870191166001600160a01b0319825416179055608089019461127c86610ea9565b876004830191166001600160a01b03198254161790558c60a08b01359a8b600584015501359a8b910155610ea9565b98610ea9565b91610ea9565b9282604051981688526020880152166040860152166060840152608083015260a0820152a4565b634e487b7160e01b5f525f60045260245ffdfea2646970667358221220d123c118f16e184eec28b100cf736bf091099cf55f7a79bca43b9bb1fb7b6c1764736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c90816306661abd14610cd8575080630e84e41a14610ca25780631428ba1e14610c785780632b2d9f6f14610c3e5780634df711bb14610bf557806356225a0914610bbd57806360f771f614610ad557806366ae6e0a14610ab15780638eb074b214610a795780639507d39a1461083a578063de40b3d914610312578063e05389d314610204578063e1f9a232146101da578063eac1e50f146100e05763ffa1ad74146100c1575f80fd5b346100dc575f3660031901126100dc57602060405160018152f35b5f80fd5b346100dc5760403660031901126100dc575f60c060405161010081610dfd565b8281528260208201528260408201528260608201528260808201528260a082015201526004355f52600360205260e061013e60243560405f20610f8f565b5060405161014b81610dfd565b8154918282526001600160a01b038060018301541660208401908152816002840154604086019081528160038601541690606087019182528280600488015416946080890195865260c0600660058a01549960a08c019a8b5201549901988952604051998a525116602089015251604088015251166060860152511660808401525160a08301525160c0820152f35b346100dc5760203660031901126100dc576004355f526003602052602060405f2054604051908152f35b346100dc5760403660031901126100dc5760043560243567ffffffffffffffff81116100dc57610238903690600401610d1d565b919081158015610308575b6102a157815f5260016020526102656001600160a01b0360405f205416611145565b821580156102fe575b80156102c9575b6102a1575f5b83811061028457005b8061029b6102956001938786610f7f565b8561119b565b0161027b565b7fc899e836000000000000000000000000000000000000000000000000000000005f5260045ffd5b50815f52600360205260405f20548381018091116102ea5761010010610275565b634e487b7160e01b5f52601160045260245ffd5b506040831161026e565b505f548211610243565b346100dc57366003190161016081126100dc57610140136100dc576101443567ffffffffffffffff81116100dc5761034e903690600401610d1d565b9061035f61035a610e3b565b611145565b6001600160a01b0361036f610e3b565b1615801561082a575b801561081a575b8015610810575b8015610805575b80156107fb575b6106f6576001600160a01b036103a8610e7d565b161515806107eb575b6106f6576001600160a01b036103c5610e93565b16610705576044356106f6575b6103da610ebd565b91825f52600260205260405f20546106f6575f545f1981146102ea5760010192835f555f5260026020528260405f205560405161041681610dc4565b6040519061042382610de0565b61042b610cf1565b8252610435610d07565b602083015260443560408301526064356001600160a01b03811681036100dc5760608301526084359081608084015260a4356001600160a01b03811681036100dc5760a084015260c4358060c085015260e435906001600160a01b03821682036100dc576001600160a01b038060a0928a957fd7cd601e822131277d283604045eb0e9cbe39f299a8b15704d0f59292a24dff99560e08a0152610104356101008a0152610124359889610120820152815267ffffffffffffffff600b602083019233845260408101938342168552606082019484431686528b5f52600160205261012060405f2093518980825116166001600160a01b0319865416178555896020820151168a6001870191166001600160a01b031982541617905560408101516002860155896060820151168a6003870191166001600160a01b031982541617905560808101516004860155898c820151168a6005870191166001600160a01b031982541617905560c081015160068601558960e0820151168a6007870191166001600160a01b03198254161790556101008101516008860155015160098401558780600a8501935116166001600160a01b0319835416178255517fffffffff0000000000000000ffffffffffffffffffffffffffffffffffffffff7bffffffffffffffff00000000000000000000000000000000000000008354928c1b1691161790550191511667ffffffffffffffff1982541617905581610656610e3b565b165f52600460205261066b8660405f20610f46565b81610674610e51565b165f5260056020526106898660405f20610f46565b610691610e3b565b9761069a610e51565b91836106a4610e67565b6040519a338c5260208c01521660408a01526060890152608088015216951693a45f5b8181106106d957602084604051908152f35b806106f06106ea6001938587610f7f565b8661119b565b016106c7565b63f2a3e8db60e01b5f5260045ffd5b61070d610e93565b3b15801561072a575b156103d25763f2a3e8db60e01b5f5260045ffd5b50602460206001600160a01b0361073f610e93565b16604051928380927f8f4e432100000000000000000000000000000000000000000000000000000000825260443560048301525afa9081156107e0575f9161079e575b506001600160a01b0380610794610e3b565b1691161415610716565b90506020813d6020116107d8575b816107b960209383610e19565b810103126100dc57516001600160a01b03811681036100dc5783610782565b3d91506107ac565b6040513d5f823e3d90fd5b506107f4610e7d565b3b156103b1565b5060408211610394565b50610124351561038d565b5060843515610386565b50610823610e67565b3b1561037f565b50610833610e51565b3b15610378565b346100dc5760203660031901126100dc576004355f606060405161085d81610dc4565b60405161086981610de0565b83815283602082015283604082015283838201528360808201528360a08201528360c08201528360e082015283610100820152836101208201528152826020820152826040820152015280158015610a6f575b6102a1575f52600160205260405f206040516108d781610dc4565b604051916108e483610de0565b80546001600160a01b0316835260018101546001600160a01b0316906020840191825260028101546040850190815260038201546001600160a01b03166060860190815260048301546080870190815260058401546001600160a01b031660a0880190815260068501549060c0890191825260078601546001600160a01b03169260e08a019384526008870154946101008b019586526009880154966101208c019788528b8b52600a8901549960208c01996001600160a01b038c168b5260408d019b60a01c67ffffffffffffffff168c52600b015467ffffffffffffffff169b6060019b8c526040519c516001600160a01b03168d52516001600160a01b031660208d01525160408c0152516001600160a01b031660608b01525160808a0152516001600160a01b031660a08901525160c0880152516001600160a01b031660e08701525161010086015251610120850152516001600160a01b03166101408401525167ffffffffffffffff166101608301525167ffffffffffffffff166101808201526101a090f35b505f5481116108bc565b346100dc5760203660031901126100dc576001600160a01b03610a9a610cf1565b165f526004602052602060405f2054604051908152f35b346100dc576101403660031901126100dc576020610acd610ebd565b604051908152f35b346100dc5760403660031901126100dc57610aee610cf1565b602435908115158092036100dc576001600160a01b03169081158015610bb4575b6106f657610b1c33611026565b60405190604082019082821067ffffffffffffffff831117610ba05760019160405283835260208301908152335f52600660205260405f20855f5260205260405f209251151560ff80198554169116178355519101556040519081527fe68cb580d1cb45394333dd4123c4a850baf3e78826d68b5f470892afbb7c8d3660203392a3005b634e487b7160e01b5f52604160045260245ffd5b50338214610b0f565b346100dc5760203660031901126100dc576001600160a01b03610bde610cf1565b165f526005602052602060405f2054604051908152f35b346100dc5760403660031901126100dc576001600160a01b03610c16610cf1565b165f5260056020526020610c2f60243560405f20610d9b565b90549060031b1c604051908152f35b346100dc5760403660031901126100dc576001600160a01b03610c5f610cf1565b165f5260046020526020610c2f60243560405f20610d9b565b346100dc5760203660031901126100dc576004355f526002602052602060405f2054604051908152f35b346100dc5760403660031901126100dc576020610cce610cc0610cf1565b610cc8610d07565b90610d4e565b6040519015158152f35b346100dc575f3660031901126100dc576020905f548152f35b600435906001600160a01b03821682036100dc57565b602435906001600160a01b03821682036100dc57565b9181601f840112156100dc5782359167ffffffffffffffff83116100dc5760208085019460e085020101116100dc57565b906001600160a01b0382165f5260066020526001600160a01b0360405f2091165f5260205260405f209060ff8254169182610d8857505090565b600101549150610d9790611026565b1490565b8054821015610db0575f5260205f2001905f90565b634e487b7160e01b5f52603260045260245ffd5b6080810190811067ffffffffffffffff821117610ba057604052565b610140810190811067ffffffffffffffff821117610ba057604052565b60e0810190811067ffffffffffffffff821117610ba057604052565b90601f8019910116810190811067ffffffffffffffff821117610ba057604052565b6004356001600160a01b03811681036100dc5790565b6064356001600160a01b03811681036100dc5790565b60a4356001600160a01b03811681036100dc5790565b60e4356001600160a01b03811681036100dc5790565b6024356001600160a01b03811681036100dc5790565b356001600160a01b03811681036100dc5790565b6004356001600160a01b038116908181036100dc57506064356001600160a01b038116908181036100dc575060a4356001600160a01b038116908181036100dc57506040519160208301934685523060408501526060840152608083015260843560a083015260c082015260c43560e082015260e08152610f4061010082610e19565b51902090565b805468010000000000000000811015610ba057610f6891600182018155610d9b565b819291549060031b91821b915f19901b1916179055565b9190811015610db05760e0020190565b8054821015610db0575f52600760205f20910201905f90565b3d15610fe2573d9067ffffffffffffffff8211610ba05760405191610fd7601f8201601f191660200184610e19565b82523d5f602084013e565b606090565b91908251928382525f5b848110611011575050825f602080949584010152601f8019910116010190565b80602080928401015182828601015201610ff1565b803b15611140575f8060405160208101907fb387ef9200000000000000000000000000000000000000000000000000000000825260048152611069602482610e19565b5190845afa5f80611078610fa8565b9360405160208101907fcee9047a000000000000000000000000000000000000000000000000000000008252600481526110b3602482610e19565b51915afa906110c0610fa8565b9181611138575b508061112d575b80611122575b1561111c57610f4061110e916040519283916110fc6020840196604088526060850190610fe7565b838103601f1901604085015290610fe7565b03601f198101835282610e19565b50505f90565b5060208151146110d4565b5060208251146110ce565b90505f6110c7565b505f90565b6001600160a01b0381163314159081611188575b5061116057565b7f82b42900000000000000000000000000000000000000000000000000000000005f5260045ffd5b61119491503390610d4e565b155f611159565b9080359182156106f6575f818152600360205260409020805492908368010000000000000000811015610ba0576111d791600182018155610f8f565b9190916112de5781600660c092877f983c8f6028348e01c85044a438ebf5fd88f9ad657e658a93131a19068f2cd8c195556001600160a01b03602082019361121e85610ea9565b826001830191166001600160a01b0319825416179055816040840135918260028201556112b76112b16112ab60608801996112588b610ea9565b866003870191166001600160a01b0319825416179055608089019461127c86610ea9565b876004830191166001600160a01b03198254161790558c60a08b01359a8b600584015501359a8b910155610ea9565b98610ea9565b91610ea9565b9282604051981688526020880152166040860152166060840152608083015260a0820152a4565b634e487b7160e01b5f525f60045260245ffdfea2646970667358221220d123c118f16e184eec28b100cf736bf091099cf55f7a79bca43b9bb1fb7b6c1764736f6c634300081e0033",
+  "methodIdentifiers": {
+    "VERSION()": "ffa1ad74",
+    "append(uint256,(bytes32,address,uint256,address,address,uint256,bytes32)[])": "e05389d3",
+    "authorizeRegistrar(address,bool)": "60f771f6",
+    "authorizedRegistrar(address,address)": "0e84e41a",
+    "count()": "06661abd",
+    "get(uint256)": "9507d39a",
+    "identityOf((address,address,uint256,address,bytes32,address,uint256,address,bytes32,bytes32))": "66ae6e0a",
+    "linkAt(uint256,uint256)": "eac1e50f",
+    "linkCount(uint256)": "e1f9a232",
+    "payerAt(address,uint256)": "2b2d9f6f",
+    "payerCount(address)": "8eb074b2",
+    "recordFor(bytes32)": "1428ba1e",
+    "register((address,address,uint256,address,bytes32,address,uint256,address,bytes32,bytes32),(bytes32,address,uint256,address,address,uint256,bytes32)[])": "de40b3d9",
+    "tokenAt(address,uint256)": "4df711bb",
+    "tokenCount(address)": "56225a09"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "Bounds",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidRecord",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "Unauthorized",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "internalType": "bytes32",
+              "name": "kind",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "referenceId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "asset",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "beneficiary",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "amount",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "detail",
+              "type": "bytes32"
+            }
+          ],
+          "name": "LaunchLinked",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "registrar",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "mechanism",
+              "type": "bytes32"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "mechanismId",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "bytes32",
+              "name": "termsHash",
+              "type": "bytes32"
+            }
+          ],
+          "name": "LaunchRegistered",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "registrar",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "allowed",
+              "type": "bool"
+            }
+          ],
+          "name": "RegistrarAuthorization",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "VERSION",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "kind",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "target",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "referenceId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "asset",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "beneficiary",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "detail",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Link[]",
+              "name": "additions",
+              "type": "tuple[]"
+            }
+          ],
+          "name": "append",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "registrar",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "allowed",
+              "type": "bool"
+            }
+          ],
+          "name": "authorizeRegistrar",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "registrar",
+              "type": "address"
+            }
+          ],
+          "name": "authorizedRegistrar",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "count",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "get",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "components": [
+                    {
+                      "internalType": "address",
+                      "name": "payer",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "collection",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "tokenId",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "token",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "mechanism",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "target",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "uint256",
+                      "name": "mechanismId",
+                      "type": "uint256"
+                    },
+                    {
+                      "internalType": "address",
+                      "name": "position",
+                      "type": "address"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "poolId",
+                      "type": "bytes32"
+                    },
+                    {
+                      "internalType": "bytes32",
+                      "name": "termsHash",
+                      "type": "bytes32"
+                    }
+                  ],
+                  "internalType": "struct LaunchRegistry.Descriptor",
+                  "name": "descriptor",
+                  "type": "tuple"
+                },
+                {
+                  "internalType": "address",
+                  "name": "registrar",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "createdAt",
+                  "type": "uint64"
+                },
+                {
+                  "internalType": "uint64",
+                  "name": "createdBlock",
+                  "type": "uint64"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Record",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "payer",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "collection",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "mechanism",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "target",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "mechanismId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "position",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "poolId",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "termsHash",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Descriptor",
+              "name": "d",
+              "type": "tuple"
+            }
+          ],
+          "name": "identityOf",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            }
+          ],
+          "name": "linkAt",
+          "outputs": [
+            {
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "kind",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "target",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "referenceId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "asset",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "beneficiary",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "detail",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Link",
+              "name": "",
+              "type": "tuple"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "linkCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            }
+          ],
+          "name": "payerAt",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "payer",
+              "type": "address"
+            }
+          ],
+          "name": "payerCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "name": "recordFor",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "components": [
+                {
+                  "internalType": "address",
+                  "name": "payer",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "collection",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "tokenId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "token",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "mechanism",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "target",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "mechanismId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "position",
+                  "type": "address"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "poolId",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "termsHash",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Descriptor",
+              "name": "d",
+              "type": "tuple"
+            },
+            {
+              "components": [
+                {
+                  "internalType": "bytes32",
+                  "name": "kind",
+                  "type": "bytes32"
+                },
+                {
+                  "internalType": "address",
+                  "name": "target",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "referenceId",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "address",
+                  "name": "asset",
+                  "type": "address"
+                },
+                {
+                  "internalType": "address",
+                  "name": "beneficiary",
+                  "type": "address"
+                },
+                {
+                  "internalType": "uint256",
+                  "name": "amount",
+                  "type": "uint256"
+                },
+                {
+                  "internalType": "bytes32",
+                  "name": "detail",
+                  "type": "bytes32"
+                }
+              ],
+              "internalType": "struct LaunchRegistry.Link[]",
+              "name": "initialLinks",
+              "type": "tuple[]"
+            }
+          ],
+          "name": "register",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "index",
+              "type": "uint256"
+            }
+          ],
+          "name": "tokenAt",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            }
+          ],
+          "name": "tokenCount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Registration never certifies an arbitrary mechanism's economics. Clients verify the recorded implementation separately.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Append-only, enumerable launch provenance. Records are statements by their payer or explicitly authorized registrar.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/launch/LaunchRegistry.sol": "LaunchRegistry"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/launch/LaunchRegistry.sol": {
+        "keccak256": "0xcacd215a48764dc7a690f13d29f4023a897d858db4c0f453ed319eb039a599b2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://6f4c242c34cf14a856205e023a6de2963a88049c2bc5944bb7e48f4aa5ab3db4",
+          "dweb:/ipfs/QmPCx7uj7Wb9ZD5v5TMJJBDb5r6fnsjT95rsubBSNbm4yV"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

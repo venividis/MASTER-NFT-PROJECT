@@ -1,0 +1,100 @@
+{
+  "contractName": "IExperimentGate",
+  "sourceName": "contracts/src/operating/OperatingInterfaces.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "module",
+          "type": "address"
+        }
+      ],
+      "name": "enabled",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "enabled(address)": "98afdfe3"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "module",
+              "type": "address"
+            }
+          ],
+          "name": "enabled",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/operating/OperatingInterfaces.sol": "IExperimentGate"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/operating/OperatingInterfaces.sol": {
+        "keccak256": "0x6df7c29abfd8e566180eef689dfc6289a37317e46c2c6ab65b6d73198b3124ba",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0eeedcf0d4e2b2a6375af6fa908e9fec3f90d4f952c71866bfbd99e921ca5e37",
+          "dweb:/ipfs/QmVLwzBzMtfKsABHVq6VroNQfAem1kTyfDxToVJrrtgWCA"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

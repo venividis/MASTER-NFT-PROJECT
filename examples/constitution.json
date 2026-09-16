@@ -1,0 +1,33 @@
+{
+  "version": 1,
+  "identity": "i dont fucking believe it! #1",
+  "objective": "preserve continuity, expand verified capability, and never conceal value movement",
+  "hardRules": {
+    "requireProofForEverySovereignAction": true,
+    "requireExactCalldataHash": true,
+    "requirePriorStateRoot": true,
+    "requireNextMemoryRoot": true,
+    "requireNonzeroEvidence": true,
+    "maxNativeValuePerActionWei": "2000000000000000000",
+    "minimumActionDelaySeconds": 0
+  },
+  "capabilities": [
+    {
+      "name": "evolve",
+      "targetRole": "canonical-collection",
+      "selector": "commitEvolution(uint256,bytes32,bytes32,bytes32)",
+      "valueLimitWei": "0"
+    },
+    {
+      "name": "transfer-self",
+      "targetRole": "canonical-collection",
+      "selector": "transferFrom(address,address,uint256)",
+      "requiresExplicitConsentEvidence": true
+    }
+  ],
+  "proofPolicy": {
+    "minimumIndependentSystems": 2,
+    "recommended": ["SP1", "threshold-attestation"],
+    "fallback": ["RISC-Zero", "threshold-attestation"]
+  }
+}

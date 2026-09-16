@@ -1,0 +1,2231 @@
+{
+  "schema": "awe.onchain-runtime/3",
+  "archiveVersion": 3,
+  "compression": "modular-gzip",
+  "shellIndex": 0,
+  "sha256": "1f21666f51988f48492c9350b89a085459b0164bb02d3a79a76bef10bc1d998c",
+  "runtimeHtmlSha256": "003036edb9d2f3c8f901d3e0cd37e54de489a3d7338fba5c1d4ff83360219b92",
+  "byteLength": 1690413,
+  "expandedBytes": 6419070,
+  "chunks": [
+    {
+      "file": "modules/00-core-shell/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "8f350be4d077fbecd54d3d4cbf814c63dace67f7743f3ebda49d352d4000decc"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "6c03ba66835fdb1ee176065a4c076783acc07ab0a2740eba60b5e6b0e09fe0ff"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/02.bin",
+      "bytes": 23000,
+      "sha256": "fd60028df1390094cbeb6c8dbe3d61e3fa01d9d1c345b51ec1fad93da11568fe"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/03.bin",
+      "bytes": 23000,
+      "sha256": "db5996b91dd5a4e1f8108dbe57482f99fc075d93c8edf7fd7427b7449e674f7c"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/04.bin",
+      "bytes": 23000,
+      "sha256": "48c2e986686320f3245c84ecc83e9aa208a6b0df1e19aa2774005500200efae1"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/05.bin",
+      "bytes": 23000,
+      "sha256": "409d26a28e355f010f38e4cb276a5528e99360277641b1ae9715ce29aa354ca2"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/06.bin",
+      "bytes": 23000,
+      "sha256": "bd6a0b152127263cca4a46c70cef72c5e0d557842d156d9aee7a455df6bbbf80"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/07.bin",
+      "bytes": 23000,
+      "sha256": "a07540f9ecc5ca2ef742c8a87fb2663432f662972e2f3cf05f84f854df4c015b"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/08.bin",
+      "bytes": 23000,
+      "sha256": "8c281405e8c56e15311b8260fd22dc116ebe9c1f7f29e784bfe80566fe447c89"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/09.bin",
+      "bytes": 23000,
+      "sha256": "cef15fa73e8e55dfa2a6617eca748fa9a4f368f21c6d056269b18856fe29a8ad"
+    },
+    {
+      "file": "modules/00-core-shell/chunks/10.bin",
+      "bytes": 10803,
+      "sha256": "63062c4e00813ed075c1494d362c31f35161722abd6ebeb1aad581c7ff9c7e8e"
+    },
+    {
+      "file": "modules/01-begins/chunks/00.bin",
+      "bytes": 5171,
+      "sha256": "df7ceda1b358c6e5ef1590a2813ea7cae3ac8a9d714603ca91421458a6d67fb6"
+    },
+    {
+      "file": "modules/02-burners/chunks/00.bin",
+      "bytes": 19987,
+      "sha256": "6b309a6bb4b4932a740d81922fb971acf99d3db2fa9729946c36dc5d5af6116e"
+    },
+    {
+      "file": "modules/03-commons/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "c60b68b2baa5a00b0490338a10604521a07bce7af0c63bad9c36a978012295f0"
+    },
+    {
+      "file": "modules/03-commons/chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "00d9ae1cbcf3d1c25bc05da98831456eade36b8a70ed85a72a522ba64d97a6b9"
+    },
+    {
+      "file": "modules/03-commons/chunks/02.bin",
+      "bytes": 23000,
+      "sha256": "e57ec853cad8a7a12107705a98b9bf7cc24109b418f9578df98a9cfdc6952161"
+    },
+    {
+      "file": "modules/03-commons/chunks/03.bin",
+      "bytes": 23000,
+      "sha256": "9c6333acb7b7f95b12589d2988ccaff2e866dbb3f507446af3b98bcfd937a258"
+    },
+    {
+      "file": "modules/03-commons/chunks/04.bin",
+      "bytes": 19543,
+      "sha256": "480d1276a3db66b4267699c4999b40b6b4be78f2400d03bde167f84ae7832953"
+    },
+    {
+      "file": "modules/04-confluence/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "d85e53545d3d7fd0d8ced4d3bddb7028e0fb51741f0b392cd9484c664c546442"
+    },
+    {
+      "file": "modules/04-confluence/chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "01a80f39245dd77e93f8a25b5df571c0d61d71442078b7975dbeddb9417fea16"
+    },
+    {
+      "file": "modules/04-confluence/chunks/02.bin",
+      "bytes": 2371,
+      "sha256": "25ea0e83fa870d9b5d48e95999e200f5b96622e50e14f73ef1a302dd74aabce1"
+    },
+    {
+      "file": "modules/05-crosschain/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "34beeb25208c3bf69da7c2de402f52e23445745e121f8fe6b987d912d49b3581"
+    },
+    {
+      "file": "modules/05-crosschain/chunks/01.bin",
+      "bytes": 5255,
+      "sha256": "e80768001fe13ffab9e148d3130b575c2e56bf203579bdf5b9cca8f8e754afde"
+    },
+    {
+      "file": "modules/06-exit/chunks/00.bin",
+      "bytes": 8503,
+      "sha256": "a4681fda2ebc171cb7795b66c494e26b367d2012588e3527095708574cfb76f5"
+    },
+    {
+      "file": "modules/07-extensions/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "abfd1d34ec55fb82ae8b6a336abd29ae9b8bf791464c64808c286b6303cbe5cb"
+    },
+    {
+      "file": "modules/07-extensions/chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "7aad0524789645646e73826c74b63c72e1c9c29a5d5d9c637ebb9bed6740777f"
+    },
+    {
+      "file": "modules/07-extensions/chunks/02.bin",
+      "bytes": 23000,
+      "sha256": "9e4a213d914ab0553d6ed5a15dd56190fba0a751a9c52d76f08f2bb82511a226"
+    },
+    {
+      "file": "modules/07-extensions/chunks/03.bin",
+      "bytes": 23000,
+      "sha256": "823bab1849707d3a8df8191b5967bb453def901fc1e424149d7f642d8d438e1f"
+    },
+    {
+      "file": "modules/07-extensions/chunks/04.bin",
+      "bytes": 23000,
+      "sha256": "97b7e214db5cf14c00c0fbe33e9106a3117c8519431088282517cbcdd2593e1e"
+    },
+    {
+      "file": "modules/07-extensions/chunks/05.bin",
+      "bytes": 23000,
+      "sha256": "37e266ae24cdbdc38034d2403a62ab9eec60b56f6847fb82b8012678256d5765"
+    },
+    {
+      "file": "modules/07-extensions/chunks/06.bin",
+      "bytes": 23000,
+      "sha256": "5c398cb4ee5d8d407d51e22a417dac493859e258f6c1de258eab2a69457d2911"
+    },
+    {
+      "file": "modules/07-extensions/chunks/07.bin",
+      "bytes": 23000,
+      "sha256": "58100fa936f23064a79f95ec1279528cfb6b4b76a3cd3ebb4cb3db82cd569ec2"
+    },
+    {
+      "file": "modules/07-extensions/chunks/08.bin",
+      "bytes": 23000,
+      "sha256": "8f1b0cc5e4f185fa1851a64a0918ce4250b1bba3d86435f5edef7959e30fb752"
+    },
+    {
+      "file": "modules/07-extensions/chunks/09.bin",
+      "bytes": 23000,
+      "sha256": "7b527eeab31d051cef51db19cd2bc091c412f20cab49e7e5eee58f6ddf1515d1"
+    },
+    {
+      "file": "modules/07-extensions/chunks/10.bin",
+      "bytes": 23000,
+      "sha256": "f022c08f679c11d43281ec9bd9478e6ac6163dedb55704f1b0a1acf1839ee960"
+    },
+    {
+      "file": "modules/07-extensions/chunks/11.bin",
+      "bytes": 23000,
+      "sha256": "ace9357bf211f9d27341c892161580468b57bc8785ae2488021f73a2bbd22c91"
+    },
+    {
+      "file": "modules/07-extensions/chunks/12.bin",
+      "bytes": 13227,
+      "sha256": "0f4188ccb5ae5783414d805d6dce0d9f214d60603a9327a7cc513c958fcdf865"
+    },
+    {
+      "file": "modules/08-foundation/chunks/00.bin",
+      "bytes": 12331,
+      "sha256": "8f45432bc1949c92a4feff79bbf5cfe41df52a5e9e5ea81e6c6ff5e37a1dd198"
+    },
+    {
+      "file": "modules/09-genesis/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "918538429dd9b9f27bc1d9e7c07d4dbdd662439457003f687c5a3ebe1cef509f"
+    },
+    {
+      "file": "modules/09-genesis/chunks/01.bin",
+      "bytes": 21031,
+      "sha256": "68fb976a5d8be4a3991933afdb43b16455a336b84da8f75e72c0407da3833a6a"
+    },
+    {
+      "file": "modules/10-governance/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "eb1c642ca2f7942861bc23681293ebe3f05736e306600514b70a9aa3307bce44"
+    },
+    {
+      "file": "modules/10-governance/chunks/01.bin",
+      "bytes": 19419,
+      "sha256": "d963112d1eec7207cd8e587833a9a9d534f835fa824be5092f27306bfb6c4717"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "35a40b7fdb05303d393774343f4cd032bc63dbe61805fba83d7c4ebde35bddca"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "3d5cf8957bff63cfc15c1c2a5086ac976ee6134205430f004daa4fff4a5f05ed"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/02.bin",
+      "bytes": 23000,
+      "sha256": "3ca014c48138222a136c52dff00e49a87fc90927d5d667a00a8e4d4781b3afd2"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/03.bin",
+      "bytes": 23000,
+      "sha256": "d765cd74b665f77fda23535bf0585d4e066e5654c69daa0ea1ac4f164412b067"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/04.bin",
+      "bytes": 23000,
+      "sha256": "3ca7ab713ed796978ed9901174b72d8e43d0efb6cd8881134920470962d2bc71"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/05.bin",
+      "bytes": 23000,
+      "sha256": "8b4e21f676e0a58ed1ad41e7bdba58cb6a755bef7670d2165724e390bb887f27"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/06.bin",
+      "bytes": 23000,
+      "sha256": "fcaf3da6e5ed09921c840bd08d7271ec79a7b59c027b8e581d0bc3b6101684b6"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/07.bin",
+      "bytes": 23000,
+      "sha256": "9e2201e59899443b272c32600eac2380bb3da31d56495522d3595d9deb180f96"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/08.bin",
+      "bytes": 23000,
+      "sha256": "0681f3f077cc57870e9bde72cb7b9605237dc10deec87707b0b2a842069cb032"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/09.bin",
+      "bytes": 23000,
+      "sha256": "2457735cb5dc5fb2485a00ce4646e2896f98462ec628e6c35c7b9b3fb77b7a85"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/10.bin",
+      "bytes": 23000,
+      "sha256": "fefb1fffc842d354a69f1efc797e5d8d8c95515ade3e90ef0e5d2b38a5bde6a9"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/11.bin",
+      "bytes": 23000,
+      "sha256": "50c3598ae0c0d93ea2ab7a789cf1d6dc6ca3d7d4bb0cb572d38e3befb1125874"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/12.bin",
+      "bytes": 23000,
+      "sha256": "0b1a86d709c76a5fdf5f1842a9f5c71462d9c4053428309f49c17c1ad7419d0b"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/13.bin",
+      "bytes": 23000,
+      "sha256": "485575e4f884e103372b49836e77f6ad8c3d557479b3ae0b8baa279ca4464bad"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/14.bin",
+      "bytes": 23000,
+      "sha256": "f0f493c04c2e63fc200fe1a753def70a297ea2d11dd8c77378674cd761593d32"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/15.bin",
+      "bytes": 23000,
+      "sha256": "51f230c658d8bab576d89103f08df471be6cdfbf7fe209031215dec5efd8d758"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/16.bin",
+      "bytes": 23000,
+      "sha256": "53623b1da2a4c6b4c6427a12fb72a14f8825a1caa0caa7b5def23e35a53ec77e"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/17.bin",
+      "bytes": 23000,
+      "sha256": "55bcc7ab4fb164faf4a4e879efd859406259ff5d173137439bdfedc7778cdf72"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/18.bin",
+      "bytes": 23000,
+      "sha256": "9b74a9efceda3819394afb20cb3b96b933abfc89f5f6b2553743a27296ee638a"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/19.bin",
+      "bytes": 23000,
+      "sha256": "d53e040a15b330f62732d942f9a7946005081a9ce6d9267f669c7586fb85bc12"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/20.bin",
+      "bytes": 23000,
+      "sha256": "712ea7f91ffd62ac9b0d9b82c1d21766e6bbdb0e6cff10df82fb03c74a1e79bb"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/21.bin",
+      "bytes": 23000,
+      "sha256": "b48d99a192f047dce0b03afd65a71ec4f1795de7d5e7e8ba5688e495ee4252d9"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/22.bin",
+      "bytes": 23000,
+      "sha256": "3cc8ec2c672d0bfa6b8ce5ebdcb44f38ea6b33b9ea571cfdf0a7a653c12c60b9"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/23.bin",
+      "bytes": 23000,
+      "sha256": "fe0a767cb2b03c728820851625c156add0697f64211eaf3467f7779943261fda"
+    },
+    {
+      "file": "modules/11-launchpad/chunks/24.bin",
+      "bytes": 9363,
+      "sha256": "17b7364ace86854b6f22a1a9830ccd52199cb08aa50e11f9cc3604a49b8d59a3"
+    },
+    {
+      "file": "modules/12-privacy/chunks/00.bin",
+      "bytes": 14291,
+      "sha256": "9f25e37f1eb9c0d185fb8f3534f9e8ee3ecf6ea9e82d289de94077f06b7111d9"
+    },
+    {
+      "file": "modules/13-rehearsal/chunks/00.bin",
+      "bytes": 3903,
+      "sha256": "594b4276fb10d8bf4ad97fa081c621bf22eb3f86ada4aa0e2029df795e8dc46e"
+    },
+    {
+      "file": "modules/14-spirit/chunks/00.bin",
+      "bytes": 1919,
+      "sha256": "f77bb66a94e2b964be75ecd8e43ae8456780ae2f2b2b0f451937e1e9a8c9b119"
+    },
+    {
+      "file": "modules/15-v4/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "316cd924c1c174e215e8c0e1e7fce63f829e06b6f5644938fd5440504806b45f"
+    },
+    {
+      "file": "modules/15-v4/chunks/01.bin",
+      "bytes": 4035,
+      "sha256": "a7c22a278fd5abf8720587ce33d3d6cd450127f0be13cf117847f7b581a41079"
+    },
+    {
+      "file": "modules/16-vendor/chunks/00.bin",
+      "bytes": 23000,
+      "sha256": "f2cee9130993506916092534cbf69f9dd3442a2fa3c92c0b79f20b43f9ac8b94"
+    },
+    {
+      "file": "modules/16-vendor/chunks/01.bin",
+      "bytes": 23000,
+      "sha256": "04b4d2afad7c04e997b9032f07af72924f7c258aad9fc9676f4fd915d8f5d606"
+    },
+    {
+      "file": "modules/16-vendor/chunks/02.bin",
+      "bytes": 23000,
+      "sha256": "0d1ad588bd8b65941dc32c30876bde2a04cee6a77835ab35fac464be4d6f0ac5"
+    },
+    {
+      "file": "modules/16-vendor/chunks/03.bin",
+      "bytes": 23000,
+      "sha256": "ab91d8d704875d2196d591d7add759d4de46f6f4322fd5ec316304d74f283f46"
+    },
+    {
+      "file": "modules/16-vendor/chunks/04.bin",
+      "bytes": 23000,
+      "sha256": "ac87b9a54ce7860067e9ccc5c5cfa735d693bf952702ee01c0d89069f29ba474"
+    },
+    {
+      "file": "modules/16-vendor/chunks/05.bin",
+      "bytes": 23000,
+      "sha256": "d8dbc6c6c9d29b0ce2154b70cb33982a26e4d29e2ec28a807da3be645c813d56"
+    },
+    {
+      "file": "modules/16-vendor/chunks/06.bin",
+      "bytes": 23000,
+      "sha256": "0a6a43b1b7df5d6b4a779c4e771ec6ab7d176917c10da13382d751a5c47c0771"
+    },
+    {
+      "file": "modules/16-vendor/chunks/07.bin",
+      "bytes": 23000,
+      "sha256": "7a99e62a66e291802b0c074b72271548fe869586b682b2b46724b92a7a171ce1"
+    },
+    {
+      "file": "modules/16-vendor/chunks/08.bin",
+      "bytes": 23000,
+      "sha256": "21ed2036e9cd55a71282d8e477dc4706c897c98c5f87224f64033d1a46f9cfd6"
+    },
+    {
+      "file": "modules/16-vendor/chunks/09.bin",
+      "bytes": 4487,
+      "sha256": "ee1b9a657597b96ca5bc88bb13a57a03eb6491e69e00692b1d9e2d315da9f43e"
+    },
+    {
+      "file": "modules/17-workshop/chunks/00.bin",
+      "bytes": 14087,
+      "sha256": "6ac37c96f3d0b40d63c9586a0c67a37959034e9f53b5796c8bdd2eb64cfcfdc7"
+    },
+    {
+      "file": "modules/18-worlds/chunks/00.bin",
+      "bytes": 5687,
+      "sha256": "f4107cd77538a823d10dddde0c8c13bf636266075ace455a4b10a1e1f7c625dd"
+    }
+  ],
+  "modules": [
+    {
+      "name": "core-shell",
+      "id": "9c94547ce28294918597f478aadea80348da368c862d08e07623025effe9c865",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "5d4991b16ccea8e700de593f1d53641838464b5528fc25afeae2cb445c182259",
+      "byteLength": 240803,
+      "expandedSha256": "b5abccacd6c18fd3c63135e90dc79551086720f9d675cf8aa1a43fb5b97dc696",
+      "expandedBytes": 672190,
+      "compressedBytes": 180552,
+      "dependencies": [
+        {
+          "index": 1,
+          "version": 1
+        },
+        {
+          "index": 2,
+          "version": 1
+        },
+        {
+          "index": 3,
+          "version": 1
+        },
+        {
+          "index": 4,
+          "version": 1
+        },
+        {
+          "index": 5,
+          "version": 1
+        },
+        {
+          "index": 6,
+          "version": 1
+        },
+        {
+          "index": 7,
+          "version": 1
+        },
+        {
+          "index": 8,
+          "version": 1
+        },
+        {
+          "index": 9,
+          "version": 1
+        },
+        {
+          "index": 10,
+          "version": 1
+        },
+        {
+          "index": 11,
+          "version": 1
+        },
+        {
+          "index": 12,
+          "version": 1
+        },
+        {
+          "index": 13,
+          "version": 1
+        },
+        {
+          "index": 14,
+          "version": 1
+        },
+        {
+          "index": 15,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        },
+        {
+          "index": 17,
+          "version": 1
+        },
+        {
+          "index": 18,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/00-core-shell/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "8f350be4d077fbecd54d3d4cbf814c63dace67f7743f3ebda49d352d4000decc"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "6c03ba66835fdb1ee176065a4c076783acc07ab0a2740eba60b5e6b0e09fe0ff"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "fd60028df1390094cbeb6c8dbe3d61e3fa01d9d1c345b51ec1fad93da11568fe"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "db5996b91dd5a4e1f8108dbe57482f99fc075d93c8edf7fd7427b7449e674f7c"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "48c2e986686320f3245c84ecc83e9aa208a6b0df1e19aa2774005500200efae1"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "409d26a28e355f010f38e4cb276a5528e99360277641b1ae9715ce29aa354ca2"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "bd6a0b152127263cca4a46c70cef72c5e0d557842d156d9aee7a455df6bbbf80"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "a07540f9ecc5ca2ef742c8a87fb2663432f662972e2f3cf05f84f854df4c015b"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "8c281405e8c56e15311b8260fd22dc116ebe9c1f7f29e784bfe80566fe447c89"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "cef15fa73e8e55dfa2a6617eca748fa9a4f368f21c6d056269b18856fe29a8ad"
+        },
+        {
+          "file": "modules/00-core-shell/chunks/10.bin",
+          "bytes": 10803,
+          "sha256": "63062c4e00813ed075c1494d362c31f35161722abd6ebeb1aad581c7ff9c7e8e"
+        }
+      ]
+    },
+    {
+      "name": "begins",
+      "id": "b2b9c54954296c4cff5e3f8492f5c827a0239c34c354bb376a6b811c2832dc28",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "df7ceda1b358c6e5ef1590a2813ea7cae3ac8a9d714603ca91421458a6d67fb6",
+      "byteLength": 5171,
+      "expandedSha256": "d7838426b9b6fcd7d7187ad9a48ed6293e76bf9e0cb417d0c41677a5d1f67981",
+      "expandedBytes": 9011,
+      "compressedBytes": 3828,
+      "dependencies": [
+        {
+          "index": 4,
+          "version": 1
+        },
+        {
+          "index": 14,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/01-begins/chunks/00.bin",
+          "bytes": 5171,
+          "sha256": "df7ceda1b358c6e5ef1590a2813ea7cae3ac8a9d714603ca91421458a6d67fb6"
+        }
+      ]
+    },
+    {
+      "name": "burners",
+      "id": "3d72dcc9ea11f8cdda09e3b6b49380c8a674e8c2a33965e8a020837967c35960",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "6b309a6bb4b4932a740d81922fb971acf99d3db2fa9729946c36dc5d5af6116e",
+      "byteLength": 19987,
+      "expandedSha256": "dfc3d0555409ad025c2270bffc4699a71eed119e724e5f46b44e0ca67beb3db7",
+      "expandedBytes": 54905,
+      "compressedBytes": 14939,
+      "dependencies": [
+        {
+          "index": 12,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/02-burners/chunks/00.bin",
+          "bytes": 19987,
+          "sha256": "6b309a6bb4b4932a740d81922fb971acf99d3db2fa9729946c36dc5d5af6116e"
+        }
+      ]
+    },
+    {
+      "name": "commons",
+      "id": "dbfaa5d6a74412605263d67e5d4b7bd4192ac6041cee36098252077896f134ff",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "f27b0b72b2b19b5ea14b0f7634440570407e11e1bc6f6d5a22587adc9dab9700",
+      "byteLength": 111543,
+      "expandedSha256": "4b8bff115d3a748d9529de262d2ebd21e511f3e452dde63e3c72c1477bd5800f",
+      "expandedBytes": 301770,
+      "compressedBytes": 83606,
+      "dependencies": [
+        {
+          "index": 7,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/03-commons/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "c60b68b2baa5a00b0490338a10604521a07bce7af0c63bad9c36a978012295f0"
+        },
+        {
+          "file": "modules/03-commons/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "00d9ae1cbcf3d1c25bc05da98831456eade36b8a70ed85a72a522ba64d97a6b9"
+        },
+        {
+          "file": "modules/03-commons/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "e57ec853cad8a7a12107705a98b9bf7cc24109b418f9578df98a9cfdc6952161"
+        },
+        {
+          "file": "modules/03-commons/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "9c6333acb7b7f95b12589d2988ccaff2e866dbb3f507446af3b98bcfd937a258"
+        },
+        {
+          "file": "modules/03-commons/chunks/04.bin",
+          "bytes": 19543,
+          "sha256": "480d1276a3db66b4267699c4999b40b6b4be78f2400d03bde167f84ae7832953"
+        }
+      ]
+    },
+    {
+      "name": "confluence",
+      "id": "9c1c934e33089936612ec2b89ad42da2b6b32a2bdd12e07069a4c26683f7c2d5",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "494293c7f02f9dd77a98670b113e62291f697e6ed8f41797f085f9198a537427",
+      "byteLength": 48371,
+      "expandedSha256": "c6cd3dae4c6ba48f83b43bdd3bf34094a2336d99e4c434366fd21c72619dc87c",
+      "expandedBytes": 128335,
+      "compressedBytes": 36228,
+      "dependencies": [
+        {
+          "index": 2,
+          "version": 1
+        },
+        {
+          "index": 3,
+          "version": 1
+        },
+        {
+          "index": 5,
+          "version": 1
+        },
+        {
+          "index": 6,
+          "version": 1
+        },
+        {
+          "index": 7,
+          "version": 1
+        },
+        {
+          "index": 8,
+          "version": 1
+        },
+        {
+          "index": 9,
+          "version": 1
+        },
+        {
+          "index": 10,
+          "version": 1
+        },
+        {
+          "index": 11,
+          "version": 1
+        },
+        {
+          "index": 13,
+          "version": 1
+        },
+        {
+          "index": 15,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        },
+        {
+          "index": 17,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/04-confluence/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "d85e53545d3d7fd0d8ced4d3bddb7028e0fb51741f0b392cd9484c664c546442"
+        },
+        {
+          "file": "modules/04-confluence/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "01a80f39245dd77e93f8a25b5df571c0d61d71442078b7975dbeddb9417fea16"
+        },
+        {
+          "file": "modules/04-confluence/chunks/02.bin",
+          "bytes": 2371,
+          "sha256": "25ea0e83fa870d9b5d48e95999e200f5b96622e50e14f73ef1a302dd74aabce1"
+        }
+      ]
+    },
+    {
+      "name": "crosschain",
+      "id": "b73c0aac4c1e606c6e495d848196355e6cb303817502860b92198730c4925e0c",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "3a1b3d2a3f806901e22bcaeb0ecb9087f0c21e3916762cf6415c003a08599e06",
+      "byteLength": 28255,
+      "expandedSha256": "c325ffeee9ae6529c042ab81ac00dc49085a509e421cb3777c6fc6469cee7b39",
+      "expandedBytes": 90375,
+      "compressedBytes": 21140,
+      "dependencies": [
+        {
+          "index": 11,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/05-crosschain/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "34beeb25208c3bf69da7c2de402f52e23445745e121f8fe6b987d912d49b3581"
+        },
+        {
+          "file": "modules/05-crosschain/chunks/01.bin",
+          "bytes": 5255,
+          "sha256": "e80768001fe13ffab9e148d3130b575c2e56bf203579bdf5b9cca8f8e754afde"
+        }
+      ]
+    },
+    {
+      "name": "exit",
+      "id": "e596899f114b5162402325dfb31fdaa792fabed718628336cc7a35a24f38eaa9",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "a4681fda2ebc171cb7795b66c494e26b367d2012588e3527095708574cfb76f5",
+      "byteLength": 8503,
+      "expandedSha256": "53cb6eabcbfc513894a8312a02f1e5a319143f2770cfddf1b7fc88ae2b6df5e0",
+      "expandedBytes": 24129,
+      "compressedBytes": 6327,
+      "dependencies": [
+        {
+          "index": 15,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/06-exit/chunks/00.bin",
+          "bytes": 8503,
+          "sha256": "a4681fda2ebc171cb7795b66c494e26b367d2012588e3527095708574cfb76f5"
+        }
+      ]
+    },
+    {
+      "name": "extensions",
+      "id": "20ef7739e8423f114899b767909a220c5dc4169d73a38196d7a2dbfac5166c4e",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "b0f806896e3f1abee23f4b1d304d10ecfa26a40a9931946c31882a259b0b580f",
+      "byteLength": 289227,
+      "expandedSha256": "54e0d2d2f3d942525e72bfd563a9cf0f6850050bcfb49a469c9a01dc33e84d89",
+      "expandedBytes": 1075705,
+      "compressedBytes": 216869,
+      "dependencies": [
+        {
+          "index": 8,
+          "version": 1
+        },
+        {
+          "index": 9,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        },
+        {
+          "index": 18,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/07-extensions/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "abfd1d34ec55fb82ae8b6a336abd29ae9b8bf791464c64808c286b6303cbe5cb"
+        },
+        {
+          "file": "modules/07-extensions/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "7aad0524789645646e73826c74b63c72e1c9c29a5d5d9c637ebb9bed6740777f"
+        },
+        {
+          "file": "modules/07-extensions/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "9e4a213d914ab0553d6ed5a15dd56190fba0a751a9c52d76f08f2bb82511a226"
+        },
+        {
+          "file": "modules/07-extensions/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "823bab1849707d3a8df8191b5967bb453def901fc1e424149d7f642d8d438e1f"
+        },
+        {
+          "file": "modules/07-extensions/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "97b7e214db5cf14c00c0fbe33e9106a3117c8519431088282517cbcdd2593e1e"
+        },
+        {
+          "file": "modules/07-extensions/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "37e266ae24cdbdc38034d2403a62ab9eec60b56f6847fb82b8012678256d5765"
+        },
+        {
+          "file": "modules/07-extensions/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "5c398cb4ee5d8d407d51e22a417dac493859e258f6c1de258eab2a69457d2911"
+        },
+        {
+          "file": "modules/07-extensions/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "58100fa936f23064a79f95ec1279528cfb6b4b76a3cd3ebb4cb3db82cd569ec2"
+        },
+        {
+          "file": "modules/07-extensions/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "8f1b0cc5e4f185fa1851a64a0918ce4250b1bba3d86435f5edef7959e30fb752"
+        },
+        {
+          "file": "modules/07-extensions/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "7b527eeab31d051cef51db19cd2bc091c412f20cab49e7e5eee58f6ddf1515d1"
+        },
+        {
+          "file": "modules/07-extensions/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "f022c08f679c11d43281ec9bd9478e6ac6163dedb55704f1b0a1acf1839ee960"
+        },
+        {
+          "file": "modules/07-extensions/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "ace9357bf211f9d27341c892161580468b57bc8785ae2488021f73a2bbd22c91"
+        },
+        {
+          "file": "modules/07-extensions/chunks/12.bin",
+          "bytes": 13227,
+          "sha256": "0f4188ccb5ae5783414d805d6dce0d9f214d60603a9327a7cc513c958fcdf865"
+        }
+      ]
+    },
+    {
+      "name": "foundation",
+      "id": "2bd8b7b0d83e0ec92abdf6f714ca199a7874d08636965471035c4dcd1b38b6fb",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "8f45432bc1949c92a4feff79bbf5cfe41df52a5e9e5ea81e6c6ff5e37a1dd198",
+      "byteLength": 12331,
+      "expandedSha256": "b979f5d1c5f7f8da21e200f7453903a3ebd796389f97afaa5f600fc5734dca5c",
+      "expandedBytes": 26020,
+      "compressedBytes": 9198,
+      "dependencies": [],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/08-foundation/chunks/00.bin",
+          "bytes": 12331,
+          "sha256": "8f45432bc1949c92a4feff79bbf5cfe41df52a5e9e5ea81e6c6ff5e37a1dd198"
+        }
+      ]
+    },
+    {
+      "name": "genesis",
+      "id": "aeebad4a796fcc2e15dc4c6061b45ed9b373f26adfc798ca7d2d8cc58182718e",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "40f3174aae467c5540b9d1fa44affed7e1c99b2f3ace77210044f090be9df51b",
+      "byteLength": 44031,
+      "expandedSha256": "9e769e299da3b0d63ea9629bbc2211841621b1b510ef8913a1dd6c343866eb8f",
+      "expandedBytes": 113035,
+      "compressedBytes": 32973,
+      "dependencies": [
+        {
+          "index": 1,
+          "version": 1
+        },
+        {
+          "index": 4,
+          "version": 1
+        },
+        {
+          "index": 13,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/09-genesis/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "918538429dd9b9f27bc1d9e7c07d4dbdd662439457003f687c5a3ebe1cef509f"
+        },
+        {
+          "file": "modules/09-genesis/chunks/01.bin",
+          "bytes": 21031,
+          "sha256": "68fb976a5d8be4a3991933afdb43b16455a336b84da8f75e72c0407da3833a6a"
+        }
+      ]
+    },
+    {
+      "name": "governance",
+      "id": "bf9422a2a04aad2180fad0913f1cdf8a9d3780fd074817d2569050d0a8095d3a",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "d02b1c22ad69487599d44a1a2079bd413c62db54261e7415ce3ee36cd7493977",
+      "byteLength": 42419,
+      "expandedSha256": "327b80e74e70ce1b15b8790cc335bdef80ebec60508aaaa01cc797ff6909782a",
+      "expandedBytes": 146431,
+      "compressedBytes": 31764,
+      "dependencies": [
+        {
+          "index": 11,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/10-governance/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "eb1c642ca2f7942861bc23681293ebe3f05736e306600514b70a9aa3307bce44"
+        },
+        {
+          "file": "modules/10-governance/chunks/01.bin",
+          "bytes": 19419,
+          "sha256": "d963112d1eec7207cd8e587833a9a9d534f835fa824be5092f27306bfb6c4717"
+        }
+      ]
+    },
+    {
+      "name": "launchpad",
+      "id": "7b3937a5f4397ec652546ef2e72a9e9a35d5ac5241461b09cd1ad524b25ac5b1",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "cb2658974d4e1224630f5368c88167d22d1633e285ebf51611ae23d0675f4763",
+      "byteLength": 561363,
+      "expandedSha256": "fc3e12b70be60a9cbd3a55102571bb92858c9452ae8576cd3368052c8206b264",
+      "expandedBytes": 1836168,
+      "compressedBytes": 420971,
+      "dependencies": [
+        {
+          "index": 4,
+          "version": 1
+        },
+        {
+          "index": 5,
+          "version": 1
+        },
+        {
+          "index": 7,
+          "version": 1
+        },
+        {
+          "index": 10,
+          "version": 1
+        },
+        {
+          "index": 12,
+          "version": 1
+        },
+        {
+          "index": 15,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/11-launchpad/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "35a40b7fdb05303d393774343f4cd032bc63dbe61805fba83d7c4ebde35bddca"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "3d5cf8957bff63cfc15c1c2a5086ac976ee6134205430f004daa4fff4a5f05ed"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "3ca014c48138222a136c52dff00e49a87fc90927d5d667a00a8e4d4781b3afd2"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "d765cd74b665f77fda23535bf0585d4e066e5654c69daa0ea1ac4f164412b067"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "3ca7ab713ed796978ed9901174b72d8e43d0efb6cd8881134920470962d2bc71"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "8b4e21f676e0a58ed1ad41e7bdba58cb6a755bef7670d2165724e390bb887f27"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "fcaf3da6e5ed09921c840bd08d7271ec79a7b59c027b8e581d0bc3b6101684b6"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "9e2201e59899443b272c32600eac2380bb3da31d56495522d3595d9deb180f96"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "0681f3f077cc57870e9bde72cb7b9605237dc10deec87707b0b2a842069cb032"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/09.bin",
+          "bytes": 23000,
+          "sha256": "2457735cb5dc5fb2485a00ce4646e2896f98462ec628e6c35c7b9b3fb77b7a85"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/10.bin",
+          "bytes": 23000,
+          "sha256": "fefb1fffc842d354a69f1efc797e5d8d8c95515ade3e90ef0e5d2b38a5bde6a9"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/11.bin",
+          "bytes": 23000,
+          "sha256": "50c3598ae0c0d93ea2ab7a789cf1d6dc6ca3d7d4bb0cb572d38e3befb1125874"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/12.bin",
+          "bytes": 23000,
+          "sha256": "0b1a86d709c76a5fdf5f1842a9f5c71462d9c4053428309f49c17c1ad7419d0b"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/13.bin",
+          "bytes": 23000,
+          "sha256": "485575e4f884e103372b49836e77f6ad8c3d557479b3ae0b8baa279ca4464bad"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/14.bin",
+          "bytes": 23000,
+          "sha256": "f0f493c04c2e63fc200fe1a753def70a297ea2d11dd8c77378674cd761593d32"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/15.bin",
+          "bytes": 23000,
+          "sha256": "51f230c658d8bab576d89103f08df471be6cdfbf7fe209031215dec5efd8d758"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/16.bin",
+          "bytes": 23000,
+          "sha256": "53623b1da2a4c6b4c6427a12fb72a14f8825a1caa0caa7b5def23e35a53ec77e"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/17.bin",
+          "bytes": 23000,
+          "sha256": "55bcc7ab4fb164faf4a4e879efd859406259ff5d173137439bdfedc7778cdf72"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/18.bin",
+          "bytes": 23000,
+          "sha256": "9b74a9efceda3819394afb20cb3b96b933abfc89f5f6b2553743a27296ee638a"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/19.bin",
+          "bytes": 23000,
+          "sha256": "d53e040a15b330f62732d942f9a7946005081a9ce6d9267f669c7586fb85bc12"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/20.bin",
+          "bytes": 23000,
+          "sha256": "712ea7f91ffd62ac9b0d9b82c1d21766e6bbdb0e6cff10df82fb03c74a1e79bb"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/21.bin",
+          "bytes": 23000,
+          "sha256": "b48d99a192f047dce0b03afd65a71ec4f1795de7d5e7e8ba5688e495ee4252d9"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/22.bin",
+          "bytes": 23000,
+          "sha256": "3cc8ec2c672d0bfa6b8ce5ebdcb44f38ea6b33b9ea571cfdf0a7a653c12c60b9"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/23.bin",
+          "bytes": 23000,
+          "sha256": "fe0a767cb2b03c728820851625c156add0697f64211eaf3467f7779943261fda"
+        },
+        {
+          "file": "modules/11-launchpad/chunks/24.bin",
+          "bytes": 9363,
+          "sha256": "17b7364ace86854b6f22a1a9830ccd52199cb08aa50e11f9cc3604a49b8d59a3"
+        }
+      ]
+    },
+    {
+      "name": "privacy",
+      "id": "a4cc6bc01a927e2a78fd3bec51e865ac0d85e4daab6f988d5d33d056e125b1c3",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "9f25e37f1eb9c0d185fb8f3534f9e8ee3ecf6ea9e82d289de94077f06b7111d9",
+      "byteLength": 14291,
+      "expandedSha256": "6071bda2c68694da22ee95c2644842ee3fa6573b8c986d962e0c7cb0e4458c0a",
+      "expandedBytes": 36624,
+      "compressedBytes": 10667,
+      "dependencies": [
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/12-privacy/chunks/00.bin",
+          "bytes": 14291,
+          "sha256": "9f25e37f1eb9c0d185fb8f3534f9e8ee3ecf6ea9e82d289de94077f06b7111d9"
+        }
+      ]
+    },
+    {
+      "name": "rehearsal",
+      "id": "2bcd3e14dca8fdb18ca3d4e958bb1c4df002598ae6e5d80fc9d9824a6b5dc450",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "594b4276fb10d8bf4ad97fa081c621bf22eb3f86ada4aa0e2029df795e8dc46e",
+      "byteLength": 3903,
+      "expandedSha256": "bd7b6936f7ef80198bc0c1a710fc4c449051ca041cc4fdb0b0c0461e645cc090",
+      "expandedBytes": 7270,
+      "compressedBytes": 2877,
+      "dependencies": [
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/13-rehearsal/chunks/00.bin",
+          "bytes": 3903,
+          "sha256": "594b4276fb10d8bf4ad97fa081c621bf22eb3f86ada4aa0e2029df795e8dc46e"
+        }
+      ]
+    },
+    {
+      "name": "spirit",
+      "id": "a68999add325ba9952ddf20a853ab998393e4488b8229c0fb7fc9dbc5be26ae8",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "f77bb66a94e2b964be75ecd8e43ae8456780ae2f2b2b0f451937e1e9a8c9b119",
+      "byteLength": 1919,
+      "expandedSha256": "5d0aa3a488d7df08035d9f4384dc071da14cd9949c944617900d91b6cf9866a1",
+      "expandedBytes": 3016,
+      "compressedBytes": 1387,
+      "dependencies": [
+        {
+          "index": 4,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/14-spirit/chunks/00.bin",
+          "bytes": 1919,
+          "sha256": "f77bb66a94e2b964be75ecd8e43ae8456780ae2f2b2b0f451937e1e9a8c9b119"
+        }
+      ]
+    },
+    {
+      "name": "v4",
+      "id": "8e38a1ea5c681c8e9a08f1af465f1f07d33d931de8f71af45ecbe957751c9a86",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "906cc5f3c1806622bcacee2ff86c0bb5e004a2c884c972503b001c1fc6b2b770",
+      "byteLength": 27035,
+      "expandedSha256": "486a00f5494a42675b30359b65b94e03aba93b6b381f8a1d21e871183e9893b2",
+      "expandedBytes": 84357,
+      "compressedBytes": 20224,
+      "dependencies": [
+        {
+          "index": 11,
+          "version": 1
+        },
+        {
+          "index": 12,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/15-v4/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "316cd924c1c174e215e8c0e1e7fce63f829e06b6f5644938fd5440504806b45f"
+        },
+        {
+          "file": "modules/15-v4/chunks/01.bin",
+          "bytes": 4035,
+          "sha256": "a7c22a278fd5abf8720587ce33d3d6cd450127f0be13cf117847f7b581a41079"
+        }
+      ]
+    },
+    {
+      "name": "vendor",
+      "id": "630ba09448af522154f38ef7685ef1f44b0f3e9430f80829a03ce24f400f3754",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "3978d8bf49632262edf9be24767a3f042cabfb38ef6b3acb47d3eb3ff4dbba5d",
+      "byteLength": 211487,
+      "expandedSha256": "e1635220c9fed2814490d39a756403691ea4557c59c3ff2bd6e4a6550fc9f625",
+      "expandedBytes": 520350,
+      "compressedBytes": 158563,
+      "dependencies": [],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/16-vendor/chunks/00.bin",
+          "bytes": 23000,
+          "sha256": "f2cee9130993506916092534cbf69f9dd3442a2fa3c92c0b79f20b43f9ac8b94"
+        },
+        {
+          "file": "modules/16-vendor/chunks/01.bin",
+          "bytes": 23000,
+          "sha256": "04b4d2afad7c04e997b9032f07af72924f7c258aad9fc9676f4fd915d8f5d606"
+        },
+        {
+          "file": "modules/16-vendor/chunks/02.bin",
+          "bytes": 23000,
+          "sha256": "0d1ad588bd8b65941dc32c30876bde2a04cee6a77835ab35fac464be4d6f0ac5"
+        },
+        {
+          "file": "modules/16-vendor/chunks/03.bin",
+          "bytes": 23000,
+          "sha256": "ab91d8d704875d2196d591d7add759d4de46f6f4322fd5ec316304d74f283f46"
+        },
+        {
+          "file": "modules/16-vendor/chunks/04.bin",
+          "bytes": 23000,
+          "sha256": "ac87b9a54ce7860067e9ccc5c5cfa735d693bf952702ee01c0d89069f29ba474"
+        },
+        {
+          "file": "modules/16-vendor/chunks/05.bin",
+          "bytes": 23000,
+          "sha256": "d8dbc6c6c9d29b0ce2154b70cb33982a26e4d29e2ec28a807da3be645c813d56"
+        },
+        {
+          "file": "modules/16-vendor/chunks/06.bin",
+          "bytes": 23000,
+          "sha256": "0a6a43b1b7df5d6b4a779c4e771ec6ab7d176917c10da13382d751a5c47c0771"
+        },
+        {
+          "file": "modules/16-vendor/chunks/07.bin",
+          "bytes": 23000,
+          "sha256": "7a99e62a66e291802b0c074b72271548fe869586b682b2b46724b92a7a171ce1"
+        },
+        {
+          "file": "modules/16-vendor/chunks/08.bin",
+          "bytes": 23000,
+          "sha256": "21ed2036e9cd55a71282d8e477dc4706c897c98c5f87224f64033d1a46f9cfd6"
+        },
+        {
+          "file": "modules/16-vendor/chunks/09.bin",
+          "bytes": 4487,
+          "sha256": "ee1b9a657597b96ca5bc88bb13a57a03eb6491e69e00692b1d9e2d315da9f43e"
+        }
+      ]
+    },
+    {
+      "name": "workshop",
+      "id": "ee510d1a07ac7e6491ea191cd1918ea553ed2a358c8a0a04c1b90bd89222c314",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "6ac37c96f3d0b40d63c9586a0c67a37959034e9f53b5796c8bdd2eb64cfcfdc7",
+      "byteLength": 14087,
+      "expandedSha256": "cf447b0f072d293422ff8a5480dd9005ecb278e7e1c9127427fd864e9576bf96",
+      "expandedBytes": 44806,
+      "compressedBytes": 10514,
+      "dependencies": [
+        {
+          "index": 9,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/17-workshop/chunks/00.bin",
+          "bytes": 14087,
+          "sha256": "6ac37c96f3d0b40d63c9586a0c67a37959034e9f53b5796c8bdd2eb64cfcfdc7"
+        }
+      ]
+    },
+    {
+      "name": "worlds",
+      "id": "27a2069a8d5b864ff3d4b99309166a6808bb8457de3266d326602c3aa094acde",
+      "version": 1,
+      "archiveVersion": 1,
+      "sha256": "f4107cd77538a823d10dddde0c8c13bf636266075ace455a4b10a1e1f7c625dd",
+      "byteLength": 5687,
+      "expandedSha256": "4730ca8fcc45170239240e31bfe9d3a8d9540593387c05e1ac2a8eb1ba75d3d7",
+      "expandedBytes": 13015,
+      "compressedBytes": 4214,
+      "dependencies": [
+        {
+          "index": 9,
+          "version": 1
+        },
+        {
+          "index": 16,
+          "version": 1
+        },
+        {
+          "index": 17,
+          "version": 1
+        }
+      ],
+      "shards": [],
+      "chunks": [
+        {
+          "file": "modules/18-worlds/chunks/00.bin",
+          "bytes": 5687,
+          "sha256": "f4107cd77538a823d10dddde0c8c13bf636266075ace455a4b10a1e1f7c625dd"
+        }
+      ]
+    }
+  ],
+  "buildManifestSha256": "f3cdb39725182973159057be0157cb56894e66d249ccbc3efc12edbffa1f4676",
+  "moduleGraph": {
+    "web/begins/geometry.mjs": {
+      "sha256": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
+      "dependencies": [
+        "web/confluence/identity.mjs",
+        "web/spirit/geometry.mjs"
+      ]
+    },
+    "web/begins/shaders.mjs": {
+      "sha256": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
+      "dependencies": []
+    },
+    "web/burners/desk.mjs": {
+      "sha256": "3651ccc49c6e78754b0e54ea73311bf01897fc02a76907b7ebfa86a569030a09",
+      "dependencies": [
+        "web/burners/vault.mjs",
+        "web/burners/policy.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/burners/policy.mjs": {
+      "sha256": "1ce6fe6691b7989c59b8f6cb7f83ef988928a34b1f45bf17928bed7ed5df5e14",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/burners/vault.mjs": {
+      "sha256": "60894f6a57e499d9fcab6675cff2a6f1d11b852e228123a97c28f59954e5c7ae",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/privacy/vault.mjs",
+        "web/burners/policy.mjs"
+      ]
+    },
+    "web/commons/artifacts.mjs": {
+      "sha256": "dc3cbf1be11c863dcf94b906b20dc19f3e8e3a03f5c9a38a414f71b79e52afb0",
+      "dependencies": []
+    },
+    "web/commons/client.mjs": {
+      "sha256": "376158e164bcd543f8eae2d7343e49dde5c0f55a5c8b1bb7c669824974cda779",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/privacy.mjs",
+        "web/commons/artifacts.mjs"
+      ]
+    },
+    "web/commons/desk.mjs": {
+      "sha256": "f0caa51322e2e6e86056c1aca95048dc587610920b6aab49292d5cb0949f43f4",
+      "dependencies": [
+        "web/commons/mls-desk.mjs",
+        "web/commons/client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/commons/mls-artifacts.mjs": {
+      "sha256": "a3c6443695ddbe4f10b03031ddc599d3f4029f51f548623e38865928b6abb99a",
+      "dependencies": []
+    },
+    "web/commons/mls-client.mjs": {
+      "sha256": "3a58453241a3e46caacd7df609b2b6e7e07f33e239bf3b9aa1491471465995e8",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/commons/mls-protocol.mjs",
+        "web/commons/mls-vault.mjs",
+        "web/commons/mls-artifacts.mjs",
+        "web/commons/client.mjs"
+      ]
+    },
+    "web/commons/mls-desk.mjs": {
+      "sha256": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
+      "dependencies": [
+        "web/commons/mls-client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/commons/mls-protocol.mjs": {
+      "sha256": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
+      "dependencies": []
+    },
+    "web/commons/mls-vault.mjs": {
+      "sha256": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
+      "dependencies": [
+        "web/commons/mls-protocol.mjs"
+      ]
+    },
+    "web/confluence/app.js": {
+      "sha256": "15479c960f0e161e7d27a43e0770df00f08c4145d9c87e65a802b430e7518c22",
+      "dependencies": [
+        "web/confluence/release-capabilities.mjs",
+        "web/confluence/selected-context.mjs",
+        "web/confluence/capabilities.mjs",
+        "web/workshop/desk.mjs",
+        "web/v4/desk.mjs",
+        "web/launchpad/desk.mjs",
+        "web/governance/desk.mjs",
+        "web/crosschain/desk.mjs",
+        "web/commons/desk.mjs",
+        "web/launchpad/participant.mjs",
+        "web/launchpad/links.mjs",
+        "web/genesis/live-desk.mjs",
+        "web/extensions/desk.mjs",
+        "web/genesis/interior.mjs",
+        "web/exit/live-ui.mjs",
+        "web/burners/desk.mjs",
+        "web/confluence/identity.mjs",
+        "web/genesis/field.js",
+        "web/genesis/atlas.mjs",
+        "web/confluence/economy.mjs",
+        "web/confluence/wallet.mjs",
+        "web/confluence/console-core.mjs",
+        "web/evm.mjs",
+        "web/confluence/archive.mjs"
+      ]
+    },
+    "web/confluence/archive.mjs": {
+      "sha256": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
+      "dependencies": [
+        "web/model.mjs",
+        "web/confluence/economy.mjs",
+        "web/confluence/console-core.mjs"
+      ]
+    },
+    "web/confluence/capabilities.mjs": {
+      "sha256": "ed952c7476e4192bc90a2b9d1a56333e4a5d967131dfe6b21de14e8ca85e1f08",
+      "dependencies": []
+    },
+    "web/confluence/console-core.mjs": {
+      "sha256": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
+      "dependencies": []
+    },
+    "web/confluence/economy.mjs": {
+      "sha256": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/confluence/identity.mjs": {
+      "sha256": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/confluence/minted-identity.mjs": {
+      "sha256": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+      "dependencies": []
+    },
+    "web/confluence/particles.js": {
+      "sha256": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+      "dependencies": [
+        "web/confluence/identity.mjs"
+      ]
+    },
+    "web/confluence/release-capabilities.mjs": {
+      "sha256": "11bd0e2b7e9ab52228a445177c33d64bd6b10fb2a3ae2a7bb475aa661ed95507",
+      "dependencies": []
+    },
+    "web/confluence/selected-context.mjs": {
+      "sha256": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
+      "dependencies": [
+        "web/confluence/minted-identity.mjs"
+      ]
+    },
+    "web/confluence/wallet.mjs": {
+      "sha256": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+      "dependencies": [
+        "web/confluence/minted-identity.mjs",
+        "web/rehearsal/client.mjs",
+        "web/extensions/proof.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/crosschain/artifacts.mjs": {
+      "sha256": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
+      "dependencies": []
+    },
+    "web/crosschain/client.mjs": {
+      "sha256": "59144eed58391309fb13316a8abe3fde395b6f6cd9683bee5d5077be761e37d3",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/sale-client.mjs",
+        "web/crosschain/artifacts.mjs"
+      ]
+    },
+    "web/crosschain/desk.mjs": {
+      "sha256": "9b3826473774bbe8339e277e8884b6113b64e5c850294aad6bb4009cdfe5c9ea",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/crosschain/client.mjs"
+      ]
+    },
+    "web/evm.mjs": {
+      "sha256": "cb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+      "dependencies": []
+    },
+    "web/exit/artifacts.mjs": {
+      "sha256": "81442bb72de8eaff6426ff284fccd54c6ecee26567a75bd99bc73ae4ff85c211",
+      "dependencies": []
+    },
+    "web/exit/live-ui.mjs": {
+      "sha256": "3c5faca4c005c79ff8ecc0fb67fa2a3da578333e9076a05781839430ce530395",
+      "dependencies": [
+        "web/exit/live.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/exit/live.mjs": {
+      "sha256": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
+      "dependencies": [
+        "web/exit/artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/access.mjs": {
+      "sha256": "8697aa024eaea6fef8750224eb76b4264f14ee72a4d019182e9f88528de82f2e",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/agents.mjs": {
+      "sha256": "5762161784210a6fb65742d6cc783b1cf37b5b4766f75fad83e59bca4d5afb6b",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/service-origin.mjs"
+      ]
+    },
+    "web/extensions/artifacts.mjs": {
+      "sha256": "0cd831d2ea26f9e87e8444f6c52f5bc3eb31eb5e1c3ec964218064581c9568a6",
+      "dependencies": []
+    },
+    "web/extensions/desk.mjs": {
+      "sha256": "9090b4232581bcace1e6d7b905a1940091afacc68432845930c8bf6a62264bd3",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/artifacts.mjs",
+        "web/extensions/markets.mjs",
+        "web/extensions/agents.mjs",
+        "web/extensions/experimental.mjs",
+        "web/extensions/access.mjs",
+        "web/extensions/privacy/desk.mjs",
+        "web/extensions/privacy.mjs",
+        "web/extensions/worlds.mjs",
+        "web/extensions/security.mjs",
+        "web/extensions/proof.mjs"
+      ]
+    },
+    "web/extensions/experimental.mjs": {
+      "sha256": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/markets.mjs": {
+      "sha256": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/extensions/privacy.mjs": {
+      "sha256": "3123b55bdf0463d860dad6bf5db76b9705a87ea632638283b92f6227a9384e6b",
+      "dependencies": [
+        "web/evm.mjs",
+        "web/extensions/privacy/crypto.mjs"
+      ]
+    },
+    "web/extensions/privacy/crypto.mjs": {
+      "sha256": "609fb068621b8ba60f63f209824e6eb450ff91462b51a8af8f1acbcd5118f3b0",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/extensions/privacy/desk.mjs": {
+      "sha256": "b7ceefcb141eaad2e4f88eb30667b4fa8cda64ea2277c0e2c60c802042abdf91",
+      "dependencies": [
+        "web/extensions/privacy.mjs"
+      ]
+    },
+    "web/extensions/proof.mjs": {
+      "sha256": "ad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/genesis/live-protocol.mjs",
+        "web/extensions/service-origin.mjs"
+      ]
+    },
+    "web/extensions/security.mjs": {
+      "sha256": "80d96c6139aee0b69c884344fb44f8869dc5a45d5a99faea28a67dc66c047857",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/service-origin.mjs": {
+      "sha256": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+      "dependencies": []
+    },
+    "web/extensions/worlds.mjs": {
+      "sha256": "e32e536d9fff5f3f147396e3a7f5445c15ce65ee88c9c2f67edd0f87f7a76dd0",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/service-origin.mjs",
+        "web/worlds/instruments.mjs",
+        "web/worlds/commissions.mjs"
+      ]
+    },
+    "web/genesis/atlas.mjs": {
+      "sha256": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
+      "dependencies": []
+    },
+    "web/genesis/field.js": {
+      "sha256": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+      "dependencies": [
+        "web/confluence/particles.js",
+        "web/begins/geometry.mjs",
+        "web/begins/shaders.mjs",
+        "web/genesis/projection.mjs"
+      ]
+    },
+    "web/genesis/interior-cpu.mjs": {
+      "sha256": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
+      "dependencies": [
+        "web/genesis/interior-kernel.mjs"
+      ]
+    },
+    "web/genesis/interior-gestures.mjs": {
+      "sha256": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
+      "dependencies": []
+    },
+    "web/genesis/interior-kernel.mjs": {
+      "sha256": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
+      "dependencies": []
+    },
+    "web/genesis/interior-quality.mjs": {
+      "sha256": "6a01e76803ab868954fe67f92d7f43ff5651067af45c34aef07d2c4cdb1ab787",
+      "dependencies": []
+    },
+    "web/genesis/interior-shader.mjs": {
+      "sha256": "448c32583e9748d5d730524a2e4ddde048ae150b877532fe2beb9b8d1dd8b303",
+      "dependencies": [
+        "web/genesis/interior-kernel.mjs"
+      ]
+    },
+    "web/genesis/interior-space.mjs": {
+      "sha256": "d8a3f675a264698d0d2cfb5905e191ae95afdb5410a9c7dc4c1872c371360102",
+      "dependencies": []
+    },
+    "web/genesis/interior.mjs": {
+      "sha256": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
+      "dependencies": [
+        "web/genesis/interior-space.mjs",
+        "web/genesis/interior-gestures.mjs"
+      ]
+    },
+    "web/genesis/live-desk.mjs": {
+      "sha256": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
+      "dependencies": [
+        "web/rehearsal/client.mjs",
+        "web/rehearsal/view.mjs",
+        "web/genesis/live-protocol.mjs"
+      ]
+    },
+    "web/genesis/live-protocol.mjs": {
+      "sha256": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/genesis/projection.mjs": {
+      "sha256": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+      "dependencies": [
+        "web/genesis/interior-quality.mjs",
+        "web/genesis/interior-shader.mjs",
+        "web/genesis/interior-cpu.mjs"
+      ]
+    },
+    "web/governance/artifacts.mjs": {
+      "sha256": "1748dc212486949b4581e203fa47b4ad4b8169afdefafc439eb7df073d45df52",
+      "dependencies": []
+    },
+    "web/governance/client.mjs": {
+      "sha256": "08b867ff7f421ae60a404fe3adf243aafb76ea0f422be7d60340b83d5991285f",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/governance/artifacts.mjs",
+        "web/launchpad/account-session.mjs"
+      ]
+    },
+    "web/governance/desk.mjs": {
+      "sha256": "dd7b11c31c17ccf012e3c10a63bc270a95fb0f5c1721222adfb2d558eb682b1e",
+      "dependencies": [
+        "web/governance/client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/account-session.mjs": {
+      "sha256": "f53186f69bf07324e4268ad00b8771d54c77b6829884656355f57280b46bc80d",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/artifacts.mjs"
+      ]
+    },
+    "web/launchpad/auction-artifacts.mjs": {
+      "sha256": "aad26786c72fc93211d6f95af4868f4a62b7dcf455f87300254e0f0db9a38994",
+      "dependencies": []
+    },
+    "web/launchpad/auction-client.mjs": {
+      "sha256": "09de23b87aac9973ccc0eeff00df6d85adeba687bc33a3bd997a5d404c53ba2a",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/markets.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/auction-artifacts.mjs",
+        "web/launchpad/lifecycle-artifacts.mjs"
+      ]
+    },
+    "web/launchpad/chain.mjs": {
+      "sha256": "1c8f3038746d666ba160840120b6eb635842a973aa2a67bad73f517a63688fb0",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/protocols-client.mjs",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/strategies-client.mjs",
+        "web/governance/client.mjs",
+        "web/crosschain/client.mjs",
+        "web/v4/artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/v4/math.mjs",
+        "web/launchpad/deployments.mjs",
+        "web/launchpad/account-session.mjs"
+      ]
+    },
+    "web/launchpad/deployments.mjs": {
+      "sha256": "875ac33ccc1785f41fca2f7e0e5da03bbffcd3a80402413e1c1aefb997026e4c",
+      "dependencies": []
+    },
+    "web/launchpad/desk.mjs": {
+      "sha256": "3f981e66ffed92551aced2b700ea5da274be7fd30ddfcba7c7e56600f3f43c8c",
+      "dependencies": [
+        "web/launchpad/chain.mjs",
+        "web/launchpad/studio.mjs",
+        "web/launchpad/model.mjs",
+        "web/v4/desk.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/sale-ui.mjs",
+        "web/launchpad/sale-artifacts.mjs",
+        "web/launchpad/links.mjs",
+        "web/launchpad/vault-ui.mjs",
+        "web/launchpad/lifecycle.mjs",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/strategies.mjs",
+        "web/launchpad/economics.mjs",
+        "web/launchpad/protocols.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/hook-artifacts.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/economics-auction.mjs": {
+      "sha256": "9bf4a5ca9008be0b4fb48ed271019dd5dcf8902a7010e2af0ac5e32e468a9660",
+      "dependencies": [
+        "web/launchpad/model.mjs"
+      ]
+    },
+    "web/launchpad/economics-engine.mjs": {
+      "sha256": "ce6392868ffeea842b00dfc2636f137c366f00f5c103208f3ed1f906149baa54",
+      "dependencies": [
+        "web/launchpad/model.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/launchpad/economics.mjs": {
+      "sha256": "e81cc26a40b9a6e23d051fa7c2658b90ad6e4840d1e6e7a072572e25f606eae0",
+      "dependencies": [
+        "web/launchpad/economics-auction.mjs",
+        "web/launchpad/scenarios.mjs",
+        "web/launchpad/scenario-client.mjs",
+        "web/launchpad/model.mjs",
+        "web/launchpad/economics-engine.mjs"
+      ]
+    },
+    "web/launchpad/hook-artifacts.mjs": {
+      "sha256": "8e39d765493778851d8720a956fb457b88eb13276fe65efd77a75d35ee956aa6",
+      "dependencies": []
+    },
+    "web/launchpad/hook-client.mjs": {
+      "sha256": "40ea2805260865cc0c56932e52e8b019c5cff923a30f457d8c334adb9e218390",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/hook-artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/launchpad/lifecycle-artifacts.mjs": {
+      "sha256": "9dfe03001aa9a3c700a72d7cff6928e5bbf1afcddc17fb21385e081f946dd52e",
+      "dependencies": []
+    },
+    "web/launchpad/lifecycle-client.mjs": {
+      "sha256": "b191a3cef3f5cdb3b903ebd0deacf904e9c449589a1fe0be3fb750938a7044ba",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/artifacts.mjs",
+        "web/launchpad/sale-artifacts.mjs",
+        "web/launchpad/auction-artifacts.mjs",
+        "web/launchpad/lifecycle-artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/launchpad/model.mjs",
+        "web/launchpad/vault-client.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/pool-participant.mjs"
+      ]
+    },
+    "web/launchpad/lifecycle.mjs": {
+      "sha256": "8146a35fd7e9f90be212a11d964dfd92e4030d7b2b633c690805687ca25289d3",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/links.mjs"
+      ]
+    },
+    "web/launchpad/links.mjs": {
+      "sha256": "fb3a7a9037dbcfde364de0ad081bea0cd1dbe3f66e1fa40b2aceb0d8cbd9709d",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/model.mjs": {
+      "sha256": "6f88883a19b0beb8a77117bc61e8098d4d8f73c048bdf791bde58043c76b4623",
+      "dependencies": [
+        "web/v4/math.mjs",
+        "web/confluence/economy.mjs"
+      ]
+    },
+    "web/launchpad/participant.mjs": {
+      "sha256": "92a591dc022f7e987b4dce9e0e08ea10edc106cfbb385866169dab2064d8f368",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/chain.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/links.mjs",
+        "web/launchpad/pool-participant.mjs",
+        "web/launchpad/lifecycle-client.mjs"
+      ]
+    },
+    "web/launchpad/pool-participant.mjs": {
+      "sha256": "d449cfdc004aaf3e178d924bc0c1f0f404b20c2ac8d64cb516d9dcdff425007a",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/artifacts.mjs",
+        "web/launchpad/hook-artifacts.mjs",
+        "web/v4/client.mjs"
+      ]
+    },
+    "web/launchpad/protocols-artifacts.mjs": {
+      "sha256": "af16ce882e8a379981097660ce5a3a96622bc6a7ceb09cee916ba97b497f1cd5",
+      "dependencies": []
+    },
+    "web/launchpad/protocols-client.mjs": {
+      "sha256": "ff543ca8c2fe7857b464886c6c9d6e4ddbf3efc75afbb2a96401c5bd34cd9e09",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/protocols-artifacts.mjs",
+        "web/launchpad/protocols-deployments.mjs"
+      ]
+    },
+    "web/launchpad/protocols-deployments.mjs": {
+      "sha256": "09b81ebbe9a75587a798a9e9cfcd399c5ed30471a178b9312187256208f30da7",
+      "dependencies": []
+    },
+    "web/launchpad/protocols-networks.mjs": {
+      "sha256": "02cb1224abbc5a8067ac5dbb85f4deae9123fbd6c2b8ba69731474997865ef69",
+      "dependencies": []
+    },
+    "web/launchpad/protocols.mjs": {
+      "sha256": "59a807b49ce8be29c8a4d5eda8cbc313b24b3ec95f296153f955461e1c1bd804",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/protocols-client.mjs",
+        "web/launchpad/protocols-artifacts.mjs",
+        "web/launchpad/protocols-deployments.mjs",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/protocols-networks.mjs",
+        "web/vendor/ethers.min.js",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/sale-artifacts.mjs": {
+      "sha256": "233f37780138e9cf6c241199bd972de3c4ca58a8a4341fa4b95d2ad4f78a214a",
+      "dependencies": []
+    },
+    "web/launchpad/sale-client.mjs": {
+      "sha256": "908c9afd0feb89a7097b6e282f288d5cb6e98f276cda2cc6293b39f0e33dc6b1",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/sale-artifacts.mjs"
+      ]
+    },
+    "web/launchpad/sale-ui.mjs": {
+      "sha256": "ce1707ca84a9bb7f4bc0c48b88319212eea80767047c58dc80d9bfd3afe94a76",
+      "dependencies": []
+    },
+    "web/launchpad/scenario-client.mjs": {
+      "sha256": "0419948e75b01db9772bd9b736d497c437ae5734bfaf9a087b322d373761d70f",
+      "dependencies": [
+        "web/launchpad/scenario-rules.mjs"
+      ]
+    },
+    "web/launchpad/scenario-rules.mjs": {
+      "sha256": "625b079b66f109776f6fa39a29679369e565deb81698ad4f8bbf4348fa6d5286",
+      "dependencies": []
+    },
+    "web/launchpad/scenarios.mjs": {
+      "sha256": "3992773f4759265318107860bd2736a98cd8626428db6131fefdf7035dd912ae",
+      "dependencies": [
+        "web/launchpad/model.mjs"
+      ]
+    },
+    "web/launchpad/strategies-artifacts.mjs": {
+      "sha256": "fb1398db4768220184b4dfc33df61919aa200b9f028ff0ede993e4263705d41c",
+      "dependencies": []
+    },
+    "web/launchpad/strategies-client.mjs": {
+      "sha256": "200fc9bccb757913cb165ff7e34c0db98d1dfff7803d2bcd89e6f1e59f40677d",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/strategies-artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/launchpad/strategies.mjs": {
+      "sha256": "158507e1b940e89014746a597f79d527c653d71ff9a4bee5f5d43d21b3613881",
+      "dependencies": [
+        "web/launchpad/strategies-client.mjs"
+      ]
+    },
+    "web/launchpad/studio.mjs": {
+      "sha256": "4e76234712adab730f6b5bc6f17b7a4a7901f3bbfe9de9c57029704800211fb1",
+      "dependencies": [
+        "web/launchpad/model.mjs",
+        "web/launchpad/scenarios.mjs",
+        "web/privacy/vault.mjs"
+      ]
+    },
+    "web/launchpad/vault-client.mjs": {
+      "sha256": "b13aecdaf9e2396e77a69b53a450161fc310ed76d3889809ebebf387b48b60f7",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/sale-client.mjs"
+      ]
+    },
+    "web/launchpad/vault-ui.mjs": {
+      "sha256": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
+      "dependencies": [
+        "web/launchpad/vault-client.mjs"
+      ]
+    },
+    "web/model.mjs": {
+      "sha256": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
+      "dependencies": []
+    },
+    "web/privacy/bridge.mjs": {
+      "sha256": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
+      "dependencies": [
+        "web/privacy/recover-resource.mjs",
+        "web/privacy/runtime-integrity.mjs"
+      ]
+    },
+    "web/privacy/recover-resource.mjs": {
+      "sha256": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",
+      "dependencies": []
+    },
+    "web/privacy/runtime-integrity.mjs": {
+      "sha256": "6957e3bb0e47c8160a4463b8bae60b1287aeeaeb3e478746ebf56516cd471a49",
+      "dependencies": []
+    },
+    "web/privacy/submission.mjs": {
+      "sha256": "2dfd3f1f012efe7cec3196ad5f3d37cbb1e4b3a4a4ca7920b829908d114b4ff2",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/privacy/vault.mjs": {
+      "sha256": "c81d6c2374999d2511cf2539332aa6e4b9667593a50b4e1786347fa62e7e9891",
+      "dependencies": []
+    },
+    "web/rehearsal/client.mjs": {
+      "sha256": "2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+      "dependencies": [
+        "web/rehearsal/intent.mjs"
+      ]
+    },
+    "web/rehearsal/intent.mjs": {
+      "sha256": "8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/rehearsal/view.mjs": {
+      "sha256": "5a95e159b9a5bef05e441d69e208cb452e6752299fa6c35411e8b7808471cefe",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/spirit/geometry.mjs": {
+      "sha256": "6e6b29db1fc3abf97cd2a9079cd7cb63a5c6b0de9bd4fe1377e6a945edb97285",
+      "dependencies": [
+        "web/confluence/identity.mjs"
+      ]
+    },
+    "web/v4/artifacts.mjs": {
+      "sha256": "6be95aea60cdd0701a89cc629f44b653127abf57cc3bcdd1bb99ce9dc5ef1a5f",
+      "dependencies": []
+    },
+    "web/v4/client.mjs": {
+      "sha256": "c4a01a8b385d9fe93ad4bdfac972331cc82e669aa197fc68cee8f5701a8adcf0",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/artifacts.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/v4/desk.mjs": {
+      "sha256": "88cbb3c98eae09cb2194aef2431b6ed3ab7d5d0ceb6038dd5a2a8f5c697c4129",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/privacy/vault.mjs",
+        "web/privacy/submission.mjs",
+        "web/privacy/bridge.mjs",
+        "web/v4/public-session.mjs",
+        "web/v4/client.mjs"
+      ]
+    },
+    "web/v4/math.mjs": {
+      "sha256": "16e914e0ff99e8ff84d6449595d863fab0ebcb722e3053fecc4e7e19e850260d",
+      "dependencies": []
+    },
+    "web/v4/public-session.mjs": {
+      "sha256": "4308acf0e1296027b4da346c709de7f373709d340f0d3a5e6e179fca85171976",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/client.mjs"
+      ]
+    },
+    "web/vendor/ethers.min.js": {
+      "sha256": "66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea",
+      "dependencies": []
+    },
+    "web/workshop/calendar.mjs": {
+      "sha256": "5e9a35ca326f8ad22c86601245448af52afb6f2272700312c95a7189759fb62a",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/workshop/client.mjs": {
+      "sha256": "28fb372a4c2a24a4d0068d6316787fb40636f3369f384d192479341f5b67307a",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/genesis/live-protocol.mjs",
+        "web/workshop/calendar.mjs",
+        "web/workshop/contracts.mjs"
+      ]
+    },
+    "web/workshop/contracts.mjs": {
+      "sha256": "da0af5ebb9f3cd913f500123fbc3cd50ea2070b134d4b90e58eb806aab989677",
+      "dependencies": []
+    },
+    "web/workshop/desk.mjs": {
+      "sha256": "1bd154c47e0b0b929bfac40af10118b093d858ae47fba8e7ddb4b1a852ddba94",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/workshop/client.mjs",
+        "web/workshop/calendar.mjs",
+        "web/workshop/contracts.mjs"
+      ]
+    },
+    "web/worlds/commissions.mjs": {
+      "sha256": "e215cfcb91efd2cc9325b906b404fb0e4127cdd18cd3cd297d7edad97b03628b",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/workshop/client.mjs",
+        "web/genesis/live-protocol.mjs",
+        "web/worlds/instruments.mjs"
+      ]
+    },
+    "web/worlds/instruments.mjs": {
+      "sha256": "e0a69cd67ba75819d9ccad51ab47c41217c11fdbde3051e4842c35c9904dd4ec",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    }
+  }
+}

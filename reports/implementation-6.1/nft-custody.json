@@ -1,0 +1,51 @@
+{
+  "schema": "anima.implementation-evidence/1",
+  "generatedAt": "2026-09-13T15:10:02.161539+00:00",
+  "subject": "Verified NFT funding and wallet transaction recovery",
+  "command": "node --test test/launchpad/chain.integration.test.mjs",
+  "exitCode": 0,
+  "result": {
+    "tests": 6,
+    "passed": 6,
+    "failed": 0,
+    "cancelled": 0,
+    "skipped": 0,
+    "durationMs": 61320.404022
+  },
+  "environment": {
+    "node": "v24.19.0",
+    "chainId": 31337,
+    "execution": "Local Anvil Ethereum VM",
+    "hardfork": "cancun"
+  },
+  "checks": [
+    "Real launch factory and swap router deployment with pinned executable verification.",
+    "EOA exact-allowance reset, launch funding, Quoter-based swap, LP redemption and mined-but-unobserved receipt recovery.",
+    "Real commit/reveal NFT mint, canonical collection/account runtime and immutable verification, NFT account funding, and actual factory token prediction for the NFT payer.",
+    "NFT launch and swap execute atomic exact approval/call/reset through SovereignAccount.executeUtility; token and LP ownership remain in the NFT account.",
+    "NFT LP redemption, stale account nonce rejection, ownership-transfer epoch invalidation and execution by the new owner.",
+    "Inconsistent immutable callsite substitution in deployed account code is rejected.",
+    "Simulator liquidity, rounded token/quote consumption, exact trade output and resulting sqrtPriceX96 equal actual PoolManager execution.",
+    "Wallet cancellation and same-action fee replacement reconcile the original sender and nonce without sending a duplicate.",
+    "Bounded replacement search reports unresolved nonce consumption; a wrong replacement nonce is rejected; the explicit correct replacement hash completes recovery.",
+    "Local snapshot/revert invalidates a formerly included receipt, clears its canonical block metadata, and returns it to pending without resubmission.",
+    "Opaque-origin storage failure, expired block windows and stale wallet/draft reviews are handled."
+  ],
+  "boundaries": [
+    "Local VM execution only; no public Ethereum deployment or funded public-chain transaction is claimed.",
+    "This suite does not exercise a live RAILGUN proof or broadcaster.",
+    "NFT funding is supported for reviewed compatible operations; infrastructure creation, community sales and auctions remain wallet-funded in the launch UI.",
+    "Existing external creator-fee beneficiaries do not automatically follow NFT ownership.",
+    "Wallet replacement discovery uses bounded RPC history; an explicit replacement hash may be required.",
+    "Current-edition runtime matching rejects older or different account implementations."
+  ],
+  "sourceSha256": {
+    "web/launchpad/chain.mjs": "7cbf56d6a1265a48e3953fb5d326b5decf28e1bac66a0982b2e3162ece5b26de",
+    "web/launchpad/account-session.mjs": "34bcf7b49ff5857024aabbf7288fc801e03f75dc1b632a99fcb6ec4ade21ace9",
+    "web/launchpad/desk.mjs": "801211ccd95ff979756393704522669dbbcbdbc4526921af510bf57b2092f694",
+    "web/launchpad/model.mjs": "6f88883a19b0beb8a77117bc61e8098d4d8f73c048bdf791bde58043c76b4623",
+    "test/launchpad/chain.integration.test.mjs": "8a02da3e147934e556b1d7e3ea3b588e5ff8c65927238531d2e1ed4d27cb42a5",
+    "contracts/artifacts/SovereignAccount.json": "9539fcbdd92481b7cc9fe5830c3266e54b4e1435b09b5e5fb776a118710719d3",
+    "contracts/artifacts/IDontFuckingBelieveIt.json": "c47973c9a15e13f96dbbb90bad1524074cf47e545e930ef57e70fe18b3c8e80c"
+  }
+}

@@ -1,0 +1,172 @@
+{
+  "contractName": "ReentrantProbe",
+  "sourceName": "contracts/src/mocks/ReentrantProbe.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "account",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account_",
+          "type": "address"
+        }
+      ],
+      "name": "arm",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "attack",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "attempted",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "noop",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460155761035e908161001a8239f35b5f80fdfe6080806040526004361015610012575f80fd5b5f3560e01c9081633abe37f1146102885781635dab242014610259575080635dfc2e4a14610247578063917f51b41461022357639e5faafc14610053575f80fd5b346101e7575f3660031901126101e7575f54740100000000000000000000000000000000000000007fffffffffffffffffffffff00ffffffffffffffffffffffffffffffffffffffff8216175f555f6101496040519260208401937f5dfc2e4a000000000000000000000000000000000000000000000000000000008552600481526100e06024826102e5565b8373ffffffffffffffffffffffffffffffffffffffff60846040518098819782967fb61d27f60000000000000000000000000000000000000000000000000000000084523060048501528660248501526060604485015251809281606486015285850190610307565b601f01601f19168101030193165af180156102185761016457005b3d805f833e61017381836102e5565b8101906020818303126101e75780519067ffffffffffffffff82116101e7570181601f820112156101e75780519067ffffffffffffffff82116101eb57604051926101c8601f8401601f1916602001856102e5565b828452602083830101116101e7576020806101e594019101610307565b005b5f80fd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b6040513d5f823e3d90fd5b346101e7575f3660031901126101e757602060ff5f5460a01c166040519015158152f35b346101e7575f3660031901126101e757005b346101e7575f3660031901126101e75760209073ffffffffffffffffffffffffffffffffffffffff5f54168152f35b346101e75760203660031901126101e75760043573ffffffffffffffffffffffffffffffffffffffff81168091036101e7577fffffffffffffffffffffffff00000000000000000000000000000000000000005f5416175f555f80f35b90601f8019910116810190811067ffffffffffffffff8211176101eb57604052565b5f5b8381106103185750505f910152565b818101518382015260200161030956fea26469706673582212202615a9a2842620be994ec37afaaedc6d2293804c4a91bff803422ee03aecbc9464736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081633abe37f1146102885781635dab242014610259575080635dfc2e4a14610247578063917f51b41461022357639e5faafc14610053575f80fd5b346101e7575f3660031901126101e7575f54740100000000000000000000000000000000000000007fffffffffffffffffffffff00ffffffffffffffffffffffffffffffffffffffff8216175f555f6101496040519260208401937f5dfc2e4a000000000000000000000000000000000000000000000000000000008552600481526100e06024826102e5565b8373ffffffffffffffffffffffffffffffffffffffff60846040518098819782967fb61d27f60000000000000000000000000000000000000000000000000000000084523060048501528660248501526060604485015251809281606486015285850190610307565b601f01601f19168101030193165af180156102185761016457005b3d805f833e61017381836102e5565b8101906020818303126101e75780519067ffffffffffffffff82116101e7570181601f820112156101e75780519067ffffffffffffffff82116101eb57604051926101c8601f8401601f1916602001856102e5565b828452602083830101116101e7576020806101e594019101610307565b005b5f80fd5b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b6040513d5f823e3d90fd5b346101e7575f3660031901126101e757602060ff5f5460a01c166040519015158152f35b346101e7575f3660031901126101e757005b346101e7575f3660031901126101e75760209073ffffffffffffffffffffffffffffffffffffffff5f54168152f35b346101e75760203660031901126101e75760043573ffffffffffffffffffffffffffffffffffffffff81168091036101e7577fffffffffffffffffffffffff00000000000000000000000000000000000000005f5416175f555f80f35b90601f8019910116810190811067ffffffffffffffff8211176101eb57604052565b5f5b8381106103185750505f910152565b818101518382015260200161030956fea26469706673582212202615a9a2842620be994ec37afaaedc6d2293804c4a91bff803422ee03aecbc9464736f6c634300081e0033",
+  "methodIdentifiers": {
+    "account()": "5dab2420",
+    "arm(address)": "3abe37f1",
+    "attack()": "9e5faafc",
+    "attempted()": "917f51b4",
+    "noop()": "5dfc2e4a"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "account",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account_",
+              "type": "address"
+            }
+          ],
+          "name": "arm",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "attack",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "attempted",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "noop",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/mocks/ReentrantProbe.sol": "ReentrantProbe"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/mocks/ReentrantProbe.sol": {
+        "keccak256": "0x61bfdf5d644d51703f908c63955d945d999490b1a9b0b4f92ff441feb937c9a0",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://35f65fc95502c620c6238bc0a97e841def6e946efa15969ea7c27d2e17d5c50b",
+          "dweb:/ipfs/QmXmjeczxMroPpenzso8bg2LhiDa9nHicpjVwfaM73wpS9"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

@@ -1,0 +1,58 @@
+{
+  "contractName": "V4Boundary",
+  "sourceName": "contracts/src/kingdom/V4Boundary.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220d15689d93972802ff7e4e9048a5e8ba750902ebee70211f63807d3c2d97a693564736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220d15689d93972802ff7e4e9048a5e8ba750902ebee70211f63807d3c2d97a693564736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/kingdom/V4Boundary.sol": "V4Boundary"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/kingdom/V4Boundary.sol": {
+        "keccak256": "0x899d3fd1cd5e2e0f40680270d600c289562dbcc0dc26bfdc0ad010afff9cf3d0",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://d3240447455060c957fe1ab9cbdec0f9cc4acdfcb62883ece35ff3b8f1e2eaf1",
+          "dweb:/ipfs/Qmd4xRjg56vUsovRwUGwviWVijeVNSuSFXpNYTWaHTuvLM"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

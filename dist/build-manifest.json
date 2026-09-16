@@ -1,0 +1,1557 @@
+{
+  "schema": "anima.source-build/1",
+  "entry": "web/confluence/app.js",
+  "preservation": {
+    "referenceSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+    "assetHashes": {
+      "shader": "2d6d1dbc3dde449173701ca09d09470568cfabe8ab9087501d9a065559b833be",
+      "original": "91e9770eae022cedd283866f9686991a7d8fb67490630b7ebb50b7d318be93b0",
+      "wasm": "5cc710c19647531e2d7bc61e90b18d97068a3e55480f6ef92891620577a1a77d",
+      "referenceHTML": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59"
+    }
+  },
+  "inputs": {
+    "contracts/artifacts/CartridgeRegistry.json": "ffc56037693af485056207614d38f44745f2bc39b9e92ba6da1008d2b62fd904",
+    "contracts/artifacts/index.json": "08c0d1b6c46d66c7b95a18c8a5e029c7c248896f377b2704df8cd008b774d2e7",
+    "integrations/console/protocol/fee-router/artifacts/OwnerFeeRouter.json": "484ceabb7bafba4041b73c970520c18975447571ac930e9e9e19276cbe5da7be",
+    "integrations/console/protocol/fee-router/package.json": "b1b1af96893bd872a84426eba8d5b13b656006aa48e855ddf68a4068b2dd120a",
+    "integrations/console/protocol/fee-router/scripts/compile.cjs": "795dc647076740f6d9f51334df82ed2a3b3cf80c508979df9641ceb146e3b867",
+    "integrations/console/protocol/fee-router/scripts/dependency.cjs": "26e32dead195cd2655ddee93231bf8ea30c7cefde8bfdec46318d02d2a3d30e2",
+    "integrations/console/protocol/fee-router/src/OwnerFeeRouter.sol": "1ae703a0b7ae6d395299960091e3991c7e9a34ad42862aa2398f6cd4735d266e",
+    "integrations/console/protocol/fee-router/src/OwnerLaunchFactory.sol": "8c9063910ce7538c202b1d5bc0c22118979f8f66da29330ff8f1d34ca25041d1",
+    "integrations/console/protocol/fee-router/src/interfaces/ISettlementConverter.sol": "7626384c8e36f00ed67bc4d36295890fd54d95b55eb19db94e0fca5af6d2470a",
+    "integrations/console/protocol/v4-hook/artifacts/compilation-inputs.json": "a3dde7ef62ea729214908d44028363b64c3d2ff2a3ca6da295d128b1a1b82bbb",
+    "integrations/official-launch/official-uniswap-deployments.json": "3630d0880e630cd9f3b7322c46a5ade1ab3df4ce46f1bc8a9411d160d054ed93",
+    "integrations/official-launch/package-lock.json": "d72a843bf04fa5c1504e426e6810250dea703b33fb99c2aac4ac8730fc810a1d",
+    "integrations/official-launch/package.json": "2225267966e341130d44a8171069df27a286a20923134c0177db903723cfe724",
+    "integrations/official-launch/scenario/runner.mjs": "dbee895563538d9c2231fc8d01ad20c26224104f192bbb8646dadb2892c5862b",
+    "integrations/official-launch/scripts/build.mjs": "a8ea0ed63ac2321329224aee243ac6c8cc51916eb50864daf07f4f13e499432b",
+    "integrations/official-launch/scripts/networks.mjs": "b4cade3b5e8c0f993f9bd6f9c757e7b64350783228bb3b1c3096c81e358a0a37",
+    "integrations/official-launch/source-lock.json": "e6c1f836ddaf331ab0de49aefb968776afdb42f9ba90503330362763d933be62",
+    "integrations/official-launch/src/OfficialCCALauncher.sol": "a065b023c0df80f46667076e2912afd2abf529879bf227c956041c0761a24aed",
+    "integrations/official-launch/src/OfficialCreate2.sol": "45df47369f9f854b3556d78c40d5bf662f0f5914afa6a4aecfb7cd20ca4eac09",
+    "integrations/official-launch/src/OfficialLaunchToken.sol": "e28512fe99199ed3bb3b711a6c2a37af06fe1d08d2a1bc07353fd35286cba0b1",
+    "integrations/official-launch/src/OfficialV4QuoteLens.sol": "22a339b5d035797a5c46b5eabd8784729796033f2ca1ca26eb9ecbfc598818ce",
+    "integrations/official-launch/src/OfficialV4SwapRouter.sol": "635b5f650f3c16fe9cffbf8a5368be95922b41482cc12954f72ac17fb89be5f9",
+    "integrations/official-launch/vendor/cca/lib/blocknumberish/src/BlockNumberish.sol": "199200adf6482e85e401f16c2301d785a754f29dfb1281c424c012f43ebf0fad",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/LiquidityLauncher.sol": "959565b0543295ca678c5cf24adb3b035cc538d00eab4d3956665e6b1c71f608",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/Multicall.sol": "ef4c6a2a48dbe9b7de73ffd7363b9607ca401b969d7ffbed17b52cd6b7b9fc0c",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/Permit2Forwarder.sol": "754f4baf700c504998a700342b81cf97cc661032ba0f5a8c2f473d86be7ff59a",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/factories/periphery/MerkleClaimFactory.sol": "2786c970d35afc2683b1fe9f735475ab86b6f3abc8aa33a1469f0ada6d913a19",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IDistributor.sol": "1db52ee96c1c82040ff3f6d54fe611247081c19f4501fe1d10d41483fbd32ae0",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IDistributorFactory.sol": "6f1b0f76c5bf21d9a601d1f479808076bee3b6607e9b1c6b4ee1a754ace9559d",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IInitializerHook.sol": "c6ca5f186d81c56c6b4a89cc87250dd2eb17d117cc448f8e482ab40683c3ce1a",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/ILBPInitializer.sol": "ffd57be7552092a89365f4352bc238092bf8ecb4cf5e25a78b0e9c140216b206",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/ILBPStrategy.sol": "cbc231bc214002d6ab5dd6a349423eb63b72f4cd195edbe25ee6312eef7bcb9c",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/ILiquidityLauncher.sol": "b98f12b79e420f1962b39fac3ff10bf7cab4d87ce61b7c1118a1a93bd4e4bb9e",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IMulticall.sol": "6257a7d0d38dd815f53e9822ad4ab0c745d673d48798228f98485967737b1806",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IPermit2Forwarder.sol": "885b610a0ff32ad0bad77d19d9387d0f4e3970c0eb0f14fa64ac4837416dd717",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IProtocolFeeController.sol": "08e68283956bafdbc124ca4650deebb1b2df5a423e837e2d6d57304bf4c4a25a",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/IStrategy.sol": "bb6bcaed0b7db3f5bd193c96aedc7e3fef39689ad2ee5bba7afecf15412e5201",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/ITimelockedPositionRecipient.sol": "07bed2bacb776e12eab727800765786e6ccf0516f2900256ab8233ecf0104d2b",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/ITokenSplitter.sol": "933c6076018dadd3b0471340ed6757f4c02ef74816de96763d92972e1d4a83de",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/interfaces/external/IVirtualERC20.sol": "e4f192bd73df6990c26556762b879b9e4d9981c50e366324c66efcb25b4f0cf0",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/libraries/MigratorParams.sol": "fc9c66a5da7f685782d1fe144f89a6dd9352d91fa943cf22b46ca25e172cff3d",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/libraries/PositionPlanner.sol": "f58106d54e8311d4bf4fa4cf767620b5f434375f8963d7ad651b5d2dc0fdfa7d",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/libraries/ProtocolFeeLib.sol": "ff1acedf31462e072d15ecd59f04e9c3bf47cc0d1e707353886e5b6fdbb03526",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/libraries/TickCalculations.sol": "f7e4aa0a83691ac831ba04c750d48412dfd42058a154486a1f98ab8ca632c413",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/libraries/TokenPricing.sol": "7772e2733b0bbc83f1a288fee61ef9fb549db51c5f31bb9ec6d64886d3bcb064",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/libraries/external/MerkleClaimHelpers.sol": "e67702ac89a9b110772dbe6b43d978bb1f577c7d6ce679e09ada9380800b79a3",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/periphery/BuybackAndBurnPositionRecipient.sol": "173a9443776fb22d1c846e7c97e7b0b2eda454bf4b7774bca82d659d56e89b66",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/periphery/PositionFeesForwarder.sol": "e466bf283af6a135a305a77f46c35e335bad1274efa986e5a6375d39522aac70",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/periphery/ProtocolFeeController.sol": "c129f9a409e7920c236e9bb47a9024651e60b963fc8f4c6890d01150ed24e575",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/periphery/TimelockedPositionRecipient.sol": "63de5df3ddafc17d2ba6292602343e847bfe86fcf6c23f7830c5ba35f91ab9eb",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/periphery/hooks/GatedSwapHook.sol": "a69bd425c79bfc9316d510e9fae640fd3798695e5f09418990d1a0ab106086b5",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/periphery/hooks/InitializerHook.sol": "9ea6bdf3b9c956906359f19ec7b0ee791fe3b4b1164a7b0fa8c30e59f24f9b8f",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/strategies/MerkleClaim.sol": "0b2b650f38d0bd6eabe7104d8d3090765d40d95914a61997994fbaaaf7c6cf9d",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/strategies/TokenSplitter.sol": "4949507e37a0f79aff738ebafb039dc29e541f716844da1740ba12b32ff7ca1c",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/strategies/lbp/LBPStrategy.sol": "fe928122bec7591ed274fe53987260512ffff5e17ac0a5e5a484ad91d9391d62",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/strategies/lbp/SelfInitializerMixin.sol": "eb3f376fed1e25dbb0c12d37c41ef06616417eda95da8b960c213446f3fb9349",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/types/Distribution.sol": "be57df4e61f1bd0b4c4e80da594c2bd658f0ae37b20e7624661dc8862313030a",
+    "integrations/official-launch/vendor/cca/lib/liquidity-launcher/src/types/PositionPlannerTypes.sol": "9e6099800d1437c560c006882c8fcaf8d4d249c821154c57d9b490c815497516",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/interfaces/IERC1363.sol": "54f427f63724d9760211dfa9e0cc5d79d86c0724becd81f8e638e2e27b0e2669",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": "49abfb8fa26e3f1715fe05948a96e3762b805bd4a77d103eb40ba96b1acfa144",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/interfaces/IERC20.sol": "cb42f0b4d269ba8ef2629c176a7f99bf4fb50837c92f45596b54822b26e3df4b",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/token/ERC20/IERC20.sol": "30edf7394bab78d48b7db3a059248e1ea7c2c77d2ec0e37a13bb91415aafbe5a",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol": "ac1fd9fa99b194a8db8dfa9ae8e3ff44feaa8f16668241fd2b66ae8b47d7c082",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/Create2.sol": "1ddfef650decd5f4e4bb57ac5f42add20bf90bc8ff716de27b8f22619be332ef",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/Errors.sol": "0704b9d6c032cca8512a3bc3f30f49f86f1f03102d2896a3d23e794b82efea66",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/Panic.sol": "270fc8401c1a13fae6a7a4a2dd6e381b95d658896701e51f0d3e2688acab3dec",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/introspection/ERC165Checker.sol": "4a258c80eb26f4e93b0d80e470ea690d485cf4c0bb35300a693eea25182d9b15",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "7c5c3f98ab876991e7dd34b84d41137e836306eb9f36f6386a631f5be3f5d6d4",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/math/Math.sol": "92fee281fd46a1b058b190cf21d6b1a528f0433a907850ae1c9bcf36c5c0cd98",
+    "integrations/official-launch/vendor/cca/lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": "9769274bf53f26a7c7896c526ea1980dc9bea5bf5c2a5fd04870008c4afc1de9",
+    "integrations/official-launch/vendor/cca/lib/solady/src/auth/Ownable.sol": "a74625ee15f4872b773cd4730c9b578db57455eb1005ea35f120b5e01e49f753",
+    "integrations/official-launch/vendor/cca/lib/solady/src/utils/FixedPointMathLib.sol": "460f1732735bb1d6ecbf74ac69ee986605aa98fbb9962f0a2a7c0168e5f0a670",
+    "integrations/official-launch/vendor/cca/lib/solady/src/utils/ReentrancyGuardTransient.sol": "2b93c6839a60b5e261cbaec24a8ca93441138e3220537466566bfe25bd3bad0d",
+    "integrations/official-launch/vendor/cca/lib/solady/src/utils/SSTORE2.sol": "23011882e5f3d548971ca9b0554d3bdd182eb46762d02864d5009823e73716a3",
+    "integrations/official-launch/vendor/cca/lib/solady/src/utils/SafeCastLib.sol": "a064c3a6359fd735209fb9afe438978217bfff542c7173b6ce052325ebc2a045",
+    "integrations/official-launch/vendor/cca/lib/solady/src/utils/SafeTransferLib.sol": "19c3c514eb3516d6d7cfcb7a5a4414401e362b7bc0dc5d1e116f1672c8a7f21b",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/AllowanceTransfer.sol": "7be95b655a59352a3007147a1b79f211fc819b9a615a92017acf7257ecb88276",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/EIP712.sol": "cbb7df63c5839a3fbec78142222886da1614a4c7fcddcd8ba5ea176f9549d859",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/Permit2.sol": "a19dd81d4edafe3bba0178abfc9063886c2981b4711a4cbbf3fac19370defc9a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/PermitErrors.sol": "0919679c5bb58466d3a06d9d3297ec4946ba5d135330f10f4fb080067586afad",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/SignatureTransfer.sol": "234effebbe1e7ad7a3c791ea2b411f8e90993b758479817eb32c8767ea62ee8d",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/interfaces/IAllowanceTransfer.sol": "a31c712c5cc8d171818a4225c09011f9ba86b2d5edf6045ac812bab93b6bbb87",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/interfaces/IEIP712.sol": "e386407da496dbe874c10a81801c55744fb2922a51389a51c79001422e81e0cd",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/interfaces/IERC1271.sol": "ec69c9c80939d613cda408fd05424e0dfa7b1fd76168a1fb6593f4b26b3b3d7b",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/interfaces/ISignatureTransfer.sol": "8e7f355d7751cf96e81069c17fb97a3ec973c9391fbbb58ad3fb6e75be5cb19b",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/libraries/Allowance.sol": "6c7d1edc74a9dca9940fa835db09302ed1a35019d69f4188351466e9a3fff458",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/libraries/PermitHash.sol": "23f89633dbd02d8b52a33de3a915af5af73ff25e31f88b6cf994358f802efa60",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/permit2/src/libraries/SignatureVerification.sol": "1804b3d7b1183225419ec8ee45daf89174ff3668315d71d28111d5fcc179f8e4",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/lib/solmate/src/tokens/ERC20.sol": "a3a7e839f42762ef24623581542a916e838f3c7c0bef647963d1fdad0f9d208a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/lib/solmate/src/tokens/ERC721.sol": "2da0cca384448208e25d43eeb5953a237de0e6712942a07d0f2674e895b0d3d3",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/lib/solmate/src/utils/SafeTransferLib.sol": "ed12cae0865a8a92adb9dadd125b2cf23920870845ef128431d811963b474103",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/IExtsload.sol": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/IExttload.sol": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/IHooks.sol": "6eb35c9c598eb932e963219f1ff180748bc4c30ac6a02d924893b3c29abb1d73",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/IPoolManager.sol": "a98405333567e4ab344489728014795721cf0071c151536377d2fcc986e0600c",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/IProtocolFees.sol": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/callback/IUnlockCallback.sol": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/external/IERC20Minimal.sol": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/interfaces/external/IERC6909Claims.sol": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/BitMath.sol": "e8a45eb3d57f9427fc47bbb2543c1a6a5f394113b378123ac7ca9f113a7502b4",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/CurrencyReserves.sol": "b38f1d3807d90bbccb865c0d96caf1ef92d6df9b69adbbe43b1d12e1241523c9",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/CustomRevert.sol": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/FixedPoint128.sol": "1ca2f55160697b73bd66fd27c8724d79a57108121ce1e8a0ab8b79f38bb58fbb",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/FixedPoint96.sol": "66ee26d4fb3ac639124bdfa27d3256d196970997fa127c09e9bf7154e30d4590",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/FullMath.sol": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/Hooks.sol": "297d577998cdede64d48b47b12f15e4f442eea032fbb9676bb3c2f89da89b83c",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/LPFeeLibrary.sol": "e96c3fa7deac991dc09b6c5e560a340d01d6c68ccba483d4b29f8a66e5aa44e0",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/LiquidityMath.sol": "67a39e58732340af4870342ba9230691f35501d89ed8725ca1b338deaa0eb26a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/Lock.sol": "29cd41a53de22514164e638e7bc965ccf4d9f34b455b43a1a15e06a8cb86e7f1",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/NonzeroDeltaCount.sol": "0ae35ca64da2527b4e1f7afa4ca10c4b65af952dc473c33b6663101e8d199f40",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/ParseBytes.sol": "6a6f3d1cec0143fd70ea68c34e6dce3bde72f368b213f1a225ada23dbfd99bb8",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/Pool.sol": "59c493035ad25d56f24a457e8b40d9d1e3784504b8ff13d171db1eb25c6f128e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/Position.sol": "3dc4e2ad1564fa94eddf3ff06ce9ac592c9d578ea64ca194050382da454c8fcb",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/ProtocolFeeLibrary.sol": "f8d96d9c8b5d12ab927b34551699bd7086750475f70254c9505e636f2cafe56a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/SafeCast.sol": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/SqrtPriceMath.sol": "42440c21bbab86c7eed4716b281ed5ca281cf14af8b5e06dc6dc3bc6864bcfdf",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/StateLibrary.sol": "eebdbc1b6e431072ce5521b9e1b603d43831e3b6e062743e6665e070d5cf8a1a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/SwapMath.sol": "eb3971ea0ba84ff0a01f2fbe43f62f9c393121ef1724774ed3f3ab7760780e4a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/TickBitmap.sol": "19b25dccfac8bd90f9d615fb182547eb7b5908a5cbf21a1c5920b92c47383cb6",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/TickMath.sol": "272d4f6d3ff9ae33596ebcdb84a71a3c2d4542ae8fb5c88ddf1aca8043f5d06b",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/TransientStateLibrary.sol": "9835fca9df8b3f649def66835c5d7ee68de6a6cbe92bf255eb5d8b92a6a8d60e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/libraries/UnsafeMath.sol": "2de236e7ca0b9572a6b0184557565b6fd54e177224e202c727fe248785ede427",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/BalanceDelta.sol": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/BeforeSwapDelta.sol": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/Currency.sol": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/PoolId.sol": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/PoolKey.sol": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/PoolOperation.sol": "cf72ad0c3e5e91662029e862acd841fabce8753040b0d4e802dee64ef1157232",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/lib/v4-core/src/types/Slot0.sol": "378b45486644dc7e49726358e83d0e2fffdaee088d18cac1a3df00d02c3635b4",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/PositionManager.sol": "49214f7463f709c378e5bdd010697eea02c1cabb2339fbe09f2ee5395748c6e3",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/BaseActionsRouter.sol": "e3ceda8c5bb24d3e439aef94d004fdce7956439bc74c5c5bcd86e2cb9455e813",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/DeltaResolver.sol": "cb2df93554fb4541355c6e42e346a39cd59138d919456dd5f1d500e2a5d70864",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/EIP712_v4.sol": "5468276540ebe52a5e84dd9b0f45e7af833a0ec17c83a87b8a80c9dde1ea70cb",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/ERC721Permit_v4.sol": "b85c2da69c27748d1215b72d1d3083983e420af44403ffd831e5795326687d2e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/ImmutableState.sol": "d3ef34f9c00fae08ec1eb24aa341d5d916c4d6d62e6c2118ef4afe9c7470fde5",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/Multicall_v4.sol": "4abf8420610db70687e200ff315db4d9093a79fe640a3a7c457ce427100ea4e4",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/NativeWrapper.sol": "8ca41a32e3c8e42866e6486fccd2e805b702cb583bf222c2d2da4bd429a23aa2",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/Notifier.sol": "b4e380f1fb38506aa02b8325266c7de9f2298f5d0fd878622977a184776a871e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/Permit2Forwarder.sol": "be0db7277904908724b64b31e9a1ed266f96d8e98914b1c5ae43930121708935",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/PoolInitializer_v4.sol": "142555120536369dcdd8e9ea363945f0babb256048054c9318091c7cb2d80461",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/ReentrancyLock.sol": "a30c768301d6a3fb9befefd9efeecca7ba22b8bfac5e5e2c891410e14775fb10",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/SafeCallback.sol": "0c25eef89a860e579d6e26f53e32240da787bd75827d7833b6f29e63af87b571",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/base/UnorderedNonce.sol": "c64fa82d222e7ab25b37c21660b888a1843a5ed57996f5f010f28ad3a7960bf3",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IEIP712_v4.sol": "ee4cc46349cc7f1f894197f368ddea0f71f2564c2962822eead755714f3ba57d",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IERC721Permit_v4.sol": "80680771bccd7bf47641417d5a656f950746072766e24703f354e58c2ee0875c",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IImmutableState.sol": "86f06a1f388f91ee0185495cb5d2912d564f73fabb163b3767e9c292c5069276",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IMsgSender.sol": "cb96ee72c46755a67f9ca304df192365ae7c3923eaab9539f0ce74a88de10cf7",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IMulticall_v4.sol": "0c0f4f1cccb7cf63c1ee3dc53e8d48cf867cbff08f5a8f85dd820873277e9481",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/INotifier.sol": "7fadc8550f73d9ae57925bb27f5ab3a134d4c020972a13683e1121fc11691249",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IPermit2Forwarder.sol": "3b28167d65673e7de2bbed1e6f3508350cf889f8439e8680da23ad7586f4cc57",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IPoolInitializer_v4.sol": "ca6ecf95cfbc647d49b774801d84c49c8213010771b44555b056118102d644fc",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IPositionDescriptor.sol": "ea68397628ff5d386fdfbea48af0556acb537f8d63edccb22d2fa61ac4175cdd",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IPositionManager.sol": "b7aa2a13c92f5f2e5612948359120d1b92263e575ce8d134b4576227f8629569",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/ISubscriber.sol": "9672e03c964da7cd484df290ad3395b6beacd90adcdd8ea2236f835407fb8e2e",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IUnorderedNonce.sol": "12e02d4e7e03a668fc1d493840315b4f2aaee2f366ca677574d37d3811d45701",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/IV4Router.sol": "0fe009c839a978c489459fa5b41dbdfff459aa447b299bbf4b39c956170b3aab",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/interfaces/external/IWETH9.sol": "d6b24fe796517f53292d6679adf173e1f3c1fc0dc5efedfc69fa4955c1a9c058",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/ActionConstants.sol": "8e88393dd8b50b25b818e2f6c246aae5cfe63106b56b6e0609869e599c81ec79",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/Actions.sol": "404b842f30a05783b20eb37b20cc86e7a0df2730f6a7399229b46ae77f63e63a",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/CalldataDecoder.sol": "d995bf0c5f50c2b6c5d46010f770587464532d6e34e64bf2aec864d79e710d6d",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/ERC721PermitHash.sol": "0d692bf7c7806644db1dbea2b2b4dd11151a16090a4bcc2ffcd904e61bcd7c2f",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/LiquidityAmounts.sol": "dbfbef7aed94a6a56885124f0802b42adf7ee7bdd658f11fed40ffbb93fe6ba5",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/Locker.sol": "aa0481cc66c87ab579438728dbeaee5bf351eac37e4876f0ab899d8c7f7bdbeb",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/PathKey.sol": "0c00bae5a64829334a0b5d5541807faf7d18dff5a667cd74cadf9effaf5f0885",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/PositionInfoLibrary.sol": "5c889e1d5f259291045413e28069101eba1e7b8b72df6586bf54e4de5e525099",
+    "integrations/official-launch/vendor/cca/lib/v4-periphery/src/libraries/SlippageCheck.sol": "2f106f2f4773b8d7ef8c2364a95074ceb07ec2c80d38a7751e80fdfc9996ec02",
+    "integrations/official-launch/vendor/cca/src/AuctionStorage.sol": "1f8a63e8cc3999116e2186bc7a914c8a02dd952bb22abdbf4040b6e2eb80b6ad",
+    "integrations/official-launch/vendor/cca/src/BidStorage.sol": "f6366aeb20edc5eef66bd7d3fbf3388f1365a336beeeb4b7492042057ebd6617",
+    "integrations/official-launch/vendor/cca/src/CheckpointStorage.sol": "72deb6939b369874719071524b7d9dfc0f1e52b844da4650d76bc49c3cf227a6",
+    "integrations/official-launch/vendor/cca/src/ContinuousClearingAuction.sol": "cea17b7ecf854efc58483ae5a35bf1160961a315016281a65f6b1a6a95547856",
+    "integrations/official-launch/vendor/cca/src/ContinuousClearingAuctionFactory.sol": "2df329ff92c7f32183cabdb49e221cad9558901b2aee89df79b386d29a8d7237",
+    "integrations/official-launch/vendor/cca/src/StepStorage.sol": "3d0b3f8c79878dbf29e603f7f78cc0aaa4e667a052918d34097b508db467298a",
+    "integrations/official-launch/vendor/cca/src/TickStorage.sol": "fbeb9abff604ac3a1a12d4abe0967556d4e2bbb32b22a4770e61dbb576079332",
+    "integrations/official-launch/vendor/cca/src/interfaces/IAuctionStorage.sol": "6d289eca851a710c3e92da369ae38e47f31ab6d3daba9718df549aa969df7697",
+    "integrations/official-launch/vendor/cca/src/interfaces/IBidStorage.sol": "9c80645a459d155e3fde39ea9705c1c1ef7ff11207ae90a62fe49636c60bbad6",
+    "integrations/official-launch/vendor/cca/src/interfaces/ICheckpointStorage.sol": "a112e8eb372686087a69e1c6375a315c21e59bee0391ec4e5141b551d07f81c4",
+    "integrations/official-launch/vendor/cca/src/interfaces/IContinuousClearingAuction.sol": "304d8223c73874a1caf121ff67e0327b22e3ded2053bfd8d56376951656cad7d",
+    "integrations/official-launch/vendor/cca/src/interfaces/IContinuousClearingAuctionFactory.sol": "97482bba18398b2526c6a56329a200b4b27ef30022778b367081bf49c720dd69",
+    "integrations/official-launch/vendor/cca/src/interfaces/IStepStorage.sol": "2e1237b5fe69665069ae02764b582da1655a1e57c9374275109d00d475f2f92f",
+    "integrations/official-launch/vendor/cca/src/interfaces/ITickStorage.sol": "767d813fff1ede39a555a628c09c8b50babc851e72008ce92d441e5897016ef3",
+    "integrations/official-launch/vendor/cca/src/interfaces/IValidationHook.sol": "6be3d469664190a2868052ecae2eed2c933c258483ff673096e69f41cabb68dc",
+    "integrations/official-launch/vendor/cca/src/interfaces/external/IERC20Minimal.sol": "592bb25be6c8e0bef6d0c4e9b64552d9853f612e526478404c1a652652b8d0c2",
+    "integrations/official-launch/vendor/cca/src/lens/AuctionStateLens.sol": "557e50878921afc2e6986bc7728baca86031bf6c64e5a067b49bc4675d3f2737",
+    "integrations/official-launch/vendor/cca/src/lens/CCALens.sol": "a9e6853d9eb9aa103666e50c0643df8dccd9f157130e931ad75c2445eba45d38",
+    "integrations/official-launch/vendor/cca/src/lens/TickDataLens.sol": "247bec17bc337ef1e6b09b38c8e1115041efa7ec458954749341ea01279746b7",
+    "integrations/official-launch/vendor/cca/src/libraries/BidLib.sol": "67bc188999b1fe8e6d83d6432ae76582761a7e4fdec6aa18d14afdca2cd6996a",
+    "integrations/official-launch/vendor/cca/src/libraries/CheckpointAccountingLib.sol": "90df27a2d92b5c74bc078084aa566fb05cc7bc2089752a036e5dda23d3d1b79a",
+    "integrations/official-launch/vendor/cca/src/libraries/CheckpointLib.sol": "9f70d1f8dacb6797ee277153888c56e00a50864ae2e3e979d25d124093071469",
+    "integrations/official-launch/vendor/cca/src/libraries/ConstantsLib.sol": "7e88997b9aed17b8e11c82a823036d52e54436c3d7c1d808775acee412c328fd",
+    "integrations/official-launch/vendor/cca/src/libraries/CurrencyLibrary.sol": "48c305c6f9d80fa032d79025c8868115edc2645e3747855e2eeb3a97935bb0d1",
+    "integrations/official-launch/vendor/cca/src/libraries/DemandLib.sol": "44c85bf9f5cdce8d0b20266b38688c8dc2bc6d0848aafdd6d9d9d5629254b215",
+    "integrations/official-launch/vendor/cca/src/libraries/FixedPoint96.sol": "d9ac61dd0c86aa61eef6e44e6baf8c2f9c24acc0ebf0c3df89d939dadb8945cb",
+    "integrations/official-launch/vendor/cca/src/libraries/MaxBidPriceLib.sol": "9c2a93bf2f5c6fda5a4e4b88ed3757a83caff61855eeaed2602d70ca852e16b9",
+    "integrations/official-launch/vendor/cca/src/libraries/PriceLib.sol": "4ed5b40b9b2f1f393e7f3b2536473c09c34dd37bb1a2803c5df82933d711b6ed",
+    "integrations/official-launch/vendor/cca/src/libraries/StepLib.sol": "3b5055eca1055004d9e7a1b10b8085324d94ece88e3c80cacca27d31f3d9586f",
+    "integrations/official-launch/vendor/cca/src/libraries/ValidationHookLib.sol": "fa82ed44237cb044d40609d0fedd698ae2a718258a188468c1d34bcc0f579ef8",
+    "integrations/official-launch/vendor/cca/src/libraries/ValueX7Lib.sol": "4062674061e51778a31b94e2de65befc83a94c3e12cfd79485ebbdbab282e38d",
+    "integrations/official-launch/vendor/cca/src/periphery/validationHooks/BaseERC1155ValidationHook.sol": "34d1a4cac309933e08c22064dfffb20df8530e0075e174a29beb12b0b1e2e2a3",
+    "integrations/official-launch/vendor/cca/src/periphery/validationHooks/GatedERC1155ValidationHook.sol": "2984690487157c8a819efd4ca8c52e5d3268334085d152498ad555a8c56adc78",
+    "integrations/official-launch/vendor/cca/src/periphery/validationHooks/ValidationHookIntrospection.sol": "62304d82a644a9841aafccb89609fc18deb230db4c43b9375853d0ee6e42e957",
+    "integrations/official-launch/vendor/doppler/Deployments.json": "25c945aeabf9365879fe9d736812740cab5f59bb18343491d0619a67bc02a5c9",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/auth/Ownable.sol": "a74625ee15f4872b773cd4730c9b578db57455eb1005ea35f120b5e01e49f753",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/tokens/ERC20.sol": "d03cd9ca3bbde25702d81d68343f44aad1add7de6d8eb63a08e4a808a5af524b",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/tokens/ERC20Votes.sol": "13c1f08956c87625424f169cef9a7a2853bcdb27acbed2f4235e8d4738a38202",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/tokens/WETH.sol": "0877e6516286a9afd60eac6700f5c032a0df1f9228bffa8763cf093ec6652bf0",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/utils/FixedPointMathLib.sol": "a543d229ccfd83c0cd28b1fc134f34ac80602838f205cefe8bde3e2ce25036c1",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/utils/Initializable.sol": "1ec7bb5fa9aaca4a6cec733fa710759a904d83e7b8ef48a946c03fe242ea5d8a",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/utils/LibClone.sol": "a4e5713d200d954e55c565d5df039237bd46d213963e7a5a0f482292284ebc14",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/utils/LibTransient.sol": "ddabc97d5cb3f72e3d4d54ef90c0cd9ae43a8f7a324561673d8a0c7b96e14792",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/utils/SafeCastLib.sol": "5cd25f77fcc13020d01b5d1fd454ee0276cf5b48506eb63edde3cce66dbb3e69",
+    "integrations/official-launch/vendor/doppler/lib/solady/src/utils/SafeTransferLib.sol": "b6c3de542130199105d62e0f99eda90c04697188dd74287d8c97a845972f0872",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/access/AccessControl.sol": "1086a1ad3788972b885ff3f209da510615dde6214d46b29e1cd2a4924f66c06d",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/access/IAccessControl.sol": "1d6ef09193265172824fa1139e85cba422117ca918961183f080e692489d8c3b",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/access/Ownable.sol": "38578bd71c0a909840e67202db527cc6b4e6b437e0f39f0c909da32c1e30cb81",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/Governor.sol": "e0d9b88ffcbab610cbf84b4be8bc2b43f9a3e4c901277f6192002e72c1c77937",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/IGovernor.sol": "ea69f1bf268d876193bddbb3894163a88bdaf3c6d4725dc933113a2785cbab11",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/TimelockController.sol": "89a4cf0e404a42f13d01efefb5c1b3b1d46641c670b626b1b885330f3faccd2a",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/extensions/GovernorCountingSimple.sol": "53acaefe0957beb77606e03b5d2629d053f0292959d4748b392486bb2c99c52c",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/extensions/GovernorSettings.sol": "f6268357cb5aeb8c2509699f78127b9b360e9bb57c2b4cb1406ca24a4573d66e",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/extensions/GovernorTimelockControl.sol": "dcaa9c4a24b935522a46716bb8f6cc94b20905c8c93bdc679543bc55bdb97d3a",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotes.sol": "1ad3ee5736706f88b1f4542dd075d15f343eb696063ee26bccd240e9970e5018",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/extensions/GovernorVotesQuorumFraction.sol": "9febb68a832e0bc5e15fee84a1112436c8839f7f2294b3ec103cb1700af71c3c",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/governance/utils/IVotes.sol": "f033b73ce92762d9ed9496b8a0f5f72bd0479e42388da584c2ff276cbb5cb9b1",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/interfaces/IERC1271.sol": "c222d6d35af16214627df99796551f94497c74662e94aa1e80ca5e211a751f61",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/interfaces/IERC165.sol": "49abfb8fa26e3f1715fe05948a96e3762b805bd4a77d103eb40ba96b1acfa144",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/interfaces/IERC5267.sol": "efd1ebd1e04b6ef9c3b8781a097588f83da954323f438d54a71dc06508e6c7b8",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/interfaces/IERC5805.sol": "6ecc2370599496e6d862c2b4893975ec240f0ef8475daef1d20b5dd1efa90102",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/interfaces/IERC6372.sol": "2294c70df203a6a38985d064adca030293bec4b7aaa1237b62c7b1a34154f130",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/token/ERC1155/IERC1155Receiver.sol": "a44a901c06e11f4b5d2d03753d8552bf0ebc13ff5e880922c64704b12182589e",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/token/ERC1155/utils/ERC1155Holder.sol": "b121da3ff0077feeb73e0ffb033625c82179ce1df2fde0bcc7703a6998cfa7ec",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/token/ERC721/IERC721Receiver.sol": "ad84633afd30a71a888403875e2ca7db9e97499d258ccdd98f48dd7cea8229f5",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/token/ERC721/utils/ERC721Holder.sol": "fa1e231eedfd128232d8f34e9599165fb302c9dee5e58ef009f3b99f7e5d930d",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/Address.sol": "b3710b1712637eb8c0df81912da3450da6ff67b0b3ed18146b033ed15b1aa3b9",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/Context.sol": "847fda5460fee70f56f4200f59b82ae622bb03c79c77e67af010e31b7e2cc5b6",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/Nonces.sol": "9b4cbb85d1f5053c744e83302538eb643a713ffd14bc37665b224f1c66529339",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/ShortStrings.sol": "ddd52921d2996abf2e3d9c1c4f6d00194a3e3b278a164948f995862371444a55",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/StorageSlot.sol": "b4a5fb7ab93bfeda06509eafbd5f71fde0e0de84b6d9129553bd535a42166c15",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/Strings.sol": "0519199dbc635f98ce2e4537986604ee618bca665c65e9a1738702dfacf72010",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/cryptography/ECDSA.sol": "37828cb50b47bcc51c7b770bde15d5885d871ef1e67028057a0b788c3568726e",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/cryptography/EIP712.sol": "27dac0732a0154f432c0a7a1d1f067ab51116105e157d0e5d68d040fd83954d5",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/cryptography/MessageHashUtils.sol": "2fd5c641cf452efd15f784827cb2835664970d7fbc166bf80824ed27011cc374",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/cryptography/SignatureChecker.sol": "bd1ed34d265d1bc68b59727e7a9abd2b6aef171f04239a119450dbb20d3d5334",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/introspection/ERC165.sol": "99348354365cbdeb90157e2903334b861a00d69faab7720ae542d911d5c70d87",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/introspection/IERC165.sol": "07ae1ac964ab74dedada999e2dfc642031a6495469cffc0bf715daa4f1e4f904",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/math/Math.sol": "a6ee779fc42e6bf01b5e6a963065706e882b016affbedfd8be19a71ea48e6e15",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/math/SafeCast.sol": "089488198de38548e4e8ee7940d307f18396e5b295de5bca7ff7567fd4142cc3",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/math/SignedMath.sol": "768c28e3a33c3312e57ae8a1caaec2893bc89ac6e386621de018f85e9a2d6e99",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/structs/Checkpoints.sol": "bcb82ddf3742b104336967e44fbacf59e609da5b590315eb13a17de36e32739d",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/structs/DoubleEndedQueue.sol": "71333ce436ba1de60a88146659d9608a1c6bd73c3fcef7c63a76f9e9022a2418",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/openzeppelin-contracts/contracts/utils/types/Time.sol": "338550afac6c340197c1f97df3c113a22c0b6730991df1167407d576dbd1fcb0",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/solmate/src/auth/Owned.sol": "8ac2f2dc41ab8012e93adb3791326ffa1e4059a20c306a777109dd81816b9125",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/solmate/src/tokens/ERC20.sol": "a3a7e839f42762ef24623581542a916e838f3c7c0bef647963d1fdad0f9d208a",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/solmate/src/utils/FixedPointMathLib.sol": "edfd7fa8ec4087d252f637df16669599d5c0ac803ab465730f8cc3a5e8a8d55a",
+    "integrations/official-launch/vendor/doppler/lib/v4-core/lib/solmate/src/utils/SafeTransferLib.sol": "ed12cae0865a8a92adb9dadd125b2cf23920870845ef128431d811963b474103",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/ERC6909.sol": "0f1bf94844851b561ae53d57263366d18f4c4431eb47096871e8715837c6ec9d",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/ERC6909Claims.sol": "6fa9989899398646fd7c33f837254a69e7c75b77af120970ede397c3d0fbdc37",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/Extsload.sol": "ac157c05d62562eed212cdf290046a85d192e7b1f8aba69c3ce358b0ebac4279",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/Exttload.sol": "386b5618307a20144a44308b81188c7755a6c279db6c5824cf63a910864324d4",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/NoDelegateCall.sol": "525bf4df92c4ac0fd582e1b6ac18fdfb5d147d410f38f19231e4c9a469187415",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/PoolManager.sol": "aee34a095506dd312ea1fdff3e60f188c4e99906527f49d07d3bdd25ceb3377a",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/ProtocolFees.sol": "bdabfbdfa0d8692ee187ffab948c295c2c6ebcc2dcf86e552fba3491309843c6",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/IExtsload.sol": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/IExttload.sol": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/IHooks.sol": "aca1db9898026d9a4b8740752fb0dbfc6a55e4bede6a949c6af4e07d626f6900",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/IPoolManager.sol": "461df20b19f5f4748f5265b11e393c9d7ddb74c2b0f64ff5b3ede0606f9c4ee5",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/IProtocolFees.sol": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/callback/IUnlockCallback.sol": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/external/IERC20Minimal.sol": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/interfaces/external/IERC6909Claims.sol": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/BitMath.sol": "e8a45eb3d57f9427fc47bbb2543c1a6a5f394113b378123ac7ca9f113a7502b4",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/CurrencyDelta.sol": "dfbb3d232c2d52bb09c8dcbb38b4a8fd16c616b8e6bf49e6f4ee948760530f7b",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/CurrencyReserves.sol": "b38f1d3807d90bbccb865c0d96caf1ef92d6df9b69adbbe43b1d12e1241523c9",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/CustomRevert.sol": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/FixedPoint128.sol": "1ca2f55160697b73bd66fd27c8724d79a57108121ce1e8a0ab8b79f38bb58fbb",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/FixedPoint96.sol": "66ee26d4fb3ac639124bdfa27d3256d196970997fa127c09e9bf7154e30d4590",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/FullMath.sol": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/Hooks.sol": "f6012d7f627259f8f32816ee8e10b1d6244067c602a178072732bcaa32086b17",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/LPFeeLibrary.sol": "e96c3fa7deac991dc09b6c5e560a340d01d6c68ccba483d4b29f8a66e5aa44e0",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/LiquidityMath.sol": "67a39e58732340af4870342ba9230691f35501d89ed8725ca1b338deaa0eb26a",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/Lock.sol": "29cd41a53de22514164e638e7bc965ccf4d9f34b455b43a1a15e06a8cb86e7f1",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/NonzeroDeltaCount.sol": "0ae35ca64da2527b4e1f7afa4ca10c4b65af952dc473c33b6663101e8d199f40",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/ParseBytes.sol": "6a6f3d1cec0143fd70ea68c34e6dce3bde72f368b213f1a225ada23dbfd99bb8",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/Pool.sol": "38579997b81467bf29a9792b70607d82ac6dd46c2434d8364a1a50e6b73636e9",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/Position.sol": "3dc4e2ad1564fa94eddf3ff06ce9ac592c9d578ea64ca194050382da454c8fcb",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/ProtocolFeeLibrary.sol": "f8d96d9c8b5d12ab927b34551699bd7086750475f70254c9505e636f2cafe56a",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/SafeCast.sol": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/SqrtPriceMath.sol": "42440c21bbab86c7eed4716b281ed5ca281cf14af8b5e06dc6dc3bc6864bcfdf",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/StateLibrary.sol": "1d8eec1afeb5bc108aac480b2766a9f5e2b945dba8d9da62a9c8efb12adcf257",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/SwapMath.sol": "eb3971ea0ba84ff0a01f2fbe43f62f9c393121ef1724774ed3f3ab7760780e4a",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/TickBitmap.sol": "19b25dccfac8bd90f9d615fb182547eb7b5908a5cbf21a1c5920b92c47383cb6",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/TickMath.sol": "272d4f6d3ff9ae33596ebcdb84a71a3c2d4542ae8fb5c88ddf1aca8043f5d06b",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/TransientStateLibrary.sol": "9835fca9df8b3f649def66835c5d7ee68de6a6cbe92bf255eb5d8b92a6a8d60e",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/libraries/UnsafeMath.sol": "2de236e7ca0b9572a6b0184557565b6fd54e177224e202c727fe248785ede427",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/types/BalanceDelta.sol": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/types/BeforeSwapDelta.sol": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/types/Currency.sol": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/types/PoolId.sol": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/types/PoolKey.sol": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/lib/v4-core/src/types/Slot0.sol": "378b45486644dc7e49726358e83d0e2fffdaee088d18cac1a3df00d02c3635b4",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/src/base/ImmutableState.sol": "d3ef34f9c00fae08ec1eb24aa341d5d916c4d6d62e6c2118ef4afe9c7470fde5",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/src/interfaces/IImmutableState.sol": "86f06a1f388f91ee0185495cb5d2912d564f73fabb163b3767e9c292c5069276",
+    "integrations/official-launch/vendor/doppler/lib/v4-periphery/src/utils/BaseHook.sol": "a773d4422f84a6aeeaa3f0b148ac7311b9de8719e903d71b8e65eab4edb1e890",
+    "integrations/official-launch/vendor/doppler/src/Airlock.sol": "150cfa8311a74f45b5a7fa97124eed59257e92e39173f716c436759f0da3f5d3",
+    "integrations/official-launch/vendor/doppler/src/Bundler.sol": "034b2968146010627dd475d1ab87233a5607baea12830112088cc90b7b0fa836",
+    "integrations/official-launch/vendor/doppler/src/DopplerCreateXDeployer.sol": "214fcf1ac4f2759e7620e365c0382767c6e345806045c580aeebf09c13db03f9",
+    "integrations/official-launch/vendor/doppler/src/TopUpDistributor.sol": "4241119f96bcb746d57c1b532df5a3aff687b1137f70512692a2abcf202d44f8",
+    "integrations/official-launch/vendor/doppler/src/base/BaseDopplerHookInitializer.sol": "25c484f19dbf3555fd1d7497c1f3bd5378f14abdafd9b5c6a3845a221d1ab380",
+    "integrations/official-launch/vendor/doppler/src/base/BaseDopplerHookMigrator.sol": "c073b18945d23ae9cf8014f1966cbfe6e5f9a14ecd59cfe4d82ee94f92ac210b",
+    "integrations/official-launch/vendor/doppler/src/base/BaseHook.sol": "2d67bb0e346d303f6714e180ec33df99d56595bf2449d11eb3b76570c6c38cee",
+    "integrations/official-launch/vendor/doppler/src/base/FeesManager.sol": "b4951eca46ccf1cdff119b94b8a65d4a0e12866dee300a923182b25ae086a40e",
+    "integrations/official-launch/vendor/doppler/src/base/ImmutableAirlock.sol": "22c79a9e0df62027e551506eefbe37542e4100d8708d2ecb9b618703e71fd577",
+    "integrations/official-launch/vendor/doppler/src/base/MiniV4Manager.sol": "c686d70eefa6c26de365bec2f6d4fa1ad53bab59eb10e2a7cc231674940f761b",
+    "integrations/official-launch/vendor/doppler/src/base/ProceedsSplitter.sol": "af687c436977e637899210b1b47e03bac832a3d8fcc21572d9c1c7da6c3a381e",
+    "integrations/official-launch/vendor/doppler/src/dopplerHooks/RehypeDopplerHookInitializer.sol": "437fc40cc7607ccdb48d9e15666dccb2611f7400798bc6364eca45b0e52e24a0",
+    "integrations/official-launch/vendor/doppler/src/dopplerHooks/RehypeDopplerHookMigrator.sol": "96303fc6ed6d153c1176fd35e9fefeafeb533645d636947964cdfaa9920b0f86",
+    "integrations/official-launch/vendor/doppler/src/dopplerHooks/SwapRestrictorDopplerHook.sol": "a710583525e94da614ea308e2154047da40b5cdb717dc6115dd7e84d672597a5",
+    "integrations/official-launch/vendor/doppler/src/governance/Governance.sol": "a804245fd01f1e1786090e9122da6f36ef7f0c712696779223304684f6c91f96",
+    "integrations/official-launch/vendor/doppler/src/governance/GovernanceFactory.sol": "296a69dba372b433d82387c9d66346e8855cfcd2e36f7c66f124aef512cee2fc",
+    "integrations/official-launch/vendor/doppler/src/governance/LaunchpadGovernanceFactory.sol": "33982ce73d5230ec7ca4e9335666f7b0e99456c1ce2a36ae8e9bc8823f9afaa6",
+    "integrations/official-launch/vendor/doppler/src/governance/NoOpGovernanceFactory.sol": "e377434cc8798d4cb8c4d77737a89be9049bfcdc23cd33a21fb970f9f85e7ba8",
+    "integrations/official-launch/vendor/doppler/src/initializers/Doppler.sol": "cd7c73731c558a4abcae813373ca67ec2a48dbe9ee893f64767b5821514bd824",
+    "integrations/official-launch/vendor/doppler/src/initializers/DopplerHookInitializer.sol": "822b03697cc97a66ec4ccde38c3a87d639b13b96d4fad5efa6f984af12c1e4a8",
+    "integrations/official-launch/vendor/doppler/src/initializers/LockableUniswapV3Initializer.sol": "153a31a9f9c6923d70ebc1262d26d353caee9aa2f363962e507cce0671a118d3",
+    "integrations/official-launch/vendor/doppler/src/initializers/UniswapV4Initializer.sol": "8c978f275165895e047358aa5ff102d5c294eb3494955ec8c44491727884caa2",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IDopplerHookInitializer.sol": "6cd866821a70c98ade2563ba61ed64ffe9f5530ef13442aedf69d03bc76fc82c",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IDopplerHookMigrator.sol": "586873a632d19b04899b5d31ae7637d306ba7f2ed187cc7a35635fd835baac27",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IGovernanceFactory.sol": "368719684aa07a2ab78b54881d59f9149f3626aeca5f0c653e5d9600f4f7edb4",
+    "integrations/official-launch/vendor/doppler/src/interfaces/ILiquidityMigrator.sol": "7636553416aef15b01b69ace0c77ca7ced7fea99f60daf9193874dda10aeb1a5",
+    "integrations/official-launch/vendor/doppler/src/interfaces/ILockablePoolToken.sol": "66c8b8ed1eeb583bf38afd96c880eef92ddcfcf5f6b2719b45276cdd492a5c68",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IPoolInitializer.sol": "f62c28e02c0eaf4406e508d18dcdeebd88f1b01b4a6bb477c31c3df393bcbe6f",
+    "integrations/official-launch/vendor/doppler/src/interfaces/ITokenFactory.sol": "e1a857cdf15cf3068127c1dd03fca36ab00c50b9c709a938113a0e0bf77a334d",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IUniswapV2Factory.sol": "70c4882f062188894a4cfdd93fe857ef8620a17d35e421bb91e3cd0f6333b38a",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IUniswapV2Locker.sol": "2a05c4d219db0c69bb754b2d25262b5f409566e89ffde21b0323bb3934d223f2",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IUniswapV2Pair.sol": "d2be188ca3bc6bed93ab0ea12728a92db9786191474cd99b8275d335b17bfa35",
+    "integrations/official-launch/vendor/doppler/src/interfaces/IUniswapV2Router02.sol": "2a0e840ad33c6c503a93fd0f4d696c738bb16ff67b3871f20e973f20f38a8080",
+    "integrations/official-launch/vendor/doppler/src/lens/DopplerLens.sol": "dcea70b958acfd61ce3103f37421bfec9250cc433e7d5537173060bdc9d12e47",
+    "integrations/official-launch/vendor/doppler/src/libraries/MigrationMath.sol": "f65a99a71b39073266d0276f7b97195e66b7ac86703178e751bc81bcea767425",
+    "integrations/official-launch/vendor/doppler/src/libraries/Multicurve.sol": "8774c75c18df1e6b055509d9f63aa8ab2b6194f3514d2dc0159e7f24153f93c5",
+    "integrations/official-launch/vendor/doppler/src/libraries/TickLibrary.sol": "e0bfdd790045a86f7b2bc5f4b61a2be9e2ac491d27f83d5333812685cdf5798a",
+    "integrations/official-launch/vendor/doppler/src/lockers/StreamableFeesLockerV2.sol": "773c7c8bc852192da90e5e537af5a1348501b47dc39d7f7ab0fcec6311e7468c",
+    "integrations/official-launch/vendor/doppler/src/lockers/UniswapV2Locker.sol": "3f8ffb079cce6a71c0a1a346e58829d7ae56395c2100b05fc55f10c56aafe582",
+    "integrations/official-launch/vendor/doppler/src/migrators/DopplerHookMigrator.sol": "d3c0a1aa5d7b1a8f8b5777bf6efd9741383d086b0ffe155657fc7f68d128d0fa",
+    "integrations/official-launch/vendor/doppler/src/migrators/NoOpMigrator.sol": "3cd10996fd334f9b62a64e898cef22a45fa82c099b75cd1c3ffec06084744726",
+    "integrations/official-launch/vendor/doppler/src/migrators/UniswapV2MigratorSplit.sol": "a9a4b7eac72baf147ad04abd084728ee46fdbfd5d77ddac5d6bd96b7dcf54d93",
+    "integrations/official-launch/vendor/doppler/src/tokens/DN404Factory.sol": "f36061f11725f59407b534f6a13cfd2729ced028ddf83d35dbb919f23002de71",
+    "integrations/official-launch/vendor/doppler/src/tokens/DopplerDN404.sol": "157af35f04359972f745a9a0f24e6590cdae5ff886b294f45bb7a969a8e1e452",
+    "integrations/official-launch/vendor/doppler/src/tokens/DopplerDN404Mirror.sol": "021a04bbb0fbcdf948c35466c1a3c0eb0dc8723814a6c1b1736f09d4f5076501",
+    "integrations/official-launch/vendor/doppler/src/tokens/DopplerERC20V1.sol": "7c1a5a54e12c663aea35611a4b0decb5788ff3b273f1f2dbabc70133103414ee",
+    "integrations/official-launch/vendor/doppler/src/tokens/DopplerERC20V1Factory.sol": "b4466c3af77ea847269ff5e6c851a3751f66e465ee227cb11f3f19bc2706f3fc",
+    "integrations/official-launch/vendor/doppler/src/types/BeneficiaryData.sol": "1acd8b5bb68b32f1a647c5b0c7895652ba24529602ad6c4d8f8c869981be01d9",
+    "integrations/official-launch/vendor/doppler/src/types/Constants.sol": "cc28b517dc2807775d6eca4cbe04cff095222eaaedb2b97929aa9d16013325bf",
+    "integrations/official-launch/vendor/doppler/src/types/Position.sol": "ed34655f2d00fa3d4e8efa6ba722edee5fb8f5782dcf8ad3a1cf172ad8fbb505",
+    "integrations/official-launch/vendor/doppler/src/types/RehypeTypes.sol": "7c1977521da1ac67b2d9c2ca3f78f0a084d3b1b8951655d534e710e119061769",
+    "integrations/official-launch/vendor/doppler/src/types/Wad.sol": "58df1b00418c6a4f749894fb627499c5769f7b07fb830a415cfaa410d66c565a",
+    "package-lock.json": "a64de741d47728f26f2c3c8bc031faa30238b0088dd166bc60f950cee16645f5",
+    "package.json": "2fc60ec9a8b595f154503fbcda159923437ac9fd6b0a53163dda879213845ab5",
+    "packages/communication/build.mjs": "a410e0f9c285127f80798653fba37a2b36706f5bf4c6c12b15b12f93ca0bcc93",
+    "packages/communication/package-lock.json": "e2ca9d65ad84c7207f8a51d4df4eac26a5380563c01975da9992c2626405a69d",
+    "packages/communication/package.json": "ebca098a749e62f669cf808293d43c4feee4163b180b125d4cb2f991f511ca5c",
+    "packages/communication/protocol.mjs": "0bedde20cfd72ed360f1fbed4a1b4b888c2f266e87b26004cbb0392cbc08c88c",
+    "packages/crosschain/build.mjs": "1548e7a4ef00688f33883c8d6a01694052fa0c20b4d0aab0c70d536848c649d8",
+    "packages/crosschain/compile.mjs": "84afa97b364a3f2c07141ecb337089848eb16cd5bc58e51c4a1055bcc8107958",
+    "packages/crosschain/deployment.mjs": "3f3027e47696e58987ac5b94fc19b1912f1d3a8ca8d24a9a379b4b50278bc279",
+    "packages/crosschain/package-lock.json": "0fb9890cf2b72af5d677181d80268ab5d3f1dab2cde248f714ebd060e5db23d6",
+    "packages/crosschain/package.json": "06058dc1eda93dc261c326cab23be0bd8d61af3bc6ad659b36fcdc6db4ad6f4d",
+    "render/field.c": "e3db7fb4b1ad192084f959c47a3d080ac0e983d4cb9f314c9810efeb5a2fa0f9",
+    "render/field.frag": "2d6d1dbc3dde449173701ca09d09470568cfabe8ab9087501d9a065559b833be",
+    "render/field.inc": "d6c020373b841413ea115634ffab30b87dd6acb8d9a1b9546fbf3fe97ea946bc",
+    "render/field.wasm": "e07ce1c589a8afd6167fbcd2cec817941cd79523807f51cc28cdabbc7767b80e",
+    "render/interior/volume.inc": "e077423fb782d07f3d9856ac464e127cd634737b047f5bd1db16037e14de68c1",
+    "render/living/field.c": "6d171db31858143aebd0339bbc33661d90502a2a842d101e139e481e807b0f02",
+    "render/living/field.frag": "0357ac3d63729deff28c0a4a19ff769852a6f9b823effdda79b5a980806df194",
+    "render/living/field.inc": "f482cf1e667c7a0714aa7c65fd92db11a4941cfa677da2757354d864116ad03f",
+    "render/living/field.wasm": "e27a659387e135680833502ecd7ae2178a03d8d8552405dae6a3c1d46987be81",
+    "render/original.frag": "91e9770eae022cedd283866f9686991a7d8fb67490630b7ebb50b7d318be93b0",
+    "scripts/archive-app.mjs": "a69a40de46bfdfe0b13a34b02fef5c860a99442a32ec08feedc6e3e5b39a2bf8",
+    "scripts/archive-confluence.mjs": "69f1c1541aa300310ea5bb2e0f13d1220ce6b3606276c4ae5ccf67464df2c753",
+    "scripts/archive-privacy-resource.mjs": "a8fbe3cad974295aa7e915e5f0aa9793f5d54574a0670c0589f8a4a393c8df6e",
+    "scripts/build-capabilities.mjs": "427f406d14ca6ff1e759b2a31c7ba88b0d931d89b107583444ed7352e280872a",
+    "scripts/build-chain-loader.mjs": "84c4ee1eb34c606b67adea5fc37a7a0a25e5df5697e90ccc911043f811ff9d14",
+    "scripts/build-commons.mjs": "90013f8017b8a2273d2bdfa1019d5d3d006faca07bd85be111cb51f853556998",
+    "scripts/build-confluence.mjs": "deaeb6585eb4792a29f6ab55466edc60b705846e1a0176894badbabba8974ccb",
+    "scripts/build-exit.mjs": "b53cc4fdded447086a920c801b84cc68e3fa1e1e6b12408fbd4c7b929b557b5a",
+    "scripts/build-extensions.mjs": "681cc4cf55c68f80a91c3319b774fc19d2f0a4c5541e46486606f99bc92c5073",
+    "scripts/build-field.mjs": "c9a5aa7a791b7d62cf8c3e0d3c06f62f46eff8b51dbc6d746448111b4663e4b0",
+    "scripts/build-governance.mjs": "ee3f69d8b85565abbd023dab17ca67e1f8bee32409f8546e0716916c553e64d7",
+    "scripts/build-hook-launch.mjs": "7c695ea1ab4b11013ce95c8859e25360b8d02bc45adbca43d181d71b1d43b3a9",
+    "scripts/build-instruments.mjs": "b9f2da25547238b4ca4cbcd4852ab4b296c844889885fc443d0ad6324bd941ee",
+    "scripts/build-interior.mjs": "212cc951228dcde791633a6cf9f95b5292183880db7ee45113a1e6f6f786e408",
+    "scripts/build-kingdom.mjs": "cabd1c64caccd6aa758b319d07e8f9c9019be6d2c0cc6f428acf63d004d19f4d",
+    "scripts/build-launch-auction.mjs": "9a50e7d941b2c05380674f964d8c5c641bdcd0d71aa66bbbd3c7841a94e9aff1",
+    "scripts/build-launch-chain.mjs": "1dc262b9251b91cd985377591fb1743e1c327cb18e98a6635e6c2feaf13ce508",
+    "scripts/build-launch-lifecycle.mjs": "b073ff4e67e3e36cd6599cfc1e5b4919dde970237236c099ecd4aaf0c22eedc1",
+    "scripts/build-launch-sale.mjs": "64413bb0d987fcc29dbf3662b8d8de4d87424234076a9b6d9bae611021e9a82d",
+    "scripts/build-launch-strategies.mjs": "c2ada07ac5c508d18e59bfb61c581ebb4f9f05bd7fe05c2bb8a7d09c6db9d43f",
+    "scripts/build-lived-field.mjs": "8d750647efb2d35e7176e58899e15c087a14c5e4c2c7d9cb257765fe394b3a6c",
+    "scripts/build-preview.mjs": "4ffdc87bb115fd9ccb57c17cb1aaf3d22ab7622fab0aa38a3fb66607292847e3",
+    "scripts/build-v4.mjs": "ecb46c12b3e7b3f880c9426542bdc9deb849859cf2f0146a573b4a8dc774bbdd",
+    "scripts/build-workshop.mjs": "8245543c8e80ad4245d0285dd61911b663398e9a28dab69a97f014b5702a023a",
+    "scripts/check-source.mjs": "914b09ff3cca3e5b97e099b1d1b95ebd17e60b0dca2c6576356f0e3993d53568",
+    "scripts/compile.mjs": "5362dd9dfe81cee4cb578417260bdf2865ebdf2cd7890f163ab359590c3b3ec6",
+    "scripts/deploy-confluence-local.mjs": "5b2795a3e3ba4ca37d6ee4b3c250bb4ae45cd9435e95add71c1da47aa67fe8ba",
+    "scripts/deploy.mjs": "1337398713a7b35d78ea811616a7c01c4eedf45172528854eb19bfff3c9cbae0",
+    "scripts/extensions-deployment.mjs": "abb375813bddb47d86e045f480f6d35499df6c69ec14d7113339b96975bfdfbc",
+    "scripts/generate-proof-vector.mjs": "3738e919bc4aa8cf99c8afc6988748c2130211274e14b8dc747c48d8f9549cb8",
+    "scripts/genesis-deployment.mjs": "bb0366c8fdb0259294328f6287d9542db35928211b0846c9f6d98dfe86a2696b",
+    "scripts/genesis-local.mjs": "a29df2064e4d44a633cf7deab87fc8207ced6c81b6d1fc5f328405f3384cdbb9",
+    "scripts/lib/compiler-artifacts.mjs": "497afb842f553ea4f90eee7cc3f52acc6a50789efde06b257a56f001edd802ed",
+    "scripts/lib/deploy-privacy-resource.mjs": "47b4222992c8fa28fe1291147133fca5f741924508f1f7b3d82b52f2278373bd",
+    "scripts/lib/deploy-stack.mjs": "7a16c97cf4638d1edebf43cff15855f69a61dfda58c82181a053a18ca5f12049",
+    "scripts/lib/extensions-deployment.mjs": "be55c9273fd31f8b5dd2729061f37df026c50c83e322c73a78a395fc609356a4",
+    "scripts/lib/extensions-privacy.mjs": "c818caff4a5fcebd1271fa30dd194f65d5f0a45aa6f0cd55dd0ce47d746f05f9",
+    "scripts/lib/genesis-deployment.mjs": "358f1e8c1f345f15f91961a8ec5954060697ceabb7e4c2aff3b4528c4178cfe8",
+    "scripts/lib/genesis-stack.mjs": "53c2fd79019a9a4c80e4bdb90ed2ff49834ffeccc883e819687fc7640242ebf7",
+    "scripts/lib/local-validation.mjs": "034696382c2557715409e261ad40a1090d0e12e202898ca973da863841552a62",
+    "scripts/lib/release-packages.mjs": "e265de461f52ec97b17b08f11bf4924afb24ff36730fb8169c62914a4f3331ca",
+    "scripts/lib/runtime-archive.mjs": "451fcbbc26964c50052761b45eb634a9d36142ddfd1d9be819d656ea64b53ebc",
+    "scripts/lib/runtime-build.mjs": "2027d3e3ed6e02f4d96c55cc2887db83500acb01be022a7c0240cf912eb91bb4",
+    "scripts/lib/runtime-graph.mjs": "9bc6e9f10ba862c4dfcda318765b8b94d798afb02092f7bc51c544caa47c61b6",
+    "scripts/lib/runtime-html.mjs": "0abc3787db8404d5ac34f09620517b8db66b52ca560f63097c3f048f16c5c2a2",
+    "scripts/lib/runtime-modules.mjs": "b44cdae2761776544f9a6c65032059261c431301e765a992014f63752870cc37",
+    "scripts/lib/source-integrity.mjs": "30cc5536e4cd2219cdf6f8929e02d4392e3eff3e8ccec656e5326fe39d92bffc",
+    "scripts/lib/static-server.mjs": "40d31f08fc113ae93438d64de453f3d53e10b9d8b08e57234170b3adce2bc413",
+    "scripts/lib/v4-compilation.mjs": "979eab09747604fd7c99877cea998a942c68f77430292caba1fc988a720a7647",
+    "scripts/local-world.mjs": "85a159f356b7701323f0ce766e7a3b990c8efe91e3123089aebde5fdd19f80fe",
+    "scripts/mine-hook.mjs": "d079ac1ae553d48176da365524707340c44ea472ca8c302298466f2c5d140ff3",
+    "scripts/operating-package-check.mjs": "e5045a1bc64bc80824f6f92c66d48c5de998d8e9307db616bf69d37919ccea79",
+    "scripts/package-release.mjs": "4c5857c627c7c7d2f58b0a712a3d4fb81f4ced02794143e453b02b5fd3aa11a8",
+    "scripts/privacy-dependency-report.mjs": "8a7531a6a1a2f6cc8b4363609bb2db8d4fe87dc957e8001abf9167dd4a5ccb24",
+    "scripts/recover-runtime.mjs": "d55e962da24c7191352b75505b28ac998f1b7c134b38cd5672655a1c0a1f3724",
+    "scripts/release-gate.mjs": "69a4d6f28ea8f58b6b03f1543bc442e89514935b47c396afbe245bcb2d53fd0a",
+    "scripts/release-report.mjs": "525dfd96e529eece04234dd4969b1fbf8f1ec07f886be593fbdb42cedbb3919c",
+    "scripts/serve-confluence.mjs": "82aaa81dd29ad368242f39e4bef314816fa60d288b57a69390b660ee9629da7e",
+    "scripts/serve.mjs": "d0266ba6278a73e6d05292283aadf4bdd06ff5cebd9a525e573bb7aa445f0664",
+    "scripts/setup-dependencies.mjs": "a09456eb4ffd0caa8c25ff3376d8a911593b7e3de68426b61d5560b5936f78b5",
+    "scripts/source-manifest.mjs": "bc3b0ba33e2ca5e7ada5bb504cc1dcc82198bc7c7caafa42fd5c549d80e04b60",
+    "scripts/static-audit.mjs": "a315f8542e0a59f03a1e6adab0415c11d55f894c096d9cf00efed92092c9aa09",
+    "scripts/test-all.mjs": "6c7b1de3b38f7351eb90963d184bc30f336814cf36f4c070e77f819d3d052c09",
+    "scripts/v4-deployment.mjs": "e8dccc87ed7217706bc5a53e7d732539f6dd0908f835a0c925d2ba0f8336aa01",
+    "scripts/validate-release.mjs": "6380c013e9bc99e2470e1965a3b71522aeea8231f7290c0a614e0e4be8270483",
+    "scripts/verify-compilation.mjs": "296c02a9772f7b26de8cac36eb26f256b091cb4e122bfd3af59dfec8c7ffe0f1",
+    "scripts/verify-confluence.mjs": "033e724ef8df3d1bcb3fc95b08952cf8c2bfa031d881aabfc51a8d794063c4aa",
+    "scripts/verify-study.mjs": "9723362419a4bbe50867f312c9600e186dec2400f27900f8c1a3774e54faf5d5",
+    "scripts/workshop-provider.mjs": "fe42a3c71dc3ded28c23af13b2b415b782d92dccbf3ae4cee77999f2008ad083",
+    "web/app.js": "7b9d0b60a55c11f75a263da63e05a4f123eacba7428b8c69f615fd0fb84e28e7",
+    "web/audio.js": "9ab237f4a3b2d865556d36acf20c01902df40b458fa4e30045592a3e9b6215a5",
+    "web/begins/geometry.mjs": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
+    "web/begins/shaders.mjs": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
+    "web/burners/desk.mjs": "3651ccc49c6e78754b0e54ea73311bf01897fc02a76907b7ebfa86a569030a09",
+    "web/burners/policy.mjs": "1ce6fe6691b7989c59b8f6cb7f83ef988928a34b1f45bf17928bed7ed5df5e14",
+    "web/burners/vault.mjs": "60894f6a57e499d9fcab6675cff2a6f1d11b852e228123a97c28f59954e5c7ae",
+    "web/cartridges/lumen-drift.html": "0dd512bab544737a60f7481d2df9bdef549c974e6638cee3f31b4fc46709ed4b",
+    "web/commons/artifacts.mjs": "dc3cbf1be11c863dcf94b906b20dc19f3e8e3a03f5c9a38a414f71b79e52afb0",
+    "web/commons/client.mjs": "376158e164bcd543f8eae2d7343e49dde5c0f55a5c8b1bb7c669824974cda779",
+    "web/commons/desk.css": "3b1cfc89e559d2b38918e997bcd0b6a9cbe7469c8b1aca6138f7a4e5c6cd26c7",
+    "web/commons/desk.mjs": "f0caa51322e2e6e86056c1aca95048dc587610920b6aab49292d5cb0949f43f4",
+    "web/commons/mls-artifacts.mjs": "a3c6443695ddbe4f10b03031ddc599d3f4029f51f548623e38865928b6abb99a",
+    "web/commons/mls-client.mjs": "3a58453241a3e46caacd7df609b2b6e7e07f33e239bf3b9aa1491471465995e8",
+    "web/commons/mls-desk.mjs": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
+    "web/commons/mls-protocol.mjs": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
+    "web/commons/mls-vault.mjs": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
+    "web/confluence/app.js": "15479c960f0e161e7d27a43e0770df00f08c4145d9c87e65a802b430e7518c22",
+    "web/confluence/archive.mjs": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
+    "web/confluence/capabilities.mjs": "ed952c7476e4192bc90a2b9d1a56333e4a5d967131dfe6b21de14e8ca85e1f08",
+    "web/confluence/console-core.mjs": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
+    "web/confluence/economy.mjs": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
+    "web/confluence/identity.mjs": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
+    "web/confluence/minted-identity.mjs": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+    "web/confluence/particles.js": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+    "web/confluence/release-capabilities.mjs": "11bd0e2b7e9ab52228a445177c33d64bd6b10fb2a3ae2a7bb475aa661ed95507",
+    "web/confluence/selected-context.mjs": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
+    "web/confluence/shell.html": "dddd078001a787097c9bf135ee3924729974550f3c1276fa59f058208eb10fca",
+    "web/confluence/styles.css": "11c74d29d1d309e2a0b84dd839f57ce02c2611a6a0bb90b6f57bf25f0b6d830f",
+    "web/confluence/surfaces.css": "3f6471534be33e538e181373088795fd5817cd0445cc8e2410183f639bc70850",
+    "web/confluence/wallet.mjs": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+    "web/crosschain/artifacts.mjs": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
+    "web/crosschain/client.mjs": "59144eed58391309fb13316a8abe3fde395b6f6cd9683bee5d5077be761e37d3",
+    "web/crosschain/desk.css": "e48d906134e9c1483bb6288d407d847f1210f462e36d4d7af6756cdceb8e3b0b",
+    "web/crosschain/desk.mjs": "9b3826473774bbe8339e277e8884b6113b64e5c850294aad6bb4009cdfe5c9ea",
+    "web/evm.mjs": "cb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+    "web/exit/app.js": "92be4886ba8b75783ceee0b32356fe26f6a6e7ea7e574a47368167376d38b476",
+    "web/exit/artifacts.mjs": "81442bb72de8eaff6426ff284fccd54c6ecee26567a75bd99bc73ae4ff85c211",
+    "web/exit/engine.mjs": "53e9d08011f755935a4eb49aad052d073446604fbd89d2f9b73b6fa83364b321",
+    "web/exit/live-ui.mjs": "3c5faca4c005c79ff8ecc0fb67fa2a3da578333e9076a05781839430ce530395",
+    "web/exit/live.mjs": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
+    "web/extensions/access.mjs": "8697aa024eaea6fef8750224eb76b4264f14ee72a4d019182e9f88528de82f2e",
+    "web/extensions/agents.mjs": "5762161784210a6fb65742d6cc783b1cf37b5b4766f75fad83e59bca4d5afb6b",
+    "web/extensions/artifacts.mjs": "0cd831d2ea26f9e87e8444f6c52f5bc3eb31eb5e1c3ec964218064581c9568a6",
+    "web/extensions/desk.mjs": "9090b4232581bcace1e6d7b905a1940091afacc68432845930c8bf6a62264bd3",
+    "web/extensions/experimental.mjs": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
+    "web/extensions/markets.mjs": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
+    "web/extensions/privacy.mjs": "3123b55bdf0463d860dad6bf5db76b9705a87ea632638283b92f6227a9384e6b",
+    "web/extensions/privacy/crypto.mjs": "609fb068621b8ba60f63f209824e6eb450ff91462b51a8af8f1acbcd5118f3b0",
+    "web/extensions/privacy/desk.mjs": "b7ceefcb141eaad2e4f88eb30667b4fa8cda64ea2277c0e2c60c802042abdf91",
+    "web/extensions/proof.mjs": "ad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+    "web/extensions/security.mjs": "80d96c6139aee0b69c884344fb44f8869dc5a45d5a99faea28a67dc66c047857",
+    "web/extensions/service-origin.mjs": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+    "web/extensions/worlds.mjs": "e32e536d9fff5f3f147396e3a7f5445c15ce65ee88c9c2f67edd0f87f7a76dd0",
+    "web/genesis/atlas.mjs": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
+    "web/genesis/field.js": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+    "web/genesis/interior-cpu.mjs": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
+    "web/genesis/interior-gestures.mjs": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
+    "web/genesis/interior-kernel.mjs": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
+    "web/genesis/interior-quality.mjs": "6a01e76803ab868954fe67f92d7f43ff5651067af45c34aef07d2c4cdb1ab787",
+    "web/genesis/interior-shader.mjs": "448c32583e9748d5d730524a2e4ddde048ae150b877532fe2beb9b8d1dd8b303",
+    "web/genesis/interior-space.mjs": "d8a3f675a264698d0d2cfb5905e191ae95afdb5410a9c7dc4c1872c371360102",
+    "web/genesis/interior.css": "f4e574371946d561a37d1035ce9aa933c84d1f6d560e0fae988703de42c78d56",
+    "web/genesis/interior.mjs": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
+    "web/genesis/live-desk.mjs": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
+    "web/genesis/live-protocol.mjs": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+    "web/genesis/projection.mjs": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+    "web/genesis/styles.css": "96f125944b83bf0abb0bb9d87d6663e0965e48423271fa1745dc3f47bed1f36b",
+    "web/governance/artifacts.mjs": "1748dc212486949b4581e203fa47b4ad4b8169afdefafc439eb7df073d45df52",
+    "web/governance/client.mjs": "08b867ff7f421ae60a404fe3adf243aafb76ea0f422be7d60340b83d5991285f",
+    "web/governance/desk.css": "aadb744ce7010f4c4d73266e1b94a649f01f1300a4c3987686e80a07528ad3fd",
+    "web/governance/desk.mjs": "dd7b11c31c17ccf012e3c10a63bc270a95fb0f5c1721222adfb2d558eb682b1e",
+    "web/index.html": "e04f5688d539dfd92e59bb7e35278f43f40be3d9c3b5698be223e92d84bc3470",
+    "web/instruments/app.js": "4ca14d2257225ac9a4f0eebf470f0e4add4dd2df8a5b8227ac07d7d8a10b71e2",
+    "web/instruments/capabilities.json": "e83ff22436c8cb0091eddad2e245a6cac251530c725751cacee7503dbe6ece5e",
+    "web/instruments/engine.mjs": "649470e7c4c850da05d84e2420df81c6f642ed7b422b99eec1549dfcff538b42",
+    "web/instruments/shell.html": "b80189500fb6c8b9a507bf1ca6169a1cd09facdeb12f3513c6905e3cfa3c8844",
+    "web/instruments/styles.css": "86cab9b89f0426bb865691b7811a1ec3bf31394e8f77d990ec3b3eaab5d864b9",
+    "web/kingdom/model.mjs": "b239c0da9731aacab6c87d5426bb5a52afa1b38b42b8e44c3944c11b612c1e8c",
+    "web/launchpad/account-session.mjs": "f53186f69bf07324e4268ad00b8771d54c77b6829884656355f57280b46bc80d",
+    "web/launchpad/auction-artifacts.mjs": "aad26786c72fc93211d6f95af4868f4a62b7dcf455f87300254e0f0db9a38994",
+    "web/launchpad/auction-client.mjs": "09de23b87aac9973ccc0eeff00df6d85adeba687bc33a3bd997a5d404c53ba2a",
+    "web/launchpad/chain.mjs": "1c8f3038746d666ba160840120b6eb635842a973aa2a67bad73f517a63688fb0",
+    "web/launchpad/deployments.mjs": "875ac33ccc1785f41fca2f7e0e5da03bbffcd3a80402413e1c1aefb997026e4c",
+    "web/launchpad/desk.css": "72c6baa6c1c1b12410f63dee5e59b8921eadbb4f4fde7d1aa1ab387bdc068cc5",
+    "web/launchpad/desk.mjs": "3f981e66ffed92551aced2b700ea5da274be7fd30ddfcba7c7e56600f3f43c8c",
+    "web/launchpad/economics-auction.mjs": "9bf4a5ca9008be0b4fb48ed271019dd5dcf8902a7010e2af0ac5e32e468a9660",
+    "web/launchpad/economics-engine.mjs": "ce6392868ffeea842b00dfc2636f137c366f00f5c103208f3ed1f906149baa54",
+    "web/launchpad/economics.css": "1d42440b382fce70e679c9ffaee58cfa627f36867a451608f9be962b7d6cbd76",
+    "web/launchpad/economics.mjs": "e81cc26a40b9a6e23d051fa7c2658b90ad6e4840d1e6e7a072572e25f606eae0",
+    "web/launchpad/hook-artifacts.mjs": "8e39d765493778851d8720a956fb457b88eb13276fe65efd77a75d35ee956aa6",
+    "web/launchpad/hook-client.mjs": "40ea2805260865cc0c56932e52e8b019c5cff923a30f457d8c334adb9e218390",
+    "web/launchpad/lifecycle-artifacts.mjs": "9dfe03001aa9a3c700a72d7cff6928e5bbf1afcddc17fb21385e081f946dd52e",
+    "web/launchpad/lifecycle-client.mjs": "b191a3cef3f5cdb3b903ebd0deacf904e9c449589a1fe0be3fb750938a7044ba",
+    "web/launchpad/lifecycle.css": "78756ef50209ab503418b97c2124ad8e267e4d8b16c4015dedf516e8be44e6c9",
+    "web/launchpad/lifecycle.mjs": "8146a35fd7e9f90be212a11d964dfd92e4030d7b2b633c690805687ca25289d3",
+    "web/launchpad/links.mjs": "fb3a7a9037dbcfde364de0ad081bea0cd1dbe3f66e1fa40b2aceb0d8cbd9709d",
+    "web/launchpad/model.mjs": "6f88883a19b0beb8a77117bc61e8098d4d8f73c048bdf791bde58043c76b4623",
+    "web/launchpad/participant.css": "2304d18413f34cd78d3fc2d542f31e0428f249de875759704b27d3bd4c5ea5f5",
+    "web/launchpad/participant.mjs": "92a591dc022f7e987b4dce9e0e08ea10edc106cfbb385866169dab2064d8f368",
+    "web/launchpad/pool-participant.mjs": "d449cfdc004aaf3e178d924bc0c1f0f404b20c2ac8d64cb516d9dcdff425007a",
+    "web/launchpad/protocols-artifacts.mjs": "af16ce882e8a379981097660ce5a3a96622bc6a7ceb09cee916ba97b497f1cd5",
+    "web/launchpad/protocols-client.mjs": "ff543ca8c2fe7857b464886c6c9d6e4ddbf3efc75afbb2a96401c5bd34cd9e09",
+    "web/launchpad/protocols-deployments.mjs": "09b81ebbe9a75587a798a9e9cfcd399c5ed30471a178b9312187256208f30da7",
+    "web/launchpad/protocols-networks.mjs": "02cb1224abbc5a8067ac5dbb85f4deae9123fbd6c2b8ba69731474997865ef69",
+    "web/launchpad/protocols.css": "f43bddc98ae35d6df4ed2c3b62c8d421b435aa233ddb5c613e68789b9514ebe0",
+    "web/launchpad/protocols.mjs": "59a807b49ce8be29c8a4d5eda8cbc313b24b3ec95f296153f955461e1c1bd804",
+    "web/launchpad/sale-artifacts.mjs": "233f37780138e9cf6c241199bd972de3c4ca58a8a4341fa4b95d2ad4f78a214a",
+    "web/launchpad/sale-client.mjs": "908c9afd0feb89a7097b6e282f288d5cb6e98f276cda2cc6293b39f0e33dc6b1",
+    "web/launchpad/sale-ui.mjs": "ce1707ca84a9bb7f4bc0c48b88319212eea80767047c58dc80d9bfd3afe94a76",
+    "web/launchpad/scenario-client.mjs": "0419948e75b01db9772bd9b736d497c437ae5734bfaf9a087b322d373761d70f",
+    "web/launchpad/scenario-rules.mjs": "625b079b66f109776f6fa39a29679369e565deb81698ad4f8bbf4348fa6d5286",
+    "web/launchpad/scenarios.mjs": "3992773f4759265318107860bd2736a98cd8626428db6131fefdf7035dd912ae",
+    "web/launchpad/strategies-artifacts.mjs": "fb1398db4768220184b4dfc33df61919aa200b9f028ff0ede993e4263705d41c",
+    "web/launchpad/strategies-client.mjs": "200fc9bccb757913cb165ff7e34c0db98d1dfff7803d2bcd89e6f1e59f40677d",
+    "web/launchpad/strategies.css": "f2ac838ec595e9670f2a95553023a6a92ee7fe9e2d90565a20759b27682f4228",
+    "web/launchpad/strategies.mjs": "158507e1b940e89014746a597f79d527c653d71ff9a4bee5f5d43d21b3613881",
+    "web/launchpad/studio.css": "6c2078473fb9305f175ce45c47deb00793678f25a548fdd650385f5a7c9cac7b",
+    "web/launchpad/studio.mjs": "4e76234712adab730f6b5bc6f17b7a4a7901f3bbfe9de9c57029704800211fb1",
+    "web/launchpad/vault-client.mjs": "b13aecdaf9e2396e77a69b53a450161fc310ed76d3889809ebebf387b48b60f7",
+    "web/launchpad/vault-ui.mjs": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
+    "web/memory/app.js": "2204a61dae3606d6558f7798668503110042a088a2853a6597003f390054170c",
+    "web/memory/crypto.mjs": "9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523",
+    "web/memory/engine.mjs": "59fc5597d32a38d5da6dc06057ae02bbc26d11401933eeedf027e9657376c938",
+    "web/memory/renderer-bridge.js": "bc8aa54b17812b264c599a78d170d747da08bc46b2f05f5a8c9314da21ca20f0",
+    "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
+    "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
+    "web/operating/app.js": "9393bf4bd9d13891f3890c8d7fc5906eb17d1f3bddf615ef3a59392badfe5c56",
+    "web/operating/engine.mjs": "280072bb1f2f41fb9bedae9322820195d6c9d7a9220c7345140b16bb1b88c3b7",
+    "web/privacy/bridge.mjs": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
+    "web/privacy/railgun-worker.js": "40ef8c9a7504dd23c108205759dfca7e5219ceecef2ba58737e593e80397341b",
+    "web/privacy/recover-resource.mjs": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",
+    "web/privacy/runtime-integrity.mjs": "6957e3bb0e47c8160a4463b8bae60b1287aeeaeb3e478746ebf56516cd471a49",
+    "web/privacy/submission.mjs": "2dfd3f1f012efe7cec3196ad5f3d37cbb1e4b3a4a4ca7920b829908d114b4ff2",
+    "web/privacy/vault.mjs": "c81d6c2374999d2511cf2539332aa6e4b9667593a50b4e1786347fa62e7e9891",
+    "web/reference/approved-1.2.html": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+    "web/reference/original.html": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59",
+    "web/rehearsal/client.mjs": "2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+    "web/rehearsal/intent.mjs": "8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+    "web/rehearsal/view.mjs": "5a95e159b9a5bef05e441d69e208cb452e6752299fa6c35411e8b7808471cefe",
+    "web/renderer.js": "4c760a30b03a44fd2297658e8b8e7bafb04196769e03a6a986bc7f57a24989d5",
+    "web/spirit/geometry.mjs": "6e6b29db1fc3abf97cd2a9079cd7cb63a5c6b0de9bd4fe1377e6a945edb97285",
+    "web/styles.css": "6886447b0d2434d18abbbae53a2e796203f8bfd13307f19160bb70e527db10e0",
+    "web/v4/artifacts.mjs": "6be95aea60cdd0701a89cc629f44b653127abf57cc3bcdd1bb99ce9dc5ef1a5f",
+    "web/v4/client.mjs": "c4a01a8b385d9fe93ad4bdfac972331cc82e669aa197fc68cee8f5701a8adcf0",
+    "web/v4/desk.mjs": "88cbb3c98eae09cb2194aef2431b6ed3ab7d5d0ceb6038dd5a2a8f5c697c4129",
+    "web/v4/math.mjs": "16e914e0ff99e8ff84d6449595d863fab0ebcb722e3053fecc4e7e19e850260d",
+    "web/v4/public-session.mjs": "4308acf0e1296027b4da346c709de7f373709d340f0d3a5e6e179fca85171976",
+    "web/vendor/ethers.min.js": "66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea",
+    "web/workshop/calendar.mjs": "5e9a35ca326f8ad22c86601245448af52afb6f2272700312c95a7189759fb62a",
+    "web/workshop/client.mjs": "28fb372a4c2a24a4d0068d6316787fb40636f3369f384d192479341f5b67307a",
+    "web/workshop/contracts.mjs": "da0af5ebb9f3cd913f500123fbc3cd50ea2070b134d4b90e58eb806aab989677",
+    "web/workshop/desk.mjs": "1bd154c47e0b0b929bfac40af10118b093d858ae47fba8e7ddb4b1a852ddba94",
+    "web/worlds/commissions.mjs": "e215cfcb91efd2cc9325b906b404fb0e4127cdd18cd3cd297d7edad97b03628b",
+    "web/worlds/instruments.mjs": "e0a69cd67ba75819d9ccad51ab47c41217c11fdbde3051e4842c35c9904dd4ec"
+  },
+  "moduleGraph": {
+    "web/begins/geometry.mjs": {
+      "sha256": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
+      "dependencies": [
+        "web/confluence/identity.mjs",
+        "web/spirit/geometry.mjs"
+      ]
+    },
+    "web/begins/shaders.mjs": {
+      "sha256": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
+      "dependencies": []
+    },
+    "web/burners/desk.mjs": {
+      "sha256": "3651ccc49c6e78754b0e54ea73311bf01897fc02a76907b7ebfa86a569030a09",
+      "dependencies": [
+        "web/burners/vault.mjs",
+        "web/burners/policy.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/burners/policy.mjs": {
+      "sha256": "1ce6fe6691b7989c59b8f6cb7f83ef988928a34b1f45bf17928bed7ed5df5e14",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/burners/vault.mjs": {
+      "sha256": "60894f6a57e499d9fcab6675cff2a6f1d11b852e228123a97c28f59954e5c7ae",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/privacy/vault.mjs",
+        "web/burners/policy.mjs"
+      ]
+    },
+    "web/commons/artifacts.mjs": {
+      "sha256": "dc3cbf1be11c863dcf94b906b20dc19f3e8e3a03f5c9a38a414f71b79e52afb0",
+      "dependencies": []
+    },
+    "web/commons/client.mjs": {
+      "sha256": "376158e164bcd543f8eae2d7343e49dde5c0f55a5c8b1bb7c669824974cda779",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/privacy.mjs",
+        "web/commons/artifacts.mjs"
+      ]
+    },
+    "web/commons/desk.mjs": {
+      "sha256": "f0caa51322e2e6e86056c1aca95048dc587610920b6aab49292d5cb0949f43f4",
+      "dependencies": [
+        "web/commons/mls-desk.mjs",
+        "web/commons/client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/commons/mls-artifacts.mjs": {
+      "sha256": "a3c6443695ddbe4f10b03031ddc599d3f4029f51f548623e38865928b6abb99a",
+      "dependencies": []
+    },
+    "web/commons/mls-client.mjs": {
+      "sha256": "3a58453241a3e46caacd7df609b2b6e7e07f33e239bf3b9aa1491471465995e8",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/commons/mls-protocol.mjs",
+        "web/commons/mls-vault.mjs",
+        "web/commons/mls-artifacts.mjs",
+        "web/commons/client.mjs"
+      ]
+    },
+    "web/commons/mls-desk.mjs": {
+      "sha256": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
+      "dependencies": [
+        "web/commons/mls-client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/commons/mls-protocol.mjs": {
+      "sha256": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
+      "dependencies": []
+    },
+    "web/commons/mls-vault.mjs": {
+      "sha256": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
+      "dependencies": [
+        "web/commons/mls-protocol.mjs"
+      ]
+    },
+    "web/confluence/app.js": {
+      "sha256": "15479c960f0e161e7d27a43e0770df00f08c4145d9c87e65a802b430e7518c22",
+      "dependencies": [
+        "web/confluence/release-capabilities.mjs",
+        "web/confluence/selected-context.mjs",
+        "web/confluence/capabilities.mjs",
+        "web/workshop/desk.mjs",
+        "web/v4/desk.mjs",
+        "web/launchpad/desk.mjs",
+        "web/governance/desk.mjs",
+        "web/crosschain/desk.mjs",
+        "web/commons/desk.mjs",
+        "web/launchpad/participant.mjs",
+        "web/launchpad/links.mjs",
+        "web/genesis/live-desk.mjs",
+        "web/extensions/desk.mjs",
+        "web/genesis/interior.mjs",
+        "web/exit/live-ui.mjs",
+        "web/burners/desk.mjs",
+        "web/confluence/identity.mjs",
+        "web/genesis/field.js",
+        "web/genesis/atlas.mjs",
+        "web/confluence/economy.mjs",
+        "web/confluence/wallet.mjs",
+        "web/confluence/console-core.mjs",
+        "web/evm.mjs",
+        "web/confluence/archive.mjs"
+      ]
+    },
+    "web/confluence/archive.mjs": {
+      "sha256": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
+      "dependencies": [
+        "web/model.mjs",
+        "web/confluence/economy.mjs",
+        "web/confluence/console-core.mjs"
+      ]
+    },
+    "web/confluence/capabilities.mjs": {
+      "sha256": "ed952c7476e4192bc90a2b9d1a56333e4a5d967131dfe6b21de14e8ca85e1f08",
+      "dependencies": []
+    },
+    "web/confluence/console-core.mjs": {
+      "sha256": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
+      "dependencies": []
+    },
+    "web/confluence/economy.mjs": {
+      "sha256": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/confluence/identity.mjs": {
+      "sha256": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/confluence/minted-identity.mjs": {
+      "sha256": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+      "dependencies": []
+    },
+    "web/confluence/particles.js": {
+      "sha256": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+      "dependencies": [
+        "web/confluence/identity.mjs"
+      ]
+    },
+    "web/confluence/release-capabilities.mjs": {
+      "sha256": "11bd0e2b7e9ab52228a445177c33d64bd6b10fb2a3ae2a7bb475aa661ed95507",
+      "dependencies": []
+    },
+    "web/confluence/selected-context.mjs": {
+      "sha256": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
+      "dependencies": [
+        "web/confluence/minted-identity.mjs"
+      ]
+    },
+    "web/confluence/wallet.mjs": {
+      "sha256": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+      "dependencies": [
+        "web/confluence/minted-identity.mjs",
+        "web/rehearsal/client.mjs",
+        "web/extensions/proof.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/crosschain/artifacts.mjs": {
+      "sha256": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
+      "dependencies": []
+    },
+    "web/crosschain/client.mjs": {
+      "sha256": "59144eed58391309fb13316a8abe3fde395b6f6cd9683bee5d5077be761e37d3",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/sale-client.mjs",
+        "web/crosschain/artifacts.mjs"
+      ]
+    },
+    "web/crosschain/desk.mjs": {
+      "sha256": "9b3826473774bbe8339e277e8884b6113b64e5c850294aad6bb4009cdfe5c9ea",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/crosschain/client.mjs"
+      ]
+    },
+    "web/evm.mjs": {
+      "sha256": "cb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+      "dependencies": []
+    },
+    "web/exit/artifacts.mjs": {
+      "sha256": "81442bb72de8eaff6426ff284fccd54c6ecee26567a75bd99bc73ae4ff85c211",
+      "dependencies": []
+    },
+    "web/exit/live-ui.mjs": {
+      "sha256": "3c5faca4c005c79ff8ecc0fb67fa2a3da578333e9076a05781839430ce530395",
+      "dependencies": [
+        "web/exit/live.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/exit/live.mjs": {
+      "sha256": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
+      "dependencies": [
+        "web/exit/artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/access.mjs": {
+      "sha256": "8697aa024eaea6fef8750224eb76b4264f14ee72a4d019182e9f88528de82f2e",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/agents.mjs": {
+      "sha256": "5762161784210a6fb65742d6cc783b1cf37b5b4766f75fad83e59bca4d5afb6b",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/service-origin.mjs"
+      ]
+    },
+    "web/extensions/artifacts.mjs": {
+      "sha256": "0cd831d2ea26f9e87e8444f6c52f5bc3eb31eb5e1c3ec964218064581c9568a6",
+      "dependencies": []
+    },
+    "web/extensions/desk.mjs": {
+      "sha256": "9090b4232581bcace1e6d7b905a1940091afacc68432845930c8bf6a62264bd3",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/artifacts.mjs",
+        "web/extensions/markets.mjs",
+        "web/extensions/agents.mjs",
+        "web/extensions/experimental.mjs",
+        "web/extensions/access.mjs",
+        "web/extensions/privacy/desk.mjs",
+        "web/extensions/privacy.mjs",
+        "web/extensions/worlds.mjs",
+        "web/extensions/security.mjs",
+        "web/extensions/proof.mjs"
+      ]
+    },
+    "web/extensions/experimental.mjs": {
+      "sha256": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/markets.mjs": {
+      "sha256": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/extensions/privacy.mjs": {
+      "sha256": "3123b55bdf0463d860dad6bf5db76b9705a87ea632638283b92f6227a9384e6b",
+      "dependencies": [
+        "web/evm.mjs",
+        "web/extensions/privacy/crypto.mjs"
+      ]
+    },
+    "web/extensions/privacy/crypto.mjs": {
+      "sha256": "609fb068621b8ba60f63f209824e6eb450ff91462b51a8af8f1acbcd5118f3b0",
+      "dependencies": [
+        "web/evm.mjs"
+      ]
+    },
+    "web/extensions/privacy/desk.mjs": {
+      "sha256": "b7ceefcb141eaad2e4f88eb30667b4fa8cda64ea2277c0e2c60c802042abdf91",
+      "dependencies": [
+        "web/extensions/privacy.mjs"
+      ]
+    },
+    "web/extensions/proof.mjs": {
+      "sha256": "ad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/genesis/live-protocol.mjs",
+        "web/extensions/service-origin.mjs"
+      ]
+    },
+    "web/extensions/security.mjs": {
+      "sha256": "80d96c6139aee0b69c884344fb44f8869dc5a45d5a99faea28a67dc66c047857",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/extensions/service-origin.mjs": {
+      "sha256": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+      "dependencies": []
+    },
+    "web/extensions/worlds.mjs": {
+      "sha256": "e32e536d9fff5f3f147396e3a7f5445c15ce65ee88c9c2f67edd0f87f7a76dd0",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/service-origin.mjs",
+        "web/worlds/instruments.mjs",
+        "web/worlds/commissions.mjs"
+      ]
+    },
+    "web/genesis/atlas.mjs": {
+      "sha256": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
+      "dependencies": []
+    },
+    "web/genesis/field.js": {
+      "sha256": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+      "dependencies": [
+        "web/confluence/particles.js",
+        "web/begins/geometry.mjs",
+        "web/begins/shaders.mjs",
+        "web/genesis/projection.mjs"
+      ]
+    },
+    "web/genesis/interior-cpu.mjs": {
+      "sha256": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
+      "dependencies": [
+        "web/genesis/interior-kernel.mjs"
+      ]
+    },
+    "web/genesis/interior-gestures.mjs": {
+      "sha256": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
+      "dependencies": []
+    },
+    "web/genesis/interior-kernel.mjs": {
+      "sha256": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
+      "dependencies": []
+    },
+    "web/genesis/interior-quality.mjs": {
+      "sha256": "6a01e76803ab868954fe67f92d7f43ff5651067af45c34aef07d2c4cdb1ab787",
+      "dependencies": []
+    },
+    "web/genesis/interior-shader.mjs": {
+      "sha256": "448c32583e9748d5d730524a2e4ddde048ae150b877532fe2beb9b8d1dd8b303",
+      "dependencies": [
+        "web/genesis/interior-kernel.mjs"
+      ]
+    },
+    "web/genesis/interior-space.mjs": {
+      "sha256": "d8a3f675a264698d0d2cfb5905e191ae95afdb5410a9c7dc4c1872c371360102",
+      "dependencies": []
+    },
+    "web/genesis/interior.mjs": {
+      "sha256": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
+      "dependencies": [
+        "web/genesis/interior-space.mjs",
+        "web/genesis/interior-gestures.mjs"
+      ]
+    },
+    "web/genesis/live-desk.mjs": {
+      "sha256": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
+      "dependencies": [
+        "web/rehearsal/client.mjs",
+        "web/rehearsal/view.mjs",
+        "web/genesis/live-protocol.mjs"
+      ]
+    },
+    "web/genesis/live-protocol.mjs": {
+      "sha256": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/genesis/projection.mjs": {
+      "sha256": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+      "dependencies": [
+        "web/genesis/interior-quality.mjs",
+        "web/genesis/interior-shader.mjs",
+        "web/genesis/interior-cpu.mjs"
+      ]
+    },
+    "web/governance/artifacts.mjs": {
+      "sha256": "1748dc212486949b4581e203fa47b4ad4b8169afdefafc439eb7df073d45df52",
+      "dependencies": []
+    },
+    "web/governance/client.mjs": {
+      "sha256": "08b867ff7f421ae60a404fe3adf243aafb76ea0f422be7d60340b83d5991285f",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/governance/artifacts.mjs",
+        "web/launchpad/account-session.mjs"
+      ]
+    },
+    "web/governance/desk.mjs": {
+      "sha256": "dd7b11c31c17ccf012e3c10a63bc270a95fb0f5c1721222adfb2d558eb682b1e",
+      "dependencies": [
+        "web/governance/client.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/account-session.mjs": {
+      "sha256": "f53186f69bf07324e4268ad00b8771d54c77b6829884656355f57280b46bc80d",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/artifacts.mjs"
+      ]
+    },
+    "web/launchpad/auction-artifacts.mjs": {
+      "sha256": "aad26786c72fc93211d6f95af4868f4a62b7dcf455f87300254e0f0db9a38994",
+      "dependencies": []
+    },
+    "web/launchpad/auction-client.mjs": {
+      "sha256": "09de23b87aac9973ccc0eeff00df6d85adeba687bc33a3bd997a5d404c53ba2a",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/extensions/markets.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/auction-artifacts.mjs",
+        "web/launchpad/lifecycle-artifacts.mjs"
+      ]
+    },
+    "web/launchpad/chain.mjs": {
+      "sha256": "1c8f3038746d666ba160840120b6eb635842a973aa2a67bad73f517a63688fb0",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/protocols-client.mjs",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/strategies-client.mjs",
+        "web/governance/client.mjs",
+        "web/crosschain/client.mjs",
+        "web/v4/artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/v4/math.mjs",
+        "web/launchpad/deployments.mjs",
+        "web/launchpad/account-session.mjs"
+      ]
+    },
+    "web/launchpad/deployments.mjs": {
+      "sha256": "875ac33ccc1785f41fca2f7e0e5da03bbffcd3a80402413e1c1aefb997026e4c",
+      "dependencies": []
+    },
+    "web/launchpad/desk.mjs": {
+      "sha256": "3f981e66ffed92551aced2b700ea5da274be7fd30ddfcba7c7e56600f3f43c8c",
+      "dependencies": [
+        "web/launchpad/chain.mjs",
+        "web/launchpad/studio.mjs",
+        "web/launchpad/model.mjs",
+        "web/v4/desk.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/sale-ui.mjs",
+        "web/launchpad/sale-artifacts.mjs",
+        "web/launchpad/links.mjs",
+        "web/launchpad/vault-ui.mjs",
+        "web/launchpad/lifecycle.mjs",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/strategies.mjs",
+        "web/launchpad/economics.mjs",
+        "web/launchpad/protocols.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/hook-artifacts.mjs",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/economics-auction.mjs": {
+      "sha256": "9bf4a5ca9008be0b4fb48ed271019dd5dcf8902a7010e2af0ac5e32e468a9660",
+      "dependencies": [
+        "web/launchpad/model.mjs"
+      ]
+    },
+    "web/launchpad/economics-engine.mjs": {
+      "sha256": "ce6392868ffeea842b00dfc2636f137c366f00f5c103208f3ed1f906149baa54",
+      "dependencies": [
+        "web/launchpad/model.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/launchpad/economics.mjs": {
+      "sha256": "e81cc26a40b9a6e23d051fa7c2658b90ad6e4840d1e6e7a072572e25f606eae0",
+      "dependencies": [
+        "web/launchpad/economics-auction.mjs",
+        "web/launchpad/scenarios.mjs",
+        "web/launchpad/scenario-client.mjs",
+        "web/launchpad/model.mjs",
+        "web/launchpad/economics-engine.mjs"
+      ]
+    },
+    "web/launchpad/hook-artifacts.mjs": {
+      "sha256": "8e39d765493778851d8720a956fb457b88eb13276fe65efd77a75d35ee956aa6",
+      "dependencies": []
+    },
+    "web/launchpad/hook-client.mjs": {
+      "sha256": "40ea2805260865cc0c56932e52e8b019c5cff923a30f457d8c334adb9e218390",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/hook-artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/launchpad/lifecycle-artifacts.mjs": {
+      "sha256": "9dfe03001aa9a3c700a72d7cff6928e5bbf1afcddc17fb21385e081f946dd52e",
+      "dependencies": []
+    },
+    "web/launchpad/lifecycle-client.mjs": {
+      "sha256": "b191a3cef3f5cdb3b903ebd0deacf904e9c449589a1fe0be3fb750938a7044ba",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/artifacts.mjs",
+        "web/launchpad/sale-artifacts.mjs",
+        "web/launchpad/auction-artifacts.mjs",
+        "web/launchpad/lifecycle-artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/launchpad/model.mjs",
+        "web/launchpad/vault-client.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/pool-participant.mjs"
+      ]
+    },
+    "web/launchpad/lifecycle.mjs": {
+      "sha256": "8146a35fd7e9f90be212a11d964dfd92e4030d7b2b633c690805687ca25289d3",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/links.mjs"
+      ]
+    },
+    "web/launchpad/links.mjs": {
+      "sha256": "fb3a7a9037dbcfde364de0ad081bea0cd1dbe3f66e1fa40b2aceb0d8cbd9709d",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/model.mjs": {
+      "sha256": "6f88883a19b0beb8a77117bc61e8098d4d8f73c048bdf791bde58043c76b4623",
+      "dependencies": [
+        "web/v4/math.mjs",
+        "web/confluence/economy.mjs"
+      ]
+    },
+    "web/launchpad/participant.mjs": {
+      "sha256": "92a591dc022f7e987b4dce9e0e08ea10edc106cfbb385866169dab2064d8f368",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/chain.mjs",
+        "web/launchpad/sale-client.mjs",
+        "web/launchpad/auction-client.mjs",
+        "web/launchpad/links.mjs",
+        "web/launchpad/pool-participant.mjs",
+        "web/launchpad/lifecycle-client.mjs"
+      ]
+    },
+    "web/launchpad/pool-participant.mjs": {
+      "sha256": "d449cfdc004aaf3e178d924bc0c1f0f404b20c2ac8d64cb516d9dcdff425007a",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/artifacts.mjs",
+        "web/launchpad/hook-artifacts.mjs",
+        "web/v4/client.mjs"
+      ]
+    },
+    "web/launchpad/protocols-artifacts.mjs": {
+      "sha256": "af16ce882e8a379981097660ce5a3a96622bc6a7ceb09cee916ba97b497f1cd5",
+      "dependencies": []
+    },
+    "web/launchpad/protocols-client.mjs": {
+      "sha256": "ff543ca8c2fe7857b464886c6c9d6e4ddbf3efc75afbb2a96401c5bd34cd9e09",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/protocols-artifacts.mjs",
+        "web/launchpad/protocols-deployments.mjs"
+      ]
+    },
+    "web/launchpad/protocols-deployments.mjs": {
+      "sha256": "09b81ebbe9a75587a798a9e9cfcd399c5ed30471a178b9312187256208f30da7",
+      "dependencies": []
+    },
+    "web/launchpad/protocols-networks.mjs": {
+      "sha256": "02cb1224abbc5a8067ac5dbb85f4deae9123fbd6c2b8ba69731474997865ef69",
+      "dependencies": []
+    },
+    "web/launchpad/protocols.mjs": {
+      "sha256": "59a807b49ce8be29c8a4d5eda8cbc313b24b3ec95f296153f955461e1c1bd804",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/protocols-client.mjs",
+        "web/launchpad/protocols-artifacts.mjs",
+        "web/launchpad/protocols-deployments.mjs",
+        "web/launchpad/lifecycle-client.mjs",
+        "web/launchpad/protocols-networks.mjs",
+        "web/vendor/ethers.min.js",
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/launchpad/sale-artifacts.mjs": {
+      "sha256": "233f37780138e9cf6c241199bd972de3c4ca58a8a4341fa4b95d2ad4f78a214a",
+      "dependencies": []
+    },
+    "web/launchpad/sale-client.mjs": {
+      "sha256": "908c9afd0feb89a7097b6e282f288d5cb6e98f276cda2cc6293b39f0e33dc6b1",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/sale-artifacts.mjs"
+      ]
+    },
+    "web/launchpad/sale-ui.mjs": {
+      "sha256": "ce1707ca84a9bb7f4bc0c48b88319212eea80767047c58dc80d9bfd3afe94a76",
+      "dependencies": []
+    },
+    "web/launchpad/scenario-client.mjs": {
+      "sha256": "0419948e75b01db9772bd9b736d497c437ae5734bfaf9a087b322d373761d70f",
+      "dependencies": [
+        "web/launchpad/scenario-rules.mjs"
+      ]
+    },
+    "web/launchpad/scenario-rules.mjs": {
+      "sha256": "625b079b66f109776f6fa39a29679369e565deb81698ad4f8bbf4348fa6d5286",
+      "dependencies": []
+    },
+    "web/launchpad/scenarios.mjs": {
+      "sha256": "3992773f4759265318107860bd2736a98cd8626428db6131fefdf7035dd912ae",
+      "dependencies": [
+        "web/launchpad/model.mjs"
+      ]
+    },
+    "web/launchpad/strategies-artifacts.mjs": {
+      "sha256": "fb1398db4768220184b4dfc33df61919aa200b9f028ff0ede993e4263705d41c",
+      "dependencies": []
+    },
+    "web/launchpad/strategies-client.mjs": {
+      "sha256": "200fc9bccb757913cb165ff7e34c0db98d1dfff7803d2bcd89e6f1e59f40677d",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/strategies-artifacts.mjs",
+        "web/v4/client.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/launchpad/strategies.mjs": {
+      "sha256": "158507e1b940e89014746a597f79d527c653d71ff9a4bee5f5d43d21b3613881",
+      "dependencies": [
+        "web/launchpad/strategies-client.mjs"
+      ]
+    },
+    "web/launchpad/studio.mjs": {
+      "sha256": "4e76234712adab730f6b5bc6f17b7a4a7901f3bbfe9de9c57029704800211fb1",
+      "dependencies": [
+        "web/launchpad/model.mjs",
+        "web/launchpad/scenarios.mjs",
+        "web/privacy/vault.mjs"
+      ]
+    },
+    "web/launchpad/vault-client.mjs": {
+      "sha256": "b13aecdaf9e2396e77a69b53a450161fc310ed76d3889809ebebf387b48b60f7",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/launchpad/sale-client.mjs"
+      ]
+    },
+    "web/launchpad/vault-ui.mjs": {
+      "sha256": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
+      "dependencies": [
+        "web/launchpad/vault-client.mjs"
+      ]
+    },
+    "web/model.mjs": {
+      "sha256": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
+      "dependencies": []
+    },
+    "web/privacy/bridge.mjs": {
+      "sha256": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
+      "dependencies": [
+        "web/privacy/recover-resource.mjs",
+        "web/privacy/runtime-integrity.mjs"
+      ]
+    },
+    "web/privacy/recover-resource.mjs": {
+      "sha256": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",
+      "dependencies": []
+    },
+    "web/privacy/runtime-integrity.mjs": {
+      "sha256": "6957e3bb0e47c8160a4463b8bae60b1287aeeaeb3e478746ebf56516cd471a49",
+      "dependencies": []
+    },
+    "web/privacy/submission.mjs": {
+      "sha256": "2dfd3f1f012efe7cec3196ad5f3d37cbb1e4b3a4a4ca7920b829908d114b4ff2",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/privacy/vault.mjs": {
+      "sha256": "c81d6c2374999d2511cf2539332aa6e4b9667593a50b4e1786347fa62e7e9891",
+      "dependencies": []
+    },
+    "web/rehearsal/client.mjs": {
+      "sha256": "2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+      "dependencies": [
+        "web/rehearsal/intent.mjs"
+      ]
+    },
+    "web/rehearsal/intent.mjs": {
+      "sha256": "8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/rehearsal/view.mjs": {
+      "sha256": "5a95e159b9a5bef05e441d69e208cb452e6752299fa6c35411e8b7808471cefe",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/spirit/geometry.mjs": {
+      "sha256": "6e6b29db1fc3abf97cd2a9079cd7cb63a5c6b0de9bd4fe1377e6a945edb97285",
+      "dependencies": [
+        "web/confluence/identity.mjs"
+      ]
+    },
+    "web/v4/artifacts.mjs": {
+      "sha256": "6be95aea60cdd0701a89cc629f44b653127abf57cc3bcdd1bb99ce9dc5ef1a5f",
+      "dependencies": []
+    },
+    "web/v4/client.mjs": {
+      "sha256": "c4a01a8b385d9fe93ad4bdfac972331cc82e669aa197fc68cee8f5701a8adcf0",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/artifacts.mjs",
+        "web/launchpad/hook-client.mjs",
+        "web/v4/math.mjs"
+      ]
+    },
+    "web/v4/desk.mjs": {
+      "sha256": "88cbb3c98eae09cb2194aef2431b6ed3ab7d5d0ceb6038dd5a2a8f5c697c4129",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/privacy/vault.mjs",
+        "web/privacy/submission.mjs",
+        "web/privacy/bridge.mjs",
+        "web/v4/public-session.mjs",
+        "web/v4/client.mjs"
+      ]
+    },
+    "web/v4/math.mjs": {
+      "sha256": "16e914e0ff99e8ff84d6449595d863fab0ebcb722e3053fecc4e7e19e850260d",
+      "dependencies": []
+    },
+    "web/v4/public-session.mjs": {
+      "sha256": "4308acf0e1296027b4da346c709de7f373709d340f0d3a5e6e179fca85171976",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/v4/client.mjs"
+      ]
+    },
+    "web/vendor/ethers.min.js": {
+      "sha256": "66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea",
+      "dependencies": []
+    },
+    "web/workshop/calendar.mjs": {
+      "sha256": "5e9a35ca326f8ad22c86601245448af52afb6f2272700312c95a7189759fb62a",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    },
+    "web/workshop/client.mjs": {
+      "sha256": "28fb372a4c2a24a4d0068d6316787fb40636f3369f384d192479341f5b67307a",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/genesis/live-protocol.mjs",
+        "web/workshop/calendar.mjs",
+        "web/workshop/contracts.mjs"
+      ]
+    },
+    "web/workshop/contracts.mjs": {
+      "sha256": "da0af5ebb9f3cd913f500123fbc3cd50ea2070b134d4b90e58eb806aab989677",
+      "dependencies": []
+    },
+    "web/workshop/desk.mjs": {
+      "sha256": "1bd154c47e0b0b929bfac40af10118b093d858ae47fba8e7ddb4b1a852ddba94",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/workshop/client.mjs",
+        "web/workshop/calendar.mjs",
+        "web/workshop/contracts.mjs"
+      ]
+    },
+    "web/worlds/commissions.mjs": {
+      "sha256": "e215cfcb91efd2cc9325b906b404fb0e4127cdd18cd3cd297d7edad97b03628b",
+      "dependencies": [
+        "web/vendor/ethers.min.js",
+        "web/workshop/client.mjs",
+        "web/genesis/live-protocol.mjs",
+        "web/worlds/instruments.mjs"
+      ]
+    },
+    "web/worlds/instruments.mjs": {
+      "sha256": "e0a69cd67ba75819d9ccad51ab47c41217c11fdbde3051e4842c35c9904dd4ec",
+      "dependencies": [
+        "web/vendor/ethers.min.js"
+      ]
+    }
+  },
+  "resources": [
+    "web/cartridges/lumen-drift.html",
+    "web/privacy/railgun-worker.js"
+  ],
+  "outputs": {
+    "abis/CartridgeRegistry.json": "3c3d6c4dcd54ce14cec7cc7af9cb1de522eb68e98bf73502f05d059d59dd4e95",
+    "index.html": "89d27f3155400c4d0d17dc81bf1061ddfe8c3b0df1d2558c78b0060428553bfd",
+    "manifest.webmanifest": "3eeddcc5a0e5dd67917485d5966980e7013afa1b4876278c36f7099dca41edea",
+    "original.html": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+    "web/begins/geometry.mjs": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
+    "web/begins/shaders.mjs": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
+    "web/burners/desk.mjs": "3651ccc49c6e78754b0e54ea73311bf01897fc02a76907b7ebfa86a569030a09",
+    "web/burners/policy.mjs": "1ce6fe6691b7989c59b8f6cb7f83ef988928a34b1f45bf17928bed7ed5df5e14",
+    "web/burners/vault.mjs": "60894f6a57e499d9fcab6675cff2a6f1d11b852e228123a97c28f59954e5c7ae",
+    "web/cartridges/lumen-drift.html": "0dd512bab544737a60f7481d2df9bdef549c974e6638cee3f31b4fc46709ed4b",
+    "web/commons/artifacts.mjs": "dc3cbf1be11c863dcf94b906b20dc19f3e8e3a03f5c9a38a414f71b79e52afb0",
+    "web/commons/client.mjs": "376158e164bcd543f8eae2d7343e49dde5c0f55a5c8b1bb7c669824974cda779",
+    "web/commons/desk.css": "3b1cfc89e559d2b38918e997bcd0b6a9cbe7469c8b1aca6138f7a4e5c6cd26c7",
+    "web/commons/desk.mjs": "f0caa51322e2e6e86056c1aca95048dc587610920b6aab49292d5cb0949f43f4",
+    "web/commons/mls-artifacts.mjs": "a3c6443695ddbe4f10b03031ddc599d3f4029f51f548623e38865928b6abb99a",
+    "web/commons/mls-client.mjs": "3a58453241a3e46caacd7df609b2b6e7e07f33e239bf3b9aa1491471465995e8",
+    "web/commons/mls-desk.mjs": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
+    "web/commons/mls-protocol.mjs": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
+    "web/commons/mls-vault.mjs": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
+    "web/confluence/app.js": "15479c960f0e161e7d27a43e0770df00f08c4145d9c87e65a802b430e7518c22",
+    "web/confluence/archive.mjs": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
+    "web/confluence/capabilities.mjs": "ed952c7476e4192bc90a2b9d1a56333e4a5d967131dfe6b21de14e8ca85e1f08",
+    "web/confluence/console-core.mjs": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
+    "web/confluence/economy.mjs": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
+    "web/confluence/identity.mjs": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
+    "web/confluence/minted-identity.mjs": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+    "web/confluence/particles.js": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+    "web/confluence/release-capabilities.mjs": "11bd0e2b7e9ab52228a445177c33d64bd6b10fb2a3ae2a7bb475aa661ed95507",
+    "web/confluence/selected-context.mjs": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
+    "web/confluence/styles.css": "11c74d29d1d309e2a0b84dd839f57ce02c2611a6a0bb90b6f57bf25f0b6d830f",
+    "web/confluence/surfaces.css": "3f6471534be33e538e181373088795fd5817cd0445cc8e2410183f639bc70850",
+    "web/confluence/wallet.mjs": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+    "web/crosschain/artifacts.mjs": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
+    "web/crosschain/client.mjs": "59144eed58391309fb13316a8abe3fde395b6f6cd9683bee5d5077be761e37d3",
+    "web/crosschain/desk.css": "e48d906134e9c1483bb6288d407d847f1210f462e36d4d7af6756cdceb8e3b0b",
+    "web/crosschain/desk.mjs": "9b3826473774bbe8339e277e8884b6113b64e5c850294aad6bb4009cdfe5c9ea",
+    "web/evm.mjs": "cb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+    "web/exit/artifacts.mjs": "81442bb72de8eaff6426ff284fccd54c6ecee26567a75bd99bc73ae4ff85c211",
+    "web/exit/live-ui.mjs": "3c5faca4c005c79ff8ecc0fb67fa2a3da578333e9076a05781839430ce530395",
+    "web/exit/live.mjs": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
+    "web/extensions/access.mjs": "8697aa024eaea6fef8750224eb76b4264f14ee72a4d019182e9f88528de82f2e",
+    "web/extensions/agents.mjs": "5762161784210a6fb65742d6cc783b1cf37b5b4766f75fad83e59bca4d5afb6b",
+    "web/extensions/artifacts.mjs": "0cd831d2ea26f9e87e8444f6c52f5bc3eb31eb5e1c3ec964218064581c9568a6",
+    "web/extensions/desk.mjs": "9090b4232581bcace1e6d7b905a1940091afacc68432845930c8bf6a62264bd3",
+    "web/extensions/experimental.mjs": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
+    "web/extensions/markets.mjs": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
+    "web/extensions/privacy.mjs": "3123b55bdf0463d860dad6bf5db76b9705a87ea632638283b92f6227a9384e6b",
+    "web/extensions/privacy/crypto.mjs": "609fb068621b8ba60f63f209824e6eb450ff91462b51a8af8f1acbcd5118f3b0",
+    "web/extensions/privacy/desk.mjs": "b7ceefcb141eaad2e4f88eb30667b4fa8cda64ea2277c0e2c60c802042abdf91",
+    "web/extensions/proof.mjs": "ad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+    "web/extensions/security.mjs": "80d96c6139aee0b69c884344fb44f8869dc5a45d5a99faea28a67dc66c047857",
+    "web/extensions/service-origin.mjs": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+    "web/extensions/worlds.mjs": "e32e536d9fff5f3f147396e3a7f5445c15ce65ee88c9c2f67edd0f87f7a76dd0",
+    "web/genesis/atlas.mjs": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
+    "web/genesis/field.js": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+    "web/genesis/interior-cpu.mjs": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
+    "web/genesis/interior-gestures.mjs": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
+    "web/genesis/interior-kernel.mjs": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
+    "web/genesis/interior-quality.mjs": "6a01e76803ab868954fe67f92d7f43ff5651067af45c34aef07d2c4cdb1ab787",
+    "web/genesis/interior-shader.mjs": "448c32583e9748d5d730524a2e4ddde048ae150b877532fe2beb9b8d1dd8b303",
+    "web/genesis/interior-space.mjs": "d8a3f675a264698d0d2cfb5905e191ae95afdb5410a9c7dc4c1872c371360102",
+    "web/genesis/interior.css": "f4e574371946d561a37d1035ce9aa933c84d1f6d560e0fae988703de42c78d56",
+    "web/genesis/interior.mjs": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
+    "web/genesis/live-desk.mjs": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
+    "web/genesis/live-protocol.mjs": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+    "web/genesis/projection.mjs": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+    "web/genesis/styles.css": "96f125944b83bf0abb0bb9d87d6663e0965e48423271fa1745dc3f47bed1f36b",
+    "web/governance/artifacts.mjs": "1748dc212486949b4581e203fa47b4ad4b8169afdefafc439eb7df073d45df52",
+    "web/governance/client.mjs": "08b867ff7f421ae60a404fe3adf243aafb76ea0f422be7d60340b83d5991285f",
+    "web/governance/desk.css": "aadb744ce7010f4c4d73266e1b94a649f01f1300a4c3987686e80a07528ad3fd",
+    "web/governance/desk.mjs": "dd7b11c31c17ccf012e3c10a63bc270a95fb0f5c1721222adfb2d558eb682b1e",
+    "web/instruments/styles.css": "86cab9b89f0426bb865691b7811a1ec3bf31394e8f77d990ec3b3eaab5d864b9",
+    "web/launchpad/account-session.mjs": "f53186f69bf07324e4268ad00b8771d54c77b6829884656355f57280b46bc80d",
+    "web/launchpad/auction-artifacts.mjs": "aad26786c72fc93211d6f95af4868f4a62b7dcf455f87300254e0f0db9a38994",
+    "web/launchpad/auction-client.mjs": "09de23b87aac9973ccc0eeff00df6d85adeba687bc33a3bd997a5d404c53ba2a",
+    "web/launchpad/chain.mjs": "1c8f3038746d666ba160840120b6eb635842a973aa2a67bad73f517a63688fb0",
+    "web/launchpad/deployments.mjs": "875ac33ccc1785f41fca2f7e0e5da03bbffcd3a80402413e1c1aefb997026e4c",
+    "web/launchpad/desk.css": "72c6baa6c1c1b12410f63dee5e59b8921eadbb4f4fde7d1aa1ab387bdc068cc5",
+    "web/launchpad/desk.mjs": "3f981e66ffed92551aced2b700ea5da274be7fd30ddfcba7c7e56600f3f43c8c",
+    "web/launchpad/economics-auction.mjs": "9bf4a5ca9008be0b4fb48ed271019dd5dcf8902a7010e2af0ac5e32e468a9660",
+    "web/launchpad/economics-engine.mjs": "ce6392868ffeea842b00dfc2636f137c366f00f5c103208f3ed1f906149baa54",
+    "web/launchpad/economics.css": "1d42440b382fce70e679c9ffaee58cfa627f36867a451608f9be962b7d6cbd76",
+    "web/launchpad/economics.mjs": "e81cc26a40b9a6e23d051fa7c2658b90ad6e4840d1e6e7a072572e25f606eae0",
+    "web/launchpad/hook-artifacts.mjs": "8e39d765493778851d8720a956fb457b88eb13276fe65efd77a75d35ee956aa6",
+    "web/launchpad/hook-client.mjs": "40ea2805260865cc0c56932e52e8b019c5cff923a30f457d8c334adb9e218390",
+    "web/launchpad/lifecycle-artifacts.mjs": "9dfe03001aa9a3c700a72d7cff6928e5bbf1afcddc17fb21385e081f946dd52e",
+    "web/launchpad/lifecycle-client.mjs": "b191a3cef3f5cdb3b903ebd0deacf904e9c449589a1fe0be3fb750938a7044ba",
+    "web/launchpad/lifecycle.css": "78756ef50209ab503418b97c2124ad8e267e4d8b16c4015dedf516e8be44e6c9",
+    "web/launchpad/lifecycle.mjs": "8146a35fd7e9f90be212a11d964dfd92e4030d7b2b633c690805687ca25289d3",
+    "web/launchpad/links.mjs": "fb3a7a9037dbcfde364de0ad081bea0cd1dbe3f66e1fa40b2aceb0d8cbd9709d",
+    "web/launchpad/model.mjs": "6f88883a19b0beb8a77117bc61e8098d4d8f73c048bdf791bde58043c76b4623",
+    "web/launchpad/participant.css": "2304d18413f34cd78d3fc2d542f31e0428f249de875759704b27d3bd4c5ea5f5",
+    "web/launchpad/participant.mjs": "92a591dc022f7e987b4dce9e0e08ea10edc106cfbb385866169dab2064d8f368",
+    "web/launchpad/pool-participant.mjs": "d449cfdc004aaf3e178d924bc0c1f0f404b20c2ac8d64cb516d9dcdff425007a",
+    "web/launchpad/protocols-artifacts.mjs": "af16ce882e8a379981097660ce5a3a96622bc6a7ceb09cee916ba97b497f1cd5",
+    "web/launchpad/protocols-client.mjs": "ff543ca8c2fe7857b464886c6c9d6e4ddbf3efc75afbb2a96401c5bd34cd9e09",
+    "web/launchpad/protocols-deployments.mjs": "09b81ebbe9a75587a798a9e9cfcd399c5ed30471a178b9312187256208f30da7",
+    "web/launchpad/protocols-networks.mjs": "02cb1224abbc5a8067ac5dbb85f4deae9123fbd6c2b8ba69731474997865ef69",
+    "web/launchpad/protocols.css": "f43bddc98ae35d6df4ed2c3b62c8d421b435aa233ddb5c613e68789b9514ebe0",
+    "web/launchpad/protocols.mjs": "59a807b49ce8be29c8a4d5eda8cbc313b24b3ec95f296153f955461e1c1bd804",
+    "web/launchpad/sale-artifacts.mjs": "233f37780138e9cf6c241199bd972de3c4ca58a8a4341fa4b95d2ad4f78a214a",
+    "web/launchpad/sale-client.mjs": "908c9afd0feb89a7097b6e282f288d5cb6e98f276cda2cc6293b39f0e33dc6b1",
+    "web/launchpad/sale-ui.mjs": "ce1707ca84a9bb7f4bc0c48b88319212eea80767047c58dc80d9bfd3afe94a76",
+    "web/launchpad/scenario-client.mjs": "0419948e75b01db9772bd9b736d497c437ae5734bfaf9a087b322d373761d70f",
+    "web/launchpad/scenario-rules.mjs": "625b079b66f109776f6fa39a29679369e565deb81698ad4f8bbf4348fa6d5286",
+    "web/launchpad/scenarios.mjs": "3992773f4759265318107860bd2736a98cd8626428db6131fefdf7035dd912ae",
+    "web/launchpad/strategies-artifacts.mjs": "fb1398db4768220184b4dfc33df61919aa200b9f028ff0ede993e4263705d41c",
+    "web/launchpad/strategies-client.mjs": "200fc9bccb757913cb165ff7e34c0db98d1dfff7803d2bcd89e6f1e59f40677d",
+    "web/launchpad/strategies.css": "f2ac838ec595e9670f2a95553023a6a92ee7fe9e2d90565a20759b27682f4228",
+    "web/launchpad/strategies.mjs": "158507e1b940e89014746a597f79d527c653d71ff9a4bee5f5d43d21b3613881",
+    "web/launchpad/studio.css": "6c2078473fb9305f175ce45c47deb00793678f25a548fdd650385f5a7c9cac7b",
+    "web/launchpad/studio.mjs": "4e76234712adab730f6b5bc6f17b7a4a7901f3bbfe9de9c57029704800211fb1",
+    "web/launchpad/vault-client.mjs": "b13aecdaf9e2396e77a69b53a450161fc310ed76d3889809ebebf387b48b60f7",
+    "web/launchpad/vault-ui.mjs": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
+    "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
+    "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
+    "web/privacy/bridge.mjs": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
+    "web/privacy/railgun-worker.js": "40ef8c9a7504dd23c108205759dfca7e5219ceecef2ba58737e593e80397341b",
+    "web/privacy/recover-resource.mjs": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",
+    "web/privacy/runtime-integrity.mjs": "6957e3bb0e47c8160a4463b8bae60b1287aeeaeb3e478746ebf56516cd471a49",
+    "web/privacy/submission.mjs": "2dfd3f1f012efe7cec3196ad5f3d37cbb1e4b3a4a4ca7920b829908d114b4ff2",
+    "web/privacy/vault.mjs": "c81d6c2374999d2511cf2539332aa6e4b9667593a50b4e1786347fa62e7e9891",
+    "web/rehearsal/client.mjs": "2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+    "web/rehearsal/intent.mjs": "8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+    "web/rehearsal/view.mjs": "5a95e159b9a5bef05e441d69e208cb452e6752299fa6c35411e8b7808471cefe",
+    "web/spirit/geometry.mjs": "6e6b29db1fc3abf97cd2a9079cd7cb63a5c6b0de9bd4fe1377e6a945edb97285",
+    "web/styles.css": "6886447b0d2434d18abbbae53a2e796203f8bfd13307f19160bb70e527db10e0",
+    "web/v4/artifacts.mjs": "6be95aea60cdd0701a89cc629f44b653127abf57cc3bcdd1bb99ce9dc5ef1a5f",
+    "web/v4/client.mjs": "c4a01a8b385d9fe93ad4bdfac972331cc82e669aa197fc68cee8f5701a8adcf0",
+    "web/v4/desk.mjs": "88cbb3c98eae09cb2194aef2431b6ed3ab7d5d0ceb6038dd5a2a8f5c697c4129",
+    "web/v4/math.mjs": "16e914e0ff99e8ff84d6449595d863fab0ebcb722e3053fecc4e7e19e850260d",
+    "web/v4/public-session.mjs": "4308acf0e1296027b4da346c709de7f373709d340f0d3a5e6e179fca85171976",
+    "web/vendor/ethers.min.js": "66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea",
+    "web/workshop/calendar.mjs": "5e9a35ca326f8ad22c86601245448af52afb6f2272700312c95a7189759fb62a",
+    "web/workshop/client.mjs": "28fb372a4c2a24a4d0068d6316787fb40636f3369f384d192479341f5b67307a",
+    "web/workshop/contracts.mjs": "da0af5ebb9f3cd913f500123fbc3cd50ea2070b134d4b90e58eb806aab989677",
+    "web/workshop/desk.mjs": "1bd154c47e0b0b929bfac40af10118b093d858ae47fba8e7ddb4b1a852ddba94",
+    "web/worlds/commissions.mjs": "e215cfcb91efd2cc9325b906b404fb0e4127cdd18cd3cd297d7edad97b03628b",
+    "web/worlds/instruments.mjs": "e0a69cd67ba75819d9ccad51ab47c41217c11fdbde3051e4842c35c9904dd4ec"
+  }
+}

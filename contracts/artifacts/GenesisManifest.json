@@ -1,0 +1,192 @@
+{
+  "contractName": "GenesisManifest",
+  "sourceName": "contracts/src/confluence/GenesisManifest.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "collection",
+          "type": "address"
+        }
+      ],
+      "name": "modulesOf",
+      "outputs": [
+        {
+          "internalType": "address[6]",
+          "name": "modules",
+          "type": "address[6]"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "collection",
+          "type": "address"
+        },
+        {
+          "internalType": "address[6]",
+          "name": "modules",
+          "type": "address[6]"
+        }
+      ],
+      "name": "publish",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "publisher",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "517": [
+      {
+        "length": 32,
+        "start": 101
+      },
+      {
+        "length": 32,
+        "start": 579
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60a08060405234602857336080526103c5908161002d8239608051818181606501526102430152f35b5f80fdfe60806040526004361015610011575f80fd5b5f3560e01c806353b17c16146102675780638c72c54e146102245763bf999dd01461003a575f80fd5b346102205760e036600319011261022057610053610316565b3660e411610220576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001633036101dc57803b15610198576001600160a01b0316805f525f6020526001600160a01b0360405f205416610154575f5b6006811015610120576100ce8160051b60240161037b565b3b156100dc576001016100b6565b606460405162461bcd60e51b815260206004820152600f60248201527f6d6f64756c6520726571756972656400000000000000000000000000000000006044820152fd5b505f525f60205260405f2060245f5b6006811061013957005b60019060206101478461037b565b930192818501550161012f565b606460405162461bcd60e51b815260206004820152600e60248201527f616c7265616479207365616c65640000000000000000000000000000000000006044820152fd5b606460405162461bcd60e51b815260206004820152601360248201527f636f6c6c656374696f6e207265717569726564000000000000000000000000006044820152fd5b606460405162461bcd60e51b815260206004820152600e60248201527f7075626c6973686572206f6e6c790000000000000000000000000000000000006044820152fd5b5f80fd5b34610220575f3660031901126102205760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461022057602036600319011261022057610280610316565b6001600160a01b0360c09182604051610299828261032c565b369037165f525f60205260405f2060405190815f905b600682106102f7575050506102c4828261032c565b604051905f825b600682106102d857505050f35b6020806001926001600160a01b038651168152019301910190916102cb565b6001602081926001600160a01b038654168152019301910190916102af565b600435906001600160a01b038216820361022057565b90601f8019910116810190811067ffffffffffffffff82111761034e57604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b356001600160a01b0381168103610220579056fea26469706673582212208a4f0e031516e58d20f1223a7f4dc48a48c5e493be9f755afc3f1b780947360b64736f6c634300081e0033",
+  "deployedBytecode": "0x60806040526004361015610011575f80fd5b5f3560e01c806353b17c16146102675780638c72c54e146102245763bf999dd01461003a575f80fd5b346102205760e036600319011261022057610053610316565b3660e411610220576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001633036101dc57803b15610198576001600160a01b0316805f525f6020526001600160a01b0360405f205416610154575f5b6006811015610120576100ce8160051b60240161037b565b3b156100dc576001016100b6565b606460405162461bcd60e51b815260206004820152600f60248201527f6d6f64756c6520726571756972656400000000000000000000000000000000006044820152fd5b505f525f60205260405f2060245f5b6006811061013957005b60019060206101478461037b565b930192818501550161012f565b606460405162461bcd60e51b815260206004820152600e60248201527f616c7265616479207365616c65640000000000000000000000000000000000006044820152fd5b606460405162461bcd60e51b815260206004820152601360248201527f636f6c6c656374696f6e207265717569726564000000000000000000000000006044820152fd5b606460405162461bcd60e51b815260206004820152600e60248201527f7075626c6973686572206f6e6c790000000000000000000000000000000000006044820152fd5b5f80fd5b34610220575f3660031901126102205760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461022057602036600319011261022057610280610316565b6001600160a01b0360c09182604051610299828261032c565b369037165f525f60205260405f2060405190815f905b600682106102f7575050506102c4828261032c565b604051905f825b600682106102d857505050f35b6020806001926001600160a01b038651168152019301910190916102cb565b6001602081926001600160a01b038654168152019301910190916102af565b600435906001600160a01b038216820361022057565b90601f8019910116810190811067ffffffffffffffff82111761034e57604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b356001600160a01b0381168103610220579056fea26469706673582212208a4f0e031516e58d20f1223a7f4dc48a48c5e493be9f755afc3f1b780947360b64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "modulesOf(address)": "53b17c16",
+    "publish(address,address[6])": "bf999dd0",
+    "publisher()": "8c72c54e"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "collection",
+              "type": "address"
+            }
+          ],
+          "name": "modulesOf",
+          "outputs": [
+            {
+              "internalType": "address[6]",
+              "name": "modules",
+              "type": "address[6]"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "collection",
+              "type": "address"
+            },
+            {
+              "internalType": "address[6]",
+              "name": "modules",
+              "type": "address[6]"
+            }
+          ],
+          "name": "publish",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "publisher",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "modulesOf(address)": {
+            "returns": {
+              "modules": "Market, vault, memory ledger, world ledger, cartridges, vesting exits."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Each collection's deployment is published once, then cannot be edited.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/GenesisManifest.sol": "GenesisManifest"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/GenesisManifest.sol": {
+        "keccak256": "0xe689af0c8c7a51a229cb13209632da69f5f39e7d89fb3a3736ecfc8ca481326c",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://1fc73a786d1ecea121af1319528c6a2298462dccd590df150fb8e173a2ebdb4e",
+          "dweb:/ipfs/QmPrnfqKmCdYUA4Wkzd8XoymaJw3HVUbz8iG7FbULMCy1Z"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

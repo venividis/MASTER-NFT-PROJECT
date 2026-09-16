@@ -1,0 +1,979 @@
+{
+  "repository": "venividis/Cutting-edge-technologically-advanced-NFT",
+  "commit": "35a725ee817dc52ec87300a0514c95fb82045631",
+  "files": [
+    {
+      "path": ".env.example",
+      "gitBlobSha": "0bd9d47cea30adac5362015d2181cdd43e5713d3",
+      "sha256": "76d4757e10197f15bd69f3249c0bc0958ac43fba75df0cad0202266ab894f064",
+      "bytes": 894,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/.env.example"
+    },
+    {
+      "path": ".github/workflows/ci.yml",
+      "gitBlobSha": "0c2f4c81d54d34f8cda65c242aec074bd8161bd6",
+      "sha256": "d06e6e8e9aa847bc0c4b8ad21fbe1b0341fe0801bbc9ed64996392e7b0cd5dbf",
+      "bytes": 369,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/.github/workflows/ci.yml"
+    },
+    {
+      "path": ".github/workflows/pages.yml",
+      "gitBlobSha": "389f6071db4806326e5a50a86b8117ea994fe2f3",
+      "sha256": "2b542da2025872fcc1b03ccbd2f04a0829ce4bb2244b696c8939836b07d2acbf",
+      "bytes": 922,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/.github/workflows/pages.yml"
+    },
+    {
+      "path": ".gitignore",
+      "gitBlobSha": "bba72b1626f72a3a60ee783ea854231c7bf5e599",
+      "sha256": "a1da301ec47708e950cf7eb5bfad328c8c08b6daa0b20cf82fa823c596ed1fb7",
+      "bytes": 113,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/.gitignore"
+    },
+    {
+      "path": "CLAUDE.md",
+      "gitBlobSha": "2a3d613b16f676774533ce8c08acd72390ec51d3",
+      "sha256": "ddd62397e6c919c15514860939933c37eb30ad002b6d42c754074871a7311c5c",
+      "bytes": 7215,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/CLAUDE.md"
+    },
+    {
+      "path": "LICENSE",
+      "gitBlobSha": "9debd5753ff62636715fc055cb9700f147af8ca9",
+      "sha256": "51293aeccfef3303e97bdf77bad0f317c1c04718b2b75a01146753d04125e824",
+      "bytes": 1075,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/LICENSE"
+    },
+    {
+      "path": "README.md",
+      "gitBlobSha": "248d3f14e371a48e05544915a5836b396cce69ac",
+      "sha256": "c15b73ef81c477b2288848bd9df2a696d9aa551c18f506ec89ce48440ad810cb",
+      "bytes": 34103,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/README.md"
+    },
+    {
+      "path": "cli/anima.mjs",
+      "gitBlobSha": "8634c814afe1b3ded9c53535f4e41c3e18ca88d0",
+      "sha256": "76a215284d3286481b2c0b1a13a32047f2e7e0ee7a8761596f610ecf97b6c962",
+      "bytes": 10855,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/cli/anima.mjs"
+    },
+    {
+      "path": "contracts/account/AgentAccount.sol",
+      "gitBlobSha": "59981d8c243c9a093abd7a4b367e4ce9ff7630ff",
+      "sha256": "79fc869382622e6eadf26e7cc87e1c7a9a8d840f529d247861367ba349ee76fd",
+      "bytes": 28311,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/account/AgentAccount.sol"
+    },
+    {
+      "path": "contracts/comms/AgentComms.sol",
+      "gitBlobSha": "aeefd78538309c0e8905c32b4ed8bf74831748f5",
+      "sha256": "798e0b6ed508bd03e9df6f785edb58e5e0263760298532438433771bce71aea3",
+      "bytes": 17665,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/comms/AgentComms.sol"
+    },
+    {
+      "path": "contracts/core/AnimaAgent.sol",
+      "gitBlobSha": "ed09b5b6ab4dd831666d3cfc154de8b2d0f47d5a",
+      "sha256": "3ac6a098a10c58b57c2e06dc5862e5b729eefdfbf3920b58fcaf9ce688031c53",
+      "bytes": 40407,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/core/AnimaAgent.sol"
+    },
+    {
+      "path": "contracts/core/EncryptionKeyRegistry.sol",
+      "gitBlobSha": "7fdf91dd14f108ddda07cb48934f8d79f2e403f1",
+      "sha256": "d2bf7a2cb9a9f1cfca77ae7174b095dea35a6f45fdc4c88ead9b5c429a113c63",
+      "bytes": 3255,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/core/EncryptionKeyRegistry.sol"
+    },
+    {
+      "path": "contracts/core/verifiers/AttesterQuorumVerifier.sol",
+      "gitBlobSha": "7ffe2a027109c118cdf6e48dd39db18f689c7ff5",
+      "sha256": "2b518e55d45dd48623f9ebf14ec2050c479c0fa87b5c4150065ce0f637139a36",
+      "bytes": 9156,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/core/verifiers/AttesterQuorumVerifier.sol"
+    },
+    {
+      "path": "contracts/core/verifiers/NullTransferVerifier.sol",
+      "gitBlobSha": "8f542349734afc48966e75a3c939bd8dd2ad66cf",
+      "sha256": "c559e1f16f5c88addbecfd9b1c2d20dc6e44e3aee161ec1d215626ef299d5679",
+      "bytes": 942,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/core/verifiers/NullTransferVerifier.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaAgentFacet.sol",
+      "gitBlobSha": "522c15b73b38860b8204f06a3c092e6816211e86",
+      "sha256": "5034e5f52e9f209e6a507c9703d9bd9c356c5298119891a02d30f26718029b11",
+      "bytes": 15024,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaAgentFacet.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaBase.sol",
+      "gitBlobSha": "90e08008c184db19de4d150f43d9089e16c7e821",
+      "sha256": "5b32c6f56ff188d1902bc61db1eafe22f59db9ee7109482914015e6a342d648a",
+      "bytes": 13883,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaBase.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaBrainFacet.sol",
+      "gitBlobSha": "81e9e7d2002eff684be7eb1f7ac193a0fd67131a",
+      "sha256": "6c7a780b9937fd5400477b3dece2f71e23196fdc7de64519a0635fd6dbcccbbb",
+      "bytes": 8806,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaBrainFacet.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaCoreFacet.sol",
+      "gitBlobSha": "527741b0d7b2cbec067d5377ac5f452c4850140b",
+      "sha256": "75d81f6dccb19b895cfe993f23db072ed051fcf9eb1aa6469e393ebade555396",
+      "bytes": 9508,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaCoreFacet.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaDiamond.sol",
+      "gitBlobSha": "6493057ec29ecd77eb20d8b9d529b8b9b13f2282",
+      "sha256": "9ac0ed39e799503841d774d667dc9149c895a202e52fbb92ff4808cf2b766dc5",
+      "bytes": 10078,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaDiamond.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaInit.sol",
+      "gitBlobSha": "a175ebdf50ad3190a2fd4a80e5135c3858cf9f11",
+      "sha256": "a622f0b3379b51b0ee66dad02d273ce9f912643faf00ad7dafe306573c1214d5",
+      "bytes": 2356,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaInit.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaLoupeFacet.sol",
+      "gitBlobSha": "6fffce826f1298d6581d8f90fcc1c6308ba741b5",
+      "sha256": "d39e07a7eb7afc95d5784b70e41c5baf2fc878b3d2c7ec975ed38b494e967e94",
+      "bytes": 1690,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaLoupeFacet.sol"
+    },
+    {
+      "path": "contracts/diamond/AnimaStorage.sol",
+      "gitBlobSha": "0f320c389417e3ca7ecce5ae5c2af3c4c0951c1d",
+      "sha256": "d7365aac2c9c4354676ae510ade575bfff82680bc11b49a539f7f32351bb9df5",
+      "bytes": 4145,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/AnimaStorage.sol"
+    },
+    {
+      "path": "contracts/diamond/DiamondStorage.sol",
+      "gitBlobSha": "209a4a27e82b40a5835c6cfd2fa4b4962ed78621",
+      "sha256": "ea215c62bce97bf269a22baa065598134ee53ca23bccc947eef194466940586e",
+      "bytes": 1022,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/DiamondStorage.sol"
+    },
+    {
+      "path": "contracts/diamond/IAnimaConfigured.sol",
+      "gitBlobSha": "5890ab9abbea11ac26a95c5f9bf6790cffc5e3f1",
+      "sha256": "33c0f6b9a9212b9628fde94de1b493c2e1af1bdbdd322c236d35a0d014961d64",
+      "bytes": 2028,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/IAnimaConfigured.sol"
+    },
+    {
+      "path": "contracts/diamond/IDiamond.sol",
+      "gitBlobSha": "20cc0a60aaa4de3793ad316d49a87286114339d5",
+      "sha256": "2ded9fd54710a3da21169b3e547534f3f8dcad43f62b572534b5a06acb7c7bfd",
+      "bytes": 2002,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/diamond/IDiamond.sol"
+    },
+    {
+      "path": "contracts/economy/RevenueRouter.sol",
+      "gitBlobSha": "efb8a6ba6d43d8a3f794c28545dc6d8d79a79130",
+      "sha256": "1b5628972c35c3811c259fd866c4396a7050596aff129968b1bf7c6d4a9e5e7b",
+      "bytes": 8897,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/economy/RevenueRouter.sol"
+    },
+    {
+      "path": "contracts/interfaces/IAnima.sol",
+      "gitBlobSha": "1619d75e747d87bf0a26737e9ad23001c41d619c",
+      "sha256": "c43d8fe366e7e3ad7ba608ca0781ed460e0475d3b50fd6253cfffcd406247f7e",
+      "bytes": 17386,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/IAnima.sol"
+    },
+    {
+      "path": "contracts/interfaces/IERC6551.sol",
+      "gitBlobSha": "e602c4270179ed00bdbaa6652feffa625e9f503d",
+      "sha256": "1a26479a2d6118e0ee2c966cfbd076e13f8dfa3044ef5cb20cbcc53175ed44ed",
+      "bytes": 2124,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/IERC6551.sol"
+    },
+    {
+      "path": "contracts/interfaces/IERC7432.sol",
+      "gitBlobSha": "e005e4e425502054f4b10746c5d146d800ee98b8",
+      "sha256": "bcb830255f1374cdb87a6d9c8fe869bc08c94c5c4c1dc8433eb34a3cef9364cb",
+      "bytes": 2787,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/IERC7432.sol"
+    },
+    {
+      "path": "contracts/interfaces/IERC8004.sol",
+      "gitBlobSha": "eafaad8af6b5cb883065ad929505fce97f9ae393",
+      "sha256": "00429c7178a57fadb1aba1e222fde31554df978b2359f993695ea69fd99012c3",
+      "bytes": 6126,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/IERC8004.sol"
+    },
+    {
+      "path": "contracts/interfaces/IERC8126.sol",
+      "gitBlobSha": "390d5f6aa362dff932a31ee12daced600988a847",
+      "sha256": "d5e6d8d3f79c763b403bd92c3f6dbbd17f9f0546adf0d84fcda13619f7cb0f1e",
+      "bytes": 774,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/IERC8126.sol"
+    },
+    {
+      "path": "contracts/interfaces/IRentable.sol",
+      "gitBlobSha": "0bc72410f5acac593ec5c954ef691dbd5f4f119a",
+      "sha256": "9ef408aa8f229a79612f8a6c71b5a065d3d141da9ddf1c8f62787d4d23294aef",
+      "bytes": 2659,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/IRentable.sol"
+    },
+    {
+      "path": "contracts/interfaces/ITransferVerifier.sol",
+      "gitBlobSha": "bbbc6e06ad5e4eb5fe3fbf81f352a779e37e5109",
+      "sha256": "e4df8e74a43719b656f4cea7a5afc823f28049cfea6d28d431f40f5e96e1986a",
+      "bytes": 2006,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/interfaces/ITransferVerifier.sol"
+    },
+    {
+      "path": "contracts/libraries/BrainLib.sol",
+      "gitBlobSha": "27b636280eef1061732fc9ad260b81993262ab6a",
+      "sha256": "c4d15dcb1fddc1232170c957b57f6bd0aeca221ace01f492c1bedfa70b483538",
+      "bytes": 2228,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/libraries/BrainLib.sol"
+    },
+    {
+      "path": "contracts/libraries/ERC6492.sol",
+      "gitBlobSha": "dcea94ad1c7f974fa735b5e2b6b338470256eef5",
+      "sha256": "b89d402ed8e4e53236a52bd412a47127a7a3c15ba6ce021ad8791784e8f228cd",
+      "bytes": 4108,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/libraries/ERC6492.sol"
+    },
+    {
+      "path": "contracts/libraries/ExactERC20.sol",
+      "gitBlobSha": "15db926b634bd665a6b4f23b7e58eaa9f4c28ed8",
+      "sha256": "07c2fdaba0a29c387087278f15851d220a4c8dccbe91207f3f041d296fd8d73e",
+      "bytes": 1648,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/libraries/ExactERC20.sol"
+    },
+    {
+      "path": "contracts/market/AgentDerivativesDesk.sol",
+      "gitBlobSha": "50db8f48ecf9d269dc90e2feccebe79065afea9d",
+      "sha256": "19cfc7eb705514fc08e990cac8c2002d4d911093c3c686f380d22195533c376d",
+      "bytes": 14175,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/AgentDerivativesDesk.sol"
+    },
+    {
+      "path": "contracts/market/AgentLaunchpad.sol",
+      "gitBlobSha": "10e562fe6351fe506b812fb83720baddeacff332",
+      "sha256": "6ca30cf4b546f553ccc00f129669b58316f1b5f2beed65e4fc4376086753ab16",
+      "bytes": 21432,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/AgentLaunchpad.sol"
+    },
+    {
+      "path": "contracts/market/AgentMarket.sol",
+      "gitBlobSha": "1f6c98cb4ef8016e953c0f0285a41006618b2ef6",
+      "sha256": "1bb1d0e900a9a9945c26ca91ba352e393d93228b8e4357b8f1aedaddabcb146d",
+      "bytes": 18066,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/AgentMarket.sol"
+    },
+    {
+      "path": "contracts/market/AgentSwapRouter.sol",
+      "gitBlobSha": "29462bd52861f8467cc46c5c7f4d065f57b9b84a",
+      "sha256": "2d00c3100e192492d0b5cbbc2f050d3a99a1d859a1aa64e2c5064d9ca380c5a2",
+      "bytes": 10532,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/AgentSwapRouter.sol"
+    },
+    {
+      "path": "contracts/market/AgentToken.sol",
+      "gitBlobSha": "b32deace05c6e3b0397705b9fa8037ef97eb4d03",
+      "sha256": "4817a88bad7a9b39402c8a557cfc4551c1577e62506d59fb037567649b8f9270",
+      "bytes": 7128,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/AgentToken.sol"
+    },
+    {
+      "path": "contracts/market/FiatMintGateway.sol",
+      "gitBlobSha": "8d988f79098e44c80bcc5f0d8478b1f0d763dcff",
+      "sha256": "43e5487becd2679dbbc98408c6385291d0e580e69f7cd304b1e033c4fc92718f",
+      "bytes": 5901,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/FiatMintGateway.sol"
+    },
+    {
+      "path": "contracts/market/ILiquidityDeployer.sol",
+      "gitBlobSha": "506a9c86bb3154f732b2d430aded4b28dd1142ac",
+      "sha256": "6638147b28f5c24551f4648f1e64092c6d66a9c55e2747b45ba7b29599e8fa7e",
+      "bytes": 1053,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/market/ILiquidityDeployer.sol"
+    },
+    {
+      "path": "contracts/mocks/ERC6551Registry.sol",
+      "gitBlobSha": "54cbcf7de24857681677b09d7ea6dea2be161857",
+      "sha256": "d2da610aa58a128346db1ab8d15c875523fdc6e41bf302650092c3112d1a2357",
+      "bytes": 3505,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/mocks/ERC6551Registry.sol"
+    },
+    {
+      "path": "contracts/mocks/MaliciousSeller.sol",
+      "gitBlobSha": "d009a3702ae60c94e1886b31b92c5deddee8fcd0",
+      "sha256": "274cd8bb867377ee5e6710269719f7f399c83eee5290e9dc91af1a67f1baced2",
+      "bytes": 3164,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/mocks/MaliciousSeller.sol"
+    },
+    {
+      "path": "contracts/mocks/MockLZEndpoint.sol",
+      "gitBlobSha": "ebf93a47e0f7f76e60949baabcd07ec8891b4ea3",
+      "sha256": "517fa94c14894b4d453ac8e1064f43e5b51056448fd42878eb09a4e130661ebb",
+      "bytes": 3502,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/mocks/MockLZEndpoint.sol"
+    },
+    {
+      "path": "contracts/mocks/Mocks.sol",
+      "gitBlobSha": "f8d0d9b325fb8687be69a97fc9231099419fe7bd",
+      "sha256": "28ac6588387349a08aa62ba62a9ec4ac049dff759c355a0b03dc784f5f3493be",
+      "bytes": 7293,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/mocks/Mocks.sol"
+    },
+    {
+      "path": "contracts/mocks/TamperInit.sol",
+      "gitBlobSha": "8c34748ea64243225626899e535190883c44ba00",
+      "sha256": "baa9d240b41be5bbccfbae3a2f301de870567ba64c08a8f93d5421df004eedee",
+      "bytes": 2232,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/mocks/TamperInit.sol"
+    },
+    {
+      "path": "contracts/omni/AnimaOApp.sol",
+      "gitBlobSha": "79ee241b97096057d75acb6316293481c87065f9",
+      "sha256": "6ccc470e531b6aa58feb78e6f11df065e017632a95d5d3f48b0b7f71088f9a9e",
+      "bytes": 8725,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/omni/AnimaOApp.sol"
+    },
+    {
+      "path": "contracts/omni/AnimaOmniCodec.sol",
+      "gitBlobSha": "b34e839879eef42a2fc6ab98163e167790dda416",
+      "sha256": "c663907d664f149dfaa0e5b4b5ab72ac48ed2519bee5fe4bbcf5545d2662d301",
+      "bytes": 1483,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/omni/AnimaOmniCodec.sol"
+    },
+    {
+      "path": "contracts/omni/ILayerZeroV2.sol",
+      "gitBlobSha": "f76bee6239c522f1e75540ba3f4094c7b606b8f9",
+      "sha256": "85a0a309954458dac75817ec7f57f1a7c88abff65ed3cff6be72137c5df16b6e",
+      "bytes": 1677,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/omni/ILayerZeroV2.sol"
+    },
+    {
+      "path": "contracts/omni/OmniAgentHome.sol",
+      "gitBlobSha": "7e498c32f4eb7aa13fd14608a2d912c7e9619236",
+      "sha256": "53a1e08b0ba121bd7eaf5c85e0f74ed32f4ae2f1be933c528547db34bd0b4fdd",
+      "bytes": 8378,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/omni/OmniAgentHome.sol"
+    },
+    {
+      "path": "contracts/omni/OmniAgentMirror.sol",
+      "gitBlobSha": "75aa0cd730877de57d0c8f35d4f7f006d78adf6c",
+      "sha256": "6c507d858cb4b382232edea799a0310eaa5df6bc310c10ff200be1d24a64a5ba",
+      "bytes": 8267,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/omni/OmniAgentMirror.sol"
+    },
+    {
+      "path": "contracts/registry/AgentHandles.sol",
+      "gitBlobSha": "20899a20c67c7f0962873b96400db0e7be6e4924",
+      "sha256": "ef2a955ed99bf089e4bb19035c58f718925f142577160c34c636f55b3c42c42b",
+      "bytes": 11286,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/registry/AgentHandles.sol"
+    },
+    {
+      "path": "contracts/registry/AnimaBindings.sol",
+      "gitBlobSha": "d13de35393669f8a000cd477f4799baff8efc2e6",
+      "sha256": "4e7c72d1b261749842f824957dbaf262224de376a916e7fde67b4d26fa85a21a",
+      "bytes": 6012,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/registry/AnimaBindings.sol"
+    },
+    {
+      "path": "contracts/registry/AnimaRoles.sol",
+      "gitBlobSha": "6c5c36b6bb7dad92c3f47caaae712f52a5078776",
+      "sha256": "e58f8e46ffe4bd03dc628d6debe29e11e65c0fe9921cc68723cc4a9aac499912",
+      "bytes": 13338,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/registry/AnimaRoles.sol"
+    },
+    {
+      "path": "contracts/registry/BondVault.sol",
+      "gitBlobSha": "d4a5125de3bd94555e4ec0194a003a21a15b94f8",
+      "sha256": "0736c098870b7d4b8565b7ab491e1f72ac3d3d64381bada1c115ef07a83f804c",
+      "bytes": 14951,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/registry/BondVault.sol"
+    },
+    {
+      "path": "contracts/registry/ReputationRegistry.sol",
+      "gitBlobSha": "85f41cad79d867dd829676fccd1c8a439fa25cf6",
+      "sha256": "9b1280793e19a698e2200f9911c9251af1c29d473f7976da2575dc265892e77f",
+      "bytes": 17382,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/registry/ReputationRegistry.sol"
+    },
+    {
+      "path": "contracts/registry/ValidationRegistry.sol",
+      "gitBlobSha": "bb118d561fedfa95015d213f5a0c15560aba51ac",
+      "sha256": "7a80ed2d720f6eb7ba659e4eae99c90be03b33c21c9eec912a29454cf39c52ac",
+      "bytes": 14544,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/registry/ValidationRegistry.sol"
+    },
+    {
+      "path": "contracts/work/InferenceMeter.sol",
+      "gitBlobSha": "49901dd83afb77213301b1fa8f0b196eb66b131e",
+      "sha256": "10fc6d7160c769e6323c504d1f18a319bf614d9b15506948ff67664d228aed21",
+      "bytes": 12835,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/work/InferenceMeter.sol"
+    },
+    {
+      "path": "contracts/work/WorkEscrow.sol",
+      "gitBlobSha": "ce4c32ea57c4602c00d48eaed19bd68b3a9b9c23",
+      "sha256": "06bc7b5234e003aaae63aa45fbc70b9e65d452e6025cf737ae031765b97ba593",
+      "bytes": 24076,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/contracts/work/WorkEscrow.sol"
+    },
+    {
+      "path": "deployments/11155111.json",
+      "gitBlobSha": "d7ecefe1ccf73363d9b709cf29a9ac2f1a36e63f",
+      "sha256": "a3f9b908a516ec6c6ddb50dbd1e24e7f5819967a3a4fcbf3ccd01b9efd27cf41",
+      "bytes": 38349,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/11155111.json"
+    },
+    {
+      "path": "deployments/1301.json",
+      "gitBlobSha": "cd73cfd464978eeb39b2ead4251f655725086151",
+      "sha256": "28053e7f7c943b08989db0821bcf0aac532cf4b13243a25f90734c5676e7438b",
+      "bytes": 36330,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/1301.json"
+    },
+    {
+      "path": "deployments/46630.json",
+      "gitBlobSha": "143981cb4e33b30b2d6c07b52229ce5092af225a",
+      "sha256": "4edae55a98f126169f692b2732de4b2e5e421485914ccee63bb32aefb48f574b",
+      "bytes": 50908,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/46630.json"
+    },
+    {
+      "path": "deployments/84532-0xc591c669162cd4da8ab9bfa2c2e68d538a312c00.json",
+      "gitBlobSha": "ab6468b823dc833ffaf476229b97c6cedd41c90e",
+      "sha256": "752e99c9eb73a2e1e026779f40c83c58daba360f8502c7e3537f12f9ddc2fdb2",
+      "bytes": 36707,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/84532-0xc591c669162cd4da8ab9bfa2c2e68d538a312c00.json"
+    },
+    {
+      "path": "deployments/84532.json",
+      "gitBlobSha": "aa02d691a3d4bb94da3001ec8aa17758413f6163",
+      "sha256": "fc187866c0395677cdffe4aa6dc069baa66da5998c9289aef6f0391b8e3fc5f5",
+      "bytes": 2306,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/84532.json"
+    },
+    {
+      "path": "deployments/97.json",
+      "gitBlobSha": "a031fa9707e77ba9371a2e2db8556f353f61d98c",
+      "sha256": "262d7d54780e63e7f6923c7ad0b6dc0e869a0b5a1a22029dd9a18f498db2371b",
+      "bytes": 36326,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/97.json"
+    },
+    {
+      "path": "deployments/omni-84532.json",
+      "gitBlobSha": "b80d6f5449833c28e397f29bdd62d489cc1250a8",
+      "sha256": "4dbe2252ec77655351d1853e49d7e930d42e8a4f8cceb121f3a7f84092a333d1",
+      "bytes": 2413,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/deployments/omni-84532.json"
+    },
+    {
+      "path": "docs/AGENT_INTEGRATION.md",
+      "gitBlobSha": "f78584aaf6c2c27e16f7cddc786d7d3e0d014812",
+      "sha256": "b6e93408ffea544e0ab399beccacff187562653883130520e51f1e40c48e6278",
+      "bytes": 5811,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/AGENT_INTEGRATION.md"
+    },
+    {
+      "path": "docs/ARCHITECTURE.md",
+      "gitBlobSha": "e99262e3aa0d36e8494095919bb456e870c21198",
+      "sha256": "698fce5c16e75cde513f9493e1160eb6c234f30853d6d4e0c34791d16ec43639",
+      "bytes": 25611,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/ARCHITECTURE.md"
+    },
+    {
+      "path": "docs/DEPENDENCY_SECURITY.md",
+      "gitBlobSha": "aa6240932cb0603adc8f9f9e84f8eb1443936c81",
+      "sha256": "617389418c9da834ddb17c2edc9a81d269ae8c66a155723831f39597afd5f97a",
+      "bytes": 2783,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/DEPENDENCY_SECURITY.md"
+    },
+    {
+      "path": "docs/DEPLOYMENT.md",
+      "gitBlobSha": "a597414df26be6991699644ea303c6238ea5f9ca",
+      "sha256": "140435f56a9afe7f2e77c62f60202b07f3f15e450d5a0e5471d2bffa20c009eb",
+      "bytes": 8005,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/DEPLOYMENT.md"
+    },
+    {
+      "path": "docs/ECONOMY_SIMULATION.json",
+      "gitBlobSha": "daaa7bb800b62393fb284eb23d857fe6075e7b00",
+      "sha256": "a3918d83ce2d7460183b1e272e6f3d753ffbe52758918fa917344f79c0cea417",
+      "bytes": 57050,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/ECONOMY_SIMULATION.json"
+    },
+    {
+      "path": "docs/LIVE_FUNCTION_MATRIX_2026-08-31.md",
+      "gitBlobSha": "4e19cca8219c48a97769bfb3bf8bc84db535b65c",
+      "sha256": "7d677ce5fd5cf925e48c79e8ba5b0825d9c191aa630f748f858e11f6acadf431",
+      "bytes": 7816,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/LIVE_FUNCTION_MATRIX_2026-08-31.md"
+    },
+    {
+      "path": "docs/MICROECONOMY_RESEARCH_2026-09-02.md",
+      "gitBlobSha": "0d0f66d5e329d2d4bf5ec9e0971d304f7eb1e1fc",
+      "sha256": "224a7c9c96faa4a90e7d238deab8c6becf69e24cac6a4739c2e2f61e1a0fee88",
+      "bytes": 21566,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/MICROECONOMY_RESEARCH_2026-09-02.md"
+    },
+    {
+      "path": "docs/NFT_STANDARDS_RESEARCH_2026-09-02.md",
+      "gitBlobSha": "17d0661809ef08710266608e4ff5d35499af3c1e",
+      "sha256": "e5ac9136675ffdc28b4f124e22fc566623139261a97f9351af302ba079bf7661",
+      "bytes": 15580,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/NFT_STANDARDS_RESEARCH_2026-09-02.md"
+    },
+    {
+      "path": "docs/PRIVACY.md",
+      "gitBlobSha": "1f5cce1d25904328259c5c723e4e234f2d880c12",
+      "sha256": "e93cc6ec14e5f089228de9d0f08d1dd0ef6566f796e02fa0667474364dc7ea67",
+      "bytes": 10463,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/PRIVACY.md"
+    },
+    {
+      "path": "docs/SECURITY.md",
+      "gitBlobSha": "db9b7ff2aee94186c0ada88468007659f1a7c761",
+      "sha256": "a2d6d2567d82e1c67f5c1b50984cae2b41c381431b21dec6e63a9532c4c19975",
+      "bytes": 14382,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/SECURITY.md"
+    },
+    {
+      "path": "docs/SPEC.md",
+      "gitBlobSha": "2d9c76d81c19568697e81c847ba6cbcf8e37c56f",
+      "sha256": "925b560b0594b123a668e007aaca7306430ecee71c979114e0302c385f480589",
+      "bytes": 14415,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/SPEC.md"
+    },
+    {
+      "path": "docs/TESTNET_AUDIT_2026-08-31.md",
+      "gitBlobSha": "aed1abba8c9ae00b8dd37da0763107cda11688f6",
+      "sha256": "5a6ec835f0593d22cf3e3ca9b4dbda94b7c163534eff7a07f1e5fd47b42fdcff",
+      "bytes": 4456,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/TESTNET_AUDIT_2026-08-31.md"
+    },
+    {
+      "path": "docs/TESTNET_AUDIT_2026-09-02.md",
+      "gitBlobSha": "fd42391d35f5689b8250c08c3e290899a4a2626a",
+      "sha256": "6637570c178423c2e96d2ed6449bcd80428417f1bd7e82c9b53875221c5c0cef",
+      "bytes": 6763,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/docs/TESTNET_AUDIT_2026-09-02.md"
+    },
+    {
+      "path": "examples/manifests/base-sepolia-example.json",
+      "gitBlobSha": "cadfe119b1d4d6d2671ec15843e197c97a8b61a6",
+      "sha256": "18ea363d53adeeec29b7844ee04c5febf72569127fadbccdf320a8aef14a8dda",
+      "bytes": 1102,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/examples/manifests/base-sepolia-example.json"
+    },
+    {
+      "path": "hardhat.config.ts",
+      "gitBlobSha": "e52e285c4d1902999690da62114b69551ec8b947",
+      "sha256": "22d63a90a9a1197201debda3f6b7b16da60d3a2ceddccbf3679088bc7fc64d0f",
+      "bytes": 2356,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/hardhat.config.ts"
+    },
+    {
+      "path": "index.html",
+      "gitBlobSha": "861b279ccd34ddcf9c2d0b8ec61eab4f76a21700",
+      "sha256": "7af497c1a81771380e3ed732bf025f5c46afb6a39ef688ae97fa6e068de57f57",
+      "bytes": 1955,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/index.html"
+    },
+    {
+      "path": "package-lock.json",
+      "gitBlobSha": "e5fd5778839d21092add3b370d91e7acf4a55401",
+      "sha256": "e80dd12d8a8e31733db9069156e0d3afad073840e74a4db70e52c10952b3c331",
+      "bytes": 128877,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/package-lock.json"
+    },
+    {
+      "path": "package.json",
+      "gitBlobSha": "b8649c893be72a4416414b2d2f509b5101a7641c",
+      "sha256": "91346cf4a55ab2cdb2fa913d573cfb4645c133f4ae48a6da997bab4624f4b23f",
+      "bytes": 1877,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/package.json"
+    },
+    {
+      "path": "public/llms.txt",
+      "gitBlobSha": "e03ae1bde2f42eb014cce6f404c3331976c28b15",
+      "sha256": "6dfa2d63af70d890389ae129a13c286ebe7aa49a91283c8d1609b3ea36046a4b",
+      "bytes": 1965,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/public/llms.txt"
+    },
+    {
+      "path": "public/robots.txt",
+      "gitBlobSha": "d172b04200f53d34cde877af1f33d9313adfcd20",
+      "sha256": "001186cb79077cbdcb41bf0a358a97c0ff25b2bf0f0e748bdbe04eac1e20cf8d",
+      "bytes": 115,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/public/robots.txt"
+    },
+    {
+      "path": "public/sitemap.xml",
+      "gitBlobSha": "9689ccdb2143aad7764b6b911ac5482d364a7aa0",
+      "sha256": "2732a95f04039adfbb12db264045eebc0c8a50631de7e1ed93fec21bf0aa725d",
+      "bytes": 213,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/public/sitemap.xml"
+    },
+    {
+      "path": "schemas/anima-agent-manifest-v1.schema.json",
+      "gitBlobSha": "9737655b8c025e65d401146ed0cc406f9fc48d9f",
+      "sha256": "2c0e3e8ea9b4c1175a1b450115f442dfaa276c9db296bcfac4fd78634b4bcbbd",
+      "bytes": 5179,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/schemas/anima-agent-manifest-v1.schema.json"
+    },
+    {
+      "path": "scripts/cache-solc.sh",
+      "gitBlobSha": "847d80a603270a5a077d2b505e1e07aaa1fafa70",
+      "sha256": "8beb3185680f6bdd9dd3ad2b546be4c584912e88acd970dd518985cb57b47b90",
+      "bytes": 2215,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/cache-solc.sh"
+    },
+    {
+      "path": "scripts/deploy-diamond.ts",
+      "gitBlobSha": "96faf817e5aea38a38aa7621902ef9b83138c5fd",
+      "sha256": "b41384664c48b80c21047bb6ef1ddbc87e309710ea4059d7ec790e8f5db50f7d",
+      "bytes": 16709,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/deploy-diamond.ts"
+    },
+    {
+      "path": "scripts/deploy.ts",
+      "gitBlobSha": "efe20219b412743cb78aaa3aa74cdf593b08f42e",
+      "sha256": "ae5a91e3e0f95e1ec04a478dca4a0a31043defbae88db1d403270a05f8d39b14",
+      "bytes": 8129,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/deploy.ts"
+    },
+    {
+      "path": "scripts/economy-sim.mjs",
+      "gitBlobSha": "45d39a2ce3fc3d7c6629d0bae9c713dd8bf82eb1",
+      "sha256": "df72f3541327359b99c88aabf0bfde43f75c3483e869395af13309a20e6c24c7",
+      "bytes": 8056,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/economy-sim.mjs"
+    },
+    {
+      "path": "scripts/testnet-deploy.ts",
+      "gitBlobSha": "e07f982fd64eaded18e1edf4c915dfd03926ce6d",
+      "sha256": "b5d4de743d9a3224faf49251f7eda07f22fad3b9870c4f9e961177ba614dc840",
+      "bytes": 12792,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-deploy.ts"
+    },
+    {
+      "path": "scripts/testnet-everything-resume.ts",
+      "gitBlobSha": "017a343bfb0a8e5c45ebecb2b84c6bd6cff73282",
+      "sha256": "3ca94698a07d11a1c02c237f7f5b4ed0e2882ac68670da9875b2dee58a902732",
+      "bytes": 5829,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-everything-resume.ts"
+    },
+    {
+      "path": "scripts/testnet-everything.ts",
+      "gitBlobSha": "cac00b2ef719a7a555a4f3bc957d54fe1ef04f87",
+      "sha256": "5a4b1ea22a8b7bbfa999d1784297c00e443f7e204b832b1b155ee66ac0b61340",
+      "bytes": 14036,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-everything.ts"
+    },
+    {
+      "path": "scripts/testnet-mint.ts",
+      "gitBlobSha": "ced2d6c274bee504e279b61de094c923b5c84eaf",
+      "sha256": "a00bf800bcdb75e1252fd60e87c018f0e6faaead6af314e0c05aacfc3be2e0a6",
+      "bytes": 4317,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-mint.ts"
+    },
+    {
+      "path": "scripts/testnet-modules.ts",
+      "gitBlobSha": "566c331632337958fa4b31e9fc597ee22a2813f2",
+      "sha256": "760ca1eb187811e7b00d7ba51c7bd59dd7d5dd179652abd5f7a78aeee0bb365a",
+      "bytes": 11505,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-modules.ts"
+    },
+    {
+      "path": "scripts/testnet-omni-status.ts",
+      "gitBlobSha": "22a30638048f3261b4d887aa27dd4c3bd3b0ef61",
+      "sha256": "cf94ce077e7d5dab82f404eaf2322cd701ceec3909d6f079ddf237f85f153dfb",
+      "bytes": 1138,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-omni-status.ts"
+    },
+    {
+      "path": "scripts/testnet-omni.ts",
+      "gitBlobSha": "d3334958c3888405b4e0d5315a209d37a7496c01",
+      "sha256": "170b1abc1ab112c6aea4929f26279af1a30bfda4e1993fc465d0c4d26e1a6eac",
+      "bytes": 14527,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-omni.ts"
+    },
+    {
+      "path": "scripts/testnet-scenario.ts",
+      "gitBlobSha": "c1adc753f81a1fc86378186d804f37706c291788",
+      "sha256": "d6d92b0ba6a508ea0263aa931fa172abb6242fd75412593e45b740c2f6dd1331",
+      "bytes": 17027,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-scenario.ts"
+    },
+    {
+      "path": "scripts/testnet-town.ts",
+      "gitBlobSha": "540e7fff80d9a5f5ea296cd999c92bd2d845fc1f",
+      "sha256": "4a791003db1d7b21d0dc99d64280270878b0463aeb256627060a1d23217a8706",
+      "bytes": 12350,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/scripts/testnet-town.ts"
+    },
+    {
+      "path": "sdk/README.md",
+      "gitBlobSha": "7e77e1bcc710e55113f6129c4ac3f8edbe848f59",
+      "sha256": "58c1f741fb5793ce1afd6a586336931cb92f303ccd19351e1b9aeef4d5e14b5d",
+      "bytes": 1190,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/sdk/README.md"
+    },
+    {
+      "path": "sdk/package.json",
+      "gitBlobSha": "feda7dd6eeb384333a99e731dff2611899b16491",
+      "sha256": "274165826a9f933db18bb1e203b9862e765f359f48c0b2eccf057bffd27d2319",
+      "bytes": 1070,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/sdk/package.json"
+    },
+    {
+      "path": "sdk/src/index.ts",
+      "gitBlobSha": "a6710f4857e7684c0b53103b633bc61b574ecc69",
+      "sha256": "327e82b9349a1e9a776b0cefb5d3ce1c2423387a5efca45eff477386e59903eb",
+      "bytes": 24488,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/sdk/src/index.ts"
+    },
+    {
+      "path": "sdk/tsconfig.json",
+      "gitBlobSha": "1ba8c501fc916d614b90b73dc78c25a38c174f58",
+      "sha256": "be6938a59460b61825cce414190f6cc6beaac6e01b0f05bc638eb3c59c9b4493",
+      "bytes": 323,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/sdk/tsconfig.json"
+    },
+    {
+      "path": "src/main.js",
+      "gitBlobSha": "a40ba00683f773de999d645dcd741aff695a4f74",
+      "sha256": "d2c758db94de87a0b611d2f79ccb1843b289865f3477684f38d7a080a5326fe1",
+      "bytes": 22257,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/src/main.js"
+    },
+    {
+      "path": "src/style.css",
+      "gitBlobSha": "20b8849bce8381d745df314663cd57b563e63e3f",
+      "sha256": "2f7b96a4355f0fc91dff8bf58daaf4fcc95a41de3800c1202cb35edf7c96d9f6",
+      "bytes": 16939,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/src/style.css"
+    },
+    {
+      "path": "test/Accountability.test.ts",
+      "gitBlobSha": "c475bb8fc02b51ce74e3fbbb707b9b49d3f8c083",
+      "sha256": "fa966cbe97d8c150d24bc303346b84009920033dd4c20467d6979feaea692e40",
+      "bytes": 19147,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Accountability.test.ts"
+    },
+    {
+      "path": "test/AgentAccount.test.ts",
+      "gitBlobSha": "e966d863421dc4d31cab042cd281325006425442",
+      "sha256": "d6ab3ec9e4ea12953f3edd7890a333a51cc81d17ac283dd4c7987d0029d86882",
+      "bytes": 17742,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/AgentAccount.test.ts"
+    },
+    {
+      "path": "test/AnimaAgent.test.ts",
+      "gitBlobSha": "ceef1905255f34f47dacdf430960b5e16cf5f746",
+      "sha256": "4f50f3c8392a821d732132aa69638643723b777329c763da2832857003dd6939",
+      "bytes": 18108,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/AnimaAgent.test.ts"
+    },
+    {
+      "path": "test/Bindings.test.ts",
+      "gitBlobSha": "2a44522653a15f8533f67d90411a880cd6d36d47",
+      "sha256": "fa786b180259b4ca36c0a17b89c543d70c5c962b22af034edce6a4cc94d161ae",
+      "bytes": 2445,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Bindings.test.ts"
+    },
+    {
+      "path": "test/Cli.test.mjs",
+      "gitBlobSha": "1360d7c513094c74f59e0c6a68e77fc8aebe9a9e",
+      "sha256": "568d7e71ba9aef3c2fbcafec4b799c6f71cb9751a4d7016ff5b15d5441773513",
+      "bytes": 1246,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Cli.test.mjs"
+    },
+    {
+      "path": "test/Comms.test.ts",
+      "gitBlobSha": "5586b3cb13236b22b167d340113521ee625a624c",
+      "sha256": "231c46d8707629443b9023a4b3821f6417fa669d0e09322e1af44d70403eeb90",
+      "bytes": 9292,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Comms.test.ts"
+    },
+    {
+      "path": "test/Deploy.test.ts",
+      "gitBlobSha": "8d3bb02e01b4e1b121c0e1996381c631e3f1fc91",
+      "sha256": "345d962a84b1192ae550fdeeef5ef54145d558f24118954d24cd529b5b19cd3f",
+      "bytes": 3746,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Deploy.test.ts"
+    },
+    {
+      "path": "test/Derivatives.test.ts",
+      "gitBlobSha": "76d9689f3c059f704a59ff97c8a4ad51c90abb8a",
+      "sha256": "e2525053c9c75cf73b4d6a5f595136d1ed2493e24e58dd90b8948874577dca0e",
+      "bytes": 9049,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Derivatives.test.ts"
+    },
+    {
+      "path": "test/Diamond.test.ts",
+      "gitBlobSha": "61e4e0c12d8e36941446e14729b022f28bb1cee2",
+      "sha256": "984b66e418398b4359886149ba2a8c0f25490c757cec9dffb497b284179e306e",
+      "bytes": 24737,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Diamond.test.ts"
+    },
+    {
+      "path": "test/EconomySim.test.mjs",
+      "gitBlobSha": "34db75ff8c2d46f5cb8aef7b80422462e6cb84a0",
+      "sha256": "ef330f5a3150b792c0e2d3db84455c99d2ba25c8cb29924ec3a20d10b2f2006c",
+      "bytes": 2003,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/EconomySim.test.mjs"
+    },
+    {
+      "path": "test/ExactERC20.test.ts",
+      "gitBlobSha": "d37aece751581ffb1bd34c355e2196d9402d2213",
+      "sha256": "062387332d7ff1f5c17fb066fc2b93c98c201f2b49cd2b5c074462fdd3ca4db9",
+      "bytes": 1899,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/ExactERC20.test.ts"
+    },
+    {
+      "path": "test/FiatMintGateway.test.ts",
+      "gitBlobSha": "2511c13af0ce1d0646b81039895a5bb07e07885a",
+      "sha256": "bdf95554cb6ea1b61d15bc43dd9aa14cd363485812d256837eabd3ae65dbc1a7",
+      "bytes": 3090,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/FiatMintGateway.test.ts"
+    },
+    {
+      "path": "test/Gas.test.ts",
+      "gitBlobSha": "d5e19eee3c5e8d2f6b262eb23f554636a41d3218",
+      "sha256": "26d0768fbd7b16e80b75cab506f3f47ad078bc5b31e1b845defa1a0753aa5de0",
+      "bytes": 6550,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Gas.test.ts"
+    },
+    {
+      "path": "test/Handles.test.ts",
+      "gitBlobSha": "96f08a98a142ff473a4f60b0c781160c511fa470",
+      "sha256": "9062fd5141319baed107128d1182832d52bd0ab75702f9616f72f5fb0fe26eb1",
+      "bytes": 8033,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Handles.test.ts"
+    },
+    {
+      "path": "test/Launchpad.test.ts",
+      "gitBlobSha": "b682e6e0da3cd9992d8f020568260e5dd6076529",
+      "sha256": "28e9e3c30f1c28390e0fbe76f7dc13aab60a690f8a89853624a9d91dd4cf7f6a",
+      "bytes": 13103,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Launchpad.test.ts"
+    },
+    {
+      "path": "test/Lifecycle.test.ts",
+      "gitBlobSha": "a756e90d5668d35439f7c6c50f13ead1eebad553",
+      "sha256": "f0009462c39effd4f4cb73655e666b7de42a72e2b4bf82c16098eee0c0161c47",
+      "bytes": 13338,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Lifecycle.test.ts"
+    },
+    {
+      "path": "test/ManifestSchema.test.mjs",
+      "gitBlobSha": "160495873861236fa6a1f73f419962c6c5d91a76",
+      "sha256": "73e0537b7e74f995ab583e5de97b3c66eedfa4e331ed20f08f27d35c57fcd0d8",
+      "bytes": 1089,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/ManifestSchema.test.mjs"
+    },
+    {
+      "path": "test/Market.test.ts",
+      "gitBlobSha": "02713e28f5a2c51038273deb8fd696f4f79b16bf",
+      "sha256": "a79a038d3ba62b4f6eea3de3dedddcc18ca610ff407ecdd0dfa89150744397f3",
+      "bytes": 14307,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Market.test.ts"
+    },
+    {
+      "path": "test/Meter.test.ts",
+      "gitBlobSha": "dfb3950c72b84570a0a017ddd32439dfd67a2464",
+      "sha256": "ae99989d2765efc2f2c74038cb61f2f181d60b94052cc11cd07b5e7a98b80f53",
+      "bytes": 7597,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Meter.test.ts"
+    },
+    {
+      "path": "test/Omni.test.ts",
+      "gitBlobSha": "ec1f01232f289d54238854b7eff97a0e714e2a50",
+      "sha256": "f8b7c717503411d9f142bf1acaa4d55d52d3dbe7476e0c68816227035e17c592",
+      "bytes": 11893,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Omni.test.ts"
+    },
+    {
+      "path": "test/Ownership.test.ts",
+      "gitBlobSha": "a1b4e8fe65b71f1015944b465ace5230d66feb23",
+      "sha256": "17112b97cda7241d3426de329b0009f8c3b8ca020d47d184cf4631c4b9ba7035",
+      "bytes": 10479,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Ownership.test.ts"
+    },
+    {
+      "path": "test/Regressions.test.ts",
+      "gitBlobSha": "e5ecea6246354ca093c8cae2d90862c624db9624",
+      "sha256": "d976611324cc2212891cf18a566585a32e8ee9832d14d7d320f5f102faba15a6",
+      "bytes": 28312,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Regressions.test.ts"
+    },
+    {
+      "path": "test/RevenueRouter.test.ts",
+      "gitBlobSha": "e6ff230551690a35197fba8538648b78e6f685af",
+      "sha256": "7825578094328bc6cf1701d1ad453890545ab14f2cfb62eb6bb51838a8a12214",
+      "bytes": 4970,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/RevenueRouter.test.ts"
+    },
+    {
+      "path": "test/Roles.test.ts",
+      "gitBlobSha": "7a43dc032a63a02763aae4d67c3e452076467dff",
+      "sha256": "4b561d92fcdb5cf4ad5787f4c96b57f7e558d855fb07cd5557884ed95c121280",
+      "bytes": 14724,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Roles.test.ts"
+    },
+    {
+      "path": "test/Sdk.test.ts",
+      "gitBlobSha": "5a9a255e1692ef8149e2e83f1b42dd8cdd31974f",
+      "sha256": "6569eb06f586eb76c3ba8f538692029c43c632c1f58437ccc74f99c4128d088c",
+      "bytes": 14452,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Sdk.test.ts"
+    },
+    {
+      "path": "test/SwapRouter.test.ts",
+      "gitBlobSha": "e301c2dda4f7346697bc78a3a9d0b384534dbd03",
+      "sha256": "1967a6c62473cd35e4938a65b268687fae40c0ca827ef2f1315103973cacc5d4",
+      "bytes": 7782,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/SwapRouter.test.ts"
+    },
+    {
+      "path": "test/Verification.test.ts",
+      "gitBlobSha": "82c83185c44ed9f2687dacd4ee194c7bd9d7ef8a",
+      "sha256": "974d0f16fee7b7705517de47bdfee389ddb74272e2aa2722e5d0f5e7f1d1f58e",
+      "bytes": 2992,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/Verification.test.ts"
+    },
+    {
+      "path": "test/helpers.ts",
+      "gitBlobSha": "38880033c54a253a4c1449bce1de2fd83e2af2d7",
+      "sha256": "68120288be5f5fb0285ac0226abbe2a23e49e27ff08d33bb61ff3c7bdfa536b2",
+      "bytes": 12814,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/test/helpers.ts"
+    },
+    {
+      "path": "tsconfig.json",
+      "gitBlobSha": "f3829228fb634ab7ff237d712955cb57200e57d7",
+      "sha256": "2f2c810a41a185076ab26ae055c7e0e07a3c8ad0161cfbc55e3d3aafaec23522",
+      "bytes": 240,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/tsconfig.json"
+    },
+    {
+      "path": "vite.config.js",
+      "gitBlobSha": "c7cf271849106c6771ba8b9a04b49e1b7df84360",
+      "sha256": "1736aa7926c79c9d57e3a963dbcf04e16a92d26b939b1db741ddef8d85f9391c",
+      "bytes": 236,
+      "sourceUrl": "https://github.com/venividis/Cutting-edge-technologically-advanced-NFT/blob/35a725ee817dc52ec87300a0514c95fb82045631/vite.config.js"
+    }
+  ]
+}

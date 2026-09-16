@@ -1,0 +1,209 @@
+{
+  "schema": "anima.v4-compilation/1",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 200
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  },
+  "sources": {
+    "src/OwnerV4FeeHook.sol": {
+      "path": "src/OwnerV4FeeHook.sol",
+      "sha256": "6adae77eab161f384fa1f5ffe9b2c34ce88644ddef1633ce654f8c8ec2c60020"
+    },
+    "src/HookCreate2Factory.sol": {
+      "path": "src/HookCreate2Factory.sol",
+      "sha256": "9f482443c1bc37610099517f3bf022ec23811ec613db2792e4254448520359ad"
+    },
+    "src/GenesisV4Launchpad.sol": {
+      "path": "src/GenesisV4Launchpad.sol",
+      "sha256": "b4f68026e2a25742e1195f46b0d4bf119475dfaea380e011275e943ae48a176f"
+    },
+    "src/GenesisV4Router.sol": {
+      "path": "src/GenesisV4Router.sol",
+      "sha256": "9d908cea6197af04798f50e037c29dab96064b07b385a8663ea486849bba4a8c"
+    },
+    "src/GenesisV4HookLaunchpad.sol": {
+      "path": "src/GenesisV4HookLaunchpad.sol",
+      "sha256": "9e0a76e3baf4724467cf4c9c652b3c4beb36b87f649bedf241c55b243120191c"
+    },
+    "@uniswap/v4-core/src/interfaces/IPoolManager.sol": {
+      "path": "vendor/v4-core/src/interfaces/IPoolManager.sol",
+      "sha256": "a98405333567e4ab344489728014795721cf0071c151536377d2fcc986e0600c"
+    },
+    "@uniswap/v4-core/src/types/PoolKey.sol": {
+      "path": "vendor/v4-core/src/types/PoolKey.sol",
+      "sha256": "99e1afe285b5c614ebc9586ab5196db9d24a63fd924a449f5d99f490a6a6d6a9"
+    },
+    "@uniswap/v4-core/src/types/Currency.sol": {
+      "path": "vendor/v4-core/src/types/Currency.sol",
+      "sha256": "ba6726fd24fbc66848208dfbb2899116c10729c505e6e5552316ac2444f1dfc3"
+    },
+    "@uniswap/v4-core/src/interfaces/IHooks.sol": {
+      "path": "vendor/v4-core/src/interfaces/IHooks.sol",
+      "sha256": "6eb35c9c598eb932e963219f1ff180748bc4c30ac6a02d924893b3c29abb1d73"
+    },
+    "@uniswap/v4-core/src/interfaces/callback/IUnlockCallback.sol": {
+      "path": "vendor/v4-core/src/interfaces/callback/IUnlockCallback.sol",
+      "sha256": "2e4a514730654da2e08a82eff5b3eabae12dc1c6198951396e1d466d4c0e223e"
+    },
+    "@uniswap/v4-core/src/types/PoolOperation.sol": {
+      "path": "vendor/v4-core/src/types/PoolOperation.sol",
+      "sha256": "cf72ad0c3e5e91662029e862acd841fabce8753040b0d4e802dee64ef1157232"
+    },
+    "@uniswap/v4-core/src/types/BalanceDelta.sol": {
+      "path": "vendor/v4-core/src/types/BalanceDelta.sol",
+      "sha256": "320d9c13dec135c3903729e66d3a1040fe86d537a7ee53728915012ca183af32"
+    },
+    "@uniswap/v4-core/src/libraries/FullMath.sol": {
+      "path": "vendor/v4-core/src/libraries/FullMath.sol",
+      "sha256": "a9607255a6fd604d9c92f6b7416811c38b9d86e5dfdb0c345a494ebd35f7a4a3"
+    },
+    "@uniswap/v4-core/src/libraries/StateLibrary.sol": {
+      "path": "vendor/v4-core/src/libraries/StateLibrary.sol",
+      "sha256": "eebdbc1b6e431072ce5521b9e1b603d43831e3b6e062743e6665e070d5cf8a1a"
+    },
+    "@uniswap/v4-core/src/libraries/TickMath.sol": {
+      "path": "vendor/v4-core/src/libraries/TickMath.sol",
+      "sha256": "272d4f6d3ff9ae33596ebcdb84a71a3c2d4542ae8fb5c88ddf1aca8043f5d06b"
+    },
+    "@uniswap/v4-core/src/libraries/SqrtPriceMath.sol": {
+      "path": "vendor/v4-core/src/libraries/SqrtPriceMath.sol",
+      "sha256": "42440c21bbab86c7eed4716b281ed5ca281cf14af8b5e06dc6dc3bc6864bcfdf"
+    },
+    "@uniswap/v4-core/src/types/PoolId.sol": {
+      "path": "vendor/v4-core/src/types/PoolId.sol",
+      "sha256": "548424ac50ad58212545da70207283fb8990731578c115c85d5acbcb0e1d3c9f"
+    },
+    "@uniswap/v4-core/src/types/BeforeSwapDelta.sol": {
+      "path": "vendor/v4-core/src/types/BeforeSwapDelta.sol",
+      "sha256": "6aee06f1553e879f5909e8f4c0eac26ec23dd4821a7e56e4d5077db39a227e12"
+    },
+    "@uniswap/v4-core/src/libraries/Hooks.sol": {
+      "path": "vendor/v4-core/src/libraries/Hooks.sol",
+      "sha256": "297d577998cdede64d48b47b12f15e4f442eea032fbb9676bb3c2f89da89b83c"
+    },
+    "@uniswap/v4-core/src/interfaces/external/IERC6909Claims.sol": {
+      "path": "vendor/v4-core/src/interfaces/external/IERC6909Claims.sol",
+      "sha256": "1cd65496c829036bc6aee67bc71363ab5fb6989c65e793087d0e1e2379f7d7d8"
+    },
+    "@uniswap/v4-core/src/interfaces/IProtocolFees.sol": {
+      "path": "vendor/v4-core/src/interfaces/IProtocolFees.sol",
+      "sha256": "807d68adea106ec2aa51a8009155de09ebfe09e1ee7053d5a5ae448d7e840654"
+    },
+    "@uniswap/v4-core/src/interfaces/IExtsload.sol": {
+      "path": "vendor/v4-core/src/interfaces/IExtsload.sol",
+      "sha256": "9421ef4ba198d94058cd9a4c9fd2d663c61fc682f7dafa449a873456853f0025"
+    },
+    "@uniswap/v4-core/src/interfaces/IExttload.sol": {
+      "path": "vendor/v4-core/src/interfaces/IExttload.sol",
+      "sha256": "c21643d2c7f48d2d2407438a64a3ff0f376324cf6a0c62608977713652308c9e"
+    },
+    "@uniswap/v4-core/src/interfaces/external/IERC20Minimal.sol": {
+      "path": "vendor/v4-core/src/interfaces/external/IERC20Minimal.sol",
+      "sha256": "5e966a2d22b3b234a56af4b17e36bf7be90f9b29b1ddb6a15bfefc0b6dab4282"
+    },
+    "@uniswap/v4-core/src/libraries/CustomRevert.sol": {
+      "path": "vendor/v4-core/src/libraries/CustomRevert.sol",
+      "sha256": "9d3dbe6b742cb1ac30f57df89d879ade9649389de1165fc637114bd062d39fca"
+    },
+    "@uniswap/v4-core/src/libraries/SafeCast.sol": {
+      "path": "vendor/v4-core/src/libraries/SafeCast.sol",
+      "sha256": "c1a815a41607be5b4c86ca588a951f368156da8ee21bdfc18b5d51b58a0f27be"
+    },
+    "@uniswap/v4-core/src/libraries/UnsafeMath.sol": {
+      "path": "vendor/v4-core/src/libraries/UnsafeMath.sol",
+      "sha256": "2de236e7ca0b9572a6b0184557565b6fd54e177224e202c727fe248785ede427"
+    },
+    "@uniswap/v4-core/src/libraries/FixedPoint96.sol": {
+      "path": "vendor/v4-core/src/libraries/FixedPoint96.sol",
+      "sha256": "66ee26d4fb3ac639124bdfa27d3256d196970997fa127c09e9bf7154e30d4590"
+    },
+    "@uniswap/v4-core/src/libraries/Position.sol": {
+      "path": "vendor/v4-core/src/libraries/Position.sol",
+      "sha256": "3dc4e2ad1564fa94eddf3ff06ce9ac592c9d578ea64ca194050382da454c8fcb"
+    },
+    "@uniswap/v4-core/src/libraries/BitMath.sol": {
+      "path": "vendor/v4-core/src/libraries/BitMath.sol",
+      "sha256": "e8a45eb3d57f9427fc47bbb2543c1a6a5f394113b378123ac7ca9f113a7502b4"
+    },
+    "@uniswap/v4-core/src/libraries/LPFeeLibrary.sol": {
+      "path": "vendor/v4-core/src/libraries/LPFeeLibrary.sol",
+      "sha256": "e96c3fa7deac991dc09b6c5e560a340d01d6c68ccba483d4b29f8a66e5aa44e0"
+    },
+    "@uniswap/v4-core/src/libraries/ParseBytes.sol": {
+      "path": "vendor/v4-core/src/libraries/ParseBytes.sol",
+      "sha256": "6a6f3d1cec0143fd70ea68c34e6dce3bde72f368b213f1a225ada23dbfd99bb8"
+    },
+    "@uniswap/v4-core/src/libraries/FixedPoint128.sol": {
+      "path": "vendor/v4-core/src/libraries/FixedPoint128.sol",
+      "sha256": "1ca2f55160697b73bd66fd27c8724d79a57108121ce1e8a0ab8b79f38bb58fbb"
+    },
+    "@uniswap/v4-core/src/libraries/LiquidityMath.sol": {
+      "path": "vendor/v4-core/src/libraries/LiquidityMath.sol",
+      "sha256": "67a39e58732340af4870342ba9230691f35501d89ed8725ca1b338deaa0eb26a"
+    }
+  },
+  "buildInputs": {
+    "scripts/compile.cjs": "79457d6c5146872ff5792ccf03af80af4b65f89778a25e501c3488f8619c9bdc",
+    "scripts/dependency.cjs": "6b1ce3dc7f6fd7ed7cb7a54e6467980a48845002575ce764059d8f1018cd3b5e",
+    "package.json": "07f0075e96f9338579ea1a354cc07fbbd239b3f2a0711531b1df397bd70b8730",
+    "package-lock.json": "7828ea5002ac735234d9c3642703fae07493ee18c7a818b1950d35b4ee653ed3",
+    "dependencies.json": "651dcca6ed3ed099b4a63a02652d8cca98d38742270320f60586bf8d8b566937"
+  },
+  "artifacts": {
+    "src/GenesisV4HookLaunchpad.sol:GenesisV4HookLaunchpad": {
+      "file": "GenesisV4HookLaunchpad.json",
+      "sha256": "c857df8b1b1c24928a2abb8f34161c3230b12019d965bc8f842f6e30ef352cbf"
+    },
+    "src/GenesisV4Launchpad.sol:GenesisFixedToken": {
+      "file": "GenesisFixedToken.json",
+      "sha256": "2cbc897fd4b98a6f11a00983f0ddef7861984833f8096a9641b12e687028ac6a"
+    },
+    "src/GenesisV4Launchpad.sol:GenesisPayment": {
+      "file": "GenesisPayment.json",
+      "sha256": "9744f786a8cd09adc1a1d9f2bbbe002067e057c0024c1dc57e8cb097ca59a132"
+    },
+    "src/GenesisV4Launchpad.sol:GenesisV4Launchpad": {
+      "file": "GenesisV4Launchpad.json",
+      "sha256": "27cb0b35068a20b1c47b3194d02bd5ba306e9cb0cdb7d0153434669b3c870765"
+    },
+    "src/GenesisV4Launchpad.sol:GenesisV4Position": {
+      "file": "GenesisV4Position.json",
+      "sha256": "78a460c542d3bed14a2df722ba3ab06cfb1061b1935cf9ab7921bc605ccb2e8b"
+    },
+    "src/GenesisV4Launchpad.sol:IGenesisToken": {
+      "file": "IGenesisToken.json",
+      "sha256": "11bf797510cc4b854dbb90cbde5b1bbe17d974b46f09228d7c864737cc6c186a"
+    },
+    "src/GenesisV4Router.sol:GenesisV4Router": {
+      "file": "GenesisV4Router.json",
+      "sha256": "65e55bb37859792da9cb75d49a58f505e58816364efd5eff112a3c194786e8f7"
+    },
+    "src/HookCreate2Factory.sol:HookCreate2Factory": {
+      "file": "HookCreate2Factory.json",
+      "sha256": "711edb7a2f170f09422a39124ab0f209e35aa36ec3418d1b17802c5a31a3cd68"
+    },
+    "src/OwnerV4FeeHook.sol:IFeeDepositReceiver": {
+      "file": "IFeeDepositReceiver.json",
+      "sha256": "7a4663c7dd227f909a9470df375d64f448eb60fc39839b047f0e7e75c90ba382"
+    },
+    "src/OwnerV4FeeHook.sol:OwnerV4FeeHook": {
+      "file": "OwnerV4FeeHook.json",
+      "sha256": "fb6c4040b91db060b8ea5fae1680c4f4d4ad18c285b2cdeb01a47856fd01ae71"
+    }
+  }
+}

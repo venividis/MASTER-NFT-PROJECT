@@ -1,0 +1,62 @@
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ the organism awakens, evolves, becomes sovereign, and carries authority with itself (45956.174705ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ F07 owner and sponsor exact signatures pay gas from deposited budget, with replay, tamper, cancellation and custody rejection (7978.350868ms)
+✔ F07 failed authorized call consumes voucher and bounded refund, insufficient and expired vouchers cannot spend (6220.160471ms)
+✔ F16 delegated ENS subname resolves the exact NFT account and live owner; mint and naming are atomic (5238.385762ms)
+✔ F16 expired mint endowment is recoverable when the parent is unavailable (1251.227442ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ F01 settles incrementally, obeys limits, retires fills once, and exactly conserves both escrows (17784.203023ms)
+✔ F01 undersubscribed final supply clears at reserve and seller can cancel before start (7636.166626ms)
+✔ F06 cumulative identity matching amplifies distinct people without overspending the fixed pot (4333.834404ms)
+✔ F06 donors can exit, cancelled budgets refund exactly, and zero-match budgets return to sponsor (2280.004966ms)
+✔ F17 real master NFT custody invalidates old sessions and issues transferable shares with no issuer drain (8828.755265ms)
+✔ F17 rejects used accounts; funded buyout counts each locked share once and pays the whole pool (12691.03317ms)
+✔ F17 rejected votes and rejecting NFT recipients unlock shares and refund the funded offer (8514.494665ms)
+✔ typed owner-review actions match every contract selector and reject malformed escrow and stale wallet context (299.754268ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ new EVM suite: deposit ceiling cannot underfund split basket claims (6474.816434ms)
+✔ new EVM suite: matched early exits divide an impairment rather than pay nominal principal first (4384.063906ms)
+✔ new EVM suite: a disabled entry gate cannot seize active loan collateral or block repayment (4921.243491ms)
+✔ new EVM suite: accepted covered-call exercise remains available after new-risk gate closes (3651.637981ms)
+✔ new EVM suite: custody retires cell adapter grants; reauthorization is explicit and allowances reset (5732.209377ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 110517.073436

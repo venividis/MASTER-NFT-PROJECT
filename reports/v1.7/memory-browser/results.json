@@ -1,0 +1,176 @@
+{
+  "version": "1.7.0",
+  "browser": "144.0.7559.96",
+  "htmlSha256": "1a08e36afe93c0233ed58220b0f2bc62245c22fb765989df013a5aced0b1025c",
+  "passed": 41,
+  "failed": 0,
+  "checks": [
+    {
+      "name": "Original organism is still default and instruments are initially closed",
+      "passed": true
+    },
+    {
+      "name": "Living field actually initialized with eight zero activity controls",
+      "passed": true
+    },
+    {
+      "name": "Managed browser has no secure-context Web Crypto",
+      "passed": true
+    },
+    {
+      "name": "Trade journal is optional and collapsed",
+      "passed": true
+    },
+    {
+      "name": "Missing Web Crypto refuses rather than storing private plaintext",
+      "passed": true
+    },
+    {
+      "name": "Review freezes the reason and visibility before any mutation",
+      "passed": true
+    },
+    {
+      "name": "Successful swap has an inscription and separate fill link",
+      "passed": true
+    },
+    {
+      "name": "The before entry precedes the receipt in the local event sequence",
+      "passed": true
+    },
+    {
+      "name": "Journal and swap use the same exact plan digest",
+      "passed": true
+    },
+    {
+      "name": "Private failed draft was not accidentally persisted",
+      "passed": true
+    },
+    {
+      "name": "Successful activities advance life without changing original audit",
+      "passed": true
+    },
+    {
+      "name": "Process statistics distinguish observed fills, plans and reviews",
+      "passed": true
+    },
+    {
+      "name": "Decision and actual received asset are inspectable together",
+      "passed": true
+    },
+    {
+      "name": "Reflection appends without replacing the original",
+      "passed": true
+    },
+    {
+      "name": "Reflection binds its original author and parent",
+      "passed": true
+    },
+    {
+      "name": "Untrusted memory text is literal, not executable markup",
+      "passed": true
+    },
+    {
+      "name": "Review queue updates from linked reflection",
+      "passed": true
+    },
+    {
+      "name": "Search does not hallucinate encrypted or missing text",
+      "passed": true
+    },
+    {
+      "name": "General memories work without a financial operation",
+      "passed": true
+    },
+    {
+      "name": "Opting out leaves visible form root unchanged",
+      "passed": true
+    },
+    {
+      "name": "Leaving the reason blank does not obstruct ordinary swaps",
+      "passed": true
+    },
+    {
+      "name": "Locks and authored conversation contribute distinct channels",
+      "passed": true
+    },
+    {
+      "name": "Earlier activity view leaves balances and history untouched",
+      "passed": true
+    },
+    {
+      "name": "History describes its base-genome scope",
+      "passed": true
+    },
+    {
+      "name": "Original comparison is a view, not a rollback",
+      "passed": true
+    },
+    {
+      "name": "Lived form returns with identical deterministic traits",
+      "passed": true
+    },
+    {
+      "name": "Manual original identity audit remains unchanged",
+      "passed": true
+    },
+    {
+      "name": "Execution CSV is explicit raw units with no journal prose",
+      "passed": true
+    },
+    {
+      "name": "Export includes append-only memory and operating state",
+      "passed": true
+    },
+    {
+      "name": "Actual browser restore reconstructs the same history-derived form",
+      "passed": true
+    },
+    {
+      "name": "Encrypted imported body is not revealed by its public header",
+      "passed": true
+    },
+    {
+      "name": "Unavailable browser decryption never substitutes an unverified plaintext",
+      "passed": true
+    },
+    {
+      "name": "Imported envelope still omits passphrase and private body",
+      "passed": true
+    },
+    {
+      "name": "Personal journal view does not assign previous authorship to Guest",
+      "passed": true
+    },
+    {
+      "name": "Return to original author retains the original thesis",
+      "passed": true
+    },
+    {
+      "name": "Mobile memory panel does not overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile optional editor fits the existing panel",
+      "passed": true
+    },
+    {
+      "name": "Mobile timeline has no document overflow",
+      "passed": true
+    },
+    {
+      "name": "No automatic wallet access",
+      "passed": true
+    },
+    {
+      "name": "No network calls in the standalone flows",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser exceptions",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "network": [],
+  "scope": "Actual UI, opaque origin, explicit Storage adapter. Public memory paths exercised. Browser crypto-unavailable paths correctly refuse; encryption itself independently executed in Node Web Crypto, not emulated as browser success."
+}

@@ -1,0 +1,144 @@
+{
+  "scope": "Native Mesa GLES, not browser/device QA",
+  "cases": [
+    {
+      "case": "within-the-field",
+      "size": [
+        960,
+        600
+      ],
+      "pixelStd": 41.2304379543238,
+      "passed": true
+    },
+    {
+      "case": "membrane",
+      "size": [
+        512,
+        320
+      ],
+      "pixelStd": 39.96217854649621,
+      "passed": true
+    },
+    {
+      "case": "portrait",
+      "size": [
+        320,
+        568
+      ],
+      "pixelStd": 40.46254258455972,
+      "passed": true
+    },
+    {
+      "case": "other-genome",
+      "size": [
+        512,
+        320
+      ],
+      "pixelStd": 41.561568940073954,
+      "passed": true
+    },
+    {
+      "case": "lived-fold-event",
+      "size": [
+        512,
+        320
+      ],
+      "pixelStd": 37.09626306485002,
+      "passed": true
+    },
+    {
+      "case": "outside-volume",
+      "size": [
+        512,
+        320
+      ],
+      "pixelStd": 45.9445354735784,
+      "passed": true
+    },
+    {
+      "case": "crossing",
+      "size": [
+        512,
+        320
+      ],
+      "pixelStd": 46.23634956687087,
+      "passed": true
+    },
+    {
+      "case": "continuous-depth-flag",
+      "size": [
+        320,
+        200
+      ],
+      "pixelStd": 45.941312214407446,
+      "passed": true
+    },
+    {
+      "case": "opposite-side",
+      "size": [
+        512,
+        320
+      ],
+      "pixelStd": 37.17674054983049,
+      "passed": true
+    }
+  ],
+  "sameObjectAtHome": [
+    {
+      "case": "seed",
+      "meanByteError": 0.0,
+      "maxByteError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "genome",
+      "meanByteError": 6.510416666666667e-05,
+      "maxByteError": 1.0,
+      "passed": true
+    },
+    {
+      "case": "root",
+      "meanByteError": 0.0,
+      "maxByteError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "rotation-pointer",
+      "meanByteError": 0.0,
+      "maxByteError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "fold-event",
+      "meanByteError": 0.0,
+      "maxByteError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "minimum-scale",
+      "meanByteError": 0.00013020833333333333,
+      "maxByteError": 1.0,
+      "passed": true
+    }
+  ],
+  "softwareParity": [
+    {
+      "case": "base",
+      "meanByteError": 0.00013020833333333333,
+      "p99ByteError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "life",
+      "meanByteError": 0.00026041666666666666,
+      "p99ByteError": 0.0,
+      "passed": true
+    },
+    {
+      "case": "time-audio",
+      "meanByteError": 0.00013020833333333333,
+      "p99ByteError": 0.0,
+      "passed": true
+    }
+  ]
+}

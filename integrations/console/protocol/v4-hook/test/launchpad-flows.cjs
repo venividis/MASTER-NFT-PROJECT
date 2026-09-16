@@ -1,0 +1,130 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const os = require('node:os');
+const {spawn,execFileSync} = require('node:child_process');
+const {ethers} = require('../scripts/dependency.cjs')('ethers');
+const {compileFixtures} = require('../scripts/compile.cjs');
+const root=path.resolve(__dirname,'..');
+async function main(){
+ const compiled=compileFixtures(), port=23948, rpc=`http://127.0.0.1:${port}`;
+ const anvil=spawn(process.execPath,[path.join(root,'node_modules/@foundry-rs/anvil/bin.mjs'),'--host','127.0.0.1','--port',String(port),'--chain-id','31337','--hardfork','cancun','--silent'],{stdio:['ignore','ignore','pipe']});
+ let errors='',provider;anvil.stderr.on('data',b=>errors+=b);
+ try{
+  let ready=false;for(let i=0;i<100;i++){if(anvil.exitCode!==null)throw Error(errors);try{const r=await fetch(rpc,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({jsonrpc:'2.0',id:1,method:'eth_chainId',params:[]})});if((await r.json()).result==='0x7a69'){ready=true;break;}}catch{}await new Promise(r=>setTimeout(r,100));}assert.ok(ready);
+  provider=new ethers.JsonRpcProvider(rpc,31337,{staticNetwork:true,cacheTimeout:-1});provider.pollingInterval=10;
+  const [alice,bob,attacker]=await Promise.all([0,1,2].map(i=>provider.getSigner(i)));
+  const [a,b,c]=await Promise.all([alice,bob,attacker].map(x=>x.getAddress()));
+  const get=(source,name)=>compiled[source][name];
+  const deploy=async(artifact,args=[])=>{const x=await new ethers.ContractFactory(artifact.abi,'0x'+artifact.evm.bytecode.object,alice).deploy(...args);await x.waitForDeployment();return x;};
+  const send=async tx=>(await tx).wait();
+  const src='src/GenesisV4Launchpad.sol';
+  const manager=await deploy(get('@uniswap/v4-core/src/PoolManager.sol','PoolManager'),[a]);
+  const quoter=await deploy(get('vendor/v4-periphery/src/lens/V4Quoter.sol','V4Quoter'),[await manager.getAddress()]);
+  const factory=await deploy(get(src,'GenesisV4Launchpad'),[await manager.getAddress()]);
+  const router=await deploy(get('src/GenesisV4Router.sol','GenesisV4Router'),[await manager.getAddress()]);
+  const quote=await deploy(get(src,'GenesisFixedToken'),['Quote','QUOTE',10n**26n]);
+  const F=await factory.getAddress(),R=await router.getAddress(),Q=await quote.getAddress();
+  const now=(await provider.getBlock('latest')).timestamp;
+  const terms={name:'Anima launch',symbol:'AL',supply:10n**24n,quoteToken:Q,tokenBudget:10n**22n,quoteBudget:10n**22n,fee:3000,tickSpacing:60,tickLower:-600,tickUpper:600,sqrtPriceX96:1n<<96n,liquidity:10n**23n,deadline:now+3600,salt:ethers.id('fresh-launch')};
+  const predicted=await factory.predict(terms,a);
+  const other=await factory.predict(terms,c);assert.notEqual(predicted[0],other[0]);
+  assert.equal((await factory.predict({...terms,sqrtPriceX96:(1n<<96n)+1n},a))[0],predicted[0]);
+  await send(quote.approve(F,terms.quoteBudget));
+  const quoteBefore=await quote.balanceOf(a);const receipt=await send(factory.launch(terms));
+  const token=new ethers.Contract(predicted[0],get(src,'GenesisFixedToken').abi,alice);
+  const position=new ethers.Contract(predicted[1],get(src,'GenesisV4Position').abi,alice);
+  const key=await position.poolKey();const k={currency0:key.currency0,currency1:key.currency1,fee:key.fee,tickSpacing:key.tickSpacing,hooks:key.hooks};
+  const currency0=new ethers.Contract(k.currency0,get(src,'GenesisFixedToken').abi,alice);
+  const currency1=new ethers.Contract(k.currency1,get(src,'GenesisFixedToken').abi,alice);
+  const passed=[];
+  assert.equal(await token.totalSupply(),terms.supply);assert.equal(await position.balanceOf(a),terms.liquidity);
+  assert.equal(await token.balanceOf(F),0n);assert.equal(await quote.balanceOf(F),0n);assert.equal(await token.balanceOf(predicted[1]),0n);assert.equal(await quote.balanceOf(predicted[1]),0n);
+  assert.ok(await quote.balanceOf(a)>quoteBefore-terms.quoteBudget);assert.equal(await quote.allowance(a,F),0n);
+  passed.push('One atomic launch creates the predicted fixed-supply token, initializes the real v4 pool, funds the immutable position and returns every unused budget unit.');
+  assert.ok(!receipt.logs.some(l=>l.address===ethers.ZeroAddress));
+  const bad={...terms,salt:ethers.id('underfunded'),tokenBudget:1n};
+  await send(quote.approve(F,terms.quoteBudget));const failed=await factory.predict(bad,a);
+  await assert.rejects(factory.launch.staticCall(bad));assert.equal(await provider.getCode(failed[0]),'0x');
+  await assert.rejects(factory.launch.staticCall({...terms,salt:ethers.id('expired'),deadline:1}));
+  passed.push('Insufficient funding and expired launches revert; failed deterministic deployments leave no token, pool position or partial funding.');
+  await assert.rejects(position.seed.staticCall(1,a));await assert.rejects(position.unlockCallback.staticCall(ethers.AbiCoder.defaultAbiCoder().encode(['int256'],[0])));
+  await assert.rejects(router.unlockCallback.staticCall('0x'));
+  passed.push('The position cannot be reseeded; unsolicited PoolManager callbacks reject.');
+  await send(position.transfer(b,terms.liquidity/2n));
+  await send(currency0.approve(R,10n**21n));await send(currency1.approve(R,10n**21n));
+  execFileSync(process.execPath,[path.resolve(root,'../../../../scripts/build-v4.mjs')]);
+  const client=await import(path.resolve(root,'../../../../web/v4/client.mjs'));
+  const config={chainId:31337,manager:await manager.getAddress(),quoter:await quoter.getAddress(),factory:F,router:R};
+  const plannedSwap=await client.swapPlan(provider,config,{inputToken:k.currency0,outputToken:k.currency1,amount:'1',fee:3000,tickSpacing:60,slippageBps:50});
+  assert.equal(plannedSwap.kind,'swap');
+  const plannedArgs=router.interface.decodeFunctionData('swap',plannedSwap.request.data);
+  assert.ok(plannedArgs[3]>0n);assert.equal(plannedSwap.summary.minimumPoolOutput,ethers.formatUnits(plannedArgs[3],18));
+  const forged=await provider.getCode(R);assert.throws(()=>client.normalizeRuntime(forged+'00',{bytes:(forged.length-2)/2,masks:[]}));
+  passed.push('The actual client validates deployment bytecode and receives a bounded quote from the pinned official V4Quoter.');
+  const amount=10n**19n, lo=4295128740n,hi=1461446703485210103287273052203988822378723970341n;
+  for(const direction of [true,false]){
+   const incoming=direction?currency0:currency1,outgoing=direction?currency1:currency0;
+   const beforeIn=await incoming.balanceOf(a),beforeOut=await outgoing.balanceOf(a);
+   const output=await router.swap.staticCall(k,direction,amount,1,direction?lo:hi,terms.deadline,'0x');
+   await send(router.swap(k,direction,amount,output*99n/100n,direction?lo:hi,terms.deadline,'0x'));
+   assert.equal(beforeIn-await incoming.balanceOf(a),amount);assert.ok(await outgoing.balanceOf(a)>beforeOut);
+  }
+  assert.equal(await currency0.balanceOf(R),0n);assert.equal(await currency1.balanceOf(R),0n);
+  passed.push('Both swap directions settle exact input against the real PoolManager and return output directly to the caller without router custody.');
+  await assert.rejects(router.swap.staticCall(k,true,amount,10n**30n,lo,terms.deadline,'0x'));
+  await assert.rejects(router.swap.staticCall(k,true,amount,1,lo,1,'0x'));
+  await assert.rejects(router.swap.staticCall(k,true,10n**21n,1,(1n<<96n)-1n,terms.deadline,'0x'));
+  passed.push('Slippage, expiry and incomplete fills reject atomically.');
+  const half=terms.liquidity/2n;
+  const beforeA0=await currency0.balanceOf(a),beforeA1=await currency1.balanceOf(a);
+  const amounts=await position.redeem.staticCall(half,0,0,terms.deadline);
+  const preview=await position.previewRedeem(half);assert.equal(preview[0],amounts[0]);assert.equal(preview[1],amounts[1]);
+  await assert.rejects(position.redeem.staticCall(half,amounts[0]+1n,amounts[1],terms.deadline));
+  await send(position.redeem(half,amounts[0],amounts[1],terms.deadline));
+  assert.equal(await currency0.balanceOf(a)-beforeA0,amounts[0]);assert.equal(await currency1.balanceOf(a)-beforeA1,amounts[1]);
+  assert.equal(await position.balanceOf(a),0n);assert.equal(await position.totalSupply(),half);assert.equal(await position.liquidity(),half);
+  const b0=await currency0.balanceOf(b),b1=await currency1.balanceOf(b);
+  await send(position.connect(bob).redeem(half,0,0,terms.deadline));
+  const got0=await currency0.balanceOf(b)-b0,got1=await currency1.balanceOf(b)-b1;
+  assert.ok(got0>=amounts[0]&&got0-amounts[0]<=2n);assert.ok(got1>=amounts[1]&&got1-amounts[1]<=2n);
+  assert.equal(await position.totalSupply(),0n);assert.equal(await position.liquidity(),0n);assert.equal(await currency0.balanceOf(predicted[1]),0n);assert.equal(await currency1.balanceOf(predicted[1]),0n);
+  passed.push('Two separate holders redeem equal principal and earned fees fairly; the first exit cannot consume the second holder’s fees, and the final exit leaves no stranded dust.');
+  await assert.rejects(position.connect(attacker).redeem.staticCall(1,0,0,terms.deadline));
+  passed.push('Nonholders cannot withdraw liquidity or fees.');
+  const relay=await deploy(get('test/RelayAccountingHarness.sol','RelayAccountingHarness'),[b]);const relayAddress=await relay.getAddress();
+  const request=address=>({preimage:{npk:ethers.ZeroHash,token:{tokenType:0,tokenAddress:address,tokenSubID:0},value:0},ciphertext:{encryptedBundle:[ethers.ZeroHash,ethers.ZeroHash,ethers.ZeroHash],shieldKey:ethers.ZeroHash}});
+  const call=(to,data)=>({to,data,value:0n});
+  for(const shouldFail of [false,true]){
+   const t={...terms,salt:ethers.id(shouldFail?'relay-failure':'relay-success'),tokenBudget:shouldFail?1n:terms.tokenBudget};
+   const [newToken,newPosition]=await factory.predict(t,relayAddress);
+   const inner=[call(Q,quote.interface.encodeFunctionData('approve',[F,t.quoteBudget])),call(F,factory.interface.encodeFunctionData('launch',[t])),call(Q,quote.interface.encodeFunctionData('approve',[F,0n])),call(relayAddress,relay.interface.encodeFunctionData('shield',[[request(Q),request(newToken),request(newPosition)]]))];
+   const outer=[call(relayAddress,relay.interface.encodeFunctionData('multicall',[true,inner]))];
+   await send(quote.approve(relayAddress,t.quoteBudget));const before=await quote.balanceOf(b);
+   await send(relay.execute(Q,t.quoteBudget,outer,[request(Q)],{gasLimit:15000000}));
+   assert.equal(await quote.balanceOf(relayAddress),0n);assert.equal(await quote.allowance(relayAddress,F),0n);
+   if(shouldFail){assert.equal(await relay.failures(),1n);assert.equal(await provider.getCode(newToken),'0x');assert.equal(await provider.getCode(newPosition),'0x');assert.equal(await quote.balanceOf(b)-before,t.quoteBudget);}
+   else{assert.equal(await relay.failures(),0n);const shares=new ethers.Contract(newPosition,get(src,'GenesisV4Position').abi,provider);assert.equal(await shares.balanceOf(b),t.liquidity);assert.equal(await shares.balanceOf(relayAddress),0n);}
+  }
+  passed.push('A local RelayAdapt accounting harness verifies grouped launch-plus-shield success and atomic launch failure: every existing input refunds to the shield sink, new failed addresses are never read by the fallback, and no approvals or funds remain in the shared relay. This harness does not verify ZK proofs.');
+  const temp=fs.mkdtempSync(path.join(os.tmpdir(),'anima-deploy-test-'));
+  try{
+   const cli=path.resolve(root,'../../../../scripts/v4-deployment.mjs'),planFile=path.join(temp,'plan.json'),badFile=path.join(temp,'bad-plan.json'),output=path.join(temp,'deployed.json');
+   const deployer=ethers.Wallet.createRandom();await send(alice.sendTransaction({to:deployer.address,value:ethers.parseEther('10')}));
+   const env={...process.env,ANIMA_V4_RPC:rpc,ANIMA_V4_DEPLOYER_KEY:deployer.privateKey};
+   execFileSync(process.execPath,[cli,'--chain','31337','--manager',await manager.getAddress(),'--deployer',deployer.address,'--output',planFile],{env,stdio:'pipe'});
+   const raw=fs.readFileSync(planFile,'utf8'),plan=JSON.parse(raw);assert.ok(!raw.includes(rpc)&&!raw.includes(deployer.privateKey));
+   const bad=structuredClone(plan);bad.requests[1].transaction.data='0x00';fs.writeFileSync(badFile,JSON.stringify(bad));
+   assert.throws(()=>execFileSync(process.execPath,[cli,'--broadcast','--plan',badFile,'--output',output],{env,stdio:'pipe'}));
+   assert.equal(await provider.getTransactionCount(deployer.address,'pending'),0);assert.equal(await provider.getCode(plan.requests[0].address),'0x');
+   execFileSync(process.execPath,[cli,'--broadcast','--plan',planFile,'--output',output],{env,stdio:'pipe'});
+   const deployed=JSON.parse(fs.readFileSync(output));assert.equal(deployed.receipts.length,2);
+   await client.verifyContract(provider,deployed.factory,'GenesisV4Launchpad',await manager.getAddress());
+   await client.verifyContract(provider,deployed.router,'GenesisV4Router',await manager.getAddress());
+  }finally{fs.rmSync(temp,{recursive:true,force:true});}
+  passed.push('The deployment CLI prepares unsigned plans without RPC/key leakage, rejects an altered second request before either deployment, and deploys and verifies both contracts on a disposable local chain.');
+  const report={status:'passed',environment:'Anvil 1.7.1, Cancun, genuine pinned PoolManager; local only',scenarios:passed.length,passed};
+  fs.writeFileSync(path.join(root,'artifacts/launchpad-test-results.json'),JSON.stringify(report,null,2)+'\n');console.log(JSON.stringify(report,null,2));
+ }finally{provider?.destroy();anvil.kill('SIGTERM');}
+}
+main().catch(e=>{console.error(e);process.exitCode=1;});

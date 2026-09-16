@@ -1,0 +1,193 @@
+{
+  "group": "cca",
+  "file": "ANIMA/OfficialCCALauncher.sol",
+  "name": "OfficialCCALauncher",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract IContinuousClearingAuctionFactory",
+          "name": "factory_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "auction",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "Launched",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint128",
+          "name": "amount",
+          "type": "uint128"
+        },
+        {
+          "internalType": "bytes",
+          "name": "config",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        }
+      ],
+      "name": "create",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "auction",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "factory",
+      "outputs": [
+        {
+          "internalType": "contract IContinuousClearingAuctionFactory",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint128",
+          "name": "amount",
+          "type": "uint128"
+        },
+        {
+          "internalType": "bytes",
+          "name": "config",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "creator",
+          "type": "address"
+        }
+      ],
+      "name": "predict",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60a034607a57601f61072738819003918201601f19168301916001600160401b03831184841017607e57808492602094604052833981010312607a57516001600160a01b038116808203607a573b15607a57608052604051610694908161009382396080518181816101c6015281816102a501526103e60152f35b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f905f3560e01c908163942fe28e146102c957508063c45a01551461025a5763faadda791461003f575f80fd5b346102575760a07ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc3601126102575761007661054c565b61007e61056f565b9060443567ffffffffffffffff81116102535761009f90369060040161058e565b916084359273ffffffffffffffffffffffffffffffffffffffff8416840361024f576101a173ffffffffffffffffffffffffffffffffffffffff93602095604051610144816101188a82019460643590866020909392919373ffffffffffffffffffffffffffffffffffffffff60408201951681520152565b037fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe081018352826105bc565b519020926fffffffffffffffffffffffffffffffff60405198899788977f1bfb751b00000000000000000000000000000000000000000000000000000000895216600488015216602486015260a0604486015260a4850191610656565b906064830152306084830152038173ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000165afa9081156102445760209291610217575b5073ffffffffffffffffffffffffffffffffffffffff60405191168152f35b6102379150823d841161023d575b61022f81836105bc565b81019061062a565b5f6101f8565b503d610225565b6040513d84823e3d90fd5b8580fd5b8380fd5b80fd5b503461025757807ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc36011261025757602060405173ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461050b5760807ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffc36011261050b5761030061054c565b9061030961056f565b6044359167ffffffffffffffff831161050b57602061032f6103c694369060040161058e565b3383850190815260643560208201529095919361034f8160408401610118565b5190209260405193849283927f4aaa5b370000000000000000000000000000000000000000000000000000000084526fffffffffffffffffffffffffffffffff73ffffffffffffffffffffffffffffffffffffffff8b16988960048701521698896024860152608060448601526084850191610656565b90606483015203815f73ffffffffffffffffffffffffffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000165af180156105005773ffffffffffffffffffffffffffffffffffffffff915f9161052d575b5016916040519381606052836040523360601b602c526f23b872dd000000000000000000000000600c5260205f6064601c82855af1908160015f5114161561050f575b50505f60605283604052823b1561050b577f331f2f650000000000000000000000000000000000000000000000000000000084525f8460048183875af19081156105005760209484926104f0575b506040519081527f80c8e07d8ffca2df536a142f7c01a0f8585d0b5d73a9d58c131aaf873db88285853392a4604051908152f35b5f6104fa916105bc565b5f6104bc565b6040513d5f823e3d90fd5b5f80fd5b3b153d17101561052057848061046e565b637939f4245f526004601cfd5b610546915060203d60201161023d5761022f81836105bc565b8561042b565b6004359073ffffffffffffffffffffffffffffffffffffffff8216820361050b57565b602435906fffffffffffffffffffffffffffffffff8216820361050b57565b9181601f8401121561050b5782359167ffffffffffffffff831161050b576020838186019501011161050b57565b90601f7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe0910116810190811067ffffffffffffffff8211176105fd57604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b9081602091031261050b575173ffffffffffffffffffffffffffffffffffffffff8116810361050b5790565b601f82602094937fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffe093818652868601375f858286010152011601019056",
+  "creationHash": "0x47143471560fb87700dac1e651a87fe0af0b90a627b40f60449733af5e8b7efa",
+  "bytes": 1684,
+  "normalizedHash": "0xbc952d17ab6b4e3be6ff7771584b8adc614a92adf1b16197b0d8586662afc8bc",
+  "masks": [
+    {
+      "length": 32,
+      "start": 454
+    },
+    {
+      "length": 32,
+      "start": 677
+    },
+    {
+      "length": 32,
+      "start": 998
+    }
+  ],
+  "immutableGroups": [
+    [
+      {
+        "length": 32,
+        "start": 454
+      },
+      {
+        "length": 32,
+        "start": 677
+      },
+      {
+        "length": 32,
+        "start": 998
+      }
+    ]
+  ],
+  "sourceInputSha256": "7c38368b31c2092abc3006c630870a8110a958e221e925905bdef6fe7ff89184",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 11111
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "metadata": {
+      "bytecodeHash": "none",
+      "appendCBOR": false
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  }
+}

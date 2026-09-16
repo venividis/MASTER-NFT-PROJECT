@@ -1,0 +1,154 @@
+supply.toString(),public:pub.toString(),founder:founder.toString(),lp:lp.toString(),soft:soft.toString(),hard:hard.toString(),liquidityBps,opens:this.s.now,closes:this.s.now+hours*3600,raised:'0',contributions:{},claimed:[],status:'open',room:this.s.rooms.length+1};
+   this.s.sales.push(sale);this.s.rooms.push({id:sale.room,name:symbol+' commons',topic:name+' · launch terms and conversation.',identity:a.id,gated:false,slow:3,color:'#e8c797',members:{},bans:[],moderators:{}});a.nonce++;this._event('LAUNCHED',a.id,{sale:id,symbol,room:sale.room});return sale;
+  });
+ }
+ sale(id){const sale=this.s.sales.find(x=>x.id===Number(id));if(!sale)throw Error('Unknown launch.');return sale;}
+ contribute(id,n){return this._tx(()=>{const a=this._owner(this.s.selected),s=this.sale(id);n=amount(n);if(s.status!=='open'||this.s.now>=s.closes)throw Error('Contribution window has closed.');if(BigInt(s.raised)+n>BigInt(s.hard))throw Error('Contribution exceeds the hard cap.');if((BigInt(s.contributions[a.id]||0)+n)*BigInt(s.public)/BigInt(s.hard)===0n)throw Error('Contribution would round to zero.');take(a.balances,'ETH',n);s.raised=(BigInt(s.raised)+n).toString();s.contributions[a.id]=(BigInt(s.contributions[a.id]||0)+n).toString();a.nonce++;this._event('CONTRIBUTED',a.id,{sale:s.id,symbol:s.symbol,amount:n.toString()});});}
+ withdrawContribution(id,n){return this._tx(()=>{const a=this._owner(this.s.selected),s=this.sale(id);n=amount(n);const paid=BigInt(s.contributions[a.id]||0);if(s.status!=='open'||this.s.now>=s.closes||paid<n)throw Error('Contribution cannot be withdrawn.');if(paid-n>0n&&(paid-n)*BigInt(s.public)/BigInt(s.hard)===0n)throw Error('Remaining contribution would round to zero.');s.contributions[a.id]=(paid-n).toString();s.raised=(BigInt(s.raised)-n).toString();give(a.balances,'ETH',n);a.nonce++;this._event('WITHDREW',a.id,{sale:s.id,amount:n.toString()});});}
+ settle(id){return this._tx(()=>{const s=this.sale(id);if(s.status!=='open'||this.s.now<s.closes)throw Error('Settlement starts after the contribution window.');const raised=BigInt(s.raised);s.status=raised>=BigInt(s.soft)?'settled':'refund';if(s.status==='settled'){
+    const lp=raised*BigInt(s.liquidityBps)/10000n;this.s.pools.push({asset:s.symbol,name:s.name,native:lp.toString(),tokens:s.lp,born:this.s.now,creator:s.creator});
+    if(BigInt(s.founder)>0n)this._lock(s.creator,s.symbol,BigInt(s.founder),180,true,30);
+    if(raised>lp)this._lock(s.creator,'ETH',raised-lp,180,false,180);
+   }this._event(s.status==='settled'?'SETTLED':'REFUNDABLE',s.creator,{sale:s.id,symbol:s.symbol,fee:10000});return s;});}
+ claim(id){return this._tx(()=>{const a=this._owner(this.s.selected),s=this.sale(id),paid=BigInt(s.contributions[a.id]||0);if(!['settled','refund'].includes(s.status)||paid===0n||s.claimed.includes(a.id))throw Error('No allocation or refund can be claimed.');const n=s.status==='refund'?paid:paid*BigInt(s.public)/BigInt(s.raised);if(n===0n)throw Error('Allocation rounded to zero.');s.claimed.push(a.id);give(a.balances,s.status==='refund'?'ETH':s.symbol,n);a.nonce++;this._event('CLAIMED',a.id,{sale:s.id,symbol:s.symbol,amount:n.toString()});return n;});}
+ _quoteHop(p,buy,n){const rin=BigInt(buy?p.native:p.tokens),rout=BigInt(buy?p.tokens:p.native),fee=feeAt(p.born,this.s.now),effective=n*BigInt(1000000-fee);return {out:effective*rout/(rin*1000000n+effective),fee};}
+ quote(input,output,n){n=amount(n);if(input===output)throw Error('Choose two different assets.');const find=x=>{const p=this.s.pools.find(p=>p.asset===x);if(!p)throw Error('This token has not settled into a market.');return p;};let hops=[];if(input!=='ETH'){const p=find(input),q=this._quoteHop(p,false,n);hops.push({asset:input,buy:false,input:n.toString(),...q,out:q.out.toString()});n=q.out;}if(output!=='ETH'){const p=find(output),q=this._quoteHop(p,true,n);hops.push({asset:output,buy:true,input:n.toString(),...q,out:q.out.toString()});n=q.out;}if(n<=0n)throw Error('Output rounds to zero.');return {out:n,hops,model:'illustrative full-range reserve approximation; not v4 tick simulation'};}
+ swap(input,output,n,minOut,lockDays=0,deadline=this.s.now+1200){return this._tx(()=>{const a=this._owner(this.s.selected);n=amount(n);minOut=amount(minOut);if(this.s.now>deadline)throw Error('Quote deadline expired.');const q=this.quote(input,output,n);if(q.out<minOut)throw Error('Minimum received is not met.');if(lockDays!==0&&(!Number.isInteger(lockDays)||lockDays<1||lockDays>3650))throw Error('Invalid lock duration.');take(a.balances,input,n);
+   for(const h of q.hops){const p=this.s.pools.find(p=>p.asset===h.asset);p.native=(BigInt(p.native)+(h.buy?BigInt(h.input):-BigInt(h.out))).toString();p.tokens=(BigInt(p.tokens)+(h.buy?-BigInt(h.out):BigInt(h.input))).toString();}
+   let lock=null;if(lockDays)lock=this._lock(a.id,output,q.out,lockDays,false,lockDays);else give(a.balances,output,q.out);a.nonce++;this._event('SWAPPED',a.id,{input,output,amount:n.toString(),received:q.out.toString(),lock:lock?.id||0});return{...q,lock};});}
+ _lock(identity,asset,n,days,linear,cliffDays=0){const l={id:this.s.locks.length+1,identity,asset,amount:n.toString(),released:'0',start:this.s.now,cliff:this.s.now+(linear?cliffDays:days)*86400,end:this.s.now+days*86400,linear};this.s.locks.push(l);return l;}
+ deposit(asset,n,days,linear=false){return this._tx(()=>{const a=this._owner(this.s.selected);n=amount(n);if(!Number.isInteger(days)||days<1||days>3650)throw Error('Choose 1–3,650 days.');take(a.balances,asset,n);const l=this._lock(a.id,asset,n,days,linear);a.nonce++;this._event('LOCKED',a.id,{lock:l.id,asset,amount:n.toString(),end:l.end});return l;});}
+ release(id){return this._tx(()=>{const l=this.s.locks.find(x=>x.id===Number(id));if(!l)throw Error('Unknown lock.');const n=releasable(l,this.s.now);if(n===0n)throw Error('Nothing is unlocked at the current rehearsal time.');l.released=(BigInt(l.released)+n).toString();give(this.identity(l.identity).balances,l.asset,n);this._event('RELEASED',l.identity,{lock:l.id,asset:l.asset,amount:n.toString()});return n;});}
+ _inventorySnapshot(id){const a=this.identity(id);return {id:a.id,epoch:a.epoch,nonce:a.nonce,seed:a.seed,lease:a.lease,balances:structuredClone(a.balances),locks:this.s.locks.filter(l=>l.identity===id).map(l=>structuredClone(l))};}
+ _list(id,seller,price,expires){const a=this.identity(id);if(a.owner!==seller||a.lease&&a.lease.expires>=this.s.now)throw Error('Only an unleased, owner-controlled estate can be listed.');a.owner='escrow';a.epoch++;const inventory=this._inventorySnapshot(id),l={id:this.s.listings.length+1,identity:id,seller,price:amount(price).toString(),expires,status:'listed',inventory};l.manifest=fingerprint({domain:'LOCAL_ESTATE_COVENANT_1_4',...l});this.s.listings.push(l);this._event('LISTED',id,{listing:l.id,manifest:l.manifest},seller);return l;}
+ listEstate(id,price,days=7){return this._tx(()=>{this._owner(id);if(!Number.isInteger(days)||days<1||days>30)throw Error('List for 1–30 days.');return this._list(id,this.s.actor,price,this.s.now+days*86400);});}
+ checkListing(id){const l=this.s.listings.find(x=>x.id===Number(id));if(!l||l.status!=='listed'||this.s.now>l.expires)throw Error('Listing is unavailable or expired.');const a=this.identity(l.identity);if(a.owner!=='escrow'||fingerprint(this._inventorySnapshot(a.id))!==fingerprint(l.inventory))throw Error('Covenant rejected: contents or authority changed.');return l;}
+ buy(id,manifest){return this._tx(()=>{const l=this.checkListing(id);if(l.seller===this.s.actor)throw Error('You cannot buy your own listing.');if(l.manifest!==manifest)throw Error('The reviewed manifest does not match.');const cash=BigInt(this.s.wallets[this.s.actor]||0),price=BigInt(l.price);if(cash<price)throw Error('Insufficient rehearsal wallet balance.');this.s.wallets[this.s.actor]=(cash-price).toString();this.s.wallets[l.seller]=(BigInt(this.s.wallets[l.seller]||0)+price).toString();l.status='sold';const a=this.identity(l.identity);a.owner=this.s.actor;a.epoch++;a.lease=null;this.s.selected=a.id;this._event('ACQUIRED',a.id,{listing:l.id,previousCustodian:l.seller,manifest:l.manifest});return a;});}
+ cancel(id){return this._tx(()=>{const l=this.s.listings.find(x=>x.id===Number(id));if(!l||l.status!=='listed'||l.seller!==this.s.actor&&this.s.now<=l.expires)throw Error('Only the seller can cancel a live listing.');l.status='cancelled';const a=this.identity(l.identity);a.owner=l.seller;a.epoch++;this._event('RETURNED',a.id,{listing:l.id},l.seller);});}
+ grantPresence(id,user,days){return this._tx(()=>{const a=this._owner(id);if(!['you','guest'].includes(user)||user===a.owner||!Number.isInteger(days)||days<1||days>30)throw Error('Select a different rehearsal user and 1–30 days.');a.lease={user,expires:this.s.now+days*86400};this._event('PRESENCE',a.id,{user,expires:a.lease.expires});});}
+ userOf(id,now=this.s.now){const a=this.identity(id);return a.lease&&a.lease.expires>=now?a.lease.user:null;}
+ _admin(r,actor=this.s.actor){return !!r.identity&&this.identity(r.identity).owner===actor;}
+ _mod(r,actor=this.s.actor){return this._admin(r,actor)||(r.moderators[actor]===this.identity(r.identity||1).epoch&&r.members[actor]?.accepted);}
+ _canPost(r,actor){if(r.bans.includes(actor))return false;return !r.gated||this._admin(r,actor)||r.members[actor]?.accepted;}
+ _post(actor,room,identity,body,reply=0,receipt=0){const r=this.room(room);body=text(body,1024);if(!this._canPost(r,actor))throw Error('Accept a room invitation before posting; removed members cannot post.');if(reply&&!this.s.messages.some(m=>m.id===reply&&m.room===room))throw Error('Reply belongs to a different room.');if(receipt&&!this.s.events.some(e=>e.seq===receipt))throw Error('Unknown activity receipt.');const last=this.s.messages.findLast(m=>m.actor===actor&&m.room===room);if(last&&this.s.now<last.time+r.slow)throw Error('Room slow mode: wait '+r.slow+' seconds of rehearsal time.');const a=identity?this.identity(identity):null;
+  const m={id:this.s.messages.length+1,actor,identity,custodian:a?.owner||actor,epoch:a?.epoch||0,room,time:this.s.now,body,reply,receipt,reactions:{},hidden:false};this.s.messages.push(m);return m;}
+ post(room,body,reply=0,receipt=0){return this._tx(()=>{const a=this.identity(),identity=a.owner===this.s.actor?a.id:0;const m=this._post(this.s.actor,Number(room),identity,body,Number(reply),Number(receipt));this._event('SPOKE',identity,{message:m.id,room:Number(room)});return m;});}
+ createRoom(name,gated=false){return this._tx(()=>{const a=this._owner(this.s.selected),r={id:this.s.rooms.length+1,name:text(name,48),topic:'A room held by '+a.name,identity:a.id,gated,slow:3,color:'#b3deda',members:{[this.s.actor]:{accepted:true,epoch:a.epoch}},bans:[],moderators:{}};this.s.rooms.push(r);this._event('ROOM',a.id,{room:r.id});return r;});}
+ configureRoom(id,{name,topic,gated,slow,color}){return this._tx(()=>{const r=this.room(id);if(!this._admin(r))throw Error('Only the artifact owner can configure this room.');if(!Number.isInteger(slow)||slow<0||slow>3600||!/^#[0-9a-f]{6}$/i.test(color))throw Error('Invalid room controls.');r.name=text(name,48);r.topic=text(topic,256);r.gated=!!gated;r.slow=slow;r.color=color;this._event('ROOM_RULES',r.identity,{room:r.id});});}
+ invite(id,user){const r=this.room(id);if(!this._mod(r)||!['you','guest','archivist','weaver'].includes(user)||this._admin(r,user))throw Error('Not permitted to invite this member.');r.members[user]={accepted:false,epoch:this.identity(r.identity).epoch};r.bans=r.bans.filter(x=>x!==user);this._event('INVITED',r.identity,{room:r.id,user});}
+ accept(id){const r=this.room(id),m=r.members[this.s.actor];if(!m||r.bans.includes(this.s.actor)||m.epoch!==this.identity(r.identity).epoch)throw Error('Invitation expired, revoked or unavailable.');m.accepted=true;this._event('JOINED',0,{room:r.id});}
+ remove(id,user){const r=this.room(id);if(!this._mod(r)||this._admin(r,user)||!this._admin(r)&&r.moderators[user])throw Error('Not permitted to remove this member.');delete r.members[user];delete r.moderators[user];if(!r.bans.includes(user))r.bans.push(user);this._event('REMOVED',r.identity,{room:r.id,user});}
+ view(user,kind){if(!['follow','block'].includes(kind)||user===this.s.actor)throw Error('Invalid personal filter.');const v=this.s.views[this.s.actor]||={follow:[],block:[]};v[kind]=v[kind].includes(user)?v[kind].filter(x=>x!==user):[...v[kind],user];}
+ react(id,emoji){const m=this.s.messages.find(m=>m.id===Number(id));if(!m||!['✧','♡','◎','↗'].includes(emoji)||!this._canPost(this.room(m.room),this.s.actor))throw Error('Reaction is not available.');const users=m.reactions[emoji]||[];m.reactions[emoji]=users.includes(this.s.actor)?users.filter(x=>x!==this.s.actor):[...users,this.s.actor];}
+ export(){return {schema:this.s.schema,provenance:'unsigned local rehearsal; editable and not owner-authenticated',state:structuredClone(this.s),checksum:fingerprint(this.s)};}
+ static restore(envelope){if(!envelope||envelope.schema!=='idfbi/kingdom-rehearsal/1.4'||envelope.provenance!=='unsigned local rehearsal; editable and not owner-authenticated'||fingerprint(envelope.state)!==envelope.checksum)throw Error('Rehearsal integrity check failed. Saved bytes were not overwritten.');const s=envelope.state;validateImportedState(s);if(!Number.isSafeInteger(s.now)||!Array.isArray(s.identities)||s.identities.length>64||s.identities.length===0||!Array.isArray(s.messages)||s.messages.length>4096||!Array.isArray(s.events)||s.events.length>10000||!['you','guest'].includes(s.actor))throw Error('Unsupported rehearsal data.');for(const a of s.identities)for(const n of Object.values(a.balances))if(!/^\d+$/.test(n)||BigInt(n)<0n)throw Error('Invalid stored balance.');let head='0x'+'00'.repeat(32);for(const e of s.events){const {digest,...body}=e;if(body.prior!==head||fingerprint(body)!==digest)throw Error('Receipt chain is inconsistent.');head=digest;}if(head!==s.head)throw Error('Receipt head mismatch.');const m=Object.create(KingdomModel.prototype);m.s=structuredClone(s);return m;}
+}
+
+// Imports are unsigned user data. Validate every structural value interpolated by the UI;
+// an internally consistent checksum is not a schema or a security boundary by itself.
+function validateImportedState(s){
+ const fail=()=>{throw Error('Unsupported or unsafe rehearsal schema.');};
+ const integer=(v,min=0,max=Number.MAX_SAFE_INTEGER)=>{if(!Number.isSafeInteger(v)||v<min||v>max)fail();};
+ const str=(v,max=1024)=>{if(typeof v!=='string'||new TextEncoder().encode(v).length>max)fail();};
+ const qty=v=>{if(typeof v!=='string'||!/^\d{1,78}$/.test(v)||BigInt(v)>=(1n<<256n))fail();};
+ const symbol=v=>{if(typeof v!=='string'||!/^[A-Z][A-Z0-9]{1,11}$/.test(v))fail();};
+ const array=(v,max)=>{if(!Array.isArray(v)||v.length>max)fail();};
+ const person=v=>{if(!['you','guest','archivist','weaver','escrow'].includes(v))fail();};
+ if(!s||typeof s!=='object')fail();integer(s.now,1,8640000000000);integer(s.seq);integer(s.selected,1);person(s.actor);
+ array(s.identities,64);array(s.locks,4096);array(s.rooms,512);array(s.sales,512);array(s.pools,512);array(s.listings,1024);array(s.messages,4096);array(s.events,10000);
+ const ids=new Set();for(const a of s.identities){integer(a.id,1);if(ids.has(a.id))fail();ids.add(a.id);str(a.name,128);integer(a.seed,0,0xffffffff);integer(a.color,0,2);integer(a.epoch);integer(a.nonce);person(a.owner);if(!a.balances||Object.keys(a.balances).length>512)fail();for(const [k,v]of Object.entries(a.balances)){symbol(k);qty(v);}if(a.lease){person(a.lease.user);integer(a.lease.expires,1);}}
+ if(!ids.has(s.selected))fail();for(const [k,v]of Object.entries(s.wallets||{})){person(k);qty(v);}
+ for(const l of s.locks){integer(l.id,1);if(!ids.has(l.identity))fail();symbol(l.asset);qty(l.amount);qty(l.released);integer(l.start,1);integer(l.cliff,l.start);integer(l.end,l.cliff);if(l.end<=l.start||BigInt(l.released)>BigInt(l.amount)||BigInt(l.amount)===0n||typeof l.linear!=='boolean')fail();}
+ const rooms=new Set();for(const r of s.rooms){integer(r.id,1);if(rooms.has(r.id))fail();rooms.add(r.id);str(r.name,128);str(r.topic,1024);integer(r.slow,0,3600);if(r.identity!==0&&!ids.has(r.identity))fail();if(typeof r.gated!=='boolean'||!/^#[0-9a-f]{6}$/i.test(r.color))fail();array(r.bans,64);for(const u of r.bans)person(u);for(const [u,m]of Object.entries(r.members||{})){person(u);if(typeof m.accepted!=='boolean')fail();integer(m.epoch);}for(const [u,n]of Object.entries(r.moderators||{})){person(u);integer(n);}}
+ if(!rooms.has(1))fail();for(const m of s.messages){integer(m.id,1);integer(m.reply);integer(m.receipt);integer(m.epoch);integer(m.time,1);person(m.actor);person(m.custodian);if(m.identity!==0&&!ids.has(m.identity)||!rooms.has(m.room))fail();str(m.body,1024);for(const [emoji,users]of Object.entries(m.reactions||{})){if(!['✧','♡','◎','↗'].includes(emoji))fail();array(users,64);users.forEach(person);}}
+ for(const p of s.pools){symbol(p.asset);str(p.name,128);qty(p.native);qty(p.tokens);integer(p.born,1);if(!ids.has(p.creator))fail();}
+ for(const x of s.sales){integer(x.id,1);str(x.name,128);symbol(x.symbol);for(const k of ['supply','public','founder','lp','soft','hard','raised'])qty(x[k]);integer(x.opens,1);integer(x.closes,x.opens);integer(x.liquidityBps,5000,10000);if(!ids.has(x.creator)||!rooms.has(x.room)||!['open','settled','refund'].includes(x.status))fail();array(x.claimed,64);for(const v of Object.values(x.contributions))qty(v);}
+ for(const l of s.listings){integer(l.id,1);if(!ids.has(l.identity))fail();person(l.seller);qty(l.price);integer(l.expires,1);if(!['listed','sold','cancelled'].includes(l.status)||!/^0x[0-9a-f]{64}$/.test(l.manifest))fail();}
+ for(const [who,v]of Object.entries(s.views||{})){person(who);array(v.follow,64);array(v.block,64);v.follow.forEach(person);v.block.forEach(person);}
+ if(!s.settings||typeof s.settings.motion!=='boolean')fail();
+}
+
+
+/** Executable LOCAL specification. No chain, signatures, model inference, or price oracle.
+ * Plans are content-bound reviews, NOT authenticated authorizations.
+ * The financial model is integer reserve math, NOT Uniswap v4 tick execution.
+ */
+const DAY=86400;
+const INTENT_DOMAIN='idfbi/instruments/1.5/unsigned-local';
+const HEX=/^0x[0-9a-f]{64}$/;
+const TOK=/^[A-Z][A-Z0-9]{1,11}$/;
+const PEOPLE=['you','guest','archivist','weaver'];
+const eq=(a,b)=>fingerprint(a)===fingerprint(b);
+function keys(o,ks){if(!o||Object.getPrototypeOf(o)!==Object.prototype||Object.keys(o).sort().join('|')!==ks.sort().join('|'))throw Error('Unexpected plan fields.');}
+function integer(n,lo,hi,label='Number'){if(!Number.isSafeInteger(n)||n<lo||n>hi)throw Error(label+' is outside its supported range.');return n;}
+function intentAmount(n){if(typeof n!=='string'||!/^[0-9]{1,34}$/.test(n)||BigInt(n)<=0n||BigInt(n)>MAX112)throw Error('Invalid raw-unit amount.');return BigInt(n);}
+function credit(a,k,n){a[k]=(BigInt(a[k]||0)+n).toString();}
+function debit(a,k,n){if(BigInt(a[k]||0)<n)throw Error('Insufficient rehearsal '+k+' balance.');a[k]=(BigInt(a[k])-n).toString();}
+
+class InstrumentEngine {
+  constructor(now=Math.floor(Date.now()/1000)) {
+    this.world=new KingdomModel(now);
+    // Presentation names only; no replacement scene or replacement NFT identity.
+    this.world.identity(1).name='Your artifact';
+    this.world.identity(204).name='Artifact 0204';
+    this.world.identity(317).name='Artifact 0317';
+    this.world.room(1).topic='Public conversation. Your filters do not control other people.';
+    this.world.room(2).name='Private posting circle';
+    this.world.room(2).topic='Invitations control posting. These messages are not encrypted.';
+    this.extra={schema:'idfbi/promises/1.5',gifts:[],personalBalances:{you:{},guest:{},archivist:{},weaver:{}}};
+  }
+  atomic(fn) {
+    const state=structuredClone(this.world.s),extra=structuredClone(this.extra);
+    try{return fn();}catch(e){this.world.s=state;this.extra=extra;throw e;}
+  }
+  context(anchor) {
+    if(!HEX.test(anchor))throw Error('A full organism audit anchor is required.');
+    const w=this.world,a=w.identity();
+    return fingerprint({domain:INTENT_DOMAIN,anchor,actor:w.s.actor,id:a.id,owner:a.owner,
+      epoch:a.epoch,nonce:a.nonce,balances:a.balances,pools:w.s.pools,
+      gifts:this.extra.gifts.filter(g=>g.donor===a.id||g.recipient.kind==='artifact'&&g.recipient.id===a.id)});
+  }
+  normalize(raw) {
+    keys(raw,['kind','input','output','amount','minOut','days','recipient']);
+    if(!['SWAP','LOCK','GIFT'].includes(raw.kind))throw Error('Unknown instrument.');
+    if(!TOK.test(raw.input)||!TOK.test(raw.output))throw Error('Invalid asset identifier.');
+    intentAmount(raw.amount);intentAmount(raw.minOut);integer(raw.days,0,3650,'Days');
+    if(raw.kind==='SWAP'&&raw.input===raw.output)throw Error('Choose two different assets.');
+    if(raw.kind==='LOCK'&&(raw.days===0||raw.input!==raw.output))throw Error('A lock keeps the selected asset and needs a duration.');
+    if(raw.kind!=='GIFT'&&raw.recipient!==null)throw Error('Only a gift has a separate recipient.');
+    if(raw.kind==='GIFT'){
+      integer(raw.days,2,3650,'Gift duration');keys(raw.recipient,['kind','id']);
+      if(raw.recipient.kind==='person'){
+        if(!PEOPLE.includes(raw.recipient.id))throw Error('Unknown rehearsal recipient.');
+      }else if(raw.recipient.kind==='artifact'){
+        integer(raw.recipient.id,1,Number.MAX_SAFE_INTEGER);this.world.identity(raw.recipient.id);
+        if(raw.recipient.id===this.world.s.selected)throw Error('Use a normal lock for your own artifact.');
+      }else throw Error('Choose a personal wallet or an artifact account.');
+    }
+    return structuredClone(raw);
+  }
+  prepare(raw,anchor) {
+    const intent=this.normalize(raw),w=this.world;
+    w._owner(w.s.selected);
+    const context=this.context(anchor),deadline=w.s.now+600;
+    const copy=this.constructor.restore(this.export());
+    const preview=copy.apply(intent);
+    const plan={domain:INTENT_DOMAIN,anchor,context,deadline,intent,preview};
+    return {...plan,digest:fingerprint(plan)};
+  }
+  execute(plan,anchor) {
+    return this.atomic(()=>{
+      keys(plan,['domain','anchor','context','deadline','intent','preview','digest']);
+      const {digest,...body}=plan;
+      if(plan.domain!==INTENT_DOMAIN||!HEX.test(digest)||fingerprint(body)!==digest)throw Error('The reviewed plan was changed.');
+      integer(plan.deadline,0,Number.MAX_SAFE_INTEGER);
+      if(plan.anchor!==anchor||plan.context!==this.context(anchor))throw Error('The artifact, wallet, balances, or market changed. Review again.');
+      if(this.world.s.now>plan.deadline)throw Error('This review expired. Prepare it again.');
+      const intent=this.normalize(plan.intent);
+      const prediction=this.constructor.restore(this.export()).apply(intent);
+      if(!eq(prediction,plan.preview))throw Error('The result or schedule changed. Review again.');
+      return this.apply(intent);
+    });
+  }
+  apply(raw) {
+    const p=this.normalize(raw),w=this.world,a=w._owner(w.s.sele

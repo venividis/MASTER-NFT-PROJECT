@@ -1,0 +1,29 @@
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/tmp/tmpmpuvs8mk/pixels.png 0.023 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.012 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.012 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.011 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.013 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.012 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.009 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.009 seconds
+OpenGL ES 3.2 Mesa 25.2.8-0ubuntu0.24.04.2
+/tmp/tmpmpuvs8mk/pixels.png 0.016 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.014 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.011 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.014 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.011 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.013 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.011 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.015 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.012 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.014 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.01 seconds
+/tmp/tmpmpuvs8mk/pixels.png 0.009 seconds
+Passed 16 blue projection cases; unchanged pixels at home.

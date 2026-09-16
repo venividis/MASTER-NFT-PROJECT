@@ -1,0 +1,13 @@
+{
+  "previewSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+  "backend": "WASM optical field",
+  "frames": 28,
+  "captureSeconds": 23.715648848,
+  "scope": "Actual browser screenshots with acquisition-based durations; silent local preview; not a performance benchmark.",
+  "events": [
+    "evolve",
+    "fourth-axis slice",
+    "spawn",
+    "ascend"
+  ]
+}

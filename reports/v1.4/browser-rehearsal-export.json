@@ -1,0 +1,765 @@
+{
+  "schema": "idfbi/kingdom-rehearsal/1.4",
+  "provenance": "unsigned local rehearsal; editable and not owner-authenticated",
+  "state": {
+    "schema": "idfbi/kingdom-rehearsal/1.4",
+    "now": 1788629636,
+    "actor": "you",
+    "selected": 1,
+    "next": 4,
+    "seq": 21,
+    "head": "0x1ebcd6039c8c15abafb4d3b25793134b931b17c62a2a755a64c5a85347b08e17",
+    "wallets": {
+      "you": "20200000000000000000",
+      "guest": "10000000000000000000",
+      "archivist": "8800000000000000000",
+      "weaver": "2000000000000000000"
+    },
+    "identities": [
+      {
+        "id": 1,
+        "name": "The Phoenix Sanctum",
+        "owner": "you",
+        "epoch": 1,
+        "nonce": 5,
+        "seed": 17,
+        "color": 0,
+        "balances": {
+          "ETH": "6800000000000000000",
+          "AUR": "12000000000000000000000",
+          "PHNX": "500000000000000000000000"
+        },
+        "lease": null
+      },
+      {
+        "id": 204,
+        "name": "The Lumen Archive",
+        "owner": "guest",
+        "epoch": 5,
+        "nonce": 0,
+        "seed": 71,
+        "color": 1,
+        "balances": {
+          "ETH": "1250000000000000000",
+          "AUR": "3600000000000000000000"
+        },
+        "lease": null
+      },
+      {
+        "id": 317,
+        "name": "The Vesper Atelier",
+        "owner": "escrow",
+        "epoch": 2,
+        "nonce": 0,
+        "seed": 123,
+        "color": 2,
+        "balances": {
+          "ETH": "600000000000000000",
+          "AUR": "1400000000000000000000"
+        },
+        "lease": null
+      }
+    ],
+    "pools": [
+      {
+        "asset": "AUR",
+        "name": "Aurora / rehearsal market",
+        "native": "100000000000000000000",
+        "tokens": "1000000000000000000000000",
+        "born": 1788453226,
+        "creator": 1
+      },
+      {
+        "asset": "PHNX",
+        "name": "Phoenix Test Garden",
+        "native": "850000000000000000",
+        "tokens": "376692171865803413772808",
+        "born": 1788629628,
+        "creator": 1
+      }
+    ],
+    "sales": [
+      {
+        "id": 1,
+        "name": "Phoenix Test Garden",
+        "symbol": "PHNX",
+        "creator": 1,
+        "supply": "1000000000000000000000000",
+        "public": "500000000000000000000000",
+        "founder": "100000000000000000000000",
+        "lp": "400000000000000000000000",
+        "soft": "1000000000000000000",
+        "hard": "20000000000000000000",
+        "liquidityBps": 8000,
+        "opens": 1788626027,
+        "closes": 1788629627,
+        "raised": "1000000000000000000",
+        "contributions": {
+          "1": "1000000000000000000"
+        },
+        "claimed": [
+          1
+        ],
+        "status": "settled",
+        "room": 3
+      }
+    ],
+    "locks": [
+      {
+        "id": 1,
+        "identity": 1,
+        "asset": "AUR",
+        "amount": "25000000000000000000000",
+        "released": "0",
+        "start": 1788539626,
+        "cliff": 1791131626,
+        "end": 1804091626,
+        "linear": true
+      },
+      {
+        "id": 2,
+        "identity": 204,
+        "asset": "AUR",
+        "amount": "50000000000000000000000",
+        "released": "0",
+        "start": 1788626026,
+        "cliff": 1796402026,
+        "end": 1796402026,
+        "linear": false
+      },
+      {
+        "id": 3,
+        "identity": 1,
+        "asset": "PHNX",
+        "amount": "100000000000000000000000",
+        "released": "0",
+        "start": 1788629628,
+        "cliff": 1791221628,
+        "end": 1804181628,
+        "linear": true
+      },
+      {
+        "id": 4,
+        "identity": 1,
+        "asset": "ETH",
+        "amount": "200000000000000000",
+        "released": "0",
+        "start": 1788629628,
+        "cliff": 1804181628,
+        "end": 1804181628,
+        "linear": false
+      },
+      {
+        "id": 5,
+        "identity": 1,
+        "asset": "PHNX",
+        "amount": "23307828134196586227192",
+        "released": "0",
+        "start": 1788629629,
+        "cliff": 1791221629,
+        "end": 1791221629,
+        "linear": false
+      },
+      {
+        "id": 6,
+        "identity": 1,
+        "asset": "ETH",
+        "amount": "150000000000000000",
+        "released": "0",
+        "start": 1788629630,
+        "cliff": 1791221630,
+        "end": 1791221630,
+        "linear": false
+      }
+    ],
+    "listings": [
+      {
+        "id": 1,
+        "identity": 204,
+        "seller": "archivist",
+        "price": "6800000000000000000",
+        "expires": 1789230826,
+        "status": "sold",
+        "inventory": {
+          "id": 204,
+          "epoch": 2,
+          "nonce": 0,
+          "seed": 71,
+          "lease": null,
+          "balances": {
+            "ETH": "1250000000000000000",
+            "AUR": "3600000000000000000000"
+          },
+          "locks": [
+            {
+              "id": 2,
+              "identity": 204,
+              "asset": "AUR",
+              "amount": "50000000000000000000000",
+              "released": "0",
+              "start": 1788626026,
+              "cliff": 1796402026,
+              "end": 1796402026,
+              "linear": false
+            }
+          ]
+        },
+        "manifest": "0x8ef9cb88f48bdd5194832f7cca00bd8e535a417d65e17ba58c88fdf77b5562bb"
+      },
+      {
+        "id": 2,
+        "identity": 317,
+        "seller": "weaver",
+        "price": "3400000000000000000",
+        "expires": 1789230826,
+        "status": "listed",
+        "inventory": {
+          "id": 317,
+          "epoch": 2,
+          "nonce": 0,
+          "seed": 123,
+          "lease": null,
+          "balances": {
+            "ETH": "600000000000000000",
+            "AUR": "1400000000000000000000"
+          },
+          "locks": []
+        },
+        "manifest": "0xf0b02652f65f95e4debddc7a906e15594cd27ecd269f5235b054f665cca8f445"
+      },
+      {
+        "id": 3,
+        "identity": 204,
+        "seller": "you",
+        "price": "2000000000000000000",
+        "expires": 1789234432,
+        "status": "sold",
+        "inventory": {
+          "id": 204,
+          "epoch": 4,
+          "nonce": 0,
+          "seed": 71,
+          "lease": null,
+          "balances": {
+            "ETH": "1250000000000000000",
+            "AUR": "3600000000000000000000"
+          },
+          "locks": [
+            {
+              "id": 2,
+              "identity": 204,
+              "asset": "AUR",
+              "amount": "50000000000000000000000",
+              "released": "0",
+              "start": 1788626026,
+              "cliff": 1796402026,
+              "end": 1796402026,
+              "linear": false
+            }
+          ]
+        },
+        "manifest": "0xac0ad4256cf4cfe1c2008b439cb188e0543933b6362a9bc9f7d3d9ccc3934e04"
+      }
+    ],
+    "rooms": [
+      {
+        "id": 1,
+        "name": "World",
+        "topic": "One shared sky. Public text; your own filters.",
+        "identity": 0,
+        "gated": false,
+        "slow": 3,
+        "color": "#a6e6e8",
+        "members": {},
+        "bans": [],
+        "moderators": {}
+      },
+      {
+        "id": 2,
+        "name": "Sanctum Council",
+        "topic": "The room follows the artifact. The people do not.",
+        "identity": 1,
+        "gated": true,
+        "slow": 3,
+        "color": "#cfb9f6",
+        "members": {
+          "you": {
+            "accepted": true,
+            "epoch": 1
+          }
+        },
+        "bans": [
+          "guest"
+        ],
+        "moderators": {}
+      },
+      {
+        "id": 3,
+        "name": "PHNX commons",
+        "topic": "Phoenix Test Garden · launch terms and conversation.",
+        "identity": 1,
+        "gated": false,
+        "slow": 3,
+        "color": "#e8c797",
+        "members": {},
+        "bans": [],
+        "moderators": {}
+      },
+      {
+        "id": 4,
+        "name": "The Glass Observatory",
+        "topic": "A custom room whose rules are explicit.",
+        "identity": 1,
+        "gated": false,
+        "slow": 0,
+        "color": "#b3deda",
+        "members": {
+          "you": {
+            "accepted": true,
+            "epoch": 1
+          }
+        },
+        "bans": [],
+        "moderators": {}
+      }
+    ],
+    "messages": [
+      {
+        "id": 1,
+        "actor": "archivist",
+        "identity": 0,
+        "custodian": "archivist",
+        "epoch": 0,
+        "room": 1,
+        "time": 1788626026,
+        "body": "An artifact can carry its history without pretending the next owner wrote it.",
+        "reply": 0,
+        "receipt": 0,
+        "reactions": {},
+        "hidden": false
+      },
+      {
+        "id": 2,
+        "actor": "weaver",
+        "identity": 0,
+        "custodian": "weaver",
+        "epoch": 0,
+        "room": 1,
+        "time": 1788626026,
+        "body": "Open an estate. Move its time lens. The locked allocation becomes visible before it becomes spendable.",
+        "reply": 0,
+        "receipt": 0,
+        "reactions": {},
+        "hidden": false
+      },
+      {
+        "id": 3,
+        "actor": "you",
+        "identity": 204,
+        "custodian": "you",
+        "epoch": 3,
+        "room": 1,
+        "time": 1788629631,
+        "body": "I am the current custodian, not the next one.",
+        "reply": 0,
+        "receipt": 0,
+        "reactions": {},
+        "hidden": false
+      },
+      {
+        "id": 4,
+        "actor": "guest",
+        "identity": 0,
+        "custodian": "guest",
+        "epoch": 0,
+        "room": 2,
+        "time": 1788629634,
+        "body": "Invitation accepted. My voice is still mine.",
+        "reply": 0,
+        "receipt": 0,
+        "reactions": {},
+        "hidden": false
+      },
+      {
+        "id": 5,
+        "actor": "you",
+        "identity": 1,
+        "custodian": "you",
+        "epoch": 1,
+        "room": 1,
+        "time": 1788629635,
+        "body": "<img src=x onerror=alert(1)> I LAUNCHED a coin",
+        "reply": 0,
+        "receipt": 0,
+        "reactions": {
+          "♡": []
+        },
+        "hidden": false
+      }
+    ],
+    "events": [
+      {
+        "seq": 1,
+        "kind": "AWAKEN",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788626026,
+        "data": {
+          "note": "Three fictional estates. All balances and people in this rehearsal are examples."
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x0000000000000000000000000000000000000000000000000000000000000000",
+        "digest": "0x9fe1dec4c89455a488775382e879133fee1d1809d50ce5cd5d3818834d0d8fcf"
+      },
+      {
+        "seq": 2,
+        "kind": "LISTED",
+        "identity": 204,
+        "actor": "archivist",
+        "custodian": "escrow",
+        "epoch": 2,
+        "time": 1788626026,
+        "data": {
+          "listing": 1,
+          "manifest": "0x8ef9cb88f48bdd5194832f7cca00bd8e535a417d65e17ba58c88fdf77b5562bb"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x9fe1dec4c89455a488775382e879133fee1d1809d50ce5cd5d3818834d0d8fcf",
+        "digest": "0x6cff739a68f470aeed07879b4c39bc8791e6186245d9dc4b788b9f30fef03e7b"
+      },
+      {
+        "seq": 3,
+        "kind": "LISTED",
+        "identity": 317,
+        "actor": "weaver",
+        "custodian": "escrow",
+        "epoch": 2,
+        "time": 1788626026,
+        "data": {
+          "listing": 2,
+          "manifest": "0xf0b02652f65f95e4debddc7a906e15594cd27ecd269f5235b054f665cca8f445"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x6cff739a68f470aeed07879b4c39bc8791e6186245d9dc4b788b9f30fef03e7b",
+        "digest": "0xbc427d2a23339ee74505fbf18c4c8374e6b1f09e7e308f9ff8a817adcc884b36"
+      },
+      {
+        "seq": 4,
+        "kind": "LAUNCHED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788626027,
+        "data": {
+          "sale": 1,
+          "symbol": "PHNX",
+          "room": 3
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0xbc427d2a23339ee74505fbf18c4c8374e6b1f09e7e308f9ff8a817adcc884b36",
+        "digest": "0xe08eef45788241a30561b1c57f6839a68921a0b4ccad888243c59a80e9cc78a7"
+      },
+      {
+        "seq": 5,
+        "kind": "CONTRIBUTED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788626028,
+        "data": {
+          "sale": 1,
+          "symbol": "PHNX",
+          "amount": "1000000000000000000"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0xe08eef45788241a30561b1c57f6839a68921a0b4ccad888243c59a80e9cc78a7",
+        "digest": "0x101cb63ec7aca0b7de221cd193b15df83eeede4a28461e12c1c6e6e57c766b4b"
+      },
+      {
+        "seq": 6,
+        "kind": "TIME",
+        "identity": 0,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 0,
+        "time": 1788629628,
+        "data": {
+          "seconds": 3600
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x101cb63ec7aca0b7de221cd193b15df83eeede4a28461e12c1c6e6e57c766b4b",
+        "digest": "0x82e0d2b400996d4cbee6f6ca8d69aa28e485c3d2db8b9819acf596b34bb54659"
+      },
+      {
+        "seq": 7,
+        "kind": "SETTLED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629628,
+        "data": {
+          "sale": 1,
+          "symbol": "PHNX",
+          "fee": 10000
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x82e0d2b400996d4cbee6f6ca8d69aa28e485c3d2db8b9819acf596b34bb54659",
+        "digest": "0x881c14fbd8c0b67f013f4e15a19eccf782a758346f25ed78aaae5d1643f72eb0"
+      },
+      {
+        "seq": 8,
+        "kind": "CLAIMED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629629,
+        "data": {
+          "sale": 1,
+          "symbol": "PHNX",
+          "amount": "500000000000000000000000"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x881c14fbd8c0b67f013f4e15a19eccf782a758346f25ed78aaae5d1643f72eb0",
+        "digest": "0xa3c00052a2366d48bfb3b65227935c63bffeb1be0f90d24f03ba0109d0d1182e"
+      },
+      {
+        "seq": 9,
+        "kind": "SWAPPED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629629,
+        "data": {
+          "input": "ETH",
+          "output": "PHNX",
+          "amount": "50000000000000000",
+          "received": "23307828134196586227192",
+          "lock": 5
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0xa3c00052a2366d48bfb3b65227935c63bffeb1be0f90d24f03ba0109d0d1182e",
+        "digest": "0xbc0597b1f49c84a6ec5b3f836c2f79e67cb76f71c87594caaa00c5475f99642f"
+      },
+      {
+        "seq": 10,
+        "kind": "LOCKED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629630,
+        "data": {
+          "lock": 6,
+          "asset": "ETH",
+          "amount": "150000000000000000",
+          "end": 1791221630
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0xbc0597b1f49c84a6ec5b3f836c2f79e67cb76f71c87594caaa00c5475f99642f",
+        "digest": "0x02f70580018ce7b516b610ea3bc825f76af32f324177a95c1349332e999b95ce"
+      },
+      {
+        "seq": 11,
+        "kind": "ACQUIRED",
+        "identity": 204,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 3,
+        "time": 1788629631,
+        "data": {
+          "listing": 1,
+          "previousCustodian": "archivist",
+          "manifest": "0x8ef9cb88f48bdd5194832f7cca00bd8e535a417d65e17ba58c88fdf77b5562bb"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x02f70580018ce7b516b610ea3bc825f76af32f324177a95c1349332e999b95ce",
+        "digest": "0x19483cb66b074e20a43a3f5325559c7648c2a0ff26eea8b0f5b5d596f83e1410"
+      },
+      {
+        "seq": 12,
+        "kind": "SPOKE",
+        "identity": 204,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 3,
+        "time": 1788629631,
+        "data": {
+          "message": 3,
+          "room": 1
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x19483cb66b074e20a43a3f5325559c7648c2a0ff26eea8b0f5b5d596f83e1410",
+        "digest": "0x0ee8afc06fd67107e64af55591c8a6484ba65addf2645e48631efcd76f257bdf"
+      },
+      {
+        "seq": 13,
+        "kind": "LISTED",
+        "identity": 204,
+        "actor": "you",
+        "custodian": "escrow",
+        "epoch": 4,
+        "time": 1788629632,
+        "data": {
+          "listing": 3,
+          "manifest": "0xac0ad4256cf4cfe1c2008b439cb188e0543933b6362a9bc9f7d3d9ccc3934e04"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x0ee8afc06fd67107e64af55591c8a6484ba65addf2645e48631efcd76f257bdf",
+        "digest": "0x3b6f741c678f52e14a419715d9dab64772858b61396441fbd4761b768d86e821"
+      },
+      {
+        "seq": 14,
+        "kind": "ACQUIRED",
+        "identity": 204,
+        "actor": "guest",
+        "custodian": "guest",
+        "epoch": 5,
+        "time": 1788629632,
+        "data": {
+          "listing": 3,
+          "previousCustodian": "you",
+          "manifest": "0xac0ad4256cf4cfe1c2008b439cb188e0543933b6362a9bc9f7d3d9ccc3934e04"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x3b6f741c678f52e14a419715d9dab64772858b61396441fbd4761b768d86e821",
+        "digest": "0x24b49a9a4691bd786c4f7afca2de1c36a746a1663eab9bfe4423300aab67db27"
+      },
+      {
+        "seq": 15,
+        "kind": "INVITED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629633,
+        "data": {
+          "room": 2,
+          "user": "guest"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x24b49a9a4691bd786c4f7afca2de1c36a746a1663eab9bfe4423300aab67db27",
+        "digest": "0x9fcce82d42186183e3f11b33e2c887110669618cfed4d6114d833f05991515cd"
+      },
+      {
+        "seq": 16,
+        "kind": "JOINED",
+        "identity": 0,
+        "actor": "guest",
+        "custodian": "guest",
+        "epoch": 0,
+        "time": 1788629634,
+        "data": {
+          "room": 2
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x9fcce82d42186183e3f11b33e2c887110669618cfed4d6114d833f05991515cd",
+        "digest": "0x4308ac5aa516499c2cda4cdb306b429065bf3d616e2eff008dbd4ec6a2a95b11"
+      },
+      {
+        "seq": 17,
+        "kind": "SPOKE",
+        "identity": 0,
+        "actor": "guest",
+        "custodian": "guest",
+        "epoch": 0,
+        "time": 1788629634,
+        "data": {
+          "message": 4,
+          "room": 2
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x4308ac5aa516499c2cda4cdb306b429065bf3d616e2eff008dbd4ec6a2a95b11",
+        "digest": "0x8c76465e9768c214cc533e0a13fee2344a74c7b63a0f2d0ae48c521d867b75f3"
+      },
+      {
+        "seq": 18,
+        "kind": "REMOVED",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629634,
+        "data": {
+          "room": 2,
+          "user": "guest"
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x8c76465e9768c214cc533e0a13fee2344a74c7b63a0f2d0ae48c521d867b75f3",
+        "digest": "0x6bcaae6fc90a4d0014f2980395b3fb377bcc63e2cee277d9926635b50c432b10"
+      },
+      {
+        "seq": 19,
+        "kind": "SPOKE",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629635,
+        "data": {
+          "message": 5,
+          "room": 1
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0x6bcaae6fc90a4d0014f2980395b3fb377bcc63e2cee277d9926635b50c432b10",
+        "digest": "0xd0404a136dd9fb82e34aaa7a480dd40ec2c661cd843d6cf468f4fa31a6e67f9c"
+      },
+      {
+        "seq": 20,
+        "kind": "ROOM",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629636,
+        "data": {
+          "room": 4
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0xd0404a136dd9fb82e34aaa7a480dd40ec2c661cd843d6cf468f4fa31a6e67f9c",
+        "digest": "0xb4773e81b959049199c0c347fb645d9c611ed1ebef391fc8b12e14779d671676"
+      },
+      {
+        "seq": 21,
+        "kind": "ROOM_RULES",
+        "identity": 1,
+        "actor": "you",
+        "custodian": "you",
+        "epoch": 1,
+        "time": 1788629636,
+        "data": {
+          "room": 4
+        },
+        "provenance": "UNSIGNED LOCAL REHEARSAL",
+        "prior": "0xb4773e81b959049199c0c347fb645d9c611ed1ebef391fc8b12e14779d671676",
+        "digest": "0x1ebcd6039c8c15abafb4d3b25793134b931b17c62a2a755a64c5a85347b08e17"
+      }
+    ],
+    "views": {
+      "you": {
+        "follow": [
+          "archivist"
+        ],
+        "block": [
+          "weaver"
+        ]
+      },
+      "guest": {
+        "follow": [],
+        "block": []
+      }
+    },
+    "settings": {
+      "motion": true,
+      "sound": false,
+      "accent": "#b5eeea"
+    }
+  },
+  "checksum": "0xec395809542b971bcc522b0e546e87b8e3cfeb22b76a7017b2c2b3b6a2f2ec7c"
+}

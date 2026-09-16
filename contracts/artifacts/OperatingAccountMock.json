@@ -1,0 +1,276 @@
+{
+  "contractName": "OperatingAccountMock",
+  "sourceName": "contracts/src/test/OperatingHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "currentOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "instrumentRevision",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mode",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "target",
+          "type": "address"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "run",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "sessionEpoch",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "next",
+          "type": "address"
+        }
+      ],
+      "name": "transferControl",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x608034607457601f61048538819003918201601f19168301916001600160401b03831184841017607857808492602094604052833981010312607457516001600160a01b038116908190036074575f80546001600160e01b031916909117600160a01b1790556040516103f8908161008d8239f35b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe608080604052600436101561001c575b50361561001a575f80fd5b005b5f3560e01c908163295a52121461031b5750806351405928146102fe5780636d16fa411461021a578063a3d6bde9146100c9578063b387ef92146100975763cee9047a1461006a575f61000f565b34610093575f36600319011261009357602067ffffffffffffffff5f5460a01c16604051908152f35b5f80fd5b34610093575f36600319011261009357602073ffffffffffffffffffffffffffffffffffffffff5f5416604051908152f35b6040366003190112610093576100dd61033a565b60243567ffffffffffffffff811161009357366023820112156100935780600401359167ffffffffffffffff83116100935736602484840101116100935760245f9392849361014473ffffffffffffffffffffffffffffffffffffffff865416331461035d565b806040519384930183378101848152039134905af13d15610212573d9067ffffffffffffffff82116101fe5760405191601f8101601f19908116603f0116830167ffffffffffffffff8111848210176101fe5760405282523d5f602084013e5b156101f6576040519060208252818151918260208301525f5b8381106101de575050815f6040809484010152601f80199101168101030190f35b602082820181015160408784010152859350016101bd565b602081519101fd5b634e487b7160e01b5f52604160045260245ffd5b6060906101a4565b346100935760203660031901126100935761023361033a565b73ffffffffffffffffffffffffffffffffffffffff5f5491610258828416331461035d565b1667ffffffffffffffff817fffffffffffffffffffffffff000000000000000000000000000000000000000084161760a01c1667ffffffffffffffff81146102ea577bffffffffffffffff000000000000000000000000000000000000000060017fffffffff00000000000000000000000000000000000000000000000000000000920160a01b16921617175f555f80f35b634e487b7160e01b5f52601160045260245ffd5b34610093575f366003190112610093576020600154604051908152f35b34610093575f3660031901126100935760209060ff5f5460e01c168152f35b6004359073ffffffffffffffffffffffffffffffffffffffff8216820361009357565b1561036457565b60646040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600560248201527f4f574e45520000000000000000000000000000000000000000000000000000006044820152fdfea2646970667358221220be176c350aab19ee9add9e240018a0116a3b85784b01d8cf9a70711f2ca1aef664736f6c634300081e0033",
+  "deployedBytecode": "0x608080604052600436101561001c575b50361561001a575f80fd5b005b5f3560e01c908163295a52121461031b5750806351405928146102fe5780636d16fa411461021a578063a3d6bde9146100c9578063b387ef92146100975763cee9047a1461006a575f61000f565b34610093575f36600319011261009357602067ffffffffffffffff5f5460a01c16604051908152f35b5f80fd5b34610093575f36600319011261009357602073ffffffffffffffffffffffffffffffffffffffff5f5416604051908152f35b6040366003190112610093576100dd61033a565b60243567ffffffffffffffff811161009357366023820112156100935780600401359167ffffffffffffffff83116100935736602484840101116100935760245f9392849361014473ffffffffffffffffffffffffffffffffffffffff865416331461035d565b806040519384930183378101848152039134905af13d15610212573d9067ffffffffffffffff82116101fe5760405191601f8101601f19908116603f0116830167ffffffffffffffff8111848210176101fe5760405282523d5f602084013e5b156101f6576040519060208252818151918260208301525f5b8381106101de575050815f6040809484010152601f80199101168101030190f35b602082820181015160408784010152859350016101bd565b602081519101fd5b634e487b7160e01b5f52604160045260245ffd5b6060906101a4565b346100935760203660031901126100935761023361033a565b73ffffffffffffffffffffffffffffffffffffffff5f5491610258828416331461035d565b1667ffffffffffffffff817fffffffffffffffffffffffff000000000000000000000000000000000000000084161760a01c1667ffffffffffffffff81146102ea577bffffffffffffffff000000000000000000000000000000000000000060017fffffffff00000000000000000000000000000000000000000000000000000000920160a01b16921617175f555f80f35b634e487b7160e01b5f52601160045260245ffd5b34610093575f366003190112610093576020600154604051908152f35b34610093575f3660031901126100935760209060ff5f5460e01c168152f35b6004359073ffffffffffffffffffffffffffffffffffffffff8216820361009357565b1561036457565b60646040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600560248201527f4f574e45520000000000000000000000000000000000000000000000000000006044820152fdfea2646970667358221220be176c350aab19ee9add9e240018a0116a3b85784b01d8cf9a70711f2ca1aef664736f6c634300081e0033",
+  "methodIdentifiers": {
+    "currentOwner()": "b387ef92",
+    "instrumentRevision()": "51405928",
+    "mode()": "295a5212",
+    "run(address,bytes)": "a3d6bde9",
+    "sessionEpoch()": "cee9047a",
+    "transferControl(address)": "6d16fa41"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "holder",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "currentOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "instrumentRevision",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "mode",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "target",
+              "type": "address"
+            },
+            {
+              "internalType": "bytes",
+              "name": "data",
+              "type": "bytes"
+            }
+          ],
+          "name": "run",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "sessionEpoch",
+          "outputs": [
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "next",
+              "type": "address"
+            }
+          ],
+          "name": "transferControl",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "stateMutability": "payable",
+          "type": "receive"
+        }
+      ],
+      "devdoc": {
+        "details": "Test-only account, not a token-bound-account conformance claim.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/OperatingHarness.sol": "OperatingAccountMock"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/test/OperatingHarness.sol": {
+        "keccak256": "0x3d4ee9dcd84b14212d6e6619ed88afc025ca0ca05fc057a23f67ebb10223f55c",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://84ee004e8bb2b4c5e1a39b94f838ea0eb480fe706ea93f61ca017bc0da94cb37",
+          "dweb:/ipfs/QmanzLgBLeCjPgNJXAyfLGFiiyR9f2tHD1u49aeLAFqWSJ"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "scope": "Native Mesa GLES; no browser or device certification",
+  "cases": [
+    {
+      "case": "bound",
+      "resolution": [
+        180,
+        120
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "lived",
+      "resolution": [
+        180,
+        120
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "sovereign",
+      "resolution": [
+        180,
+        120
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "folded",
+      "resolution": [
+        180,
+        120
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "changed-root",
+      "resolution": [
+        180,
+        120
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "formation": 0.25,
+      "resolution": [
+        180,
+        120
+      ],
+      "compiledAndRendered": true
+    },
+    {
+      "formation": 0.5,
+      "resolution": [
+        180,
+        120
+      ],
+      "compiledAndRendered": true
+    },
+    {
+      "formation": 1,
+      "resolution": [
+        180,
+        120
+      ],
+      "compiledAndRendered": true
+    },
+    {
+      "case": "bound",
+      "resolution": [
+        96,
+        180
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "lived",
+      "resolution": [
+        96,
+        180
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "sovereign",
+      "resolution": [
+        96,
+        180
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "folded",
+      "resolution": [
+        96,
+        180
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "case": "changed-root",
+      "resolution": [
+        96,
+        180
+      ],
+      "zeroFormationMaxByteError": 0
+    },
+    {
+      "formation": 0.25,
+      "resolution": [
+        96,
+        180
+      ],
+      "compiledAndRendered": true
+    },
+    {
+      "formation": 0.5,
+      "resolution": [
+        96,
+        180
+      ],
+      "compiledAndRendered": true
+    },
+    {
+      "formation": 1,
+      "resolution": [
+        96,
+        180
+      ],
+      "compiledAndRendered": true
+    }
+  ],
+  "passed": 16
+}

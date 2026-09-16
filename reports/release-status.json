@@ -1,0 +1,74 @@
+{
+  "version": "1.2.0",
+  "classification": "Tested optical client; uncompiled research-protocol revisions",
+  "previewSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+  "uiTests": {
+    "passed": 59,
+    "failed": 0,
+    "scope": "Local model, ABI/Keccak, mock provider, Wasm, verifier CLI, server"
+  },
+  "browserTests": {
+    "passed": 49,
+    "browser": "144.0.7559.96",
+    "backend": "WASM optical field",
+    "pageErrors": [],
+    "scope": "Actual standalone HTML via set_content. Storage restoration uses an injected in-memory adapter. Browser WebGL is not forced. No real wallet, public chain, or Solidity execution is claimed."
+  },
+  "nativeKeccakComparisons": {
+    "passed": 22,
+    "reference": "Adapted XKCP readable C implementation; native compiled"
+  },
+  "nativeGlesWasmComparisons": {
+    "passed": 6,
+    "failed": 0,
+    "maxRgbErrorOutOf255": 1,
+    "scope": "Native GLES 3.2 Mesa versus WebAssembly, same inputs and shared source. Not browser-GPU certification."
+  },
+  "localReceiptVerification": {
+    "consistent": true,
+    "receipts": 5,
+    "head": "0x6822f095a961a764d26fed8e8aeb85d9acfbea3b7dbc2fed4d9ba0c862aa2ced",
+    "state": "0x3c4765a943c326456a9d7a35b95020681c9eedc466e398a9de4e84d73c3e29cb",
+    "mode": "sovereign",
+    "guarantee": "Unsigned browser-state consistency only. No authenticity, ZK, TEE, or onchain finality."
+  },
+  "originalPreview": {
+    "byteIdentical": true,
+    "sha256": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59"
+  },
+  "protocol": {
+    "command": "npm test",
+    "exitCode": 1,
+    "result": "BLOCKED_MISSING_SOLC",
+    "contractTestsReached": false,
+    "rustAvailable": false,
+    "scope": "No Solidity compile, EVM integration, gas or bytecode-size result established."
+  },
+  "publicDeployment": false,
+  "realWalletTransactionTested": false,
+  "realZkOrTeeProofGenerated": false,
+  "independentAudit": false,
+  "video": {
+    "previewSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+    "backend": "WASM optical field",
+    "frames": 28,
+    "captureSeconds": 23.715648848,
+    "scope": "Actual browser screenshots with acquisition-based durations; silent local preview; not a performance benchmark.",
+    "events": [
+      "evolve",
+      "fourth-axis slice",
+      "spawn",
+      "ascend"
+    ]
+  },
+  "notEstablished": [
+    "End-to-end browser WebGL",
+    "Physical mobile-device performance/audio",
+    "Native file/HTTPS storage and real multi-tab locking",
+    "Solidity compilation, gas and bytecode sizes",
+    "EVM integration and real testnet wallet execution",
+    "Rust proof-kernel tests",
+    "Real zkVM gateway/guest and TEE trust chain",
+    "Production security and deployment readiness"
+  ]
+}

@@ -1,0 +1,60 @@
+{
+  "contractName": "Base64",
+  "sourceName": "contracts/src/confluence/vendor/solady/utils/Base64.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea26469706673582212207b9e58671eb3d1ec43124218893fb7fbde827a191b531d1a1e81c3290ec02dee64736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea26469706673582212207b9e58671eb3d1ec43124218893fb7fbde827a191b531d1a1e81c3290ec02dee64736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "author": "Solady (https://github.com/vectorized/solady/blob/main/src/utils/Base64.sol)Modified from Solmate (https://github.com/transmissions11/solmate/blob/main/src/utils/Base64.sol)Modified from (https://github.com/Brechtpd/base64/blob/main/base64.sol) by Brecht Devos - <brecht@loopring.org>.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Library to encode strings in Base64.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/vendor/solady/utils/Base64.sol": "Base64"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/vendor/solady/utils/Base64.sol": {
+        "keccak256": "0x775fc1186f9f820db37710f603b3d810854925467e1ad4e2d0bc40e0490d2d8a",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://c847f0cdb5174005cecfbf534c6188b4e1b205bb4ee075a9398a13457b5004d8",
+          "dweb:/ipfs/QmWUkCwhnginunh7P9k6YXaDVnoNbpKvwoTPMTkNtbqHYS"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

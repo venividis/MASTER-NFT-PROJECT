@@ -1,0 +1,29 @@
+✔ shared receipt recovery updates official participant links and retries an interrupted read (6.417682ms)
+✔ shared recovery applies lifecycle setup and invalidates reorganized official state (2.868614ms)
+✔ all launch tabs render the verified clients’ actual result shapes without changing object controls (92.797681ms)
+✔ public pool routing preserves human amounts and converts only fee units (6.5214ms)
+✔ metadata mismatch stops a public launch and exposes the actual quote units for review (1.577721ms)
+✔ ordinary pool preparation rejects a draft changed during the metadata read (1.32628ms)
+✔ temporary composer disable state is released after a failed preparation (1.156885ms)
+✔ community sale routing preserves raise amounts, basis points and vesting days (1.491901ms)
+✔ shielded routing preserves ranges and creator fee expectations without a public transaction (19.588343ms)
+✔ signing review exposes recipient weights and the current approval destination (5.255309ms)
+✔ a completed external builder cannot revive terms invalidated while it was running (1.472498ms)
+✔ reconciling already integrated historical deployments preserves an imported auction selection (0.718668ms)
+✔ singleton startup tolerates unavailable storage without a browser or injected wallet (952.716183ms)
+✔ NFT custody is explicit, uses verified account selection, and exposes signer and atomic allowance in review (8.813999ms)
+✔ LP lock shortcut carries actual share asset and selected NFT beneficiary into the vault desk (0.721174ms)
+✔ private emergency lock remains immediate while launch or proof work is busy (1.798325ms)
+✔ canonical NFT route opens exact participant identity before its page and never requires owner history (23.153384ms)
+✔ malformed launch links show a local navigation error without failing the renderer boot (1.244991ms)
+✔ canonical cca participant route preserves its shareable URL (8.305209ms)
+✔ canonical doppler participant route preserves its shareable URL (5.566478ms)
+✔ hostile token metadata cannot prevent reporting readable or unresolved balances (5.123952ms)
+ℹ tests 21
+ℹ suites 0
+ℹ pass 21
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 2061.951618

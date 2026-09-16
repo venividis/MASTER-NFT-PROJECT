@@ -1,0 +1,21 @@
+{
+  "name": "@awe/chain-adapters",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "AWE cartridge manifests, chain-native transaction intents and owner-authorized game bridges",
+  "exports": {
+    ".": { "types": "./dist/index.d.ts", "import": "./dist/index.js" },
+    "./bridge": "./bridge/message-channel.mjs",
+    "./console-bridge": "./bridge/console-v1-client.mjs",
+    "./manifest.schema.json": "./manifest.schema.json",
+    "./console-profile.schema.json": "./console-profile.schema.json"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "build:example": "node scripts/build-console-example.mjs",
+    "test": "node --test test/*.test.mjs"
+  },
+  "devDependencies": { "typescript": "^5.1.6" },
+  "engines": { "node": ">=18" }
+}

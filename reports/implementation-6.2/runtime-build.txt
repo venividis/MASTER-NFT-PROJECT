@@ -1,0 +1,18 @@
+v4 ABI and runtime fingerprints built.
+{"output":"web/launchpad/deployments.mjs","compiler":"0.8.26+commit.8a97fa7a.Emscripten.clang","contracts":["GenesisV4Launchpad","GenesisV4Router"]}
+Hook launch bytecode, ABI and runtime fingerprints built.
+Built 5 verified community launch artifacts (shanghai).
+Built verified ANIMA streaming auction artifacts (shanghai).
+Built registry and atomic launch allocation artifacts.
+Built verified conversion and scheduled-exit strategy artifacts.
+Built OperatingNFTGovernance and OperatingVotingShares browser artifacts.
+Built verified PrivacyKeys and EpochGroupChat browser artifacts.
+Workshop ABI and code fingerprints generated.
+Extension browser ABI and runtime templates: 42 contracts.
+Exit vault ABI and normalized runtime fingerprint generated.
+{"kernelBytes":9685,"sourceSha256":"f482cf1e667c7a0714aa7c65fd92db11a4941cfa677da2757354d864116ad03f"}
+Generated 22 capabilities from the runtime registry.
+{"protocolBytes":150916,"contractBytes":9663,"version":"ts-mls@1.6.4"}
+Built exact immutable source/composer verification artifacts.
+Built 26 pinned official launch contracts.
+{"application":"Anima Genesis","bytes":477361,"modules":116,"files":139,"source":"authored modules","original":"byte-identical comparison fixture","output":"dist"}

@@ -1,0 +1,19 @@
+{
+  "passed": 10,
+  "failed": 0,
+  "checks": [
+    "deployed NFT, cartridge and item contracts expose their declared interfaces",
+    "mint creates the parent NFT and its owner-controlled custody account",
+    "cartridge nested in the parent account resolves launch ownership and onchain metadata",
+    "parent owner publishes hash-matched executable bytes entirely into chain storage",
+    "parent ownership transfer updates launch authority and invalidates old epoch signatures, including return transfer",
+    "manifest revisions clear stale content and optional freeze preserves the executable commitment",
+    "native-currency item sale pays the creator-selected receiver and deposits items in the NFT account",
+    "creator can switch to a chosen ERC20 and buyers pin payment terms to their reviewed quote",
+    "parent owner executes an ordinary item transfer from NFT custody",
+    "parent account receives and sends native currency through owner execution"
+  ],
+  "environment": "Ganache 7.9.2 isolated in-memory EVM, chain 31337, Shanghai",
+  "compiler": "0.8.24+commit.e11b9ed9.Emscripten.clang",
+  "scope": "Normal deployment, custody, ownership, manifest, signature epoch and payment flows. No live-chain transaction or audit claim."
+}

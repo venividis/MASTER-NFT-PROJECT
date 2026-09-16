@@ -1,0 +1,58 @@
+{
+  "contractName": "ConfluenceLoader",
+  "sourceName": "contracts/src/confluence/ConfluenceLoader.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220caf1faaf4a192636f6c7d0bb464b2195b1d9eea305fd8bd4f33b12b6adb4327864736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220caf1faaf4a192636f6c7d0bb464b2195b1d9eea305fd8bd4f33b12b6adb4327864736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/ConfluenceLoader.sol": "ConfluenceLoader"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/ConfluenceLoader.sol": {
+        "keccak256": "0x6094320cc07a08b1057690bb1a8adfdc569ed782cbbef4374a7d79965a2ee366",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://f54eac47067af79de686a143c6bf7d1c1e2bb82d74f3bc56b0df56e1cd79ebd8",
+          "dweb:/ipfs/QmdUpXbXPJfGXUXz5cVBkg9Nejry6QzhUjz5xAVUy93fiu"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

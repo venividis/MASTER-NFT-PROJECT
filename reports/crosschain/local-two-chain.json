@@ -1,0 +1,29 @@
+{
+  "schema": "anima.crosschain-local/1",
+  "sourceChain": 31001,
+  "destinationChain": 31002,
+  "protocol": "Official EndpointV2 + OFT",
+  "transport": "Official SimpleMessageLib with one whitelisted test relayer. No public DVN validation.",
+  "deliveries": [
+    {
+      "source": "0xe123f008aec15bbd06ce0e8ef8ff5979a011291bd8cadeee36f5e86681bbf73b",
+      "destination": "0x51da52d9ef0a32232f40ac91f0a688cd766555942249bf9a89f095fe399a1092",
+      "guid": "0x5865292210b4256fad151c34141c07496cee63844338804709dbb7fb7b0db1c8"
+    },
+    {
+      "source": "0x175bc28764098a75ffe67d0468442b7ac7d76a070b8bc0b2048b2d499714bb01",
+      "destination": "0xb73d0a437edfb763bad323957cc07f4ebb07f63ceb7285f971275e1d21807f40",
+      "guid": "0x4c104f4beb246d0fa7cef8719640b03f7c37fae6491bc453ebd6fbeb192892ba"
+    },
+    {
+      "source": "0x092de8b81186ccab07a697a724c4dea275a8fa23ace256b18a15f7ab33b3a0f8",
+      "destination": "0x28a42ef6712e0034d175c9916a62a99279527503c3771fac990b9d473d8b273e",
+      "guid": "0x51ab2d64afe38b45a99ac29b87a1b3f44fb94ac22bca9049fbc7cfb133838ec7"
+    },
+    {
+      "source": "0x2169e8edaccad589801c10d2022a66840a737afb36a8d047c31d12d7234766cb",
+      "destination": "0xbeedf8ce06f92cd57596148a0430dd94e53d302c035dc8272ac03c81eccb4e31",
+      "guid": "0x8125e34da9547d16582ef3254f802e0585436400945e43e681c0478305289482"
+    }
+  ]
+}

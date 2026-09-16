@@ -1,0 +1,132 @@
+{
+  "contractName": "IGenesisMarket",
+  "sourceName": "contracts/src/protocol/GenesisLaunchpad.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "token",
+          "type": "address"
+        },
+        {
+          "internalType": "uint112",
+          "name": "amount",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint256",
+          "name": "launchId",
+          "type": "uint256"
+        }
+      ],
+      "name": "seed",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "seed(address,uint112,uint256)": "212dd2f8"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "token",
+              "type": "address"
+            },
+            {
+              "internalType": "uint112",
+              "name": "amount",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint256",
+              "name": "launchId",
+              "type": "uint256"
+            }
+          ],
+          "name": "seed",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/protocol/GenesisLaunchpad.sol": "IGenesisMarket"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/GenesisLaunchpad.sol": {
+        "keccak256": "0x80c2149772c2517ab6aea5a973e059da8d867ccaf9e3c17504e36e274165da9b",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://286a132bc00e91b6b1c7bb5309b530e93db14af28ccbca349624f2a740b63ae3",
+          "dweb:/ipfs/QmTn2V7ruikoywJWE9TUUberXPD5BYEx2qA2DggvCQgYXL"
+        ]
+      },
+      "contracts/src/protocol/GenesisToken.sol": {
+        "keccak256": "0xa099adfbacf6967f5ccadcdacb2c22cbc495e4df649e1582561999a5ec30293f",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://342dfac82d5d0bf54c3b13a3c25073f18424ee2292c29ead2f694056db9ddea0",
+          "dweb:/ipfs/Qmf76dvPe4QYkJVbbACy3ULPpvTusUAhDH7wuAWZczV1Gi"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/protocol/TimeVault.sol": {
+        "keccak256": "0xb42073ab373c662d741c24a696c7377b8d4dec24f6a79440b3056e4651891863",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://fda8936d6e6a01ad01a0ff78ba72ee36ccc3ad5b75cdfc9d3337b0fb151397ad",
+          "dweb:/ipfs/QmZ4iXB1pdnFB4YDqVoeQVejSBP67pQNVA24u29Lbv5A8C"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

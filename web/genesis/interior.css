@@ -1,0 +1,11 @@
+/* Navigation stays on the original object surface; no competing flight HUD. */
+#ag-interior,#ag-flight{display:none!important}
+body.anima-genesis:not(.anima-screen-hidden)[data-cf-open=false]>#atmosphere{pointer-events:auto!important;touch-action:none}
+.ag-live-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:26px 0}.ag-live-tabs [aria-pressed=true]{border-color:#b5e9ff!important;background:#153d58!important}.ag-live-addresses{margin:20px 0}.ag-live-addresses summary{cursor:pointer;min-height:44px}.ag-live-form{display:grid;gap:12px;margin:28px 0}.ag-live-form textarea{width:100%;box-sizing:border-box;padding:14px}.ag-live-consent{display:flex!important;align-items:start;gap:10px;font-size:14px!important;line-height:1.6}.ag-live-consent input{width:18px!important;min-height:18px!important;flex-shrink:0;margin:4px 0 0}.ag-live-addresses>label{display:block;margin-top:12px}.ag-live-addresses>input{width:100%}.ag-live-addresses>button{margin-top:15px}
+
+#ag-functions[hidden],#ag-resume[hidden]{display:none!important}
+#ag-functions{position:absolute;top:154px;right:28px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-width:calc(100% - 24px);padding:10px;background:#030e20c9;border:1px solid #83c9ff40;border-radius:14px;backdrop-filter:blur(14px)}
+#ag-resume{position:fixed;z-index:250;left:50%;transform:translateX(-50%);bottom:max(18px,env(safe-area-inset-bottom));border:1px solid #83c9ff70;border-radius:30px;background:#081d32ec;color:#d8f1ff;padding:12px 22px;min-height:44px;font:14px system-ui;cursor:pointer;box-shadow:0 6px 32px #0008}
+#ag-resume:focus-visible{outline:2px solid #c2efff;outline-offset:4px}
+@media(max-width:760px){#ag-functions{right:12px;top:192px;max-height:calc(100dvh - 310px);overflow:auto}#ag-interior .ag-view-tools{max-width:calc(100% - 24px)}}
+@media(max-height:520px){#ag-functions{top:128px;max-height:calc(100dvh - 200px);overflow:auto}}

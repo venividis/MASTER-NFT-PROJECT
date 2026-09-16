@@ -1,0 +1,11 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> i-dont-fucking-believe-it@6.0.0 build
+> node scripts/build-confluence.mjs
+
+v4 ABI and runtime fingerprints built.
+Workshop ABI and code fingerprints generated.
+Extension browser ABI and runtime templates: 27 contracts.
+Exit vault ABI and normalized runtime fingerprint generated.
+{"kernelBytes":5702,"generatedBytes":15543,"sourceSha256":"f482cf1e667c7a0714aa7c65fd92db11a4941cfa677da2757354d864116ad03f"}
+{"application":"Anima Genesis","bytes":467825,"modules":66,"files":78,"source":"authored modules","original":"byte-identical comparison fixture","output":"dist"}

@@ -1,0 +1,17 @@
+{
+  "status": "passed",
+  "environment": "Anvil 1.7.1, Cancun, genuine pinned PoolManager; local only",
+  "scenarios": 10,
+  "passed": [
+    "One atomic launch creates the predicted fixed-supply token, initializes the real v4 pool, funds the immutable position and returns every unused budget unit.",
+    "Insufficient funding and expired launches revert; failed deterministic deployments leave no token, pool position or partial funding.",
+    "The position cannot be reseeded; unsolicited PoolManager callbacks reject.",
+    "The actual client validates deployment bytecode and receives a bounded quote from the pinned official V4Quoter.",
+    "Both swap directions settle exact input against the real PoolManager and return output directly to the caller without router custody.",
+    "Slippage, expiry and incomplete fills reject atomically.",
+    "Two separate holders redeem equal principal and earned fees fairly; the first exit cannot consume the second holder’s fees, and the final exit leaves no stranded dust.",
+    "Nonholders cannot withdraw liquidity or fees.",
+    "A local RelayAdapt accounting harness verifies grouped launch-plus-shield success and atomic launch failure: every existing input refunds to the shield sink, new failed addresses are never read by the fallback, and no approvals or funds remain in the shared relay. This harness does not verify ZK proofs.",
+    "The deployment CLI prepares unsigned plans without RPC/key leakage, rejects an altered second request before either deployment, and deploys and verifies both contracts on a disposable local chain."
+  ]
+}

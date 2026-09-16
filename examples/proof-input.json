@@ -1,0 +1,30 @@
+{
+  "intent": {
+    "account": "0x1111111111111111111111111111111111111111",
+    "chainId": 1337,
+    "target": "0x2222222222222222222222222222222222222222",
+    "value": "0",
+    "dataHash": "0xaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+    "nonce": "9",
+    "validAfter": 1899999999,
+    "validUntil": 1900000600,
+    "priorStateRoot": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "nextStateRoot": "0xcccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "nextMemoryRoot": "0xdddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+    "policyHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "evidenceHash": "0xffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "verifierId": 1
+  },
+  "witness": {
+    "now": 1900000000,
+    "currentStateRoot": "0xbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+    "constitutionHash": "0xeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+    "maxValuePerAction": "0",
+    "lastActionAt": 1899999000,
+    "minActionDelay": 30,
+    "allowedTargets": ["0x2222222222222222222222222222222222222222"],
+    "forbiddenTargets": [],
+    "allowedSelectors": ["0x12345678"],
+    "selector": "0x12345678"
+  }
+}

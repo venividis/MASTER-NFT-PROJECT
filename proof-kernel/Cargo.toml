@@ -1,0 +1,21 @@
+[package]
+name = "idontfuckingbelieveit-proof-kernel"
+version = "1.0.0"
+edition = "2021"
+license = "MIT"
+description = "Deterministic policy evaluator and public-journal generator for sovereign NFT actions."
+
+[lib]
+name = "idontfuckingbelieveit_proof_kernel"
+path = "src/lib.rs"
+
+[[bin]]
+name = "idfb-proof"
+path = "src/main.rs"
+
+[dependencies]
+hex = "0.4"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+sha3 = "0.10"
+thiserror = "2"

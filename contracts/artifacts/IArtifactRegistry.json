@@ -1,0 +1,194 @@
+{
+  "contractName": "IArtifactRegistry",
+  "sourceName": "contracts/src/confluence/cartridges/CartridgeRegistry.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "artifactIdOfAccount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownershipEpoch",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "artifactIdOfAccount(address)": "bfb03520",
+    "ownerOf(uint256)": "6352211e",
+    "ownershipEpoch(uint256)": "957b389a"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "artifactIdOfAccount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownerOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownershipEpoch",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/cartridges/CartridgeRegistry.sol": "IArtifactRegistry"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/cartridges/CartridgeRegistry.sol": {
+        "keccak256": "0xf8d17662f603a84d051b0a934e8f4185faba502ccef89c1cef8fdc342dc2341d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://ece9948e70a37efefe3889dce7a15907d2d718bd2546f1fd7484a9961e5e1973",
+          "dweb:/ipfs/Qma8YqdYxA9CczMpF4CCGH7bDn9ukjMpDXz4hEFJN7Sjsx"
+        ]
+      },
+      "contracts/src/confluence/vendor/solady/tokens/ERC721.sol": {
+        "keccak256": "0x7ee665c5f70c388430cd7af42a5b1c2ff0e11ab45e46ab7ba02a6aad29f5cc77",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://14433fac4ec7393908c97a874fd735e6f80fb81d286d76bd83d7d6159ec9cc6f",
+          "dweb:/ipfs/Qmc9nE2q5HrFSQDt9oKXxs5mbgnNNfYnnr7KhfForCERzv"
+        ]
+      },
+      "contracts/src/confluence/vendor/solady/utils/Base64.sol": {
+        "keccak256": "0x775fc1186f9f820db37710f603b3d810854925467e1ad4e2d0bc40e0490d2d8a",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://c847f0cdb5174005cecfbf534c6188b4e1b205bb4ee075a9398a13457b5004d8",
+          "dweb:/ipfs/QmWUkCwhnginunh7P9k6YXaDVnoNbpKvwoTPMTkNtbqHYS"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

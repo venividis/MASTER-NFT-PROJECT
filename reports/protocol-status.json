@@ -1,0 +1,8 @@
+{
+  "command": "npm test",
+  "exitCode": 1,
+  "result": "BLOCKED_MISSING_SOLC",
+  "contractTestsReached": false,
+  "rustAvailable": false,
+  "scope": "No Solidity compile, EVM integration, gas or bytecode-size result established."
+}

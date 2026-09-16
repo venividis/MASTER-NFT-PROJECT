@@ -1,0 +1,22 @@
+✔ unavailable localStorage does not break an onchain opaque-origin controller (3.123803ms)
+✔ expired auction windows stop before token approvals and fresh reviews clear old failures (18.238818ms)
+✔ human range rounds outward after token ordering and decimals are known (9.187807ms)
+▶ wallet controller deploys, funds, launches, trades, exits and recovers real v4 transactions
+  ✔ a real minted NFT funds launch, swaps and LP redemption with atomic allowances and transfer-safe reviews (17076.611334ms)
+  ✔ wallet cancellation, speed-up and a reorg reconcile receipts without resending (8357.439498ms)
+✔ wallet controller deploys, funds, launches, trades, exits and recovers real v4 transactions (76715.620248ms)
+(node:13) [DEP0180] DeprecationWarning: fs.Stats constructor is deprecated.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+✔ private interface exposes hook selection, bounded hooked swaps and hooked share withdrawal (4.326282ms)
+✔ SDK-composed shielded hooked launch, trade and redemption conserve actual PoolManager assets and recover failures (129447.639592ms)
+✔ human limits round outward for either currency order and reject invalid pairs (14.79472ms)
+✔ private desk carries editable human limits and locking preserves the launchpad container (3.154357ms)
+✔ real PoolManager launch resolves human limits for the contract payer after prediction (33824.336258ms)
+ℹ tests 11
+ℹ suites 0
+ℹ pass 11
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 130304.890867

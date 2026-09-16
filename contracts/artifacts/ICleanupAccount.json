@@ -1,0 +1,89 @@
+{
+  "contractName": "ICleanupAccount",
+  "sourceName": "contracts/src/test/CoreCleanupHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "currentOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "currentOwner()": "b387ef92"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "currentOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Test-only collection whose account owner follows the test account's custody.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/CoreCleanupHarness.sol": "ICleanupAccount"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/test/CoreCleanupHarness.sol": {
+        "keccak256": "0xa48336facc99eb5bed1eacbfec5fa89f470cdfebc34354eeabca4a40c8027193",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://8e261898c7dd613ced4cd8b3b74ee4c0a48572789566f7f9c725e397fbe2d9e8",
+          "dweb:/ipfs/QmQF22zWLtwg8CFAPKzZjmpuWqRgr86ffDkoPJuN3iUiRk"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

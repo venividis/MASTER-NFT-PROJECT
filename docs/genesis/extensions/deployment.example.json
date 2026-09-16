@@ -1,0 +1,654 @@
+{
+  "schema": "anima.extensions-deployment-catalog/1",
+  "status": "templates-require-explicit-runtime-configuration",
+  "instructions": [
+    "This catalog is not a planner configuration. Select one group.config, replace every angle-bracket placeholder with verified values, choose the actual chain, deployer and pending EOA nonce, and save a separate config JSON.",
+    "All top-level planner fields and transaction values are explicit. $Name references bind only previously deployed modules or pinned external contracts in the same group.",
+    "Groups are independent examples. Do not reuse startingNonce=0 between groups on the same wallet; use the plan summary nextNonce or the actual pending nonce.",
+    "Compile the current sources with immutableReferences before planning. Plans are unsigned and do not prove constructor success or public deployment.",
+    "Preserve the sealed Genesis manifest. Extension receipt verification produces a separate observed address/runtime-codehash directory."
+  ],
+  "groups": [
+    {
+      "capabilities": [
+        "F02",
+        "F03",
+        "F05",
+        "F07"
+      ],
+      "title": "Identity, memory, encrypted groups, agent policy and gas sponsorship",
+      "notes": [
+        "Key registration, memory handover, room membership, scoped sessions and sponsorship budgets are user actions after deployment. Do not paste private keys into constructor arguments."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "Collection": {
+            "address": "<COLLECTION_ADDRESS>",
+            "contractName": "IDontFuckingBelieveIt",
+            "runtimeCodeHash": "<COLLECTION_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "PrivacyKeys",
+            "contractName": "PrivacyKeys",
+            "args": [],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "PrivateMemoryHandover",
+            "contractName": "PrivateMemoryHandover",
+            "args": [
+              "$Collection",
+              "$PrivacyKeys"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "EpochGroupChat",
+            "contractName": "EpochGroupChat",
+            "args": [
+              "$PrivacyKeys"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "AgentPolicyGuard",
+            "contractName": "AgentPolicyGuard",
+            "args": [],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "SessionSponsor",
+            "contractName": "SessionSponsor",
+            "args": [],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F11",
+        "F12"
+      ],
+      "title": "Service jobs and authenticated provider discovery",
+      "notes": [
+        "Review ERC-8183 draft compatibility boundaries in the agent implementation. The x402 host needs separately pinned service and facilitator configuration."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "PaymentToken": {
+            "address": "<PAYMENT_TOKEN_ADDRESS>",
+            "contractName": "GenesisToken",
+            "runtimeCodeHash": "<PAYMENT_TOKEN_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "AgentCommerce",
+            "contractName": "AgentCommerce",
+            "args": [
+              "$PaymentToken"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "ProviderDirectory",
+            "contractName": "ProviderDirectory",
+            "args": [
+              "$AgentCommerce"
+            ],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F01"
+      ],
+      "title": "Streaming launch auction",
+      "notes": [
+        "Seller must be the deployer for these follow-up calls. Check token decimals. Lot size \u00d7 lot count must equal the token approval and funded inventory. Choose a start block late enough to include all setup transactions."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "SaleToken": {
+            "address": "<SALE_TOKEN_ADDRESS>",
+            "contractName": "GenesisToken",
+            "runtimeCodeHash": "<SALE_TOKEN_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "ContinuousClearingAuction",
+            "contractName": "ContinuousClearingAuction",
+            "args": [
+              "<DEPLOYER_ADDRESS>",
+              "$SaleToken",
+              "1000000000000000000",
+              "1000",
+              "<FUTURE_START_BLOCK>",
+              "<FUTURE_END_BLOCK>",
+              "1000000000000000"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "ApproveAuctionInventory",
+            "target": "$SaleToken",
+            "method": "approve",
+            "args": [
+              "$ContinuousClearingAuction",
+              "1000000000000000000000"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "FundAuction",
+            "target": "$ContinuousClearingAuction",
+            "method": "fund",
+            "args": [],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F06"
+      ],
+      "title": "Community matching round",
+      "notes": [
+        "Example budget is 1 native coin and must be explicitly reviewed; this file never authorizes a payment. Registry trust policy and audited identities are chosen by the operator before the round."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {},
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "PublicGoodsMatching",
+            "contractName": "PublicGoodsMatching",
+            "args": [
+              "<DEPLOYER_ADDRESS>",
+              "<IDENTITY_POLICY_HASH>",
+              [
+                "<PROJECT_0_RECIPIENT>",
+                "<PROJECT_1_RECIPIENT>"
+              ],
+              "<FUTURE_START_UNIX_SECONDS>",
+              "<FUTURE_END_UNIX_SECONDS>",
+              "1000000000000000000"
+            ],
+            "value": "1000000000000000000"
+          },
+          {
+            "kind": "call",
+            "name": "RegisterFirstPerson",
+            "target": "$PublicGoodsMatching",
+            "method": "registerIdentity",
+            "args": [
+              "<PARTICIPANT_WALLET>",
+              "<VERIFIED_PERSON_IDENTIFIER_HASH>"
+            ],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F17"
+      ],
+      "title": "Whole-master-NFT custodial shares",
+      "notes": [
+        "The deployer must own the exact Bound token and its account must never have executed. Fractionalization freezes account execution; no arbitrary issuer withdrawal exists. Minimum accepted support in this example is 66.67%, voting period seven days."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "Collection": {
+            "address": "<COLLECTION_ADDRESS>",
+            "contractName": "IDontFuckingBelieveIt",
+            "runtimeCodeHash": "<COLLECTION_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "WholeNFTShares",
+            "contractName": "WholeNFTShares",
+            "args": [
+              "$Collection",
+              "<UNUSED_BOUND_TOKEN_ID>",
+              "<DEPLOYER_ADDRESS>",
+              "1000000000000000000000",
+              "<PROPERTY_DISCLOSURE_HASH>",
+              "6667",
+              "604800"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "ApproveMasterNFT",
+            "target": "$Collection",
+            "method": "approve",
+            "args": [
+              "$WholeNFTShares",
+              "<UNUSED_BOUND_TOKEN_ID>"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "DepositMasterNFT",
+            "target": "$WholeNFTShares",
+            "method": "deposit",
+            "args": [],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F08",
+        "F09",
+        "F10"
+      ],
+      "title": "Isolated experimental markets and keeper task",
+      "notes": [
+        "Gate, price feeds, tokens, liquidity and exit-vault deployments must already be real and code-pinned. Review actual token decimals and feed proxy administration. Experiment enablement and isolated-cell authorization are separate deliberate user actions.",
+        "Example base/quote token units both assume 18 decimals and both price feeds must use the same numeraire. Wake rate 1/86400 charges 100% of self-assessed seat price per day: the seven-day example prepays 7 times seat price as rent. Choose and review a suitable rate; no economic default is recommended."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "Gate": {
+            "address": "<EXPERIMENT_GATE_ADDRESS>",
+            "contractName": "ExperimentGate",
+            "runtimeCodeHash": "<EXPERIMENT_GATE_RUNTIME_CODE_HASH>"
+          },
+          "QuoteToken": {
+            "address": "<PAYMENT_TOKEN_ADDRESS>",
+            "contractName": "GenesisToken",
+            "runtimeCodeHash": "<PAYMENT_TOKEN_RUNTIME_CODE_HASH>"
+          },
+          "BaseToken": {
+            "address": "<BASE_TOKEN_ADDRESS>",
+            "contractName": "GenesisToken",
+            "runtimeCodeHash": "<BASE_TOKEN_RUNTIME_CODE_HASH>"
+          },
+          "BaseFeed": {
+            "address": "<BASE_PRICE_FEED_ADDRESS>",
+            "contractName": "IHouseFeed",
+            "runtimeCodeHash": "<BASE_PRICE_FEED_RUNTIME_CODE_HASH>"
+          },
+          "QuoteFeed": {
+            "address": "<QUOTE_PRICE_FEED_ADDRESS>",
+            "contractName": "IHouseFeed",
+            "runtimeCodeHash": "<QUOTE_PRICE_FEED_RUNTIME_CODE_HASH>"
+          },
+          "NativeMarket": {
+            "address": "<NATIVE_MARKET_ADDRESS>",
+            "contractName": "NativeMarket",
+            "runtimeCodeHash": "<NATIVE_MARKET_RUNTIME_CODE_HASH>"
+          },
+          "ExitVault": {
+            "address": "<EXIT_VAULT_ADDRESS>",
+            "contractName": "VestedExitVault",
+            "runtimeCodeHash": "<EXIT_VAULT_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "HouseFeedRatio",
+            "contractName": "HouseFeedRatio",
+            "args": [
+              "$BaseFeed",
+              "$QuoteFeed",
+              "18",
+              "3600"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "HouseNativeMarketVenue",
+            "contractName": "HouseNativeMarketVenue",
+            "args": [
+              "$NativeMarket"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "House",
+            "contractName": "House",
+            "args": [
+              "$Gate",
+              "$QuoteToken",
+              "$BaseToken",
+              "$HouseFeedRatio",
+              "$HouseNativeMarketVenue",
+              "1000000000000000000",
+              "3600",
+              "86400",
+              "100",
+              "11000"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "Wager",
+            "contractName": "Wager",
+            "args": [
+              "$Gate",
+              "$QuoteToken"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "WakeExitTask",
+            "contractName": "WakeExitTask",
+            "args": [
+              "$ExitVault"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "Wake",
+            "contractName": "Wake",
+            "args": [
+              "$Gate",
+              "$QuoteToken",
+              "<DEPLOYER_ADDRESS>",
+              "$WakeExitTask",
+              "1000000000000000000",
+              "100000000000000000",
+              "604800",
+              "3600",
+              "1",
+              "86400"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "BindWakeTask",
+            "target": "$WakeExitTask",
+            "method": "bind",
+            "args": [
+              "$Wake"
+            ],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F16"
+      ],
+      "title": "Mint-and-bind ENS entry",
+      "notes": [
+        "Deployer must control the ancestor name. The ancestor+label must hash to the constructor parent. This delegates a dedicated subdomain; it does not buy, renew or seize an ENS name. Each owner creates their personal NamedMintSession through the factory."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "Collection": {
+            "address": "<COLLECTION_ADDRESS>",
+            "contractName": "IDontFuckingBelieveIt",
+            "runtimeCodeHash": "<COLLECTION_RUNTIME_CODE_HASH>"
+          },
+          "ENSRegistry": {
+            "address": "<ENS_REGISTRY_ADDRESS>",
+            "contractName": "INameRegistry",
+            "runtimeCodeHash": "<ENS_REGISTRY_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "GenesisNames",
+            "contractName": "GenesisNames",
+            "args": [
+              "$ENSRegistry",
+              "$Collection",
+              "<DELEGATED_PARENT_NAMEHASH>"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "deploy",
+            "name": "NamedMintFactory",
+            "contractName": "NamedMintFactory",
+            "args": [
+              "$GenesisNames"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "DelegateNamingSubdomain",
+            "target": "$ENSRegistry",
+            "method": "setSubnodeRecord",
+            "args": [
+              "<OWNED_ANCESTOR_NAMEHASH>",
+              "<DELEGATED_LABEL_HASH>",
+              "$GenesisNames",
+              "$GenesisNames",
+              "0"
+            ],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F14"
+      ],
+      "title": "Proof-checked native quote rehearsal",
+      "notes": [
+        "Constructor creates its specific NativeQuoteGroth16Verifier internally. Proof generation requires the pinned proving artifacts and live context. This is a bounded native-quote proof, not a proof of arbitrary application execution.",
+        "Current proving setup is single-machine-development-only with productionReady=false. Never register this read-only quote verifier as a SovereignAccount spending-authority verifier.",
+        "Proof artifacts under packages/rehearsal-proof/artifacts must match the manifest-pinned generated verifier source."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "NativeMarket": {
+            "address": "<NATIVE_MARKET_ADDRESS>",
+            "contractName": "NativeMarket",
+            "runtimeCodeHash": "<NATIVE_MARKET_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "NativeQuoteRehearsal",
+            "contractName": "NativeQuoteRehearsal",
+            "args": [
+              "$NativeMarket"
+            ],
+            "value": "0"
+          }
+        ]
+      }
+    },
+    {
+      "capabilities": [
+        "F04"
+      ],
+      "title": "Authenticated read-only portal on one chain",
+      "notes": [
+        "Prepare the peer chain as its own nonce/chain plan. Endpoints, libraries, DVNs and executor must be independently chosen real deployments. The witness registry owner must be the deployer and adapter configuration must not already be frozen. If no registry integration is wanted, use zero registry in the constructor, remove its external and adapter step. Sealing is irreversible.",
+        "ULN encoding: (uint64 confirmations,uint8 requiredDVNCount,uint8 optionalDVNCount,uint8 optionalDVNThreshold,address[] requiredDVNs,address[] optionalDVNs). Confirmations must meet constructor minimum and be less than uint64.max. Required count 1..127 and sorted distinct deployed DVNs. Optional count 255 means explicitly none with threshold 0 and []; count 0 is a forbidden default alias.",
+        "Executor encoding: (uint32 maxMessageSize,address executor), size at least 1024 and a deployed executor. Effective normalized configuration hashes are verified on each portal action.",
+        "If a new mutable witness registry is used, consider an explicit freeze() call only after configuring every required remote domain. A previously frozen registry cannot add a new adapter."
+      ],
+      "config": {
+        "schema": "anima.extensions-deployment-config/1",
+        "chainId": 31337,
+        "deployer": "<DEPLOYER_ADDRESS>",
+        "startingNonce": 0,
+        "externals": {
+          "Collection": {
+            "address": "<COLLECTION_ADDRESS>",
+            "contractName": "IDontFuckingBelieveIt",
+            "runtimeCodeHash": "<COLLECTION_RUNTIME_CODE_HASH>"
+          },
+          "Endpoint": {
+            "address": "<LAYERZERO_V2_ENDPOINT_ADDRESS>",
+            "contractName": "IPortalEndpointV2",
+            "runtimeCodeHash": "<LAYERZERO_V2_ENDPOINT_RUNTIME_CODE_HASH>"
+          },
+          "WitnessRegistry": {
+            "address": "<WITNESS_REGISTRY_ADDRESS>",
+            "contractName": "OmnichainWitnessRegistry",
+            "runtimeCodeHash": "<WITNESS_REGISTRY_RUNTIME_CODE_HASH>"
+          }
+        },
+        "steps": [
+          {
+            "kind": "deploy",
+            "name": "AuthenticatedStatePortal",
+            "contractName": "AuthenticatedStatePortal",
+            "args": [
+              "$Endpoint",
+              "$Collection",
+              "<REMOTE_LAYERZERO_EID>",
+              "<REMOTE_EVM_CHAIN_ID>",
+              "<REMOTE_PORTAL_ADDRESS_PADDED_BYTES32>",
+              "<REMOTE_COLLECTION_ADDRESS>",
+              "$WitnessRegistry",
+              "<SOURCE_CONFIRMATION_BLOCKS>"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "ConfigurePortalTransport",
+            "target": "$AuthenticatedStatePortal",
+            "method": "configureTransport",
+            "args": [
+              "<REGISTERED_SEND_LIBRARY_ADDRESS>",
+              "<REGISTERED_RECEIVE_LIBRARY_ADDRESS>",
+              "<ABI_ENCODED_SEND_ULN_CONFIG>",
+              "<ABI_ENCODED_RECEIVE_ULN_CONFIG>",
+              "<ABI_ENCODED_EXECUTOR_CONFIG>"
+            ],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "SealPortalTransport",
+            "target": "$AuthenticatedStatePortal",
+            "method": "sealTransport",
+            "args": [],
+            "value": "0"
+          },
+          {
+            "kind": "call",
+            "name": "AuthorizeWitnessAdapter",
+            "target": "$WitnessRegistry",
+            "method": "setAdapter",
+            "args": [
+              "<REMOTE_LAYERZERO_EID>",
+              "$AuthenticatedStatePortal"
+            ],
+            "value": "0"
+          }
+        ]
+      }
+    }
+  ],
+  "factoryCreatedContracts": [
+    {
+      "contractName": "NamedMintSession",
+      "constructorSlots": [
+        "owner",
+        "GenesisNames"
+      ],
+      "createdBy": "NamedMintFactory.createSession()"
+    },
+    {
+      "contractName": "NativeQuoteGroth16Verifier",
+      "constructorSlots": [],
+      "createdBy": "NativeQuoteRehearsal constructor"
+    }
+  ],
+  "offchainComponents": [
+    {
+      "capabilities": [
+        "F03",
+        "F11",
+        "F12"
+      ],
+      "component": "configured agent operator and service host",
+      "source": "agent/extensions/"
+    },
+    {
+      "capabilities": [
+        "F13"
+      ],
+      "component": "bounded isolated generated-instrument runtime",
+      "source": "web/extensions/worlds.mjs, worlds/instruments.mjs, worlds/commissions.mjs, agent/worlds/provider.mjs",
+      "contracts": "Reuses CommissionEscrow, CartridgeRegistry and CommissionedCartridges; no new contract."
+    },
+    {
+      "capabilities": [
+        "F15"
+      ],
+      "component": "persistent multiplayer world server and clients",
+      "source": "agent/worlds/server.mjs, worlds/model.mjs, worlds/client.mjs, worlds/client.html",
+      "boundary": "Offchain authoritative persistent gameplay with Ed25519 operator receipts and onchain owner/account/sessionEpoch authentication."
+    }
+  ]
+}

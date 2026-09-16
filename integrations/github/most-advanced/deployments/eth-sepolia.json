@@ -1,0 +1,76 @@
+{
+ "rpc": "https://ethereum-sepolia-rpc.publicnode.com",
+ "chainId": 11155111,
+ "deployer": "0x5f1191a432ea9d3f36eba62c0ca797bf0a754337",
+ "contracts": {
+  "engine": "0x2eb1f7fb9bd6a08fcf61c263ddbabaddf84044f4",
+  "sigil": "0x8bba17e2e15bb5d50122bab70f60aac5a17d3c8e",
+  "renderer": "0x29490627b6a324a7389ad8c299414b0a9fa0081a",
+  "reach": "0xb6e3d66d36bf22ebe51ee9f362f17cc644ab50e9",
+  "grip": "0xbac903b4620ea49eb0fe10fa8a080f438a270959",
+  "ipseity": "0x6ff03e23ca18d78c5264e7e5e159197cb68a0ec2",
+  "pool": "0xc77e7f0a448e7b0adff07f51422ee51f5eff6637",
+  "lease": "0xd53f87fdbb5f8c0c181b01653be8b59f178d7a66",
+  "chrome": "0x34964ba1a4aa36f6f1fcf28166adbce423e80101",
+  "parley": "0x5973a4d192c81d33629e9ae48ded715e4cf0e7eb",
+  "roster": "0x31c1c13f0f9e851e7e7a8f8a54d5324b11a68aae",
+  "deskRooms": "0xa417e296e6dbff8b8eab2297329df89f70d5e811",
+  "kiln": "0x0ad2f7349b0a4e2fe74c7019e016b9a59efd5251",
+  "locker": "0xcf091d7d744b0b96cbe8e648bac14e123ca5eb20",
+  "venue": "0x0cfabf4e4bbe86b761a6eefe50482f435f2700b5",
+  "nameplate": "0x19e2d45d1ebca52c042064c99f7d3216a34974f8",
+  "deskU": "0x8e369e9eb278ab08dc56bd02055e92507d4b8997",
+  "deskT": "0xd1edcdee44accb46a90607acfe48142bfc5526b2",
+  "deskL": "0xa345d8b48a6c2213efa0cb642df85ab3343f0711",
+  "deskSeal": "0x6d498122b975d1e12f7f6ab0f595800ceb7c81a3",
+  "pSwap": "0x48f3113439cc63e1283aadd9348bdccf9e71ea3c",
+  "desk": "0x374c5e8442ba2829ba8820f6d22c33c6699b5d8c",
+  "deskTalk": "0x5a8680383a81cec23171def3a956fdc8c7ba7974",
+  "deskTerm": "0xfbf2cd3d986849a68caa13aa93b0209de79ce20e",
+  "pDoor": "0x939c1fb6a24b24e0c80ed36b2f83090672f7ea7d",
+  "pToken": "0x0535442c896a192dee95ed2c0f8a5686195bfb3f",
+  "pMarket": "0x6c48caa2931ab8416464da23ae86ce531ce6056e",
+  "pPool": "0xc58c60fd36747042295244fc12b79cc92f0f787b",
+  "pServices": "0x3fb62fe65c323401d040a5e5e381a098013f5e6c",
+  "pManifest": "0x707780957fc7784e6ca863a8c93323f8369e8fa4",
+  "pTalk": "0xa9cb2618f244f8f1499eb700e300b90135bdbc64",
+  "pRooms": "0x6910d3e0fe1294f94917d5528b968c4f2a091dcc",
+  "pTerminal": "0xae9e8a5bb4683bbf2f4062162e992889d3e2f44c",
+  "pGallery": "0xd4e9117a9f24169efb62ad93a81b1c24b900e871",
+  "pLaunch": "0x0bf634b6fb3f9a02e99d7b5392b0c91031633b7d",
+  "pLock": "0xd535e0836dc4f8f2cfec900daf2c39c6948651f6",
+  "pHook": "0x644f19638e8be363de1d567cf2efac5df2f86e6f",
+  "pCast": "0x320a6384ba559a63fa8ef1b3df7cb9bcb4971ecd",
+  "pSeal": "0x8b76e81d79c27579f7c4350417f2a04f5de1421f",
+  "pKeys": "0x3e27c115d5f594494764de118d615c6f06efa8ff",
+  "pName": "0xf5c449efd621f61fb0455459a281b497730230ac",
+  "succession": "0x80248f1c6e97cce88cd8730fd2aea0a52268c618",
+  "consign": "0xdbe1eb3e041190947abd4f5d41127724e5be2b16",
+  "deskEstate": "0x802bfa49c3d980342253be688170165a2f7cb5e9",
+  "deskWill": "0x8b56b712a0efa022788d7e8a0c4af60dbcfd701e",
+  "pEstate": "0xe1bc0b49125203d2974e5ced531bb9f9ce59adef",
+  "premises": "0x0106237ad2581956f21fd769fcd88f0d77918425",
+  "nameplateNext": "0xb65fa46580d9341690cfc714cbbd8de2b09386bf"
+ },
+ "holders": {
+  "1": "0x5f1191a432ea9d3f36eba62c0ca797bf0a754337",
+  "2": "0x5f1191a432ea9d3f36eba62c0ca797bf0a754337"
+ },
+ "urls": {
+  "door": "web3://0x0106237ad2581956f21fd769fcd88f0d77918425:11155111/",
+  "chat": "web3://0x0106237ad2581956f21fd769fcd88f0d77918425:11155111/chat",
+  "instrument": "web3://0x0106237ad2581956f21fd769fcd88f0d77918425:11155111/token/1/live"
+ },
+ "notes": {
+  "nameplateNext": "The resolver with custody binding, expiry and cross-chain stations, deployed standalone against the real ENS registry. Not wired into the premises: the nameplate is an immutable constructor argument of PageName, which is one of Premises', so reaching it from /name needs a site redeploy (~106M gas, ~0.17 ETH at this chain's price). Readable directly meanwhile."
+ },
+ "live": {
+  "nameHeldByToken": {
+   "node": "0x58dade043dc519d6512cd0d232a485fbac556fe6c0eed0193af47bd6295855f3",
+   "heldBy": "token 2, in its reach \u2014 removable, not sealed",
+   "holder": "0xf305041d538b6f876d799c10305aee8c6efbecfe",
+   "resolver": "0xb65fa46580d9341690cfc714cbbd8de2b09386bf",
+   "note": "A real ENS node on Sepolia, owned by the token's own account and resolving through the Nameplate. Not a .eth second-level name: those cannot be registered on Sepolia at all \u2014 the NameWrapper reverts even called as the authorised controller, and the one contract that does hold controller rights only issues subnames whose registry ownership it keeps."
+  }
+ }
+}

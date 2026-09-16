@@ -1,0 +1,86 @@
+{
+  "group": "doppler",
+  "file": "ANIMA/OfficialCreate2.sol",
+  "name": "OfficialCreate2",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "deployed",
+          "type": "address"
+        }
+      ],
+      "name": "Deployed",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "initCode",
+          "type": "bytes"
+        }
+      ],
+      "name": "deploy",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "deployed",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608080604052346015576101e0908161001a8239f35b5f80fdfe60806040526004361015610011575f80fd5b5f3560e01c63cdcb760a14610024575f80fd5b34610094576040366003190112610094576024356001600160401b0381116100945736602382011215610094576004810135906001600160401b038211610094573660248383010111610094576100909160246100849201600435610127565b60405191829182610098565b0390f35b5f80fd5b6001600160a01b03909116815260200190565b634e487b7160e01b5f52604160045260245ffd5b601f909101601f19168101906001600160401b038211908210176100e257604052565b6100ab565b156100ee57565b60405162461bcd60e51b815260206004820152601160248201527011195c1b1bde5b595b9d0819985a5b1959607a1b6044820152606490fd5b92919060405160208101903382528560408201526040815261014a6060826100bf565b519020916001600160401b0381116100e25760405190610174601f8201601f1916602001836100bf565b8082526020820192368282011161009457815f9260209286378301015251905ff5916101aa6001600160a01b03841615156100e7565b6040517ffa86dcef4390d6a0f7edde563410fc44e4c2d382b4c6699cce5ebc4071abcc953391806101db8782610098565b0390a356",
+  "creationHash": "0x8673f8a8ea87a0ebbca6bd0dbf6a187f607a5b665b4c2f91235c83d325d3724b",
+  "bytes": 480,
+  "normalizedHash": "0x28b3d31e844f3ba68a0fcff0f48a93859c726f7e96906144cbc738ab4212fa21",
+  "masks": [],
+  "immutableGroups": [],
+  "sourceInputSha256": "e4377f61fefda48f68abd776bdd22ce67cb68c96dd5f2d4f1ed98772a9e5ff48",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 0
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "metadata": {
+      "bytecodeHash": "none",
+      "appendCBOR": false
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  }
+}

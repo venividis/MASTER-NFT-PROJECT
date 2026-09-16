@@ -1,0 +1,138 @@
+{
+  "contractName": "AgentIdentityRegistryMock",
+  "sourceName": "contracts/src/test/CoreCleanupHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "holder",
+          "type": "address"
+        }
+      ],
+      "name": "setOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460155761010a908161001a8239f35b5f80fdfe60808060405260043610156011575f80fd5b5f3560e01c9081636352211e14609b5750637fd3924714602f575f80fd5b34609757604036600319011260975760243573ffffffffffffffffffffffffffffffffffffffff81168091036097576004355f525f60205260405f20907fffffffffffffffffffffffff00000000000000000000000000000000000000008254161790555f80f35b5f80fd5b3460975760203660031901126097576020906004355f525f825273ffffffffffffffffffffffffffffffffffffffff60405f2054168152f3fea2646970667358221220f2aeb166887c513e3588ebef259d485cb4d99e84387f82a545b5fac3a2f2875e64736f6c634300081e0033",
+  "deployedBytecode": "0x60808060405260043610156011575f80fd5b5f3560e01c9081636352211e14609b5750637fd3924714602f575f80fd5b34609757604036600319011260975760243573ffffffffffffffffffffffffffffffffffffffff81168091036097576004355f525f60205260405f20907fffffffffffffffffffffffff00000000000000000000000000000000000000008254161790555f80f35b5f80fd5b3460975760203660031901126097576020906004355f525f825273ffffffffffffffffffffffffffffffffffffffff60405f2054168152f3fea2646970667358221220f2aeb166887c513e3588ebef259d485cb4d99e84387f82a545b5fac3a2f2875e64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "ownerOf(uint256)": "6352211e",
+    "setOwner(uint256,address)": "7fd39247"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownerOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "holder",
+              "type": "address"
+            }
+          ],
+          "name": "setOwner",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Test-only selected registry. Anyone can change records to exercise stale ownership.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/CoreCleanupHarness.sol": "AgentIdentityRegistryMock"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/test/CoreCleanupHarness.sol": {
+        "keccak256": "0xa48336facc99eb5bed1eacbfec5fa89f470cdfebc34354eeabca4a40c8027193",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://8e261898c7dd613ced4cd8b3b74ee4c0a48572789566f7f9c725e397fbe2d9e8",
+          "dweb:/ipfs/QmQF22zWLtwg8CFAPKzZjmpuWqRgr86ffDkoPJuN3iUiRk"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

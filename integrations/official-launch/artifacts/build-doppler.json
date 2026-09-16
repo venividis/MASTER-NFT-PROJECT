@@ -1,0 +1,22 @@
+{
+  "inputHash": "e4377f61fefda48f68abd776bdd22ce67cb68c96dd5f2d4f1ed98772a9e5ff48",
+  "files": {
+    "OfficialCreate2": "15e1152e30c977070f2957d35d04f5bb7818396706dddba6d40edf6804609fd7",
+    "OfficialLaunchToken": "36fa85aa2801b277b0f219c9e22ce20fc08d4db23b21d7a8353ab8491e3de5b3",
+    "OfficialV4QuoteLens": "6bcd69c69a9e0a4263d0d14b885d1bb7a05d6a2b7fa469129e19112bb4dcfee9",
+    "OfficialV4SwapRouter": "3a086bffac214d4343a30043eab71cecaaf07a43bfb2751544cdaa85c3a35e5e",
+    "WETH": "a5dffa045b574e51cde131bf12d33886687c8b27b11034e599a3f6c1b45e5267",
+    "PoolManager": "82983bf62ef3dd1f4f25fe1cb656796397f0dc9b78c0f794d99060f117f1ce08",
+    "Airlock": "b788778f2ccf91e55879fb7292be18c3efdb60868285ba0dc5517e0cbb1bea7e",
+    "TopUpDistributor": "5d1f70545bc84cb418f0c337e3bfd67e42232892b86f048f231468a2a67dce33",
+    "GovernanceFactory": "b3debe476e35aaaa8c26a8773c5db1209682dbfecc9829dd03995f54a3c7ff7b",
+    "LaunchpadGovernanceFactory": "953a7218959119f6f0f275c329e7e6ae9fd6a2972c33085e837519f8209dfab7",
+    "Doppler": "d27d17b1191f39062ac863fb296067ea8dc52af753615ef2617e3b5c2cae7cf5",
+    "DopplerDeployer": "ddf2c349ddd59ded091093eb1917f5c7b917bcb8a9ce20a4c733ffe44691d5e1",
+    "UniswapV4Initializer": "fbd80212b05dc299eef53fec7218f596e20d76914bde15bd2a433987b11c2c77",
+    "UniswapV2Locker": "8701a8e328f65280e66db1a22291b63a25a8fa8ecf4c0afa3913eaa5cc476f62",
+    "UniswapV2MigratorSplit": "5fc2ce3c7acd1f5d931a7d8e24c3b83a3a1dcda4899024acf63936dba0377c82",
+    "DopplerERC20V1": "1f0193d996bd81d07cc6ceb752fdc689a862bf9694acaa0652e21df79816fa96",
+    "DopplerERC20V1Factory": "169a08141b14f8466a8e85f9d6bf181ab3328caf96b59a5077f0dbf8705852f3"
+  }
+}

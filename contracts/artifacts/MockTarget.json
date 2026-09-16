@@ -1,0 +1,246 @@
+{
+  "contractName": "MockTarget",
+  "sourceName": "contracts/src/mocks/MockTarget.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "received",
+          "type": "uint256"
+        }
+      ],
+      "name": "ValueSet",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "lastCaller",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "received",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "revertAlways",
+      "outputs": [],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "value_",
+          "type": "uint256"
+        }
+      ],
+      "name": "setValue",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "doubled",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "value",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60808060405234601557610231908161001a8239f35b5f80fdfe6080806040526004361015610012575f80fd5b5f3560e01c9081632113522a146101cb575080633fa4f245146101af57806355241077146100e257806383a6deb5146100c55763975af67a14610053575f80fd5b346100c1575f3660031901126100c15760646040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600f60248201527f45585045435445445f52455645525400000000000000000000000000000000006044820152fd5b5f80fd5b346100c1575f3660031901126100c1576020600254604051908152f35b60203660031901126100c157600435805f55337fffffffffffffffffffffffff00000000000000000000000000000000000000006001541617600155600254348101809111610182576002557f01cd1c64487720a6f627b9b2b6ca47496e2710ffb238e53893f98d4dd4ac33296060604051838152336020820152346040820152a18060011b908082046002149015171561018257602090604051908152f35b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b346100c1575f3660031901126100c15760205f54604051908152f35b346100c1575f3660031901126100c15760209073ffffffffffffffffffffffffffffffffffffffff600154168152f3fea2646970667358221220bcda30a2f60e24ebde105847ab865263e7b482c3071a473e4223ee1d632c582c64736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081632113522a146101cb575080633fa4f245146101af57806355241077146100e257806383a6deb5146100c55763975af67a14610053575f80fd5b346100c1575f3660031901126100c15760646040517f08c379a000000000000000000000000000000000000000000000000000000000815260206004820152600f60248201527f45585045435445445f52455645525400000000000000000000000000000000006044820152fd5b5f80fd5b346100c1575f3660031901126100c1576020600254604051908152f35b60203660031901126100c157600435805f55337fffffffffffffffffffffffff00000000000000000000000000000000000000006001541617600155600254348101809111610182576002557f01cd1c64487720a6f627b9b2b6ca47496e2710ffb238e53893f98d4dd4ac33296060604051838152336020820152346040820152a18060011b908082046002149015171561018257602090604051908152f35b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b346100c1575f3660031901126100c15760205f54604051908152f35b346100c1575f3660031901126100c15760209073ffffffffffffffffffffffffffffffffffffffff600154168152f3fea2646970667358221220bcda30a2f60e24ebde105847ab865263e7b482c3071a473e4223ee1d632c582c64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "lastCaller()": "2113522a",
+    "received()": "83a6deb5",
+    "revertAlways()": "975af67a",
+    "setValue(uint256)": "55241077",
+    "value()": "3fa4f245"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "value",
+              "type": "uint256"
+            },
+            {
+              "indexed": false,
+              "internalType": "address",
+              "name": "caller",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "uint256",
+              "name": "received",
+              "type": "uint256"
+            }
+          ],
+          "name": "ValueSet",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "lastCaller",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "received",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "revertAlways",
+          "outputs": [],
+          "stateMutability": "pure",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "value_",
+              "type": "uint256"
+            }
+          ],
+          "name": "setValue",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "doubled",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "value",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/mocks/MockTarget.sol": "MockTarget"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/mocks/MockTarget.sol": {
+        "keccak256": "0x6ecf5f9facedb2740e444d079ebc795ba6c28e1ee2d2544c96b75db5a16b5636",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7fe6a0099d287bbb5e8ab71999b5d6725dd9b5befc8f17b147a43c76d8920abc",
+          "dweb:/ipfs/QmT3DT1Lce8pSgQqtxdro3q51JqCF5r4hR7ofr3gM8FJDq"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

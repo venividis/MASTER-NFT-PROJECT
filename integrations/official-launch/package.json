@@ -1,0 +1,14 @@
+{
+  "name": "@anima/official-launch",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "test": "node --test test/*.test.mjs",
+    "test:scenario": "node --test test/scenario.test.mjs"
+  },
+  "devDependencies": {
+    "solc-017": "npm:solc@0.8.17"
+  }
+}

@@ -1,0 +1,6 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> i-dont-fucking-believe-it@6.0.0 check
+> node scripts/check-source.mjs
+
+Authored JavaScript syntax and JSON parsing passed; donor trees and generated dist excluded (515 files inspected). Run integrity:verify to check release file hashes.

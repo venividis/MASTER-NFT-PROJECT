@@ -1,0 +1,14 @@
+{
+  "chainId": 84532,
+  "eid": 40245,
+  "endpoint": "0x6EDCE65403992e310A62460808c4b910D972f10f",
+  "port": "0x65d1e9d08488a68ef6bf48e057ab69496333c7ae",
+  "parley": "0xaa8b3ff644638a29333953328fb877e8dd23e0f2",
+  "peers": [
+    {
+      "chainId": 11155111,
+      "eid": 40161,
+      "port": "0x65d1e9d08488a68ef6bf48e057ab69496333c7ae"
+    }
+  ]
+}

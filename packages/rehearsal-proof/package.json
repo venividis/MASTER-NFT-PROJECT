@@ -1,0 +1,19 @@
+{
+  "name": "@anima/native-quote-proof",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Bounded NativeMarket arithmetic proofs; development Groth16 setup only",
+  "scripts": {
+    "setup": "node setup.mjs",
+    "prove": "node cli.mjs",
+    "serve": "node server.mjs",
+    "test": "node --test ../../test/extensions/proof*.test.mjs"
+  },
+  "dependencies": {
+    "circom2": "0.2.23",
+    "circomlib": "2.0.5",
+    "snarkjs": "0.7.6"
+  },
+  "license": "GPL-3.0-only"
+}

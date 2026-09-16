@@ -1,0 +1,645 @@
+{
+  "version": "5.9.0",
+  "date": "2026-09-13",
+  "baseCommit": "a400e7ba1060b005e96b447d267e44e0e8ceed4f",
+  "baseTree": "6ee88933edbf61d31c06d629a3370ac322b12d31",
+  "scope": "Section 17 source implementations, browser integration, configured local services, unsigned deployment preparation and local verification; no public deployment.",
+  "section17": {
+    "count": 17,
+    "features": [
+      {
+        "id": "F01",
+        "capability": "Continuous clearing auction",
+        "implemented": "Fund a streamed sale, leave a standing bid, advance uniform-price clearing, cancel and claim tokens or refunds.",
+        "scope": "Independent bounded ANIMA mechanism, 64 orders; no Uniswap CCA compliance or automatic pool migration.",
+        "guide": "docs/genesis/extensions/MARKETS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F02",
+        "capability": "Private agent-memory transfer",
+        "implemented": "Publish encrypted memory, encrypt a handover for a recipient, let them decrypt and verify before atomic NFT acceptance, and recover accepted memory later.",
+        "scope": "Back up encryption keys. Recipient-confirmed content, not ERC-7857/ZK handover; sender can retain old content.",
+        "guide": "docs/genesis/extensions/PRIVACY.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F03",
+        "capability": "Continuous live agent",
+        "implemented": "Run a persistent operator against exact owner-approved calls, native budgets, call counts, waiting times and expiry. Revoke it or invalidate it by transferring custody.",
+        "scope": "A scoped Bound-account operator; unrestricted adaptive decision-making and Sovereign-mode proof generation are outside this implementation.",
+        "guide": "docs/genesis/extensions/AGENTS.md",
+        "status": "implemented bounded scope; broader goal remains partial"
+      },
+      {
+        "id": "F04",
+        "capability": "Authenticated omnichain portal",
+        "implemented": "Seal explicit LayerZero libraries/DVNs/executor, queue a custody-bound observation, quote delivery and dispatch it to the pinned peer.",
+        "scope": "Requires real endpoints, both deployed peers and transport funding. Local tests use endpoint doubles. Remote witnesses grant no spending power.",
+        "guide": "docs/genesis/extensions/PRIVACY.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F05",
+        "capability": "Encrypted group chat",
+        "implemented": "Invite and accept members, rotate complete encrypted epoch packages, send/decrypt ciphertext messages, remove members and restore backed-up identities.",
+        "scope": "Custom WebCrypto protocol, not MLS or forward-secret. Membership/timing are public; old key holders retain old messages.",
+        "guide": "docs/genesis/extensions/PRIVACY.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F06",
+        "capability": "Public-goods matching",
+        "implemented": "Fund a matching pot, attest bounded participant identities, contribute/withdraw, finalize quadratic matching and pay projects or recover unused funds.",
+        "scope": "Frozen registrar and identity policy are explicit trust assumptions; Sybil identities/collusion are not cryptographically eliminated.",
+        "guide": "docs/genesis/extensions/MARKETS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F07",
+        "capability": "Sponsored transactions",
+        "implemented": "Grant a scoped relay session, exchange exact owner/sponsor signatures, submit as relayer and claim bounded gas reimbursement from a deposit.",
+        "scope": "Native session relay, not ERC-4337. Failed authorized calls consume vouchers; fixed overhead and a signed cap can leave relayer costs uncovered.",
+        "guide": "docs/genesis/extensions/ACCESS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F08",
+        "capability": "House",
+        "implemented": "Open/fund real leveraged spot positions, sell and settle lender-first proceeds, repay debt, cancel unfilled offers or exit in kind after maturity plus grace.",
+        "scope": "Test-network gate, real oracle/venue/liquidity required. Isolated spot leverage replaces the original pooled synthetic proposal.",
+        "guide": "docs/genesis/extensions/EXPERIMENTAL.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F09",
+        "capability": "Wager",
+        "implemented": "Fund binary outcomes, sell or transfer funded sides, propose/challenge answers, arbitrate, finalize and refund missed-deadline markets.",
+        "scope": "Named resolver/arbiter, immutable question/source/bonds/deadlines; fully funded claims and perpetual withdrawals.",
+        "guide": "docs/genesis/extensions/EXPERIMENTAL.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F10",
+        "capability": "Wake",
+        "implemented": "Prepay a keeper lease, compensate takeover, settle fractional rent, run bounded tasks and use public fallback after a stall or expiry.",
+        "scope": "Fixed task adapter and explicit test-network activation. Underlying permissionless exits remain public.",
+        "guide": "docs/genesis/extensions/EXPERIMENTAL.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F11",
+        "capability": "x402 / ERC-8183",
+        "implemented": "Review and pay an exact supported HTTP x402 service; separately create/fund provider jobs, judge deliverables, pay or refund.",
+        "scope": "Official x402 v2 exact EIP-3009 SDK path; separate non-hooked ERC-8183 draft kernel. Requires supported token, funded service wallet and configured provider.",
+        "guide": "docs/genesis/extensions/AGENTS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F12",
+        "capability": "Provider discovery / reputation",
+        "implemented": "Browse signed provider registrations, inspect metadata and compare job-attributed feedback; sign your own registration.",
+        "scope": "ANIMA-native discovery, not an ERC-8004 registry. A signature authenticates a wallet, not a human or service-quality claim.",
+        "guide": "docs/genesis/extensions/AGENTS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F13",
+        "capability": "Arbitrary generated instruments",
+        "implemented": "Export a commission request, fund real escrow, inspect the provider’s exact HTML/JS and manifest, approve/reject, acquire frozen onchain code and run it in isolation.",
+        "scope": "Hashing and human review do not certify safety. No default wallet bridge; exact proposals need a separate grant and transaction review.",
+        "guide": "docs/genesis/extensions/WORLDS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F14",
+        "capability": "Cryptographically proved rehearsal",
+        "implemented": "Generate a real Groth16 proof of one-hop NativeMarket fee/rounding/minimum/reserve math; check account/nonce/custody/current state before reviewing a swap.",
+        "scope": "Development trusted setup only. Full EVM execution, token behavior, transfer success, gas and future state are not proved.",
+        "guide": "docs/genesis/extensions/PROOF.md",
+        "status": "implemented bounded scope; broader goal remains partial"
+      },
+      {
+        "id": "F15",
+        "capability": "Shared world / civilization",
+        "implemented": "Join a persistent multiplayer server, explore, gather, craft, fight, found towns and trade with other clients; NFT transfer invalidates old sessions.",
+        "scope": "Working civilization slice, not a finished mature MMORPG. Operator-authoritative game state; game coins have no onchain withdrawal.",
+        "guide": "docs/genesis/extensions/WORLDS.md",
+        "status": "implemented bounded scope; broader goal remains partial"
+      },
+      {
+        "id": "F16",
+        "capability": "ENS / domain mint entry",
+        "implemented": "Create a personal mint slot, save its secret, commit an endowment, mint-and-name atomically, recover expired commitments and resolve a name into its NFT account.",
+        "scope": "Requires a delegated ENS parent; deterministic anima-TOKEN_ID subname. Domain purchases/renewals and ancestor trust are separate.",
+        "guide": "docs/genesis/extensions/ACCESS.md",
+        "status": "implemented within stated scope"
+      },
+      {
+        "id": "F17",
+        "capability": "Whole-NFT fractional shares",
+        "implemented": "Deposit an unused Bound NFT, transfer shares, make/vote on funded buyouts, withdraw proceeds or reunite all shares for whole-NFT redemption.",
+        "scope": "Account execution freezes in custody. Private keys, previously granted external rights and universal offchain claims are not share backing.",
+        "guide": "docs/genesis/extensions/MARKETS.md",
+        "status": "implemented within stated scope"
+      }
+    ],
+    "broaderGoalsStillPartial": [
+      "F03",
+      "F14",
+      "F15"
+    ],
+    "deploymentGuide": "docs/genesis/extensions/DEPLOYMENT.md"
+  },
+  "tests": {
+    "initialBroad": {
+      "tests": 492,
+      "passed": 490,
+      "failed": 1,
+      "skipped": 1,
+      "cancelled": 0,
+      "log": "tests-5.9.log",
+      "failure": "capabilities never relabel research as deployed or mainnet-enabled",
+      "resolution": "Restored broader F03/F14/F15 research classification; targeted follow-up passed.",
+      "skip": "Optional real-DOM workbench test required ANIMA_TEST_DOM_MODULES pointing to an isolated linkedom installation."
+    },
+    "targetedFollowup": {
+      "tests": 50,
+      "passed": 50,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "log": "final-targeted-5.9.log"
+    },
+    "separateDomAndWorkbench": {
+      "tests": 9,
+      "passed": 9,
+      "failed": 0,
+      "skipped": 0,
+      "evidence": "Completed separate execution reported by implementation coordinator; covered again by the final combined run."
+    },
+    "finalCombined": {
+      "status": "passed",
+      "tests": 497,
+      "passed": 497,
+      "failed": 0,
+      "skipped": 0,
+      "cancelled": 0,
+      "durationMs": 223849.699332,
+      "log": "tests-final-5.9.log",
+      "cleanPassClaimed": true,
+      "discovery": "All recursively discovered test/**/*.test.mjs files, sorted",
+      "nodeArgs": [
+        "--test",
+        "--test-concurrency=2"
+      ],
+      "actualEnvironment": {
+        "ANIMA_TEST_DOM_MODULES": "/tmp/anima-desk-dom/node_modules"
+      },
+      "domPackage": {
+        "name": "linkedom",
+        "version": "0.18.12"
+      },
+      "reproductionSetup": "npm run extensions:setup",
+      "reproductionEnvironment": {
+        "ANIMA_TEST_DOM_MODULES": "<repository>/agent/extensions/node_modules"
+      }
+    },
+    "countsAreSeparateExecutions": true,
+    "productionBrowserOrPhysicalDeviceVerification": false
+  },
+  "compilation": {
+    "passed": true,
+    "contracts": 160,
+    "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+    "evmTarget": "shanghai",
+    "optimizerRuns": 1000,
+    "viaIR": true,
+    "runtimeSizeGatePassed": true,
+    "warningsPresent": true,
+    "command": "npm run compile:local"
+  },
+  "build": {
+    "passed": true,
+    "commands": [
+      "npm run build",
+      "npm run archive:confluence",
+      "npm run verify:confluence"
+    ],
+    "syntax": "passed",
+    "htmlAssets": "present",
+    "archiveIntegrity": "passed",
+    "embeddedModules": 66,
+    "extensionBrowserContractTemplates": 27
+  },
+  "archive": {
+    "schema": "awe.onchain-runtime/1",
+    "compression": "gzip",
+    "expandedBytes": 2689512,
+    "byteLength": 1111273,
+    "sha256": "4c729d661599dd8a6ee4e11721db864260120a1fc21b4d0b22a87bbc8e43ef9f",
+    "chunks": [
+      {
+        "file": "chunks/00.bin",
+        "bytes": 23000,
+        "sha256": "9ab68b511c1ffdc98a95ca738f1cd4da03335fabb19d817f90a44962e7780706"
+      },
+      {
+        "file": "chunks/01.bin",
+        "bytes": 23000,
+        "sha256": "d2295027e2065c3ed3f79924cc51f0374794e4877d2924db0053c269d4e1bca9"
+      },
+      {
+        "file": "chunks/02.bin",
+        "bytes": 23000,
+        "sha256": "5902f05a5e4ca3d8ed2694f81b7f3268eb513f155bea93413c4b64357916d4b8"
+      },
+      {
+        "file": "chunks/03.bin",
+        "bytes": 23000,
+        "sha256": "1cc09adde390b3f19ea3fa7a12d8d2f0e8ba3c6b8b043ad9ba551d0ad03f1a91"
+      },
+      {
+        "file": "chunks/04.bin",
+        "bytes": 23000,
+        "sha256": "9458d8a5e7b1d2413f743a92c747168982cb61b3682a478c6d6685c6a3a62848"
+      },
+      {
+        "file": "chunks/05.bin",
+        "bytes": 23000,
+        "sha256": "74e8e4c5c9c728c295413d4f9b4e487e68061a92ddcad96fcb01bb0e4873d0b6"
+      },
+      {
+        "file": "chunks/06.bin",
+        "bytes": 23000,
+        "sha256": "eb200dc940e280178924686ed3e262e3d4fd7bab8569436695c056116ae9082f"
+      },
+      {
+        "file": "chunks/07.bin",
+        "bytes": 23000,
+        "sha256": "2c1b7f13ec4a33370878debfd564780d4b6eb1a8812c2e00eeec39cb0345328b"
+      },
+      {
+        "file": "chunks/08.bin",
+        "bytes": 23000,
+        "sha256": "39fa86f96c390fc41c617ab55be1a8193949fe5c013d1a61488c2280a7adf203"
+      },
+      {
+        "file": "chunks/09.bin",
+        "bytes": 23000,
+        "sha256": "18dd1e6f64f687c95c6fe173247db2277ac4b375f9872a6599049de001e54b96"
+      },
+      {
+        "file": "chunks/10.bin",
+        "bytes": 23000,
+        "sha256": "92d00e7813be866ad3dd6630f0107836109920fccdc85217b18fded47d715d2e"
+      },
+      {
+        "file": "chunks/11.bin",
+        "bytes": 23000,
+        "sha256": "90d6b1777a79b7c8a002564fc7e820cdf52ea423c662df4ddf0ae7c7e65f02e8"
+      },
+      {
+        "file": "chunks/12.bin",
+        "bytes": 23000,
+        "sha256": "aa7dc92a0f2f705f0479a561f7a7c1a810e5fe83941b14de38fa482ed7b439c6"
+      },
+      {
+        "file": "chunks/13.bin",
+        "bytes": 23000,
+        "sha256": "34eb4e134d6c50784ce9f3c5d615274a064ad5bdb9833c59a11a724e88a2c9e7"
+      },
+      {
+        "file": "chunks/14.bin",
+        "bytes": 23000,
+        "sha256": "35390cabd5a10211a4ce3ac77957e8c7529ae2eaed3c67131780c0acf720d9ae"
+      },
+      {
+        "file": "chunks/15.bin",
+        "bytes": 23000,
+        "sha256": "01e1b3ef5ea553413226c856754ee4de38f1266b0036737c4a7f11dc34dd85e4"
+      },
+      {
+        "file": "chunks/16.bin",
+        "bytes": 23000,
+        "sha256": "cfbbc9860818617c78b77703e50e2a2d7798de3e6da4b0dad0ffc421c8096b69"
+      },
+      {
+        "file": "chunks/17.bin",
+        "bytes": 23000,
+        "sha256": "c297a85efae8a7a289f72c5f5b0b35fd728516354f622b5a14bfc555b4577e37"
+      },
+      {
+        "file": "chunks/18.bin",
+        "bytes": 23000,
+        "sha256": "e5d356af4be081c87180e89ef5d10d426811ced94ec8665d088dbc6c8fb46d36"
+      },
+      {
+        "file": "chunks/19.bin",
+        "bytes": 23000,
+        "sha256": "ba0395a46d1784047564d3d75586e4d1ca09d0239af9f16102703ec1de917d74"
+      },
+      {
+        "file": "chunks/20.bin",
+        "bytes": 23000,
+        "sha256": "552858c6bb21c1055487e2b0682ff261da7feecb1008e68465b92653d045cfcd"
+      },
+      {
+        "file": "chunks/21.bin",
+        "bytes": 23000,
+        "sha256": "4a82a6245cbae8e62d91a161c5822185cd529a3149cc9c6a5b9379679b35a149"
+      },
+      {
+        "file": "chunks/22.bin",
+        "bytes": 23000,
+        "sha256": "b34429578db48bc39cd43ad87e31bfedf588684bd58489e1e5a9bcce5b7cf727"
+      },
+      {
+        "file": "chunks/23.bin",
+        "bytes": 23000,
+        "sha256": "ab8097c9d6549fe09642d3767a4947f77ffd263bd826a992a3ad294e4842dd0a"
+      },
+      {
+        "file": "chunks/24.bin",
+        "bytes": 23000,
+        "sha256": "20bb213fb83fca73f8a34d283566106aa9f404747595253773231da667df3597"
+      },
+      {
+        "file": "chunks/25.bin",
+        "bytes": 23000,
+        "sha256": "79509f6028efd719ebf92898e809eadb99b8b6a039f0030e9165b576f9722a3b"
+      },
+      {
+        "file": "chunks/26.bin",
+        "bytes": 23000,
+        "sha256": "872981a3093600953067e384e233d7fc9b7dc3838275df1cb6d249655aeef22a"
+      },
+      {
+        "file": "chunks/27.bin",
+        "bytes": 23000,
+        "sha256": "ecf4fcfc471c038fe79561c8c431c7cd74be67932d5348f6b9fe9e0f7ca5f69c"
+      },
+      {
+        "file": "chunks/28.bin",
+        "bytes": 23000,
+        "sha256": "ea4b238dea77a4f3b7dcf6f7a563450632640e0d09bab30b4c9cfb18703ed58b"
+      },
+      {
+        "file": "chunks/29.bin",
+        "bytes": 23000,
+        "sha256": "a026acd30340a2f0e454ef69a686da3e8fa7b5025450001a12b1b1209d7d8143"
+      },
+      {
+        "file": "chunks/30.bin",
+        "bytes": 23000,
+        "sha256": "34450fe8862e44b72d16154e5fce42a825be370a5e92225f3bbe9e5c9ee2613f"
+      },
+      {
+        "file": "chunks/31.bin",
+        "bytes": 23000,
+        "sha256": "2e0ba73d6a3edfc9691f720ab4accc1fb46efe1906cfe765716847ad4610a5ea"
+      },
+      {
+        "file": "chunks/32.bin",
+        "bytes": 23000,
+        "sha256": "61f9d326a1a7fb1f5986b5cc940f8916f2409576409c0bbaca71019ef78f6561"
+      },
+      {
+        "file": "chunks/33.bin",
+        "bytes": 23000,
+        "sha256": "ccdae044042b0d879dbdb682808c656b4e222080adec2f5e0bb2ce2847616685"
+      },
+      {
+        "file": "chunks/34.bin",
+        "bytes": 23000,
+        "sha256": "e38877ea3bdf1e2fb7cf2532ab43389457e81feec2181004d9743276d26b2b01"
+      },
+      {
+        "file": "chunks/35.bin",
+        "bytes": 23000,
+        "sha256": "2fc60c61d5e524bf0acfa3680b772d65a5eb4e7b9b99d055732ff4eaec42fd31"
+      },
+      {
+        "file": "chunks/36.bin",
+        "bytes": 23000,
+        "sha256": "9f4563c3ef7f6b5e1ce406d81c67fcc93331adad8395f77400832094a0f6109c"
+      },
+      {
+        "file": "chunks/37.bin",
+        "bytes": 23000,
+        "sha256": "04a8bf1fe287cb97035d737538dab853750c120578e3b7824226d0cb4e281f86"
+      },
+      {
+        "file": "chunks/38.bin",
+        "bytes": 23000,
+        "sha256": "2f7211d04b344ead336632fe71dc57c282ee37004d49aa50ffbd7818a7c05873"
+      },
+      {
+        "file": "chunks/39.bin",
+        "bytes": 23000,
+        "sha256": "d718ff04b753cf932b4412d1133cb64cdc40b777560f680e6fffe9a332161b76"
+      },
+      {
+        "file": "chunks/40.bin",
+        "bytes": 23000,
+        "sha256": "4edd8fbe10c9c063a78d85d130d66513605bc1d2400f314efe6866e454268b13"
+      },
+      {
+        "file": "chunks/41.bin",
+        "bytes": 23000,
+        "sha256": "e0e612b234ac4b6423aeb993e7e8dce66171b325f1dd5e12d018e876706453a2"
+      },
+      {
+        "file": "chunks/42.bin",
+        "bytes": 23000,
+        "sha256": "26d292be717cb3bb19c154dfc7210f3230977a677a2b7cc1ded68cbba07ab298"
+      },
+      {
+        "file": "chunks/43.bin",
+        "bytes": 23000,
+        "sha256": "475c5d46e49523c867a8be423a33bf9dc8cf894acaf484d3ebfeb3ab5ce4bab1"
+      },
+      {
+        "file": "chunks/44.bin",
+        "bytes": 23000,
+        "sha256": "a3a9a22d5903cc1c97b55f8c7389fbc5b6c4328d7a7d03f4cba9b848b7506312"
+      },
+      {
+        "file": "chunks/45.bin",
+        "bytes": 23000,
+        "sha256": "87d7578aaa3ab707944007b62cfe3b82bdb61d34fdb0b8a5487cb47576ee0c60"
+      },
+      {
+        "file": "chunks/46.bin",
+        "bytes": 23000,
+        "sha256": "bbf50062e2a403638998f8300586ebadff3c47b604fc112ae0d13badb634063d"
+      },
+      {
+        "file": "chunks/47.bin",
+        "bytes": 23000,
+        "sha256": "dd066fbf474fc01330dd521a268d5151ac90d87d1dbdb327f9fe8c135fa157e7"
+      },
+      {
+        "file": "chunks/48.bin",
+        "bytes": 7273,
+        "sha256": "079160ef15c6fabdd1814f26a6f3fe7bd87d15c359c3a84116b3cae7a1e5db14"
+      }
+    ]
+  },
+  "localMint": {
+    "evidence": "reports/confluence/local-deployment.json",
+    "evidenceSha256": "ff760669f9eb1172a8268ae36eee45f2259d87a75af6f28d24e37f7b85ca2dba",
+    "scope": "local development chain only",
+    "chainId": 31337,
+    "tokenId": "1",
+    "runtimeSha256": "4c729d661599dd8a6ee4e11721db864260120a1fc21b4d0b22a87bbc8e43ef9f",
+    "runtimeBytes": 1111273,
+    "chunks": 49,
+    "coreRoundtrip": true,
+    "metadataParsed": true,
+    "compactLoaderRecoveryVerified": true,
+    "manifestSealed": true,
+    "estateModuleInstalled": true,
+    "directoryEntryCount": 286,
+    "directoryCountIncludesArchiveChunks": true,
+    "workerRoundtrip": true,
+    "workerBytes": 15010237,
+    "workerCompressedBytes": 4570220,
+    "workerChunks": 199,
+    "workerShards": 7,
+    "workerSha256": "bfce5d1b1ca272157cf7ef03d4617727dc03d968b918ced6a3a0ecaca3640c7d",
+    "workerCompressedSha256": "b7faa5b1a7b3763c84d94ee3d4047b432a44a3550c7a324ed48fa02fe5a9e001",
+    "allExtensionsPubliclyDeployed": false
+  },
+  "originalPreservation": {
+    "approvedOriginalSha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+    "additiveInsertionRemovalByteIdentical": true,
+    "buildEvidence": "reports/confluence/preservation-5.9.json",
+    "checkedAgainstBaseGitTree": [
+      {
+        "path": "web/reference/approved-1.2.html",
+        "baselineGitBlob": "8e9f2d75314e0378b308e2515aac2e2175d3d29a",
+        "currentGitBlob": "8e9f2d75314e0378b308e2515aac2e2175d3d29a",
+        "sha256": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
+        "byteIdentical": true
+      },
+      {
+        "path": "web/reference/original.html",
+        "baselineGitBlob": "d8a962c9eaf51a92b38a32b50875dfad57e5670d",
+        "currentGitBlob": "d8a962c9eaf51a92b38a32b50875dfad57e5670d",
+        "sha256": "978c11fd51756d66416eaf2b4ac644bdc356056586189271a4499f60b6962d59",
+        "byteIdentical": true
+      },
+      {
+        "path": "web/genesis/field.js",
+        "baselineGitBlob": "13154c178a9a1499adecfb2ca811b8288b383668",
+        "currentGitBlob": "13154c178a9a1499adecfb2ca811b8288b383668",
+        "sha256": "925fdc4510700d77a50d516c82f0e58d7dce446228ce5e29767380b623e3ce75",
+        "byteIdentical": true
+      },
+      {
+        "path": "render/living/field.frag",
+        "baselineGitBlob": "30c8c45f77990a29a666d05f82ab004278590dfc",
+        "currentGitBlob": "30c8c45f77990a29a666d05f82ab004278590dfc",
+        "sha256": "0357ac3d63729deff28c0a4a19ff769852a6f9b823effdda79b5a980806df194",
+        "byteIdentical": true
+      },
+      {
+        "path": "render/living/field.wasm",
+        "baselineGitBlob": "5d0633433ec250d3155b5a70458047bee02270b0",
+        "currentGitBlob": "5d0633433ec250d3155b5a70458047bee02270b0",
+        "sha256": "e27a659387e135680833502ecd7ae2178a03d8d8552405dae6a3c1d46987be81",
+        "byteIdentical": true
+      },
+      {
+        "path": "web/genesis/interior-kernel.mjs",
+        "baselineGitBlob": "65c94dfca29d001d460f4c54f575866062b152e4",
+        "currentGitBlob": "65c94dfca29d001d460f4c54f575866062b152e4",
+        "sha256": "86170e6dbb4f10a8045391489fefd8fdd457451fdc23456bed230245cbcaa936",
+        "byteIdentical": true
+      },
+      {
+        "path": "web/genesis/interior.mjs",
+        "baselineGitBlob": "eb3ed22ba590ccde5527ac3ea1b36e07720909c3",
+        "currentGitBlob": "eb3ed22ba590ccde5527ac3ea1b36e07720909c3",
+        "sha256": "c73c12bf91540b71f7cf867153b01093f393106c0e825aae39b9127e5f287bcc",
+        "byteIdentical": true
+      },
+      {
+        "path": "web/genesis/interior-space.mjs",
+        "baselineGitBlob": "809dca63078fcbd6ed193f77d7a668a68f0a048a",
+        "currentGitBlob": "809dca63078fcbd6ed193f77d7a668a68f0a048a",
+        "sha256": "c47665f819be5b1a7b465c1290bc861d366463bae5e3b15b03e61cef7e6e8fb0",
+        "byteIdentical": true
+      },
+      {
+        "path": "web/genesis/interior-shader.mjs",
+        "baselineGitBlob": "73ddd584cce7e1d6563186363404260a995bec80",
+        "currentGitBlob": "73ddd584cce7e1d6563186363404260a995bec80",
+        "sha256": "4dd2d8f71416dc662eeb6dd91cb089bcca72556974e0b43a2834481043bc6ea6",
+        "byteIdentical": true
+      },
+      {
+        "path": "contracts/src/confluence/GenesisSVG.sol",
+        "baselineGitBlob": "311f5180af410655b85b06903dbeb46c0e5ba678",
+        "currentGitBlob": "311f5180af410655b85b06903dbeb46c0e5ba678",
+        "sha256": "bb267565ece41c53d030e9fedda51866a84a1e37219488f43fad8b0f6e4cbef9",
+        "byteIdentical": true
+      }
+    ],
+    "generatedPreviewByteIdentical": false,
+    "generatedPreviewExplanation": "Updated catalog and additive instrument runtime change preview.html; the complete approved original and embedded optical assets remain preserved.",
+    "nativeRenderingRerun": false,
+    "physicalDeviceVerificationRerun": false
+  },
+  "deploymentPreparation": {
+    "unsigned": true,
+    "source": "scripts/extensions-deployment.mjs",
+    "guide": "docs/genesis/extensions/DEPLOYMENT.md",
+    "catalog": "docs/genesis/extensions/deployment.example.json",
+    "runtimeDirectoryInspectionImplemented": true,
+    "coreManifestMutationRequired": false,
+    "gasAndFees": "unestimated"
+  },
+  "publicChainDeployed": false,
+  "publicMint": false,
+  "fundedShieldedE2E": false,
+  "liveCrossChainDelivery": false,
+  "publicProviderPurchase": false,
+  "websitePublished": false,
+  "provingSetup": "single-machine development trusted setup; no production security or independent ceremony claim",
+  "externalServicesRequired": [
+    "bounded agent operator",
+    "supported x402 service and funded service EOA",
+    "local quote prover and matching setup artifacts",
+    "persistent world server",
+    "configured instrument providers"
+  ],
+  "logs": [
+    {
+      "file": "tests-5.9.log",
+      "sha256": "ea73ce50c226591980b7098e68b328dc074b356852784cb7da5f1dfe8168c21d"
+    },
+    {
+      "file": "final-targeted-5.9.log",
+      "sha256": "e53c2e9f00a6c4740d7245a85a5d77e51188b86725bd71bc92942ad949767c22"
+    },
+    {
+      "file": "compile-5.9.log",
+      "sha256": "b01808f414219afc518ca2a46772738aa0bc0eefaecc809b083511e42e412e0a"
+    },
+    {
+      "file": "build-5.9.log",
+      "sha256": "3407cb17834461af82542aff0044bcf1e7b237b8c1ea509868beaa09d993c6e9"
+    },
+    {
+      "file": "recovery-5.9.log",
+      "sha256": "5080b635721be7c3ad213a1a2e6887bf136102a0a54cc6d0a75f7e1f3b1b597d"
+    },
+    {
+      "file": "tests-final-5.9.log",
+      "sha256": "bd3bf4a4074ec2318c044513ee3dc2e1f96b54520a87631684ae196d90fcae29"
+    }
+  ],
+  "report": "docs/genesis/BUILD-5.9.md"
+}

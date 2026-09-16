@@ -1,0 +1,45 @@
+{
+  "date": "2026-09-12",
+  "version": "5.6.0",
+  "command": "npm run validate:genesis",
+  "exitCode": 0,
+  "tests": {
+    "tests": 363,
+    "pass": 363,
+    "fail": 0,
+    "cancelled": 0,
+    "skipped": 0
+  },
+  "checks": [
+    "Solidity compilation",
+    "UI build",
+    "Source syntax",
+    "Static heuristics",
+    "JavaScript regression suites",
+    "Archive integrity and embedded imports",
+    "Local deployment, mint and runtime recovery"
+  ],
+  "archive": {
+    "byteLength": 770913,
+    "expandedBytes": 1707299,
+    "sha256": "06a49857c0f17de96ad76b53cce8875559e5cdc29de5b9c6f882e38bf3142e01"
+  },
+  "archiveChunks": 34,
+  "embeddedModules": 50,
+  "localDeployment": {
+    "scope": "local development chain only",
+    "chunks": 34,
+    "runtimeBytes": 770913,
+    "metadataParsed": true,
+    "roundtripVerified": true,
+    "estateModuleInstalled": true,
+    "modules": 63
+  },
+  "newReviewRegressionTests": 9,
+  "limitations": [
+    "No public-chain deployment",
+    "No funded shielded end-to-end validation",
+    "No independent security audit",
+    "No physical mobile-device certification"
+  ]
+}

@@ -1,0 +1,714 @@
+{
+  "contractName": "ThresholdAttestationVerifier",
+  "sourceName": "contracts/src/core/ThresholdAttestationVerifier.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "admin",
+          "type": "address"
+        },
+        {
+          "internalType": "uint16",
+          "name": "threshold_",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidSigner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidThreshold",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "NotPendingOwner",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "VerifierIsFrozen",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "ZeroAddress",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "pendingOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferStarted",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "allowed",
+          "type": "bool"
+        }
+      ],
+      "name": "SignerUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": false,
+          "internalType": "uint16",
+          "name": "threshold",
+          "type": "uint16"
+        }
+      ],
+      "name": "ThresholdUpdated",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [],
+      "name": "VerifierFrozen",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "acceptOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "statement",
+          "type": "bytes32"
+        }
+      ],
+      "name": "attestationDigest",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "freeze",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "frozen",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "isSigner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "pendingOwner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "signer",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "allowed",
+          "type": "bool"
+        }
+      ],
+      "name": "setSigner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint16",
+          "name": "threshold_",
+          "type": "uint16"
+        }
+      ],
+      "name": "setThreshold",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "signerCount",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "threshold",
+      "outputs": [
+        {
+          "internalType": "uint16",
+          "name": "",
+          "type": "uint16"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "nextOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "statement",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "proof",
+          "type": "bytes"
+        }
+      ],
+      "name": "verify",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080346100ea57601f610b1d38819003918201601f19168301916001600160401b038311848410176100ee5780849260409485528339810103126100ea5780516001600160a01b03811691908290036100ea576020015161ffff81168082036100ea5782156100db575f80546001600160a01b0319168417815560405193907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e08180a3156100cc5763ffff00006003549160101b169063ffff0000191617600355610a1a90816101038239f35b63aabd5a0960e01b5f5260045ffd5b63d92e233d60e01b5f5260045ffd5b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f3560e01c908163054f7d9c1461064d57508063258ae582146105e257806329a61056146105bc57806331cb61051461045457806342cde4e81461043057806362a5af3b146103b7578063793e6410146102c957806379ba5097146102295780637ca548c6146102085780637df73e27146101cb5780638da5cb5b146101a6578063e30c3978146101805763f2fde38b146100ab575f80fd5b3461017c57602036600319011261017c576100c461066e565b6001600160a01b035f541690813303610154576001600160a01b031690811561012c578173ffffffffffffffffffffffffffffffffffffffff1960015416176001557f38d16b8cac22d99fc7c124b9cd0de2d3fa1faef420bfe791d8c362d765e227005f80a3005b7fd92e233d000000000000000000000000000000000000000000000000000000005f5260045ffd5b7f30cd7471000000000000000000000000000000000000000000000000000000005f5260045ffd5b5f80fd5b3461017c575f36600319011261017c5760206001600160a01b0360015416604051908152f35b3461017c575f36600319011261017c5760206001600160a01b035f5416604051908152f35b3461017c57602036600319011261017c576001600160a01b036101ec61066e565b165f526002602052602060ff60405f2054166040519015158152f35b3461017c575f36600319011261017c57602061ffff60035416604051908152f35b3461017c575f36600319011261017c576001546001600160a01b03811633036102a15773ffffffffffffffffffffffffffffffffffffffff195f549133828416175f55166001556001600160a01b033391167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e05f80a3005b7f1853971c000000000000000000000000000000000000000000000000000000005f5260045ffd5b3461017c57602036600319011261017c5760043561ffff81169081810361017c576001600160a01b035f54163303610154576003549160ff8360201c1661038f5780158015610382575b61035a577f0baa24fbe4923f2cbbb68c187f1fa407c0a09eb52cebbc4d36cf88f2733f15399263ffff000060209360101b169063ffff0000191617600355604051908152a1005b7faabd5a09000000000000000000000000000000000000000000000000000000005f5260045ffd5b5061ffff83168111610313565b7f054e9402000000000000000000000000000000000000000000000000000000005f5260045ffd5b3461017c575f36600319011261017c576001600160a01b035f541633036101545760035460ff8160201c1661038f5761ffff8160101c1661ffff82161061035a5764ff000000001916640100000000176003557ff31f312baffe6e032c4a04c147eccc1c75240d746e22d6deaa514a69d3bde67b5f80a1005b3461017c575f36600319011261017c57602061ffff60035460101c16604051908152f35b3461017c57604036600319011261017c5761046d61066e565b60243590811580159182840361017c576001600160a01b035f541633036101545760ff60035460201c1661038f576001600160a01b031692831580156105a2575b61057a57835f52600260205260405f2060ff1981541660ff85161790555f146105555760035461ffff811661ffff811461054157600161ffff9101169061ffff1916176003555b8061052c575b61035a5760207ffcaa24b1276bfa7dbf77797c0a984b9df924acbeaabd48cd2f1b0eca379b78fa91604051908152a2005b5060035461ffff8082169160101c16116104fb565b634e487b7160e01b5f52601160045260245ffd5b60035461ffff811680156105415761ffff905f1901169061ffff1916176003556104f5565b7f815e1d64000000000000000000000000000000000000000000000000000000005f5260045ffd5b50835f5260026020528260ff60405f2054161515146104ae565b3461017c57602036600319011261017c5760206105da6004356108b2565b604051908152f35b3461017c57604036600319011261017c5760243567ffffffffffffffff811161017c573660238201121561017c5780600401359067ffffffffffffffff821161017c57366024838301011161017c57602091602461064392016004356106ba565b6040519015158152f35b3461017c575f36600319011261017c5760209060ff600354831c1615158152f35b600435906001600160a01b038216820361017c57565b90601f8019910116810190811067ffffffffffffffff8211176106a657604052565b634e487b7160e01b5f52604160045260245ffd5b918101929060208185031261017c5780359067ffffffffffffffff821161017c57019280601f8501121561017c5783359367ffffffffffffffff85116106a6578460051b6040519561070f6020830188610684565b86526020808701918301019183831161017c5760208101915b83831061083b57505050505082519161ffff60035460101c1680931061083357610754909391936108b2565b60405160208101917f19457468657265756d205369676e6564204d6573736167653a0a3332000000008352603c820152603c8152610793605c82610684565b519020925f935f925f955b8151871015610829576107ba60208860051b840101518461092c565b9190911590811561080c575b5080156107ec575b6107e1576001809195019601959361079e565b505050925050505f90565b506001600160a01b0381165f52600260205260ff60405f205416156107ce565b6001600160a01b039150166001600160a01b03821611155f6107c6565b5050509250101590565b509150505f90565b823567ffffffffffffffff811161017c57820185603f8201121561017c5760208101359167ffffffffffffffff83116106a657604051610885601f8501601f191660200182610684565b838152604083850101881061017c575f602085819660408397018386013783010152815201920191610728565b60405160208101917f49444f4e544655434b494e4742454c4945564549545f4154544553544154494f83527f4e5f56310000000000000000000000000000000000000000000000000000000060408301524660448301523060601b6064830152607882015260788152610926609882610684565b51902090565b60418251036109dc57602082015190606060408401519301515f1a907f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0841180156109c5575b6109bb576020935f93608093604051938452868401526040830152606082015282805260015afa156109b0575f51906001600160a01b038216151590565b6040513d5f823e3d90fd5b505050505f905f90565b50601b82141580156109725750601c821415610972565b50505f905f9056fea26469706673582212208f85e147267c15a2e37312f73dff38145c89474ec565c9c2c91b14825de4b86c64736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c908163054f7d9c1461064d57508063258ae582146105e257806329a61056146105bc57806331cb61051461045457806342cde4e81461043057806362a5af3b146103b7578063793e6410146102c957806379ba5097146102295780637ca548c6146102085780637df73e27146101cb5780638da5cb5b146101a6578063e30c3978146101805763f2fde38b146100ab575f80fd5b3461017c57602036600319011261017c576100c461066e565b6001600160a01b035f541690813303610154576001600160a01b031690811561012c578173ffffffffffffffffffffffffffffffffffffffff1960015416176001557f38d16b8cac22d99fc7c124b9cd0de2d3fa1faef420bfe791d8c362d765e227005f80a3005b7fd92e233d000000000000000000000000000000000000000000000000000000005f5260045ffd5b7f30cd7471000000000000000000000000000000000000000000000000000000005f5260045ffd5b5f80fd5b3461017c575f36600319011261017c5760206001600160a01b0360015416604051908152f35b3461017c575f36600319011261017c5760206001600160a01b035f5416604051908152f35b3461017c57602036600319011261017c576001600160a01b036101ec61066e565b165f526002602052602060ff60405f2054166040519015158152f35b3461017c575f36600319011261017c57602061ffff60035416604051908152f35b3461017c575f36600319011261017c576001546001600160a01b03811633036102a15773ffffffffffffffffffffffffffffffffffffffff195f549133828416175f55166001556001600160a01b033391167f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e05f80a3005b7f1853971c000000000000000000000000000000000000000000000000000000005f5260045ffd5b3461017c57602036600319011261017c5760043561ffff81169081810361017c576001600160a01b035f54163303610154576003549160ff8360201c1661038f5780158015610382575b61035a577f0baa24fbe4923f2cbbb68c187f1fa407c0a09eb52cebbc4d36cf88f2733f15399263ffff000060209360101b169063ffff0000191617600355604051908152a1005b7faabd5a09000000000000000000000000000000000000000000000000000000005f5260045ffd5b5061ffff83168111610313565b7f054e9402000000000000000000000000000000000000000000000000000000005f5260045ffd5b3461017c575f36600319011261017c576001600160a01b035f541633036101545760035460ff8160201c1661038f5761ffff8160101c1661ffff82161061035a5764ff000000001916640100000000176003557ff31f312baffe6e032c4a04c147eccc1c75240d746e22d6deaa514a69d3bde67b5f80a1005b3461017c575f36600319011261017c57602061ffff60035460101c16604051908152f35b3461017c57604036600319011261017c5761046d61066e565b60243590811580159182840361017c576001600160a01b035f541633036101545760ff60035460201c1661038f576001600160a01b031692831580156105a2575b61057a57835f52600260205260405f2060ff1981541660ff85161790555f146105555760035461ffff811661ffff811461054157600161ffff9101169061ffff1916176003555b8061052c575b61035a5760207ffcaa24b1276bfa7dbf77797c0a984b9df924acbeaabd48cd2f1b0eca379b78fa91604051908152a2005b5060035461ffff8082169160101c16116104fb565b634e487b7160e01b5f52601160045260245ffd5b60035461ffff811680156105415761ffff905f1901169061ffff1916176003556104f5565b7f815e1d64000000000000000000000000000000000000000000000000000000005f5260045ffd5b50835f5260026020528260ff60405f2054161515146104ae565b3461017c57602036600319011261017c5760206105da6004356108b2565b604051908152f35b3461017c57604036600319011261017c5760243567ffffffffffffffff811161017c573660238201121561017c5780600401359067ffffffffffffffff821161017c57366024838301011161017c57602091602461064392016004356106ba565b6040519015158152f35b3461017c575f36600319011261017c5760209060ff600354831c1615158152f35b600435906001600160a01b038216820361017c57565b90601f8019910116810190811067ffffffffffffffff8211176106a657604052565b634e487b7160e01b5f52604160045260245ffd5b918101929060208185031261017c5780359067ffffffffffffffff821161017c57019280601f8501121561017c5783359367ffffffffffffffff85116106a6578460051b6040519561070f6020830188610684565b86526020808701918301019183831161017c5760208101915b83831061083b57505050505082519161ffff60035460101c1680931061083357610754909391936108b2565b60405160208101917f19457468657265756d205369676e6564204d6573736167653a0a3332000000008352603c820152603c8152610793605c82610684565b519020925f935f925f955b8151871015610829576107ba60208860051b840101518461092c565b9190911590811561080c575b5080156107ec575b6107e1576001809195019601959361079e565b505050925050505f90565b506001600160a01b0381165f52600260205260ff60405f205416156107ce565b6001600160a01b039150166001600160a01b03821611155f6107c6565b5050509250101590565b509150505f90565b823567ffffffffffffffff811161017c57820185603f8201121561017c5760208101359167ffffffffffffffff83116106a657604051610885601f8501601f191660200182610684565b838152604083850101881061017c575f602085819660408397018386013783010152815201920191610728565b60405160208101917f49444f4e544655434b494e4742454c4945564549545f4154544553544154494f83527f4e5f56310000000000000000000000000000000000000000000000000000000060408301524660448301523060601b6064830152607882015260788152610926609882610684565b51902090565b60418251036109dc57602082015190606060408401519301515f1a907f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a0841180156109c5575b6109bb576020935f93608093604051938452868401526040830152606082015282805260015afa156109b0575f51906001600160a01b038216151590565b6040513d5f823e3d90fd5b505050505f905f90565b50601b82141580156109725750601c821415610972565b50505f905f9056fea26469706673582212208f85e147267c15a2e37312f73dff38145c89474ec565c9c2c91b14825de4b86c64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "acceptOwnership()": "79ba5097",
+    "attestationDigest(bytes32)": "29a61056",
+    "freeze()": "62a5af3b",
+    "frozen()": "054f7d9c",
+    "isSigner(address)": "7df73e27",
+    "owner()": "8da5cb5b",
+    "pendingOwner()": "e30c3978",
+    "setSigner(address,bool)": "31cb6105",
+    "setThreshold(uint16)": "793e6410",
+    "signerCount()": "7ca548c6",
+    "threshold()": "42cde4e8",
+    "transferOwnership(address)": "f2fde38b",
+    "verify(bytes32,bytes)": "258ae582"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "admin",
+              "type": "address"
+            },
+            {
+              "internalType": "uint16",
+              "name": "threshold_",
+              "type": "uint16"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidSigner",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidThreshold",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "NotOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "NotPendingOwner",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "VerifierIsFrozen",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "ZeroAddress",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "pendingOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferStarted",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "previousOwner",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "newOwner",
+              "type": "address"
+            }
+          ],
+          "name": "OwnershipTransferred",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "signer",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "allowed",
+              "type": "bool"
+            }
+          ],
+          "name": "SignerUpdated",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": false,
+              "internalType": "uint16",
+              "name": "threshold",
+              "type": "uint16"
+            }
+          ],
+          "name": "ThresholdUpdated",
+          "type": "event"
+        },
+        {
+          "anonymous": false,
+          "inputs": [],
+          "name": "VerifierFrozen",
+          "type": "event"
+        },
+        {
+          "inputs": [],
+          "name": "acceptOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "statement",
+              "type": "bytes32"
+            }
+          ],
+          "name": "attestationDigest",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "freeze",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "frozen",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "isSigner",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "owner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "pendingOwner",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "signer",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "allowed",
+              "type": "bool"
+            }
+          ],
+          "name": "setSigner",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint16",
+              "name": "threshold_",
+              "type": "uint16"
+            }
+          ],
+          "name": "setThreshold",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "signerCount",
+          "outputs": [
+            {
+              "internalType": "uint16",
+              "name": "",
+              "type": "uint16"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "threshold",
+          "outputs": [
+            {
+              "internalType": "uint16",
+              "name": "",
+              "type": "uint16"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "nextOwner",
+              "type": "address"
+            }
+          ],
+          "name": "transferOwnership",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "statement",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "proof",
+              "type": "bytes"
+            }
+          ],
+          "name": "verify",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Signers must be encoded in strictly increasing address order, preventing duplicates.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Threshold verifier for TEE operators, guardians, or a proving service quorum.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/core/ThresholdAttestationVerifier.sol": "ThresholdAttestationVerifier"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/core/ThresholdAttestationVerifier.sol": {
+        "keccak256": "0xe896559a9b7f8004524461ace06737a6de59d75995dc6bc581b142461506b503",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://c1ec0fc1f9c745731f5ebd4e94128104be1cce23570ab9df0a36eca3459413fa",
+          "dweb:/ipfs/QmUXD7ptt328YEyUKTY7MyN1Tzs4MWQkYdyTcQLu54oq4B"
+        ]
+      },
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      },
+      "contracts/src/lib/Administrated.sol": {
+        "keccak256": "0xf519a51978c75601f095fefd8eac976a80b0f52fc3b6ce5cd9c85f8a5deb9ba5",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://886e0d7f6f3ee44eaed6ba02149fc3e378b05836d1570b74f4cbfa7eae2809f6",
+          "dweb:/ipfs/QmNXRXtdLU8szk3XeA5vbMehnbCFeQryjHW8HcLuetVKLp"
+        ]
+      },
+      "contracts/src/lib/Crypto.sol": {
+        "keccak256": "0x2509f5871b53de73b1367529b76e773142b8303183cf4189d2410a4a3b452ed5",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://25aa154f3d1d5ffc8f1974d17ec433d9922a611aefe83429774cbe863a1dd31a",
+          "dweb:/ipfs/Qmd6JyNbUQa8KvUyCEAuV8kVVAksyB4v715t8SmdNUVPnC"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

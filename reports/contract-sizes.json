@@ -1,0 +1,971 @@
+{
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "limit": 24576,
+  "contracts": [
+    {
+      "contract": "OperatingNFTGovernance",
+      "source": "contracts/src/extensions/governance/OperatingNFTGovernance.sol",
+      "deployedBytes": 24192
+    },
+    {
+      "contract": "SovereignAccountFactory",
+      "source": "contracts/src/core/SovereignAccountFactory.sol",
+      "deployedBytes": 23423
+    },
+    {
+      "contract": "SovereignAccount",
+      "source": "contracts/src/core/SovereignAccount.sol",
+      "deployedBytes": 21506
+    },
+    {
+      "contract": "IDontFuckingBelieveIt",
+      "source": "contracts/src/core/IDontFuckingBelieveIt.sol",
+      "deployedBytes": 20940
+    },
+    {
+      "contract": "EstateExchange",
+      "source": "contracts/src/kingdom/EstateExchange.sol",
+      "deployedBytes": 14847
+    },
+    {
+      "contract": "ConfluenceRenderer",
+      "source": "contracts/src/confluence/ConfluenceRenderer.sol",
+      "deployedBytes": 14772
+    },
+    {
+      "contract": "WorldLedger",
+      "source": "contracts/src/protocol/WorldLedger.sol",
+      "deployedBytes": 14233
+    },
+    {
+      "contract": "GenesisLaunchpad",
+      "source": "contracts/src/protocol/GenesisLaunchpad.sol",
+      "deployedBytes": 12964
+    },
+    {
+      "contract": "AuthenticatedStatePortal",
+      "source": "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol",
+      "deployedBytes": 12824
+    },
+    {
+      "contract": "Wager",
+      "source": "contracts/src/extensions/experimental/Wager.sol",
+      "deployedBytes": 12652
+    },
+    {
+      "contract": "ExperimentCellFactory",
+      "source": "contracts/src/operating/ExperimentCell.sol",
+      "deployedBytes": 12040
+    },
+    {
+      "contract": "V4GenesisMarket",
+      "source": "contracts/src/kingdom/V4GenesisMarket.sol",
+      "deployedBytes": 11453
+    },
+    {
+      "contract": "House",
+      "source": "contracts/src/extensions/experimental/House.sol",
+      "deployedBytes": 10956
+    },
+    {
+      "contract": "ExperimentCell",
+      "source": "contracts/src/operating/ExperimentCell.sol",
+      "deployedBytes": 10545
+    },
+    {
+      "contract": "OnchainRenderer",
+      "source": "contracts/src/core/OnchainRenderer.sol",
+      "deployedBytes": 10463
+    },
+    {
+      "contract": "NFTAuctionFactory",
+      "source": "contracts/src/extensions/launch/NFTAuctionFactory.sol",
+      "deployedBytes": 10227
+    },
+    {
+      "contract": "MLSGroupChat",
+      "source": "contracts/src/extensions/privacy/MLSGroupChat.sol",
+      "deployedBytes": 10124
+    },
+    {
+      "contract": "V4ScheduledExit",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 8915
+    },
+    {
+      "contract": "WholeNFTShares",
+      "source": "contracts/src/extensions/markets/WholeNFTShares.sol",
+      "deployedBytes": 8500
+    },
+    {
+      "contract": "Wake",
+      "source": "contracts/src/extensions/experimental/Wake.sol",
+      "deployedBytes": 8296
+    },
+    {
+      "contract": "VestedExitVault",
+      "source": "contracts/src/protocol/VestedExitVault.sol",
+      "deployedBytes": 8199
+    },
+    {
+      "contract": "ContinuousClearingAuction",
+      "source": "contracts/src/extensions/markets/ContinuousClearingAuction.sol",
+      "deployedBytes": 7900
+    },
+    {
+      "contract": "AnimaOFTComposer",
+      "source": "contracts/src/extensions/crosschain/AnimaOFTComposer.sol",
+      "deployedBytes": 7692
+    },
+    {
+      "contract": "OwnerFeeRouter",
+      "source": "contracts/src/confluence/fees/OwnerFeeRouter.sol",
+      "deployedBytes": 7586
+    },
+    {
+      "contract": "MemoryLedger",
+      "source": "contracts/src/memory/MemoryLedger.sol",
+      "deployedBytes": 7243
+    },
+    {
+      "contract": "EpochGroupChat",
+      "source": "contracts/src/extensions/privacy/EpochGroupChat.sol",
+      "deployedBytes": 7031
+    },
+    {
+      "contract": "V4FeeCompounder",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 6840
+    },
+    {
+      "contract": "CartridgeRegistry",
+      "source": "contracts/src/confluence/cartridges/CartridgeRegistry.sol",
+      "deployedBytes": 6808
+    },
+    {
+      "contract": "AgentPolicyGuard",
+      "source": "contracts/src/extensions/agents/AgentPolicyGuard.sol",
+      "deployedBytes": 6749
+    },
+    {
+      "contract": "TimeVault",
+      "source": "contracts/src/protocol/TimeVault.sol",
+      "deployedBytes": 6517
+    },
+    {
+      "contract": "ConsentGiftRouter",
+      "source": "contracts/src/instruments/ConsentGiftRouter.sol",
+      "deployedBytes": 6426
+    },
+    {
+      "contract": "AnimaOFTSource",
+      "source": "contracts/src/extensions/crosschain/AnimaOFTSource.sol",
+      "deployedBytes": 6331
+    },
+    {
+      "contract": "LaunchAllocationComposer",
+      "source": "contracts/src/extensions/launch/LaunchAllocationComposer.sol",
+      "deployedBytes": 6248
+    },
+    {
+      "contract": "FixedBasket",
+      "source": "contracts/src/operating/ExperimentalAdapters.sol",
+      "deployedBytes": 6120
+    },
+    {
+      "contract": "PrivateMemoryHandover",
+      "source": "contracts/src/extensions/privacy/PrivateMemoryHandover.sol",
+      "deployedBytes": 5966
+    },
+    {
+      "contract": "FixedTermCredit",
+      "source": "contracts/src/operating/NegotiatedMarkets.sol",
+      "deployedBytes": 5520
+    },
+    {
+      "contract": "NativeMarket",
+      "source": "contracts/src/protocol/NativeMarket.sol",
+      "deployedBytes": 5344
+    },
+    {
+      "contract": "ProviderDirectory",
+      "source": "contracts/src/extensions/agents/ProviderDirectory.sol",
+      "deployedBytes": 5291
+    },
+    {
+      "contract": "NativeQuoteRehearsal",
+      "source": "contracts/src/extensions/proof/NativeQuoteRehearsal.sol",
+      "deployedBytes": 5202
+    },
+    {
+      "contract": "CoveredCallBook",
+      "source": "contracts/src/operating/NegotiatedMarkets.sol",
+      "deployedBytes": 5076
+    },
+    {
+      "contract": "AgentCommerce",
+      "source": "contracts/src/extensions/agents/AgentCommerce.sol",
+      "deployedBytes": 4970
+    },
+    {
+      "contract": "CommissionEscrow",
+      "source": "contracts/src/operating/CommissionEscrow.sol",
+      "deployedBytes": 4950
+    },
+    {
+      "contract": "PublicGoodsMatching",
+      "source": "contracts/src/extensions/markets/PublicGoodsMatching.sol",
+      "deployedBytes": 4949
+    },
+    {
+      "contract": "LaunchRegistry",
+      "source": "contracts/src/extensions/launch/LaunchRegistry.sol",
+      "deployedBytes": 4903
+    },
+    {
+      "contract": "SessionSponsor",
+      "source": "contracts/src/extensions/access/SessionSponsor.sol",
+      "deployedBytes": 4812
+    },
+    {
+      "contract": "ProofRouter",
+      "source": "contracts/src/core/ProofRouter.sol",
+      "deployedBytes": 4793
+    },
+    {
+      "contract": "JournalSwapRouter",
+      "source": "contracts/src/memory/JournalSwapRouter.sol",
+      "deployedBytes": 4392
+    },
+    {
+      "contract": "BondedShelf",
+      "source": "contracts/src/operating/BondedShelf.sol",
+      "deployedBytes": 4284
+    },
+    {
+      "contract": "GenesisNames",
+      "source": "contracts/src/extensions/access/GenesisNames.sol",
+      "deployedBytes": 4254
+    },
+    {
+      "contract": "OwnerLaunchFactory",
+      "source": "contracts/src/confluence/fees/OwnerLaunchFactory.sol",
+      "deployedBytes": 4158
+    },
+    {
+      "contract": "V4SettlementConverter",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 3942
+    },
+    {
+      "contract": "EditionRegistry",
+      "source": "contracts/src/operating/EditionRegistry.sol",
+      "deployedBytes": 3637
+    },
+    {
+      "contract": "InstrumentRouter",
+      "source": "contracts/src/operating/InstrumentRouter.sol",
+      "deployedBytes": 3404
+    },
+    {
+      "contract": "ReceiverPinnedStrategy",
+      "source": "contracts/src/operating/ExperimentalAdapters.sol",
+      "deployedBytes": 3351
+    },
+    {
+      "contract": "PhoenixLaunchHook",
+      "source": "contracts/src/kingdom/PhoenixLaunchHook.sol",
+      "deployedBytes": 3300
+    },
+    {
+      "contract": "CommissionedCartridges",
+      "source": "contracts/src/confluence/cartridges/CommissionedCartridges.sol",
+      "deployedBytes": 3244
+    },
+    {
+      "contract": "MatchedRightsVault",
+      "source": "contracts/src/operating/ExperimentalAdapters.sol",
+      "deployedBytes": 3176
+    },
+    {
+      "contract": "OperatingVotingShares",
+      "source": "contracts/src/extensions/governance/OperatingVotingShares.sol",
+      "deployedBytes": 2828
+    },
+    {
+      "contract": "ExitMarketMock",
+      "source": "contracts/src/test/ExitHarness.sol",
+      "deployedBytes": 2771
+    },
+    {
+      "contract": "NamedMintFactory",
+      "source": "contracts/src/extensions/access/GenesisNames.sol",
+      "deployedBytes": 2611
+    },
+    {
+      "contract": "ThresholdAttestationVerifier",
+      "source": "contracts/src/core/ThresholdAttestationVerifier.sol",
+      "deployedBytes": 2586
+    },
+    {
+      "contract": "NativeQuoteGroth16Verifier",
+      "source": "contracts/src/extensions/proof/NativeQuoteGroth16Verifier.sol",
+      "deployedBytes": 2561
+    },
+    {
+      "contract": "OnchainAppDirectory",
+      "source": "contracts/src/protocol/OnchainAppDirectory.sol",
+      "deployedBytes": 2333
+    },
+    {
+      "contract": "OmnichainWitnessRegistry",
+      "source": "contracts/src/core/OmnichainWitnessRegistry.sol",
+      "deployedBytes": 2242
+    },
+    {
+      "contract": "HouseNativeMarketVenue",
+      "source": "contracts/src/extensions/experimental/HouseDependencies.sol",
+      "deployedBytes": 2210
+    },
+    {
+      "contract": "HouseFeedRatio",
+      "source": "contracts/src/extensions/experimental/HouseDependencies.sol",
+      "deployedBytes": 2056
+    },
+    {
+      "contract": "WakeExitTask",
+      "source": "contracts/src/extensions/experimental/WakeExitTask.sol",
+      "deployedBytes": 1765
+    },
+    {
+      "contract": "OwnerLaunchToken",
+      "source": "contracts/src/confluence/fees/OwnerLaunchFactory.sol",
+      "deployedBytes": 1698
+    },
+    {
+      "contract": "GenesisToken",
+      "source": "contracts/src/protocol/GenesisToken.sol",
+      "deployedBytes": 1676
+    },
+    {
+      "contract": "NamedMintSession",
+      "source": "contracts/src/extensions/access/GenesisNames.sol",
+      "deployedBytes": 1663
+    },
+    {
+      "contract": "CommitmentIndex",
+      "source": "contracts/src/operating/CommitmentIndex.sol",
+      "deployedBytes": 1531
+    },
+    {
+      "contract": "PrivacyKeys",
+      "source": "contracts/src/extensions/privacy/PrivacyKeys.sol",
+      "deployedBytes": 1271
+    },
+    {
+      "contract": "CompositeActionVerifier",
+      "source": "contracts/src/core/ZkVmVerifierAdapters.sol",
+      "deployedBytes": 1269
+    },
+    {
+      "contract": "ShardedResource",
+      "source": "contracts/src/protocol/ShardedResource.sol",
+      "deployedBytes": 1244
+    },
+    {
+      "contract": "OnchainModuleDirectory",
+      "source": "contracts/src/protocol/OnchainModuleDirectory.sol",
+      "deployedBytes": 1152
+    },
+    {
+      "contract": "ExitAccountMock",
+      "source": "contracts/src/test/ExitHarness.sol",
+      "deployedBytes": 1113
+    },
+    {
+      "contract": "RiscZeroActionVerifier",
+      "source": "contracts/src/core/ZkVmVerifierAdapters.sol",
+      "deployedBytes": 1084
+    },
+    {
+      "contract": "SP1ActionVerifier",
+      "source": "contracts/src/core/ZkVmVerifierAdapters.sol",
+      "deployedBytes": 1064
+    },
+    {
+      "contract": "ArtifactBinding",
+      "source": "contracts/src/confluence/ArtifactBinding.sol",
+      "deployedBytes": 1031
+    },
+    {
+      "contract": "OnchainApp",
+      "source": "contracts/src/protocol/OnchainApp.sol",
+      "deployedBytes": 1027
+    },
+    {
+      "contract": "OperatingAccountMock",
+      "source": "contracts/src/test/OperatingHarness.sol",
+      "deployedBytes": 1016
+    },
+    {
+      "contract": "MintSanctuaryHarness",
+      "source": "contracts/src/test/ExitHarness.sol",
+      "deployedBytes": 968
+    },
+    {
+      "contract": "GenesisManifest",
+      "source": "contracts/src/confluence/GenesisManifest.sol",
+      "deployedBytes": 965
+    },
+    {
+      "contract": "OperatingTokenMock",
+      "source": "contracts/src/test/OperatingHarness.sol",
+      "deployedBytes": 950
+    },
+    {
+      "contract": "ReentrantProbe",
+      "source": "contracts/src/mocks/ReentrantProbe.sol",
+      "deployedBytes": 862
+    },
+    {
+      "contract": "EncodingHarness",
+      "source": "contracts/src/test/EncodingHarness.sol",
+      "deployedBytes": 782
+    },
+    {
+      "contract": "CleanupCollectionMock",
+      "source": "contracts/src/test/CoreCleanupHarness.sol",
+      "deployedBytes": 649
+    },
+    {
+      "contract": "MockSP1Gateway",
+      "source": "contracts/src/mocks/MockZkGateways.sol",
+      "deployedBytes": 567
+    },
+    {
+      "contract": "MockTarget",
+      "source": "contracts/src/mocks/MockTarget.sol",
+      "deployedBytes": 561
+    },
+    {
+      "contract": "ExperimentGate",
+      "source": "contracts/src/operating/ExperimentGate.sol",
+      "deployedBytes": 549
+    },
+    {
+      "contract": "MockRiscZeroVerifier",
+      "source": "contracts/src/mocks/MockZkGateways.sol",
+      "deployedBytes": 496
+    },
+    {
+      "contract": "HookDeployer",
+      "source": "contracts/src/kingdom/HookDeployer.sol",
+      "deployedBytes": 464
+    },
+    {
+      "contract": "ExitNativeLedgerMock",
+      "source": "contracts/src/test/ExitHarness.sol",
+      "deployedBytes": 380
+    },
+    {
+      "contract": "ExitCollectionMock",
+      "source": "contracts/src/test/ExitHarness.sol",
+      "deployedBytes": 267
+    },
+    {
+      "contract": "AgentIdentityRegistryMock",
+      "source": "contracts/src/test/CoreCleanupHarness.sol",
+      "deployedBytes": 266
+    },
+    {
+      "contract": "FrozenVerifierPretender",
+      "source": "contracts/src/test/CoreCleanupHarness.sol",
+      "deployedBytes": 259
+    },
+    {
+      "contract": "ConfluenceLoader",
+      "source": "contracts/src/confluence/ConfluenceLoader.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "GenesisSVG",
+      "source": "contracts/src/confluence/GenesisSVG.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "Base64",
+      "source": "contracts/src/confluence/vendor/solady/utils/Base64.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "SafeTransferLib",
+      "source": "contracts/src/confluence/vendor/solady/utils/SafeTransferLib.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "SignatureCheckerLib",
+      "source": "contracts/src/confluence/vendor/solady/utils/SignatureCheckerLib.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "BridgeToken",
+      "source": "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "StrategyPayment",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "V4Boundary",
+      "source": "contracts/src/kingdom/V4Boundary.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "Base64",
+      "source": "contracts/src/lib/Base64.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "ECDSA",
+      "source": "contracts/src/lib/Crypto.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "SignatureChecker",
+      "source": "contracts/src/lib/Crypto.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "Strings",
+      "source": "contracts/src/lib/Strings.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "AppChunk",
+      "source": "contracts/src/protocol/OnchainApp.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "ProtocolAssets",
+      "source": "contracts/src/protocol/ProtocolPrimitives.sol",
+      "deployedBytes": 57
+    },
+    {
+      "contract": "IConfluenceEpoch",
+      "source": "contracts/src/confluence/ArtifactBinding.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IConfluenceIdentity",
+      "source": "contracts/src/confluence/ArtifactBinding.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IConfluenceArchive",
+      "source": "contracts/src/confluence/ConfluenceRenderer.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IArtifactRegistry",
+      "source": "contracts/src/confluence/cartridges/CartridgeRegistry.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ICommissionCollection",
+      "source": "contracts/src/confluence/cartridges/CommissionedCartridges.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC20FeeAsset",
+      "source": "contracts/src/confluence/fees/OwnerFeeRouter.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ISettlementConverter",
+      "source": "contracts/src/confluence/fees/interfaces/ISettlementConverter.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ERC1155",
+      "source": "contracts/src/confluence/vendor/solady/tokens/ERC1155.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ERC721",
+      "source": "contracts/src/confluence/vendor/solady/tokens/ERC721.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ReentrancyGuard",
+      "source": "contracts/src/confluence/vendor/solady/utils/ReentrancyGuard.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IRiscZeroVerifier",
+      "source": "contracts/src/core/ZkVmVerifierAdapters.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ISP1VerifierGateway",
+      "source": "contracts/src/core/ZkVmVerifierAdapters.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "INameRegistry",
+      "source": "contracts/src/extensions/access/GenesisNames.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "INamedCollection",
+      "source": "contracts/src/extensions/access/GenesisNames.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ISponsoredAccount",
+      "source": "contracts/src/extensions/access/SessionSponsor.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAgentScopedAccount",
+      "source": "contracts/src/extensions/agents/AgentPolicyGuard.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IBridgeTimeVault",
+      "source": "contracts/src/extensions/crosschain/AnimaOFTComposer.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAnimaOFT",
+      "source": "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IBridgeToken",
+      "source": "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ExperimentalLedger",
+      "source": "contracts/src/extensions/experimental/ExperimentalLedger.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IHouseOracle",
+      "source": "contracts/src/extensions/experimental/House.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IHouseVenue",
+      "source": "contracts/src/extensions/experimental/House.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IHouseFeed",
+      "source": "contracts/src/extensions/experimental/HouseDependencies.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IHouseNativeMarket",
+      "source": "contracts/src/extensions/experimental/HouseDependencies.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IWakeTask",
+      "source": "contracts/src/extensions/experimental/Wake.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IWakeExitVault",
+      "source": "contracts/src/extensions/experimental/WakeExitTask.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IWakeTaskBinding",
+      "source": "contracts/src/extensions/experimental/WakeExitTask.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOperatingAccount",
+      "source": "contracts/src/extensions/governance/OperatingNFTGovernance.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOperatingCollection",
+      "source": "contracts/src/extensions/governance/OperatingNFTGovernance.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAllocationFactory",
+      "source": "contracts/src/extensions/launch/LaunchAllocationComposer.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAllocationPosition",
+      "source": "contracts/src/extensions/launch/LaunchAllocationComposer.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAllocationVault",
+      "source": "contracts/src/extensions/launch/LaunchAllocationComposer.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ILaunchCollection",
+      "source": "contracts/src/extensions/launch/LaunchRegistry.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IShareAccount",
+      "source": "contracts/src/extensions/markets/WholeNFTShares.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IShareCollection",
+      "source": "contracts/src/extensions/markets/WholeNFTShares.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IPortalEndpointV2",
+      "source": "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IPortalWitnessRegistry",
+      "source": "contracts/src/extensions/privacy/AuthenticatedStatePortal.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IPrivacyAccount",
+      "source": "contracts/src/extensions/privacy/PrivacyKeys.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IPrivacyCollection",
+      "source": "contracts/src/extensions/privacy/PrivacyKeys.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IQuoteAccount",
+      "source": "contracts/src/extensions/proof/NativeQuoteRehearsal.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IQuoteCollection",
+      "source": "contracts/src/extensions/proof/NativeQuoteRehearsal.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IQuoteLedger",
+      "source": "contracts/src/extensions/proof/NativeQuoteRehearsal.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IQuoteMarket",
+      "source": "contracts/src/extensions/proof/NativeQuoteRehearsal.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IStrategyPosition",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IStrategyToken",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IStrategyV4Router",
+      "source": "contracts/src/extensions/strategies/V4Strategies.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IExactInputMarket",
+      "source": "contracts/src/instruments/ConsentGiftRouter.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IActionVerifier",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC1271",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC165",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC721Control",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC721Receiver",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOnchainRenderer",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOrganismCollection",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOrganismRenderSource",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IProofRouter",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ISovereignAccountControl",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ISovereignAccountFactory",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ISovereignAccountView",
+      "source": "contracts/src/interfaces/Interfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC721EstateChild",
+      "source": "contracts/src/kingdom/EstateExchange.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IEstateAccount",
+      "source": "contracts/src/kingdom/EstateExchange.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IEstateCollection",
+      "source": "contracts/src/kingdom/EstateExchange.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOperatingCommitmentIndex",
+      "source": "contracts/src/kingdom/EstateExchange.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IV4PoolManager",
+      "source": "contracts/src/kingdom/V4Boundary.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ILaunchRead",
+      "source": "contracts/src/kingdom/V4GenesisMarket.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "Administrated",
+      "source": "contracts/src/lib/Administrated.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IJournalMarket",
+      "source": "contracts/src/memory/JournalSwapRouter.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAccountExecute",
+      "source": "contracts/src/mocks/ReentrantProbe.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IShelfNFT",
+      "source": "contracts/src/operating/BondedShelf.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ExperimentModule",
+      "source": "contracts/src/operating/ExperimentalAdapters.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IAccountCommitment",
+      "source": "contracts/src/operating/OperatingInterfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IERC4626Operating",
+      "source": "contracts/src/operating/OperatingInterfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IExperimentGate",
+      "source": "contracts/src/operating/OperatingInterfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOperatingAccount",
+      "source": "contracts/src/operating/OperatingInterfaces.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IGenesisMarket",
+      "source": "contracts/src/protocol/GenesisLaunchpad.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IOnchainAppLeaf",
+      "source": "contracts/src/protocol/OnchainAppDirectory.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IModuleArchive",
+      "source": "contracts/src/protocol/OnchainModuleDirectory.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IProtocolCollection",
+      "source": "contracts/src/protocol/ProtocolPrimitives.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IWorldLedger",
+      "source": "contracts/src/protocol/ProtocolPrimitives.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ProtocolGuard",
+      "source": "contracts/src/protocol/ProtocolPrimitives.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IResourceShard",
+      "source": "contracts/src/protocol/ShardedResource.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "IVestedExitMarket",
+      "source": "contracts/src/protocol/VestedExitVault.sol",
+      "deployedBytes": 0
+    },
+    {
+      "contract": "ICleanupAccount",
+      "source": "contracts/src/test/CoreCleanupHarness.sol",
+      "deployedBytes": 0
+    }
+  ]
+}

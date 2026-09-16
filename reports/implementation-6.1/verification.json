@@ -1,0 +1,976 @@
+{
+  "schema": "anima.implementation-verification/6.1",
+  "scope": "Authored code, actual local EVM transactions, native rendering, WebCrypto and static hosted checks. No public Ethereum deployment asserted.",
+  "runtime": {
+    "schema": "awe.onchain-runtime/2",
+    "archiveVersion": 2,
+    "shards": [
+      {
+        "index": 0,
+        "firstChunk": 0,
+        "chunkCount": 32,
+        "byteLength": 736000,
+        "sha256": "79df5c5e05244e2c9ae8274a5280d4bc9ccc902e81e94fa6a5a684286c2db56e"
+      },
+      {
+        "index": 1,
+        "firstChunk": 32,
+        "chunkCount": 32,
+        "byteLength": 736000,
+        "sha256": "56de1c179ff0af9ba1d9740ebf4483db2d200a9301e1a80675b923bbcdc8b8c7"
+      },
+      {
+        "index": 2,
+        "firstChunk": 64,
+        "chunkCount": 1,
+        "byteLength": 20421,
+        "sha256": "ff9c5aeee45f1e942fdb101526da1254106fb0cea82ee2823f60374c6d327d5c"
+      }
+    ],
+    "compression": "gzip",
+    "expandedBytes": 3744415,
+    "byteLength": 1492421,
+    "sha256": "0434838e0adc26e93a045be163b57ad278a05ac4e40a5f88bbdac80da7b9975a",
+    "chunks": [
+      {
+        "file": "chunks/00.bin",
+        "bytes": 23000,
+        "sha256": "c3c38c9ad049d266c7a17019db25683de900d5106cab1b698280d8f104e0ca4c"
+      },
+      {
+        "file": "chunks/01.bin",
+        "bytes": 23000,
+        "sha256": "b5fe5fae2bf7530c008eb9cd5f469a309b1fb8477f7417c720a75ef74153a966"
+      },
+      {
+        "file": "chunks/02.bin",
+        "bytes": 23000,
+        "sha256": "b55d89c0d8beb024cd1be02d17a0df8ca39468d448ddbe2c9b410ff4c1c9a82f"
+      },
+      {
+        "file": "chunks/03.bin",
+        "bytes": 23000,
+        "sha256": "771830d2362470c0797ca9c0ddff7bd63ff4132b7a15f0bde356f7a7176fe301"
+      },
+      {
+        "file": "chunks/04.bin",
+        "bytes": 23000,
+        "sha256": "69b213867bc6b2a574a87c0fcd28ea65e81222a3e80bbbdede15cffeb3e0f2cd"
+      },
+      {
+        "file": "chunks/05.bin",
+        "bytes": 23000,
+        "sha256": "6c387a81f691c005b283aa578c8743886bc404921c3bd82c13165f63e83709bf"
+      },
+      {
+        "file": "chunks/06.bin",
+        "bytes": 23000,
+        "sha256": "8cf29a9316506aa58d03bd0ac8d76e592a35516dee7cce02b503ccd6c2818234"
+      },
+      {
+        "file": "chunks/07.bin",
+        "bytes": 23000,
+        "sha256": "f48281ec7e75537141e91a96eff5a5a36da94f76d760b694743f5852e3f9506f"
+      },
+      {
+        "file": "chunks/08.bin",
+        "bytes": 23000,
+        "sha256": "226354f91480eba82e6d0718cab25fd9e5736bf9520f7a6c399b264869cfa1b2"
+      },
+      {
+        "file": "chunks/09.bin",
+        "bytes": 23000,
+        "sha256": "050e4dac6c1e5225f258a33c6c0f8909f5373a18aa0e2474c8a7f6204aa941a9"
+      },
+      {
+        "file": "chunks/10.bin",
+        "bytes": 23000,
+        "sha256": "5fb2dfa7d2204c229e634fac5a963e4af8455ad0f59f6a5e2b56140185d35bf1"
+      },
+      {
+        "file": "chunks/11.bin",
+        "bytes": 23000,
+        "sha256": "8fadbf97bb3b0170f80821f8f01fb392c1e318adf7bf5feeca7db5b7984bd38a"
+      },
+      {
+        "file": "chunks/12.bin",
+        "bytes": 23000,
+        "sha256": "f4ad1985da79aca4f21824e253d334dc58a7f4793ca34320b825f0e9d0f6b0c4"
+      },
+      {
+        "file": "chunks/13.bin",
+        "bytes": 23000,
+        "sha256": "f66d81b497d4ecea910833f4eda0d1e37688f3df763003a56e38a8b5f10511e2"
+      },
+      {
+        "file": "chunks/14.bin",
+        "bytes": 23000,
+        "sha256": "b439d0a72256b0d15540f470d26919bd7d0058e716d75689e57e3c7f20b5235a"
+      },
+      {
+        "file": "chunks/15.bin",
+        "bytes": 23000,
+        "sha256": "70364056c3d310bbd910479c6553caf28021c39ddde27e11ef9118272ad99e52"
+      },
+      {
+        "file": "chunks/16.bin",
+        "bytes": 23000,
+        "sha256": "8184ef0576b3efc2f8a0a7630b9c5c9f35fede1b5f9b622819d77a84f5472adb"
+      },
+      {
+        "file": "chunks/17.bin",
+        "bytes": 23000,
+        "sha256": "19202d4fad1e1417c0aef8c6f6a14baf49ac22b290a54304847c8dc8dc6684a7"
+      },
+      {
+        "file": "chunks/18.bin",
+        "bytes": 23000,
+        "sha256": "0690a63d40da227ec7c8893a49df26f89e8acef4ff254d09141f18d93141855c"
+      },
+      {
+        "file": "chunks/19.bin",
+        "bytes": 23000,
+        "sha256": "4bcadaf81c4675b603fcdd83490d169d6419014c5c16a1ae831599cb18fdb739"
+      },
+      {
+        "file": "chunks/20.bin",
+        "bytes": 23000,
+        "sha256": "d8b40f445edee49ef2508ecfd62e068135139b1740d3c028ca2bbca0bc7048b8"
+      },
+      {
+        "file": "chunks/21.bin",
+        "bytes": 23000,
+        "sha256": "fd841dc5ab28b8789ea6db18ba5355dc5664fefc4546db166e8fdbbaf8f852b5"
+      },
+      {
+        "file": "chunks/22.bin",
+        "bytes": 23000,
+        "sha256": "227bd6f5a02342cd1e44c07171155d949dd26d6986f7c1fcbc050b533ab20d95"
+      },
+      {
+        "file": "chunks/23.bin",
+        "bytes": 23000,
+        "sha256": "8f5bcfd51631e5b6be571278cba91e1077353444e8d1f9a153b33db561f2ced7"
+      },
+      {
+        "file": "chunks/24.bin",
+        "bytes": 23000,
+        "sha256": "320d61d1f053643fc0851d3865418f7aaa0f98bebaf701eb1e089c215081ad28"
+      },
+      {
+        "file": "chunks/25.bin",
+        "bytes": 23000,
+        "sha256": "f5d35f11d64ad83545d5f8d572967086c2e30859999d887b47c699cf2f18325c"
+      },
+      {
+        "file": "chunks/26.bin",
+        "bytes": 23000,
+        "sha256": "d3f7d61039e23e9396616263f78e35723ea512a13a6ef31991701fc38428b6d2"
+      },
+      {
+        "file": "chunks/27.bin",
+        "bytes": 23000,
+        "sha256": "bfdaf6f34e1cd24822f5ce1f78b0707464f0d03554da903b73d01dc9dcdad4ae"
+      },
+      {
+        "file": "chunks/28.bin",
+        "bytes": 23000,
+        "sha256": "a15b6bf2f45cab31b6844ce151b5c093a3b65c21128a122065cbc4def32a29a7"
+      },
+      {
+        "file": "chunks/29.bin",
+        "bytes": 23000,
+        "sha256": "93728b08a1f0a4ab47992ba8c0bf682b244959d5d8e4c93ca768e7223482c1bd"
+      },
+      {
+        "file": "chunks/30.bin",
+        "bytes": 23000,
+        "sha256": "812bb7ada350f8daa39a8d6cf37bda3b7a9d64f040be0eadb6ee9bce62c1b121"
+      },
+      {
+        "file": "chunks/31.bin",
+        "bytes": 23000,
+        "sha256": "b3c8d24baac61d9c0a459c40202b1fe32e6b2f761516a8867b4bed9ed13711b6"
+      },
+      {
+        "file": "chunks/32.bin",
+        "bytes": 23000,
+        "sha256": "a5c3fc2e706c541813c9fe2d0979c365dfb88d7f0a95420ab8648c5dd6205925"
+      },
+      {
+        "file": "chunks/33.bin",
+        "bytes": 23000,
+        "sha256": "cfdb5dfca7b6f6a919e4e04d1cff20ff23b839468cf0942099e53de807e83101"
+      },
+      {
+        "file": "chunks/34.bin",
+        "bytes": 23000,
+        "sha256": "195cb4ac77af6dbc4ae29e5155ab3b533ce016758fbde3346b2ac2c14ec98cae"
+      },
+      {
+        "file": "chunks/35.bin",
+        "bytes": 23000,
+        "sha256": "ea56807f8a6e8f97806ddee2dd2cb4d688076867a0bbf96a5b960bba750d57c6"
+      },
+      {
+        "file": "chunks/36.bin",
+        "bytes": 23000,
+        "sha256": "4baca47b7a19b23f1b958e3f131b5ffd2d6a272476c2c5c89a73672009d541d3"
+      },
+      {
+        "file": "chunks/37.bin",
+        "bytes": 23000,
+        "sha256": "f80e5b9a6c9c7d8d4ed26e3a5cc234f3acc1ca9d57a407b0feb5631245b804a4"
+      },
+      {
+        "file": "chunks/38.bin",
+        "bytes": 23000,
+        "sha256": "b429af3b02825bbd7c0ea2d523ad3e64aab77773d9833320f43d0e5475f14fa9"
+      },
+      {
+        "file": "chunks/39.bin",
+        "bytes": 23000,
+        "sha256": "ed228a805acebb20a84915b69066c1e56c7638bdc97010adbdcb4b0109737ede"
+      },
+      {
+        "file": "chunks/40.bin",
+        "bytes": 23000,
+        "sha256": "7cab947613a9f859dabf188444145f03b2d7f7661d53bc3db6ed6042e535cac2"
+      },
+      {
+        "file": "chunks/41.bin",
+        "bytes": 23000,
+        "sha256": "21d9f16c4efe179925385e32f968b86777bf6ef7d1353c129ca5694c09046474"
+      },
+      {
+        "file": "chunks/42.bin",
+        "bytes": 23000,
+        "sha256": "3c90b0d94e4716973107f69ca299edab2e33d52c437af90a53d8a23f86799f69"
+      },
+      {
+        "file": "chunks/43.bin",
+        "bytes": 23000,
+        "sha256": "0353c39d342f56160931630525c6d96a0029799f071ec704b1811862d9506daa"
+      },
+      {
+        "file": "chunks/44.bin",
+        "bytes": 23000,
+        "sha256": "598d6c95f206c8481c7396ce2fb4005ebfe4d014b369ef25c13742bc46049712"
+      },
+      {
+        "file": "chunks/45.bin",
+        "bytes": 23000,
+        "sha256": "c9f68111146e2f48fa820a91a850b8355aca908b1d84d73e95358dec9923c9bc"
+      },
+      {
+        "file": "chunks/46.bin",
+        "bytes": 23000,
+        "sha256": "4a1d4839c02829b23b816f932e73fb9c57c039997adfc156f880e2f55ee79a62"
+      },
+      {
+        "file": "chunks/47.bin",
+        "bytes": 23000,
+        "sha256": "0ccc534d1eefa7a4f26c5737d1af44d26133bfc77fc7028af638915dcd0d2d65"
+      },
+      {
+        "file": "chunks/48.bin",
+        "bytes": 23000,
+        "sha256": "e0fae358f9a981bb33c0489cbc0a4bee256f724bba499b07a0a868128c382b48"
+      },
+      {
+        "file": "chunks/49.bin",
+        "bytes": 23000,
+        "sha256": "89e30ce88f9b16028718b55125f6bd64f9fa3b3ffb485849f31db90a150b3cfc"
+      },
+      {
+        "file": "chunks/50.bin",
+        "bytes": 23000,
+        "sha256": "1d95397da5130cf540ed141138e01e015dfea949722b5dbb7791aaf10e7bed93"
+      },
+      {
+        "file": "chunks/51.bin",
+        "bytes": 23000,
+        "sha256": "cbe9e4c2888eb0ecb698b4c97cf4b6cda9f529a1f172b417d55a524ba072bef4"
+      },
+      {
+        "file": "chunks/52.bin",
+        "bytes": 23000,
+        "sha256": "473f6ad28e8a55e0660090574f5d7781fef7e95b0bb40814d3fadc3489ac9c9e"
+      },
+      {
+        "file": "chunks/53.bin",
+        "bytes": 23000,
+        "sha256": "72a266365d23d8544540d069236ec55103204edca161c761dc1bdb68dbe8465b"
+      },
+      {
+        "file": "chunks/54.bin",
+        "bytes": 23000,
+        "sha256": "71ba3e2536020019f0b95a3a89c5d6039acb73d3b18168d73e8a94ff963cd456"
+      },
+      {
+        "file": "chunks/55.bin",
+        "bytes": 23000,
+        "sha256": "2cc338f7862658154b00df09b432dd4a7d49d9a9efb17bf25f16de65ebf65bc8"
+      },
+      {
+        "file": "chunks/56.bin",
+        "bytes": 23000,
+        "sha256": "46bbcbab87b68c2684a6e64bd3994949cad3a6c1e5c35eff968b774dcbbd2df4"
+      },
+      {
+        "file": "chunks/57.bin",
+        "bytes": 23000,
+        "sha256": "bf35bdea374a7c6f97d62e2d7473f8c386699164a2ce76e30e1a870410503bd8"
+      },
+      {
+        "file": "chunks/58.bin",
+        "bytes": 23000,
+        "sha256": "3551e1655904af3f4c02b526195b08052831d0270abcefe6efc9da7760b6ca0b"
+      },
+      {
+        "file": "chunks/59.bin",
+        "bytes": 23000,
+        "sha256": "3b0ee1297146d66869ff009118d05425509f21194a93828e65e84da1eb4d354a"
+      },
+      {
+        "file": "chunks/60.bin",
+        "bytes": 23000,
+        "sha256": "8f3c7c9fee669275e4a1fd4d49e53ecf747ae9a4fb3663552a0569ce7869a8eb"
+      },
+      {
+        "file": "chunks/61.bin",
+        "bytes": 23000,
+        "sha256": "7b5a626bc161625a91211e92452a2d8d461ce952cc7d0a8b46da5501d035a63c"
+      },
+      {
+        "file": "chunks/62.bin",
+        "bytes": 23000,
+        "sha256": "80d10ea6d6a35a68e091a4896a2d5bb2e448f2c6bf67f544cab2e03f302464a3"
+      },
+      {
+        "file": "chunks/63.bin",
+        "bytes": 23000,
+        "sha256": "02beac3aeb2396e3dbdbaed2542b1f582d22e599d375fe1a9c3ff0cf3ea47723"
+      },
+      {
+        "file": "chunks/64.bin",
+        "bytes": 20421,
+        "sha256": "ff9c5aeee45f1e942fdb101526da1254106fb0cea82ee2823f60374c6d327d5c"
+      }
+    ],
+    "buildManifestSha256": "4203516bfe7fed8dadae622d9de4376cc846e579a0cbc93da2e01b6bf1689db6",
+    "moduleGraph": {
+      "web/begins/geometry.mjs": {
+        "sha256": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
+        "dependencies": [
+          "web/confluence/identity.mjs",
+          "web/spirit/geometry.mjs"
+        ]
+      },
+      "web/begins/shaders.mjs": {
+        "sha256": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
+        "dependencies": []
+      },
+      "web/burners/desk.mjs": {
+        "sha256": "3651ccc49c6e78754b0e54ea73311bf01897fc02a76907b7ebfa86a569030a09",
+        "dependencies": [
+          "web/burners/vault.mjs",
+          "web/burners/policy.mjs",
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/burners/policy.mjs": {
+        "sha256": "1ce6fe6691b7989c59b8f6cb7f83ef988928a34b1f45bf17928bed7ed5df5e14",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/burners/vault.mjs": {
+        "sha256": "60894f6a57e499d9fcab6675cff2a6f1d11b852e228123a97c28f59954e5c7ae",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/privacy/vault.mjs",
+          "web/burners/policy.mjs"
+        ]
+      },
+      "web/commons/artifacts.mjs": {
+        "sha256": "dc3cbf1be11c863dcf94b906b20dc19f3e8e3a03f5c9a38a414f71b79e52afb0",
+        "dependencies": []
+      },
+      "web/commons/client.mjs": {
+        "sha256": "376158e164bcd543f8eae2d7343e49dde5c0f55a5c8b1bb7c669824974cda779",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/extensions/privacy.mjs",
+          "web/commons/artifacts.mjs"
+        ]
+      },
+      "web/commons/desk.mjs": {
+        "sha256": "3985e14eeee9c16e19c7b4d44895846b1eeb98727099052f1d6b660b722e9457",
+        "dependencies": [
+          "web/commons/client.mjs",
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/confluence/app.js": {
+        "sha256": "dac2f63067e1d0b3fdcd706a969a3333e9864afda02c0154236bc4dcb5f31e14",
+        "dependencies": [
+          "web/confluence/selected-context.mjs",
+          "web/confluence/capabilities.mjs",
+          "web/workshop/desk.mjs",
+          "web/v4/desk.mjs",
+          "web/launchpad/desk.mjs",
+          "web/commons/desk.mjs",
+          "web/launchpad/participant.mjs",
+          "web/launchpad/links.mjs",
+          "web/genesis/live-desk.mjs",
+          "web/extensions/desk.mjs",
+          "web/genesis/interior.mjs",
+          "web/exit/live-ui.mjs",
+          "web/burners/desk.mjs",
+          "web/confluence/identity.mjs",
+          "web/genesis/field.js",
+          "web/genesis/atlas.mjs",
+          "web/confluence/economy.mjs",
+          "web/confluence/wallet.mjs",
+          "web/confluence/console-core.mjs",
+          "web/evm.mjs",
+          "web/confluence/archive.mjs"
+        ]
+      },
+      "web/confluence/archive.mjs": {
+        "sha256": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
+        "dependencies": [
+          "web/model.mjs",
+          "web/confluence/economy.mjs",
+          "web/confluence/console-core.mjs"
+        ]
+      },
+      "web/confluence/capabilities.mjs": {
+        "sha256": "540983bf493aa051fa43c91be3620ca4147472269a12953e127daf970fa674b1",
+        "dependencies": []
+      },
+      "web/confluence/console-core.mjs": {
+        "sha256": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
+        "dependencies": []
+      },
+      "web/confluence/economy.mjs": {
+        "sha256": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
+        "dependencies": [
+          "web/evm.mjs"
+        ]
+      },
+      "web/confluence/identity.mjs": {
+        "sha256": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
+        "dependencies": [
+          "web/evm.mjs"
+        ]
+      },
+      "web/confluence/minted-identity.mjs": {
+        "sha256": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
+        "dependencies": []
+      },
+      "web/confluence/particles.js": {
+        "sha256": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+        "dependencies": [
+          "web/confluence/identity.mjs"
+        ]
+      },
+      "web/confluence/selected-context.mjs": {
+        "sha256": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
+        "dependencies": [
+          "web/confluence/minted-identity.mjs"
+        ]
+      },
+      "web/confluence/wallet.mjs": {
+        "sha256": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
+        "dependencies": [
+          "web/confluence/minted-identity.mjs",
+          "web/rehearsal/client.mjs",
+          "web/extensions/proof.mjs",
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/evm.mjs": {
+        "sha256": "cb7ecc5a1d65ac481967ee7c245ec002e7797ff9678f2eb6847c78a02a7a7bee",
+        "dependencies": []
+      },
+      "web/exit/artifacts.mjs": {
+        "sha256": "81442bb72de8eaff6426ff284fccd54c6ecee26567a75bd99bc73ae4ff85c211",
+        "dependencies": []
+      },
+      "web/exit/live-ui.mjs": {
+        "sha256": "3c5faca4c005c79ff8ecc0fb67fa2a3da578333e9076a05781839430ce530395",
+        "dependencies": [
+          "web/exit/live.mjs",
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/exit/live.mjs": {
+        "sha256": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
+        "dependencies": [
+          "web/exit/artifacts.mjs",
+          "web/v4/client.mjs",
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/extensions/access.mjs": {
+        "sha256": "9fe81136b6a32c05bd8aaf9152663931c32958f6b132235362bd8bf495df776a",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/extensions/agents.mjs": {
+        "sha256": "a9c54c7932ec84f3a968da0d087e4626df82ff51369f9e3aef8a7110be749d42",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/extensions/service-origin.mjs"
+        ]
+      },
+      "web/extensions/artifacts.mjs": {
+        "sha256": "838ba1f884b3906de6a5a59e2ada2f288a30de6efeeddacf9bb79631fbd0da81",
+        "dependencies": []
+      },
+      "web/extensions/desk.mjs": {
+        "sha256": "81db6efab674768a7859fcb5da0bb1305c5eb215d0193c77b10552cfdc22de67",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/extensions/artifacts.mjs",
+          "web/extensions/markets.mjs",
+          "web/extensions/agents.mjs",
+          "web/extensions/experimental.mjs",
+          "web/extensions/access.mjs",
+          "web/extensions/privacy/desk.mjs",
+          "web/extensions/privacy.mjs",
+          "web/extensions/worlds.mjs",
+          "web/extensions/proof.mjs"
+        ]
+      },
+      "web/extensions/experimental.mjs": {
+        "sha256": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/extensions/markets.mjs": {
+        "sha256": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
+        "dependencies": [
+          "web/evm.mjs"
+        ]
+      },
+      "web/extensions/privacy.mjs": {
+        "sha256": "3123b55bdf0463d860dad6bf5db76b9705a87ea632638283b92f6227a9384e6b",
+        "dependencies": [
+          "web/evm.mjs",
+          "web/extensions/privacy/crypto.mjs"
+        ]
+      },
+      "web/extensions/privacy/crypto.mjs": {
+        "sha256": "609fb068621b8ba60f63f209824e6eb450ff91462b51a8af8f1acbcd5118f3b0",
+        "dependencies": [
+          "web/evm.mjs"
+        ]
+      },
+      "web/extensions/privacy/desk.mjs": {
+        "sha256": "b7ceefcb141eaad2e4f88eb30667b4fa8cda64ea2277c0e2c60c802042abdf91",
+        "dependencies": [
+          "web/extensions/privacy.mjs"
+        ]
+      },
+      "web/extensions/proof.mjs": {
+        "sha256": "ad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/genesis/live-protocol.mjs",
+          "web/extensions/service-origin.mjs"
+        ]
+      },
+      "web/extensions/service-origin.mjs": {
+        "sha256": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
+        "dependencies": []
+      },
+      "web/extensions/worlds.mjs": {
+        "sha256": "10cb8ddf3deed62ffbab4d69b4fc1eff310abfd2680f8b6cbf16ae8b0b8d75e6",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/extensions/service-origin.mjs",
+          "worlds/instruments.mjs",
+          "worlds/commissions.mjs"
+        ]
+      },
+      "web/genesis/atlas.mjs": {
+        "sha256": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
+        "dependencies": []
+      },
+      "web/genesis/field.js": {
+        "sha256": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+        "dependencies": [
+          "web/confluence/particles.js",
+          "web/begins/geometry.mjs",
+          "web/begins/shaders.mjs",
+          "web/genesis/projection.mjs"
+        ]
+      },
+      "web/genesis/interior-cpu.mjs": {
+        "sha256": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
+        "dependencies": [
+          "web/genesis/interior-kernel.mjs"
+        ]
+      },
+      "web/genesis/interior-gestures.mjs": {
+        "sha256": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
+        "dependencies": []
+      },
+      "web/genesis/interior-kernel.mjs": {
+        "sha256": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
+        "dependencies": []
+      },
+      "web/genesis/interior-quality.mjs": {
+        "sha256": "6a01e76803ab868954fe67f92d7f43ff5651067af45c34aef07d2c4cdb1ab787",
+        "dependencies": []
+      },
+      "web/genesis/interior-shader.mjs": {
+        "sha256": "448c32583e9748d5d730524a2e4ddde048ae150b877532fe2beb9b8d1dd8b303",
+        "dependencies": [
+          "web/genesis/interior-kernel.mjs"
+        ]
+      },
+      "web/genesis/interior-space.mjs": {
+        "sha256": "d8a3f675a264698d0d2cfb5905e191ae95afdb5410a9c7dc4c1872c371360102",
+        "dependencies": []
+      },
+      "web/genesis/interior.mjs": {
+        "sha256": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
+        "dependencies": [
+          "web/genesis/interior-space.mjs",
+          "web/genesis/interior-gestures.mjs"
+        ]
+      },
+      "web/genesis/live-desk.mjs": {
+        "sha256": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
+        "dependencies": [
+          "web/rehearsal/client.mjs",
+          "web/rehearsal/view.mjs",
+          "web/genesis/live-protocol.mjs"
+        ]
+      },
+      "web/genesis/live-protocol.mjs": {
+        "sha256": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/genesis/projection.mjs": {
+        "sha256": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+        "dependencies": [
+          "web/genesis/interior-quality.mjs",
+          "web/genesis/interior-shader.mjs",
+          "web/genesis/interior-cpu.mjs"
+        ]
+      },
+      "web/launchpad/account-session.mjs": {
+        "sha256": "34bcf7b49ff5857024aabbf7288fc801e03f75dc1b632a99fcb6ec4ade21ace9",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/extensions/artifacts.mjs"
+        ]
+      },
+      "web/launchpad/auction-artifacts.mjs": {
+        "sha256": "aad26786c72fc93211d6f95af4868f4a62b7dcf455f87300254e0f0db9a38994",
+        "dependencies": []
+      },
+      "web/launchpad/auction-client.mjs": {
+        "sha256": "248b73079143a9d5efd45f1723d416dfb3fcfc93c426b7463fe7e511834c8432",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/extensions/markets.mjs",
+          "web/v4/client.mjs",
+          "web/launchpad/auction-artifacts.mjs"
+        ]
+      },
+      "web/launchpad/chain.mjs": {
+        "sha256": "7cbf56d6a1265a48e3953fb5d326b5decf28e1bac66a0982b2e3162ece5b26de",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/v4/artifacts.mjs",
+          "web/v4/client.mjs",
+          "web/v4/math.mjs",
+          "web/launchpad/deployments.mjs",
+          "web/launchpad/account-session.mjs"
+        ]
+      },
+      "web/launchpad/deployments.mjs": {
+        "sha256": "cd82d7ceb95d280eef49a4c694710d88454471a57d249d556db6679fff7dd944",
+        "dependencies": []
+      },
+      "web/launchpad/desk.mjs": {
+        "sha256": "801211ccd95ff979756393704522669dbbcbdbc4526921af510bf57b2092f694",
+        "dependencies": [
+          "web/launchpad/chain.mjs",
+          "web/launchpad/studio.mjs",
+          "web/launchpad/model.mjs",
+          "web/v4/desk.mjs",
+          "web/launchpad/sale-client.mjs",
+          "web/launchpad/sale-ui.mjs",
+          "web/launchpad/sale-artifacts.mjs",
+          "web/launchpad/links.mjs",
+          "web/launchpad/vault-ui.mjs",
+          "web/launchpad/hook-client.mjs",
+          "web/launchpad/auction-client.mjs",
+          "web/launchpad/hook-artifacts.mjs",
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/launchpad/hook-artifacts.mjs": {
+        "sha256": "e241610bb6b938b6a309f05b3692720cc43bb0704b79266040c639093a892535",
+        "dependencies": []
+      },
+      "web/launchpad/hook-client.mjs": {
+        "sha256": "40ea2805260865cc0c56932e52e8b019c5cff923a30f457d8c334adb9e218390",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/launchpad/hook-artifacts.mjs",
+          "web/v4/client.mjs",
+          "web/v4/math.mjs"
+        ]
+      },
+      "web/launchpad/links.mjs": {
+        "sha256": "3ecb6fa31ec8824d8a041ec235e8f88efa1301a4d5b9a252990b29b1d152684b",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/launchpad/model.mjs": {
+        "sha256": "6f88883a19b0beb8a77117bc61e8098d4d8f73c048bdf791bde58043c76b4623",
+        "dependencies": [
+          "web/v4/math.mjs",
+          "web/confluence/economy.mjs"
+        ]
+      },
+      "web/launchpad/participant.mjs": {
+        "sha256": "cb62c85909da73886f909f4bbd047e8ae20e1bf7e6194871e2df0e41611c8183",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/launchpad/chain.mjs",
+          "web/launchpad/sale-client.mjs",
+          "web/launchpad/auction-client.mjs",
+          "web/launchpad/links.mjs"
+        ]
+      },
+      "web/launchpad/sale-artifacts.mjs": {
+        "sha256": "233f37780138e9cf6c241199bd972de3c4ca58a8a4341fa4b95d2ad4f78a214a",
+        "dependencies": []
+      },
+      "web/launchpad/sale-client.mjs": {
+        "sha256": "3730e4f7cce550d7ebf9ad8bb23a0e599b99ff2516abdb4365592028a67042b5",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/launchpad/sale-artifacts.mjs"
+        ]
+      },
+      "web/launchpad/sale-ui.mjs": {
+        "sha256": "ce1707ca84a9bb7f4bc0c48b88319212eea80767047c58dc80d9bfd3afe94a76",
+        "dependencies": []
+      },
+      "web/launchpad/scenarios.mjs": {
+        "sha256": "3992773f4759265318107860bd2736a98cd8626428db6131fefdf7035dd912ae",
+        "dependencies": [
+          "web/launchpad/model.mjs"
+        ]
+      },
+      "web/launchpad/studio.mjs": {
+        "sha256": "4e76234712adab730f6b5bc6f17b7a4a7901f3bbfe9de9c57029704800211fb1",
+        "dependencies": [
+          "web/launchpad/model.mjs",
+          "web/launchpad/scenarios.mjs",
+          "web/privacy/vault.mjs"
+        ]
+      },
+      "web/launchpad/vault-client.mjs": {
+        "sha256": "b13aecdaf9e2396e77a69b53a450161fc310ed76d3889809ebebf387b48b60f7",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/launchpad/sale-client.mjs"
+        ]
+      },
+      "web/launchpad/vault-ui.mjs": {
+        "sha256": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
+        "dependencies": [
+          "web/launchpad/vault-client.mjs"
+        ]
+      },
+      "web/model.mjs": {
+        "sha256": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
+        "dependencies": []
+      },
+      "web/privacy/bridge.mjs": {
+        "sha256": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
+        "dependencies": [
+          "web/privacy/recover-resource.mjs",
+          "web/privacy/runtime-integrity.mjs"
+        ]
+      },
+      "web/privacy/recover-resource.mjs": {
+        "sha256": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",
+        "dependencies": []
+      },
+      "web/privacy/runtime-integrity.mjs": {
+        "sha256": "6957e3bb0e47c8160a4463b8bae60b1287aeeaeb3e478746ebf56516cd471a49",
+        "dependencies": []
+      },
+      "web/privacy/submission.mjs": {
+        "sha256": "2dfd3f1f012efe7cec3196ad5f3d37cbb1e4b3a4a4ca7920b829908d114b4ff2",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/privacy/vault.mjs": {
+        "sha256": "c81d6c2374999d2511cf2539332aa6e4b9667593a50b4e1786347fa62e7e9891",
+        "dependencies": []
+      },
+      "web/rehearsal/client.mjs": {
+        "sha256": "2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
+        "dependencies": [
+          "web/rehearsal/intent.mjs"
+        ]
+      },
+      "web/rehearsal/intent.mjs": {
+        "sha256": "8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/rehearsal/view.mjs": {
+        "sha256": "5a95e159b9a5bef05e441d69e208cb452e6752299fa6c35411e8b7808471cefe",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/spirit/geometry.mjs": {
+        "sha256": "6e6b29db1fc3abf97cd2a9079cd7cb63a5c6b0de9bd4fe1377e6a945edb97285",
+        "dependencies": [
+          "web/confluence/identity.mjs"
+        ]
+      },
+      "web/v4/artifacts.mjs": {
+        "sha256": "52da9c826bf42890107f9098e8f8e7bd81d48003d416baf17b51004542c330bb",
+        "dependencies": []
+      },
+      "web/v4/client.mjs": {
+        "sha256": "431c9aa52b1984ef355d7e617e018f1a87660e6397bce9af541b346fca34ff96",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/v4/artifacts.mjs",
+          "web/launchpad/hook-client.mjs",
+          "web/v4/math.mjs"
+        ]
+      },
+      "web/v4/desk.mjs": {
+        "sha256": "eae5b3adeb640f829af8f5473f8ba3e8b12fa0a3177140aa2a7c418289399f91",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/privacy/vault.mjs",
+          "web/privacy/submission.mjs",
+          "web/privacy/bridge.mjs",
+          "web/v4/public-session.mjs",
+          "web/v4/client.mjs"
+        ]
+      },
+      "web/v4/math.mjs": {
+        "sha256": "16e914e0ff99e8ff84d6449595d863fab0ebcb722e3053fecc4e7e19e850260d",
+        "dependencies": []
+      },
+      "web/v4/public-session.mjs": {
+        "sha256": "4308acf0e1296027b4da346c709de7f373709d340f0d3a5e6e179fca85171976",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/v4/client.mjs"
+        ]
+      },
+      "web/vendor/ethers.min.js": {
+        "sha256": "66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea",
+        "dependencies": []
+      },
+      "web/workshop/calendar.mjs": {
+        "sha256": "5e9a35ca326f8ad22c86601245448af52afb6f2272700312c95a7189759fb62a",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      },
+      "web/workshop/client.mjs": {
+        "sha256": "28fb372a4c2a24a4d0068d6316787fb40636f3369f384d192479341f5b67307a",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/genesis/live-protocol.mjs",
+          "web/workshop/calendar.mjs",
+          "web/workshop/contracts.mjs"
+        ]
+      },
+      "web/workshop/contracts.mjs": {
+        "sha256": "da0af5ebb9f3cd913f500123fbc3cd50ea2070b134d4b90e58eb806aab989677",
+        "dependencies": []
+      },
+      "web/workshop/desk.mjs": {
+        "sha256": "1bd154c47e0b0b929bfac40af10118b093d858ae47fba8e7ddb4b1a852ddba94",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/workshop/client.mjs",
+          "web/workshop/calendar.mjs",
+          "web/workshop/contracts.mjs"
+        ]
+      },
+      "worlds/commissions.mjs": {
+        "sha256": "7aa8d874256f56007d35abe13f96462e8de49030daa30b42c0e70bbeabfd37e0",
+        "dependencies": [
+          "web/vendor/ethers.min.js",
+          "web/workshop/client.mjs",
+          "web/genesis/live-protocol.mjs",
+          "worlds/instruments.mjs"
+        ]
+      },
+      "worlds/instruments.mjs": {
+        "sha256": "3e92615eed4b5367169b729dc937ac55ff01c0a5668075d307839b5d7926f4ba",
+        "dependencies": [
+          "web/vendor/ethers.min.js"
+        ]
+      }
+    }
+  },
+  "checks": {
+    "sourceSyntaxAndJSON": {
+      "passed": true,
+      "filesInspected": 1266
+    },
+    "finalInterfaceAndScenarioTests": {
+      "passed": 25,
+      "failed": 0
+    },
+    "canonicalIdentityAndWalletTests": {
+      "passed": 21,
+      "failed": 0
+    },
+    "runtimeBuildRegressionTests": {
+      "passed": 8,
+      "failed": 0
+    },
+    "compilerAndArchiveReaderTests": {
+      "passed": 6,
+      "failed": 0
+    },
+    "compiledContracts": 165,
+    "canonicalHostedFiles": 97,
+    "hostedModuleClosure": 88,
+    "actualLocalMintAndExactRecovery": true
+  },
+  "otherEvidence": {
+    "nftCustody": "nft-custody.json",
+    "archiveDirectory": "../runtime-directory/verification.json",
+    "camera": "../cleanup-6.0/interior/results.json",
+    "nativeRendering": "../cleanup-6.0/native-rendering.json"
+  },
+  "limitations": [
+    "No funded public-chain RAILGUN proof/POI/broadcaster receipt.",
+    "No physical phone/browser interaction acceptance run.",
+    "Existing immutable minted runtime bytes are unchanged."
+  ]
+}

@@ -1,0 +1,66 @@
+{
+  "scope": "Native GLES 3.2 Mesa versus WebAssembly, same inputs and shared source. Not browser-GPU certification.",
+  "resolution": [
+    240,
+    160
+  ],
+  "acceptance": "RGB mean absolute error <= 2/255 in each case; floating-point implementations need not be bit-identical.",
+  "cases": [
+    {
+      "case": "bound",
+      "rgbMeanAbsoluteErrorOutOf255": 0.5002256944444444,
+      "rgb99thPercentileError": 1.0,
+      "rgbMaximumError": 1,
+      "wasmNonblackFraction": 0.5291145833333334,
+      "wasmPixelSha256": "90b00cf2fbf14813697ad121667a6fc92cb93b64386fe1c07769666fc05ba7c6",
+      "passed": true
+    },
+    {
+      "case": "sovereign",
+      "rgbMeanAbsoluteErrorOutOf255": 0.49972222222222223,
+      "rgb99thPercentileError": 1.0,
+      "rgbMaximumError": 1,
+      "wasmNonblackFraction": 0.51078125,
+      "wasmPixelSha256": "8f585e5b0bfb3e9b94cd64922de5a0308d767363a6cb3eb304c230977db35f18",
+      "passed": true
+    },
+    {
+      "case": "folded",
+      "rgbMeanAbsoluteErrorOutOf255": 0.5004340277777778,
+      "rgb99thPercentileError": 1.0,
+      "rgbMaximumError": 1,
+      "wasmNonblackFraction": 0.5260416666666666,
+      "wasmPixelSha256": "7b4663f01e83ae990b34e7b581e403f64e9a9e50cc591882d0c6f28cbd07dccd",
+      "passed": true
+    },
+    {
+      "case": "genome-change",
+      "rgbMeanAbsoluteErrorOutOf255": 0.5018142361111111,
+      "rgb99thPercentileError": 1.0,
+      "rgbMaximumError": 1,
+      "wasmNonblackFraction": 0.5328385416666667,
+      "wasmPixelSha256": "28b79a824d80f29a9f3b80deb68986374fdb55c49ebbafe0ffa95cd8d74429b3",
+      "passed": true
+    },
+    {
+      "case": "evolution-event",
+      "rgbMeanAbsoluteErrorOutOf255": 0.5001996527777778,
+      "rgb99thPercentileError": 1.0,
+      "rgbMaximumError": 1,
+      "wasmNonblackFraction": 0.5291145833333334,
+      "wasmPixelSha256": "6ee7b2bfc1709e237085a9df9f8cf9ebee746fd42ae3fe98ab3e9ab29d68aab6",
+      "passed": true
+    },
+    {
+      "case": "ascension-event",
+      "rgbMeanAbsoluteErrorOutOf255": 0.5017795138888889,
+      "rgb99thPercentileError": 1.0,
+      "rgbMaximumError": 1,
+      "wasmNonblackFraction": 0.48901041666666667,
+      "wasmPixelSha256": "1eb0b4274928f023ae17ff88826e56083a8b1591ed28b2af3469e6c67ecc445b",
+      "passed": true
+    }
+  ],
+  "passed": 6,
+  "failed": 0
+}

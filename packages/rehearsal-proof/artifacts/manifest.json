@@ -1,0 +1,17 @@
+{
+  "schema": "anima.native-quote-proof/1",
+  "setup": "single-machine-development-only",
+  "productionReady": false,
+  "circuitSha256": "54911dfe282b83a47fba4cd75d0348b6ecc80063037885b75ae51d906e373f79",
+  "verifierSha256": "eab5f9d41fa5bc13447d020f8c40f33c31998bcddf1319d8c47409395d08cb82",
+  "packages": {
+    "circom2": "0.2.23",
+    "circomlib": "2.0.5",
+    "snarkjs": "0.7.6"
+  },
+  "files": {
+    "native-quote.wasm": "9050e831e63cac99d0661e30f4578974b32fd5750cdf1b633e255bfb03200e31",
+    "native-quote.zkey": "18683fdf6b384905d61831f6ed0becfc735d7cc1a6f36bc397c760280737413a",
+    "verification-key.json": "6cdff4b51a2691fc30f80eb675f1fbfbe222cdda8baf83656fd2c5e7a71c13b5"
+  }
+}

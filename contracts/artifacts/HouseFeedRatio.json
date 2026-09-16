@@ -1,0 +1,521 @@
+{
+  "contractName": "HouseFeedRatio",
+  "sourceName": "contracts/src/extensions/experimental/HouseDependencies.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "base_",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "quote_",
+          "type": "address"
+        },
+        {
+          "internalType": "uint8",
+          "name": "quoteDecimals_",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint64",
+          "name": "maxAge_",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidFeed",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "baseFeed",
+      "outputs": [
+        {
+          "internalType": "contract IHouseFeed",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "baseFeedCodeHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "baseFeedDecimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "maxAge",
+      "outputs": [
+        {
+          "internalType": "uint64",
+          "name": "",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "price",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "result",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint64",
+          "name": "updatedAt",
+          "type": "uint64"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quoteDecimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quoteFeed",
+      "outputs": [
+        {
+          "internalType": "contract IHouseFeed",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quoteFeedCodeHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "quoteFeedDecimals",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "21596": [
+      {
+        "length": 32,
+        "start": 158
+      },
+      {
+        "length": 32,
+        "start": 274
+      }
+    ],
+    "21599": [
+      {
+        "length": 32,
+        "start": 404
+      },
+      {
+        "length": 32,
+        "start": 764
+      },
+      {
+        "length": 32,
+        "start": 1071
+      },
+      {
+        "length": 32,
+        "start": 1152
+      }
+    ],
+    "21601": [
+      {
+        "length": 32,
+        "start": 221
+      },
+      {
+        "length": 32,
+        "start": 319
+      }
+    ],
+    "21603": [
+      {
+        "length": 32,
+        "start": 1038
+      },
+      {
+        "length": 32,
+        "start": 1340
+      }
+    ],
+    "21605": [
+      {
+        "length": 32,
+        "start": 545
+      },
+      {
+        "length": 32,
+        "start": 963
+      },
+      {
+        "length": 32,
+        "start": 1459
+      }
+    ],
+    "21607": [
+      {
+        "length": 32,
+        "start": 500
+      },
+      {
+        "length": 32,
+        "start": 818
+      },
+      {
+        "length": 32,
+        "start": 1213
+      }
+    ],
+    "21609": [
+      {
+        "length": 32,
+        "start": 450
+      },
+      {
+        "length": 32,
+        "start": 1400
+      }
+    ],
+    "21611": [
+      {
+        "length": 32,
+        "start": 1281
+      },
+      {
+        "length": 32,
+        "start": 1815
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x610180806040523461021d57608081610af18038038091610020828561028f565b83398101031261021d57610033816102c6565b90610040602082016102c6565b91606061004f604084016102da565b920151926001600160401b03841680850361021d57823b15908115610285575b8115610277575b811561026e575b506101cd576001600160a01b03808316608081905290821660a052913f60c0523f60e05260405163313ce56760e01b815290602090829060049082905afa8015610229575f90610234575b60a05160405163313ce56760e01b81529250602090839060049082906001600160a01b03165afa918215610229575f926101e9575b50601260ff82161180156101dc575b6101cd576101005261012052610140526101605260405161080890816102e98239608051818181609e0152610112015260a051818181610194015281816102fc0152818161042f0152610480015260c05181818160dd015261013f015260e05181818161040e015261053c015261010051818181610221015281816103c301526105b30152610120518181816101f40152818161033201526104bd0152610140518181816101c2015261057801526101605181818161050101526107170152f35b6301f86e1760e41b5f5260045ffd5b50601260ff83161161010c565b9091506020813d602011610221575b816102056020938361028f565b8101031261021d57610216906102da565b905f6100fd565b5f80fd5b3d91506101f8565b6040513d5f823e3d90fd5b506020813d602011610266575b8161024e6020938361028f565b8101031261021d576102616004916102da565b6100c8565b3d9150610241565b9050155f61007d565b601260ff8616119150610076565b823b15915061006f565b601f909101601f19168101906001600160401b038211908210176102b257604052565b634e487b7160e01b5f52604160045260245ffd5b51906001600160a01b038216820361021d57565b519060ff8216820361021d5756fe6080806040526004361015610012575f80fd5b5f3560e01c9081631705a5311461059c575080633fd1e2bd1461055f578063429951e414610525578063687043c5146104e157806383bdeffa146104a457806389a71afe14610461578063a035b1fe14610100578063cb9761e7146100c65763fed0f8551461007f575f80fd5b346100c2575f3660031901126100c25760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b5f80fd5b346100c2575f3660031901126100c25760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100c2575f3660031901126100c2577f00000000000000000000000000000000000000000000000000000000000000006001600160a01b038116803f7f0000000000000000000000000000000000000000000000000000000000000000149081159161040c575b8115610395575b5080156102de575b61028b576101876101ed91610672565b91906102466102196101b87f0000000000000000000000000000000000000000000000000000000000000000610672565b9490936101e760ff7f000000000000000000000000000000000000000000000000000000000000000016610626565b90610648565b6101e760ff7f000000000000000000000000000000000000000000000000000000000000000016610626565b916101e760ff7f000000000000000000000000000000000000000000000000000000000000000016610626565b9081156102ca570490811580156102b3575b61028b5760409267ffffffffffffffff91808316838316101561028457505b8351928352166020820152f35b9050610277565b7f1f86e170000000000000000000000000000000000000000000000000000000005f5260045ffd5b506dffffffffffffffffffffffffffff8211610258565b634e487b7160e01b5f52601260045260245ffd5b5060405163313ce56760e01b81526020816004816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa90811561038a575f9161035b575b5060ff807f00000000000000000000000000000000000000000000000000000000000000001691161415610177565b61037d915060203d602011610383575b61037581836105d7565b81019061060d565b8261032c565b503d61036b565b6040513d5f823e3d90fd5b600491506020906040519283809263313ce56760e01b82525afa90811561038a575f916103ed575b5060ff807f000000000000000000000000000000000000000000000000000000000000000016911614158261016f565b610406915060203d6020116103835761037581836105d7565b826103bd565b7f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03163f14159150610168565b346100c2575f3660031901126100c25760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c257602060405160ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c257602060405167ffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c25760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100c2575f3660031901126100c257602060405160ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c25760209060ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b90601f8019910116810190811067ffffffffffffffff8211176105f957604052565b634e487b7160e01b5f52604160045260245ffd5b908160209103126100c2575160ff811681036100c25790565b604d811161063457600a0a90565b634e487b7160e01b5f52601160045260245ffd5b8181029291811591840414171561063457565b519069ffffffffffffffffffff821682036100c257565b9060a06001600160a01b03926004604051809581937ffeaf968c000000000000000000000000000000000000000000000000000000008352165afa91821561038a575f5f915f9461076f575b5069ffffffffffffffffffff16158015610765575b801561074e575b8015610746575b801561073d575b8015610701575b61028b579167ffffffffffffffff1690565b508242034281116106345767ffffffffffffffff7f000000000000000000000000000000000000000000000000000000000000000016106106ef565b504283116106e8565b5082156106e1565b506dffffffffffffffffffffffffffff81116106da565b505f8113156106d3565b9350505060a0823d60a0116107ca575b8161078c60a093836105d7565b810103126100c25761079d8261065b565b9169ffffffffffffffffffff6020820151936107c060806060850151940161065b565b50939193906106be565b3d915061077f56fea264697066735822122043d0dd4bffc20757d531cf89a466a6844cf90a1d5e313ccf19a469985ff4a67164736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081631705a5311461059c575080633fd1e2bd1461055f578063429951e414610525578063687043c5146104e157806383bdeffa146104a457806389a71afe14610461578063a035b1fe14610100578063cb9761e7146100c65763fed0f8551461007f575f80fd5b346100c2575f3660031901126100c25760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b5f80fd5b346100c2575f3660031901126100c25760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100c2575f3660031901126100c2577f00000000000000000000000000000000000000000000000000000000000000006001600160a01b038116803f7f0000000000000000000000000000000000000000000000000000000000000000149081159161040c575b8115610395575b5080156102de575b61028b576101876101ed91610672565b91906102466102196101b87f0000000000000000000000000000000000000000000000000000000000000000610672565b9490936101e760ff7f000000000000000000000000000000000000000000000000000000000000000016610626565b90610648565b6101e760ff7f000000000000000000000000000000000000000000000000000000000000000016610626565b916101e760ff7f000000000000000000000000000000000000000000000000000000000000000016610626565b9081156102ca570490811580156102b3575b61028b5760409267ffffffffffffffff91808316838316101561028457505b8351928352166020820152f35b9050610277565b7f1f86e170000000000000000000000000000000000000000000000000000000005f5260045ffd5b506dffffffffffffffffffffffffffff8211610258565b634e487b7160e01b5f52601260045260245ffd5b5060405163313ce56760e01b81526020816004816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa90811561038a575f9161035b575b5060ff807f00000000000000000000000000000000000000000000000000000000000000001691161415610177565b61037d915060203d602011610383575b61037581836105d7565b81019061060d565b8261032c565b503d61036b565b6040513d5f823e3d90fd5b600491506020906040519283809263313ce56760e01b82525afa90811561038a575f916103ed575b5060ff807f000000000000000000000000000000000000000000000000000000000000000016911614158261016f565b610406915060203d6020116103835761037581836105d7565b826103bd565b7f00000000000000000000000000000000000000000000000000000000000000007f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03163f14159150610168565b346100c2575f3660031901126100c25760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c257602060405160ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c257602060405167ffffffffffffffff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c25760206040517f00000000000000000000000000000000000000000000000000000000000000008152f35b346100c2575f3660031901126100c257602060405160ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100c2575f3660031901126100c25760209060ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b90601f8019910116810190811067ffffffffffffffff8211176105f957604052565b634e487b7160e01b5f52604160045260245ffd5b908160209103126100c2575160ff811681036100c25790565b604d811161063457600a0a90565b634e487b7160e01b5f52601160045260245ffd5b8181029291811591840414171561063457565b519069ffffffffffffffffffff821682036100c257565b9060a06001600160a01b03926004604051809581937ffeaf968c000000000000000000000000000000000000000000000000000000008352165afa91821561038a575f5f915f9461076f575b5069ffffffffffffffffffff16158015610765575b801561074e575b8015610746575b801561073d575b8015610701575b61028b579167ffffffffffffffff1690565b508242034281116106345767ffffffffffffffff7f000000000000000000000000000000000000000000000000000000000000000016106106ef565b504283116106e8565b5082156106e1565b506dffffffffffffffffffffffffffff81116106da565b505f8113156106d3565b9350505060a0823d60a0116107ca575b8161078c60a093836105d7565b810103126100c25761079d8261065b565b9169ffffffffffffffffffff6020820151936107c060806060850151940161065b565b50939193906106be565b3d915061077f56fea264697066735822122043d0dd4bffc20757d531cf89a466a6844cf90a1d5e313ccf19a469985ff4a67164736f6c634300081e0033",
+  "methodIdentifiers": {
+    "baseFeed()": "fed0f855",
+    "baseFeedCodeHash()": "cb9761e7",
+    "baseFeedDecimals()": "1705a531",
+    "maxAge()": "687043c5",
+    "price()": "a035b1fe",
+    "quoteDecimals()": "3fd1e2bd",
+    "quoteFeed()": "89a71afe",
+    "quoteFeedCodeHash()": "429951e4",
+    "quoteFeedDecimals()": "83bdeffa"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "base_",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "quote_",
+              "type": "address"
+            },
+            {
+              "internalType": "uint8",
+              "name": "quoteDecimals_",
+              "type": "uint8"
+            },
+            {
+              "internalType": "uint64",
+              "name": "maxAge_",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "InvalidFeed",
+          "type": "error"
+        },
+        {
+          "inputs": [],
+          "name": "baseFeed",
+          "outputs": [
+            {
+              "internalType": "contract IHouseFeed",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "baseFeedCodeHash",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "baseFeedDecimals",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "maxAge",
+          "outputs": [
+            {
+              "internalType": "uint64",
+              "name": "",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "price",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "result",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint64",
+              "name": "updatedAt",
+              "type": "uint64"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "quoteDecimals",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "quoteFeed",
+          "outputs": [
+            {
+              "internalType": "contract IHouseFeed",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "quoteFeedCodeHash",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "quoteFeedDecimals",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Feed identity, numeraire equivalence, heartbeat and L2 sequencer handling require chain-specific review. A proxy's unchanged codehash cannot certify its implementation.",
+        "kind": "dev",
+        "methods": {
+          "price()": {
+            "returns": {
+              "result": "Quote-token raw units per baseUnit, not USD or share count."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Normalizes two feeds with the SAME numeraire into quote raw units per whole base.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/experimental/HouseDependencies.sol": "HouseFeedRatio"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/experimental/ExperimentalLedger.sol": {
+        "keccak256": "0x769fe0a7ff0ab098d7f3a14519d6cd5732605316e3094e0708fa4c21027f83d4",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://da8b57092d8b0524a9f49343525728dced7d0b82eb4f36955340776b2f773ab6",
+          "dweb:/ipfs/QmXDVtcFaE3y5QLrNxjfBaCLz73V2hxmNGBf6FYkvp1Kad"
+        ]
+      },
+      "contracts/src/extensions/experimental/House.sol": {
+        "keccak256": "0x0d2c370b04c3a96712ae268cb6463a0170054ae6037ef89e74f912807511de01",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://717a0d8c4b9edf53370c5f8839ca0f10912120a7d921a53ad8e8b9babf6b9983",
+          "dweb:/ipfs/QmPuXek7dAA6F3XV3bC6uCLEJ1pRr3DrAU49Sm9gZzTJiM"
+        ]
+      },
+      "contracts/src/extensions/experimental/HouseDependencies.sol": {
+        "keccak256": "0xab11fe30c1f842168157b29fe8ae1461b6357171e7f0b0382846973ac578616b",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://94acc23f12f7f4a00eab125d782dc31e0105342e7fb38c198e9d65c9506bbc4e",
+          "dweb:/ipfs/QmauJFAMzq6FK63NcGyd42p7Ge8ySguo585U1Qqm15dsuZ"
+        ]
+      },
+      "contracts/src/operating/ExperimentalAdapters.sol": {
+        "keccak256": "0x60229b8e5f5359d65cc872a5a99b992c4a9f5df3c2ef2ec79f427f14de5d00a8",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://bb774e51f40ed12dce2aa87db7ff26e6a2ad00456650b6e154d12a1dcb9f988e",
+          "dweb:/ipfs/QmWLWwBweqytd9gR5rCngp9cVtQJmG6M5bCn64xm9Fvz11"
+        ]
+      },
+      "contracts/src/operating/OperatingInterfaces.sol": {
+        "keccak256": "0x6df7c29abfd8e566180eef689dfc6289a37317e46c2c6ab65b6d73198b3124ba",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0eeedcf0d4e2b2a6375af6fa908e9fec3f90d4f952c71866bfbd99e921ca5e37",
+          "dweb:/ipfs/QmVLwzBzMtfKsABHVq6VroNQfAem1kTyfDxToVJrrtgWCA"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

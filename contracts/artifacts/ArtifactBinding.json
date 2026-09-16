@@ -1,0 +1,248 @@
+{
+  "contractName": "ArtifactBinding",
+  "sourceName": "contracts/src/confluence/ArtifactBinding.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "collection_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "artifactIdOfAccount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "collection",
+      "outputs": [
+        {
+          "internalType": "contract IConfluenceIdentity",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownershipEpoch",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "33": [
+      {
+        "length": 32,
+        "start": 169
+      },
+      {
+        "length": 32,
+        "start": 372
+      },
+      {
+        "length": 32,
+        "start": 658
+      },
+      {
+        "length": 32,
+        "start": 770
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60a0346100cb57601f6104eb38819003918201601f19168301916001600160401b038311848410176100cf578084926020946040528339810103126100cb57516001600160a01b038116908181036100cb573b156100865760805260405161040790816100e4823960805181818160a9015281816101740152818161029201526103020152f35b60405162461bcd60e51b815260206004820152601360248201527f636f6c6c656374696f6e207265717569726564000000000000000000000000006044820152606490fd5b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f3560e01c9081636352211e146102b6575080637de1e53614610273578063957b389a146101255763bfb0352014610048575f80fd5b3461010e57602036600319011261010e576004356001600160a01b03811680910361010e57604051907fbfb0352000000000000000000000000000000000000000000000000000000000825260048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa801561011a575f906100e3575b602090604051908152f35b506020813d602011610112575b816100fd60209383610363565b8101031261010e57602090516100d8565b5f80fd5b3d91506100f0565b6040513d5f823e3d90fd5b3461010e57602036600319011261010e576040517f8f4e432100000000000000000000000000000000000000000000000000000000815260043560048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa90811561011a576001600160a01b03916020915f91610246575b506004604051809481937fcee9047a000000000000000000000000000000000000000000000000000000008352165afa801561011a575f90610202575b60209067ffffffffffffffff60405191168152f35b506020813d60201161023e575b8161021c60209383610363565b8101031261010e575167ffffffffffffffff8116810361010e576020906101ed565b3d915061020f565b6102669150823d841161026c575b61025e8183610363565b8101906103b2565b836101b0565b503d610254565b3461010e575f36600319011261010e5760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461010e57602036600319011261010e577f6352211e00000000000000000000000000000000000000000000000000000000815260043560048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa801561011a576020915f91610346575b506001600160a01b0360405191168152f35b61035d9150823d841161026c5761025e8183610363565b82610334565b90601f8019910116810190811067ffffffffffffffff82111761038557604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b9081602091031261010e57516001600160a01b038116810361010e579056fea2646970667358221220d0cca9f26d49a77ea0b2ddc5d7a845c99eae73f848ceb11bec7d35d690604aa864736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081636352211e146102b6575080637de1e53614610273578063957b389a146101255763bfb0352014610048575f80fd5b3461010e57602036600319011261010e576004356001600160a01b03811680910361010e57604051907fbfb0352000000000000000000000000000000000000000000000000000000000825260048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa801561011a575f906100e3575b602090604051908152f35b506020813d602011610112575b816100fd60209383610363565b8101031261010e57602090516100d8565b5f80fd5b3d91506100f0565b6040513d5f823e3d90fd5b3461010e57602036600319011261010e576040517f8f4e432100000000000000000000000000000000000000000000000000000000815260043560048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa90811561011a576001600160a01b03916020915f91610246575b506004604051809481937fcee9047a000000000000000000000000000000000000000000000000000000008352165afa801561011a575f90610202575b60209067ffffffffffffffff60405191168152f35b506020813d60201161023e575b8161021c60209383610363565b8101031261010e575167ffffffffffffffff8116810361010e576020906101ed565b3d915061020f565b6102669150823d841161026c575b61025e8183610363565b8101906103b2565b836101b0565b503d610254565b3461010e575f36600319011261010e5760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b3461010e57602036600319011261010e577f6352211e00000000000000000000000000000000000000000000000000000000815260043560048201526020816024816001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000165afa801561011a576020915f91610346575b506001600160a01b0360405191168152f35b61035d9150823d841161026c5761025e8183610363565b82610334565b90601f8019910116810190811067ffffffffffffffff82111761038557604052565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b9081602091031261010e57516001600160a01b038116810361010e579056fea2646970667358221220d0cca9f26d49a77ea0b2ddc5d7a845c99eae73f848ceb11bec7d35d690604aa864736f6c634300081e0033",
+  "methodIdentifiers": {
+    "artifactIdOfAccount(address)": "bfb03520",
+    "collection()": "7de1e536",
+    "ownerOf(uint256)": "6352211e",
+    "ownershipEpoch(uint256)": "957b389a"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "collection_",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "artifactIdOfAccount",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "collection",
+          "outputs": [
+            {
+              "internalType": "contract IConfluenceIdentity",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownerOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownershipEpoch",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "Immutable identity binding; no custody, administrative privilege, or execution permission.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Adapts the master NFT's canonical account and transfer epoch to the cartridge registry.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/ArtifactBinding.sol": "ArtifactBinding"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/ArtifactBinding.sol": {
+        "keccak256": "0x7c7e066998fef847b9529e3a58e6345d110412d1e41e631f5638280ccc394e88",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://49da5e89aa964f2a5f0821f874fba9b8f197c45a24674bc78fb64c00e69c612a",
+          "dweb:/ipfs/QmZQnSpqyM8gWvY75kqwfYu6kskHTt7PcrBXTfy8Ta7feF"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

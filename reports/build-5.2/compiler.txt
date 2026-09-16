@@ -1,0 +1,91 @@
+npm warn Unknown env config "http-proxy". This will stop working in the next major version of npm.
+
+> i-dont-fucking-believe-it@5.1.0 compile:local
+> IDFBI_EVM_TARGET=shanghai node scripts/compile.mjs
+
+Warning: Function state mutability can be restricted to view
+  --> contracts/src/kingdom/PhoenixLaunchHook.sol:42:5:
+   |
+42 |     function beforeInitialize(address sender,PoolKey calldata key,uint160 price) external onlyManager returns(bytes4){
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Function state mutability can be restricted to view
+  --> contracts/src/kingdom/PhoenixLaunchHook.sol:47:5:
+   |
+47 |     function beforeRemoveLiquidity(addr ... ternal onlyManager returns(bytes4){
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Function state mutability can be restricted to view
+  --> contracts/src/kingdom/PhoenixLaunchHook.sol:54:5:
+   |
+54 |     function beforeSwap(address,PoolKey calldata key,SwapParams calldata,bytes calldata) external onlyManager returns(bytes4,int256,uint24){
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+Compiled 110 contracts with 0.8.30+commit.73712a01.Emscripten.clang.
+┌─────────┬────────────────────────────────┬────────────────────────────────────────────────────────────────────────┬───────────────┐
+│ (index) │ contract                       │ source                                                                 │ deployedBytes │
+├─────────┼────────────────────────────────┼────────────────────────────────────────────────────────────────────────┼───────────────┤
+│ 0       │ 'IDontFuckingBelieveIt'        │ 'contracts/src/core/IDontFuckingBelieveIt.sol'                         │ 19823         │
+│ 1       │ 'SovereignAccountFactory'      │ 'contracts/src/core/SovereignAccountFactory.sol'                       │ 18279         │
+│ 2       │ 'ConfluenceRenderer'           │ 'contracts/src/confluence/ConfluenceRenderer.sol'                      │ 16775         │
+│ 3       │ 'SovereignAccount'             │ 'contracts/src/core/SovereignAccount.sol'                              │ 16369         │
+│ 4       │ 'EstateExchange'               │ 'contracts/src/kingdom/EstateExchange.sol'                             │ 14847         │
+│ 5       │ 'WorldLedger'                  │ 'contracts/src/protocol/WorldLedger.sol'                               │ 13744         │
+│ 6       │ 'GenesisLaunchpad'             │ 'contracts/src/protocol/GenesisLaunchpad.sol'                          │ 12964         │
+│ 7       │ 'V4GenesisMarket'              │ 'contracts/src/kingdom/V4GenesisMarket.sol'                            │ 11453         │
+│ 8       │ 'OnchainRenderer'              │ 'contracts/src/core/OnchainRenderer.sol'                               │ 10422         │
+│ 9       │ 'ExperimentCellFactory'        │ 'contracts/src/operating/ExperimentCell.sol'                           │ 9126          │
+│ 10      │ 'VestedExitVault'              │ 'contracts/src/protocol/VestedExitVault.sol'                           │ 8199          │
+│ 11      │ 'ExperimentCell'               │ 'contracts/src/operating/ExperimentCell.sol'                           │ 7653          │
+│ 12      │ 'OwnerFeeRouter'               │ 'contracts/src/confluence/fees/OwnerFeeRouter.sol'                     │ 7343          │
+│ 13      │ 'MemoryLedger'                 │ 'contracts/src/memory/MemoryLedger.sol'                                │ 6899          │
+│ 14      │ 'CartridgeRegistry'            │ 'contracts/src/confluence/cartridges/CartridgeRegistry.sol'            │ 6808          │
+│ 15      │ 'TimeVault'                    │ 'contracts/src/protocol/TimeVault.sol'                                 │ 6517          │
+│ 16      │ 'ConsentGiftRouter'            │ 'contracts/src/instruments/ConsentGiftRouter.sol'                      │ 6426          │
+│ 17      │ 'FixedBasket'                  │ 'contracts/src/operating/ExperimentalAdapters.sol'                     │ 6120          │
+│ 18      │ 'FixedTermCredit'              │ 'contracts/src/operating/NegotiatedMarkets.sol'                        │ 5520          │
+│ 19      │ 'NativeMarket'                 │ 'contracts/src/protocol/NativeMarket.sol'                              │ 5344          │
+│ 20      │ 'CoveredCallBook'              │ 'contracts/src/operating/NegotiatedMarkets.sol'                        │ 5076          │
+│ 21      │ 'CommissionEscrow'             │ 'contracts/src/operating/CommissionEscrow.sol'                         │ 4950          │
+│ 22      │ 'JournalSwapRouter'            │ 'contracts/src/memory/JournalSwapRouter.sol'                           │ 4392          │
+│ 23      │ 'BondedShelf'                  │ 'contracts/src/operating/BondedShelf.sol'                              │ 4284          │
+│ 24      │ 'OwnerLaunchFactory'           │ 'contracts/src/confluence/fees/OwnerLaunchFactory.sol'                 │ 4158          │
+│ 25      │ 'EditionRegistry'              │ 'contracts/src/operating/EditionRegistry.sol'                          │ 3637          │
+│ 26      │ 'InstrumentRouter'             │ 'contracts/src/operating/InstrumentRouter.sol'                         │ 3404          │
+│ 27      │ 'ReceiverPinnedStrategy'       │ 'contracts/src/operating/ExperimentalAdapters.sol'                     │ 3351          │
+│ 28      │ 'PhoenixLaunchHook'            │ 'contracts/src/kingdom/PhoenixLaunchHook.sol'                          │ 3300          │
+│ 29      │ 'MatchedRightsVault'           │ 'contracts/src/operating/ExperimentalAdapters.sol'                     │ 3176          │
+│ 30      │ 'ExitMarketMock'               │ 'contracts/src/test/ExitHarness.sol'                                   │ 2771          │
+│ 31      │ 'ThresholdAttestationVerifier' │ 'contracts/src/core/ThresholdAttestationVerifier.sol'                  │ 2586          │
+│ 32      │ 'OmnichainWitnessRegistry'     │ 'contracts/src/core/OmnichainWitnessRegistry.sol'                      │ 2242          │
+│ 33      │ 'OwnerLaunchToken'             │ 'contracts/src/confluence/fees/OwnerLaunchFactory.sol'                 │ 1698          │
+│ 34      │ 'GenesisToken'                 │ 'contracts/src/protocol/GenesisToken.sol'                              │ 1676          │
+│ 35      │ 'ProofRouter'                  │ 'contracts/src/core/ProofRouter.sol'                                   │ 1611          │
+│ 36      │ 'CommitmentIndex'              │ 'contracts/src/operating/CommitmentIndex.sol'                          │ 1531          │
+│ 37      │ 'CompositeActionVerifier'      │ 'contracts/src/core/ZkVmVerifierAdapters.sol'                          │ 1269          │
+│ 38      │ 'ExitAccountMock'              │ 'contracts/src/test/ExitHarness.sol'                                   │ 1113          │
+│ 39      │ 'RiscZeroActionVerifier'       │ 'contracts/src/core/ZkVmVerifierAdapters.sol'                          │ 1084          │
+│ 40      │ 'SP1ActionVerifier'            │ 'contracts/src/core/ZkVmVerifierAdapters.sol'                          │ 1064          │
+│ 41      │ 'ArtifactBinding'              │ 'contracts/src/confluence/ArtifactBinding.sol'                         │ 1031          │
+│ 42      │ 'OnchainApp'                   │ 'contracts/src/protocol/OnchainApp.sol'                                │ 1027          │
+│ 43      │ 'OperatingAccountMock'         │ 'contracts/src/test/OperatingHarness.sol'                              │ 1016          │
+│ 44      │ 'MintSanctuaryHarness'         │ 'contracts/src/test/ExitHarness.sol'                                   │ 968           │
+│ 45      │ 'OperatingTokenMock'           │ 'contracts/src/test/OperatingHarness.sol'                              │ 950           │
+│ 46      │ 'ReentrantProbe'               │ 'contracts/src/mocks/ReentrantProbe.sol'                               │ 862           │
+│ 47      │ 'EncodingHarness'              │ 'contracts/src/test/EncodingHarness.sol'                               │ 782           │
+│ 48      │ 'MockSP1Gateway'               │ 'contracts/src/mocks/MockZkGateways.sol'                               │ 567           │
+│ 49      │ 'MockTarget'                   │ 'contracts/src/mocks/MockTarget.sol'                                   │ 561           │
+│ 50      │ 'ExperimentGate'               │ 'contracts/src/operating/ExperimentGate.sol'                           │ 549           │
+│ 51      │ 'MockRiscZeroVerifier'         │ 'contracts/src/mocks/MockZkGateways.sol'                               │ 496           │
+│ 52      │ 'HookDeployer'                 │ 'contracts/src/kingdom/HookDeployer.sol'                               │ 464           │
+│ 53      │ 'ExitNativeLedgerMock'         │ 'contracts/src/test/ExitHarness.sol'                                   │ 380           │
+│ 54      │ 'ExitCollectionMock'           │ 'contracts/src/test/ExitHarness.sol'                                   │ 267           │
+│ 55      │ 'ConfluenceLoader'             │ 'contracts/src/confluence/ConfluenceLoader.sol'                        │ 57            │
+│ 56      │ 'Base64'                       │ 'contracts/src/confluence/vendor/solady/utils/Base64.sol'              │ 57            │
+│ 57      │ 'SafeTransferLib'              │ 'contracts/src/confluence/vendor/solady/utils/SafeTransferLib.sol'     │ 57            │
+│ 58      │ 'SignatureCheckerLib'          │ 'contracts/src/confluence/vendor/solady/utils/SignatureCheckerLib.sol' │ 57            │
+│ 59      │ 'V4Boundary'                   │ 'contracts/src/kingdom/V4Boundary.sol'                                 │ 57            │
+│ 60      │ 'Base64'                       │ 'contracts/src/lib/Base64.sol'                                         │ 57            │
+│ 61      │ 'ECDSA'                        │ 'contracts/src/lib/Crypto.sol'                                         │ 57            │
+│ 62      │ 'SignatureChecker'             │ 'contracts/src/lib/Crypto.sol'                                         │ 57            │
+│ 63      │ 'Strings'                      │ 'contracts/src/lib/Strings.sol'                                        │ 57            │
+│ 64      │ 'AppChunk'                     │ 'contracts/src/protocol/OnchainApp.sol'                                │ 57            │
+│ 65      │ 'ProtocolAssets'               │ 'contracts/src/protocol/ProtocolPrimitives.sol'                        │ 57            │
+└─────────┴────────────────────────────────┴────────────────────────────────────────────────────────────────────────┴───────────────┘

@@ -1,0 +1,19 @@
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/3b7470161c8a/nft-source/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ arbitrary generated source is content-pinned, separately reviewed, and has no inherited transaction authority (52.39692ms)
+✔ generated commission goes through real escrow payment and exact frozen onchain cartridge acquisition; rejection and expiry refund (36002.127662ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 37081.768802

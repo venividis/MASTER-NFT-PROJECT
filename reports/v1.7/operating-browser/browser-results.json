@@ -1,0 +1,276 @@
+{
+  "version": "1.7.0",
+  "browser": "144.0.7559.96",
+  "htmlSha256": "1a08e36afe93c0233ed58220b0f2bc62245c22fb765989df013a5aced0b1025c",
+  "passed": 66,
+  "failed": 0,
+  "results": [
+    {
+      "name": "Operating layer closes by default",
+      "passed": true
+    },
+    {
+      "name": "One instrument panel includes all eleven primary tabs",
+      "passed": true
+    },
+    {
+      "name": "Publishing is reviewed without moving funds",
+      "passed": true
+    },
+    {
+      "name": "Published instrument retains title as literal text",
+      "passed": true
+    },
+    {
+      "name": "Publication creates no grant",
+      "passed": true
+    },
+    {
+      "name": "Adoption has a real seven-day model delay",
+      "passed": true
+    },
+    {
+      "name": "Grant becomes available after the review period",
+      "passed": true
+    },
+    {
+      "name": "Large grant values have parseable ungrouped input",
+      "passed": true
+    },
+    {
+      "name": "Caller and budget stored independently from code",
+      "passed": true
+    },
+    {
+      "name": "Guest can trigger only the explicitly authorized procedure",
+      "passed": true
+    },
+    {
+      "name": "Delegated trigger retains actual speaker and custodian",
+      "passed": true
+    },
+    {
+      "name": "Exhausted grant cannot execute again",
+      "passed": true
+    },
+    {
+      "name": "Revocation is immediate",
+      "passed": true
+    },
+    {
+      "name": "Commission funding moves out of the root free balance",
+      "passed": true
+    },
+    {
+      "name": "Terms preserve the original personal reviewer",
+      "passed": true
+    },
+    {
+      "name": "Worker explicitly accepts",
+      "passed": true
+    },
+    {
+      "name": "Delivered edition is authored by Guest",
+      "passed": true
+    },
+    {
+      "name": "Work references its exact edition",
+      "passed": true
+    },
+    {
+      "name": "Payment goes to worker personal balance",
+      "passed": true
+    },
+    {
+      "name": "World shows publication and funded work",
+      "passed": true
+    },
+    {
+      "name": "Paid work trace contains funded, accepted, delivered and paid records",
+      "passed": true
+    },
+    {
+      "name": "Conversation references that exact paid-work receipt",
+      "passed": true
+    },
+    {
+      "name": "All five laboratory tabs are visible without horizontal scrolling",
+      "passed": true
+    },
+    {
+      "name": "No experiment exists before capital allocation",
+      "passed": true
+    },
+    {
+      "name": "Laboratory balances are separate",
+      "passed": true
+    },
+    {
+      "name": "Strategy begins disabled",
+      "passed": true
+    },
+    {
+      "name": "Strategy losses affect only explicitly allocated cell principal",
+      "passed": true
+    },
+    {
+      "name": "Strategy redemption uses impaired share value",
+      "passed": true
+    },
+    {
+      "name": "Fixed basket issuance and redemption update real local reserves",
+      "passed": true
+    },
+    {
+      "name": "Matched recombination allocates the loss proportionally",
+      "passed": true
+    },
+    {
+      "name": "Three laboratory experiments leave root balances unchanged",
+      "passed": true
+    },
+    {
+      "name": "Credit request escrows collateral rather than root NFT",
+      "passed": true
+    },
+    {
+      "name": "Counterparty funding activates exact negotiated loan",
+      "passed": true
+    },
+    {
+      "name": "Repayment returns collateral and pays the lending cell",
+      "passed": true
+    },
+    {
+      "name": "Covered call holds real local cover before sale",
+      "passed": true
+    },
+    {
+      "name": "Exercise swaps fixed strike for the covered underlying",
+      "passed": true
+    },
+    {
+      "name": "No experiment reaches the root through a hidden debit",
+      "passed": true
+    },
+    {
+      "name": "Venue holds its collectible separately",
+      "passed": true
+    },
+    {
+      "name": "Shelf sale moves item and reserves proceeds",
+      "passed": true
+    },
+    {
+      "name": "Bond completion returns proceeds to the artifact account",
+      "passed": true
+    },
+    {
+      "name": "Gift and laboratory commitments no longer prevent a declared listing",
+      "passed": true
+    },
+    {
+      "name": "Market unfolds complete operating categories",
+      "passed": true
+    },
+    {
+      "name": "Changed gift terms invalidate the escrow manifest",
+      "passed": true
+    },
+    {
+      "name": "Refreshed acquisition keeps obligations and changes custody",
+      "passed": true
+    },
+    {
+      "name": "Installed content survives its sale",
+      "passed": true
+    },
+    {
+      "name": "Previous grants do not acquire buyer authority",
+      "passed": true
+    },
+    {
+      "name": "New laboratory entries require buyer opt-in",
+      "passed": true
+    },
+    {
+      "name": "Existing strategy can exit without enabling new risk",
+      "passed": true
+    },
+    {
+      "name": "Old worker and reviewer identities remain unchanged",
+      "passed": true
+    },
+    {
+      "name": "Application entry records only declared bytes/hash",
+      "passed": true
+    },
+    {
+      "name": "Ledger inspection does not modify balances",
+      "passed": true
+    },
+    {
+      "name": "Export includes the complete operating and laboratory state",
+      "passed": true
+    },
+    {
+      "name": "Exact operating archive restores in actual browser",
+      "passed": true
+    },
+    {
+      "name": "Original optical audit remains untouched through entire integration",
+      "passed": true
+    },
+    {
+      "name": "Mobile library panel does not overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile library does not widen the document",
+      "passed": true
+    },
+    {
+      "name": "Mobile work panel does not overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile work does not widen the document",
+      "passed": true
+    },
+    {
+      "name": "Mobile ledger panel does not overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile ledger does not widen the document",
+      "passed": true
+    },
+    {
+      "name": "Mobile lab panel does not overflow",
+      "passed": true
+    },
+    {
+      "name": "Mobile lab does not widen the document",
+      "passed": true
+    },
+    {
+      "name": "Mobile laboratory exposes all five wrapped tabs",
+      "passed": true
+    },
+    {
+      "name": "No unsolicited wallet request",
+      "passed": true
+    },
+    {
+      "name": "No external network request in tested new flows",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser exceptions in tested new flows",
+      "passed": true
+    }
+  ],
+  "errors": [],
+  "automaticNetworkRequests": [],
+  "scope": "Actual release HTML, UI-driven local mutations, mock Storage adapter; no EVM/real wallet/blockchain evidence."
+}

@@ -1,0 +1,249 @@
+{
+  "schema": "anima.release-verification/1",
+  "version": "6.2.0",
+  "date": "2026-09-13",
+  "baselineCommit": "4247350480ffcc1a49e42b8dbb19747b1f6fcb2a",
+  "scope": "Focused implementation and integration checks; not a full security audit or public deployment certification.",
+  "checks": [
+    {
+      "name": "owner-safety",
+      "command": "node --test test/security/owner-safety.test.mjs",
+      "passed": 3,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/owner-safety.txt",
+      "sha256": "066f06bba93ec124770e9e265c1e7aec2a5de160d65d7f73f3c3bb62b88f2591"
+    },
+    {
+      "name": "delegated-agents",
+      "command": "node --test test/extensions/agents.contracts.test.mjs",
+      "passed": 5,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/delegated-agents.txt",
+      "sha256": "31b2b7bebcc8740ec142ec429e59507d6d5fa6a612ea171602d961d333400c6a"
+    },
+    {
+      "name": "core-compatibility",
+      "command": "node --test --test-concurrency=2 test/contracts.integration.test.mjs test/extensions/access.test.mjs test/operating/contracts.integration.test.mjs test/extensions/markets.test.mjs",
+      "passed": 18,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/core-compatibility.txt",
+      "sha256": "dedf9132af6c3a73d4791d1b322df81d797084f2dd6bb818326721d670d84465"
+    },
+    {
+      "name": "public-and-shielded-v4",
+      "command": "node --test --test-concurrency=2 test/launchpad/chain.integration.test.mjs test/launchpad/private-hooks.integration.test.mjs test/launchpad/private-range.integration.test.mjs",
+      "passed": 11,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/public-and-shielded-v4.txt",
+      "sha256": "c0e75c637b2d32c9307afc9eee657ff2f31f0759a64e3b68fd160107f34f41d9"
+    },
+    {
+      "name": "immutable-directory-and-mint",
+      "command": "node --test test/confluence/functional-directory.integration.test.mjs",
+      "passed": 2,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/immutable-directory-and-mint.txt",
+      "sha256": "183b6da159ab38374db55847d7f8550535428b0df5047e0942c3cc718d03ecdb"
+    },
+    {
+      "name": "shared-review-and-recovery",
+      "command": "node --test test/launchpad/desk.test.mjs test/launchpad/participant-route.test.mjs test/security/asset-format.test.mjs",
+      "passed": 21,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/shared-review-and-recovery.txt",
+      "sha256": "9ba58bb50c02e1c5846df349ee604879901af1f491ffabbcf49cc3087e0853b7"
+    },
+    {
+      "name": "world-runtime-module-move",
+      "command": "node --test test/extensions/worlds-instruments.test.mjs",
+      "passed": 2,
+      "failed": 0,
+      "evidence": "reports/implementation-6.2/world-runtime-module-move.txt",
+      "sha256": "56f1e1dafd2c73b87f1754c3fba2f7b5b96c97eb5499cb270948b8e93f081214"
+    },
+    {
+      "name": "runtime-build",
+      "command": "node scripts/build-confluence.mjs",
+      "status": "passed",
+      "evidence": "reports/implementation-6.2/runtime-build.txt",
+      "sha256": "4cd50af0ab6a86e9076595e5fa9d7639938ac6ad71bcb703063ee84bd9cbada2"
+    },
+    {
+      "name": "runtime-archive",
+      "command": "node scripts/archive-confluence.mjs",
+      "status": "passed",
+      "evidence": "reports/implementation-6.2/runtime-archive.txt",
+      "sha256": "7763f83f700c71cd862264bb2ab018326e2ef984a88e91a3ca94e904319f8e2f"
+    },
+    {
+      "name": "runtime-verification",
+      "command": "node scripts/verify-confluence.mjs",
+      "status": "passed",
+      "evidence": "reports/implementation-6.2/runtime-verification.txt",
+      "sha256": "6281f3011ea97258c687dcb9edae8112d659a3c8618a7fccc19f5ec98e09c833"
+    },
+    {
+      "name": "full-local-mint",
+      "command": "node scripts/deploy-confluence-local.mjs",
+      "status": "passed",
+      "evidence": "reports/implementation-6.2/full-local-mint.txt",
+      "sha256": "0e196f8c98f950ae7a88d9e9f2ef4c5e86b9e014c33337846b0dd00553b60b92"
+    },
+    {
+      "name": "static-heuristics",
+      "command": "node scripts/static-audit.mjs",
+      "status": "passed",
+      "evidence": "reports/implementation-6.2/static-heuristics.txt",
+      "sha256": "d66f08808a3d27c5d871b1d241b05de10925db17987d97815557b3eeb6b013ae"
+    },
+    {
+      "name": "authored-syntax",
+      "command": "node scripts/check-source.mjs",
+      "status": "passed",
+      "evidence": "reports/implementation-6.2/authored-syntax.txt",
+      "sha256": "bc1a78aeae1aa40c76c7dcd147ebd30cf6c33c61fd3bed663b17987fdcb6aa0a"
+    }
+  ],
+  "additionalEvidence": [
+    "reports/launch-lifecycle/final-local-verification.json",
+    "integrations/console/protocol/v4-hook/artifacts/strategy-test-results.json",
+    "integrations/official-launch/artifacts/lifecycle-evidence.json",
+    "integrations/official-launch/artifacts/scenario-evidence.json",
+    "reports/crosschain/local-two-chain.json"
+  ],
+  "externalGates": [
+    "Public release deployments, configuration, funds and receipts",
+    "Funded public RAILGUN proof/broadcast verification",
+    "Public LayerZero lane and DVN delivery",
+    "Running funded keepers and authenticated world/scenario hosts",
+    "Physical phone gesture validation"
+  ],
+  "artwork": "Fixed field/camera source unchanged from 6.1 baseline.",
+  "runtime": {
+    "archiveVersion": 3,
+    "sha256": "1f21666f51988f48492c9350b89a085459b0164bb02d3a79a76bef10bc1d998c",
+    "expandedBytes": 6419070,
+    "archiveBytes": 1690413,
+    "chunks": 84,
+    "functionalModules": [
+      {
+        "name": "core-shell",
+        "version": 1,
+        "sha256": "5d4991b16ccea8e700de593f1d53641838464b5528fc25afeae2cb445c182259"
+      },
+      {
+        "name": "begins",
+        "version": 1,
+        "sha256": "df7ceda1b358c6e5ef1590a2813ea7cae3ac8a9d714603ca91421458a6d67fb6"
+      },
+      {
+        "name": "burners",
+        "version": 1,
+        "sha256": "6b309a6bb4b4932a740d81922fb971acf99d3db2fa9729946c36dc5d5af6116e"
+      },
+      {
+        "name": "commons",
+        "version": 1,
+        "sha256": "f27b0b72b2b19b5ea14b0f7634440570407e11e1bc6f6d5a22587adc9dab9700"
+      },
+      {
+        "name": "confluence",
+        "version": 1,
+        "sha256": "494293c7f02f9dd77a98670b113e62291f697e6ed8f41797f085f9198a537427"
+      },
+      {
+        "name": "crosschain",
+        "version": 1,
+        "sha256": "3a1b3d2a3f806901e22bcaeb0ecb9087f0c21e3916762cf6415c003a08599e06"
+      },
+      {
+        "name": "exit",
+        "version": 1,
+        "sha256": "a4681fda2ebc171cb7795b66c494e26b367d2012588e3527095708574cfb76f5"
+      },
+      {
+        "name": "extensions",
+        "version": 1,
+        "sha256": "b0f806896e3f1abee23f4b1d304d10ecfa26a40a9931946c31882a259b0b580f"
+      },
+      {
+        "name": "foundation",
+        "version": 1,
+        "sha256": "8f45432bc1949c92a4feff79bbf5cfe41df52a5e9e5ea81e6c6ff5e37a1dd198"
+      },
+      {
+        "name": "genesis",
+        "version": 1,
+        "sha256": "40f3174aae467c5540b9d1fa44affed7e1c99b2f3ace77210044f090be9df51b"
+      },
+      {
+        "name": "governance",
+        "version": 1,
+        "sha256": "d02b1c22ad69487599d44a1a2079bd413c62db54261e7415ce3ee36cd7493977"
+      },
+      {
+        "name": "launchpad",
+        "version": 1,
+        "sha256": "cb2658974d4e1224630f5368c88167d22d1633e285ebf51611ae23d0675f4763"
+      },
+      {
+        "name": "privacy",
+        "version": 1,
+        "sha256": "9f25e37f1eb9c0d185fb8f3534f9e8ee3ecf6ea9e82d289de94077f06b7111d9"
+      },
+      {
+        "name": "rehearsal",
+        "version": 1,
+        "sha256": "594b4276fb10d8bf4ad97fa081c621bf22eb3f86ada4aa0e2029df795e8dc46e"
+      },
+      {
+        "name": "spirit",
+        "version": 1,
+        "sha256": "f77bb66a94e2b964be75ecd8e43ae8456780ae2f2b2b0f451937e1e9a8c9b119"
+      },
+      {
+        "name": "v4",
+        "version": 1,
+        "sha256": "906cc5f3c1806622bcacee2ff86c0bb5e004a2c884c972503b001c1fc6b2b770"
+      },
+      {
+        "name": "vendor",
+        "version": 1,
+        "sha256": "3978d8bf49632262edf9be24767a3f042cabfb38ef6b3acb47d3eb3ff4dbba5d"
+      },
+      {
+        "name": "workshop",
+        "version": 1,
+        "sha256": "6ac37c96f3d0b40d63c9586a0c67a37959034e9f53b5796c8bdd2eb64cfcfdc7"
+      },
+      {
+        "name": "worlds",
+        "version": 1,
+        "sha256": "f4107cd77538a823d10dddde0c8c13bf636266075ace455a4b10a1e1f7c625dd"
+      }
+    ]
+  },
+  "mintEvidence": "reports/implementation-6.2/local-deployment.json",
+  "hostedChecks": {
+    "schema": "anima.hosted-checks/1",
+    "version": "6.2.0",
+    "assets": 25,
+    "modules": 118,
+    "canonicalFiles": 135,
+    "duplicateIds": 0,
+    "syntax": "passed",
+    "moduleClosure": "passed",
+    "canonicalParity": "passed",
+    "walletGates": "removed",
+    "scope": "Static and source checks; no physical phone or browser interaction claim"
+  },
+  "hostedSourceCommit": "0f4160458b4a5c1ff072727c7ea7afcd5d093d5c",
+  "sourceOrganization": "World commission/instrument browser helpers now live in web/worlds; compatibility exports preserve existing standalone imports. Real escrow and acquisition tests passed.",
+  "hostedDeployment": {
+    "status": "succeeded",
+    "audience": "owner-private; unchanged",
+    "url": "https://anima-nft-simulator.edwincardenas.chatgpt.site",
+    "version": 11,
+    "sourceCommit": "0f4160458b4a5c1ff072727c7ea7afcd5d093d5c"
+  }
+}

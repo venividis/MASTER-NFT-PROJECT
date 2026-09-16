@@ -1,0 +1,273 @@
+{
+  "contractName": "CompositeActionVerifier",
+  "sourceName": "contracts/src/core/ZkVmVerifierAdapters.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address[]",
+          "name": "verifiers_",
+          "type": "address[]"
+        },
+        {
+          "internalType": "uint8",
+          "name": "threshold_",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "threshold",
+      "outputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "verifierCodehashes",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "verifiers",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "statement",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "proof",
+          "type": "bytes"
+        }
+      ],
+      "name": "verify",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "14454": [
+      {
+        "length": 32,
+        "start": 231
+      },
+      {
+        "length": 32,
+        "start": 630
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60a0604052346102ec5761083f8038038061001981610310565b9283398101906040818303126102ec5780516001600160401b0381116102ec57810182601f820112156102ec578051926001600160401b0384116101b9578360051b9160208061006a818601610310565b8097815201938201019182116102ec57602001915b8183106102f05784602085015160ff81168082036102ec57825180151591826102e0575b826102d6575b826102cb575b505015610292576080525f905b8051821015610274576001600160a01b036100d78383610335565b51163b1561023c575f5b8281106101cd5750906001600160a01b036100fc8284610335565b51165f54680100000000000000008110156101b957600181015f555f548110156101a5575f80527f290decd9548b62a8d60345a988386fc84ba6bc95484008f6362f93160ef3e5630180546001600160a01b03191690911790556001600160a01b036101688284610335565b51163f9060015491680100000000000000008310156101b957600183016001556001548310156101a557600192835f5260205f20015501906100bc565b634e487b7160e01b5f52603260045260245ffd5b634e487b7160e01b5f52604160045260245ffd5b6001600160a01b036101df8284610335565b51166001600160a01b036101f38585610335565b511614610202576001016100e1565b60405162461bcd60e51b8152602060048201526012602482015271222aa82624a1a0aa22afab22a924a324a2a960711b6044820152606490fd5b60405162461bcd60e51b815260206004820152601060248201526f24a72b20a624a22fab22a924a324a2a960811b6044820152606490fd5b6040516104f5908161034a823960805181818160e701526102760152f35b60405162461bcd60e51b8152602060048201526011602482015270494e56414c49445f434f4d504f5349544560781b6044820152606490fd5b1115905083806100af565b80151592506100a9565b600882111592506100a3565b5f80fd5b82516001600160a01b03811681036102ec5781526020928301920161007f565b6040519190601f01601f191682016001600160401b038111838210176101b957604052565b80518210156101a55760209160051b01019056fe60806040526004361015610011575f80fd5b5f3560e01c8063258ae5821461010b57806342cde4e8146100ce5780636b017c71146100965763ac1eff6814610045575f80fd5b34610092576020366003190112610092576004355f548110156100925773ffffffffffffffffffffffffffffffffffffffff6100826020926101a2565b90549060031b1c16604051908152f35b5f80fd5b3461009257602036600319011261009257600435600154811015610092576100bf602091610176565b90549060031b1c604051908152f35b34610092575f36600319011261009257602060405160ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100925760403660031901126100925760243567ffffffffffffffff811161009257366023820112156100925780600401359067ffffffffffffffff821161009257366024838301011161009257602091602461016c92016004356101ee565b6040519015158152f35b60015481101561018e5760015f5260205f2001905f90565b634e487b7160e01b5f52603260045260245ffd5b5f5481101561018e575f805260205f2001905f90565b90601f8019910116810190811067ffffffffffffffff8211176101da57604052565b634e487b7160e01b5f52604160045260245ffd5b918101906020818303126100925780359067ffffffffffffffff821161009257019080601f830112156100925781359167ffffffffffffffff83116101da578260051b6040519361024260208301866101b8565b8452602080850191830101918383116100925760208101915b83831061044857505050505080515f548091036104415790917f000000000000000000000000000000000000000000000000000000000000000060ff16915f91825b8281106102ae575050501015919050565b73ffffffffffffffffffffffffffffffffffffffff6102cc826101a2565b90549060031b1c16803f6102df83610176565b90549060031b1c0361043657865182101561018e5760208260051b880101519060405180927f258ae582000000000000000000000000000000000000000000000000000000008252856004830152604060248301528051908160448401525f5b82811061041e5750509181606481855f8360209884010152601f801991011681010301915afa5f91816103e2575b506103c0575b508083038381116103ac57805f198101116103ac5784015f19018085116103ac5785116103a25760010161029d565b5050505050505f90565b634e487b7160e01b5f52601160045260245ffd5b6103cb575b5f610373565b92600101928484106103c557505050505050600190565b9091506020813d8211610416575b816103fd602093836101b8565b810103126100925751801515810361009257905f61036d565b3d91506103f0565b6020828201810151606488840101528694500161033f565b505050505050505f90565b5050505f90565b823567ffffffffffffffff811161009257820185603f820112156100925760208101359167ffffffffffffffff83116101da57604051610492601f8501601f1916602001826101b8565b8381526040838501018810610092575f60208581966040839701838601378301015281520192019161025b56fea2646970667358221220c527cba3d68a1a0baf08b674d4c529794405dd165cd6f200903852ced61843ef64736f6c634300081e0033",
+  "deployedBytecode": "0x60806040526004361015610011575f80fd5b5f3560e01c8063258ae5821461010b57806342cde4e8146100ce5780636b017c71146100965763ac1eff6814610045575f80fd5b34610092576020366003190112610092576004355f548110156100925773ffffffffffffffffffffffffffffffffffffffff6100826020926101a2565b90549060031b1c16604051908152f35b5f80fd5b3461009257602036600319011261009257600435600154811015610092576100bf602091610176565b90549060031b1c604051908152f35b34610092575f36600319011261009257602060405160ff7f0000000000000000000000000000000000000000000000000000000000000000168152f35b346100925760403660031901126100925760243567ffffffffffffffff811161009257366023820112156100925780600401359067ffffffffffffffff821161009257366024838301011161009257602091602461016c92016004356101ee565b6040519015158152f35b60015481101561018e5760015f5260205f2001905f90565b634e487b7160e01b5f52603260045260245ffd5b5f5481101561018e575f805260205f2001905f90565b90601f8019910116810190811067ffffffffffffffff8211176101da57604052565b634e487b7160e01b5f52604160045260245ffd5b918101906020818303126100925780359067ffffffffffffffff821161009257019080601f830112156100925781359167ffffffffffffffff83116101da578260051b6040519361024260208301866101b8565b8452602080850191830101918383116100925760208101915b83831061044857505050505080515f548091036104415790917f000000000000000000000000000000000000000000000000000000000000000060ff16915f91825b8281106102ae575050501015919050565b73ffffffffffffffffffffffffffffffffffffffff6102cc826101a2565b90549060031b1c16803f6102df83610176565b90549060031b1c0361043657865182101561018e5760208260051b880101519060405180927f258ae582000000000000000000000000000000000000000000000000000000008252856004830152604060248301528051908160448401525f5b82811061041e5750509181606481855f8360209884010152601f801991011681010301915afa5f91816103e2575b506103c0575b508083038381116103ac57805f198101116103ac5784015f19018085116103ac5785116103a25760010161029d565b5050505050505f90565b634e487b7160e01b5f52601160045260245ffd5b6103cb575b5f610373565b92600101928484106103c557505050505050600190565b9091506020813d8211610416575b816103fd602093836101b8565b810103126100925751801515810361009257905f61036d565b3d91506103f0565b6020828201810151606488840101528694500161033f565b505050505050505f90565b5050505f90565b823567ffffffffffffffff811161009257820185603f820112156100925760208101359167ffffffffffffffff83116101da57604051610492601f8501601f1916602001826101b8565b8381526040838501018810610092575f60208581966040839701838601378301015281520192019161025b56fea2646970667358221220c527cba3d68a1a0baf08b674d4c529794405dd165cd6f200903852ced61843ef64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "threshold()": "42cde4e8",
+    "verifierCodehashes(uint256)": "6b017c71",
+    "verifiers(uint256)": "ac1eff68",
+    "verify(bytes32,bytes)": "258ae582"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address[]",
+              "name": "verifiers_",
+              "type": "address[]"
+            },
+            {
+              "internalType": "uint8",
+              "name": "threshold_",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "threshold",
+          "outputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "verifierCodehashes",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "verifiers",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "bytes32",
+              "name": "statement",
+              "type": "bytes32"
+            },
+            {
+              "internalType": "bytes",
+              "name": "proof",
+              "type": "bytes"
+            }
+          ],
+          "name": "verify",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {
+          "verify(bytes32,bytes)": {
+            "params": {
+              "proof": "ABI encoding of bytes[] where each entry belongs to the verifier at the same index."
+            }
+          }
+        },
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Immutable M-of-N composition. Use 2-of-2 for TEE AND zkVM hybrid evidence.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/core/ZkVmVerifierAdapters.sol": "CompositeActionVerifier"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/core/ZkVmVerifierAdapters.sol": {
+        "keccak256": "0x757a394c3cf8a098589c585258cd71fe5fed1ed98b3ced0ead899899710e8c95",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://bf7c093c36a0a91840cc52a8db114e3b7596491ec7f7d343203197420b908376",
+          "dweb:/ipfs/QmaqmSsvpLgkrCGWyF8vCUkg5sptc2YmKMfuptyhCBrhh8"
+        ]
+      },
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

@@ -1,0 +1,14 @@
+node_modules/
+out/
+cache/
+broadcast/
+dist/
+.env
+
+# Foundry installs forge-std at the repo root. Anchored, or it would also
+# swallow src/lib/ — where SSTORE2, Base64 and Trig live.
+/lib/
+
+# a throwaway testnet deployer key, generated in-container, never committed
+.testnet-key
+.testnet-crew

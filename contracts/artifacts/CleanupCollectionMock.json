@@ -1,0 +1,176 @@
+{
+  "contractName": "CleanupCollectionMock",
+  "sourceName": "contracts/src/test/CoreCleanupHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "accountOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "setAccount",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60808060405234601557610289908161001a8239f35b5f80fdfe6080806040526004361015610012575f80fd5b5f3560e01c9081636352211e146100d1575080636550f1d21461007357638f4e43211461003d575f80fd5b3461006f57602036600319011261006f576004355f525f60205260206001600160a01b0360405f205416604051908152f35b5f80fd5b3461006f57604036600319011261006f576024356001600160a01b03811680910361006f576004355f525f60205260405f20907fffffffffffffffffffffffff00000000000000000000000000000000000000008254161790555f80f35b3461006f57602036600319011261006f5760043590815f525f6020526001600160a01b0360405f205416156101f757505f525f602052600460206001600160a01b0360405f205416604051928380927fb387ef920000000000000000000000000000000000000000000000000000000082525afa80156101ec575f90610166575b6020906001600160a01b0360405191168152f35b5060203d6020116101e5575b601f8101601f1916820167ffffffffffffffff8111838210176101b85760209183916040528101031261006f57516001600160a01b038116810361006f57602090610152565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b503d610172565b6040513d5f823e3d90fd5b807f08c379a0000000000000000000000000000000000000000000000000000000006064925260206004820152600a60248201527f554e4b4e4f574e5f4944000000000000000000000000000000000000000000006044820152fdfea2646970667358221220f1572f7c1309e223b93187e2368ffbb76fe2b5ce8524cfb3adea106fe8e25c2364736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c9081636352211e146100d1575080636550f1d21461007357638f4e43211461003d575f80fd5b3461006f57602036600319011261006f576004355f525f60205260206001600160a01b0360405f205416604051908152f35b5f80fd5b3461006f57604036600319011261006f576024356001600160a01b03811680910361006f576004355f525f60205260405f20907fffffffffffffffffffffffff00000000000000000000000000000000000000008254161790555f80f35b3461006f57602036600319011261006f5760043590815f525f6020526001600160a01b0360405f205416156101f757505f525f602052600460206001600160a01b0360405f205416604051928380927fb387ef920000000000000000000000000000000000000000000000000000000082525afa80156101ec575f90610166575b6020906001600160a01b0360405191168152f35b5060203d6020116101e5575b601f8101601f1916820167ffffffffffffffff8111838210176101b85760209183916040528101031261006f57516001600160a01b038116810361006f57602090610152565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52604160045260245ffd5b503d610172565b6040513d5f823e3d90fd5b807f08c379a0000000000000000000000000000000000000000000000000000000006064925260206004820152600a60248201527f554e4b4e4f574e5f4944000000000000000000000000000000000000000000006044820152fdfea2646970667358221220f1572f7c1309e223b93187e2368ffbb76fe2b5ce8524cfb3adea106fe8e25c2364736f6c634300081e0033",
+  "methodIdentifiers": {
+    "accountOf(uint256)": "8f4e4321",
+    "ownerOf(uint256)": "6352211e",
+    "setAccount(uint256,address)": "6550f1d2"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "accountOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownerOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "setAccount",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/CoreCleanupHarness.sol": "CleanupCollectionMock"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/test/CoreCleanupHarness.sol": {
+        "keccak256": "0xa48336facc99eb5bed1eacbfec5fa89f470cdfebc34354eeabca4a40c8027193",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://8e261898c7dd613ced4cd8b3b74ee4c0a48572789566f7f9c725e397fbe2d9e8",
+          "dweb:/ipfs/QmQF22zWLtwg8CFAPKzZjmpuWqRgr86ffDkoPJuN3iUiRk"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

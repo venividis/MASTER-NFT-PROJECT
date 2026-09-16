@@ -1,0 +1,404 @@
+{
+  "contractName": "MintSanctuaryHarness",
+  "sourceName": "contracts/src/test/ExitHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "Transfer",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "getApproved",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "mint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "ownerOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "quantity",
+          "type": "uint256"
+        }
+      ],
+      "name": "publicMint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "recipient",
+          "type": "address"
+        }
+      ],
+      "name": "safeMint",
+      "outputs": [],
+      "stateMutability": "payable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "from",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "tokenId",
+          "type": "uint256"
+        }
+      ],
+      "name": "safeTransferFrom",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "total",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x608080604052346015576103c8908161001a8239f35b5f80fdfe6080806040526004361015610012575f80fd5b5f3560e01c908163081812fc146101de575080631249c58b146101ca5780632db115441461007f5780632ddbd13a146101ae57806340c10f191461018e57806340d097c31461017057806342842e0e146100bb5780636352211e146100845763a0712d681461007f575f80fd5b61020d565b346100b75760203660031901126100b7576004355f52600160205260206001600160a01b0360405f205416604051908152f35b5f80fd5b346100b75760603660031901126100b7576100d4610225565b6024356001600160a01b0381168091036100b7576001600160a01b03604435921680331480610152575b156100b757825f52600160205260405f208273ffffffffffffffffffffffffffffffffffffffff198254161790557fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef5f80a4005b50825f526001602052806001600160a01b0360405f205416146100fe565b60203660031901126100b75761018c610187610225565b61023b565b005b60403660031901126100b75761018c6101a5610225565b602435906102f0565b346100b7575f3660031901126100b75760205f54604051908152f35b5f3660031901126100b75761018c3361023b565b346100b75760203660031901126100b7576020906004355f52600282526001600160a01b0360405f2054168152f35b60203660031901126100b75761018c600435336102f0565b600435906001600160a01b03821682036100b757565b5f5b60018110610249575050565b5f54905f1982146102c3576001809201805f555f528160205260405f206001600160a01b03841673ffffffffffffffffffffffffffffffffffffffff198254161790555f546001600160a01b0384165f7fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef8180a40161023d565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b9080151580610387575b156100b7575f5b81811061030d57505050565b5f54905f1982146102c3576001809201805f555f528160205260405f206001600160a01b03851673ffffffffffffffffffffffffffffffffffffffff198254161790555f546001600160a01b0385165f7fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef8180a401610301565b5060648111156102fa56fea2646970667358221220fc1491b6b3e1b7124c23e0ba8ea0f231c0addc3853b6b59919f3e0b48465310c64736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c908163081812fc146101de575080631249c58b146101ca5780632db115441461007f5780632ddbd13a146101ae57806340c10f191461018e57806340d097c31461017057806342842e0e146100bb5780636352211e146100845763a0712d681461007f575f80fd5b61020d565b346100b75760203660031901126100b7576004355f52600160205260206001600160a01b0360405f205416604051908152f35b5f80fd5b346100b75760603660031901126100b7576100d4610225565b6024356001600160a01b0381168091036100b7576001600160a01b03604435921680331480610152575b156100b757825f52600160205260405f208273ffffffffffffffffffffffffffffffffffffffff198254161790557fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef5f80a4005b50825f526001602052806001600160a01b0360405f205416146100fe565b60203660031901126100b75761018c610187610225565b61023b565b005b60403660031901126100b75761018c6101a5610225565b602435906102f0565b346100b7575f3660031901126100b75760205f54604051908152f35b5f3660031901126100b75761018c3361023b565b346100b75760203660031901126100b7576020906004355f52600282526001600160a01b0360405f2054168152f35b60203660031901126100b75761018c600435336102f0565b600435906001600160a01b03821682036100b757565b5f5b60018110610249575050565b5f54905f1982146102c3576001809201805f555f528160205260405f206001600160a01b03841673ffffffffffffffffffffffffffffffffffffffff198254161790555f546001600160a01b0384165f7fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef8180a40161023d565b7f4e487b71000000000000000000000000000000000000000000000000000000005f52601160045260245ffd5b9080151580610387575b156100b7575f5b81811061030d57505050565b5f54905f1982146102c3576001809201805f555f528160205260405f206001600160a01b03851673ffffffffffffffffffffffffffffffffffffffff198254161790555f546001600160a01b0385165f7fddf252ad1be2c89b69c2b068fc378daa952ba7f163c4a11628f55a4df523b3ef8180a401610301565b5060648111156102fa56fea2646970667358221220fc1491b6b3e1b7124c23e0ba8ea0f231c0addc3853b6b59919f3e0b48465310c64736f6c634300081e0033",
+  "methodIdentifiers": {
+    "getApproved(uint256)": "081812fc",
+    "mint()": "1249c58b",
+    "mint(address,uint256)": "40c10f19",
+    "mint(uint256)": "a0712d68",
+    "ownerOf(uint256)": "6352211e",
+    "publicMint(uint256)": "2db11544",
+    "safeMint(address)": "40d097c3",
+    "safeTransferFrom(address,address,uint256)": "42842e0e",
+    "total()": "2ddbd13a"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "indexed": true,
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "Transfer",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "getApproved",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "mint",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "quantity",
+              "type": "uint256"
+            }
+          ],
+          "name": "mint",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "quantity",
+              "type": "uint256"
+            }
+          ],
+          "name": "mint",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "ownerOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "quantity",
+              "type": "uint256"
+            }
+          ],
+          "name": "publicMint",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "recipient",
+              "type": "address"
+            }
+          ],
+          "name": "safeMint",
+          "outputs": [],
+          "stateMutability": "payable",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "from",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "to",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "tokenId",
+              "type": "uint256"
+            }
+          ],
+          "name": "safeTransferFrom",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "total",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/ExitHarness.sol": "MintSanctuaryHarness"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/test/ExitHarness.sol": {
+        "keccak256": "0xb0959425a539cc6f6b1fb44cbb74543d7433b866bf83659d2bc21578a1341ad6",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://ee7019b67f0c92e14e5a6dee8e44c083e8e91f31d730a34fdd047e2f73700b0a",
+          "dweb:/ipfs/QmQ5daVRUe6UMgd5JpiepziqV19F4Qp6pKvvmKA3VHT1xK"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

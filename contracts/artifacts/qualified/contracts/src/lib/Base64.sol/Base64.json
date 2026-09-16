@@ -1,0 +1,59 @@
+{
+  "contractName": "Base64",
+  "sourceName": "contracts/src/lib/Base64.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220c76ea30f328f87846c16ea5aeb6d4668ba28899f8afc555e6db2ca9605e8c8d264736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220c76ea30f328f87846c16ea5aeb6d4668ba28899f8afc555e6db2ca9605e8c8d264736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Gas-efficient Base64 encoder adapted from OpenZeppelin Contracts.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/lib/Base64.sol": "Base64"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/lib/Base64.sol": {
+        "keccak256": "0x5f2c051fe8d7abd7c667c5fff49f86f1658e04b8e1713dd440a4ff12d461dace",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://e4db6f312fc8f2381f32476da458301eabe9fec9989d655722d6f960be3bfa90",
+          "dweb:/ipfs/QmXQPmzf6ws7y2EZ44WCAPQnKEWCR7d8jKnfur3EN2fg1W"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

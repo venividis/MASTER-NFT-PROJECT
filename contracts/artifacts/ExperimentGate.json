@@ -1,0 +1,247 @@
+{
+  "contractName": "ExperimentGate",
+  "sourceName": "contracts/src/operating/ExperimentGate.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "guardian_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "Locked",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "module",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "bool",
+          "name": "enabled",
+          "type": "bool"
+        }
+      ],
+      "name": "ExperimentChanged",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "enabled",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "guardian",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "module",
+          "type": "address"
+        },
+        {
+          "internalType": "bool",
+          "name": "value",
+          "type": "bool"
+        }
+      ],
+      "name": "set",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {
+    "52253": [
+      {
+        "length": 32,
+        "start": 156
+      },
+      {
+        "length": 32,
+        "start": 243
+      }
+    ]
+  },
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x60a034607f57601f6102bd38819003918201601f19168301916001600160401b03831184841017608357808492602094604052833981010312607f57516001600160a01b038116808203607f571560705760805260405161022590816100988239608051818181609c015260f30152f35b6303cb96db60e21b5f5260045ffd5b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f3560e01c90816335e3b25a146100c057508063452a93201461007d576398afdfe31461003d575f80fd5b34610079576020366003190112610079576001600160a01b0361005e6101d9565b165f525f602052602060ff60405f2054166040519015158152f35b5f80fd5b34610079575f3660031901126100795760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b34610079576040366003190112610079576100d96101d9565b906024359182151592838103610079576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001633148015906101d0575b61018257806101c4575b806101b7575b806101aa575b610182577f33ced60ae30db93922cede4023aec3a10fe5602a4a34a081b4eea6055cc344df916001600160a01b036020921693845f525f835260405f2060ff1981541660ff83161790558152a2005b7f0f2e5b6c000000000000000000000000000000000000000000000000000000005f5260045ffd5b5062aa36a7461415610133565b5062014a3446141561012d565b50617a69461415610127565b50813b1561011d565b600435906001600160a01b03821682036100795756fea26469706673582212207132ac26a20a28a58ac1cd34b90535c9b2dd3e091c1f9a10a93d28e100ede8e664736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c90816335e3b25a146100c057508063452a93201461007d576398afdfe31461003d575f80fd5b34610079576020366003190112610079576001600160a01b0361005e6101d9565b165f525f602052602060ff60405f2054166040519015158152f35b5f80fd5b34610079575f3660031901126100795760206040516001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000168152f35b34610079576040366003190112610079576100d96101d9565b906024359182151592838103610079576001600160a01b037f00000000000000000000000000000000000000000000000000000000000000001633148015906101d0575b61018257806101c4575b806101b7575b806101aa575b610182577f33ced60ae30db93922cede4023aec3a10fe5602a4a34a081b4eea6055cc344df916001600160a01b036020921693845f525f835260405f2060ff1981541660ff83161790558152a2005b7f0f2e5b6c000000000000000000000000000000000000000000000000000000005f5260045ffd5b5062aa36a7461415610133565b5062014a3446141561012d565b50617a69461415610127565b50813b1561011d565b600435906001600160a01b03821682036100795756fea26469706673582212207132ac26a20a28a58ac1cd34b90535c9b2dd3e091c1f9a10a93d28e100ede8e664736f6c634300081e0033",
+  "methodIdentifiers": {
+    "enabled(address)": "98afdfe3",
+    "guardian()": "452a9320",
+    "set(address,bool)": "35e3b25a"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "guardian_",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "Locked",
+          "type": "error"
+        },
+        {
+          "anonymous": false,
+          "inputs": [
+            {
+              "indexed": true,
+              "internalType": "address",
+              "name": "module",
+              "type": "address"
+            },
+            {
+              "indexed": false,
+              "internalType": "bool",
+              "name": "enabled",
+              "type": "bool"
+            }
+          ],
+          "name": "ExperimentChanged",
+          "type": "event"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "name": "enabled",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "guardian",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "module",
+              "type": "address"
+            },
+            {
+              "internalType": "bool",
+              "name": "value",
+              "type": "bool"
+            }
+          ],
+          "name": "set",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "details": "This is a readiness switch, not legal eligibility, a security audit, or a production launch.",
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "notice": "Test-network-only opening gate. Disabling entry never disables a module's exits.",
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/operating/ExperimentGate.sol": "ExperimentGate"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/operating/ExperimentGate.sol": {
+        "keccak256": "0x88d78f0371c447d06e8cc994fd71bd627d0f6a91c685fc255ed5df03eec44542",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://168cf2ee9ba440adccf8b8fb740b231d27067b9e4734e33d026e2e52c9a333ce",
+          "dweb:/ipfs/QmSt1dnt969ifDnwPTdEiqueQ9oprC8nKGNdgZEndWXAFo"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

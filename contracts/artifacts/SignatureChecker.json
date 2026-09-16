@@ -1,0 +1,66 @@
+{
+  "contractName": "SignatureChecker",
+  "sourceName": "contracts/src/lib/Crypto.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220c8147603d14791d76ac80e765525a562735be988aa7334e64b1173ded88ab7fb64736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220c8147603d14791d76ac80e765525a562735be988aa7334e64b1173ded88ab7fb64736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/lib/Crypto.sol": "SignatureChecker"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      },
+      "contracts/src/lib/Crypto.sol": {
+        "keccak256": "0x2509f5871b53de73b1367529b76e773142b8303183cf4189d2410a4a3b452ed5",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://25aa154f3d1d5ffc8f1974d17ec433d9922a611aefe83429774cbe863a1dd31a",
+          "dweb:/ipfs/Qmd6JyNbUQa8KvUyCEAuV8kVVAksyB4v715t8SmdNUVPnC"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

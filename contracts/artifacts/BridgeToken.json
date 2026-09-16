@@ -1,0 +1,58 @@
+{
+  "contractName": "BridgeToken",
+  "sourceName": "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460175760399081601c823930815050f35b5f80fdfe5f80fdfea2646970667358221220fc358fd435231f50cf670ffc986d1cef056e7d8facae6f760d79cdfd56e6a71464736f6c634300081e0033",
+  "deployedBytecode": "0x5f80fdfea2646970667358221220fc358fd435231f50cf670ffc986d1cef056e7d8facae6f760d79cdfd56e6a71464736f6c634300081e0033",
+  "methodIdentifiers": {},
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol": "BridgeToken"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/extensions/crosschain/LayerZeroInterfaces.sol": {
+        "keccak256": "0x2d3d9d909716d5b18e39af5dc546afc13076ce435c7907b76dc7d2af7fa623a7",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0b145633ff37fa76aeed135c5e47c93745ee5365bdbfda638ace7afc77be5657",
+          "dweb:/ipfs/QmXmxfKsecUr6BB2CxrvvatuDCv2Amx1Xw3hNBDAExwEei"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

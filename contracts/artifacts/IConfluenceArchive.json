@@ -1,0 +1,171 @@
+{
+  "contractName": "IConfluenceArchive",
+  "sourceName": "contracts/src/confluence/ConfluenceRenderer.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [],
+      "name": "contentSha256",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "readAll",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "contentSha256()": "efad39b0",
+    "readAll()": "41f654f7"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [],
+          "name": "contentSha256",
+          "outputs": [
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "readAll",
+          "outputs": [
+            {
+              "internalType": "bytes",
+              "name": "",
+              "type": "bytes"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/confluence/ConfluenceRenderer.sol": "IConfluenceArchive"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/confluence/ConfluenceLoader.sol": {
+        "keccak256": "0x6094320cc07a08b1057690bb1a8adfdc569ed782cbbef4374a7d79965a2ee366",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://f54eac47067af79de686a143c6bf7d1c1e2bb82d74f3bc56b0df56e1cd79ebd8",
+          "dweb:/ipfs/QmdUpXbXPJfGXUXz5cVBkg9Nejry6QzhUjz5xAVUy93fiu"
+        ]
+      },
+      "contracts/src/confluence/ConfluenceRenderer.sol": {
+        "keccak256": "0xbe5e54bf54402f9bf63768b6ff1f53b5be9e1f71bcba67a786d9787915956d5d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://78f22c18cbd7079e87fd203e3ffec44b1e99324a35850a3aba015698e026d2b7",
+          "dweb:/ipfs/QmXtZ5YWefQWW8CjDjegS9QhcGvRgm26PEaFeQu4nKkgFC"
+        ]
+      },
+      "contracts/src/confluence/GenesisSVG.sol": {
+        "keccak256": "0xfb1fbd0d5b75ee5f2947e3a0fe0dbf0ece7285a9479731e7cf27705bd2d63fa9",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://e2250f5d17962cd5eaf8f7c802cb38768b7f396e2d7d4f3f9769feb65264cf9c",
+          "dweb:/ipfs/QmWNdsK1WGYzc7vqieTLnHE14fyiiHA6wYG771AJwiDPmU"
+        ]
+      },
+      "contracts/src/core/OnchainRenderer.sol": {
+        "keccak256": "0x358d08c5e209a2b53ab6ce414025dcd7b7796927bcd37410121e4582bff981c8",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0dc34b3b3741952b8ade1618eb6e7ffdcab9111a3621447c9ef84e839037e744",
+          "dweb:/ipfs/Qmb5ijbpzNteuDUk6rKSef1eonJTgkUK9qcaAp7Th6DaFm"
+        ]
+      },
+      "contracts/src/interfaces/Interfaces.sol": {
+        "keccak256": "0x39027ef17a58e7d30aa09a120d8f861d2f2083dbf09a007fe169bbfdf775c7af",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://7ae3202ffc5fc43c77347968b533835ce524789baf1ce3240c5b6240c2614b91",
+          "dweb:/ipfs/QmTmVmnt9VtnGEVgnmWeA2y5cnCxkH71Jq3CgjUakqa4ZY"
+        ]
+      },
+      "contracts/src/lib/Base64.sol": {
+        "keccak256": "0x5f2c051fe8d7abd7c667c5fff49f86f1658e04b8e1713dd440a4ff12d461dace",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://e4db6f312fc8f2381f32476da458301eabe9fec9989d655722d6f960be3bfa90",
+          "dweb:/ipfs/QmXQPmzf6ws7y2EZ44WCAPQnKEWCR7d8jKnfur3EN2fg1W"
+        ]
+      },
+      "contracts/src/lib/Strings.sol": {
+        "keccak256": "0x7b756b0be7e3b12c3addd9817c804115d300fc541c607c22c17a907daa64730d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://77abd4021b4bc71b2ce20a1b7cbe9951d4ba096c8094f93b381f888212288d09",
+          "dweb:/ipfs/QmUy3TMyegVUwUWe9yC26qnBeLPmrsy3pEdYYp91XriqSW"
+        ]
+      },
+      "contracts/src/protocol/OnchainApp.sol": {
+        "keccak256": "0x0f19554128f60cf5226bbdec049646af2883e9d7bf156d2d4067b087177b873d",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://6e371079569b2064c62907c19ec5173ff666c80c7f62a4eb36d488ecd4f4c377",
+          "dweb:/ipfs/QmbzAGrjxVE6NSVWDC5YBukcceYfbDprfRVdbMg1aJrXZz"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

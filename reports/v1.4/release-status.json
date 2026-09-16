@@ -1,0 +1,15 @@
+{
+  "version": "1.4.0",
+  "ui": "unsigned-local-rehearsal",
+  "uiTestCount": 99,
+  "newModelSubset": 40,
+  "browserTestCount": 65,
+  "solidityCompiled": false,
+  "evmTested": false,
+  "publicChainDeployed": false,
+  "liveV4Gui": false,
+  "privateAgentDataImplemented": false,
+  "crossChainImplemented": false,
+  "appArchiveLocalChunks": 19,
+  "htmlSha256": "9c68a6d83fd39d7f0f46bf77c83a5ba2e3d2035ff2cd985f00e6416442ae0402"
+}

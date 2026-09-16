@@ -1,0 +1,106 @@
+{
+  "schema": "idontfuckingbelieveit/browser-receipts/1.1",
+  "provenance": "BROWSER SIMULATION — unsigned, not an onchain proof",
+  "genesis": {
+    "seed": "0x70da4301333c3f3b9d6e5ac192a11f5e0e0f635261280530ffa78cb01e0e0709",
+    "time": 1788566400000
+  },
+  "receipts": [
+    {
+      "schema": "idontfuckingbelieveit/browser-receipts/1.1",
+      "index": 1,
+      "kind": "EVOLVE",
+      "payload": {
+        "salt": "0x229c564328d87a0be457c7fb456b5b90089345fd1ddd69ac56b152bd1775b1b9"
+      },
+      "time": 1788568935198,
+      "nonce": 0,
+      "priorStateRoot": "0x34d4682346b6fa22cc55de38994fd88ec01d21db25d40672cb3a8ab4a84cbd8e",
+      "priorAuditRoot": "0xbd84a4f4de04a7d109e3b7fee5a93dcf1f180b70d523fe57d99a757243ccb216",
+      "policy": "0xfc1a3ef960f55a43ef808c0057a0d2cc755d3fb5f43bc020032c8b5eb3254ce0",
+      "statement": "0xadb70d26f458f784ff37add44e53a59e127b12fcd669d13c30f47ba93c84279b",
+      "evidence": "0x6fbf0a99b7840202ffdc025de57dd1f95d4703190c8b08a3735cf42605100aca",
+      "nextStateRoot": "0xb0d6059fa4cfc15c4091640ff4ed1466e3b3558d5d263f912d73d935a798528f",
+      "nextMemoryRoot": "0x210560bd3188965294726f10885a8432f73f86cc4bb38ca7b8faa3ad0909b4a3",
+      "verification": "unsigned-local-sha256",
+      "audit": "0x98f61a801daf744c886219297ef4ebf77fd43d832904cd325b72debf5d4261ee"
+    },
+    {
+      "schema": "idontfuckingbelieveit/browser-receipts/1.1",
+      "index": 2,
+      "kind": "SEAL_MEMORY",
+      "payload": {
+        "commitment": "0x3e709f316de4af63ab9ad595feee5ea36340569e32a39ee23d238ab746849c89"
+      },
+      "time": 1788568944351,
+      "nonce": 1,
+      "priorStateRoot": "0xb0d6059fa4cfc15c4091640ff4ed1466e3b3558d5d263f912d73d935a798528f",
+      "priorAuditRoot": "0x98f61a801daf744c886219297ef4ebf77fd43d832904cd325b72debf5d4261ee",
+      "policy": "0xfc1a3ef960f55a43ef808c0057a0d2cc755d3fb5f43bc020032c8b5eb3254ce0",
+      "statement": "0x00c0f536039ed8992d8707320aaeffcd9bcdea986b76e9219fd26a88629dbde7",
+      "evidence": "0x1e2790f496e4fdd560f659d6c58fdbdfcf19e866f229480321962ec0db4e6b6d",
+      "nextStateRoot": "0x792c1b46ebd067b4f6377bafee43fe967947ae86cb92b88fbe23a33ca9dd8be1",
+      "nextMemoryRoot": "0x1421532154f587b951c64deba511b5d191a5bc4a9389e9ad9b8df3680fdc1890",
+      "verification": "unsigned-local-sha256",
+      "audit": "0xeb9e53e2132266846b08e9745c783159fd35fa99c823e74b9efe3dd86b5807d1"
+    },
+    {
+      "schema": "idontfuckingbelieveit/browser-receipts/1.1",
+      "index": 3,
+      "kind": "SPAWN",
+      "payload": {
+        "salt": "0x0dbc9c5a42cc5d1b2739a236986f4e2ce7d736cbe0303a3ca2f7e8dc06d3b6ea"
+      },
+      "time": 1788568944912,
+      "nonce": 2,
+      "priorStateRoot": "0x792c1b46ebd067b4f6377bafee43fe967947ae86cb92b88fbe23a33ca9dd8be1",
+      "priorAuditRoot": "0xeb9e53e2132266846b08e9745c783159fd35fa99c823e74b9efe3dd86b5807d1",
+      "policy": "0xfc1a3ef960f55a43ef808c0057a0d2cc755d3fb5f43bc020032c8b5eb3254ce0",
+      "statement": "0xbea2c73989ed412d44494868d464ef05042b20680f5d65e3d37b95c1977cff55",
+      "evidence": "0x7098885a6a485f1dd50316e37c34ee7a3e32b1b7bac1e50ef5e508c3cb581424",
+      "nextStateRoot": "0x1a55e31a677befa7535a8a37541fcc28a29714bc7d0bc33b386b0a7f3e3c71f5",
+      "nextMemoryRoot": "0x1421532154f587b951c64deba511b5d191a5bc4a9389e9ad9b8df3680fdc1890",
+      "verification": "unsigned-local-sha256",
+      "audit": "0x7b41bf976b8f35d74278f2b6ae082fee70ff70d39669a81040297b669adf12a4"
+    },
+    {
+      "schema": "idontfuckingbelieveit/browser-receipts/1.1",
+      "index": 4,
+      "kind": "ASCEND",
+      "payload": {
+        "policy": "0xfc1a3ef960f55a43ef808c0057a0d2cc755d3fb5f43bc020032c8b5eb3254ce0"
+      },
+      "time": 1788568953753,
+      "nonce": 3,
+      "priorStateRoot": "0x1a55e31a677befa7535a8a37541fcc28a29714bc7d0bc33b386b0a7f3e3c71f5",
+      "priorAuditRoot": "0x7b41bf976b8f35d74278f2b6ae082fee70ff70d39669a81040297b669adf12a4",
+      "policy": "0xfc1a3ef960f55a43ef808c0057a0d2cc755d3fb5f43bc020032c8b5eb3254ce0",
+      "statement": "0xd98ca398c0b524613efb982249745cfc3a8086780d70925e18fd679f4e19cb2a",
+      "evidence": "0x017e47d6f7852a8842b3c263dfca13fcdeddd7a7dfcf1865a36fe5caf0c65337",
+      "nextStateRoot": "0xdb00daa3e9d26e60bcfb6f70fe86a5ce8dfed93f36825685e01d0eeaae9a317d",
+      "nextMemoryRoot": "0x1421532154f587b951c64deba511b5d191a5bc4a9389e9ad9b8df3680fdc1890",
+      "verification": "unsigned-local-sha256",
+      "audit": "0x1fdbe3809cc30497fa226dd3078da303a483f3018f0f850aa094be5d3be0bb5e"
+    },
+    {
+      "schema": "idontfuckingbelieveit/browser-receipts/1.1",
+      "index": 5,
+      "kind": "EVOLVE",
+      "payload": {
+        "salt": "0xcb10becfe22fef6e55c460491bbe8dbcfd2acb00e984effcd200528153109a44"
+      },
+      "time": 1788568957467,
+      "nonce": 4,
+      "priorStateRoot": "0xdb00daa3e9d26e60bcfb6f70fe86a5ce8dfed93f36825685e01d0eeaae9a317d",
+      "priorAuditRoot": "0x1fdbe3809cc30497fa226dd3078da303a483f3018f0f850aa094be5d3be0bb5e",
+      "policy": "0xfc1a3ef960f55a43ef808c0057a0d2cc755d3fb5f43bc020032c8b5eb3254ce0",
+      "statement": "0x11fc5e04f1ff0bbc6b07141bb1ee777458b48637d5e2cf4b9ec56244e64634e3",
+      "evidence": "0x9c2c85523f0ca41dcd85d37266a682938162dcdad4c0da2da04b09237296c3fb",
+      "nextStateRoot": "0x3c4765a943c326456a9d7a35b95020681c9eedc466e398a9de4e84d73c3e29cb",
+      "nextMemoryRoot": "0xe09edbdcb9eb400226b1b36cc87230578b86d8d799ada8224cd6be537fd87c7a",
+      "verification": "unsigned-local-sha256",
+      "audit": "0x6822f095a961a764d26fed8e8aeb85d9acfbea3b7dbc2fed4d9ba0c862aa2ced"
+    }
+  ],
+  "expectedAudit": "0x6822f095a961a764d26fed8e8aeb85d9acfbea3b7dbc2fed4d9ba0c862aa2ced"
+}

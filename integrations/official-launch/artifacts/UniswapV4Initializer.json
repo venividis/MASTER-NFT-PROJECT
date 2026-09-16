@@ -1,0 +1,284 @@
+{
+  "group": "doppler",
+  "file": "src/initializers/UniswapV4Initializer.sol",
+  "name": "UniswapV4Initializer",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "airlock_",
+          "type": "address"
+        },
+        {
+          "internalType": "contract IPoolManager",
+          "name": "poolManager_",
+          "type": "address"
+        },
+        {
+          "internalType": "contract DopplerDeployer",
+          "name": "deployer_",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidTokenOrder",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "SenderNotAirlock",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "poolOrHook",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "numeraire",
+          "type": "address"
+        }
+      ],
+      "name": "Create",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "airlock",
+      "outputs": [
+        {
+          "internalType": "contract Airlock",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "deployer",
+      "outputs": [
+        {
+          "internalType": "contract DopplerDeployer",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "hook",
+          "type": "address"
+        }
+      ],
+      "name": "exitLiquidity",
+      "outputs": [
+        {
+          "internalType": "uint160",
+          "name": "sqrtPriceX96",
+          "type": "uint160"
+        },
+        {
+          "internalType": "address",
+          "name": "token0",
+          "type": "address"
+        },
+        {
+          "internalType": "uint128",
+          "name": "fees0",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "balance0",
+          "type": "uint128"
+        },
+        {
+          "internalType": "address",
+          "name": "token1",
+          "type": "address"
+        },
+        {
+          "internalType": "uint128",
+          "name": "fees1",
+          "type": "uint128"
+        },
+        {
+          "internalType": "uint128",
+          "name": "balance1",
+          "type": "uint128"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "asset",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "numeraire",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "numTokensToSell",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "salt",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "initialize",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "poolManager",
+      "outputs": [
+        {
+          "internalType": "contract IPoolManager",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x60e0346100ca57601f610b6038819003918201601f19168301916001600160401b038311848410176100ce578084926060946040528339810103126100ca5780516001600160a01b03811691908290036100ca576020810151906001600160a01b03821682036100ca5760400151916001600160a01b03831683036100ca5760805260a05260c052604051610a7d90816100e3823960805181818160680152818161013e0152610327015260a05181818160b0015261066c015260c05181818160f4015261040b0152f35b5f80fd5b634e487b7160e01b5f52604160045260245ffdfe6080806040526004361015610012575f80fd5b5f3560e01c9081630cf756c2146102b5575080635ec5db3214610123578063d5f39488146100df578063dc4c90d31461009b5763f78a8a3e14610053575f80fd5b34610097575f366003190112610097576040517f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03168152602090f35b5f80fd5b34610097575f366003190112610097576040517f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03168152602090f35b34610097575f366003190112610097576040517f00000000000000000000000000000000000000000000000000000000000000006001600160a01b03168152602090f35b346100975760203660031901126100975761013c610a0e565b7f00000000000000000000000000000000000000000000000000000000000000006001600160a01b0316338190036102a65760405163ce5494bb60e01b815260048101919091529060e090829060249082905f906001600160a01b03165af1801561029b575f905f805f80915f935f956101fe575b604080516001600160a01b03988916815291881660208301526001600160801b0392831690820152918116606083015291909416608085015290811660a08401521660c082015260e09150f35b5050505050505060e0813d60e011610293575b8161021e60e09383610a32565b810103126100975780516001600160a01b03811681036100975781610247602060e09401610a55565b9161025460408301610a69565b9161026160608201610a69565b61026d60808301610a55565b9061028660c061027f60a08601610a69565b9401610a69565b93959490919293946101b1565b3d9150610211565b6040513d5f823e3d90fd5b633617fe5360e11b5f5260045ffd5b346100975760a0366003190112610097576102ce610a0e565b6024356001600160a01b0381169290839003610097576044356084356001600160401b0381116100975736602382011215610097576004810135906001600160401b0382116100975781810190366024830111610097577f0000000000000000000000000000000000000000000000000000000000000000916001600160a01b03831633036102a65761018090829003126100975761036f60a48201610a24565b61037b60c48301610a24565b506103896101048301610a24565b5061012482013593841590811586036100975761016484013562ffffff81160361009757876084818360209460246103c46101848b01610a24565b996366cfa05760e01b85528d6004860152606435828601526060604486015282606486015201848401375f838284010152601f801991011681010301815f60018060a01b037f0000000000000000000000000000000000000000000000000000000000000000165af196871561029b575f976109ca575b508490816109b7575b8115610997575b50610988578315610981576001600160a01b038716935b156109715787955b6040516001600160a01b039190911696909460a086016001600160401b0381118782101761095d5760405260018060a01b03168552602085019060018060a01b031681526040850191628000008352606086019360020b84526080860194888652604051976060528860405260018060601b03199060601b16602c526323b872dd60601b600c5260205f6064601c828d5af18060015f5114161561093f575b505f6060528660405260020b948560ff1d8681011895620d89e8871161092d57600160801b7001fffcb933bd6fad37aa2d162d1a5940016001891602189660028116610911575b600481166108f5575b600881166108d9575b601081166108bd575b602081166108a1575b60408116610885575b60808116610869575b610100811661084d575b6102008116610831575b6104008116610815575b61080081166107f9575b61100081166107dd575b61200081166107c1575b61400081166107a5575b6180008116610789575b62010000811661076d575b620200008116610752575b620400008116610737575b620800001661071e575b5f12610712575b63313b65df60e11b8752516001600160a01b039081166004880152905181166024870152905162ffffff166044860152905160020b606485015290518116608484015263ffffffff91909101602090811c821660a484015290829060c49082905f907f0000000000000000000000000000000000000000000000000000000000000000165af1801561029b576106d4575b5060405160209390926001600160a01b0316827fb224da6575b2c2ffd42454faedb236f7dbe5f92a0c96bb99c0273dbe98464c7e5f80a48152f35b6020813d60201161070a575b816106ed60209383610a32565b810103126100975751928360020b84036100975792506020610699565b3d91506106e0565b5f199590950494610608565b6b048a170391f7dc42444e8fa290960260801c95610601565b6d2216e584f5fa1ea926041bedfe9890970260801c966105f7565b966e5d6af8dedb81196699c329225ee6040260801c966105ec565b966f09aa508b5b7a84e1c677de54f3e99bc90260801c966105e1565b966f31be135f97d08fd981231505542fcfa60260801c966105d6565b966f70d869a156d2a1b890bb3df62baf32f70260801c966105cc565b966fa9f746462d870fdf8a65dc1f90e061e50260801c966105c2565b966fd097f3bdfd2022b8845ad8f792aa58250260801c966105b8565b966fe7159475a2c29b7443b29c7fa6e889d90260801c966105ae565b966ff3392b0822b70005940c7a398e4b70f30260801c966105a4565b966ff987a7253ac413176f2b074cf7815e540260801c9661059a565b966ffcbe86c7900a88aedcffc83b479aa3a40260801c96610590565b966ffe5dee046a99a2a811c461f1969c30530260801c96610586565b966fff2ea16466c96a3843ec78b326b528610260801c9661057d565b966fff973b41fa98c081472e6896dfb254c00260801c96610574565b966fffcb9843d60f6159c9db58835c9266440260801c9661056b565b966fffe5caca7e10e4e61c3624eaa0941cd00260801c96610562565b966ffff2e50f5f656932ef12357cf3c7fdcc0260801c96610559565b966ffff97272373d413259a46990580e213a0260801c96610550565b6345c3193d60e11b5f5260045260245ffd5b3d8a3b15171015610950578a610509565b637939f4245f526004601cfd5b634e487b7160e01b5f52604160045260245ffd5b6001600160a01b0387169561046a565b8793610462565b633f06bf8160e01b5f5260045ffd5b9050806109a5575b8961044b565b506001600160a01b038716881161099f565b6001600160a01b0389168a109150610444565b9096506020813d602011610a06575b816109e660209383610a32565b8101031261009757516001600160a01b038116810361009757958461043b565b3d91506109d9565b600435906001600160a01b038216820361009757565b35908160020b820361009757565b601f909101601f19168101906001600160401b0382119082101761095d57604052565b51906001600160a01b038216820361009757565b51906001600160801b03821682036100975756",
+  "creationHash": "0x87f6b563f5a46abf75fdcd3d1bc05df50e5fea407cbc22451ef99f9e299e1efa",
+  "bytes": 2685,
+  "normalizedHash": "0x4d3bf4f5215ae50fae2c7fbb7d486d986bfa5d5616479c8d01e6a0fc49629cc0",
+  "masks": [
+    {
+      "length": 32,
+      "start": 104
+    },
+    {
+      "length": 32,
+      "start": 318
+    },
+    {
+      "length": 32,
+      "start": 807
+    },
+    {
+      "length": 32,
+      "start": 176
+    },
+    {
+      "length": 32,
+      "start": 1644
+    },
+    {
+      "length": 32,
+      "start": 244
+    },
+    {
+      "length": 32,
+      "start": 1035
+    }
+  ],
+  "immutableGroups": [
+    [
+      {
+        "length": 32,
+        "start": 104
+      },
+      {
+        "length": 32,
+        "start": 318
+      },
+      {
+        "length": 32,
+        "start": 807
+      }
+    ],
+    [
+      {
+        "length": 32,
+        "start": 176
+      },
+      {
+        "length": 32,
+        "start": 1644
+      }
+    ],
+    [
+      {
+        "length": 32,
+        "start": 244
+      },
+      {
+        "length": 32,
+        "start": 1035
+      }
+    ]
+  ],
+  "sourceInputSha256": "e4377f61fefda48f68abd776bdd22ce67cb68c96dd5f2d4f1ed98772a9e5ff48",
+  "compiler": "0.8.26+commit.8a97fa7a.Emscripten.clang",
+  "settings": {
+    "optimizer": {
+      "enabled": true,
+      "runs": 0
+    },
+    "viaIR": true,
+    "evmVersion": "cancun",
+    "metadata": {
+      "bytecodeHash": "none",
+      "appendCBOR": false
+    },
+    "outputSelection": {
+      "*": {
+        "*": [
+          "abi",
+          "evm.bytecode.object",
+          "evm.deployedBytecode.object",
+          "evm.deployedBytecode.immutableReferences"
+        ]
+      }
+    }
+  }
+}

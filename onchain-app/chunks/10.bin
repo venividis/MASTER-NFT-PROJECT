@@ -1,0 +1,176 @@
+cted),n=intentAmount(p.amount);
+    return this.atomic(()=>{
+      if(p.kind==='SWAP'){
+        const result=w.swap(p.input,p.output,n,intentAmount(p.minOut),p.days);
+        return {received:result.out.toString(),asset:p.output,lockId:result.lock?.id||0,
+          releaseAt:result.lock?.end||0,steps:p.days?['SWAP','LOCK']:['SWAP']};
+      }
+      if(p.kind==='LOCK'){
+        const l=w.deposit(p.input,n,p.days);
+        return {received:n.toString(),asset:p.input,lockId:l.id,releaseAt:l.end,steps:['LOCK']};
+      }
+      let output=n,causes=[];
+      if(p.input!==p.output){const result=w.swap(p.input,p.output,n,intentAmount(p.minOut));output=result.out;causes=[w.s.seq];}
+      if(output<intentAmount(p.minOut))throw Error('Gift amount is below the reviewed minimum.');
+      debit(a.balances,p.output,output);
+      const g={id:this.extra.gifts.length+1,donor:a.id,donorActor:w.s.actor,donorEpoch:a.epoch,
+        recipient:structuredClone(p.recipient),asset:p.output,amount:output.toString(),
+        offeredAt:w.s.now,acceptBy:w.s.now+Math.min(3,p.days-1)*DAY,
+        releaseAt:w.s.now+p.days*DAY,status:'offered',acceptedAt:0,released:'0',receipt:0};
+      this.extra.gifts.push(g);a.nonce++;
+      const e=w._event('OFFERED',a.id,{gift:g.id,asset:g.asset,amount:g.amount,
+        recipient:g.recipient,acceptBy:g.acceptBy,releaseAt:g.releaseAt,causes});
+      g.receipt=e.seq;
+      return {received:g.amount,asset:g.asset,giftId:g.id,acceptBy:g.acceptBy,
+        releaseAt:g.releaseAt,recipient:g.recipient,steps:causes.length?['SWAP','OFFER']:['OFFER']};
+    });
+  }
+  gift(id){const g=this.extra.gifts.find(x=>x.id===Number(id));if(!g)throw Error('Unknown gift.');return g;}
+  recipientActor(g){return g.recipient.kind==='person'?g.recipient.id:this.world.identity(g.recipient.id).owner;}
+  accept(id) {return this.atomic(()=>{
+    const g=this.gift(id),w=this.world;
+    if(g.status!=='offered'||w.s.now>=g.acceptBy)throw Error('The offer expired or is no longer pending.');
+    if(this.recipientActor(g)!==w.s.actor)throw Error('Only the designated recipient may accept.');
+    g.status='accepted';g.acceptedAt=w.s.now;
+    w._event('ACCEPTED',g.recipient.kind==='artifact'?g.recipient.id:0,{gift:g.id,releaseAt:g.releaseAt,causes:[g.receipt]});
+    return structuredClone(g);
+  });}
+  cancel(id) {return this.atomic(()=>{
+    const g=this.gift(id),w=this.world;
+    if(g.status!=='offered')throw Error('An accepted gift cannot be recalled.');
+    if(w.s.now<g.acceptBy)w._owner(g.donor);
+    // Anyone may return an expired offer, but only to the original donor account.
+    g.status='returned';credit(w.identity(g.donor).balances,g.asset,BigInt(g.amount));
+    w._event('GIFT_RETURNED',g.donor,{gift:g.id,causes:[g.receipt]});
+  });}
+  releaseGift(id) {return this.atomic(()=>{
+    const g=this.gift(id),w=this.world;
+    if(g.status!=='accepted'||w.s.now<g.releaseAt)throw Error('This gift is not releasable at the actual rehearsal time.');
+    g.status='released';g.released=g.amount;
+    const balances=g.recipient.kind==='person'?this.extra.personalBalances[g.recipient.id]:w.identity(g.recipient.id).balances;
+    credit(balances,g.asset,BigInt(g.amount));
+    w._event('GIFT_RELEASED',g.recipient.kind==='artifact'?g.recipient.id:0,
+      {gift:g.id,asset:g.asset,amount:g.amount,recipient:g.recipient,causes:[g.receipt]},w.s.actor);
+    return BigInt(g.amount);
+  });}
+  // All permission-changing actor tests are checked at use time, not cached in the invitation.
+  project(id,at) {
+    integer(at,this.world.s.now,this.world.s.now+3650*DAY,'Projection date');
+    const w=this.world,a=w.identity(id),balances=structuredClone(a.balances),claims=[];
+    for(const l of w.s.locks.filter(l=>l.identity===id)){
+      const n=releasable(l,at);credit(balances,l.asset,n);
+      claims.push({type:'vault',id:l.id,asset:l.asset,available:n.toString(),end:l.end});
+    }
+    for(const g of this.extra.gifts.filter(g=>g.status==='accepted'&&g.recipient.kind==='artifact'&&g.recipient.id===id)){
+      const n=at>=g.releaseAt?BigInt(g.amount):0n;credit(balances,g.asset,n);
+      claims.push({type:'gift',id:g.id,asset:g.asset,available:n.toString(),end:g.releaseAt});
+    }
+    return {at,balances,claims,scope:'Scheduled claim projection only; no price, yield, auto-release, or future state prediction.'};
+  }
+  trace(seq) {
+    const events=this.world.s.events,byId=new Map(events.map(e=>[e.seq,e])),seen=new Set(),result=[];
+    const visit=n=>{if(seen.has(n))return;const e=byId.get(n);if(!e)return;seen.add(n);
+      let refs=[...(e.data.causes||[])];
+      if(e.data.sale)refs.push(...events.filter(x=>x.seq<e.seq&&x.data.sale===e.data.sale&&['LAUNCHED','CONTRIBUTED','SETTLED','REFUNDABLE'].includes(x.kind)).map(x=>x.seq));
+      if(e.data.lock)refs.push(...events.filter(x=>x.seq<e.seq&&x.data.lock===e.data.lock&&['SWAPPED','LOCKED'].includes(x.kind)).map(x=>x.seq));
+      refs=refs.filter(n=>Number.isSafeInteger(n)&&n>0&&n<e.seq);refs.forEach(visit);
+      result.push({event:structuredClone(e),causes:[...new Set(refs)],discussions:this.world.s.messages.filter(m=>m.receipt===e.seq).map(m=>structuredClone(m))});
+    };visit(Number(seq));return result;
+  }
+  export(){return {schema:'idfbi/instruments/1.5',world:this.world.export(),extra:structuredClone(this.extra),checksum:fingerprint({world:this.world.export(),extra:this.extra})};}
+  static restore(data){
+    keys(data,['schema','world','extra','checksum']);
+    if(data.schema!=='idfbi/instruments/1.5'||data.checksum!==fingerprint({world:data.world,extra:data.extra}))throw Error('Instrument archive failed its integrity check.');
+    const model=Object.create(InstrumentEngine.prototype);model.world=KingdomModel.restore(data.world);
+    keys(data.extra,['schema','gifts','personalBalances']);
+    if(data.extra.schema!=='idfbi/promises/1.5'||!Array.isArray(data.extra.gifts)||data.extra.gifts.length>2048)throw Error('Unsupported promise archive.');
+    const ids=new Set();
+    for(const g of data.extra.gifts){
+      keys(g,['id','donor','donorActor','donorEpoch','recipient','asset','amount','offeredAt','acceptBy','releaseAt','status','acceptedAt','released','receipt']);
+      integer(g.id,1,2048);if(g.id!==ids.size+1)throw Error('Gift IDs must be consecutive.');if(ids.has(g.id))throw Error('Duplicate gift.');ids.add(g.id);integer(g.donor,1,Number.MAX_SAFE_INTEGER);model.world.identity(g.donor);
+      if(!PEOPLE.includes(g.donorActor)||!TOK.test(g.asset))throw Error('Invalid donor or asset.');
+      integer(g.donorEpoch,0,Number.MAX_SAFE_INTEGER);intentAmount(g.amount);
+      integer(g.offeredAt,1,Number.MAX_SAFE_INTEGER);integer(g.acceptBy,g.offeredAt+1,Number.MAX_SAFE_INTEGER);
+      integer(g.releaseAt,g.acceptBy+1,g.offeredAt+3650*DAY);integer(g.acceptedAt,0,g.acceptBy-1);if(g.acceptedAt>0&&g.acceptedAt<g.offeredAt)throw Error('Acceptance predates its offer.');if(g.offeredAt>model.world.s.now||g.acceptedAt>model.world.s.now)throw Error('Future gift event.');
+      integer(g.receipt,1,model.world.s.seq);
+      if(!['offered','accepted','returned','released'].includes(g.status)||!['0',g.amount].includes(g.released))throw Error('Invalid gift state.');
+      if((['accepted','released'].includes(g.status))!==(g.acceptedAt>0)||((g.status==='released')!==(g.released===g.amount)))throw Error('Inconsistent gift state.');
+      keys(g.recipient,['kind','id']);if(g.recipient.kind==='person'){if(!PEOPLE.includes(g.recipient.id))throw Error('Invalid personal recipient.');}
+      else if(g.recipient.kind==='artifact'){integer(g.recipient.id,1,Number.MAX_SAFE_INTEGER);model.world.identity(g.recipient.id);if(g.recipient.id===g.donor)throw Error('Self gift uses a normal lock.');}else throw Error('Invalid recipient type.');
+      const e=model.world.s.events.find(x=>x.seq===g.receipt);
+      if(e?.kind!=='OFFERED'||e.time!==g.offeredAt||e.actor!==g.donorActor||e.epoch!==g.donorEpoch||e.data.asset!==g.asset||e.data.gift!==g.id||e.data.amount!==g.amount||e.identity!==g.donor||!eq(e.data.recipient,g.recipient)||e.data.releaseAt!==g.releaseAt||e.data.acceptBy!==g.acceptBy)throw Error('Gift does not match its origin receipt.');
+      const subsequent=model.world.s.events.filter(x=>x.seq>g.receipt&&x.data.gift===g.id);
+      const accepted=subsequent.filter(x=>x.kind==='ACCEPTED'),returned=subsequent.filter(x=>x.kind==='GIFT_RETURNED'),released=subsequent.filter(x=>x.kind==='GIFT_RELEASED');
+      if(accepted.length>1||returned.length>1||released.length>1||accepted.length!==Number(['accepted','released'].includes(g.status))||returned.length!==Number(g.status==='returned')||released.length!==Number(g.status==='released'))throw Error('Gift transitions do not match their receipts.');
+      if(accepted.length&&(accepted[0].time!==g.acceptedAt||accepted[0].data.releaseAt!==g.releaseAt||!accepted[0].data.causes?.includes(g.receipt)))throw Error('Invalid acceptance receipt.');
+      if(g.recipient.kind==='person'&&accepted.length&&accepted[0].actor!==g.recipient.id)throw Error('Wrong accepting person.');
+      if(released.length&&(released[0].time<g.releaseAt||released[0].seq<accepted[0].seq||released[0].data.amount!==g.amount||released[0].data.asset!==g.asset||!eq(released[0].data.recipient,g.recipient)))throw Error('Invalid release receipt.');
+    }
+    keys(data.extra.personalBalances,PEOPLE.slice());
+    for(const bs of Object.values(data.extra.personalBalances))for(const [asset,value]of Object.entries(bs)){
+      if(!TOK.test(asset)||typeof value!=='string'||!/^[0-9]{1,78}$/.test(value)||BigInt(value)>=(1n<<256n))throw Error('Invalid personal balance.');
+    }
+    model.extra=structuredClone(data.extra);return model;
+  }
+}
+
+/** Exact proportional allocation. Leftover indivisible units are explicit dust;
+ * no first-come dust reward, random winner, or claim of wallet uniqueness. */
+function proportionalAllocation(supply,bids) {
+  supply=BigInt(supply);if(supply<0n||supply>MAX112||!Array.isArray(bids)||bids.length>10000)throw Error('Invalid allocation input.');
+  const budgets=bids.map(x=>{x=BigInt(x);if(x<0n||x>MAX112)throw Error('Invalid budget.');return x;});
+  const total=budgets.reduce((a,b)=>a+b,0n),allocations=budgets.map(b=>total?supply*b/total:0n);
+  return {allocations,dust:supply-allocations.reduce((a,b)=>a+b,0n)};
+}
+
+
+
+/** Finite local execution model. Never evaluates user code or requests a wallet.
+ * Published content is durable; grants are epoch-bound; obligations have their own lifecycle.
+ * Laboratory capital is explicitly segregated, not a second allowance on the root account. */
+const LAB_MODULES=['granary','issue','strips','counter','scrivener'];
+function ceilRatio(a,b,d){a=BigInt(a);b=BigInt(b);d=BigInt(d);if(a<0n||b<0n||d<=0n)throw Error('Invalid ratio.');return (a*b+d-1n)/d;}
+function matchedExit(assets,pairs,burn){assets=BigInt(assets);pairs=BigInt(pairs);burn=BigInt(burn);if(assets<0n||pairs<=0n||burn<=0n||burn>pairs)throw Error('Invalid matched exit.');return assets*burn/pairs;}
+const opQ=v=>{if(!/^[0-9]{1,34}$/.test(String(v)))throw Error('Expected integer base units.');const n=BigInt(v);if(n<=0n||n>MAX112)throw Error('Amount out of range.');return n;};
+const opN=v=>{if(!/^[0-9]{1,34}$/.test(String(v))||BigInt(v)>MAX112)throw Error('Invalid stored quantity.');return BigInt(v);};
+const opText=(v,max=256)=>{if(typeof v!=='string'||!v.trim()||new TextEncoder().encode(v).length>max)throw Error('Text is empty or too long.');return v.trim();};
+const opDays=(v,max=3650)=>{if(!Number.isInteger(v)||v<1||v>max)throw Error('Invalid duration.');return v;};
+const opGet=(xs,id)=>{const v=xs.find(x=>x.id===Number(id));if(!v)throw Error('Unknown operating record.');return v;};
+const opAdd=(b,k,n)=>{const v=BigInt(b[k]||0)+BigInt(n);if(v<0n||v>MAX112)throw Error('Balance out of range.');b[k]=String(v);};
+const opTake=(b,k,n)=>{n=opQ(n);if(BigInt(b[k]||0)<n)throw Error('Insufficient '+k+' in this compartment.');opAdd(b,k,-n);};
+function opFresh(){return {schema:'idfbi/operating-state/1.6',editions:[],installations:[],grants:[],commissions:[],collectibles:[],venues:[],cells:[],loans:[],options:[],covenants:{},applications:[],lossSink:{}};}
+class OperatingEngine extends InstrumentEngine {
+ constructor(now){super(now);this.op=opFresh();this._attach();
+  if(!this.world.s.identities.some(a=>a.id===2)){this.world.s.identities.push({id:2,name:"Guest instrument account",owner:"guest",epoch:1,nonce:0,seed:29,color:0,balances:{ETH:String(wei("3")),AUR:String(wei("5000"))},lease:null});this.record("REHEARSAL_ACCOUNT",2,{note:"Fictional Guest allocation; not a mint or deposit."});}
+  for(const l of this.world.s.listings.filter(l=>l.status==='listed'))this._bindListing(l);
+ }
+ _attach(){const self=this,w=this.world;
+  w._owner=function(id){const a=this.identity(id);const d=self._delegation;if(a.owner===this.s.actor)return a;if(d&&d.identity===a.id&&d.epoch===a.epoch&&a.owner!=='escrow')return a;throw Error('Only the current owner may create new risk.');};
+  const check=KingdomModel.prototype.checkListing;
+  w.checkListing=function(id){const l=check.call(this,id),c=self.op.covenants[l.id];if(!c||c.moduleRoot!==fingerprint(self.moduleSnapshot(l.identity)))throw Error('Operating covenant changed or missing. Seller must refresh the listing.');return l;};
+  w.listEstate=function(id,n,days=7){return self.atomic(()=>{const l=KingdomModel.prototype.listEstate.call(this,id,n,days);self._bindListing(l);return l;});};
+ }
+ atomic(fn){const saved=this.op?structuredClone(this.op):null;try{return super.atomic(fn);}catch(e){if(saved)this.op=saved;throw e;}}
+ context(anchor){return fingerprint({base:super.context(anchor),operating:this.moduleSnapshot(this.world.s.selected)});}
+ record(kind,id,data){const causes=new Set(data.causes||[]);if(data.cause)causes.add(data.cause);for(const key of ['commission','loan','option','venue','grant','edition'])if(data[key]){const prior=this.world.s.events.findLast(e=>e.data[key]===data[key]);if(prior)causes.add(prior.seq);}return this.world._event(kind,id,{...data,causes:[...causes].filter(n=>Number.isInteger(n)&&n>0&&n<=this.world.s.seq)});}
+ edition(id){return opGet(this.op.editions,id);}
+ publish(title,raw,parent=0){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected);if(this.op.editions.length>=256)throw Error('Edition capacity reached.');const recipe=this.normalize(raw);if(parent)this.edition(parent);const e={id:this.op.editions.length+1,title:opText(title,96),author:this.world.s.actor,identity:a.id,epoch:a.epoch,time:this.world.s.now,parent:Number(parent),recipe};e.contentHash=fingerprint({schema:'idfbi/typed-edition/1.6',recipe});e.editionHash=fingerprint(e);e.receipt=this.record('EDITION_PUBLISHED',a.id,{edition:e.id,contentHash:e.contentHash,parent:e.parent}).seq;this.op.editions.push(e);return e;});}
+ install(id){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected),e=this.edition(id);if(this.op.installations.some(x=>x.identity===a.id&&x.edition===e.id))throw Error('Edition already in this library.');const i={id:this.op.installations.length+1,identity:a.id,edition:e.id,contentHash:e.contentHash,readyAt:this.world.s.now+7*DAY};this.op.installations.push(i);this.record('EDITION_ADOPTED',a.id,{edition:e.id,readyAt:i.readyAt,cause:e.receipt});return i;});}
+ grant(edition,{caller,perCall,total,calls=1,days=7}){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected),e=this.edition(edition),i=this.op.installations.find(x=>x.identity===a.id&&x.edition===e.id);if(!i||this.world.s.now<i.readyAt)throw Error('Installation is still in its seven-day review period.');if(!['you','guest'].includes(caller)||!Number.isInteger(calls)||calls<1||calls>100)throw Error('Invalid caller or call limit.');const p=opQ(perCall),t=opQ(total);if(p>t||BigInt(e.recipe.amount)>p)throw Error('Recipe exceeds the authorized budget.');opDays(days,30);const g={id:this.op.grants.length+1,identity:a.id,edition:e.id,editionHash:e.editionHash,epoch:a.epoch,caller,perCall:String(p),total:String(t),spent:'0',calls,used:0,expires:this.world.s.now+days*DAY,revoked:false};this.op.grants.push(g);this.record('GRANT_CREATED',a.id,{grant:g.id,edition:e.id,epoch:a.epoch,caller,budget:g.total,cause:e.receipt});return g;});}
+ grantStatus(g){const a=this.world.identity(g.identity);return g.revoked?'revoked':a.owner==='escrow'?'escrowed':a.epoch!==g.epoch?'custody changed':this.world.s.now>=g.expires?'expired':g.used>=g.calls?'exhausted':'active';}
+ revoke(id){const g=opGet(this.op.grants,id);this.world._owner(g.identity);g.revoked=true;this.record('GRANT_REVOKED',g.identity,{grant:g.id});}
+ run(id){return this.atomic(()=>{const g=opGet(this.op.grants,id),e=this.edition(g.edition),n=BigInt(e.recipe.amount);if(this.grantStatus(g)!=='active'||g.caller!==this.world.s.actor||e.editionHash!==g.editionHash||n>BigInt(g.perCall)||BigInt(g.spent)+n>BigInt(g.total))throw Error('Grant rejects this caller, custody epoch, edition or budget.');const selection=this.world.s.selected;this._delegation={identity:g.identity,epoch:g.epoch};this.world.s.selected=g.identity;try{const result=this.apply(e.recipe);g.used++;g.spent=String(BigInt(g.spent)+n);this.record('EDITION_EXECUTED',g.identity,{grant:g.id,edition:e.id,amount:String(n),asset:e.recipe.input,cause:e.receipt});return result;}finally{this._delegation=null;this.world.s.selected=selection;}});}
+ commission({title,worker,asset,amount,days=14,room=1}){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected);if(!['you','guest'].includes(worker)||worker===this.world.s.actor)throw Error('Choose the other participant.');this.world.room(room);opDays(days,90);const n=opQ(amount);opTake(a.balances,asset,n);const c={id:this.op.commissions.length+1,identity:a.id,sponsor:this.world.s.actor,reviewer:this.world.s.actor,worker,asset,amount:String(n),title:opText(title,256),deadline:this.world.s.now+days*DAY,reviewEnds:this.world.s.now+(days+3)*DAY,room:Number(room),status:'offered',edition:0};c.receipt=this.record('COMMISSION_FUNDED',a.id,{commission:c.id,room:c.room,asset,amount:c.amount}).seq;this.op.commissions.push(c);return c;});}
+ acceptCommission(id){const c=opGet(this.op.commissions,id);if(this.world.s.actor!==c.worker||c.status!=='offered'||this.world.s.now>=c.deadline)throw Error('Commission cannot be accepted.');c.status='accepted';this.record('COMMISSION_ACCEPTED',c.identity,{commission:c.id,cause:c.receipt});}
+ submitCommission(id,edition){const c=opGet(this.op.commissions,id),e=this.edition(edition);if(this.world.s.actor!==c.worker||e.author!==c.worker||c.status!=='accepted'||this.world.s.now>=c.deadline)throw Error('Deliver your own edition before the deadline.');c.edition=e.id;c.status='submitted';this.record('WORK_SUBMITTED',c.identity,{commission:c.id,edition:e.id,cause:c.receipt});}
+ decideCommission(id,approve){return this.atomic(()=>{const c=opGet(this.op.commissions,id);if(c.status!=='submitted'||this.world.s.actor!==c.reviewer||this.world.s.now>=c.reviewEnds)throw Error('Only the named reviewer can decide within the review window.');if(approve){opAdd(this.extra.personalBalances[c.worker],c.asset,c.amount);c.status='paid';}else{opAdd(this.world.identity(c.identity).balances,c.asset,c.amount);c.status='refunded';}this.record(approve?'WORK_PAID':'WORK_REJECTED',c.identity,{commission:c.id,edition:c.edition,cause:c.receipt});});}
+ refundCommission(id){return this.atomic(()=>{const c=opGet(this.op.commissions,id);const timeout=this.world.s.now>=(c.status==='submitted'?c.reviewEnds:c.deadline);if(!['offered','accepted','submitted'].includes(c.status)||!timeout)throw Error('The fixed refund deadline has not arrived.');c.status='refunded';opAdd(this.world.identity(c.identity).balances,c.asset,c.amount);this.record('COMMISSION_REFUNDED',c.identity,{commission:c.id,cause:c.receipt});});}
+ mintCollectible(edition){const a=this.world._owner(this.world.s.selected),e=this.edition(edition);const t={id:this.op.collectibles.length+1,edition:e.id,holder:a.id,venue:0};this.op.collectibles.push(t);this.record('EDITION_COLLECTED',a.id,{collectible:t.id,edition:e.id,cause:e.receipt});return t;}
+ openShelf(collectible,price,days=7){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected),t=opGet(this.op.collectibles,collectible);if(t.holder!==a.id||t.venue)throw Error('Collectible is not free inventory.');opDays(days,365);const v={id:this.op.venues.length+1,identity:a.id,collectible:t.id,price:String(opQ(price)),bondUntil:this.world.s.now+days*DAY,reserve:'0',status:'open'};t.venue=v.id;this.op.venues.push(v);this.record('VENUE_OPENED',a.id,{venue:v.id,collectible:t.id,bondUntil:v.bondUntil});return v;});}
+ buyShelf(id){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected),v=opGet(this.op.venues,id),t=opGet(this.op.collectibles,v.collectible);if(v.status!=='open'||a.id===v.identity)throw Error('Shelf unavailable or self-trade.');opTake(a.balances,'ETH',v.price);v.reserve=v.price;v.status='sold';t.holder=a.id;t.venue=0;this.record('SHELF_PURCHASED',a.id,{venue:v.id,collectible:t.id,amount:v.price,asset:'ETH'});});}
+ closeShelf(id){return this.atomic(()=>{const v=opGet(this.op.venues,id),a=this.world._owner(v.identity);if(v.status==='closed'||this.world.s.now<v.bondUntil)throw Error('Venue bond has not ended.');const t=opGet(this.op.collectibles,v.collectible);if(v.status==='open'){t.venue=0;t.holder=a.id;}opAdd(a.balances,'ETH',v.reserve);v.reserve='0';v.status='closed';this.record('VENUE_CLOSED',a.id,{venue:v.id});});}
+ cell(id=this.world.s.selected,create=false){let c=this.op.cells.find(x=>x.identity===Number(id));if(!c&&create){c={id:this.op.cells.length+1,identity:Number(id),enabled:[],enabledEpoch:this.world.identity(id).epoch,balances:{},strategy:{asset:'AUR',assets:'0',shares:'0'},basket:{supply:'0',ETH:'0',AUR:'0'},strip:null};this.op.cells.push(c);}if(!c)throw Error('Allocate a separate laboratory balance first.');return c;}
+ allocate(asset,amount){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected),n=opQ(amount),c=this.cell(a.id,true);opTake(a.balances,asset,n);opAdd(c.balances,asset,n);this.record('LAB_ALLOCATED',a.id,{cell:c.id,asset,amount:String(n)});return c;});}
+ enableLab(module){const a=this.world._owner(this.world.s.selected),c=this.cell(a.id);if(!LAB_MODULES.includes(module))throw Error('This module has no runnable adapter.');if(c.enabledEpoch!==a.epoch){c.enabled=[];c.enabledEpoch=a.epoch;}if(!c.enabled.includes(module))c.enabled.push(module);this.record('LAB_ENABLED',a.id,{cell:c.id,module});}
+ labOwner(module,id=this.world.s.selected,newRisk=true){const a=this.world._owner(id),c=this.cell(a.id);if(newRisk&&(c.enabledEpoch!==a.epoch||!c.enabled.includes(module)))throw Error('This experiment is locked in the engine. Explicitly enable it for this cell and custody epoch.');return c;}
+ withdrawLab(asset,n){return this.atomic(()=>{const a=this.world._owner(this.world.s.selected),c=this.cell(a.id);n=opQ(n);opTake(c.balances,asset,n);opAdd(a.balances,asset,n);this.re

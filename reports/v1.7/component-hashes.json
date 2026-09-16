@@ -1,0 +1,45 @@
+{
+  "scope": "Identifies source and compiled visual artifacts; not Solidity execution or a signature.",
+  "files": {
+    "web/memory/crypto.mjs": {
+      "bytes": 4707,
+      "sha256": "9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523"
+    },
+    "web/memory/engine.mjs": {
+      "bytes": 10484,
+      "sha256": "d7e9458327bf9598aa7b3cb9a9a5c6cc00ce3747712dc259bd65cc27fc1ff4ec"
+    },
+    "web/memory/app.js": {
+      "bytes": 17083,
+      "sha256": "ddf8f8be63ef3056938f6a50e55cd08701e35fa707872442da8f74c697831d17"
+    },
+    "web/memory/renderer-bridge.js": {
+      "bytes": 5134,
+      "sha256": "af6c3724dbe4b80aa29d6d9202ce873b4f26996905bfd670752a54f9b06d6918"
+    },
+    "render/living/field.inc": {
+      "bytes": 7659,
+      "sha256": "f482cf1e667c7a0714aa7c65fd92db11a4941cfa677da2757354d864116ad03f"
+    },
+    "render/living/field.frag": {
+      "bytes": 8203,
+      "sha256": "0357ac3d63729deff28c0a4a19ff769852a6f9b823effdda79b5a980806df194"
+    },
+    "render/living/field.c": {
+      "bytes": 2424,
+      "sha256": "6d171db31858143aebd0339bbc33661d90502a2a842d101e139e481e807b0f02"
+    },
+    "render/living/field.wasm": {
+      "bytes": 10519,
+      "sha256": "e27a659387e135680833502ecd7ae2178a03d8d8552405dae6a3c1d46987be81"
+    },
+    "contracts/src/memory/MemoryLedger.sol": {
+      "bytes": 6215,
+      "sha256": "28b88e54ea254c66232ae75b2508de6c758d17c921cc05a569a4a3fa7c5163aa"
+    },
+    "contracts/src/memory/JournalSwapRouter.sol": {
+      "bytes": 3875,
+      "sha256": "e81b526cc9ce7ca1698b8c80366d80c9b8ef8cc8b9422990461e09f2a8e04191"
+    }
+  }
+}

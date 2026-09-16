@@ -1,0 +1,186 @@
+{
+  "contractName": "IJournalMarket",
+  "sourceName": "contracts/src/memory/JournalSwapRouter.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenIn",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint112",
+          "name": "amount",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint112",
+          "name": "minOut",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint48",
+          "name": "deadline",
+          "type": "uint48"
+        },
+        {
+          "internalType": "uint256",
+          "name": "identity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint64",
+          "name": "lockUntil",
+          "type": "uint64"
+        }
+      ],
+      "name": "swap",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "swap(address,address,uint112,uint112,uint48,uint256,uint64)": "0a327b92"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenIn",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOut",
+              "type": "address"
+            },
+            {
+              "internalType": "uint112",
+              "name": "amount",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint112",
+              "name": "minOut",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint48",
+              "name": "deadline",
+              "type": "uint48"
+            },
+            {
+              "internalType": "uint256",
+              "name": "identity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint64",
+              "name": "lockUntil",
+              "type": "uint64"
+            }
+          ],
+          "name": "swap",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/memory/JournalSwapRouter.sol": "IJournalMarket"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/memory/JournalSwapRouter.sol": {
+        "keccak256": "0x44374824ad71fbc8f1c00d49d4a4090f31380d19452b4d80f6bf7cce1f5dad8f",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://642f0ecd95df315f42979f167e8a3925fa34b6ad7a26e0fe11e3ed9d3713f079",
+          "dweb:/ipfs/Qme67Q3GMPeguaPbYwmRWCDNoSHrQtvTDjQyfZRoC24B7Q"
+        ]
+      },
+      "contracts/src/memory/MemoryLedger.sol": {
+        "keccak256": "0x68ebd857ba5a4997391231e7385809fec3d31b163d6dabfad0223b2537fe5467",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://26bf826e6167dad11496ebb453ba17cc85bb9202e41c8bf7c079f10aa64f3b4b",
+          "dweb:/ipfs/QmdVSz9ZNgNGt3me4q3wKcc44cQ9VacRVDr9kCGMW2zfHb"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

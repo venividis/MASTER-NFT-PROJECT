@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DAVE HELD · THE TRADING FLOOR</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#0b1f1a;          /* deep viridian ink */
+  --ink-2:#0e2a22;        /* folio ground */
+  --line:#1e4034;         /* engraved rule */
+  --line-soft:#16332a;
+  --bond:#c8a24b;         /* certificate bronze */
+  --intaglio:#9fd6b8;     /* pale engraving green */
+  --paper:#ede8d6;        /* off-white text */
+  --dim:#6f9484;          /* muted engraving */
+  --alarm:#e4572e;        /* ragequit vermilion — sparingly */
+  --mono:'IBM Plex Mono',ui-monospace,monospace;
+  --disp:'Fraunces',serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{background:var(--ink)}
+body{
+  font-family:var(--mono);color:var(--paper);background:
+    repeating-linear-gradient(0deg,transparent 0 31px,rgba(159,214,184,.04) 31px 32px),
+    var(--ink);
+  min-height:100vh;font-size:13px;line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:760px;margin:0 auto;padding:0 14px 90px}
+
+/* ── masthead ── */
+header{padding:22px 0 10px;border-bottom:2px solid var(--bond);position:relative}
+.cert-row{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.house{font-family:var(--disp);font-weight:700;font-size:clamp(22px,6vw,34px);letter-spacing:.02em;color:var(--paper)}
+.house em{font-style:normal;color:var(--bond)}
+.certno{font-size:11px;color:var(--dim);letter-spacing:.18em;text-align:right}
+.certno b{color:var(--intaglio);display:block;font-size:13px;letter-spacing:.1em}
+.motto{margin-top:4px;font-size:10px;letter-spacing:.32em;color:var(--dim);text-transform:uppercase}
+
+/* ── seal dial hero ── */
+.covenant{display:grid;grid-template-columns:150px 1fr;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--line)}
+@media(max-width:430px){.covenant{grid-template-columns:120px 1fr}}
+.dial{width:100%;aspect-ratio:1;display:block}
+.dial .spin{transform-origin:50% 50%;animation:rot 90s linear infinite}
+.dial .spin2{transform-origin:50% 50%;animation:rot 140s linear infinite reverse}
+@keyframes rot{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.dial .spin,.dial .spin2{animation:none}}
+.cov-stats{display:grid;gap:8px}
+.stat{display:flex;justify-content:space-between;border-bottom:1px dotted var(--line-soft);padding-bottom:4px}
+.stat .k{color:var(--dim);font-size:10px;letter-spacing:.2em;text-transform:uppercase}
+.stat .v{color:var(--intaglio);font-weight:600}
+.stat .v.gold{color:var(--bond)}
+.stat .v.alarm{color:var(--alarm)}
+
+/* ── desk rail ── */
+nav{position:sticky;top:0;z-index:5;background:linear-gradient(var(--ink) 88%,transparent);padding:10px 0 6px;margin:0 -14px;overflow-x:auto;scrollbar-width:none}
+nav::-webkit-scrollbar{display:none}
+.rail{display:flex;gap:6px;padding:0 14px;width:max-content}
+.tab{
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase;
+  color:var(--dim);background:transparent;border:1px solid var(--line);
+  padding:7px 11px;cursor:pointer;white-space:nowrap;border-radius:2px;
+}
+.tab .n{color:var(--bond);margin-right:5px;font-family:var(--disp);font-style:italic}
+.tab.on{color:var(--ink);background:var(--intaglio);border-color:var(--intaglio);font-weight:600}
+.tab.on .n{color:var(--ink)}
+.tab:focus-visible{outline:2px solid var(--bond);outline-offset:2px}
+
+/* ── folio ── */
+.folio{background:var(--ink-2);border:1px solid var(--line);border-top:3px double var(--bond);margin-top:14px;padding:16px 14px 12px;border-radius:2px}
+.folio h2{font-family:var(--disp);font-weight:600;font-size:19px;color:var(--paper);display:flex;align-items:baseline;gap:10px}
+.folio h2 .cod{font-size:10px;font-family:var(--mono);color:var(--bond);letter-spacing:.24em}
+.folio .doctrine{margin:6px 0 12px;color:var(--dim);font-size:11.5px;font-style:italic;font-family:var(--disp)}
+.ledger{width:100%;border-collapse:collapse}
+.ledger th{font-size:9.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);text-align:left;padding:6px 8px 6px 0;border-bottom:1px solid var(--line)}
+.ledger td{padding:8px 8px 8px 0;border-bottom:1px dotted var(--line-soft);font-size:12px;vertical-align:top}
+.ledger td.num{color:var(--intaglio);font-weight:500}
+.ledger td.gold{color:var(--bond)}
+.ledger td.alarm{color:var(--alarm)}
+.badge{display:inline-block;font-size:9px;letter-spacing:.14em;border:1px solid var(--line);color:var(--dim);padding:1px 6px;border-radius:2px;text-transform:uppercase}
+.badge.bonded{border-color:var(--bond);color:var(--bond)}
+.badge.live{border-color:var(--intaglio);color:var(--intaglio)}
+.acts{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.act{
+  font-family:var(--mono);font-size:11px;letter-spacing:.06em;
+  background:transparent;color:var(--intaglio);border:1px solid var(--intaglio);
+  padding:8px 12px;cursor:pointer;border-radius:2px;
+}
+.act.primary{background:var(--bond);border-color:var(--bond);color:var(--ink);font-weight:600}
+.act:focus-visible{outline:2px solid var(--bond);outline-offset:2px}
+.wire{margin-top:12px;padding-top:8px;border-top:1px solid var(--line-soft);font-size:9.5px;color:var(--dim);letter-spacing:.06em;word-break:break-all}
+.wire b{color:var(--intaglio);letter-spacing:.2em;font-size:9px}
+
+/* ── toll ticker ── */
+.ticker{
+  position:fixed;left:0;right:0;bottom:0;background:var(--ink-2);
+  border-top:2px solid var(--bond);overflow:hidden;padding:8px 0;z-index:9;
+}
+.tape{display:inline-block;white-space:nowrap;animation:tape 40s linear infinite;color:var(--dim);font-size:11px}
+.tape b{color:var(--bond)} .tape i{color:var(--intaglio);font-style:normal}
+@keyframes tape{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(prefers-reduced-motion:reduce){.tape{animation:none}}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+  <div class="cert-row">
+    <div class="house">DAVE <em>HELD</em></div>
+    <div class="certno">CERTIFICATE OF CONVICTION<br><b>Nº 04213 / 100000</b></div>
+  </div>
+  <div class="motto">the premises · trading floor · robinhood chain 4663</div>
+</header>
+
+<section class="covenant" aria-label="The covenant">
+  <svg class="dial" viewBox="0 0 200 200" role="img" aria-label="Seal dial: DIAMOND tier, 214 days to unlock">
+    <defs>
+      <path id="arcTop" d="M 30 100 A 70 70 0 0 1 170 100"/>
+      <path id="arcBot" d="M 30 100 A 70 70 0 0 0 170 100"/>
+    </defs>
+    <g class="spin" stroke="#1e4034" fill="none" stroke-width=".7">
+      <circle cx="100" cy="100" r="96"/>
+      <circle cx="100" cy="100" r="92" stroke-dasharray="1 3"/>
+      <path d="M100 4 a96 96 0 0 1 0 192 a96 96 0 0 1 0 -192" stroke-dasharray="12 5"/>
+    </g>
+    <g class="spin2" stroke="#c8a24b" fill="none" stroke-width=".6" opacity=".8">
+      <circle cx="100" cy="100" r="84" stroke-dasharray="2 5"/>
+      <circle cx="100" cy="100" r="79" stroke-dasharray="26 9"/>
+    </g>
+    <circle cx="100" cy="100" r="72" fill="none" stroke="#16332a" stroke-width="9"/>
+    <!-- conviction ring: 58% of current seal served -->
+    <circle cx="100" cy="100" r="72" fill="none" stroke="#9fd6b8" stroke-width="9"
+      stroke-dasharray="262 452" stroke-linecap="butt" transform="rotate(-90 100 100)"/>
+    <text font-family="IBM Plex Mono" font-size="8" fill="#6f9484" letter-spacing="3">
+      <textPath href="#arcTop" startOffset="8%">NOTHING LEAVES · THE SEAL ONLY EXTENDS</textPath>
+    </text>
+    <text font-family="Fraunces" font-size="30" font-weight="700" fill="#ede8d6" x="100" y="97" text-anchor="middle">214</text>
+    <text font-family="IBM Plex Mono" font-size="8" fill="#6f9484" x="100" y="112" text-anchor="middle" letter-spacing="2">DAYS SEALED</text>
+    <text font-family="IBM Plex Mono" font-size="9" fill="#c8a24b" x="100" y="128" text-anchor="middle" letter-spacing="3">◈ DIAMOND</text>
+  </svg>
+  <div class="cov-stats">
+    <div class="stat"><span class="k">Conviction</span><span class="v">4 812 906 ¢·s</span></div>
+    <div class="stat"><span class="k">Temper</span><span class="v gold">3 seals served</span></div>
+    <div class="stat"><span class="k">Paper hands</span><span class="v">0 — clean</span></div>
+    <div class="stat"><span class="k">Rank</span><span class="v gold">№ 117 engraved</span></div>
+    <div class="stat"><span class="k">Estate</span><span class="v" id="estate">9 bags · 3 deeds</span></div>
+  </div>
+</section>
+
+<nav aria-label="Desks"><div class="rail" id="rail"></div></nav>
+<main id="folio" aria-live="polite"></main>
+
+</div>
+
+<div class="ticker" aria-hidden="true"><div class="tape" id="tape"></div></div>
+
+<script>
+/* ─────────── the estate of Nº 04213 — mock ledger + wiring spec ─────────── */
+const D = {
+  vault:{rows:[
+    ['$GREG','1 000 000','sealed','Charter pool feeds it'],
+    ['USDC','41 250','sealed','margin + premiums home'],
+    ['HOOD','36.4','sealed','2 swallowed by PUT desk'],
+    ['mSILO','9 958','sealed','Granary title, farming'],
+    ['ETH','2.84','sealed','wake rent, tolls'],
+  ],acts:['Deposit','Extend seal ◈','Acknowledge token'],
+  wire:'DaveVault.unlockAt() · tier() · temper() · convictionLive() · bagsLength()/bagAt(i) · deposit(t,amt)'},
+
+  bourse:{rows:[
+    ['Stall #7 · MOCKPUNKS','DUAL · EXPO','spot 12.40 USDC','bonded'],
+    ['Stall #12 · DEEDS-TB27','SELL · FLAT','spot 101.9 USDC','open'],
+  ],acts:['Open stall','Stock shelf','Bond stall'],
+  wire:'Bourse.stalls(id) · shelf(id) · stallsOf(dave) · buy/sell(id,ids,limit)'},
+
+  charter:{rows:[
+    ['Pool #3 · GREG/USDC','fee 1.00% · sealed −20%','spot 0.983 · twap₃₀ 0.981','bonded'],
+    ['Pool #9 · HOOD/USDC','fee 0.30%','spot 24.61 · twap₃₀ 24.58','open'],
+  ],acts:['Charter pool','Add liquidity','Swap (sealed tier)'],
+  wire:'Charter.pools(id) · spot(id) · twap(id,1800) · quoteOut(id,dir,amt,dave) · poolsOf(dave)'},
+
+  wake:{rows:[
+    ['Seat · Stall #7','keeper 0x9c…41','price 1.4 ETH · rent 4.20%/yr','window 3 blocks'],
+    ['Escrow','0.062 ETH','~161 days paid','—'],
+  ],acts:['Take seat','Reprice','Poke deadbeat'],
+  wire:'Wake.seats(stall) · inWake(stall) · rentOwed(stall) · take(stall,price)'},
+
+  house:{rows:[
+    ['Desk #2 · HOOD-PERP','mark 24.60','backing 25 000 USDC','bonded'],
+    ['Book','long 8 400 / short 3 100','funding +0.9 bps·d','OI cap 50%'],
+    ['Weekend','SAT 03:12 UTC','the old world is closed','24/5 live'],
+  ],acts:['Open long','Open short','Fund backing'],
+  wire:'House.desks(id) · mark(id) · equityOf(pos) · open(id,long,size,margin,px)'},
+
+  registry:{rows:[
+    ['Lot #4 · TB-2027 wrappers','NAV 101.42 · band 2%','deals 99.39 / 103.45','KYC gate'],
+    ['Feed age','6h','stale paper will not trade','< 1 day'],
+  ],acts:['Open lot','Stock paper','Set band'],
+  wire:'Registry.lots(id) · nav(id) · quoteBuy/quoteSell(id,n) · lotsOf(dave)'},
+
+  wager:{rows:[
+    ['Book #1 · HOOD > $30 by Sep 1','YES 62¢ / NO 38¢','purse covers 100%','judge 0xUMA…'],
+    ['Sold','412 YES · 371 NO','collected 24 830','resolveBy Sep 3'],
+  ],acts:['Buy YES','Buy NO','Sweep escheat'],
+  wire:'Wager.books(id) · quoteCost(id,side,n) · worstCase(id) · claim(id)'},
+
+  counter:{rows:[
+    ['Till #1 · USDC','drawer 84 200','flash fee 0.09%','bonded'],
+    ['Pawn #3','Dave Nº 88104 escrowed','10 000 @ 10% flat · due 12d','inert'],
+    ['Flashes today','17','fees compounded 68.4','—'],
+  ],acts:['Flash borrow','Propose pawn','Underwrite'],
+  wire:'Counter.tills(id) · flashFee(id,amt) · pawns(id) · pawnOwed(id) · flash(id,amt,rcv,data)'},
+
+  granary:{rows:[
+    ['Silo · mUSDC-4626','blessed ✓','sown 10 000 → title 9 958','yield +4.1% APR'],
+    ['Harvest preview','10 366 USDC','reap lands vault-ward','pinned'],
+  ],acts:['Sow 5 000','Reap all','Preview'],
+  wire:'Granary.blessed(silo) · previewReap(silo,shares) · sow(dave,silo,amt) · reap(dave,silo,sh)'},
+
+  scrivener:{rows:[
+    ['Quill #1 · HOOD CALL 100','exp 22d · premium 5.00','ink 10 · sold 4','bonded'],
+    ['Quill #2 · HOOD PUT 100','exp 22d · premium 4.00','ink 500 USDC · sold 2','open'],
+  ],acts:['Write 1 contract','Exercise','Ink cover'],
+  wire:'Scrivener.quills(id) · costOf(id,n) · capacity(id) · heldOf(id,who) · exercise(id,n)'},
+
+  indenture:{rows:[
+    ['Tranche #1 · zero-coupon','face 100 · ask 90','matures with the seal · 214d','fully funded'],
+    ['Fund','1 000 USDC escrowed','outstanding 6 notes','free 400'],
+    ['Yield to maturity','11.1%','the date cannot move','pinned'],
+  ],acts:['Subscribe 1 note','Transfer notes','Redeem at face'],
+  wire:'Indenture.tranches(id) · costOf(id,n) · capacityNotes(id) · notesOf(id,who) · redeem(id,n)'},
+
+  strips:{rows:[
+    ['Series #1 · mUSDC-4626','matures 60d','dPT-1 trades 0.947 on Charter','fixed 5.6%'],
+    ['Papers out','9 958 PT · 9 958 YT','yield index 0.0912/YT','accruing'],
+    ['High-water','1.0413 assets/share','drawdowns never un-accrue','honest'],
+  ],acts:['Strip 1 000 shares','Unstrip','Claim yield'],
+  wire:'Strips.series(id) · tokensOf(id) · yieldOf(id,who) · strip(id,sh) · redeemPrincipal(id,n)'},
+
+  surety:{rows:[
+    ['Pledge #1 · oracle-set ward','judge 0xUMA…','staked 50 000 · slashed 0','committed 90d'],
+    ['Pledge #2 · attestation','no adjudicator','staked 12 000 · unslashable','reputation'],
+    ['Credential','temper 3 · hands 0','conviction 4.8M ¢·s · rank 117','the résumé'],
+  ],acts:['Underwrite ward','Stake more','Pay premium'],
+  wire:'Surety.pledges(id) · coverage(id) · credential(dave) · premium(id,amt) · slash(id,amt,ev)'},
+
+  issue:{rows:[
+    ['Fund #1 · dFUND-1','GREG 100 / USDC 50 / HOOD 1','supply 4 120 shares','carved'],
+    ['Fees','create 1% · redeem 0.5%','issuer\'s cut paid in shares → vault','aligned'],
+    ['The exit','redeem always open','creations haltable, exits eternal','honest'],
+  ],acts:['Create 10 shares','Redeem','Halt creations'],
+  wire:'Issue.fund(id) · recipe(id) · basketFor(id,n) · create(id,n) · redeem(id,n)'},
+
+  chambers:{rows:[
+    ['Organ · yield-rotator.eth','docked 41d ago','sealed acts: 112 · breaches: 0','active'],
+    ['Organ · wake-hunter v2','curing — ready in 3d','proposed by bearer','curing'],
+    ['Firewall','transfer-family: refused','approvals: venues only','measured'],
+  ],acts:['Propose module','Undock','Purge roster'],
+  wire:'Chambers.modulesOf(dave) · readyAt(dave,mod) · docked(dave,mod) · act(...)'},
+
+  codex:{rows:[
+    ['Edition #2 · "limit-ladder"','RECITE · open','TWAP-gated GREG buys','recited 38×'],
+    ['Edition #5 · "testament"','RECITE · ONCE latch','fires at unlock + silence','armed'],
+    ['Edition #7 · forge','deployed 0x4a…e9','from the vault\'s own address','docked'],
+  ],acts:['Inscribe leaf','Bind edition','Recite'],
+  wire:'Codex.leaves(id) · read(ed) · editionsOf(dave) · forgedAddressOf(dave,ed,salt) · recite(dave,ed)'},
+};
+
+const DESKS = [
+  ['vault','THE VAULT','—','The covenant. Nothing leaves; the seal only extends.'],
+  ['bourse','THE BOURSE','VII','Every Dave a market-maker. Sell the Dave, sell the book.'],
+  ['charter','THE CHARTER','VIII','The token floor. The Dave is the LP; conviction is a fee tier.'],
+  ['wake','THE WAKE','IX','MEV as bearer rent. The stall sells its own aftermath.'],
+  ['house','THE HOUSE','X','The vault is the counterparty. Never tolled below its book.'],
+  ['registry','THE REGISTRY','XI','Real-world paper at NAV ± band. Stale paper does not trade.'],
+  ['wager','THE WAGER','XIV','Yes or no, in cents. Void is a refund, never a rug.'],
+  ['counter','THE COUNTER','XV','Flash credit and whole-Dave pawns. Temper is the score.'],
+  ['granary','THE GRANARY','XVI','Sealed capital that still farms. Every flow pinned home.'],
+  ['scrivener','THE SCRIVENER','XVII','Options in full ink. No oracle; exercise is physical.'],
+  ['indenture','THE INDENTURE','XVIII','Debt whose maturity the chain enforces.'],
+  ['strips','THE STRIPS','XIX','Principal and yield, dealt separately. The discount is the rate.'],
+  ['surety','THE SURETY','XX','Conviction re-staked. The slash feeds the faithful.'],
+  ['issue','THE ISSUE','XXI','Every Dave its own fund issuer. The prospectus is carved.'],
+  ['chambers','THE CHAMBERS','XII','Add your own organs. Cured seven days; measured, not trusted.'],
+  ['codex','THE CODEX','XIII','The book that runs. Leaves, editions, the forge, the recital.'],
+];
+
+const rail = document.getElementById('rail');
+const folio = document.getElementById('folio');
+let current = 'vault';
+
+function tabEl([key,name,cod]){
+  const b=document.createElement('button');
+  b.className='tab'+(key===current?' on':'');
+  b.innerHTML=(cod!=='—'?`<span class="n">${cod}</span>`:'')+name.replace('THE ','');
+  b.onclick=()=>{current=key;render()};
+  return b;
+}
+function render(){
+  rail.replaceChildren(...DESKS.map(tabEl));
+  const [,name,cod,doct]=DESKS.find(d=>d[0]===current);
+  const d=D[current];
+  const rows=d.rows.map(r=>`<tr>
+    <td>${r[0]}</td><td class="num">${r[1]}</td>
+    <td class="gold">${r[2]}</td>
+    <td>${/bonded|sealed|pinned|inert|curing|armed|measured/.test(r[3])?`<span class="badge bonded">${r[3]}</span>`:/open|active|live|clean|—/.test(r[3])?`<span class="badge live">${r[3]}</span>`:r[3]}</td>
+  </tr>`).join('');
+  const acts=d.acts.map((a,i)=>`<button class="act${i===0?' primary':''}">${a}</button>`).join('');
+  folio.innerHTML=`<section class="folio">
+    <h2>${name} ${cod!=='—'?`<span class="cod">CODICIL ${cod}</span>`:''}</h2>
+    <p class="doctrine">${doct}</p>
+    <table class="ledger"><thead><tr><th>Entry</th><th>Position</th><th>Terms</th><th>State</th></tr></thead>
+    <tbody>${rows}</tbody></table>
+    <div class="acts">${acts}</div>
+    <div class="wire"><b>WIRE · </b>${d.wire}</div>
+  </section>`;
+}
+render();
+
+/* ── the toll tape ── */
+const events=[
+  'TOLL <b>+0.42%</b> Charter #3 swap 2 400 USDC — pool <i>69</i> / treasury 31',
+  'WAKE rent <b>0.0009 ETH</b> → vault Nº 04213',
+  'HOUSE liq · bounty 12.1 to 0x77…d2 · remainder home',
+  'INDENTURE Nº 04213 · note subscribed <b>90 USDC</b> → vault, born locked',
+  'SCRIVENER premium <b>5 USDC</b> vault-ward · CALL 100',
+  'GRANARY harvest preview <b>+4.1%</b> · pinned',
+  'WAGER Book #1 · 40 YES @ 62¢ · purse covers <b>100%</b>',
+  'RAGEQUIT Nº 61558 — 4.20% tolled · <b>the pool feasts</b>',
+];
+document.getElementById('tape').innerHTML=(events.join(' &nbsp;·&nbsp; ')+' &nbsp;·&nbsp; ').repeat(2);
+</script>
+</body>
+</html>

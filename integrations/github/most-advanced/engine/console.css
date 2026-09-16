@@ -1,0 +1,300 @@
+/*═══════════════════════════════════════════════════════════════════════════
+  IPSEITY · the console
+
+  Served raw, inside a <style>, before the first paint. Not compressed —
+  see the header of src/ConsoleSkin.sol for why a stylesheet cannot take
+  the trade the scripts take.
+
+  Three surfaces, three rules, four texts, four semantics. Everything is
+  1px. Not one rounded corner except the LED and the scrollbar thumb. Not
+  one shadow used as elevation — a glow means live and means nothing else.
+
+  --warn is rationed to exactly one meaning: you can do this, but read this
+  first. --bad is failure, or a deadline that has passed. --ok is a live
+  connection, a landed transaction, a bonded market.
+═══════════════════════════════════════════════════════════════════════════*/
+
+:root{
+  /*  --h is written by Console.doc() from the token's own hue trait, so the
+      token's colour is in the first kilobyte of the response and the
+      console is that token's colour before a byte of script has run.    */
+  --h:34;
+  --a:hsl(var(--h) 92% 66%);
+  --a-dim:hsl(var(--h) 62% 44%);
+  --a-ghost:hsl(var(--h) 92% 66% / .10);
+  --void:#04050a; --void-2:#070912; --void-3:#0b0e18;
+  --rule:#151a26; --rule-2:#212838; --rule-3:#2e3648;
+  --dim:#5d6780; --mid:#8b95ad; --txt:#c8d0e2; --lit:#eef2fb;
+  --ok:#5fe3b4; --warn:#ffc95c; --bad:#ff6b63;
+  --mono:ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(.22,.61,.36,1);
+  --crest:46px; --col:300px; --cmd:36px;
+  /*  How far in the walk has gone, in pixels: 22 per level. The fixed
+      regions cannot inherit the band's padding — position:fixed is laid
+      out against the viewport, not against an ancestor's content box — so
+      the inset that keeps content clear of the margin rules has to be a
+      number each of them can read. The console's script sets it on the
+      walk; one level on arrival.                                      */
+  --walk:22px;
+  --safeT:env(safe-area-inset-top,0px);
+  --safeB:env(safe-area-inset-bottom,0px);
+}
+
+html,body{background:var(--void);color:var(--txt);margin:0;height:100%;
+  font-family:var(--mono);font-size:13px;line-height:1.45;
+  font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1,"zero" 1;
+  -webkit-text-size-adjust:100%}
+/*  The document arrives rather than appearing. Nine tenths of a second is
+    long enough to read as deliberate and short enough that nobody waits.
+
+    An ANIMATION, not a class the script adds. It was a class for one
+    commit, and that made the entire server-rendered document — the thing
+    whose whole justification is that it is correct with no script at all —
+    invisible if a single line of the client threw. A fade nobody can fail
+    to trigger is worth more than a fade that is one exception away from a
+    black page.                                                          */
+body{opacity:0;animation:arrive .9s var(--ease) forwards;overflow:hidden}
+@keyframes arrive{to{opacity:1}}
+/*  Under reduced motion the rule at the top of this file cuts every
+    transition to nothing; an animation is not a transition, so it is cut
+    here as well. Otherwise the one thing a reader asked to stop is the
+    one thing that still moves.                                        */
+@media(prefers-reduced-motion:reduce){body{animation-duration:.01ms}}
+::selection{background:var(--a);color:var(--void)}
+*{box-sizing:border-box}
+/*  Emphasis in this language is hue, not weight. Nothing here is bold.  */
+b{color:var(--a);font-weight:400}
+a{color:var(--a);text-decoration:none}
+a:hover,a:focus-visible{background:var(--a-ghost);outline:none}
+
+@media(prefers-reduced-motion:reduce){*{transition-duration:.01ms !important}}
+
+/*───────────────────────── type — five classes ─────────────────────────*/
+/*  The inverse relation is the system: the smaller the type, the wider the
+    tracking, the dimmer the colour.                                     */
+.k{font-size:9px;letter-spacing:.26em;text-transform:uppercase;color:var(--dim);white-space:nowrap}
+.v{font-size:12px;letter-spacing:.01em;color:var(--lit)}
+.n{font-size:11px;letter-spacing:.05em;color:var(--txt)}
+.s{font-size:10px;letter-spacing:.08em;color:var(--mid)}
+.blurb{font-size:11px;line-height:1.62;color:var(--mid);margin:0 0 14px}
+.acc{color:var(--a)} .mut{color:var(--dim)}
+.warn{color:var(--warn)} .bad{color:var(--bad)} .ok{color:var(--ok)}
+
+/*───────────────────────── the band and its rule ─────────────────────────*/
+/*  A band re-derives the accent from its own token's hue. --a cannot merely
+    be inherited and re-tinted: a custom property containing var() is
+    substituted where it is DECLARED, so an --a written once on :root
+    carries :root's hue forever no matter what a descendant does to --h.
+    Three lines per band, and the whole band — its rule, its buttons, its
+    focus border, its selection — becomes the colour of what it is about. */
+.sub{
+  --a:hsl(var(--h) 92% 66%);
+  --a-dim:hsl(var(--h) 62% 44%);
+  --a-ghost:hsl(var(--h) 92% 66% / .10);
+  position:fixed;inset:0}
+
+/*  Only the bands you have walked OUT of are inert. They are decoration —
+    a rule in the margin and nothing else — laid over the whole viewport,
+    so without this they eat every click in the document.
+
+    The standing band must NOT have it. `pointer-events` inherits, and
+    `#root` contains the crest, both columns, the ticker and the command
+    line; setting it to none there made the entire console unclickable
+    while every screenshot of it looked perfect. A browser found that in
+    one click and no amount of reading the file would have.            */
+.sub.past{pointer-events:none}
+
+/*  The rule. It is the only thing in this document that says whose token
+    you are reading and how far in you have walked, and it says both at
+    every scroll position without occupying a line of type. Depth is the
+    number of lines in the left margin. That is the breadcrumb, and it
+    costs four declarations.                                             */
+/*  --own is how far in this particular band sits: 0 for the outermost,
+    22px more for each level after it. Every band is fixed to the whole
+    viewport — none of them holds anything in flow — so the rule cannot
+    come from a padding chain and has to be placed from that number.   */
+.sub::before{content:"";position:absolute;left:calc(11px + var(--own,0px));
+  top:0;bottom:0;width:1px;background:var(--a-dim)}
+/*  Full strength for the band being stood in, dimmed for every band you
+    could walk back out to. That is the only difference between them, and
+    it is enough: the bright rule is here, the dim ones are the way back. */
+.sub.here::before{background:var(--a)}
+
+/*  ::before cannot take a tap, and the rule has to be the way back out, so
+    a real element sits over it. 22px because a thumb is not a mouse.    */
+.rung{position:fixed;top:0;bottom:0;width:22px;border:0;padding:0;z-index:8;
+  background:transparent;cursor:pointer;pointer-events:auto;
+  -webkit-tap-highlight-color:transparent}
+.rung:focus-visible{background:var(--a-ghost);outline:none}
+
+/*───────────────────────── the crest ─────────────────────────*/
+#crest{position:fixed;top:0;left:var(--walk);right:0;z-index:7;display:flex;align-items:stretch;
+  height:calc(var(--crest) + var(--safeT));padding-top:var(--safeT);
+  background:linear-gradient(180deg,rgba(4,5,10,.94) 46%,rgba(4,5,10,.86));
+  border-bottom:1px solid var(--rule);backdrop-filter:blur(2px)}
+.cell{display:flex;flex-direction:column;justify-content:center;gap:1px;
+  padding:0 13px;border-right:1px solid var(--rule);min-width:0;
+  flex:0 1 auto;overflow:hidden}
+.cell .v{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.cell.led-cell{flex-direction:row;align-items:center;gap:7px}
+.led{width:5px;height:5px;border-radius:50%;background:var(--rule-3);flex:none;
+  transition:background .3s var(--ease),box-shadow .3s var(--ease)}
+.led.live{background:var(--ok);box-shadow:0 0 9px var(--ok)}
+.led.ro{background:var(--a);box-shadow:0 0 9px var(--a)}
+
+/*  The walk, drawn as hue. --h is inline on the crumb and --a is re-declared
+    in this rule, on the same element, so the substitution picks up the
+    crumb's own hue. Declaring --h alone and inheriting --a from :root does
+    NOT re-tint, because the colour was already resolved.                */
+#walk{display:flex;align-items:stretch;margin-left:auto;flex:none;
+  overflow-x:auto;scrollbar-width:none}
+#walk::-webkit-scrollbar{display:none}
+#walk .cr{--a:hsl(var(--h) 92% 66%);
+  --a-ghost:hsl(var(--h) 92% 66% / .10);
+  flex:0 0 auto;border:0;border-left:2px solid var(--a);background:transparent;
+  color:var(--mid);font:inherit;font-size:11px;padding:0 10px;cursor:pointer;
+  white-space:nowrap;transition:color .18s var(--ease),background .18s var(--ease)}
+#walk .cr:hover,#walk .cr:focus-visible{background:var(--a-ghost);outline:none}
+#walk .cr:last-child{color:var(--lit)}
+
+/*  Identity gives way before actions do. A chain name can become an
+    ellipsis and still tell you what you need; a button past the edge of
+    the screen does not exist at all.                                    */
+#pal{flex:none}
+@media(max-width:560px){#c-chain{display:none}}
+
+/*───────────────────────── the two columns ─────────────────────────*/
+#body{position:fixed;left:var(--walk);right:0;
+  top:calc(var(--crest) + var(--safeT));
+  bottom:calc(var(--cmd) + var(--safeB));
+  display:grid;grid-template-columns:var(--col) minmax(0,1fr)}
+#col{overflow-y:auto;overflow-x:hidden;padding:18px 16px 40px 0}
+#lane{overflow-y:auto;overflow-x:hidden;padding:18px 20px 40px;
+  border-left:1px solid var(--rule);max-width:680px}
+@media(max-width:900px){
+  #body{grid-template-columns:minmax(0,1fr)}
+  #lane{border-left:0;position:absolute;inset:0;background:var(--void);
+    transform:translateY(101%);transition:transform .42s var(--ease);max-width:none}
+  #lane.on{transform:translateY(0)}
+  #col{padding-right:16px}
+}
+
+/*───────────────────────── the still ─────────────────────────*/
+#still{width:184px;max-width:100%;display:block;border:1px solid var(--rule);
+  background:var(--void-2)}
+#still.uncommitted{border:1px dashed var(--a-dim)}
+#turning{display:inline-block;margin-top:6px;font-size:10px;letter-spacing:.08em;
+  color:var(--mid);text-decoration:none}
+#turning:hover,#turning:focus-visible{background:var(--a-ghost);color:var(--a);outline:none}
+@media(max-width:900px){#still{width:100%}}
+
+#ident{margin:16px 0 0}
+#ident h1{font-size:13px;letter-spacing:.02em;color:var(--lit);margin:0 0 6px;font-weight:400}
+#ident p{margin:0 0 4px}
+
+/*  The standing line: one, at most, and only when something is both soon
+    and irreversible if missed. There is no stack and no second one.     */
+#stand{margin:16px 0 4px;padding-left:11px;border-left:1px solid var(--a);
+  font-size:11px;line-height:1.62;color:var(--mid)}
+#stand.soon{color:var(--warn);border-left-color:var(--warn)}
+#stand[hidden]{display:none}
+
+/*───────────────────────── the verb row ─────────────────────────*/
+.vb{display:block;width:100%;padding:11px 14px 11px 14px;border:0;
+  border-left:2px solid transparent;margin-left:-14px;
+  background:transparent;color:var(--txt);font:inherit;text-align:left;
+  cursor:pointer;transition:background .18s var(--ease),border-color .18s var(--ease)}
+.vb:hover{background:var(--a-ghost)}
+.vb:focus-visible{background:var(--a-ghost);outline:none}
+.vb.on{border-left-color:var(--a);color:var(--lit);background:var(--a-ghost)}
+.vb .t{display:flex;align-items:baseline;justify-content:space-between;gap:12px}
+.vb .nm{font-size:12px;letter-spacing:.02em}
+.vb .sub2{display:block;margin-top:2px;font-size:10px;letter-spacing:.06em;
+  color:var(--dim);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+
+/*  The clock. One per verb, always the soonest, never a count, never a
+    badge. --warn only when a threshold is crossed; --bad only when it has
+    passed and something is now claimable or forfeit.                    */
+.vb .cl{font-size:10px;letter-spacing:.06em;color:var(--mid);white-space:nowrap;flex:none}
+.vb .cl.soon{color:var(--warn)}
+.vb .cl.past{color:var(--bad)}
+
+/*  A verb that cannot run keeps its place, its label, its sub-line and its
+    reason — marked the way a sealed node is marked, with a middot, not a
+    padlock. Nothing in this interface is hidden because it is unavailable. */
+.vb.shut{color:#3d4457;cursor:default}
+.vb.shut:hover{background:transparent}
+.vb.shut .nm::after{content:" \00b7";color:var(--a-dim)}
+.vb.shut .cl{color:var(--warn);white-space:normal;text-align:right}
+
+/*───────────────────────── controls ─────────────────────────*/
+/*  Read paths grey, write paths accent, always. A holder should be able to
+    tell whether a button will cost them anything without reading it.    */
+.b{display:block;width:100%;margin:10px 0 0;padding:9px;cursor:pointer;
+  background:transparent;border:1px solid var(--a);color:var(--a);
+  font:inherit;font-size:10px;letter-spacing:.24em;text-transform:uppercase;
+  transition:background .18s var(--ease),color .18s var(--ease)}
+.b:hover,.b:focus-visible{background:var(--a);color:var(--void);outline:none}
+.b.g{border-color:var(--rule-3);color:var(--mid)}
+.b.g:hover,.b.g:focus-visible{background:var(--rule);color:var(--lit)}
+.b[disabled]{border-color:var(--rule);color:#3d4457;cursor:default;background:transparent}
+
+input[type=text],input[type=number],textarea,select{
+  width:100%;padding:8px 9px;background:var(--void-2);color:var(--lit);
+  border:1px solid var(--rule-2);border-radius:0;font:inherit;font-size:12px}
+input:focus,textarea:focus,select:focus{border-color:var(--a);outline:none}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:14px;
+  background:transparent;cursor:pointer}
+input[type=range]::-webkit-slider-runnable-track{height:1px;background:var(--rule-2)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;
+  width:2px;height:12px;margin-top:-6px;background:var(--a);box-shadow:0 0 7px var(--a)}
+input[type=range]::-moz-range-track{height:1px;background:var(--rule-2)}
+input[type=range]::-moz-range-thumb{border:0;border-radius:0;
+  width:2px;height:12px;background:var(--a);box-shadow:0 0 7px var(--a)}
+
+.kv{display:flex;align-items:baseline;justify-content:space-between;gap:14px;
+  padding:6px 0;border-bottom:1px solid var(--rule)}
+.kv:last-child{border-bottom:0}
+hr{border:0;height:1px;background:var(--rule);margin:12px 0}
+pre.code{font-size:10px;line-height:1.55;background:var(--void);color:var(--mid);
+  padding:8px;border:1px solid var(--rule);overflow-x:auto;margin:8px 0}
+.chip{display:inline-block;padding:4px 8px;margin:0 5px 5px 0;cursor:pointer;
+  background:transparent;border:1px solid var(--rule-2);color:var(--mid);
+  font:inherit;font-size:10px;letter-spacing:.08em}
+.chip.on{border-color:var(--a);color:var(--a);background:var(--a-ghost)}
+
+/*───────────────────────── the ticker ─────────────────────────*/
+/*  say() sets opacity 1, then .55 after seven seconds. It never
+    disappears. The last thing that happened is always still readable, and
+    there is no toast stack anywhere in this console.                    */
+#tick{position:fixed;left:var(--walk);bottom:calc(var(--cmd) + var(--safeB));z-index:6;
+  max-width:min(560px,92vw);padding:0 14px 8px;font-size:11px;color:var(--mid);
+  opacity:1;transition:opacity .4s var(--ease);pointer-events:none}
+#tick.fade{opacity:.55}
+#tick.ok{color:var(--ok)}
+#tick.err{color:var(--bad)}
+
+/*───────────────────────── the command line ─────────────────────────*/
+#cmd{position:fixed;left:var(--walk);right:0;bottom:0;z-index:6;display:flex;align-items:center;
+  height:calc(var(--cmd) + var(--safeB));padding-bottom:var(--safeB);
+  background:var(--void);border-top:1px solid var(--rule)}
+#cmd .p{padding:0 8px 0 13px;color:var(--a-dim);flex:none}
+#cmd input{background:transparent;border:0;padding:0 13px 0 0;font-size:12px;color:var(--lit)}
+#cmd input:focus{border:0;outline:none}
+
+/*───────────────────────── the confirm slab ─────────────────────────*/
+#cbox{position:fixed;inset:0;z-index:9;display:none;align-items:center;justify-content:center;
+  background:rgba(4,5,10,.86);padding:18px}
+#cbox.on{display:flex}
+#cbox .slab{width:min(460px,100%);max-height:86vh;overflow-y:auto;
+  background:var(--void-2);border:1px solid var(--rule-2);padding:18px}
+
+/*───────────────────────── scrollbars ─────────────────────────*/
+::-webkit-scrollbar{width:4px;height:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:var(--rule-2)}
+
+/*───────────────────────── no ambient motion ─────────────────────────*/
+/*  Nothing drifts, nothing pulses, nothing breathes. The instrument turns;
+    its console does not. A target that moves while a thumb is on its way
+    to it is not a target.                                               */

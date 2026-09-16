@@ -1,0 +1,145 @@
+{
+  "contractName": "ExitCollectionMock",
+  "sourceName": "contracts/src/test/ExitHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "name": "accountOf",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "id",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "account",
+          "type": "address"
+        }
+      ],
+      "name": "bind",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x6080806040523460155761010b908161001a8239f35b5f80fdfe608060405260043610156010575f80fd5b5f3560e01c80630908853214606d57638f4e432114602c575f80fd5b3460695760203660031901126069576004355f525f602052602073ffffffffffffffffffffffffffffffffffffffff60405f205416604051908152f35b5f80fd5b34606957604036600319011260695760243573ffffffffffffffffffffffffffffffffffffffff81168091036069576004355f525f60205260405f20907fffffffffffffffffffffffff00000000000000000000000000000000000000008254161790555f80f3fea2646970667358221220df68b36fcbaf6f500c9ce83628102b026e87aad81e636552247d1523151f779764736f6c634300081e0033",
+  "deployedBytecode": "0x608060405260043610156010575f80fd5b5f3560e01c80630908853214606d57638f4e432114602c575f80fd5b3460695760203660031901126069576004355f525f602052602073ffffffffffffffffffffffffffffffffffffffff60405f205416604051908152f35b5f80fd5b34606957604036600319011260695760243573ffffffffffffffffffffffffffffffffffffffff81168091036069576004355f525f60205260405f20907fffffffffffffffffffffffff00000000000000000000000000000000000000008254161790555f80f3fea2646970667358221220df68b36fcbaf6f500c9ce83628102b026e87aad81e636552247d1523151f779764736f6c634300081e0033",
+  "methodIdentifiers": {
+    "accountOf(uint256)": "8f4e4321",
+    "bind(uint256,address)": "09088532"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            }
+          ],
+          "name": "accountOf",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint256",
+              "name": "id",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "account",
+              "type": "address"
+            }
+          ],
+          "name": "bind",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/ExitHarness.sol": "ExitCollectionMock"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/test/ExitHarness.sol": {
+        "keccak256": "0xb0959425a539cc6f6b1fb44cbb74543d7433b866bf83659d2bc21578a1341ad6",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://ee7019b67f0c92e14e5a6dee8e44c083e8e91f31d730a34fdd047e2f73700b0a",
+          "dweb:/ipfs/QmQ5daVRUe6UMgd5JpiepziqV19F4Qp6pKvvmKA3VHT1xK"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

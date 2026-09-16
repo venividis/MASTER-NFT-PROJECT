@@ -1,0 +1,1051 @@
+{
+  "schema": "idfbi/instrument-file/1.7",
+  "originSeed": "0x70da4301333c3f3b9d6e5ac192a11f5e0e0f635261280530ffa78cb01e0e0709",
+  "originAudit": "0xbd84a4f4de04a7d109e3b7fee5a93dcf1f180b70d523fe57d99a757243ccb216",
+  "engine": {
+    "schema": "idfbi/remembering/1.7",
+    "operating": {
+      "schema": "idfbi/operating/1.6",
+      "instruments": {
+        "schema": "idfbi/instruments/1.5",
+        "world": {
+          "schema": "idfbi/kingdom-rehearsal/1.4",
+          "provenance": "unsigned local rehearsal; editable and not owner-authenticated",
+          "state": {
+            "schema": "idfbi/kingdom-rehearsal/1.4",
+            "now": 1791320670,
+            "actor": "you",
+            "selected": 1,
+            "next": 4,
+            "seq": 31,
+            "head": "0xa1d07e2f6c20d8080d2c8a4f4196dacdcba48aaaa3e726c7b405928f2cc86566",
+            "wallets": {
+              "you": "18200000000000000000",
+              "guest": "12000000000000000000",
+              "archivist": "8800000000000000000",
+              "weaver": "2000000000000000000"
+            },
+            "identities": [
+              {
+                "id": 1,
+                "name": "Your artifact",
+                "owner": "you",
+                "epoch": 1,
+                "nonce": 9,
+                "seed": 17,
+                "color": 0,
+                "balances": {
+                  "ETH": "6600000000000000000",
+                  "AUR": "12000000000000000000000",
+                  "BEGIN": "500000000000000000000000"
+                },
+                "lease": null
+              },
+              {
+                "id": 204,
+                "name": "Artifact 0204",
+                "owner": "you",
+                "epoch": 5,
+                "nonce": 0,
+                "seed": 71,
+                "color": 1,
+                "balances": {
+                  "ETH": "1250000000000000000",
+                  "AUR": "3600000000000000000000"
+                },
+                "lease": null
+              },
+              {
+                "id": 317,
+                "name": "Artifact 0317",
+                "owner": "escrow",
+                "epoch": 2,
+                "nonce": 0,
+                "seed": 123,
+                "color": 2,
+                "balances": {
+                  "ETH": "600000000000000000",
+                  "AUR": "1400000000000000000000"
+                },
+                "lease": null
+              },
+              {
+                "id": 2,
+                "name": "Guest instrument account",
+                "owner": "guest",
+                "epoch": 1,
+                "nonce": 0,
+                "seed": 29,
+                "color": 0,
+                "balances": {
+                  "ETH": "3000000000000000000",
+                  "AUR": "5000000000000000000000"
+                },
+                "lease": null
+              }
+            ],
+            "pools": [
+              {
+                "asset": "AUR",
+                "name": "Aurora / rehearsal market",
+                "native": "100200000000000000000",
+                "tokens": "998009971099692970019163",
+                "born": 1788469470,
+                "creator": 1
+              },
+              {
+                "asset": "BEGIN",
+                "name": "A new beginning",
+                "native": "800000000000000000",
+                "tokens": "400000000000000000000000",
+                "born": 1788728670,
+                "creator": 1
+              }
+            ],
+            "sales": [
+              {
+                "id": 1,
+                "name": "A new beginning",
+                "symbol": "BEGIN",
+                "creator": 1,
+                "supply": "1000000000000000000000000",
+                "public": "500000000000000000000000",
+                "founder": "100000000000000000000000",
+                "lp": "400000000000000000000000",
+                "soft": "1000000000000000000",
+                "hard": "20000000000000000000",
+                "liquidityBps": 8000,
+                "opens": 1788642270,
+                "closes": 1788728670,
+                "raised": "1000000000000000000",
+                "contributions": {
+                  "1": "1000000000000000000"
+                },
+                "claimed": [
+                  1
+                ],
+                "status": "settled",
+                "room": 4
+              }
+            ],
+            "locks": [
+              {
+                "id": 1,
+                "identity": 1,
+                "asset": "AUR",
+                "amount": "25000000000000000000000",
+                "released": "0",
+                "start": 1788555870,
+                "cliff": 1791147870,
+                "end": 1804107870,
+                "linear": true
+              },
+              {
+                "id": 2,
+                "identity": 204,
+                "asset": "AUR",
+                "amount": "50000000000000000000000",
+                "released": "0",
+                "start": 1788642270,
+                "cliff": 1796418270,
+                "end": 1796418270,
+                "linear": false
+              },
+              {
+                "id": 3,
+                "identity": 1,
+                "asset": "AUR",
+                "amount": "996006981039903216493",
+                "released": "0",
+                "start": 1788642270,
+                "cliff": 1791234270,
+                "end": 1791234270,
+                "linear": false
+              },
+              {
+                "id": 4,
+                "identity": 1,
+                "asset": "ETH",
+                "amount": "200000000000000000",
+                "released": "0",
+                "start": 1788642270,
+                "cliff": 1791234270,
+                "end": 1791234270,
+                "linear": false
+              },
+              {
+                "id": 5,
+                "identity": 1,
+                "asset": "BEGIN",
+                "amount": "100000000000000000000000",
+                "released": "0",
+                "start": 1788728670,
+                "cliff": 1791320670,
+                "end": 1804280670,
+                "linear": true
+              },
+              {
+                "id": 6,
+                "identity": 1,
+                "asset": "ETH",
+                "amount": "200000000000000000",
+                "released": "0",
+                "start": 1788728670,
+                "cliff": 1804280670,
+                "end": 1804280670,
+                "linear": false
+              }
+            ],
+            "listings": [
+              {
+                "id": 1,
+                "identity": 204,
+                "seller": "archivist",
+                "price": "6800000000000000000",
+                "expires": 1789247070,
+                "status": "sold",
+                "inventory": {
+                  "id": 204,
+                  "epoch": 2,
+                  "nonce": 0,
+                  "seed": 71,
+                  "lease": null,
+                  "balances": {
+                    "ETH": "1250000000000000000",
+                    "AUR": "3600000000000000000000"
+                  },
+                  "locks": [
+                    {
+                      "id": 2,
+                      "identity": 204,
+                      "asset": "AUR",
+                      "amount": "50000000000000000000000",
+                      "released": "0",
+                      "start": 1788642270,
+                      "cliff": 1796418270,
+                      "end": 1796418270,
+                      "linear": false
+                    }
+                  ]
+                },
+                "manifest": "0xb3eb3b69c22aff84f2847ae03df69322ff9590e0cb83b76755438a4663b31a18"
+              },
+              {
+                "id": 2,
+                "identity": 317,
+                "seller": "weaver",
+                "price": "3400000000000000000",
+                "expires": 1789247070,
+                "status": "listed",
+                "inventory": {
+                  "id": 317,
+                  "epoch": 2,
+                  "nonce": 0,
+                  "seed": 123,
+                  "lease": null,
+                  "balances": {
+                    "ETH": "600000000000000000",
+                    "AUR": "1400000000000000000000"
+                  },
+                  "locks": []
+                },
+                "manifest": "0xf598d60f4b1366f4c273fa5b47b73708e85ad005e9f52ba2c6bfbdbf4a6ec8ea"
+              },
+              {
+                "id": 3,
+                "identity": 204,
+                "seller": "you",
+                "price": "2000000000000000000",
+                "expires": 1789333470,
+                "status": "cancelled",
+                "inventory": {
+                  "id": 204,
+                  "epoch": 4,
+                  "nonce": 0,
+                  "seed": 71,
+                  "lease": null,
+                  "balances": {
+                    "ETH": "1250000000000000000",
+                    "AUR": "3600000000000000000000"
+                  },
+                  "locks": [
+                    {
+                      "id": 2,
+                      "identity": 204,
+                      "asset": "AUR",
+                      "amount": "50000000000000000000000",
+                      "released": "0",
+                      "start": 1788642270,
+                      "cliff": 1796418270,
+                      "end": 1796418270,
+                      "linear": false
+                    }
+                  ]
+                },
+                "manifest": "0x06b1e8cc71dc473be5b59761845c590c15e4b54e899ce7d5d1d0428f076e5fee"
+              }
+            ],
+            "rooms": [
+              {
+                "id": 1,
+                "name": "World",
+                "topic": "Public conversation. Your filters do not control other people.",
+                "identity": 0,
+                "gated": false,
+                "slow": 3,
+                "color": "#a6e6e8",
+                "members": {},
+                "bans": [],
+                "moderators": {}
+              },
+              {
+                "id": 2,
+                "name": "Private posting circle",
+                "topic": "Invitations control posting. These messages are not encrypted.",
+                "identity": 1,
+                "gated": true,
+                "slow": 3,
+                "color": "#cfb9f6",
+                "members": {
+                  "you": {
+                    "accepted": true,
+                    "epoch": 1
+                  }
+                },
+                "bans": [],
+                "moderators": {}
+              },
+              {
+                "id": 3,
+                "name": "Terms circle",
+                "topic": "A room held by Your artifact",
+                "identity": 1,
+                "gated": true,
+                "slow": 3,
+                "color": "#b3deda",
+                "members": {
+                  "you": {
+                    "accepted": true,
+                    "epoch": 1
+                  }
+                },
+                "bans": [
+                  "guest"
+                ],
+                "moderators": {}
+              },
+              {
+                "id": 4,
+                "name": "BEGIN commons",
+                "topic": "A new beginning · launch terms and conversation.",
+                "identity": 1,
+                "gated": false,
+                "slow": 3,
+                "color": "#e8c797",
+                "members": {},
+                "bans": [],
+                "moderators": {}
+              }
+            ],
+            "messages": [
+              {
+                "id": 1,
+                "actor": "archivist",
+                "identity": 0,
+                "custodian": "archivist",
+                "epoch": 0,
+                "room": 1,
+                "time": 1788642270,
+                "body": "An artifact can carry its history without pretending the next owner wrote it.",
+                "reply": 0,
+                "receipt": 0,
+                "reactions": {},
+                "hidden": false
+              },
+              {
+                "id": 2,
+                "actor": "weaver",
+                "identity": 0,
+                "custodian": "weaver",
+                "epoch": 0,
+                "room": 1,
+                "time": 1788642270,
+                "body": "Open an estate. Move its time lens. The locked allocation becomes visible before it becomes spendable.",
+                "reply": 0,
+                "receipt": 0,
+                "reactions": {},
+                "hidden": false
+              },
+              {
+                "id": 3,
+                "actor": "guest",
+                "identity": 0,
+                "custodian": "guest",
+                "epoch": 0,
+                "room": 1,
+                "time": 1788642270,
+                "body": "I accepted these exact terms.",
+                "reply": 0,
+                "receipt": 9,
+                "reactions": {},
+                "hidden": false
+              },
+              {
+                "id": 4,
+                "actor": "you",
+                "identity": 1,
+                "custodian": "you",
+                "epoch": 1,
+                "room": 1,
+                "time": 1788642270,
+                "body": "<img src=x onerror=\"window.__injected=true\">",
+                "reply": 0,
+                "receipt": 0,
+                "reactions": {},
+                "hidden": false
+              },
+              {
+                "id": 5,
+                "actor": "guest",
+                "identity": 0,
+                "custodian": "guest",
+                "epoch": 0,
+                "room": 3,
+                "time": 1788642270,
+                "body": "Membership is not something the NFT owner owns.",
+                "reply": 0,
+                "receipt": 0,
+                "reactions": {},
+                "hidden": false
+              }
+            ],
+            "events": [
+              {
+                "seq": 1,
+                "kind": "AWAKEN",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "note": "Three fictional estates. All balances and people in this rehearsal are examples."
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x0000000000000000000000000000000000000000000000000000000000000000",
+                "digest": "0xadb460a46ad5941f83cb31f0f5ca1485cf9390f7e68e25001acabee2254284d8"
+              },
+              {
+                "seq": 2,
+                "kind": "LISTED",
+                "identity": 204,
+                "actor": "archivist",
+                "custodian": "escrow",
+                "epoch": 2,
+                "time": 1788642270,
+                "data": {
+                  "listing": 1,
+                  "manifest": "0x8081cad6bf08a7d139059a46353b4bad8c3a63c36cfd77346470dbc672dbd999"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xadb460a46ad5941f83cb31f0f5ca1485cf9390f7e68e25001acabee2254284d8",
+                "digest": "0xed041c072e14ebbccbf2268d1dd933f97d3a4f988ab12f977704481b75b96405"
+              },
+              {
+                "seq": 3,
+                "kind": "LISTED",
+                "identity": 317,
+                "actor": "weaver",
+                "custodian": "escrow",
+                "epoch": 2,
+                "time": 1788642270,
+                "data": {
+                  "listing": 2,
+                  "manifest": "0xb8ea0edcd36ce7a2b8d9b3da665eaed7fb8ea2befc9cb182443486e2649b8304"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xed041c072e14ebbccbf2268d1dd933f97d3a4f988ab12f977704481b75b96405",
+                "digest": "0x00cbfaeddbd6adc36a1403c62080f1d7979dbaf988170d354d1f7dfdeece0635"
+              },
+              {
+                "seq": 4,
+                "kind": "REHEARSAL_ACCOUNT",
+                "identity": 2,
+                "actor": "you",
+                "custodian": "guest",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "note": "Fictional Guest allocation; not a mint or deposit.",
+                  "causes": []
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x00cbfaeddbd6adc36a1403c62080f1d7979dbaf988170d354d1f7dfdeece0635",
+                "digest": "0xc9fa7e9004a6547c3100cc5c752d56b1db5231ea2a95207dc817c9319bdfb163"
+              },
+              {
+                "seq": 5,
+                "kind": "MANIFEST_BOUND",
+                "identity": 204,
+                "actor": "you",
+                "custodian": "escrow",
+                "epoch": 2,
+                "time": 1788642270,
+                "data": {
+                  "listing": 1,
+                  "moduleRoot": "0x787d42885d6fcb87fff39a81bab56b2d416ab3f716a26590d5c59a2774a5277f",
+                  "manifest": "0xb3eb3b69c22aff84f2847ae03df69322ff9590e0cb83b76755438a4663b31a18",
+                  "causes": []
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xc9fa7e9004a6547c3100cc5c752d56b1db5231ea2a95207dc817c9319bdfb163",
+                "digest": "0xa52f7df9e925918ae207364db660014c5d6eb37d73987adf5f0df2aaf6efa8b0"
+              },
+              {
+                "seq": 6,
+                "kind": "MANIFEST_BOUND",
+                "identity": 317,
+                "actor": "you",
+                "custodian": "escrow",
+                "epoch": 2,
+                "time": 1788642270,
+                "data": {
+                  "listing": 2,
+                  "moduleRoot": "0x787d42885d6fcb87fff39a81bab56b2d416ab3f716a26590d5c59a2774a5277f",
+                  "manifest": "0xf598d60f4b1366f4c273fa5b47b73708e85ad005e9f52ba2c6bfbdbf4a6ec8ea",
+                  "causes": []
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xa52f7df9e925918ae207364db660014c5d6eb37d73987adf5f0df2aaf6efa8b0",
+                "digest": "0xa345cf9002a23a046f7ee3d81ea2d5848be506316106bd7cf11e24ba8f9a6b03"
+              },
+              {
+                "seq": 7,
+                "kind": "SWAPPED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "input": "ETH",
+                  "output": "AUR",
+                  "amount": "100000000000000000",
+                  "received": "996006981039903216493",
+                  "lock": 3
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xa345cf9002a23a046f7ee3d81ea2d5848be506316106bd7cf11e24ba8f9a6b03",
+                "digest": "0xeb28db644094094fb83bfcec3b73e34aec06329dbf6249c9c1ea04c544b94f98"
+              },
+              {
+                "seq": 8,
+                "kind": "LOCKED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "lock": 4,
+                  "asset": "ETH",
+                  "amount": "200000000000000000",
+                  "end": 1791234270
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xeb28db644094094fb83bfcec3b73e34aec06329dbf6249c9c1ea04c544b94f98",
+                "digest": "0x01eb1869cd89b2fdc1ebbda7c3c088fff87501bb047a0e57e281032c0ef54a27"
+              },
+              {
+                "seq": 9,
+                "kind": "SWAPPED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "input": "ETH",
+                  "output": "AUR",
+                  "amount": "100000000000000000",
+                  "received": "994021919267126764344",
+                  "lock": 0
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x01eb1869cd89b2fdc1ebbda7c3c088fff87501bb047a0e57e281032c0ef54a27",
+                "digest": "0x032d3c624c19b582cabf24821c9265f3942c5ee5732648409176d56151f33f70"
+              },
+              {
+                "seq": 10,
+                "kind": "OFFERED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "gift": 1,
+                  "asset": "AUR",
+                  "amount": "994021919267126764344",
+                  "recipient": {
+                    "kind": "person",
+                    "id": "guest"
+                  },
+                  "acceptBy": 1788901470,
+                  "releaseAt": 1791234270,
+                  "causes": [
+                    9
+                  ]
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x032d3c624c19b582cabf24821c9265f3942c5ee5732648409176d56151f33f70",
+                "digest": "0xb0533d1b457ed7d380f696f621a64f8154dd96fba58082c970c805394dbf01f7"
+              },
+              {
+                "seq": 11,
+                "kind": "ACCEPTED",
+                "identity": 0,
+                "actor": "guest",
+                "custodian": "guest",
+                "epoch": 0,
+                "time": 1788642270,
+                "data": {
+                  "gift": 1,
+                  "releaseAt": 1791234270,
+                  "causes": [
+                    10
+                  ]
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xb0533d1b457ed7d380f696f621a64f8154dd96fba58082c970c805394dbf01f7",
+                "digest": "0x71172cc740617e16e7a74c1715724bca1c956c89123d2fe0b123523427c040af"
+              },
+              {
+                "seq": 12,
+                "kind": "SPOKE",
+                "identity": 0,
+                "actor": "guest",
+                "custodian": "guest",
+                "epoch": 0,
+                "time": 1788642270,
+                "data": {
+                  "message": 3,
+                  "room": 1
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x71172cc740617e16e7a74c1715724bca1c956c89123d2fe0b123523427c040af",
+                "digest": "0xa806e0d4af148ed37a130359aa1351292117812dff9cfa9840a8013ea65530b9"
+              },
+              {
+                "seq": 13,
+                "kind": "SPOKE",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "message": 4,
+                  "room": 1
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xa806e0d4af148ed37a130359aa1351292117812dff9cfa9840a8013ea65530b9",
+                "digest": "0x5ff616bbcbf897a78070e5b2d98bd44a6b66d5d320e71e50c0a1671c262e83c3"
+              },
+              {
+                "seq": 14,
+                "kind": "ROOM",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "room": 3
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x5ff616bbcbf897a78070e5b2d98bd44a6b66d5d320e71e50c0a1671c262e83c3",
+                "digest": "0xf790853e3902035e66bb14d1c82c27a022389a3f8165448c8e25734c21ba27d1"
+              },
+              {
+                "seq": 15,
+                "kind": "INVITED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "room": 3,
+                  "user": "guest"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xf790853e3902035e66bb14d1c82c27a022389a3f8165448c8e25734c21ba27d1",
+                "digest": "0x7a5053fed99922272718bf2cab06462a61391f5a9c14b35f56a6fe45621c456c"
+              },
+              {
+                "seq": 16,
+                "kind": "JOINED",
+                "identity": 0,
+                "actor": "guest",
+                "custodian": "guest",
+                "epoch": 0,
+                "time": 1788642270,
+                "data": {
+                  "room": 3
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x7a5053fed99922272718bf2cab06462a61391f5a9c14b35f56a6fe45621c456c",
+                "digest": "0x2fbcd5dbe9c72b85a6a3f5ada0a66f0b1618c073d2f5c31c41568e905cb128ac"
+              },
+              {
+                "seq": 17,
+                "kind": "SPOKE",
+                "identity": 0,
+                "actor": "guest",
+                "custodian": "guest",
+                "epoch": 0,
+                "time": 1788642270,
+                "data": {
+                  "message": 5,
+                  "room": 3
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x2fbcd5dbe9c72b85a6a3f5ada0a66f0b1618c073d2f5c31c41568e905cb128ac",
+                "digest": "0x3a0277343fb635a11bc354f384c14979133d2ed6f6d909307fea57bce2bc6467"
+              },
+              {
+                "seq": 18,
+                "kind": "REMOVED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "room": 3,
+                  "user": "guest"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x3a0277343fb635a11bc354f384c14979133d2ed6f6d909307fea57bce2bc6467",
+                "digest": "0xa9f19550a6fa0ce3c35f574dc02752016343eab350eaee4ac4a75910b4e0332d"
+              },
+              {
+                "seq": 19,
+                "kind": "LAUNCHED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "sale": 1,
+                  "symbol": "BEGIN",
+                  "room": 4
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xa9f19550a6fa0ce3c35f574dc02752016343eab350eaee4ac4a75910b4e0332d",
+                "digest": "0x1d7324505b87eb2c3201ec9d097c6dc987c8d75e21820cffec1a029c6393891f"
+              },
+              {
+                "seq": 20,
+                "kind": "CONTRIBUTED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "sale": 1,
+                  "symbol": "BEGIN",
+                  "amount": "1000000000000000000"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x1d7324505b87eb2c3201ec9d097c6dc987c8d75e21820cffec1a029c6393891f",
+                "digest": "0x61545cd7e6151a60f65789b5213455b36d5ab24f33a44693398dd4ec5284d433"
+              },
+              {
+                "seq": 21,
+                "kind": "WITHDREW",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "sale": 1,
+                  "amount": "100000000000000000"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x61545cd7e6151a60f65789b5213455b36d5ab24f33a44693398dd4ec5284d433",
+                "digest": "0x36bdaf9b857ab6bbd9d2ff8cf166c6f0c47b0a4f373d6b504579534699826d31"
+              },
+              {
+                "seq": 22,
+                "kind": "CONTRIBUTED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788642270,
+                "data": {
+                  "sale": 1,
+                  "symbol": "BEGIN",
+                  "amount": "100000000000000000"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x36bdaf9b857ab6bbd9d2ff8cf166c6f0c47b0a4f373d6b504579534699826d31",
+                "digest": "0x5dda61e66926e5704e1749abe3d545c8f429858a72b00bfaf3117724c3b8d7db"
+              },
+              {
+                "seq": 23,
+                "kind": "TIME",
+                "identity": 0,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 0,
+                "time": 1788728670,
+                "data": {
+                  "seconds": 86400
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x5dda61e66926e5704e1749abe3d545c8f429858a72b00bfaf3117724c3b8d7db",
+                "digest": "0x39b1370a9bdad25e70cc775e0ff1bf7c7536e892839a48b7139074d09ae326a7"
+              },
+              {
+                "seq": 24,
+                "kind": "SETTLED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788728670,
+                "data": {
+                  "sale": 1,
+                  "symbol": "BEGIN",
+                  "fee": 10000
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x39b1370a9bdad25e70cc775e0ff1bf7c7536e892839a48b7139074d09ae326a7",
+                "digest": "0x5d72f339a9c145e6abba8504f41ceb16cdffef2e867e0c41e1c3237a206eff68"
+              },
+              {
+                "seq": 25,
+                "kind": "CLAIMED",
+                "identity": 1,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 1,
+                "time": 1788728670,
+                "data": {
+                  "sale": 1,
+                  "symbol": "BEGIN",
+                  "amount": "500000000000000000000000"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x5d72f339a9c145e6abba8504f41ceb16cdffef2e867e0c41e1c3237a206eff68",
+                "digest": "0xb9a111da67acaf2a47ee2f90a24ecb9a09db15b9af2deb29891b7e3aa3c22143"
+              },
+              {
+                "seq": 26,
+                "kind": "ACQUIRED",
+                "identity": 204,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 3,
+                "time": 1788728670,
+                "data": {
+                  "listing": 1,
+                  "previousCustodian": "archivist",
+                  "manifest": "0xb3eb3b69c22aff84f2847ae03df69322ff9590e0cb83b76755438a4663b31a18"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xb9a111da67acaf2a47ee2f90a24ecb9a09db15b9af2deb29891b7e3aa3c22143",
+                "digest": "0xebc9ec9a81b9b29d8924a1b262bb3fe4539078d309d0bdea62c22de61afcd80a"
+              },
+              {
+                "seq": 27,
+                "kind": "LISTED",
+                "identity": 204,
+                "actor": "you",
+                "custodian": "escrow",
+                "epoch": 4,
+                "time": 1788728670,
+                "data": {
+                  "listing": 3,
+                  "manifest": "0x0fc74b72d7524a682c45128bb1bdf0a97cfd706f2dc966236964ba4ab0527371"
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0xebc9ec9a81b9b29d8924a1b262bb3fe4539078d309d0bdea62c22de61afcd80a",
+                "digest": "0x1b8df50c0ac255a6c7b288a25bf1fdf49ca52ad212d64d50265c27f51503a373"
+              },
+              {
+                "seq": 28,
+                "kind": "MANIFEST_BOUND",
+                "identity": 204,
+                "actor": "you",
+                "custodian": "escrow",
+                "epoch": 4,
+                "time": 1788728670,
+                "data": {
+                  "listing": 3,
+                  "moduleRoot": "0x787d42885d6fcb87fff39a81bab56b2d416ab3f716a26590d5c59a2774a5277f",
+                  "manifest": "0x06b1e8cc71dc473be5b59761845c590c15e4b54e899ce7d5d1d0428f076e5fee",
+                  "causes": []
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x1b8df50c0ac255a6c7b288a25bf1fdf49ca52ad212d64d50265c27f51503a373",
+                "digest": "0x8e02e468b75183917cdf9d6804c17a9077282346a6a7b0bcc927d4667a81dd25"
+              },
+              {
+                "seq": 29,
+                "kind": "RETURNED",
+                "identity": 204,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 5,
+                "time": 1788728670,
+                "data": {
+                  "listing": 3
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x8e02e468b75183917cdf9d6804c17a9077282346a6a7b0bcc927d4667a81dd25",
+                "digest": "0x7547766b9e2813debe7770f312c01aba20b852ddf4457b66a474f8900796a40e"
+              },
+              {
+                "seq": 30,
+                "kind": "TIME",
+                "identity": 0,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 0,
+                "time": 1791320670,
+                "data": {
+                  "seconds": 2592000
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x7547766b9e2813debe7770f312c01aba20b852ddf4457b66a474f8900796a40e",
+                "digest": "0x7300195553e228e30167294ba80ff6693162e12c3a3efce0e24a5e2ef517ada9"
+              },
+              {
+                "seq": 31,
+                "kind": "GIFT_RELEASED",
+                "identity": 0,
+                "actor": "you",
+                "custodian": "you",
+                "epoch": 0,
+                "time": 1791320670,
+                "data": {
+                  "gift": 1,
+                  "asset": "AUR",
+                  "amount": "994021919267126764344",
+                  "recipient": {
+                    "kind": "person",
+                    "id": "guest"
+                  },
+                  "causes": [
+                    10
+                  ]
+                },
+                "provenance": "UNSIGNED LOCAL REHEARSAL",
+                "prior": "0x7300195553e228e30167294ba80ff6693162e12c3a3efce0e24a5e2ef517ada9",
+                "digest": "0xa1d07e2f6c20d8080d2c8a4f4196dacdcba48aaaa3e726c7b405928f2cc86566"
+              }
+            ],
+            "views": {
+              "you": {
+                "follow": [
+                  "archivist"
+                ],
+                "block": []
+              },
+              "guest": {
+                "follow": [],
+                "block": []
+              }
+            },
+            "settings": {
+              "motion": true,
+              "sound": false,
+              "accent": "#b5eeea"
+            }
+          },
+          "checksum": "0x0126016539613f7c548269d04af94575feea684e5a5809eaafe3e055d1576374"
+        },
+        "extra": {
+          "schema": "idfbi/promises/1.5",
+          "gifts": [
+            {
+              "id": 1,
+              "donor": 1,
+              "donorActor": "you",
+              "donorEpoch": 1,
+              "recipient": {
+                "kind": "person",
+                "id": "guest"
+              },
+              "asset": "AUR",
+              "amount": "994021919267126764344",
+              "offeredAt": 1788642270,
+              "acceptBy": 1788901470,
+              "releaseAt": 1791234270,
+              "status": "released",
+              "acceptedAt": 1788642270,
+              "released": "994021919267126764344",
+              "receipt": 10
+            }
+          ],
+          "personalBalances": {
+            "you": {},
+            "guest": {
+              "AUR": "994021919267126764344"
+            },
+            "archivist": {},
+            "weaver": {}
+          }
+        },
+        "checksum": "0x94e8ff399e8faeb8253433e53d601cd0abda37a2a6c783b6619f5cd675b6afaa"
+      },
+      "operating": {
+        "schema": "idfbi/operating-state/1.6",
+        "editions": [],
+        "installations": [],
+        "grants": [],
+        "commissions": [],
+        "collectibles": [],
+        "venues": [],
+        "cells": [],
+        "loans": [],
+        "options": [],
+        "covenants": {
+          "1": {
+            "moduleRoot": "0x787d42885d6fcb87fff39a81bab56b2d416ab3f716a26590d5c59a2774a5277f",
+            "manifest": "0xb3eb3b69c22aff84f2847ae03df69322ff9590e0cb83b76755438a4663b31a18",
+            "base": "0x8081cad6bf08a7d139059a46353b4bad8c3a63c36cfd77346470dbc672dbd999"
+          },
+          "2": {
+            "moduleRoot": "0x787d42885d6fcb87fff39a81bab56b2d416ab3f716a26590d5c59a2774a5277f",
+            "manifest": "0xf598d60f4b1366f4c273fa5b47b73708e85ad005e9f52ba2c6bfbdbf4a6ec8ea",
+            "base": "0xb8ea0edcd36ce7a2b8d9b3da665eaed7fb8ea2befc9cb182443486e2649b8304"
+          },
+          "3": {
+            "moduleRoot": "0x787d42885d6fcb87fff39a81bab56b2d416ab3f716a26590d5c59a2774a5277f",
+            "manifest": "0x06b1e8cc71dc473be5b59761845c590c15e4b54e899ce7d5d1d0428f076e5fee",
+            "base": "0x0fc74b72d7524a682c45128bb1bdf0a97cfd706f2dc966236964ba4ab0527371"
+          }
+        },
+        "applications": [],
+        "lossSink": {}
+      },
+      "checksum": "0xde82e0930f4841599f990fb3967c79769dc7cab9f81b124053e7a2cb2d84c4bf"
+    },
+    "memory": {
+      "schema": "idfbi/memory-state/1.7",
+      "origin": "0x70da4301333c3f3b9d6e5ac192a11f5e0e0f635261280530ffa78cb01e0e0709",
+      "start": 6,
+      "entries": [],
+      "bindings": []
+    },
+    "checksum": "0xa52a46fd2ea4f1d1f31a293fbe5b2192e0d4b05eab7742e0e9674ad8052470e3"
+  }
+}

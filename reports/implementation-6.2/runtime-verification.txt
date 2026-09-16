@@ -1,0 +1,1 @@
+{"sourceFreshness":"passed","recoveredRuntime":"exact","syntax":"passed","runtimeGraph":"complete (static, side-effect, re-export and literal dynamic imports)","onchainChunks":84,"embeddedModules":116,"expandedBytes":6419070}

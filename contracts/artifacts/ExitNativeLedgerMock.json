@@ -1,0 +1,296 @@
+{
+  "contractName": "ExitNativeLedgerMock",
+  "sourceName": "contracts/src/test/ExitHarness.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "c",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "seeder",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [],
+      "name": "collection",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "isSealed",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "launchpad",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint8",
+          "name": "",
+          "type": "uint8"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "name": "record",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "vault",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x608034609957601f61024138819003918201601f19168301916001600160401b03831184841017609d578084926040948552833981010312609957604b602060458360b1565b920160b1565b6002805460ff60a01b1916600160a01b1790555f80546001600160a01b03199081166001600160a01b0394851617909155600180549091169190921617905560405161017c90816100c58239f35b5f80fd5b634e487b7160e01b5f52604160045260245ffd5b51906001600160a01b038216820360995756fe6080806040526004361015610012575f80fd5b5f3560e01c90816302669b52146100f757508063631f9852146100d25780637de1e536146100ad578063b00311041461007d5763fbfa77cf14610053575f80fd5b34610079575f3660031901126100795760206001600160a01b0360025416604051908152f35b5f80fd5b346100795760e03660031901126100795760043560ff811603610079576100a261011a565b506100ab610130565b005b34610079575f3660031901126100795760206001600160a01b035f5416604051908152f35b34610079575f36600319011261007957602060ff60025460a01c166040519015158152f35b34610079575f366003190112610079576020906001600160a01b03600154168152f35b602435906001600160a01b038216820361007957565b606435906001600160a01b03821682036100795756fea264697066735822122039d4f53d1b07deff3fccc3bb1a3d493005479dc0c837826ea7f94219d23ac28564736f6c634300081e0033",
+  "deployedBytecode": "0x6080806040526004361015610012575f80fd5b5f3560e01c90816302669b52146100f757508063631f9852146100d25780637de1e536146100ad578063b00311041461007d5763fbfa77cf14610053575f80fd5b34610079575f3660031901126100795760206001600160a01b0360025416604051908152f35b5f80fd5b346100795760e03660031901126100795760043560ff811603610079576100a261011a565b506100ab610130565b005b34610079575f3660031901126100795760206001600160a01b035f5416604051908152f35b34610079575f36600319011261007957602060ff60025460a01c166040519015158152f35b34610079575f366003190112610079576020906001600160a01b03600154168152f35b602435906001600160a01b038216820361007957565b606435906001600160a01b03821682036100795756fea264697066735822122039d4f53d1b07deff3fccc3bb1a3d493005479dc0c837826ea7f94219d23ac28564736f6c634300081e0033",
+  "methodIdentifiers": {
+    "collection()": "7de1e536",
+    "isSealed()": "631f9852",
+    "launchpad()": "02669b52",
+    "record(uint8,address,uint256,address,uint256,uint256,bytes32)": "b0031104",
+    "vault()": "fbfa77cf"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "c",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "seeder",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "constructor"
+        },
+        {
+          "inputs": [],
+          "name": "collection",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "isSealed",
+          "outputs": [
+            {
+              "internalType": "bool",
+              "name": "",
+              "type": "bool"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "launchpad",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        },
+        {
+          "inputs": [
+            {
+              "internalType": "uint8",
+              "name": "",
+              "type": "uint8"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "",
+              "type": "uint256"
+            },
+            {
+              "internalType": "bytes32",
+              "name": "",
+              "type": "bytes32"
+            }
+          ],
+          "name": "record",
+          "outputs": [],
+          "stateMutability": "nonpayable",
+          "type": "function"
+        },
+        {
+          "inputs": [],
+          "name": "vault",
+          "outputs": [
+            {
+              "internalType": "address",
+              "name": "",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "view",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/test/ExitHarness.sol": "ExitNativeLedgerMock"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/test/ExitHarness.sol": {
+        "keccak256": "0xb0959425a539cc6f6b1fb44cbb74543d7433b866bf83659d2bc21578a1341ad6",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://ee7019b67f0c92e14e5a6dee8e44c083e8e91f31d730a34fdd047e2f73700b0a",
+          "dweb:/ipfs/QmQ5daVRUe6UMgd5JpiepziqV19F4Qp6pKvvmKA3VHT1xK"
+        ]
+      }
+    },
+    "version": 1
+  }
+}

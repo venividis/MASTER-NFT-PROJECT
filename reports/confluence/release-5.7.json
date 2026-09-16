@@ -1,0 +1,45 @@
+{
+  "version": "5.7.0",
+  "tests": {
+    "passed": 406,
+    "failed": 0,
+    "skipped": 0
+  },
+  "nativeExteriorPixelCases": 16,
+  "browserDeviceCertification": false,
+  "mintScope": "local development chain only",
+  "coreArchive": {
+    "bytes": 787529,
+    "chunks": 35,
+    "sha256": "705802dbbe5a9152b0ccddc42bca0d5f04debd697c9a058b0d05f40c060d4ea1",
+    "roundtripVerified": true
+  },
+  "privacyWorker": {
+    "resource": "0xd1fd56C80c4c629D237dc3CDB1809f944C33F67D",
+    "chainId": "31337",
+    "sha256": "bfce5d1b1ca272157cf7ef03d4617727dc03d968b918ced6a3a0ecaca3640c7d",
+    "byteLength": 15010237,
+    "compressedSha256": "b7faa5b1a7b3763c84d94ee3d4047b432a44a3550c7a324ed48fa02fe5a9e001",
+    "compressedByteLength": 4570220,
+    "shards": [
+      "0xd22183C0912400F971698627011646dF545d1fd6",
+      "0x068EFb983b7F611264Ad09242c99aC5B2dA8C7eb",
+      "0xbC04B0A7b0899F606082D22285945717bE0CA132",
+      "0x4281EA88015e7b3e9DB3824D0C93b3897981A47A",
+      "0x45c8677a1d91EeA8F5E917409e7BC34A04d82423",
+      "0xf412539E27e6D4cEc3Cac2ffB47a15d80D58Ea73",
+      "0xCafff4b47343579C5bA5CFAac427257C50Dab754"
+    ],
+    "chunks": 199,
+    "roundtripVerified": true,
+    "scope": "Immutable worker archive; circuit artifacts remain external."
+  },
+  "deploymentManifestSealed": true,
+  "rendererBytes": 21635,
+  "remainingExternalDependencies": [
+    "RAILGUN proving circuit files",
+    "RPC and network services",
+    "Browser CPU/GPU, native encryption and wallet support"
+  ],
+  "publicChainDeployment": false
+}

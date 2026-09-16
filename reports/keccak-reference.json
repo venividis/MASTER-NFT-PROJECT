@@ -1,0 +1,138 @@
+{
+  "reference": "Adapted XKCP readable C implementation; native compiled",
+  "sourceBlob": "b8932ecb6a2455341cea192f3e6cb12295170944",
+  "vectors": [
+    {
+      "bytes": 0,
+      "expected": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+      "actual": "0xc5d2460186f7233c927e7db2dcc703c0e500b653ca82273b7bfad8045d85a470",
+      "pass": true
+    },
+    {
+      "bytes": 1,
+      "expected": "0x43b2f7df8a0d3a744d9a3126411ef3787d9e447a59b458310e828119cf8614ad",
+      "actual": "0x43b2f7df8a0d3a744d9a3126411ef3787d9e447a59b458310e828119cf8614ad",
+      "pass": true
+    },
+    {
+      "bytes": 3,
+      "expected": "0x9f9e7f97ba76eb608b7e0e6bea8d95aff13cdc58d374e6a46233e8f7f5934640",
+      "actual": "0x9f9e7f97ba76eb608b7e0e6bea8d95aff13cdc58d374e6a46233e8f7f5934640",
+      "pass": true
+    },
+    {
+      "bytes": 7,
+      "expected": "0xa67f59398a648d6e84253b6db8e6664c73816016ab180ffe04e3114b74d324b9",
+      "actual": "0xa67f59398a648d6e84253b6db8e6664c73816016ab180ffe04e3114b74d324b9",
+      "pass": true
+    },
+    {
+      "bytes": 31,
+      "expected": "0x5ef90e0e962355c2e08d013dd86c515aac18b573ac609c18e67eb2ea160b6b98",
+      "actual": "0x5ef90e0e962355c2e08d013dd86c515aac18b573ac609c18e67eb2ea160b6b98",
+      "pass": true
+    },
+    {
+      "bytes": 32,
+      "expected": "0x86930a07bd01d401c8b7f3a8936438f2cb52bb9fd106cc7ea15efa7a169c045b",
+      "actual": "0x86930a07bd01d401c8b7f3a8936438f2cb52bb9fd106cc7ea15efa7a169c045b",
+      "pass": true
+    },
+    {
+      "bytes": 64,
+      "expected": "0xdeed287119cb1c702be053ef6b322536a827bea9eaf8ba0a6c5e19f7fc5c2ebc",
+      "actual": "0xdeed287119cb1c702be053ef6b322536a827bea9eaf8ba0a6c5e19f7fc5c2ebc",
+      "pass": true
+    },
+    {
+      "bytes": 127,
+      "expected": "0x1e2ce4f0d8a13d03f3bb7ef998b6cc74d40c546a945d43408633af2d1056c508",
+      "actual": "0x1e2ce4f0d8a13d03f3bb7ef998b6cc74d40c546a945d43408633af2d1056c508",
+      "pass": true
+    },
+    {
+      "bytes": 134,
+      "expected": "0x9c68c7b7dda98efa8b9062976223e273a9715ebd5ff442e0dd2cf1029eafa470",
+      "actual": "0x9c68c7b7dda98efa8b9062976223e273a9715ebd5ff442e0dd2cf1029eafa470",
+      "pass": true
+    },
+    {
+      "bytes": 135,
+      "expected": "0x4a267f127bbcfea8648371fbc6971a0524ea9d0293945dc162e96b86ab3ee81b",
+      "actual": "0x4a267f127bbcfea8648371fbc6971a0524ea9d0293945dc162e96b86ab3ee81b",
+      "pass": true
+    },
+    {
+      "bytes": 136,
+      "expected": "0x107f116c36a7fb36ebe8eb2a954a29995113cd3b89e2c5cb67791873137e3191",
+      "actual": "0x107f116c36a7fb36ebe8eb2a954a29995113cd3b89e2c5cb67791873137e3191",
+      "pass": true
+    },
+    {
+      "bytes": 137,
+      "expected": "0x9a2318342d3d5d5dcd3109f00b64bba40110768fe0c596b953040e98b2b2aca6",
+      "actual": "0x9a2318342d3d5d5dcd3109f00b64bba40110768fe0c596b953040e98b2b2aca6",
+      "pass": true
+    },
+    {
+      "bytes": 138,
+      "expected": "0x84467b2cc8e08c32abe95309729ad5de6ed7834f6ce700e89ed89b9922cf5aa2",
+      "actual": "0x84467b2cc8e08c32abe95309729ad5de6ed7834f6ce700e89ed89b9922cf5aa2",
+      "pass": true
+    },
+    {
+      "bytes": 200,
+      "expected": "0xe1fdd8c85bb2984e44008957f4d8553f2982642d7e4e085a33c1038414222795",
+      "actual": "0xe1fdd8c85bb2984e44008957f4d8553f2982642d7e4e085a33c1038414222795",
+      "pass": true
+    },
+    {
+      "bytes": 255,
+      "expected": "0x9988c5239a967fd868197b8868200be37ca4c26d558018b773bf1f3680dae437",
+      "actual": "0x9988c5239a967fd868197b8868200be37ca4c26d558018b773bf1f3680dae437",
+      "pass": true
+    },
+    {
+      "bytes": 256,
+      "expected": "0xd6f71cd3be6463ddf5986f9e6bed7fce1024fb662be935ded6585913a5ab82c9",
+      "actual": "0xd6f71cd3be6463ddf5986f9e6bed7fce1024fb662be935ded6585913a5ab82c9",
+      "pass": true
+    },
+    {
+      "bytes": 271,
+      "expected": "0x82364d42f94752aef0deddefd2a2c7de4bd2f006e55af12bf65a539ebf840c81",
+      "actual": "0x82364d42f94752aef0deddefd2a2c7de4bd2f006e55af12bf65a539ebf840c81",
+      "pass": true
+    },
+    {
+      "bytes": 272,
+      "expected": "0xca03f3825e7cc1c940eea3fcc6006ca7f166963632e3040d0ff4802c3b5a9048",
+      "actual": "0xca03f3825e7cc1c940eea3fcc6006ca7f166963632e3040d0ff4802c3b5a9048",
+      "pass": true
+    },
+    {
+      "bytes": 273,
+      "expected": "0x3e479b7fd714d3ed832017a3e7d93f015f673add39269ab521d726ae11db0b75",
+      "actual": "0x3e479b7fd714d3ed832017a3e7d93f015f673add39269ab521d726ae11db0b75",
+      "pass": true
+    },
+    {
+      "bytes": 1024,
+      "expected": "0xef1964e11ab7aebd94ef6d356c504b85f9510fc35cba99777ea679a2408503ae",
+      "actual": "0xef1964e11ab7aebd94ef6d356c504b85f9510fc35cba99777ea679a2408503ae",
+      "pass": true
+    },
+    {
+      "bytes": 4096,
+      "expected": "0x64a1216601a29ec84ce07e221a0edc65d09600e51df5095946df350528a64447",
+      "actual": "0x64a1216601a29ec84ce07e221a0edc65d09600e51df5095946df350528a64447",
+      "pass": true
+    },
+    {
+      "bytes": 8192,
+      "expected": "0x0987d4754523433853d5ccbf6192e3dc29d9fa1c6ac83e3df2653e42de950073",
+      "actual": "0x0987d4754523433853d5ccbf6192e3dc29d9fa1c6ac83e3df2653e42de950073",
+      "pass": true
+    }
+  ]
+}

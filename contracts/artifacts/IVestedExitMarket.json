@@ -1,0 +1,186 @@
+{
+  "contractName": "IVestedExitMarket",
+  "sourceName": "contracts/src/protocol/VestedExitVault.sol",
+  "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "tokenIn",
+          "type": "address"
+        },
+        {
+          "internalType": "address",
+          "name": "tokenOut",
+          "type": "address"
+        },
+        {
+          "internalType": "uint112",
+          "name": "amount",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint112",
+          "name": "minOut",
+          "type": "uint112"
+        },
+        {
+          "internalType": "uint48",
+          "name": "deadline",
+          "type": "uint48"
+        },
+        {
+          "internalType": "uint256",
+          "name": "identity",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint64",
+          "name": "lockUntil",
+          "type": "uint64"
+        }
+      ],
+      "name": "swap",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "output",
+          "type": "uint256"
+        },
+        {
+          "internalType": "uint256",
+          "name": "lockId",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "payable",
+      "type": "function"
+    }
+  ],
+  "immutableReferences": {},
+  "linkReferences": {},
+  "deployedLinkReferences": {},
+  "bytecode": "0x",
+  "deployedBytecode": "0x",
+  "methodIdentifiers": {
+    "swap(address,address,uint112,uint112,uint48,uint256,uint64)": "0a327b92"
+  },
+  "metadata": {
+    "compiler": {
+      "version": "0.8.30+commit.73712a01"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "address",
+              "name": "tokenIn",
+              "type": "address"
+            },
+            {
+              "internalType": "address",
+              "name": "tokenOut",
+              "type": "address"
+            },
+            {
+              "internalType": "uint112",
+              "name": "amount",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint112",
+              "name": "minOut",
+              "type": "uint112"
+            },
+            {
+              "internalType": "uint48",
+              "name": "deadline",
+              "type": "uint48"
+            },
+            {
+              "internalType": "uint256",
+              "name": "identity",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint64",
+              "name": "lockUntil",
+              "type": "uint64"
+            }
+          ],
+          "name": "swap",
+          "outputs": [
+            {
+              "internalType": "uint256",
+              "name": "output",
+              "type": "uint256"
+            },
+            {
+              "internalType": "uint256",
+              "name": "lockId",
+              "type": "uint256"
+            }
+          ],
+          "stateMutability": "payable",
+          "type": "function"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "compilationTarget": {
+        "contracts/src/protocol/VestedExitVault.sol": "IVestedExitMarket"
+      },
+      "evmVersion": "shanghai",
+      "libraries": {},
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "optimizer": {
+        "enabled": true,
+        "runs": 1000
+      },
+      "remappings": [],
+      "viaIR": true
+    },
+    "sources": {
+      "contracts/src/operating/OperatingInterfaces.sol": {
+        "keccak256": "0x6df7c29abfd8e566180eef689dfc6289a37317e46c2c6ab65b6d73198b3124ba",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://0eeedcf0d4e2b2a6375af6fa908e9fec3f90d4f952c71866bfbd99e921ca5e37",
+          "dweb:/ipfs/QmVLwzBzMtfKsABHVq6VroNQfAem1kTyfDxToVJrrtgWCA"
+        ]
+      },
+      "contracts/src/protocol/ProtocolPrimitives.sol": {
+        "keccak256": "0x4e8175590028b1553c7720dd1722ab78b5c867ef9424053e7bf8f9f22242dbe2",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://110b96b6b8d56cbd97b5af969c8be84b598b1dca66905b33811d5ddc4df5e3e2",
+          "dweb:/ipfs/QmcUGdDmUHoMrBxgra32jMwTjmL9yCy7PECzLXSoFJBqpC"
+        ]
+      },
+      "contracts/src/protocol/VestedExitVault.sol": {
+        "keccak256": "0xad24c10c1e5afa6bf7a9fd109be5aceb4128343e7cef0b980bc6a88d9010fc06",
+        "license": "MIT",
+        "urls": [
+          "bzz-raw://84976187fcb553c2a4cf0736d0b60706b3cba8033bc800bb6d72b89c5977932a",
+          "dweb:/ipfs/QmPpAgPctswKYeLUzixcQhvxmx63Hmog96RtbG4gmdpMVN"
+        ]
+      }
+    },
+    "version": 1
+  }
+}
