@@ -7,7 +7,11 @@ npm run setup:full
 npm run master:local
 ```
 
-Use the printed workbench URL and local wallet configuration. Restart with `npm run master:start`. [README.md](README.md) describes the new module system; [the implementation map](docs/MODULES-IMPLEMENTATION.md) maps the approved plan to source and tests. The original application instructions follow.
+Use the printed public development mnemonic in a separate local-only wallet. Select its first account and match the printed `owner`; add RPC `http://127.0.0.1:8545`, chain ID `31337`, and currency symbol `ETH`. Open the printed workbench URL and **Connect & read** to use the already minted NFT #1. In the Journal tab, enter the printed `contracts.MemoryLedger` address. Never fund the public development mnemonic on a public chain.
+
+Restart with `npm run master:start`. [README.md](README.md#mint-another-nft-on-the-local-chain) gives the additional mint steps, including the local two-block mining command, installing modules on the new NFT, and funding its account with test ETH. [The test commands](README.md#test-and-recover) include the exact native Forge invocation and browser checks; [the implementation map](docs/MODULES-IMPLEMENTATION.md) maps the approved plan to source and tests.
+
+The instructions below run the original interface on its own. `npm start` starts the interface; `genesis:local` creates a separate original-stack local chain. Use `master:local` above for the complete version 7 deployment, and run only one local chain on the default ports at a time.
 
 Install Node.js 22.13 or newer (Node 24 is recommended):
 

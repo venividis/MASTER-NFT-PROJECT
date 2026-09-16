@@ -493,7 +493,7 @@
     "web/commons/mls-desk.mjs": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
     "web/commons/mls-protocol.mjs": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
     "web/commons/mls-vault.mjs": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
-    "web/confluence/app.js": "05eb5a83847abcc79dacb8ebfe395674ec819737055c99efdb1cc1fe3374fcc0",
+    "web/confluence/app.js": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
     "web/confluence/archive.mjs": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
     "web/confluence/capabilities.mjs": "64e4791947e37bb19fde6f02552dc3f8d9dbb5adecfe9007db5aafe91da9b258",
     "web/confluence/console-core.mjs": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
@@ -504,7 +504,7 @@
     "web/confluence/release-capabilities.mjs": "c254ebdb8304aa8252e7de3a9c8fd8fd75d8e1419caa34b7035f7ce1978615a1",
     "web/confluence/selected-context.mjs": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
     "web/confluence/shell.html": "dddd078001a787097c9bf135ee3924729974550f3c1276fa59f058208eb10fca",
-    "web/confluence/styles.css": "11c74d29d1d309e2a0b84dd839f57ce02c2611a6a0bb90b6f57bf25f0b6d830f",
+    "web/confluence/styles.css": "47fc348d445542d007b689e9907da5a3a63ed5f83644f550fc050e869a799594",
     "web/confluence/surfaces.css": "3f6471534be33e538e181373088795fd5817cd0445cc8e2410183f639bc70850",
     "web/confluence/wallet.mjs": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
     "web/crosschain/artifacts.mjs": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
@@ -603,9 +603,9 @@
     "web/memory/renderer-bridge.js": "bc8aa54b17812b264c599a78d170d747da08bc46b2f05f5a8c9314da21ca20f0",
     "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
     "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
-    "web/modules/adapter.mjs": "de6da2ffa5404b8726b77941cecc4f6848f7fcc527635b4166592ec7e3929af9",
+    "web/modules/adapter.mjs": "c12aac427109adda29b975ea5efeda393634f2134528b2ac13671c86ffda258a",
     "web/modules/app.mjs": "509b51d20f403a5597b1dd5d8b1cfea2aa055f1b7f35ecc19a760646bdcc6a1b",
-    "web/modules/embedded.mjs": "0e576a2d5706c5ad84b24169457af16a53d9d4b72cc0dd1af1116b396f682d69",
+    "web/modules/embedded.mjs": "63777a4b97990956e94000e9d26bc0410b3e341de15cb6068c6212bcd5592068",
     "web/modules/examples.mjs": "4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
     "web/modules/host.mjs": "b90554e54642b054eb404d47893c6aae4fbcaedaa75653dde5fe286ce044c793",
     "web/modules/html-worker.mjs": "c6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",
@@ -729,7 +729,7 @@
       ]
     },
     "web/confluence/app.js": {
-      "sha256": "05eb5a83847abcc79dacb8ebfe395674ec819737055c99efdb1cc1fe3374fcc0",
+      "sha256": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
       "dependencies": [
         "web/confluence/release-capabilities.mjs",
         "web/modules/embedded.mjs",
@@ -1311,7 +1311,7 @@
       "dependencies": []
     },
     "web/modules/embedded.mjs": {
-      "sha256": "0e576a2d5706c5ad84b24169457af16a53d9d4b72cc0dd1af1116b396f682d69",
+      "sha256": "63777a4b97990956e94000e9d26bc0410b3e341de15cb6068c6212bcd5592068",
       "dependencies": []
     },
     "web/privacy/bridge.mjs": {
@@ -1454,7 +1454,7 @@
     "abis/CartridgeRegistry.json": "3c3d6c4dcd54ce14cec7cc7af9cb1de522eb68e98bf73502f05d059d59dd4e95",
     "index.html": "89d27f3155400c4d0d17dc81bf1061ddfe8c3b0df1d2558c78b0060428553bfd",
     "manifest.webmanifest": "3eeddcc5a0e5dd67917485d5966980e7013afa1b4876278c36f7099dca41edea",
-    "modules.html": "c6ae8166ccd88b498c684b06a07c97371e7a7dd61babc46c338ed974a39e76ab",
+    "modules.html": "4c5c23d3b7c073bc8dc6f9e62e438fa4bd5087bf68454442c5aedef6d29ec47c",
     "original.html": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
     "web/begins/geometry.mjs": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
     "web/begins/shaders.mjs": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
@@ -1471,7 +1471,7 @@
     "web/commons/mls-desk.mjs": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
     "web/commons/mls-protocol.mjs": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
     "web/commons/mls-vault.mjs": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
-    "web/confluence/app.js": "05eb5a83847abcc79dacb8ebfe395674ec819737055c99efdb1cc1fe3374fcc0",
+    "web/confluence/app.js": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
     "web/confluence/archive.mjs": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
     "web/confluence/capabilities.mjs": "64e4791947e37bb19fde6f02552dc3f8d9dbb5adecfe9007db5aafe91da9b258",
     "web/confluence/console-core.mjs": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
@@ -1481,7 +1481,7 @@
     "web/confluence/particles.js": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
     "web/confluence/release-capabilities.mjs": "c254ebdb8304aa8252e7de3a9c8fd8fd75d8e1419caa34b7035f7ce1978615a1",
     "web/confluence/selected-context.mjs": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
-    "web/confluence/styles.css": "11c74d29d1d309e2a0b84dd839f57ce02c2611a6a0bb90b6f57bf25f0b6d830f",
+    "web/confluence/styles.css": "47fc348d445542d007b689e9907da5a3a63ed5f83644f550fc050e869a799594",
     "web/confluence/surfaces.css": "3f6471534be33e538e181373088795fd5817cd0445cc8e2410183f639bc70850",
     "web/confluence/wallet.mjs": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
     "web/crosschain/artifacts.mjs": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
@@ -1568,7 +1568,7 @@
     "web/launchpad/vault-ui.mjs": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
     "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
     "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
-    "web/modules/embedded.mjs": "0e576a2d5706c5ad84b24169457af16a53d9d4b72cc0dd1af1116b396f682d69",
+    "web/modules/embedded.mjs": "63777a4b97990956e94000e9d26bc0410b3e341de15cb6068c6212bcd5592068",
     "web/privacy/bridge.mjs": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
     "web/privacy/railgun-worker.js": "40ef8c9a7504dd23c108205759dfca7e5219ceecef2ba58737e593e80397341b",
     "web/privacy/recover-resource.mjs": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",

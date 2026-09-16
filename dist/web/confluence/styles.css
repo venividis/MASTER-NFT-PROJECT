@@ -1141,6 +1141,13 @@ body:not(.confluence) #cf-dialog {
     height: 280px;
   }
 }
+/* A short landscape panel cannot reserve a sticky header over its controls. */
+@media (max-height: 500px) and (max-width: 900px) {
+  body.confluence .ix-dialog .ix-header,
+  #cf-dialog > header {
+    position: static;
+  }
+}
 @media (max-height: 700px) and (min-width: 901px) {
   .cf-identity {
     top: 120px;

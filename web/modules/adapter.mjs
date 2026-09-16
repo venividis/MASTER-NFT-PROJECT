@@ -3,6 +3,7 @@ import * as sdk from '../../packages/modules/sdk.mjs';
 import { Contract, Interface, formatEther, getAddress, keccak256, toUtf8Bytes } from '../vendor/ethers.min.js';
 import { LiveProtocol } from '../genesis/live-protocol.mjs';
 import { sameAuthority, boundedJSON } from './host.mjs';
+import { parseJournalPacket, prepareJournal } from './journal.mjs';
 const zero=sdk.ZERO_HASH;
 const clean=value=>JSON.parse(JSON.stringify(value,(_,item)=>typeof item==='bigint'?item.toString():item));
 export class RegistryAdapter {
@@ -63,7 +64,20 @@ export class RegistryAdapter {
   return clean({kind,recipe,releaseId:recovered.releaseId,moduleKey:recovered.moduleKey,stateSchema:recovered.manifest.stateSchema,description:recipe.description,permissions:recovered.manifest.capabilities,...(['writeState','stageState'].includes(kind)?{state:value}:{}),identity:c.identity});
  }
  async prepare(intent){
-  if(intent.kind==='journal')return(await new LiveProtocol(this.wallet).inscribe({journal:intent.ledger,text:intent.text,publicConsent:true})).plan;
+  if(intent.kind==='journal'){
+   this.wallet.plan=null;
+   let mode;
+   if(intent.privacyMode==='encrypted'){
+    const packet=parseJournalPacket(intent.text);
+    if(!sameAuthority(packet.header,intent.identity))throw Error('The encrypted journal packet belongs to a different NFT or custody epoch.');
+    mode=1;
+   }else if(intent.privacyMode==='public'){
+    await prepareJournal({mode:'public',text:intent.text});mode=0;
+   }else throw Error('Choose public or encrypted journal publication.');
+   const memory=await new LiveProtocol(this.wallet).memory(intent.ledger);
+   const data=memory.interface.encodeFunctionData('appendPersonal',[this.wallet.tokenId,0,mode,true,await memory.head(this.wallet.tokenId),toUtf8Bytes(intent.text)]);
+   return this.wallet.preparePersonal({target:memory.target,data});
+  }
   if(intent.kind==='module-proposal')return this.wallet.prepare({target:intent.proposal.to,value:formatEther(BigInt(intent.proposal.value)),data:intent.proposal.data});
   const outer=new Interface(sdk.ACCOUNT_ABI).parseTransaction({data:intent.recipe.data});
   if(outer.name!=='execute'||intent.recipe.to.toLowerCase()!==this.wallet.account.toLowerCase()||BigInt(intent.recipe.value)!==0n)throw Error('The SDK recipe does not target this NFT account.');

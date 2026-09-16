@@ -681,7 +681,9 @@ export async function runCurrentApp({
         page.screenshot({
           path: path.join(directory, scenario.name + "-" + name + ".png"),
           fullPage: false,
-          timeout: 5000,
+          // Headless software WebGL and font readiness can exceed five seconds.
+          // Capture remains required and failures still fail their scenario.
+          timeout: 30000,
         });
       try {
         context = await browser.newContext({

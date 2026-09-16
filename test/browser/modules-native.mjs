@@ -168,7 +168,11 @@ async function execute() {
   }
 
   milestone('launch-browser');
-  const {chromium} = await dependency('playwright');
+  // require.resolve selects Playwright's CJS entry; dynamic import can expose
+  // its API only under default. Also accept the ordinary named ESM export.
+  const playwright = await dependency('playwright');
+  const chromium = playwright.chromium ?? playwright.default?.chromium;
+  assert.equal(typeof chromium?.launch, 'function', 'Pinned Playwright must expose Chromium launch');
   const {createStaticServer} = await project('scripts/lib/static-server.mjs');
   // Serve a captured copy, never rebuild or rewrite project artifacts during the test.
   const served = path.join(run, 'served'); fs.mkdirSync(served); fs.writeFileSync(path.join(served, 'index.html'), workbench.bytes);

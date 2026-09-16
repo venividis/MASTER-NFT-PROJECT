@@ -767,7 +767,12 @@ const actions = {
   },
   "cancel-call": () => {
     wallet.plan = null;
-    open(mode);
+    // Remove obsolete signing controls synchronously; panel navigation awaits
+    // its closing animation and must not leave a cancelled review actionable.
+    for (const button of document.querySelectorAll(
+      '#cf-dialog [data-do="send-call"], #cf-dialog [data-do="cancel-call"]',
+    )) button.remove();
+    return open(mode);
   },
   "utility-review": async () =>
     showTransaction(

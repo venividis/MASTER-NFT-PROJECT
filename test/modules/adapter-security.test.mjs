@@ -2,6 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { Interface } from 'ethers';
 import { RegistryAdapter } from '../../web/modules/adapter.mjs';
+import { LiveProtocol, MEMORY_ABI } from '../../web/genesis/live-protocol.mjs';
+import { prepareJournal } from '../../web/modules/journal.mjs';
 import { ACCOUNT_ABI, TOKEN_REGISTRY_ABI, RELEASE_REGISTRY_ABI, ZERO_HASH, packageLegacyHTML, releaseInput, releaseIdFor, moduleKeyFor, sha256, canonicalManifest, manifestHash } from '../../packages/modules/sdk.mjs';
 
 const address = byte => '0x' + byte.repeat(20);
@@ -88,4 +90,65 @@ test('malformed public releases are isolated rows and cannot hide later valid re
   assert.equal(rows[1].invalid, undefined);
   assert.ok(requests.some(([method, id]) => method === 'manifest' && id === validId));
   await assert.rejects(adapter.catalogEntries(Array(17).fill(validId), context), /catalog page/);
+});
+
+function journalFixture() {
+  const ledger = address('77'), head = hash('88'), abi = new Interface(MEMORY_ABI), prepared = [];
+  const wallet = {
+    collection: context.collection, tokenId: 1n, account: context.account, address: context.owner,
+    raw: { request() { throw Error('Unexpected wallet RPC'); } },
+    async assertOwner() {},
+    provider: { async call(tx) {
+      assert.equal(tx.to.toLowerCase(), ledger);
+      const call = abi.parseTransaction({ data: tx.data });
+      if (call.name === 'collection') return abi.encodeFunctionResult('collection', [context.collection]);
+      assert.equal(call.name, 'head'); assert.equal(call.args[0], 1n);
+      return abi.encodeFunctionResult('head', [head]);
+    } },
+    async preparePersonal(plan) { prepared.push(plan); this.plan = plan; return plan; },
+  };
+  const adapter = new RegistryAdapter(wallet, { registry: context.registry });
+  return { adapter, wallet, ledger, head, abi, prepared };
+}
+
+test('journal transaction encoding preserves explicit public/encrypted modes and exact payload bytes', async () => {
+  const { adapter, wallet, ledger, head, abi, prepared } = journalFixture();
+  const text = '  private orchid memory 🫧\n', passphrase = 'a test-only private memory passphrase';
+  for (const mode of ['public', 'encrypted']) {
+    const result = await prepareJournal({ mode, text, passphrase, identity: context.identity });
+    const plan = await adapter.prepare({ kind: 'journal', ledger, text: result.chainText, privacyMode: mode, identity: context.identity });
+    assert.equal(plan.target.toLowerCase(), ledger);
+    const call = abi.parseTransaction({ data: plan.data });
+    assert.equal(call.name, 'appendPersonal');
+    assert.deepEqual([...call.args.slice(0, 5)], [1n, 0n, mode === 'encrypted' ? 1n : 0n, true, head]);
+    const payload = new TextDecoder().decode(Buffer.from(call.args[5].slice(2), 'hex'));
+    assert.equal(payload, result.chainText);
+    if (mode === 'encrypted') {
+      assert.equal(payload.includes('private orchid memory'), false);
+      assert.equal(payload.includes(passphrase), false);
+    }
+    assert.equal(wallet.plan, plan);
+  }
+  assert.equal(prepared.length, 2);
+  // Other existing inscription flows retain their explicit-public default.
+  const legacy = await new LiveProtocol(wallet).inscribe({ journal: ledger, text, publicConsent: true });
+  assert.equal(abi.parseTransaction({ data: legacy.plan.data }).args[2], 0n);
+});
+
+test('journal review rejects invalid encrypted packets, another custody epoch and unspecified privacy', async () => {
+  const { adapter, wallet, ledger, prepared } = journalFixture();
+  const encrypted = await prepareJournal({ mode: 'encrypted', text: 'private entry', passphrase: 'a test-only encrypted phrase', identity: context.identity });
+  const intent = { kind: 'journal', ledger, text: encrypted.chainText, privacyMode: 'encrypted', identity: context.identity };
+  for (const invalid of [
+    { ...intent, text: 'plaintext is not an encrypted packet' },
+    { ...intent, text: JSON.stringify(encrypted.packet, null, 2) },
+    { ...intent, identity: { ...context.identity, epoch: '3' } },
+    { ...intent, privacyMode: undefined },
+    { ...intent, privacyMode: 'public', text: 'é'.repeat(1501) },
+  ]) {
+    wallet.plan = { stale: true };
+    await assert.rejects(adapter.prepare(invalid));
+    assert.equal(wallet.plan, null);
+  }
+  assert.equal(prepared.length, 0);
 });

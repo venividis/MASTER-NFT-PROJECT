@@ -1,185 +1,185 @@
 {
   "schema": "anima.module-workbench/1",
   "compression": "raw",
-  "byteLength": 705150,
-  "sha256": "0xc6ae8166ccd88b498c684b06a07c97371e7a7dd61babc46c338ed974a39e76ab",
+  "byteLength": 705630,
+  "sha256": "0x4c5c23d3b7c073bc8dc6f9e62e438fa4bd5087bf68454442c5aedef6d29ec47c",
   "chunks": [
     {
       "file": "chunks/000.bin",
       "byteLength": 23000,
-      "sha256": "0xeadaf9c523d40f82fb90cc7d4126b82448c19b301d9df4e114c7bc9a1a3a9cbf"
+      "sha256": "0x81b725fe357a4df81c612ad7391ad00977c8733994882baf3cfb73b867571047"
     },
     {
       "file": "chunks/001.bin",
       "byteLength": 23000,
-      "sha256": "0xe98f2c89c54057861ab7f6d1805e317d6c8e48ecc19497efcf6de9d2bf3df778"
+      "sha256": "0x0b397f578c6b80ca82091aab553f202c3d73396426a25d6cffe91d52f2e9dc50"
     },
     {
       "file": "chunks/002.bin",
       "byteLength": 23000,
-      "sha256": "0x1ea39dfdca8c84871ed6460867b253dc8ba4003a4cbd8e3f26cb36e607e9a2e6"
+      "sha256": "0xd487476d8247931392889c1b81d2309c030d417606e7f742a828c374e0d66736"
     },
     {
       "file": "chunks/003.bin",
       "byteLength": 23000,
-      "sha256": "0x9889d872794525577ff1233ed854508635564946a620df7e2b4c9b30b2b46c06"
+      "sha256": "0x2c6b6049bea3e937237205b3b77626c4a8750a7c82f34f92ea327fc53ccc6b17"
     },
     {
       "file": "chunks/004.bin",
       "byteLength": 23000,
-      "sha256": "0xc35eb59533f92deba8e8caf81a545ce93b6951e844c7162de932a86472098ff0"
+      "sha256": "0xa687cb269319d7a3abc85eee2eec4b00f0ea30ebecc451c9ebf18c92243fbd45"
     },
     {
       "file": "chunks/005.bin",
       "byteLength": 23000,
-      "sha256": "0x6fcedfa482ba7a9eb5b81b0505ea5d8ea852adb572fcf4e8e8370465c96c5784"
+      "sha256": "0x17254a39f5d8b8abb5a829868cdf44a1e0d2cc51c9b3103c180c48408043c6e6"
     },
     {
       "file": "chunks/006.bin",
       "byteLength": 23000,
-      "sha256": "0xb445599bc71a461c8ef334b76dcadfc42ed2628ee016d95b06b26bd0f0c1a499"
+      "sha256": "0x5ba99bc46210d9b54a0e2c7cc04e2b4ab9803cdc3ebf987d1265d2a71c3f181a"
     },
     {
       "file": "chunks/007.bin",
       "byteLength": 23000,
-      "sha256": "0x69d186170713b21d7471e931545220634f096ec663efcb32026ccca2495e91f6"
+      "sha256": "0x64f068c65db9615c824bb3ae63622fe9625694f4fc72d68ee03a0097a2c5c100"
     },
     {
       "file": "chunks/008.bin",
       "byteLength": 23000,
-      "sha256": "0xc6c43aabc445d63abef927f2ab104f17756123fc561be208fce9691e720fa2ca"
+      "sha256": "0x58e32085816482d52504e0e5190d0b214a6636b39ed5a2ba784c13dcc6de1c34"
     },
     {
       "file": "chunks/009.bin",
       "byteLength": 23000,
-      "sha256": "0x264199f7eb38c1e7118f3b4f10ddc197f4e2ae3fdb1250cc720b4352d873c539"
+      "sha256": "0x991b55410d202922ac1e0745f958321e31e41c092e5daa0c64e13ea30658ee05"
     },
     {
       "file": "chunks/010.bin",
       "byteLength": 23000,
-      "sha256": "0x78981090e36f14b364df4ecab301d83da0794986cb584532fdfc5b64cd44cb4a"
+      "sha256": "0x981cea476d4c3398071ad02d84a6fd48ce9e02dce3d005e0fe41c39b241c1bdb"
     },
     {
       "file": "chunks/011.bin",
       "byteLength": 23000,
-      "sha256": "0x524eda0d1693d7fe98f32ae8a4aeb22197f8e8ac20770405adb972e2e663b87f"
+      "sha256": "0xccc9d1ba1029dfa1deee8b7bc43bd4ad267899a424751885a28b1757895e4e80"
     },
     {
       "file": "chunks/012.bin",
       "byteLength": 23000,
-      "sha256": "0x53aa52c8a10053328ff8ca9f334282fe80b9a159241b815528d0c43f968f69c9"
+      "sha256": "0xb7eed3c6f7966354ddd4c2362198baedbdebacc846ed71b01518386d3db25799"
     },
     {
       "file": "chunks/013.bin",
       "byteLength": 23000,
-      "sha256": "0x20139e6533ce6e1f5acec1f326a0e59a5307ff67e0c3d957dbc15c274a1f0fc6"
+      "sha256": "0x4c4d9190db6608c5d8edec6337fb19a2792a18d0166aa08145e59c889fc97f77"
     },
     {
       "file": "chunks/014.bin",
       "byteLength": 23000,
-      "sha256": "0xf3f49b4c1b03741ce76e754d522cb48e66ac83e7eb609abd5d7f04f664e0fb8b"
+      "sha256": "0xdcbb91f942b090ef191b618f82d85813a56471eb21ece197e23b081935c33bc0"
     },
     {
       "file": "chunks/015.bin",
       "byteLength": 23000,
-      "sha256": "0x2ae320df444fefcb402f4a0bd8fc8b133379e2954b001b94eaa3985da142ca45"
+      "sha256": "0x43e983e8c49c69f1b4507f850a1e3ffb8e37a26d9a0b67b6480711dd258406bc"
     },
     {
       "file": "chunks/016.bin",
       "byteLength": 23000,
-      "sha256": "0x2329af04155f99d7672bed1d158247eea68649f3e36cd366bd7ed0f42ae0483a"
+      "sha256": "0x18656a6912b9b96c4b3f30194269e6ea5fdf026c90b3837e1eeaffc50f2778c3"
     },
     {
       "file": "chunks/017.bin",
       "byteLength": 23000,
-      "sha256": "0xcbf91f7d26248261dba8ee6ed75f1bc5e819d839bb993ca469367a1c818224a7"
+      "sha256": "0xc8ec0f207b72cc282475574b8abed141d21540f9f6db8646ce114137d392052d"
     },
     {
       "file": "chunks/018.bin",
       "byteLength": 23000,
-      "sha256": "0xc6dfa37d5627302e0e6f6898c84b64a5e6bfd00dcb7067e37e646d88b2d4c9ca"
+      "sha256": "0x82c2ff20802070b9578b65ca1a794f43c539ba9cee7ce9b4a4b0dd3f19461771"
     },
     {
       "file": "chunks/019.bin",
       "byteLength": 23000,
-      "sha256": "0x0d6c7b9611f24e544a7a367a817cbf60623d00e39ccfc6553c019620135ca021"
+      "sha256": "0xdbecdb3a8da1b6849c25e9a60fa7b0cf44ed944a24985657742215627aba73be"
     },
     {
       "file": "chunks/020.bin",
       "byteLength": 23000,
-      "sha256": "0xcb4abfa04c79215ae1ecb0623f88bd9b7793cf87e80b7ea138e59728a3ce3307"
+      "sha256": "0x506e49918394edbc414d214cc6575f793ee9de5d32ef5d2c81b5fc45c880cb66"
     },
     {
       "file": "chunks/021.bin",
       "byteLength": 23000,
-      "sha256": "0x89e4444a778f5f8cce49a036cd4401a9cecd1832123f54f71e7e049f6cbce8b1"
+      "sha256": "0xc8b2c52a5b7f2fbbb126504913df2cd232221e338517496f4c30c242536d98ad"
     },
     {
       "file": "chunks/022.bin",
       "byteLength": 23000,
-      "sha256": "0x180df5a0286b5b87f84f1ea091b59f795d384865bc97564f6f6393010c2c2adc"
+      "sha256": "0xc584cf71443b6a7bef65086c5d73630e64d7ae1bd325a94ae4c9a8f8666ad6e0"
     },
     {
       "file": "chunks/023.bin",
       "byteLength": 23000,
-      "sha256": "0x397ac9d35f280c82b85d69fb49dfe9787c2627786aef9ba012ec44edf1eb510f"
+      "sha256": "0x2a9d01a28b226a159842518d2738eedbf22cd16d3cffd057de1e046247649331"
     },
     {
       "file": "chunks/024.bin",
       "byteLength": 23000,
-      "sha256": "0x1acb70ccf48cc64bc6aee428c5e54c5c8b1ff069cf098541c8a4f404c7a2a328"
+      "sha256": "0x1879984e6bc2b19262a8cac8b73ac99b4a4873851ebe425543497a8c7e4066bd"
     },
     {
       "file": "chunks/025.bin",
       "byteLength": 23000,
-      "sha256": "0x9637309f54575f0e8b5637791bb75f36ce845cbbaa3a32fda8398df6e4181905"
+      "sha256": "0xc72be717f926c5d5b5e5641157bf0b73c3f45e849688c74b0963c8be195cad75"
     },
     {
       "file": "chunks/026.bin",
       "byteLength": 23000,
-      "sha256": "0x8b957258b72bc23e1826cf5fb22ec624e2ccf137c2400397f76b0f1be2a14ccb"
+      "sha256": "0xb4b5a462edd0839a47acdc6832519318d2ef8e6813005d3e9b4e330834e5945b"
     },
     {
       "file": "chunks/027.bin",
       "byteLength": 23000,
-      "sha256": "0x64db18854c4db5803b7e405c094230570861b6c4209f940c12d4f254407ed177"
+      "sha256": "0x9ac535c3f7a337aa0551b2f60ed923b01a83d84be24b2aa04bc04ff33b7c37da"
     },
     {
       "file": "chunks/028.bin",
       "byteLength": 23000,
-      "sha256": "0xf6f4beb109b1e9980208d2b09f2d6402d0b0bb55508251aeda5ac520437e58a9"
+      "sha256": "0x42c9a8b8acf3aa379e59bde5ed8156a98fb3c9b38f12919c65ce72a97215f3c0"
     },
     {
       "file": "chunks/029.bin",
       "byteLength": 23000,
-      "sha256": "0x58717b13d9a3cff24a4fc77cc207747145f4f2a8e33f29f44a7a5ca0838f4e5b"
+      "sha256": "0x0bf24d36ce89b9916715f5e776a4085e5ccab36bb0348c8ec4df0177c603dad0"
     },
     {
       "file": "chunks/030.bin",
-      "byteLength": 15150,
-      "sha256": "0xf4ea89ed42fa360ea222efe7d167361bc639655a9a2f4ba2768d26dee0292d43"
+      "byteLength": 15630,
+      "sha256": "0xc168b726229f9549f32269c207d9f10f4a985c92307f7997a77a85f8dd3d06a5"
     }
   ],
   "inputs": {
-    "node_modules/entities/dist/esm/decode-codepoint.js": "0x5d8ee93923d609724c69c8c356147176af5226585d4f343c87a5eec6590ebca9",
-    "node_modules/entities/dist/esm/decode.js": "0x8af227bae5682a686bf9e9a6547af8c388274f41cb857ff39592fe74fc848d25",
-    "node_modules/entities/dist/esm/escape.js": "0x50528d67b2fb87687f0658cfab58eb640ebbcd7e3bcfe8e5e2863e8293ae65b7",
-    "node_modules/entities/dist/esm/generated/decode-data-html.js": "0xb035b71d6969983297e39df1a06d760f2a8000a0f98444c4fe845fe1155da451",
-    "node_modules/entities/dist/esm/generated/decode-data-xml.js": "0xe28599f48fddd869435e44e6ae8644e70a610450d97562e33c869c056e3b129f",
-    "node_modules/parse5/dist/common/doctype.js": "0x855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
-    "node_modules/parse5/dist/common/error-codes.js": "0xb38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
-    "node_modules/parse5/dist/common/foreign-content.js": "0x129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
-    "node_modules/parse5/dist/common/html.js": "0xe6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
-    "node_modules/parse5/dist/common/token.js": "0x52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
-    "node_modules/parse5/dist/common/unicode.js": "0x69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
-    "node_modules/parse5/dist/index.js": "0xb825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
-    "node_modules/parse5/dist/parser/formatting-element-list.js": "0xa6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
-    "node_modules/parse5/dist/parser/index.js": "0x23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
-    "node_modules/parse5/dist/parser/open-element-stack.js": "0xfe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
-    "node_modules/parse5/dist/serializer/index.js": "0xbb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
-    "node_modules/parse5/dist/tokenizer/index.js": "0x738969a05c4e7d3c0ce566225e742d730d248db82972a84e517828cd97bc3bb4",
-    "node_modules/parse5/dist/tokenizer/preprocessor.js": "0x12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
-    "node_modules/parse5/dist/tree-adapters/default.js": "0x14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
+    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/decode-codepoint.js": "0x5d8ee93923d609724c69c8c356147176af5226585d4f343c87a5eec6590ebca9",
+    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/decode.js": "0x8af227bae5682a686bf9e9a6547af8c388274f41cb857ff39592fe74fc848d25",
+    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/escape.js": "0x50528d67b2fb87687f0658cfab58eb640ebbcd7e3bcfe8e5e2863e8293ae65b7",
+    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/generated/decode-data-html.js": "0xb035b71d6969983297e39df1a06d760f2a8000a0f98444c4fe845fe1155da451",
+    "../MASTER-NFT-PROJECT/node_modules/entities/dist/esm/generated/decode-data-xml.js": "0xe28599f48fddd869435e44e6ae8644e70a610450d97562e33c869c056e3b129f",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/doctype.js": "0x855d8cd764782cdc73003a9847d03ed261c5158f6a6901e563ccd4d3b92c8b16",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/error-codes.js": "0xb38ae5ac4f2a31ce2e1cfeca35cf7b89cc66736cd5be068cc433a3ccaca78be2",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/foreign-content.js": "0x129a84a9d04b6050b6896de45a70e1ee468434e19bdd6486e3aef3405d137cac",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/html.js": "0xe6cf93f387be70ddcd4f2bec67fbeb53161094f6306d834de461ec888a9dab76",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/token.js": "0x52dac9efba3a637771818d633a5cf1df30c7913d05ff23235150c88319ea035a",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/common/unicode.js": "0x69a0a52be895d2bcf88850beead4a098c5305c0b5669d1e8a0fe26f621ea25c6",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/index.js": "0xb825162aced2e79be8d68d45efb1f89ec34ed4189467195a071a0d7b694a19d4",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/parser/formatting-element-list.js": "0xa6e04b000b228a0bf7eba4e5462b343ec1e13dbfbe40bce913ade646bbde4461",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/parser/index.js": "0x23eb8e0f6b45abc36132c08f067899e0e615acbe9069762ba7780a66db78e65d",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/parser/open-element-stack.js": "0xfe4b609a572c9aa06fbd45ac53632b3ad565168903f4126a6f98d5a9d1f42999",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/serializer/index.js": "0xbb11a62d05d463bf756814d89227ea889733d3808fe7ebe27cb4f607ed85a4c7",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/tokenizer/index.js": "0x738969a05c4e7d3c0ce566225e742d730d248db82972a84e517828cd97bc3bb4",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/tokenizer/preprocessor.js": "0x12199175a31eb461dcecefa10ce2536c69ab92cdd2a1f67da3ea20b214599ac1",
+    "../MASTER-NFT-PROJECT/node_modules/parse5/dist/tree-adapters/default.js": "0x14b6408b0abb1c041e645644f977db34da280239be8a59a2eb3c9e282e89b7c4",
     "packages/modules/chain.mjs": "0xdb985d99701a0bee5a6f940e7ac9a15e48ee1519a85678608ca22d3a0e5a9e33",
     "packages/modules/core.mjs": "0xb0837d1e7468c92b8d67469a0f8b7c33716ef6e1d785477fbe2fe18f455d09e3",
     "packages/modules/hash.mjs": "0xc990ea1a3b3cb461e21e5a4359dcb322dcaa76b5d836cb192d50ce99eb3f17e6",
@@ -193,7 +193,7 @@
     "web/genesis/live-protocol.mjs": "0xed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
     "web/kingdom/model.mjs": "0xb239c0da9731aacab6c87d5426bb5a52afa1b38b42b8e44c3944c11b612c1e8c",
     "web/memory/crypto.mjs": "0x9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523",
-    "web/modules/adapter.mjs": "0xde6da2ffa5404b8726b77941cecc4f6848f7fcc527635b4166592ec7e3929af9",
+    "web/modules/adapter.mjs": "0xc12aac427109adda29b975ea5efeda393634f2134528b2ac13671c86ffda258a",
     "web/modules/app.mjs": "0x509b51d20f403a5597b1dd5d8b1cfea2aa055f1b7f35ecc19a760646bdcc6a1b",
     "web/modules/examples.mjs": "0x4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
     "web/modules/host.mjs": "0xb90554e54642b054eb404d47893c6aae4fbcaedaa75653dde5fe286ce044c793",

@@ -3,65 +3,65 @@
   "archiveVersion": 3,
   "compression": "modular-gzip",
   "shellIndex": 0,
-  "sha256": "717d9fe1ca83d92e367d6612ba20d42d291090105d66269836891546593a807c",
-  "runtimeHtmlSha256": "de89442ad9843d216d3b62d5404165f0e2d4b4caf125f2fcbc61f4e084d9e6f7",
-  "byteLength": 2071356,
-  "expandedBytes": 7948164,
+  "sha256": "400f0ba2b7f6a5b8c293d378abf31d8cf97a8e49d9442e3ad2d3dbd0fb7193a6",
+  "runtimeHtmlSha256": "af2fc52dc5705133af57e71cf7d0deee9ef55cbe294bccc82533873206add280",
+  "byteLength": 2072144,
+  "expandedBytes": 7950337,
   "chunks": [
     {
       "file": "modules/00-core-shell/chunks/00.bin",
       "bytes": 23000,
-      "sha256": "8f350be4d077fbecd54d3d4cbf814c63dace67f7743f3ebda49d352d4000decc"
+      "sha256": "c506233e021d71e1d223aa0632d2d1628c07538c772af4c29b13db9ee8c93431"
     },
     {
       "file": "modules/00-core-shell/chunks/01.bin",
       "bytes": 23000,
-      "sha256": "6c03ba66835fdb1ee176065a4c076783acc07ab0a2740eba60b5e6b0e09fe0ff"
+      "sha256": "68db3a7b5af3001a5d1e522319bc8d95949f936ce8949d049b85db779adcd737"
     },
     {
       "file": "modules/00-core-shell/chunks/02.bin",
       "bytes": 23000,
-      "sha256": "fd60028df1390094cbeb6c8dbe3d61e3fa01d9d1c345b51ec1fad93da11568fe"
+      "sha256": "ea4157375d1cd0a7be288133448a7a8f4bf1285454225fd58bffeabfd0b1b961"
     },
     {
       "file": "modules/00-core-shell/chunks/03.bin",
       "bytes": 23000,
-      "sha256": "db5996b91dd5a4e1f8108dbe57482f99fc075d93c8edf7fd7427b7449e674f7c"
+      "sha256": "989ea9ff70eeda0d1f6fddbb6f29b4bcf5febd297267412b5c3bd31011d625d8"
     },
     {
       "file": "modules/00-core-shell/chunks/04.bin",
       "bytes": 23000,
-      "sha256": "48c2e986686320f3245c84ecc83e9aa208a6b0df1e19aa2774005500200efae1"
+      "sha256": "36729e512cd2ad32889c5efad660e9a1313bcdb195204ecf879081b37e34777f"
     },
     {
       "file": "modules/00-core-shell/chunks/05.bin",
       "bytes": 23000,
-      "sha256": "409d26a28e355f010f38e4cb276a5528e99360277641b1ae9715ce29aa354ca2"
+      "sha256": "59c3ddca71963963129207b2bca934de58437e3fef4d516c2deb2e1a81d4b6bf"
     },
     {
       "file": "modules/00-core-shell/chunks/06.bin",
       "bytes": 23000,
-      "sha256": "bd6a0b152127263cca4a46c70cef72c5e0d557842d156d9aee7a455df6bbbf80"
+      "sha256": "b69bb9cd45e76889077a02d31f3d112bcd5aa10d2e6a84d6243afe148e17f9ad"
     },
     {
       "file": "modules/00-core-shell/chunks/07.bin",
       "bytes": 23000,
-      "sha256": "a07540f9ecc5ca2ef742c8a87fb2663432f662972e2f3cf05f84f854df4c015b"
+      "sha256": "53072a1183987738473025f46c318aff2a70abc7c75e33cc72bdab663d317bca"
     },
     {
       "file": "modules/00-core-shell/chunks/08.bin",
       "bytes": 23000,
-      "sha256": "8c281405e8c56e15311b8260fd22dc116ebe9c1f7f29e784bfe80566fe447c89"
+      "sha256": "ae75a58cd579480eef82c0987b813ba43c63c1931d3cbb3f162636bda14ba6f7"
     },
     {
       "file": "modules/00-core-shell/chunks/09.bin",
       "bytes": 23000,
-      "sha256": "cef15fa73e8e55dfa2a6617eca748fa9a4f368f21c6d056269b18856fe29a8ad"
+      "sha256": "85996dae5f3c81c0953873519441ecf2b7ec131edb3f5f03419a1e2f98d636cc"
     },
     {
       "file": "modules/00-core-shell/chunks/10.bin",
-      "bytes": 10819,
-      "sha256": "ba01e5bce5c8e92e259a6b1454d0a5e0b743224bc78dc1595c7d27e9b4b61d63"
+      "bytes": 10891,
+      "sha256": "c6fa9b7202357b4227a9f1128410f58006a63c9aae051f2ca24483c1ea39d3d1"
     },
     {
       "file": "modules/01-begins/chunks/00.bin",
@@ -101,17 +101,17 @@
     {
       "file": "modules/04-confluence/chunks/00.bin",
       "bytes": 23000,
-      "sha256": "6b1145f54da194b8b223749c7655df298f6054014c7e32e57a645596e42e6f41"
+      "sha256": "5e83288c3ee5da8dfb1960f884ad25193a9883260e5357d176dec52218c7acfe"
     },
     {
       "file": "modules/04-confluence/chunks/01.bin",
       "bytes": 23000,
-      "sha256": "7940086e358008aaf0f6deab097f6531762dfa1d0be85ee3d3c5d3ccf7347e5c"
+      "sha256": "1f2464ef989632b22ed499255cbd7eb7d94168e826bc98cb3a7e9936ee9623ae"
     },
     {
       "file": "modules/04-confluence/chunks/02.bin",
-      "bytes": 3103,
-      "sha256": "415563d944347ce91ced6fd936c7ee17efa7818e43ab7ce2db81dcbb792b1fb8"
+      "bytes": 3259,
+      "sha256": "f13add89384ec90031344a3f814bb9e32ac37ce98f79352ce0d1e36db21f8c40"
     },
     {
       "file": "modules/05-crosschain/chunks/00.bin",
@@ -401,32 +401,32 @@
     {
       "file": "modules/12-modules/chunks/11.bin",
       "bytes": 23000,
-      "sha256": "9e2ad11b55c53b4dd6d2281d1f9213b208b74a5e72ead985b90f5730b8a6ae8c"
+      "sha256": "f57286b1c47af82e52dfe172f69b3ee4ad48d6c222d47d0316af375c3b94ecc9"
     },
     {
       "file": "modules/12-modules/chunks/12.bin",
       "bytes": 23000,
-      "sha256": "ae771b8be9187789ffb23681062a1c2b2bb20515186a2f290f240c6f1aa2f31f"
+      "sha256": "d64f6db84becac3c50d953a69bec0b39d30b5de781a52e4c31a7fb2f95e5185b"
     },
     {
       "file": "modules/12-modules/chunks/13.bin",
       "bytes": 23000,
-      "sha256": "18e1ca565cacf0fafbf1ea5b71bc2522d1740c54dd4e6de86372cb15584e8d4d"
+      "sha256": "142ed37e6d86e462fdf8bef6659dba67be8966dad15ef07d0bd6c24c43c66673"
     },
     {
       "file": "modules/12-modules/chunks/14.bin",
       "bytes": 23000,
-      "sha256": "382423c50b10bd88ef37ae08a647e0e1efedfa2405186fde463d44f1dd28a453"
+      "sha256": "d9d51130248263354e2e3f420cf1b847f1c4df7ecfdc984bfc3fb64d50e0df1e"
     },
     {
       "file": "modules/12-modules/chunks/15.bin",
       "bytes": 23000,
-      "sha256": "b0b381738f450802c013a5c4a03182bfaa7b746032ed9ed924c14cd242085d2f"
+      "sha256": "75eb71c8b575b13062a450424612a1fbf9ab2e38f097689eea8ef15cf65d4d03"
     },
     {
       "file": "modules/12-modules/chunks/16.bin",
-      "bytes": 12203,
-      "sha256": "fc31d3077ac8b9d81d0b42a4039014eed6885c389aff0dbae0b30a671f3b7e2d"
+      "bytes": 12763,
+      "sha256": "fe2ff79fa456ca9a8b191774eaf477fd90b37fdfaaccec2967576fa0a4dea5bb"
     },
     {
       "file": "modules/13-privacy/chunks/00.bin",
@@ -518,13 +518,13 @@
     {
       "name": "core-shell",
       "id": "9c94547ce28294918597f478aadea80348da368c862d08e07623025effe9c865",
-      "version": 2,
+      "version": 3,
       "archiveVersion": 1,
-      "sha256": "6ceed10f73bb8333fbbe9b53da844cd51161d9fdaec67394ad0afe69931cb2fe",
-      "byteLength": 240819,
-      "expandedSha256": "dd283061903417733710bfaea9a7226473666a22c47150166f35c4dc808f0abf",
-      "expandedBytes": 672217,
-      "compressedBytes": 180564,
+      "sha256": "89f69bbbeb7ec5b35fe4492f6a8ed0dedfeafe1cf10d2e3b72f2c3ebb0efc252",
+      "byteLength": 240891,
+      "expandedSha256": "8354c40a0faf9c312eec9c2c075b8f9268ea8c2ec1c4a42270d54ccfb53ae426",
+      "expandedBytes": 672449,
+      "compressedBytes": 180618,
       "dependencies": [
         {
           "index": 1,
@@ -540,7 +540,7 @@
         },
         {
           "index": 4,
-          "version": 2
+          "version": 3
         },
         {
           "index": 5,
@@ -572,7 +572,7 @@
         },
         {
           "index": 12,
-          "version": 1
+          "version": 2
         },
         {
           "index": 13,
@@ -608,57 +608,57 @@
         {
           "file": "modules/00-core-shell/chunks/00.bin",
           "bytes": 23000,
-          "sha256": "8f350be4d077fbecd54d3d4cbf814c63dace67f7743f3ebda49d352d4000decc"
+          "sha256": "c506233e021d71e1d223aa0632d2d1628c07538c772af4c29b13db9ee8c93431"
         },
         {
           "file": "modules/00-core-shell/chunks/01.bin",
           "bytes": 23000,
-          "sha256": "6c03ba66835fdb1ee176065a4c076783acc07ab0a2740eba60b5e6b0e09fe0ff"
+          "sha256": "68db3a7b5af3001a5d1e522319bc8d95949f936ce8949d049b85db779adcd737"
         },
         {
           "file": "modules/00-core-shell/chunks/02.bin",
           "bytes": 23000,
-          "sha256": "fd60028df1390094cbeb6c8dbe3d61e3fa01d9d1c345b51ec1fad93da11568fe"
+          "sha256": "ea4157375d1cd0a7be288133448a7a8f4bf1285454225fd58bffeabfd0b1b961"
         },
         {
           "file": "modules/00-core-shell/chunks/03.bin",
           "bytes": 23000,
-          "sha256": "db5996b91dd5a4e1f8108dbe57482f99fc075d93c8edf7fd7427b7449e674f7c"
+          "sha256": "989ea9ff70eeda0d1f6fddbb6f29b4bcf5febd297267412b5c3bd31011d625d8"
         },
         {
           "file": "modules/00-core-shell/chunks/04.bin",
           "bytes": 23000,
-          "sha256": "48c2e986686320f3245c84ecc83e9aa208a6b0df1e19aa2774005500200efae1"
+          "sha256": "36729e512cd2ad32889c5efad660e9a1313bcdb195204ecf879081b37e34777f"
         },
         {
           "file": "modules/00-core-shell/chunks/05.bin",
           "bytes": 23000,
-          "sha256": "409d26a28e355f010f38e4cb276a5528e99360277641b1ae9715ce29aa354ca2"
+          "sha256": "59c3ddca71963963129207b2bca934de58437e3fef4d516c2deb2e1a81d4b6bf"
         },
         {
           "file": "modules/00-core-shell/chunks/06.bin",
           "bytes": 23000,
-          "sha256": "bd6a0b152127263cca4a46c70cef72c5e0d557842d156d9aee7a455df6bbbf80"
+          "sha256": "b69bb9cd45e76889077a02d31f3d112bcd5aa10d2e6a84d6243afe148e17f9ad"
         },
         {
           "file": "modules/00-core-shell/chunks/07.bin",
           "bytes": 23000,
-          "sha256": "a07540f9ecc5ca2ef742c8a87fb2663432f662972e2f3cf05f84f854df4c015b"
+          "sha256": "53072a1183987738473025f46c318aff2a70abc7c75e33cc72bdab663d317bca"
         },
         {
           "file": "modules/00-core-shell/chunks/08.bin",
           "bytes": 23000,
-          "sha256": "8c281405e8c56e15311b8260fd22dc116ebe9c1f7f29e784bfe80566fe447c89"
+          "sha256": "ae75a58cd579480eef82c0987b813ba43c63c1931d3cbb3f162636bda14ba6f7"
         },
         {
           "file": "modules/00-core-shell/chunks/09.bin",
           "bytes": 23000,
-          "sha256": "cef15fa73e8e55dfa2a6617eca748fa9a4f368f21c6d056269b18856fe29a8ad"
+          "sha256": "85996dae5f3c81c0953873519441ecf2b7ec131edb3f5f03419a1e2f98d636cc"
         },
         {
           "file": "modules/00-core-shell/chunks/10.bin",
-          "bytes": 10819,
-          "sha256": "ba01e5bce5c8e92e259a6b1454d0a5e0b743224bc78dc1595c7d27e9b4b61d63"
+          "bytes": 10891,
+          "sha256": "c6fa9b7202357b4227a9f1128410f58006a63c9aae051f2ca24483c1ea39d3d1"
         }
       ]
     },
@@ -675,7 +675,7 @@
       "dependencies": [
         {
           "index": 4,
-          "version": 2
+          "version": 3
         },
         {
           "index": 15,
@@ -772,13 +772,13 @@
     {
       "name": "confluence",
       "id": "9c1c934e33089936612ec2b89ad42da2b6b32a2bdd12e07069a4c26683f7c2d5",
-      "version": 2,
+      "version": 3,
       "archiveVersion": 1,
-      "sha256": "b5440ca1f4fcc31544e5365b746eb641c780148eac7036b859234bbc0f91cdff",
-      "byteLength": 49103,
-      "expandedSha256": "c3533c4d54fc08b353c8ab48df1f06fb2c6fcb5c989e4e48ed4d75a61271a3f4",
-      "expandedBytes": 130153,
-      "compressedBytes": 36776,
+      "sha256": "0c0c0afca1c47e1c475b27e12d1ccb3a15b3df375510b26845f59ddf76cd1110",
+      "byteLength": 49259,
+      "expandedSha256": "961da4088f680a723148c2c6401f06d5e9fa6f42a42e36131d99bc081fdfb400",
+      "expandedBytes": 130481,
+      "compressedBytes": 36894,
       "dependencies": [
         {
           "index": 2,
@@ -818,7 +818,7 @@
         },
         {
           "index": 12,
-          "version": 1
+          "version": 2
         },
         {
           "index": 14,
@@ -842,17 +842,17 @@
         {
           "file": "modules/04-confluence/chunks/00.bin",
           "bytes": 23000,
-          "sha256": "6b1145f54da194b8b223749c7655df298f6054014c7e32e57a645596e42e6f41"
+          "sha256": "5e83288c3ee5da8dfb1960f884ad25193a9883260e5357d176dec52218c7acfe"
         },
         {
           "file": "modules/04-confluence/chunks/01.bin",
           "bytes": 23000,
-          "sha256": "7940086e358008aaf0f6deab097f6531762dfa1d0be85ee3d3c5d3ccf7347e5c"
+          "sha256": "1f2464ef989632b22ed499255cbd7eb7d94168e826bc98cb3a7e9936ee9623ae"
         },
         {
           "file": "modules/04-confluence/chunks/02.bin",
-          "bytes": 3103,
-          "sha256": "415563d944347ce91ced6fd936c7ee17efa7818e43ab7ce2db81dcbb792b1fb8"
+          "bytes": 3259,
+          "sha256": "f13add89384ec90031344a3f814bb9e32ac37ce98f79352ce0d1e36db21f8c40"
         }
       ]
     },
@@ -1053,7 +1053,7 @@
         },
         {
           "index": 4,
-          "version": 2
+          "version": 3
         },
         {
           "index": 14,
@@ -1125,7 +1125,7 @@
       "dependencies": [
         {
           "index": 4,
-          "version": 2
+          "version": 3
         },
         {
           "index": 5,
@@ -1284,13 +1284,13 @@
     {
       "name": "modules",
       "id": "fbc6c1d4c3b6db8fb54278582eb1d965ed644e97509e130346ae130da5406cb3",
-      "version": 1,
+      "version": 2,
       "archiveVersion": 1,
-      "sha256": "5b6fe59bfb4d5335fc4457a3e246951426a5323ca8d773df271c9bbc4b6f71a3",
-      "byteLength": 380203,
-      "expandedSha256": "27a93df12e8263ed2e409e7ea04a4f579c40a6648cfdd63d912e82a241c4946e",
-      "expandedBytes": 1193376,
-      "compressedBytes": 285100,
+      "sha256": "ed16303ed53576d21fa0646150152cf2613def74795fc80b6b92eb23627bdb60",
+      "byteLength": 380763,
+      "expandedSha256": "f37cec1e1a7cb71efb7a2d691651990dfe5702f611d9def03f8abba6d318606e",
+      "expandedBytes": 1194544,
+      "compressedBytes": 285520,
       "dependencies": [],
       "shards": [],
       "chunks": [
@@ -1352,32 +1352,32 @@
         {
           "file": "modules/12-modules/chunks/11.bin",
           "bytes": 23000,
-          "sha256": "9e2ad11b55c53b4dd6d2281d1f9213b208b74a5e72ead985b90f5730b8a6ae8c"
+          "sha256": "f57286b1c47af82e52dfe172f69b3ee4ad48d6c222d47d0316af375c3b94ecc9"
         },
         {
           "file": "modules/12-modules/chunks/12.bin",
           "bytes": 23000,
-          "sha256": "ae771b8be9187789ffb23681062a1c2b2bb20515186a2f290f240c6f1aa2f31f"
+          "sha256": "d64f6db84becac3c50d953a69bec0b39d30b5de781a52e4c31a7fb2f95e5185b"
         },
         {
           "file": "modules/12-modules/chunks/13.bin",
           "bytes": 23000,
-          "sha256": "18e1ca565cacf0fafbf1ea5b71bc2522d1740c54dd4e6de86372cb15584e8d4d"
+          "sha256": "142ed37e6d86e462fdf8bef6659dba67be8966dad15ef07d0bd6c24c43c66673"
         },
         {
           "file": "modules/12-modules/chunks/14.bin",
           "bytes": 23000,
-          "sha256": "382423c50b10bd88ef37ae08a647e0e1efedfa2405186fde463d44f1dd28a453"
+          "sha256": "d9d51130248263354e2e3f420cf1b847f1c4df7ecfdc984bfc3fb64d50e0df1e"
         },
         {
           "file": "modules/12-modules/chunks/15.bin",
           "bytes": 23000,
-          "sha256": "b0b381738f450802c013a5c4a03182bfaa7b746032ed9ed924c14cd242085d2f"
+          "sha256": "75eb71c8b575b13062a450424612a1fbf9ab2e38f097689eea8ef15cf65d4d03"
         },
         {
           "file": "modules/12-modules/chunks/16.bin",
-          "bytes": 12203,
-          "sha256": "fc31d3077ac8b9d81d0b42a4039014eed6885c389aff0dbae0b30a671f3b7e2d"
+          "bytes": 12763,
+          "sha256": "fe2ff79fa456ca9a8b191774eaf477fd90b37fdfaaccec2967576fa0a4dea5bb"
         }
       ]
     },
@@ -1444,7 +1444,7 @@
       "dependencies": [
         {
           "index": 4,
-          "version": 2
+          "version": 3
         }
       ],
       "shards": [],
@@ -1622,7 +1622,7 @@
       ]
     }
   ],
-  "buildManifestSha256": "8b198121bde2dceb58734570bec3a030734bac8420341d9eae2a5839bb11d350",
+  "buildManifestSha256": "15b38e293e6720bc69146980fe0060341e18b30bb3d3d3558e891f78cf07d3ff",
   "moduleGraph": {
     "web/begins/geometry.mjs": {
       "sha256": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
@@ -1709,7 +1709,7 @@
       ]
     },
     "web/confluence/app.js": {
-      "sha256": "05eb5a83847abcc79dacb8ebfe395674ec819737055c99efdb1cc1fe3374fcc0",
+      "sha256": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
       "dependencies": [
         "web/confluence/release-capabilities.mjs",
         "web/modules/embedded.mjs",
@@ -2291,7 +2291,7 @@
       "dependencies": []
     },
     "web/modules/embedded.mjs": {
-      "sha256": "0e576a2d5706c5ad84b24169457af16a53d9d4b72cc0dd1af1116b396f682d69",
+      "sha256": "63777a4b97990956e94000e9d26bc0410b3e341de15cb6068c6212bcd5592068",
       "dependencies": []
     },
     "web/privacy/bridge.mjs": {
