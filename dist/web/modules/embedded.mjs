@@ -17926,6 +17926,9 @@ var checkedHex = (value, maxBytes) => {
   if (typeof value !== "string" || !/^0x(?:[0-9a-fA-F]{2})*$/.test(value) || (value.length - 2) / 2 > maxBytes) throw Error("Malformed or oversized RPC response");
   return value;
 };
+var byteBudget = (value, maximum) => {
+  if (!Number.isSafeInteger(value) || value < 0 || value > maximum) throw Error("Invalid expanded recovery byte budget");
+};
 async function pinSnapshot(request, chainId, block) {
   const chain = quantity(chainId), actual = await request({ method: "eth_chainId", params: [] });
   if (quantity(actual) !== chain) throw Error("RPC chain differs from requested chain");
@@ -18005,6 +18008,7 @@ async function readRelease({ request, registry, releaseId, chainId, snapshot, bl
   return record;
 }
 async function recoverRelease({ request, registry, releaseId, chainId, block, snapshot, cache, maxExpandedBytes = 64 * 1024 * 1024 }) {
+  byteBudget(maxExpandedBytes, 64 * 1024 * 1024);
   snapshot ??= await pinSnapshot(request, chainId, block);
   if (quantity(snapshot.chainId) !== quantity(chainId)) throw Error("Snapshot chain differs from requested chain");
   const records = /* @__PURE__ */ new Map();
@@ -18043,7 +18047,8 @@ async function readRegistry({ request, registry, tokenId, chainId, block, snapsh
   const [currentOwner] = await readCall(request, snapshot, account, ACCOUNT_ABI, "currentOwner"), [epoch] = await readCall(request, snapshot, account, ACCOUNT_ABI, "sessionEpoch"), [mode] = await readCall(request, snapshot, account, ACCOUNT_ABI, "mode"), [actionNonce] = await readCall(request, snapshot, account, ACCOUNT_ABI, "actionNonce");
   if (owner.toLowerCase() !== currentOwner.toLowerCase()) throw Error("Account controller differs from NFT owner");
   const [keys, next] = await read("modulesOf", [tokenId, cursor, limit]), [history, historyNext] = await read("historyOf", [tokenId, historyCursor, limit]), [moduleCount] = await read("moduleCount", [tokenId]), [historyCount] = await read("historyCount", [tokenId]);
-  if (keys.length > limit || history.length > limit || next !== BigInt(cursor + keys.length) || historyNext !== BigInt(historyCursor + history.length)) throw Error("Invalid catalog page response");
+  const completePage = (length, next2, start, total) => BigInt(start) <= total && next2 === BigInt(start + length) && next2 <= total && BigInt(length) === (total - BigInt(start) > BigInt(limit) ? BigInt(limit) : total - BigInt(start));
+  if (!completePage(keys.length, next, cursor, moduleCount) || !completePage(history.length, historyNext, historyCursor, historyCount) || new Set(keys).size !== keys.length) throw Error("Invalid catalog page response");
   const modules = [];
   for (const key of keys) {
     const [i] = await read("installation", [tokenId, key]);
@@ -18052,7 +18057,8 @@ async function readRegistry({ request, registry, tokenId, chainId, block, snapsh
   await assertSnapshot(request, snapshot);
   return { chainId: snapshot.chainId, registry: address(registry), collection: address(collection), tokenId: BigInt(tokenId).toString(), releases: address(releases), stateStore: address(stateStore), account: address(account), owner: address(owner), currentOwner: address(owner), epoch: epoch.toString(), mode: Number(mode), actionNonce: actionNonce.toString(), root, modules, history: history.map((h) => ({ root: h.root, previousRoot: h.previousRoot, moduleKey: h.moduleKey, releaseId: h.releaseId, stateHead: h.stateHead, epoch: h.epoch.toString(), at: h.getValue("at").toString(), operation: Number(h.operation) })), next: next.toString(), historyNext: historyNext.toString(), moduleCount: moduleCount.toString(), historyCount: historyCount.toString(), snapshot };
 }
-async function recoverState({ request, stateStore, stateId, chainId, block, snapshot, collection, tokenId, moduleKey }) {
+async function recoverState({ request, stateStore, stateId, chainId, block, snapshot, collection, tokenId, moduleKey, maxExpandedBytes = LIMITS.expandedBytes }) {
+  byteBudget(maxExpandedBytes, LIMITS.expandedBytes);
   snapshot ??= await pinSnapshot(request, chainId, block);
   if (quantity(snapshot.chainId) !== quantity(chainId)) throw Error("Snapshot chain differs from requested chain");
   hashValue(stateId);
@@ -18067,10 +18073,12 @@ async function recoverState({ request, stateStore, stateId, chainId, block, snap
   if (expected !== stateId) throw Error("State record commitment mismatch");
   let bytes2;
   if (record.archive.archive === EMPTY_ARCHIVE.archive) {
-    const [data] = await readCall(request, snapshot, stateStore, STATE_ABI, "dataOf", [stateId], 32864);
+    const [data] = await readCall(request, snapshot, stateStore, STATE_ABI, "dataOf", [stateId], Math.min(32768, maxExpandedBytes) + 96);
     bytes2 = getBytes(data);
+    if (bytes2.length > maxExpandedBytes) throw Error("State exceeds expanded recovery byte budget");
     if (bytes2.length > 32768 || sha2562(bytes2) !== record.dataHash) throw Error("State bytes differ from commitment");
   } else {
+    if (record.archive.expandedBytes > maxExpandedBytes) throw Error("State exceeds expanded recovery byte budget");
     const stored = await recoverArchiveBytes({ request, snapshot, descriptor: record.archive });
     bytes2 = await expandState(stored, record.archive);
     if (sha2562(bytes2) !== record.dataHash) throw Error("Expanded state digest mismatch");
@@ -18130,7 +18138,7 @@ var TOKEN_REGISTRY_ABI = TOKEN_MODULE_ABI;
 var RELEASE_REGISTRY_ABI = RELEASE_ABI;
 
 // web/modules/host.mjs
-var HOST_LIMITS = Object.freeze({ requestBytes: 16384, packageBytes: 65536, stateBytes: 65536, requests: 512, concurrent: 4, keys: 64, valueDepth: 12, reviewMs: 18e4 });
+var HOST_LIMITS = Object.freeze({ requestBytes: 16384, reviewBytes: 131072, packageBytes: 65536, stateBytes: 65536, requests: 512, concurrent: 4, keys: 64, valueDepth: 12, reviewMs: 18e4 });
 var encoder = new TextEncoder();
 var address2 = /^0x[0-9a-f]{40}$/i;
 var hash2 = /^0x[0-9a-f]{64}$/i;
@@ -18382,14 +18390,15 @@ var ReviewedAction = class {
   async review(intent, identity) {
     this.invalidate();
     const revision = this.revision;
+    const checkedIntent = boundedJSON(intent, HOST_LIMITS.reviewBytes, -1);
     const current = await this.verifyContext(identity);
     if (!sameAuthority(identity, current)) throw Error("NFT custody changed before review.");
-    const prepared = await this.prepare(intent);
+    const prepared = await this.prepare(checkedIntent);
     if (revision !== this.revision || !sameAuthority(identity, await this.verifyContext(identity))) {
       this.invalidate();
       throw Error("NFT or review changed during preparation.");
     }
-    this.pending = Object.freeze({ intent: boundedJSON(intent), identity: Object.freeze({ ...identity }), prepared, createdAt: this.now(), revision });
+    this.pending = Object.freeze({ intent: checkedIntent, identity: Object.freeze({ ...identity }), prepared, createdAt: this.now(), revision });
     return this.pending;
   }
   async confirm() {
@@ -18652,12 +18661,14 @@ var RegistryAdapter = class {
     await this.fresh(c.identity);
     return recovered;
   }
-  async savedState(recovered) {
-    const c = await this.context(), installation = await this.installation(recovered.moduleKey, c);
-    if (installation.stateHead === zero) return { installation, value: {}, head: zero };
-    const state = await recoverState({ request: this.request, stateStore: c.stateStore, stateId: installation.stateHead, chainId: c.chainId, snapshot: c.snapshot, collection: c.collection, tokenId: c.tokenId, moduleKey: recovered.moduleKey });
+  async savedState(recovered, { stateHead } = {}) {
+    const c = await this.context(), installation = await this.installation(recovered.moduleKey, c), head = stateHead === void 0 ? installation.stateHead : hashValue(stateHead);
+    if (head === zero) return { installation, value: {}, head: zero };
+    const state = await recoverState({ request: this.request, stateStore: c.stateStore, stateId: head, chainId: c.chainId, snapshot: c.snapshot, collection: c.collection, tokenId: c.tokenId, moduleKey: recovered.moduleKey });
+    if (stateHead !== void 0 && state.record.schema !== recovered.manifest.stateSchema) throw Error("Historical snapshot schema differs from the selected release.");
     const value = boundedJSON(JSON.parse(new TextDecoder("utf-8", { fatal: true }).decode(state.bytes)), 65536);
-    return { installation, value, head: installation.stateHead, schema: state.record.schema };
+    await this.fresh(c.identity);
+    return { installation, value, head, schema: state.record.schema };
   }
   async intent(kind, recovered, { value = {}, nextStateHead } = {}) {
     const c = await this.context(), installation = await this.installation(recovered.moduleKey, c);
@@ -18667,8 +18678,8 @@ var RegistryAdapter = class {
     else if (kind === "writeState") {
       if (!installation.enabled || installation.releaseId.toLowerCase() !== recovered.releaseId.toLowerCase()) throw Error("Select the enabled release before saving its state. Use a staged migration for another version.");
       if (recovered.input?.stateSchema !== recovered.manifest.stateSchema || recovered.manifest.stateSchema === zero) throw Error("The selected state schema does not match the verified active release.");
-      recipe = encodeWriteState(c, { moduleKey: recovered.moduleKey, bytes: new TextEncoder().encode(canonicalJSON(value)) });
-    } else if (kind === "stageState") recipe = encodeStageState(c, { moduleKey: recovered.moduleKey, stateSchema: recovered.manifest.stateSchema, bytes: new TextEncoder().encode(canonicalJSON(value)) });
+      recipe = encodeWriteState(c, { moduleKey: recovered.moduleKey, bytes: new TextEncoder().encode(JSON.stringify(boundedJSON(value, 32768))) });
+    } else if (kind === "stageState") recipe = encodeStageState(c, { moduleKey: recovered.moduleKey, stateSchema: recovered.manifest.stateSchema, bytes: new TextEncoder().encode(JSON.stringify(boundedJSON(value, 32768))) });
     else throw Error("Unknown module registry action.");
     return clean({ kind, recipe, releaseId: recovered.releaseId, moduleKey: recovered.moduleKey, stateSchema: recovered.manifest.stateSchema, description: recipe.description, permissions: recovered.manifest.capabilities, ...["writeState", "stageState"].includes(kind) ? { state: value } : {}, identity: c.identity });
   }
@@ -27327,7 +27338,7 @@ function workbenchMarkup(prefix, options = {}) {
  <section data-panel="journal" hidden><form data-form="journal" class="am-card am-form"><span class="am-eyebrow">PERSONAL MEMORY</span><h3>A note you choose to keep.</h3><label for="${prefix}-ledger">Existing MemoryLedger<input id="${prefix}-ledger" name="ledger" placeholder="0x\u2026" autocomplete="off" required></label><label for="${prefix}-note">Your words<textarea id="${prefix}-note" name="text" rows="5" maxlength="3000" placeholder="An idea, a dedication, a moment\u2026" required></textarea></label><p class="am-muted">Up to 3,000 UTF-8 bytes. Encrypted entries keep the words private with your passphrase; their identity metadata remains public.</p><label for="${prefix}-privacy">Publication privacy<select id="${prefix}-privacy" name="mode"><option value="encrypted" selected>Encrypted words \xB7 public ciphertext</option><option value="public">Public words</option></select></label><label for="${prefix}-passphrase" data-node="journal-passphrase-group">Encryption passphrase<input id="${prefix}-passphrase" type="password" name="passphrase" autocomplete="new-password" minlength="12" maxlength="1024" placeholder="At least 12 characters; never a wallet seed" required></label><label class="am-check"><input type="checkbox" name="consent" required><span data-node="journal-consent">Publish this encrypted packet permanently. Its identity metadata remains public; I will keep the passphrase to recover the words.</span></label><button class="am-primary" type="submit">Review personal inscription</button><button type="button" class="am-text-button" data-action="export-journal" data-node="export-journal" disabled>Export prepared encrypted packet \u2193</button><p class="am-muted">Encryption happens locally before transaction review. No module can inscribe automatically. Exporting a packet does not publish it.</p></form><details class="am-card am-journal-recovery"><summary>Recover an encrypted journal packet</summary><div class="am-form"><p class="am-muted">Paste its exact exported JSON or import the file. Recovery is local and needs no wallet. The authenticated header shows the original NFT, owner and custody epoch, including historical entries.</p><label for="${prefix}-packet">Encrypted packet<textarea id="${prefix}-packet" rows="5" data-node="journal-packet" spellcheck="false"></textarea></label><label class="am-file" for="${prefix}-packet-file">Read an exported packet<input id="${prefix}-packet-file" type="file" accept="application/json,.json" data-node="journal-packet-file"></label><label for="${prefix}-recovery-passphrase">Recovery passphrase<input id="${prefix}-recovery-passphrase" type="password" autocomplete="off" data-node="recovery-passphrase"></label><button type="button" class="am-secondary" data-action="decrypt-journal">Decrypt local preview</button><button type="button" class="am-text-button" data-action="clear-journal-preview">Clear recovered words</button><pre data-node="journal-decrypted" hidden></pre></div></details></section>
  <section class="am-example-section"><div class="am-section-heading"><div><span class="am-eyebrow">TRY A SMALL POSSIBILITY</span><h3>Made of light, sound and intent.</h3></div><span class="am-small-badge">LOCAL EXAMPLES</span></div><div class="am-examples">${EXAMPLES.map((example, i) => `<button class="am-example am-example-${i}" data-example="${example.id}"><span class="am-example-art" aria-hidden="true">${["\u273A", "\u223F", "\u25C7"][i]}</span><small>${escape(example.kind)}</small><strong>${escape(example.title)}</strong><span>${escape(example.description)}</span><b>Open example \u2197</b></button>`).join("")}</div><p class="am-muted">These samples are not published or installed. Their signing requests remain previews until a verified release is installed.</p></section></section>
  <aside class="am-inspector am-card"><span class="am-eyebrow">03 \xB7 RECOVER & INSPECT</span><h2>Know what you open.</h2><form data-form="recover" class="am-form"><label for="${prefix}-release">Exact release ID<input id="${prefix}-release" name="releaseId" placeholder="0x\u2026" autocomplete="off" required></label><button class="am-secondary" type="submit">Recover package</button></form><div data-node="package" class="am-package"><div class="am-empty">Select a release to inspect its publisher, exact version, capabilities and recovered files.</div></div><div class="am-actions"><button data-action="install" class="am-primary" disabled data-node="install">Review installation</button><button data-action="launch" class="am-secondary" disabled data-node="launch">Open isolated module</button><button data-action="disable" class="am-text-button" disabled data-node="disable">Review disable</button><button data-action="export-package" class="am-text-button" disabled data-node="export-package">Export recovered package \u2193</button></div>
- <details class="am-state"><summary>Saved state & migration</summary><p class="am-muted">Local drafts are namespaced to this NFT, module and schema. Chain snapshots are public and require a separate review.</p><div data-node="state-summary" class="am-muted">No module selected.</div><div class="am-actions"><button data-action="restore-chain" class="am-secondary">Preview chain state</button><button data-action="export-state" class="am-text-button">Export browser draft \u2193</button></div><label for="${prefix}-migration">Candidate state \xB7 JSON<textarea id="${prefix}-migration" data-node="migration-json" rows="5" placeholder='{"draft": {}}'></textarea></label><label class="am-file">Read a JSON file<input type="file" accept="application/json,.json" data-node="migration-file"></label><button data-action="preview-migration" class="am-secondary">Preview migration</button><pre data-node="migration-preview" hidden></pre><button data-action="commit-migration" class="am-secondary" disabled data-node="commit-migration">Apply reviewed browser draft</button><label class="am-check"><input type="checkbox" data-node="state-consent"><span>I approve publishing this state onchain.</span></label><div class="am-actions"><button data-action="save-state" class="am-secondary">Review chain snapshot</button><button data-action="stage-state" class="am-secondary">Review staged migration</button></div><p class="am-muted" data-node="staged">A schema change requires a staged snapshot, then a separate reviewed activation.</p></details></aside></div>
+ <details class="am-state"><summary>Saved state & migration</summary><p class="am-muted">Local drafts are namespaced to this NFT, module and schema. Chain snapshots are public and require a separate review.</p><div data-node="state-summary" class="am-muted">No module selected.</div><div class="am-actions"><button data-action="restore-chain" data-node="restore-chain" class="am-secondary">Preview chain state</button><button data-action="export-state" class="am-text-button">Export browser draft \u2193</button></div><label for="${prefix}-migration">Candidate state \xB7 JSON<textarea id="${prefix}-migration" data-node="migration-json" rows="5" placeholder='{"draft": {}}'></textarea></label><label class="am-file">Read a JSON file<input type="file" accept="application/json,.json" data-node="migration-file"></label><button data-action="preview-migration" class="am-secondary">Preview migration</button><pre data-node="migration-preview" hidden></pre><button data-action="commit-migration" class="am-secondary" disabled data-node="commit-migration">Apply reviewed browser draft</button><label class="am-check"><input type="checkbox" data-node="state-consent"><span>I approve publishing this state onchain.</span></label><div class="am-actions"><button data-action="save-state" class="am-secondary">Review chain snapshot</button><button data-action="stage-state" class="am-secondary">Review staged migration</button></div><p class="am-muted" data-node="staged">A schema change requires a staged snapshot, then a separate reviewed activation.</p></details></aside></div>
  <section class="am-runtime am-card" hidden data-node="runtime"><div class="am-section-heading"><div><span class="am-eyebrow">ISOLATED SESSION</span><h2 data-node="runtime-title">Your module</h2></div><button data-action="close-runtime" class="am-secondary">Close module \xD7</button></div><p class="am-muted" data-node="runtime-status">Only declared capabilities are available. Every transaction returns here for review.</p><div class="am-frame" data-node="runtime-container"></div></section>
  <footer class="am-footer"><span>ANIMA \xB7 A continuing identity</span><span>The original object stays yours. Modules are choices around it.</span></footer>
  <dialog class="am-review" data-node="review"><div class="am-review-body"><span class="am-eyebrow">PAUSE \xB7 READ \xB7 CHOOSE</span><h2 data-node="review-title">Review this action</h2><div data-node="review-summary"></div><pre data-node="review-content"></pre><div class="am-actions"><button data-action="cancel-review" class="am-secondary">Cancel</button><button data-action="confirm-review" class="am-primary" data-node="confirm-review">Sign this reviewed transaction</button></div><p class="am-muted" data-node="review-note">Only this exact action will be submitted. A changed owner, epoch, module or review invalidates it.</p></div></dialog>`;
@@ -27420,7 +27431,7 @@ function mountWorkbench(container, options = {}) {
     q("identity-summary").textContent = `Account ${identity.account} \xB7 owner ${identity.owner} \xB7 custody epoch ${identity.epoch} \xB7 block ${BigInt(view.snapshot.block)}`;
     drawList("catalog", view.catalog.map((entry) => entry.invalid ? `<article class="am-release"><span><strong>Unsupported release</strong><code>${escape(entry.releaseId)}</code><small>${escape(entry.error)}</small></span></article>` : `<button class="am-release" data-release="${entry.releaseId}"><span class="am-release-icon">\u25C7</span><span><strong>${escape(entry.manifest.name)}</strong><small>Version ${entry.manifest.version} \xB7 ${escape(short(entry.manifest.publisher))}</small><small>${escape(entry.manifest.capabilities.join(" \xB7 ") || "No host capabilities")}</small></span><span class="am-release-arrow">\u2197</span></button>`), "No releases are published at this registry page.");
     drawList("installed", view.modules.map((entry) => `<button class="am-release" data-release="${entry.releaseId}"><span class="am-release-icon">${entry.enabled ? "\u2726" : "\u25CB"}</span><span><strong>${escape(short(entry.moduleKey))}</strong><small>${entry.enabled ? "Enabled" : "Disabled"} \xB7 release ${escape(short(entry.releaseId))}</small><small>State ${escape(short(entry.stateHead))}</small></span><span class="am-release-arrow">\u2197</span></button>`), "No modules have been selected for this NFT yet.");
-    drawList("history", view.history.map((entry) => `<button class="am-history-item" data-release="${entry.releaseId}"><span>${{ 1: "Activated", 2: "Disabled", 3: "State saved" }[Number(entry.operation)] ?? "Changed"}</span><strong>${escape(short(entry.moduleKey))}</strong><small>Epoch ${escape(entry.epoch)} \xB7 ${escape(new Date(Number(entry.at) * 1e3).toISOString())}</small><code>${escape(short(entry.root))}</code></button>`), "No changes recorded on this page.");
+    drawList("history", view.history.map((entry) => `<button class="am-history-item" data-release="${entry.releaseId}" data-state-head="${entry.stateHead}"><span>${{ 1: "Activated", 2: "Disabled", 3: "State saved" }[Number(entry.operation)] ?? "Changed"}</span><strong>${escape(short(entry.moduleKey))}</strong><small>Epoch ${escape(entry.epoch)} \xB7 ${escape(new Date(Number(entry.at) * 1e3).toISOString())}</small><code>${escape(short(entry.root))}</code></button>`), "No changes recorded on this page.");
     for (const [key, node] of [["catalog", "more-catalog"], ["modules", "more-installed"], ["history", "more-history"]]) q(node).hidden = view.cursors[key] >= view.counts[key];
   }
   async function refresh(reset = false) {
@@ -27446,9 +27457,11 @@ function mountWorkbench(container, options = {}) {
     q("install").disabled = selected.local || !identity;
     q("disable").disabled = selected.local || !identity;
     q("install").textContent = selected.installation?.releaseId !== ZERO_HASH && selected.installation?.releaseId ? "Review version / activation" : "Review installation";
-    q("state-summary").textContent = "Browser draft \xB7 " + new TextEncoder().encode(json(state?.read() ?? {})).length + " bytes. " + (selected.installation?.stateHead && selected.installation.stateHead !== ZERO_HASH ? "A chain snapshot is available." : "No selected chain snapshot.");
+    q("restore-chain").textContent = selected.historyStateHead !== void 0 ? "Preview historical snapshot" : "Preview chain state";
+    q("state-summary").textContent = (selected.historyStateHead !== void 0 ? "Historical snapshot " + short(selected.historyStateHead) + ". " : "") + "Browser draft \xB7 " + new TextEncoder().encode(json(state?.read() ?? {})).length + " bytes. " + (selected.installation?.stateHead && selected.installation.stateHead !== ZERO_HASH ? "A chain snapshot is available." : "No selected chain snapshot.");
   }
-  async function choose(release, local = false) {
+  async function choose(release, local = false, historyStateHead) {
+    if (historyStateHead !== void 0) hashValue(historyStateHead);
     closeRuntime();
     closeReview();
     const revision = ++generation;
@@ -27456,6 +27469,7 @@ function mountWorkbench(container, options = {}) {
     if (!recovered) throw Error("Connect an NFT registry before recovering a release.");
     if (revision !== generation || disposed) return;
     selected = recovered;
+    selected.historyStateHead = historyStateHead;
     migration = null;
     staged = null;
     if (!local) {
@@ -27656,9 +27670,15 @@ function mountWorkbench(container, options = {}) {
     }
     if (action === "restore-chain") {
       requireLive();
-      const saved = await adapter.savedState(selected);
+      const revision = generation, release = selected;
+      const saved = await adapter.savedState(release, { stateHead: release.historyStateHead });
+      if (disposed || revision !== generation || selected !== release) return;
+      migration = null;
+      q("migration-preview").hidden = true;
+      q("commit-migration").disabled = true;
+      q("state-consent").checked = false;
       q("migration-json").value = json(saved.value);
-      status("Verified chain state loaded into the candidate editor. Preview before applying it to this browser.");
+      status("Verified " + (release.historyStateHead !== void 0 ? "historical snapshot" : "chain state") + " loaded into the candidate editor. Preview before applying it to this browser.");
       return;
     }
     if (action === "preview-migration") {
@@ -27700,7 +27720,7 @@ function mountWorkbench(container, options = {}) {
       return;
     }
     if (target.dataset.release) {
-      void run(() => choose(target.dataset.release));
+      void run(() => choose(target.dataset.release, false, target.dataset.stateHead));
       return;
     }
     if (target.dataset.action) {

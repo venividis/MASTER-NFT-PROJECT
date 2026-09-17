@@ -8,8 +8,9 @@ import {execFile} from 'node:child_process';
 import {promisify} from 'node:util';
 import {Interface,toUtf8Bytes,keccak256} from 'ethers';
 import {fixture,send,event,artifacts} from './contracts.fixture.mjs';
-import {packageFiles,sha256,canonicalManifest,manifestHash,releaseInput,releaseIdFor,readRelease,recoverRelease,readRegistry,encodeInstall,encodeWriteState,encodeStageState,encodeActivate,recoverState,recoverToken,assertCurrentContext,validateReleaseRecord,moduleKeyFor,ZERO_HASH,STATE_ABI} from '../../packages/modules/sdk.mjs';
+import {packageFiles,sha256,canonicalManifest,manifestHash,releaseInput,releaseIdFor,readRelease,recoverRelease,readRegistry,encodeInstall,encodeWriteState,encodeStageState,encodeActivate,recoverState,recoverToken,assertCurrentContext,validateReleaseRecord,moduleKeyFor,ZERO_HASH,STATE_ABI,TOKEN_REGISTRY_ABI} from '../../packages/modules/sdk.mjs';
 import {planArchiveDeployment,validateDeploymentPlan,createDeploymentJournal,appendDeploymentReceipt,reconcileDeploymentJournal,preparePublishRecipe} from '../../packages/modules/deployment.mjs';
+import {RegistryAdapter} from '../../web/modules/adapter.mjs';
 
 test('native NFT: SDK publishes, recovers only selected closure, saves/migrates state and reconstructs public history',async t=>{
  const f=await fixture(t,{mint:true}),request=p=>f.rpc.request(p),publisher=(await f.publisher.getAddress()).toLowerCase();
@@ -32,12 +33,44 @@ test('native NFT: SDK publishes, recovers only selected closure, saves/migrates 
  const upgraded=await publish('notes',{version:2,predecessor:root.id,dependencies:[library.id],capabilities:['identity.read','state.read','state.write'],stateSchema:sha256('notes/state/2')});
  const migration=encodeStageState(context,{moduleKey:key,stateSchema:upgraded.manifest.stateSchema,bytes:toUtf8Bytes('{"score":7,"revision":2}')});const staged=await run(migration),nextHead=event(staged,f.state,'StateStaged').stateId;
  context=await readRegistry({request,registry:f.modules.target,tokenId:1,chainId:31337});assert.equal(context.modules[0].stateHead,firstHead);await run(encodeActivate(context,{releaseId:upgraded.id,expectedStateHead:firstHead,nextStateHead:nextHead}));
+ // The history inspector must recover the selected historical snapshot, not
+ // silently substitute the latest state belonging to the upgraded release.
+ const adapter=new RegistryAdapter({raw:{request}},{registry:f.modules.target});
+ adapter.context=async()=>{const c=await readRegistry({request,registry:f.modules.target,tokenId:1,chainId:31337});return {...c,identity:{...c}};};
+ const oldRelease={moduleKey:key,manifest:root.manifest},newRelease={moduleKey:key,manifest:upgraded.manifest};
+ assert.deepEqual((await adapter.savedState(oldRelease,{stateHead:firstHead})).value,{score:7});
+ assert.deepEqual((await adapter.savedState(newRelease)).value,{score:7,revision:2});
+ await assert.rejects(adapter.savedState(newRelease,{stateHead:firstHead}),/Historical snapshot schema/);
+ await assert.rejects(adapter.savedState({...oldRelease,moduleKey:moduleKeyFor(publisher,sha256('other-module'))},{stateHead:firstHead}),/different module or NFT/);
+ assert.deepEqual((await adapter.savedState(oldRelease,{stateHead:ZERO_HASH})).value,{});
  // Prepare state for a never-installed namespace and discard its transaction receipt.
  context=await readRegistry({request,registry:f.modules.target,tokenId:1,chainId:31337});const beforeUnactivatedRoot=context.root;
  const unactivatedKey=moduleKeyFor(publisher,sha256('never-activated')),unactivatedBytes=toUtf8Bytes('{"draft":"prepared before any installation"}');
  await run(encodeStageState(context,{moduleKey:unactivatedKey,stateSchema:sha256('never-activated/state/1'),bytes:unactivatedBytes}));
  assert.equal(await f.modules.rootOf(1),beforeUnactivatedRoot);assert.equal(await f.modules.moduleCount(1),1n);assert.equal(await f.modules.historyCount(1),3n);
  const exportAll=await recoverToken({request,registry:f.modules.target,tokenId:1,chainId:31337});assert.equal(exportAll.context.modules[0].releaseId,upgraded.id);assert.equal(exportAll.states.length,3);assert.equal(exportAll.context.stateModuleCount,"2");assert.ok(exportAll.context.stateModules.includes(unactivatedKey));assert.deepEqual(exportAll.states.find(state=>state.moduleKey===unactivatedKey).bytes,unactivatedBytes);assert.deepEqual(new Set(exportAll.packages.map(p=>p.releaseId)),new Set([library.id,root.id,upgraded.id]));assert.equal(exportAll.context.history.length,3);assert.equal(exportAll.context.account,context.account);assert.equal(await f.collection.ownerOf(1),f.owner.address);
+ // A stalled/short RPC page must fail immediately, not loop or omit records.
+ const moduleABI=new Interface(TOKEN_REGISTRY_ABI),statePagesABI=new Interface(STATE_ABI);
+ for(const method of ['modulesOf','historyOf']){
+  const malformed=async p=>p.method==='eth_call'&&p.params[0].to.toLowerCase()===f.modules.target.toLowerCase()&&p.params[0].data.startsWith(moduleABI.getFunction(method).selector)?moduleABI.encodeFunctionResult(method,[[],0]):request(p);
+  await assert.rejects(readRegistry({request:malformed,registry:f.modules.target,tokenId:1,chainId:31337}),/Invalid catalog page response/);
+ }
+ for(const mutation of ['reverse','duplicate','overflow']){
+  const malformed=async p=>{
+   const result=await request(p);
+   if(p.method==='eth_call'&&p.params[0].to.toLowerCase()===f.state.target.toLowerCase()&&p.params[0].data.startsWith(statePagesABI.getFunction('historyOf').selector)){
+    const [ids,next]=statePagesABI.decodeFunctionResult('historyOf',result);
+    if(ids.length===2)return statePagesABI.encodeFunctionResult('historyOf',[mutation==='reverse'?[...ids].reverse():mutation==='duplicate'?[ids[0],ids[0]]:[...ids,ids[0]],mutation==='overflow'?3:next]);
+   }
+   return result;
+  };
+  await assert.rejects(recoverToken({request:malformed,registry:f.modules.target,tokenId:1,chainId:31337}),/State history order|Duplicate or empty state history|Invalid state history page/);
+ }
+ const packageBytes=exportAll.packages.reduce((n,p)=>n+p.manifest.archive.expandedBytes,0);let payloadReads=0;
+ await assert.rejects(recoverToken({request:async p=>{if(p.method==='eth_getCode')payloadReads++;return request(p);},registry:f.modules.target,tokenId:1,chainId:31337,maxExpandedBytes:packageBytes-1}),/Token packages exceed expanded recovery budget/);
+ assert.equal(payloadReads,0,'reject an oversized export before fetching any archive payload');
+ const exactBudget=await recoverToken({request,registry:f.modules.target,tokenId:1,chainId:31337,maxExpandedBytes:exportAll.expandedBytes});
+ assert.equal(exactBudget.expandedBytes,exportAll.expandedBytes,'shared dependency bytes count only once');
  // Exercise the independent read-only CLI against the same real chain via loopback JSON-RPC.
  const rpcMethods=[];const server=http.createServer(async(req,res)=>{let body;try{const chunks=[];for await(const p of req)chunks.push(p);body=JSON.parse(Buffer.concat(chunks));rpcMethods.push(body.method);const result=await request({method:body.method,params:body.params});res.setHeader('content-type','application/json');res.end(JSON.stringify({jsonrpc:'2.0',id:body.id,result}));}catch(e){res.setHeader('content-type','application/json');res.end(JSON.stringify({jsonrpc:'2.0',id:body?.id??null,error:{code:Number.isInteger(e.code)?e.code:-32000,message:String(e.message)}}));}});
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>new Promise(resolve=>server.close(resolve)));const temp=await fs.mkdtemp(path.join(os.tmpdir(),'anima-sdk-recovery-'));t.after(()=>fs.rm(temp,{recursive:true,force:true}));const output=path.join(temp,'token');
@@ -63,6 +96,22 @@ test('native NFT: SDK publishes, recovers only selected closure, saves/migrates 
  // A changed block hash and a substituted committed state payload both fail closed.
  let blocks=0;await assert.rejects(()=>recoverRelease({request:async p=>{const result=await request(p);if(p.method==='eth_getBlockByNumber'&&++blocks>1)return {...result,hash:'0x'+'ff'.repeat(32)};return result;},registry:f.releases.target,releaseId:root.id,chainId:31337}),/snapshot changed/);
  const stateABI=new Interface(STATE_ABI);await assert.rejects(()=>recoverState({request:async p=>{if(p.method==='eth_call'&&p.params[0].data.startsWith(stateABI.getFunction('dataOf').selector))return stateABI.encodeFunctionResult('dataOf',['0xdead']);return request(p);},stateStore:context.stateStore,stateId:firstHead,chainId:31337}),/commitment/);
+ // Archive-backed saves also respect the remaining budget before code/chunk reads.
+ const archiveState=await f.archive(toUtf8Bytes('a'.repeat(4096)));
+ context=await readRegistry({request,registry:f.modules.target,tokenId:1,chainId:31337});
+ const archivedReceipt=await run(encodeStageState(context,{moduleKey:key,stateSchema:upgraded.manifest.stateSchema,bytes:new Uint8Array(),archive:archiveState.descriptor}));
+ const archivedHead=event(archivedReceipt,f.state,'StateStaged').stateId;payloadReads=0;
+ await assert.rejects(recoverState({request:async p=>{if(p.method==='eth_getCode')payloadReads++;return request(p);},stateStore:context.stateStore,stateId:archivedHead,chainId:31337,maxExpandedBytes:4095}),/State exceeds expanded recovery byte budget/);
+ assert.equal(payloadReads,0);
+ assert.equal((await recoverState({request,stateStore:context.stateStore,stateId:archivedHead,chainId:31337,maxExpandedBytes:4096})).bytes.length,4096);
+});
+
+test('invalid byte budgets fail before any chain request',async()=>{
+ let calls=0;const request=async()=>{calls++;throw Error('Unexpected RPC');};
+ for(const recover of [recoverRelease,recoverState,recoverToken])for(const maxExpandedBytes of [NaN,Infinity,-1,1.5,'1024',Number.MAX_SAFE_INTEGER]){
+  await assert.rejects(recover({request,maxExpandedBytes}),/Invalid expanded recovery byte budget/);
+ }
+ assert.equal(calls,0);
 });
 
 test('public deployment plan executes with dedupe and reconciles receipts without a private key',async t=>{

@@ -19,6 +19,8 @@ Connect a separate development wallet using the printed public development mnemo
 
 Select releases from **Discover** or **Installed** to use the published modules. The separate **Local examples** cards are browser previews. Aurora Notebook can save a browser draft; **Saved state & migration → Review chain snapshot** publishes a separately approved public snapshot. Gift of Light proposes a transfer from the NFT account and opens a transaction review. In **Journal**, paste the printed `contracts.MemoryLedger` address into **Existing MemoryLedger**, choose public or encrypted publication, and review the exact inscription. For encrypted entries, export the packet and keep its passphrase; **Recover an encrypted journal packet** opens an exact local preview.
 
+To restore an earlier saved version, select its entry in **History**, then **Saved state & migration → Preview historical snapshot**. Preview and apply the browser draft, approve publishing, and choose **Review staged migration**. After that transaction, use **Review version / activation** to select the historical code with the newly staged state branch. The later version and its saved bytes remain recoverable. Direct snapshots support up to 32 KiB; each migration and activation requires its own review.
+
 Stop with Ctrl+C; restart the existing chain with `npm run master:start`. For a fresh edition after source changes, choose a new name: `MASTER_INSTANCE=edition-2 npm run master:local`. Restart that same edition with `MASTER_INSTANCE=edition-2 npm run master:start`; the instance name must be supplied again. Existing chain directories are retained. For automated deployment/recovery acceptance without leaving servers running: `npm run master:start -- --once`.
 
 ## Mint another NFT on the local chain
@@ -73,6 +75,7 @@ npx --no-install playwright install chromium
 npm run test:browser               # current original application in Chromium
 npm run test:modules:browser       # module UI and sandbox in Chromium
 node test/browser/modules-native.mjs # real module UI with local native NFT/account contracts
+npm run test:master:browser        # full minted runtime, legacy games, migrations and journal
 ```
 
 The native Solidity command requires the actual Forge **1.7.1** executable on `PATH`; if it is elsewhere, set `FORGE_BIN` to that absolute path. JavaScript/shell wrappers are rejected. See [native toolchain setup](test/modules/native/README.md) for a pinned installation command. Browser tests require Chromium and its operating-system dependencies; their build inputs are prepared by `master:local` above. The native browser command uses a disposable local chain and needs no browser wallet extension.

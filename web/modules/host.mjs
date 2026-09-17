@@ -1,6 +1,6 @@
 /** Permission boundary for isolated module runtimes. This file has no wallet or RPC imports. */
 export const HOST_API = 'anima.host/1';
-export const HOST_LIMITS = Object.freeze({ requestBytes: 16_384, packageBytes: 65_536, stateBytes: 65_536, requests: 512, concurrent: 4, keys: 64, valueDepth: 12, reviewMs: 180_000 });
+export const HOST_LIMITS = Object.freeze({ requestBytes: 16_384, reviewBytes: 131_072, packageBytes: 65_536, stateBytes: 65_536, requests: 512, concurrent: 4, keys: 64, valueDepth: 12, reviewMs: 180_000 });
 const encoder = new TextEncoder();
 const address = /^0x[0-9a-f]{40}$/i;
 const hash = /^0x[0-9a-f]{64}$/i;
@@ -165,11 +165,17 @@ export class ReviewedAction {
   invalidate() { this.pending = null; this.revision++; this.cancel(); }
   async review(intent, identity) {
     this.invalidate(); const revision = this.revision;
+    // A trusted state recipe includes both the 32 KiB snapshot and its ABI hex.
+    // Its review envelope is larger than an untrusted frame request; frame and
+    // proposal limits remain unchanged at their individual ingress boundaries.
+    // Discount this trusted envelope so intent.state keeps the same depth
+    // allowance as a standalone draft. Frame request limits stay unchanged.
+    const checkedIntent = boundedJSON(intent, HOST_LIMITS.reviewBytes, -1);
     const current = await this.verifyContext(identity);
     if (!sameAuthority(identity, current)) throw Error('NFT custody changed before review.');
-    const prepared = await this.prepare(intent);
+    const prepared = await this.prepare(checkedIntent);
     if (revision !== this.revision || !sameAuthority(identity, await this.verifyContext(identity))) { this.invalidate(); throw Error('NFT or review changed during preparation.'); }
-    this.pending = Object.freeze({ intent: boundedJSON(intent), identity: Object.freeze({ ...identity }), prepared, createdAt: this.now(), revision });
+    this.pending = Object.freeze({ intent: checkedIntent, identity: Object.freeze({ ...identity }), prepared, createdAt: this.now(), revision });
     return this.pending;
   }
   async confirm() {

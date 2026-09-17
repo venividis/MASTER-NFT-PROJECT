@@ -108,6 +108,7 @@
     "modules:recover-workbench": "node scripts/modules-recover-workbench.mjs",
     "test:modules:native": "node scripts/test-modules-native.mjs",
     "test:modules:browser": "node test/browser/modules.mjs",
+    "test:master:browser": "node test/browser/master-acceptance.mjs",
     "modules:sdk": "node scripts/build-module-sdk.mjs",
     "modules:plan": "node scripts/modules-plan-package.mjs"
   },

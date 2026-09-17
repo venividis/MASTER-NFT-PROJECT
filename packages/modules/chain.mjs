@@ -21,6 +21,7 @@ const address=v=>{if(typeof v!=='string'||!/^0x[0-9a-fA-F]{40}$/.test(v)||/^0x0+
 const quantity=v=>{try{const n=BigInt(v);if(n<0n)throw Error();return '0x'+n.toString(16);}catch{throw Error('Invalid nonnegative chain quantity');}};
 const ifaceCache=new Map(),iface=abi=>{const k=abi.join(';');if(!ifaceCache.has(k))ifaceCache.set(k,new Interface(abi));return ifaceCache.get(k);};
 const checkedHex=(value,maxBytes)=>{if(typeof value!=='string'||!/^0x(?:[0-9a-fA-F]{2})*$/.test(value)||(value.length-2)/2>maxBytes)throw Error('Malformed or oversized RPC response');return value;};
+const byteBudget=(value,maximum)=>{if(!Number.isSafeInteger(value)||value<0||value>maximum)throw Error('Invalid expanded recovery byte budget');};
 export async function pinSnapshot(request,chainId,block){
  const chain=quantity(chainId),actual=await request({method:'eth_chainId',params:[]});if(quantity(actual)!==chain)throw Error('RPC chain differs from requested chain');
  const b=await request({method:'eth_getBlockByNumber',params:[block===undefined?'latest':quantity(block),false]});
@@ -72,6 +73,7 @@ export async function readRelease({request,registry,releaseId,chainId,snapshot,b
  validateReleaseRecord(record,releaseId);return record;
 }
 export async function recoverRelease({request,registry,releaseId,chainId,block,snapshot,cache,maxExpandedBytes=64*1024*1024}){
+ byteBudget(maxExpandedBytes,64*1024*1024);
  snapshot??=await pinSnapshot(request,chainId,block);if(quantity(snapshot.chainId)!==quantity(chainId))throw Error('Snapshot chain differs from requested chain');const records=new Map();
  const order=await resolveReleaseGraph([releaseId],async id=>{const record=await readRelease({request,registry,releaseId:id,chainId,snapshot});records.set(id,record);return record;},{identityFor:r=>validateReleaseRecord(r,r.releaseId)});
  if(order.reduce((n,m)=>n+m.archive.expandedBytes,0)>maxExpandedBytes)throw Error('Dependency closure exceeds expanded byte budget');
@@ -92,18 +94,20 @@ export async function readRegistry({request,registry,tokenId,chainId,block,snaps
  const [currentOwner]=await readCall(request,snapshot,account,ACCOUNT_ABI,'currentOwner'),[epoch]=await readCall(request,snapshot,account,ACCOUNT_ABI,'sessionEpoch'),[mode]=await readCall(request,snapshot,account,ACCOUNT_ABI,'mode'),[actionNonce]=await readCall(request,snapshot,account,ACCOUNT_ABI,'actionNonce');
  if(owner.toLowerCase()!==currentOwner.toLowerCase())throw Error('Account controller differs from NFT owner');
  const [keys,next]=await read('modulesOf',[tokenId,cursor,limit]),[history,historyNext]=await read('historyOf',[tokenId,historyCursor,limit]),[moduleCount]=await read('moduleCount',[tokenId]),[historyCount]=await read('historyCount',[tokenId]);
- if(keys.length>limit||history.length>limit||next!==BigInt(cursor+keys.length)||historyNext!==BigInt(historyCursor+history.length))throw Error('Invalid catalog page response');
+ const completePage=(length,next,start,total)=>BigInt(start)<=total&&next===BigInt(start+length)&&next<=total&&BigInt(length)===(total-BigInt(start)>BigInt(limit)?BigInt(limit):total-BigInt(start));
+ if(!completePage(keys.length,next,cursor,moduleCount)||!completePage(history.length,historyNext,historyCursor,historyCount)||new Set(keys).size!==keys.length)throw Error('Invalid catalog page response');
  const modules=[];for(const key of keys){const [i]=await read('installation',[tokenId,key]);modules.push({moduleKey:key,releaseId:i.releaseId,stateHead:i.stateHead,enabled:i.enabled,epoch:i.epoch.toString()});}
  // Array.prototype.at shadows the named ABI field on ethers Result; resolve it explicitly.
  await assertSnapshot(request,snapshot);return {chainId:snapshot.chainId,registry:address(registry),collection:address(collection),tokenId:BigInt(tokenId).toString(),releases:address(releases),stateStore:address(stateStore),account:address(account),owner:address(owner),currentOwner:address(owner),epoch:epoch.toString(),mode:Number(mode),actionNonce:actionNonce.toString(),root,modules,history:history.map(h=>({root:h.root,previousRoot:h.previousRoot,moduleKey:h.moduleKey,releaseId:h.releaseId,stateHead:h.stateHead,epoch:h.epoch.toString(),at:h.getValue('at').toString(),operation:Number(h.operation)})),next:next.toString(),historyNext:historyNext.toString(),moduleCount:moduleCount.toString(),historyCount:historyCount.toString(),snapshot};
 }
-export async function recoverState({request,stateStore,stateId,chainId,block,snapshot,collection,tokenId,moduleKey}){
+export async function recoverState({request,stateStore,stateId,chainId,block,snapshot,collection,tokenId,moduleKey,maxExpandedBytes=LIMITS.expandedBytes}){
+ byteBudget(maxExpandedBytes,LIMITS.expandedBytes);
  snapshot??=await pinSnapshot(request,chainId,block);if(quantity(snapshot.chainId)!==quantity(chainId))throw Error('Snapshot chain differs from requested chain');hashValue(stateId);if(stateId===ZERO_HASH)return {stateId,bytes:new Uint8Array(),record:null,snapshot};
  const [raw]=await readCall(request,snapshot,stateStore,STATE_ABI,'record',[stateId],2048),record={namespace:raw.namespace,schema:raw.schema,parent:raw.parent,dataHash:raw.dataHash,archive:archiveObject(raw.archive),epoch:raw.epoch.toString(),createdAt:raw.createdAt.toString(),index:raw.index.toString()};
  if(collection!==undefined){if(tokenId===undefined||!moduleKey)throw Error('Complete state namespace context required');const namespace=keccak256(coder.encode(['address','uint256','bytes32'],[address(collection),tokenId,hashValue(moduleKey)]));if(namespace!==record.namespace)throw Error('State belongs to a different module or NFT');}
  const expected=keccak256(coder.encode(['bytes32','uint256','address','bytes32','uint256','bytes32','bytes32','uint64','bytes32',ARCHIVE_TUPLE],[keccak256(toUtf8Bytes('anima.module-state/1')),snapshot.chainId,address(stateStore),record.namespace,record.index,record.schema,record.parent,record.epoch,record.dataHash,record.archive]));if(expected!==stateId)throw Error('State record commitment mismatch');
- let bytes;if(record.archive.archive===EMPTY_ARCHIVE.archive){const [data]=await readCall(request,snapshot,stateStore,STATE_ABI,'dataOf',[stateId],32864);bytes=getBytes(data);if(bytes.length>32768||sha256(bytes)!==record.dataHash)throw Error('State bytes differ from commitment');}
- else {const stored=await recoverArchiveBytes({request,snapshot,descriptor:record.archive});bytes=await expandState(stored,record.archive);if(sha256(bytes)!==record.dataHash)throw Error('Expanded state digest mismatch');}
+ let bytes;if(record.archive.archive===EMPTY_ARCHIVE.archive){const [data]=await readCall(request,snapshot,stateStore,STATE_ABI,'dataOf',[stateId],Math.min(32768,maxExpandedBytes)+96);bytes=getBytes(data);if(bytes.length>maxExpandedBytes)throw Error('State exceeds expanded recovery byte budget');if(bytes.length>32768||sha256(bytes)!==record.dataHash)throw Error('State bytes differ from commitment');}
+ else {if(record.archive.expandedBytes>maxExpandedBytes)throw Error('State exceeds expanded recovery byte budget');const stored=await recoverArchiveBytes({request,snapshot,descriptor:record.archive});bytes=await expandState(stored,record.archive);if(sha256(bytes)!==record.dataHash)throw Error('Expanded state digest mismatch');}
  await assertSnapshot(request,snapshot);return {stateId,record,bytes,snapshot};
 }
 async function expandState(stored,a){
@@ -126,16 +130,28 @@ export async function assertCurrentContext({request,context}){const current=awai
 /** Independent bounded full recovery. Fails explicitly if the export budget is exceeded. */
 export async function recoverToken({request,registry,tokenId,chainId,block,maxRecords=4096,maxExpandedBytes=268435456}){
  if(!Number.isSafeInteger(maxRecords)||maxRecords<1||maxRecords>16384)throw Error('Invalid full recovery record budget');
+ byteBudget(maxExpandedBytes,268435456);
  const snapshot=await pinSnapshot(request,chainId,block),first=await readRegistry({request,registry,tokenId,chainId,snapshot});
  if(BigInt(first.moduleCount)>BigInt(maxRecords)||BigInt(first.historyCount)>BigInt(maxRecords))throw Error('Token history exceeds recovery record budget');
  const modules=[...first.modules],history=[...first.history];let cursor=Number(first.next),historyCursor=Number(first.historyNext);
- while(cursor<Number(first.moduleCount)||historyCursor<Number(first.historyCount)){const page=await readRegistry({request,registry,tokenId,chainId,snapshot,cursor,historyCursor});modules.push(...page.modules);history.push(...page.history);cursor=Number(page.next);historyCursor=Number(page.historyNext);}
+ while(cursor<Number(first.moduleCount)||historyCursor<Number(first.historyCount)){const page=await readRegistry({request,registry,tokenId,chainId,snapshot,cursor,historyCursor});if(page.moduleCount!==first.moduleCount||page.historyCount!==first.historyCount||page.root!==first.root)throw Error('Catalog changed within the recovery snapshot');modules.push(...page.modules);history.push(...page.history);cursor=Number(page.next);historyCursor=Number(page.historyNext);}
  // Validate every catalog root from the public operation history.
  let previous=ZERO_HASH;for(let i=0;i<history.length;i++){const h=history[i],enabled=h.operation!==2;if(![1,2,3].includes(h.operation)||h.previousRoot!==previous)throw Error('Installation history chain mismatch');const computed=keccak256(coder.encode(['bytes32','uint256','address','uint256','bytes32','bytes32','bytes32','bytes32','bool','uint64','uint256','uint8'],[keccak256(toUtf8Bytes('anima.token-modules/1')),snapshot.chainId,address(registry),tokenId,previous,h.moduleKey,h.releaseId,h.stateHead,enabled,h.epoch,i,h.operation]));if(computed!==h.root)throw Error('Installation history commitment mismatch');previous=h.root;}
  if(previous!==first.root)throw Error('Installation history does not reach current root');
- const latest=new Map(history.map(h=>[h.moduleKey,h]));if(latest.size!==modules.length)throw Error('Catalog differs from installation history');for(const m of modules){const last=latest.get(m.moduleKey);if(!last||last.releaseId!==m.releaseId||last.stateHead!==m.stateHead||last.epoch!==m.epoch||(last.operation!==2)!==m.enabled)throw Error('Current installation differs from history');}
+ const latest=new Map(history.map(h=>[h.moduleKey,h]));if(latest.size!==modules.length||new Set(modules.map(m=>m.moduleKey)).size!==modules.length)throw Error('Catalog differs from installation history');for(const m of modules){const last=latest.get(m.moduleKey);if(!last||last.releaseId!==m.releaseId||last.stateHead!==m.stateHead||last.epoch!==m.epoch||(last.operation!==2)!==m.enabled)throw Error('Current installation differs from history');}
  const roots=[...new Set(history.map(h=>h.releaseId).filter(id=>id!==ZERO_HASH))],packages=new Map(),cache=new Map();let expandedTotal=0;
- for(const releaseId of roots){if(packages.has(releaseId))continue;const recovered=await recoverRelease({request,registry:first.releases,releaseId,chainId,snapshot,cache});for(const p of [recovered,...recovered.dependencies])if(!packages.has(p.releaseId)){expandedTotal+=p.manifest.archive.expandedBytes;if(expandedTotal>maxExpandedBytes)throw Error('Token packages exceed expanded recovery budget');const {dependencies,...entry}=p;packages.set(p.releaseId,entry);}}
+ // Budget the unique package closure from verified metadata before downloading
+ // or expanding any payload. Shared dependencies are counted exactly once.
+ const planned=new Map();
+ for(const releaseId of roots)await resolveReleaseGraph([releaseId],async id=>{
+  if(!planned.has(id)){
+   if(planned.size>=maxRecords)throw Error('Package catalog exceeds recovery record budget');
+   const record=await readRelease({request,registry:first.releases,releaseId:id,chainId,snapshot});
+   expandedTotal+=record.manifest.archive.expandedBytes;if(expandedTotal>maxExpandedBytes)throw Error('Token packages exceed expanded recovery budget');planned.set(id,record);
+  }
+  return planned.get(id);
+ },{identityFor:r=>validateReleaseRecord(r,r.releaseId)});
+ for(const releaseId of roots){if(packages.has(releaseId))continue;const recovered=await recoverRelease({request,registry:first.releases,releaseId,chainId,snapshot,cache,maxExpandedBytes:Math.min(maxExpandedBytes,64*1024*1024)});for(const p of [recovered,...recovered.dependencies])if(!packages.has(p.releaseId)){const {dependencies,...entry}=p;packages.set(p.releaseId,entry);}}
  // State-bearing namespaces are independent of installed modules: a prepared first
  // snapshot must remain discoverable even if activation never happens and its receipt is lost.
  const [stateModuleCount]=await readCall(request,snapshot,registry,TOKEN_MODULE_ABI,'stateModuleCount',[tokenId],32);
@@ -143,16 +159,28 @@ export async function recoverToken({request,registry,tokenId,chainId,block,maxRe
  const stateModules=[];let stateCursor=0;const seenStateModules=new Set();
  while(stateCursor<Number(stateModuleCount)){
   const [keys,next]=await readCall(request,snapshot,registry,TOKEN_MODULE_ABI,'stateModulesOf',[tokenId,stateCursor,64],2200);
-  if(!keys.length||keys.length>64||next!==BigInt(stateCursor+keys.length)||next>stateModuleCount)throw Error('Invalid state namespace page');
+  if(keys.length!==Math.min(64,Number(stateModuleCount)-stateCursor)||next!==BigInt(stateCursor+keys.length))throw Error('Invalid state namespace page');
   for(const key of keys){hashValue(key);if(key===ZERO_HASH||seenStateModules.has(key))throw Error('Duplicate or empty state namespace');seenStateModules.add(key);stateModules.push(key);}
   stateCursor=Number(next);
  }
  const stateKeys=[...new Set([...modules.map(module=>module.moduleKey),...stateModules])];
  if(stateKeys.length>maxRecords)throw Error('Combined module namespaces exceed recovery record budget');
- const states=[];
+ const states=[],stateIds=new Set();
  for(const moduleKey of stateKeys){const module={moduleKey};const [count]=await readCall(request,snapshot,first.stateStore,STATE_ABI,'countOf',[tokenId,module.moduleKey],32);if(count>BigInt(maxRecords-states.length))throw Error('State history exceeds recovery record budget');let next=0;
-  while(next<Number(count)){const [ids,cursorResult]=await readCall(request,snapshot,first.stateStore,STATE_ABI,'historyOf',[tokenId,module.moduleKey,next,64],2200);if(!ids.length||ids.length>64||cursorResult!==BigInt(next+ids.length))throw Error('Invalid state history page');for(const stateId of ids){const state=await recoverState({request,stateStore:first.stateStore,stateId,chainId,snapshot,collection:first.collection,tokenId,moduleKey:module.moduleKey});expandedTotal+=state.bytes.length;if(expandedTotal>maxExpandedBytes)throw Error('Token state exceeds recovery byte budget');states.push({...state,moduleKey:module.moduleKey});}next=Number(cursorResult);}
+  const namespaceIds=new Set();
+  while(next<Number(count)){
+   const [ids,cursorResult]=await readCall(request,snapshot,first.stateStore,STATE_ABI,'historyOf',[tokenId,module.moduleKey,next,64],2200);
+   if(ids.length!==Math.min(64,Number(count)-next)||cursorResult!==BigInt(next+ids.length))throw Error('Invalid state history page');
+   for(let i=0;i<ids.length;i++){
+    const stateId=ids[i];if(stateId===ZERO_HASH||stateIds.has(stateId))throw Error('Duplicate or empty state history entry');
+    const state=await recoverState({request,stateStore:first.stateStore,stateId,chainId,snapshot,collection:first.collection,tokenId,moduleKey:module.moduleKey,maxExpandedBytes:Math.min(LIMITS.expandedBytes,maxExpandedBytes-expandedTotal)});
+    if(BigInt(state.record.index)!==BigInt(next+i)||(state.record.parent!==ZERO_HASH&&!namespaceIds.has(state.record.parent)))throw Error('State history order or parent mismatch');
+    expandedTotal+=state.bytes.length;stateIds.add(stateId);namespaceIds.add(stateId);states.push({...state,moduleKey:module.moduleKey});
+   }
+   next=Number(cursorResult);
+  }
  }
+ for(const entry of history)if(entry.stateHead!==ZERO_HASH&&!stateIds.has(entry.stateHead))throw Error('Installation history references a missing state snapshot');
  await assertSnapshot(request,snapshot);return {schema:'anima.token-recovery/1',context:{...first,modules,history,stateModules,stateModuleCount:stateModuleCount.toString(),next:String(cursor),historyNext:String(historyCursor)},packages:[...packages.values()],states,snapshot,expandedBytes:expandedTotal};
 }
 

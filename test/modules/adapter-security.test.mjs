@@ -4,6 +4,7 @@ import { Interface } from 'ethers';
 import { RegistryAdapter } from '../../web/modules/adapter.mjs';
 import { LiveProtocol, MEMORY_ABI } from '../../web/genesis/live-protocol.mjs';
 import { prepareJournal } from '../../web/modules/journal.mjs';
+import { ModuleHostSession, ReviewedAction, HOST_LIMITS, boundedJSON } from '../../web/modules/host.mjs';
 import { ACCOUNT_ABI, TOKEN_REGISTRY_ABI, RELEASE_REGISTRY_ABI, ZERO_HASH, packageLegacyHTML, releaseInput, releaseIdFor, moduleKeyFor, sha256, canonicalManifest, manifestHash } from '../../packages/modules/sdk.mjs';
 
 const address = byte => '0x' + byte.repeat(20);
@@ -32,6 +33,28 @@ const decode = intent => {
   return new Interface(TOKEN_REGISTRY_ABI).parseTransaction({ data: outer.args[2] });
 };
 
+test('a full 32 KiB state snapshot reaches exact reviewed calldata without increasing frame request limits', async () => {
+  const adapter = fixture(), value = { note: 'x'.repeat(32768 - 11) };
+  assert.equal(new TextEncoder().encode(JSON.stringify(value)).length, 32768);
+  const intent = await adapter.intent('writeState', release(), { value });
+  let preparations = 0, sends = 0;
+  const review = new ReviewedAction({ verifyContext: async () => context.identity,
+    prepare: async candidate => { preparations++; return candidate.recipe; },
+    send: async (prepared, candidate) => { sends++; assert.equal(prepared.data, intent.recipe.data); assert.deepEqual(candidate.state, value); return { hash: hash('ab') }; },
+  });
+  assert.equal(HOST_LIMITS.requestBytes, 16384);
+  assert.throws(() => boundedJSON({ id: 'large', method: 'state.set', params: { key: 'note', value: value.note } }), /byte limit/);
+  await review.review(intent, context.identity);
+  assert.equal(preparations, 1); assert.equal(sends, 0);
+  const bytes = Buffer.from(decode(review.pending.intent).args.data.slice(2), 'hex');
+  assert.equal(bytes.toString(), JSON.stringify(value));
+  await review.confirm(); assert.equal(sends, 1);
+  await assert.rejects(review.confirm(), /already been used/);
+  await assert.rejects(review.review({ padding: 'x'.repeat(HOST_LIMITS.reviewBytes) }, context.identity), /byte limit/);
+  assert.equal(preparations, 1, 'oversized review must fail before wallet preparation');
+  assert.equal(review.pending, null);
+});
+
 test('a draft for an unactivated version cannot be written under the installed version schema', async () => {
   const adapter = fixture();
   await assert.rejects(adapter.intent('writeState', release(RELEASE_B, SCHEMA_B), { value: { v2: true } }), /enabled release.*staged migration/);
@@ -43,6 +66,52 @@ test('a draft for an unactivated version cannot be written under the installed v
   assert.equal(call.name, 'stageState');
   assert.equal(call.args.schema, SCHEMA_B);
   assert.equal(staged.releaseId, RELEASE_B);
+});
+
+test('finite decimal draft state survives both reviewed save and migration calldata', async () => {
+  const value = { position: { x: 0.125, y: -2.75 }, volume: 0.7, tiny: 1e-9 };
+  for (const kind of ['writeState', 'stageState']) {
+    const intent = await fixture().intent(kind, release(), { value });
+    assert.deepEqual(JSON.parse(Buffer.from(decode(intent).args.data.slice(2), 'hex')), value);
+    assert.deepEqual(intent.state, value);
+    await assert.rejects(fixture().intent(kind, release(), { value: { invalid: Infinity } }), /finite numbers/);
+    await assert.rejects(fixture().intent(kind, release(), { value: { text: 'x'.repeat(32768) } }), /byte limit/);
+  }
+});
+
+test('reviewed state preserves the full draft depth limit without expanding frame request depth', async () => {
+  const nested = depth => { let value = 0.125; for (let i = 0; i < depth; i++) value = { draft: value }; return value; };
+  const value = nested(HOST_LIMITS.valueDepth), excessive = nested(HOST_LIMITS.valueDepth + 1);
+  assert.deepEqual(boundedJSON(value, 32768), value);
+  for (const kind of ['writeState', 'stageState']) {
+    const adapter = fixture(), intent = await adapter.intent(kind, release(), { value });
+    let preparations = 0, sends = 0;
+    const review = new ReviewedAction({ verifyContext: async () => context.identity,
+      prepare: async candidate => { preparations++; return candidate.recipe; },
+      send: async (prepared, candidate) => { sends++; assert.equal(prepared.data, intent.recipe.data); assert.deepEqual(candidate.state, value); return {}; },
+    });
+    await review.review(intent, context.identity);
+    assert.equal(preparations, 1);
+    assert.equal(Buffer.from(decode(review.pending.intent).args.data.slice(2), 'hex').toString(), JSON.stringify(value));
+    await review.confirm(); assert.equal(sends, 1);
+    await assert.rejects(adapter.intent(kind, release(), { value: excessive }), /nested too deeply/);
+    await assert.rejects(review.review({ ...intent, state: excessive }, context.identity), /nested too deeply/);
+    assert.equal(preparations, 1, 'excess depth must fail before wallet preparation');
+    assert.equal(review.pending, null);
+  }
+  const drafts = new Map(), host = new ModuleHostSession({
+    identity: context.identity, releaseId: RELEASE_A, moduleKey: MODULE,
+    manifest: { stateSchema: SCHEMA_A, capabilities: ['state.write'] },
+    storage: { getItem: key => drafts.get(key) ?? null, setItem: (key, text) => drafts.set(key, text) },
+    verifyContext: async () => context.identity,
+  });
+  // The frame's params and value fields still count toward its depth limit.
+  const message = (id, depth) => ({ id, method: 'state.set', params: { key: 'draft', value: nested(depth) } });
+  await host.handle(message('accepted', HOST_LIMITS.valueDepth - 2));
+  const before = [...drafts];
+  await assert.rejects(host.handle(message('excessive', HOST_LIMITS.valueDepth - 1)), /nested too deeply/);
+  assert.deepEqual([...drafts], before);
+  host.close();
 });
 
 test('state snapshots require an enabled release and its verified nonzero schema', async () => {

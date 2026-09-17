@@ -3,10 +3,10 @@
   "archiveVersion": 3,
   "compression": "modular-gzip",
   "shellIndex": 0,
-  "sha256": "b95fe3f9be1abddfc30250a09b78a01dcef361c454da624aefba2d81943b5475",
-  "runtimeHtmlSha256": "c4d29995bcc389f7b4c03c559d8b9e593d61c9ecc66ecc5c9c7f58808df51e4e",
-  "byteLength": 2072184,
-  "expandedBytes": 7950103,
+  "sha256": "7b8e20ff02ddbc2e353c95c9284defbc267a23d650ff3b2c5785983aa57f3b72",
+  "runtimeHtmlSha256": "189e59a60a79b74e3bdfd8ec40631a0eabaf08f16f3cd3ac4be1210cbb279412",
+  "byteLength": 2072896,
+  "expandedBytes": 7952867,
   "chunks": [
     {
       "file": "modules/00-core-shell/chunks/00.bin",
@@ -391,42 +391,42 @@
     {
       "file": "modules/12-modules/chunks/09.bin",
       "bytes": 23000,
-      "sha256": "85e47f2ff27d1f5c918f4a4846fc514c9f421e3a73306b6e38c99d5564da9ad7"
+      "sha256": "63746099e9d9d8ac98d31b61479c2bc0fb102af3e5fb0a0a42045b0122978427"
     },
     {
       "file": "modules/12-modules/chunks/10.bin",
       "bytes": 23000,
-      "sha256": "92c6d7e8b42504245b306e806fb5623793ece267904dd23ee2afc0437c19e006"
+      "sha256": "32d1f19a58ad87fabe433d67c55ac910f5bce6f5ea43febc84a77a323c92d9bd"
     },
     {
       "file": "modules/12-modules/chunks/11.bin",
       "bytes": 23000,
-      "sha256": "ff395b594a32acbeff06f46e1e77c26cea9b63d15012efb2de18fe16004cb029"
+      "sha256": "6b502507542207ef7cb3f2dfa9f66dea25dde6cbb69ca7b77e3bb3fb40e65576"
     },
     {
       "file": "modules/12-modules/chunks/12.bin",
       "bytes": 23000,
-      "sha256": "ab014fe5fbb102982b3f5d69b82d1e00e57bea26c9147d638cdc988179520dfd"
+      "sha256": "8bae5d804da2f58db31adfa7d33930ba1eaac17d91a3bc935d41745c55c0b9ca"
     },
     {
       "file": "modules/12-modules/chunks/13.bin",
       "bytes": 23000,
-      "sha256": "8b234d1c6d27175f569bd1ccb9aa6e134cb4ef241e0ebf1a40d3710b3b2fa37d"
+      "sha256": "433b45cfc2c0cec71acb74ffb43ffe65508ef90ad3cdba9866bfede11b93e716"
     },
     {
       "file": "modules/12-modules/chunks/14.bin",
       "bytes": 23000,
-      "sha256": "ec9a6b24562f824eeb1ce6cfe6300c43794eff679edb07f1626057df85bb0f4e"
+      "sha256": "0d0c93cd7d72d46cbcef6b998cc91d3f0efe2c1a7a31d8fb01074447410d5f0a"
     },
     {
       "file": "modules/12-modules/chunks/15.bin",
       "bytes": 23000,
-      "sha256": "e79438605855460edc862e4e14c25ce8fc8a1bee794b2ad64431e148a3930b05"
+      "sha256": "0ed89ccfac9191dd5a7e9ba96486455730710cc0afcb1928c9a97a802f9198c2"
     },
     {
       "file": "modules/12-modules/chunks/16.bin",
-      "bytes": 12651,
-      "sha256": "cda6c41dd06e132ce727d8a5275e5a01a750069e267a0ca6eed7fce04a88aab0"
+      "bytes": 13363,
+      "sha256": "b658d5ca7454aad00e84e981e8124f70c350c36a15b56f1f06d1de816204f1fa"
     },
     {
       "file": "modules/13-privacy/chunks/00.bin",
@@ -572,7 +572,7 @@
         },
         {
           "index": 12,
-          "version": 3
+          "version": 7
         },
         {
           "index": 13,
@@ -818,7 +818,7 @@
         },
         {
           "index": 12,
-          "version": 3
+          "version": 7
         },
         {
           "index": 14,
@@ -1284,13 +1284,13 @@
     {
       "name": "modules",
       "id": "fbc6c1d4c3b6db8fb54278582eb1d965ed644e97509e130346ae130da5406cb3",
-      "version": 3,
+      "version": 7,
       "archiveVersion": 1,
-      "sha256": "b2f7fdeff814d6de5a9273ac1cb4e611c84209692fa74962d3fd6a0949b298c5",
-      "byteLength": 380651,
-      "expandedSha256": "3edb1c0e6c9e75295ab91d8dca883160625865ab24a752fe632da1e13481c7ac",
-      "expandedBytes": 1194162,
-      "compressedBytes": 285438,
+      "sha256": "41f1618d4229d65b3b0d8ab11a176874e92085dca512ea0be3874a98fff0fb7b",
+      "byteLength": 381363,
+      "expandedSha256": "eec6cb1e04e97b5a8cd49b1dc27612c7ac34da34b3ad4d37c1e074d3ee28b019",
+      "expandedBytes": 1196291,
+      "compressedBytes": 285970,
       "dependencies": [],
       "shards": [],
       "chunks": [
@@ -1342,42 +1342,42 @@
         {
           "file": "modules/12-modules/chunks/09.bin",
           "bytes": 23000,
-          "sha256": "85e47f2ff27d1f5c918f4a4846fc514c9f421e3a73306b6e38c99d5564da9ad7"
+          "sha256": "63746099e9d9d8ac98d31b61479c2bc0fb102af3e5fb0a0a42045b0122978427"
         },
         {
           "file": "modules/12-modules/chunks/10.bin",
           "bytes": 23000,
-          "sha256": "92c6d7e8b42504245b306e806fb5623793ece267904dd23ee2afc0437c19e006"
+          "sha256": "32d1f19a58ad87fabe433d67c55ac910f5bce6f5ea43febc84a77a323c92d9bd"
         },
         {
           "file": "modules/12-modules/chunks/11.bin",
           "bytes": 23000,
-          "sha256": "ff395b594a32acbeff06f46e1e77c26cea9b63d15012efb2de18fe16004cb029"
+          "sha256": "6b502507542207ef7cb3f2dfa9f66dea25dde6cbb69ca7b77e3bb3fb40e65576"
         },
         {
           "file": "modules/12-modules/chunks/12.bin",
           "bytes": 23000,
-          "sha256": "ab014fe5fbb102982b3f5d69b82d1e00e57bea26c9147d638cdc988179520dfd"
+          "sha256": "8bae5d804da2f58db31adfa7d33930ba1eaac17d91a3bc935d41745c55c0b9ca"
         },
         {
           "file": "modules/12-modules/chunks/13.bin",
           "bytes": 23000,
-          "sha256": "8b234d1c6d27175f569bd1ccb9aa6e134cb4ef241e0ebf1a40d3710b3b2fa37d"
+          "sha256": "433b45cfc2c0cec71acb74ffb43ffe65508ef90ad3cdba9866bfede11b93e716"
         },
         {
           "file": "modules/12-modules/chunks/14.bin",
           "bytes": 23000,
-          "sha256": "ec9a6b24562f824eeb1ce6cfe6300c43794eff679edb07f1626057df85bb0f4e"
+          "sha256": "0d0c93cd7d72d46cbcef6b998cc91d3f0efe2c1a7a31d8fb01074447410d5f0a"
         },
         {
           "file": "modules/12-modules/chunks/15.bin",
           "bytes": 23000,
-          "sha256": "e79438605855460edc862e4e14c25ce8fc8a1bee794b2ad64431e148a3930b05"
+          "sha256": "0ed89ccfac9191dd5a7e9ba96486455730710cc0afcb1928c9a97a802f9198c2"
         },
         {
           "file": "modules/12-modules/chunks/16.bin",
-          "bytes": 12651,
-          "sha256": "cda6c41dd06e132ce727d8a5275e5a01a750069e267a0ca6eed7fce04a88aab0"
+          "bytes": 13363,
+          "sha256": "b658d5ca7454aad00e84e981e8124f70c350c36a15b56f1f06d1de816204f1fa"
         }
       ]
     },
@@ -1622,7 +1622,7 @@
       ]
     }
   ],
-  "buildManifestSha256": "05d80fabfbdb2f1fb7046f0913c296f3349439953fb4d691f702137cb690d879",
+  "buildManifestSha256": "796e46148fded90a2a52e080b288f27d12ec391a0c637da81ef32bdd3ce868ba",
   "moduleGraph": {
     "web/begins/geometry.mjs": {
       "sha256": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
@@ -2291,7 +2291,7 @@
       "dependencies": []
     },
     "web/modules/embedded.mjs": {
-      "sha256": "aaff35b12cca216d3573787a3e04a4a1cee446cd10c392634414d3b8a3ed1a3e",
+      "sha256": "cc596db2ec5b0e3e8710b0a3d1419c7a70f170e64183a8e6b576a2e471717793",
       "dependencies": []
     },
     "web/privacy/bridge.mjs": {

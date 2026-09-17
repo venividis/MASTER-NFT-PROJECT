@@ -76,6 +76,9 @@ jobs:
       - name: Native module installation, state and review browser acceptance
         if: ${{ !cancelled() }}
         run: node test/browser/modules-native.mjs
+      - name: Full minted runtime, legacy cartridge, state migration and journal acceptance
+        if: ${{ !cancelled() }}
+        run: npm run test:master:browser
       - name: Print original, workbench and native browser diagnostics
         if: always()
         run: |
@@ -86,6 +89,7 @@ jobs:
             'reports/production/browser',
             'reports/production/modules-browser',
             'reports/production/modules-native-browser',
+            'reports/production/master-browser',
           ];
           for (const root of roots) {
             const reports = [];
@@ -115,6 +119,7 @@ jobs:
             reports/production/browser/
             reports/production/modules-browser/
             reports/production/modules-native-browser/
+            reports/production/master-browser/
   module-solidity:
     runs-on: ubuntu-24.04
     timeout-minutes: 20
