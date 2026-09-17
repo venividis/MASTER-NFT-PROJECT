@@ -228,6 +228,11 @@
       "deployedBytes": 4970
     },
     {
+      "contract": "ModuleStateStore",
+      "source": "contracts/src/modules/ModuleStateStore.sol",
+      "deployedBytes": 4951
+    },
+    {
       "contract": "CommissionEscrow",
       "source": "contracts/src/operating/CommissionEscrow.sol",
       "deployedBytes": 4950
@@ -266,11 +271,6 @@
       "contract": "GenesisNames",
       "source": "contracts/src/extensions/access/GenesisNames.sol",
       "deployedBytes": 4254
-    },
-    {
-      "contract": "ModuleStateStore",
-      "source": "contracts/src/modules/ModuleStateStore.sol",
-      "deployedBytes": 4235
     },
     {
       "contract": "OwnerLaunchFactory",

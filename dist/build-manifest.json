@@ -12,7 +12,7 @@
   },
   "inputs": {
     "contracts/artifacts/CartridgeRegistry.json": "ffc56037693af485056207614d38f44745f2bc39b9e92ba6da1008d2b62fd904",
-    "contracts/artifacts/index.json": "6ad20d7102304e0dd281536d8eb351f648f6618e0aa887f14fee5a8d0773e57b",
+    "contracts/artifacts/index.json": "77103433591f5437a6bd578aeeb63ed18825232d8bf206d6688ef40427b075f4",
     "integrations/console/protocol/fee-router/artifacts/OwnerFeeRouter.json": "484ceabb7bafba4041b73c970520c18975447571ac930e9e9e19276cbe5da7be",
     "integrations/console/protocol/fee-router/package.json": "b1b1af96893bd872a84426eba8d5b13b656006aa48e855ddf68a4068b2dd120a",
     "integrations/console/protocol/fee-router/scripts/compile.cjs": "795dc647076740f6d9f51334df82ed2a3b3cf80c508979df9641ceb146e3b867",
@@ -519,7 +519,7 @@
     "web/exit/live.mjs": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
     "web/extensions/access.mjs": "8697aa024eaea6fef8750224eb76b4264f14ee72a4d019182e9f88528de82f2e",
     "web/extensions/agents.mjs": "5762161784210a6fb65742d6cc783b1cf37b5b4766f75fad83e59bca4d5afb6b",
-    "web/extensions/artifacts.mjs": "f20e71a5c6b4fcb63ef13faf8dad79f7d8d6543e0370579223d2f302edf979ec",
+    "web/extensions/artifacts.mjs": "a9560636aeb0e2196343a9dccfdf522995743604e3fb71cf7aff2254f69b2730",
     "web/extensions/desk.mjs": "9090b4232581bcace1e6d7b905a1940091afacc68432845930c8bf6a62264bd3",
     "web/extensions/experimental.mjs": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
     "web/extensions/markets.mjs": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
@@ -604,8 +604,8 @@
     "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
     "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
     "web/modules/adapter.mjs": "7e86dd9c560147418d5f946f39e0948db791f5f7773c003485d2f6bdb167a6d3",
-    "web/modules/app.mjs": "5958d6e031f8bc387d76ac626ae3afcbc526560694b6d264e28118ab9de26b11",
-    "web/modules/embedded.mjs": "cc596db2ec5b0e3e8710b0a3d1419c7a70f170e64183a8e6b576a2e471717793",
+    "web/modules/app.mjs": "897f194a8331cd843e64f49f18b85be19b12b3a2511187dbd11be4b4b99be202",
+    "web/modules/embedded.mjs": "43f1483e19d47f6fb0eed954c8ce214e6a190dde8455aee0082f89ed6fb9c42a",
     "web/modules/examples.mjs": "4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
     "web/modules/host.mjs": "d0b5cfccb2cfb3c702ea6776baf6006ab6c781ff95bafc64b29969ddf20d45b7",
     "web/modules/html-worker.mjs": "c6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",
@@ -871,7 +871,7 @@
       ]
     },
     "web/extensions/artifacts.mjs": {
-      "sha256": "f20e71a5c6b4fcb63ef13faf8dad79f7d8d6543e0370579223d2f302edf979ec",
+      "sha256": "a9560636aeb0e2196343a9dccfdf522995743604e3fb71cf7aff2254f69b2730",
       "dependencies": []
     },
     "web/extensions/desk.mjs": {
@@ -1311,7 +1311,7 @@
       "dependencies": []
     },
     "web/modules/embedded.mjs": {
-      "sha256": "cc596db2ec5b0e3e8710b0a3d1419c7a70f170e64183a8e6b576a2e471717793",
+      "sha256": "43f1483e19d47f6fb0eed954c8ce214e6a190dde8455aee0082f89ed6fb9c42a",
       "dependencies": []
     },
     "web/privacy/bridge.mjs": {
@@ -1454,7 +1454,7 @@
     "abis/CartridgeRegistry.json": "3c3d6c4dcd54ce14cec7cc7af9cb1de522eb68e98bf73502f05d059d59dd4e95",
     "index.html": "89d27f3155400c4d0d17dc81bf1061ddfe8c3b0df1d2558c78b0060428553bfd",
     "manifest.webmanifest": "3eeddcc5a0e5dd67917485d5966980e7013afa1b4876278c36f7099dca41edea",
-    "modules.html": "dd9336f296bfb2e6578d5ad7cf4580f995926dd504d494d3415286266ef71ac4",
+    "modules.html": "ec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6",
     "original.html": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
     "web/begins/geometry.mjs": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
     "web/begins/shaders.mjs": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
@@ -1494,7 +1494,7 @@
     "web/exit/live.mjs": "2ecaf060728838f4f07a738b97fb94283c998a0315ec4c850c0efbf71bac6092",
     "web/extensions/access.mjs": "8697aa024eaea6fef8750224eb76b4264f14ee72a4d019182e9f88528de82f2e",
     "web/extensions/agents.mjs": "5762161784210a6fb65742d6cc783b1cf37b5b4766f75fad83e59bca4d5afb6b",
-    "web/extensions/artifacts.mjs": "f20e71a5c6b4fcb63ef13faf8dad79f7d8d6543e0370579223d2f302edf979ec",
+    "web/extensions/artifacts.mjs": "a9560636aeb0e2196343a9dccfdf522995743604e3fb71cf7aff2254f69b2730",
     "web/extensions/desk.mjs": "9090b4232581bcace1e6d7b905a1940091afacc68432845930c8bf6a62264bd3",
     "web/extensions/experimental.mjs": "2ab0cb5a1647e48c979ad15123cc3315b67c26adb48386a4ab8d2b1f226231ce",
     "web/extensions/markets.mjs": "e3e84365210c46dc41b0517e21ea38f74708311c1d65403c965e9488d7428669",
@@ -1568,7 +1568,7 @@
     "web/launchpad/vault-ui.mjs": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
     "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
     "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
-    "web/modules/embedded.mjs": "cc596db2ec5b0e3e8710b0a3d1419c7a70f170e64183a8e6b576a2e471717793",
+    "web/modules/embedded.mjs": "43f1483e19d47f6fb0eed954c8ce214e6a190dde8455aee0082f89ed6fb9c42a",
     "web/privacy/bridge.mjs": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
     "web/privacy/railgun-worker.js": "40ef8c9a7504dd23c108205759dfca7e5219ceecef2ba58737e593e80397341b",
     "web/privacy/recover-resource.mjs": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",

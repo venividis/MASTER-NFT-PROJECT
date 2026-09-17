@@ -118,6 +118,7 @@ async function execute(){
       const expected=approval;approval=null;assert.ok(expected,'No send without the explicit reviewed click');
       const tx=payload.params[0];assert.equal(tx.from.toLowerCase(),ownerAddress);assert.equal(tx.to.toLowerCase(),expected.to.toLowerCase());
       assert.equal((tx.data??tx.input).toLowerCase(),expected.data.toLowerCase());assert.equal(BigInt(tx.value??0),0n);
+      assert.ok(BigInt(tx.gas)>0n&&BigInt(tx.gas)<=2n**24n,'Reviewed transactions must fit the EIP-7825 gas-limit cap');
       const txHash=await request(payload);report.transactions.push({...expected,hash:txHash});save();return txHash;
     }
     const result=await request({...payload,params:payload.params??[]});responseBytes+=Buffer.byteLength(JSON.stringify(result));return result;

@@ -1,7 +1,7 @@
 {
   "schema": "anima.compiler-artifacts/1",
   "compiler": "0.8.30+commit.73712a01.Emscripten.clang",
-  "compilerInputSha256": "00ceaf6270fdf1b9952a234f29f69b52498417a2eb050e43b67af93446eb9046",
+  "compilerInputSha256": "a8e198d28c7ccefb72c10a705a8e947fd28aecbe84acd16adc004a400eeeadc1",
   "language": "Solidity",
   "settings": {
     "optimizer": {
@@ -103,7 +103,7 @@
     "contracts/src/modules/ChunkedCartridgeRegistry.sol": "6c30f11890b266f0b06dcd35ce2de517e379cbb8303f0404c12acc84ed790ee8",
     "contracts/src/modules/ExtensionReleaseRegistry.sol": "47afb23bb0a2cd802bebcacc5efb24faf1535f61b70a586d6c412459698e400b",
     "contracts/src/modules/ModuleArchiveFactory.sol": "ab8ef416fc2ae98d70eff60b8d20643e1321cfdbbefd495dd0f9cf2a5dc0d0bb",
-    "contracts/src/modules/ModuleStateStore.sol": "3c157a2fd3dfbb5138eae8ebe925346641211fd04517d0e0f802b247315b160c",
+    "contracts/src/modules/ModuleStateStore.sol": "ec4e99a07a6cee03425330cfefcd82a95463edeb5b2f7f124f02f401ae6c740d",
     "contracts/src/modules/ModuleTypes.sol": "e676791f4efa8d884aa46436d2fa83f2fa4908a00b644644443222655bcbebde",
     "contracts/src/modules/ModuleWorkbench.sol": "bb8bb91b04003461133b120be849058a38bf146aaf00c0b9fb99cdbcc750083f",
     "contracts/src/modules/TokenModuleRegistry.sol": "253e63f2f9da89b78b2470b20678d8a761ae0a3e261cfc8c3d82200ebcdd2760",
@@ -557,7 +557,7 @@
     },
     "contracts/src/extensions/experimental/House.sol:House": {
       "file": "House.json",
-      "sha256": "3c585f23cc59dcb9489c43bd166a64966f8ba7f7a4f064d2e396fc82afe1da83"
+      "sha256": "1bcff476af6497dc777dfea5295790f4411bbc0322a9f8634243519d0abeff6e"
     },
     "contracts/src/extensions/experimental/House.sol:IHouseOracle": {
       "file": "IHouseOracle.json",
@@ -585,7 +585,7 @@
     },
     "contracts/src/extensions/experimental/Wager.sol:Wager": {
       "file": "Wager.json",
-      "sha256": "546e597c55ac946721720bc8534e23add683447262ad057616bed771827bfb83"
+      "sha256": "3843693debdc983f1ecd2bcf5326f5bd46a9ebcb0b98ea6655594b1d307dccd0"
     },
     "contracts/src/extensions/experimental/Wake.sol:IWakeTask": {
       "file": "IWakeTask.json",
@@ -593,7 +593,7 @@
     },
     "contracts/src/extensions/experimental/Wake.sol:Wake": {
       "file": "Wake.json",
-      "sha256": "718faa63fa5feda4eed03b26cc52a113b03a0f9b5b148e920eaf3d1b629a3554"
+      "sha256": "e0f593adffc0634c8f7b5043eeefeed261d4330fea17cd4116f29a5b898f995a"
     },
     "contracts/src/extensions/experimental/WakeExitTask.sol:IWakeExitVault": {
       "file": "IWakeExitVault.json",
@@ -929,7 +929,7 @@
     },
     "contracts/src/modules/ModuleStateStore.sol:ModuleStateStore": {
       "file": "ModuleStateStore.json",
-      "sha256": "bfb34ce2c46e851e7e871796693835d4c3b3e9e8c457eada86388bde83e76a3d"
+      "sha256": "6855c4422fda99c6afc1f53b898ea884b07f3713f85fbc2a62f2fc1d17fdfb94"
     },
     "contracts/src/modules/ModuleTypes.sol:ModuleTypes": {
       "file": "ModuleTypes.json",
@@ -937,27 +937,27 @@
     },
     "contracts/src/modules/ModuleWorkbench.sol:IWorkbenchArchive": {
       "file": "IWorkbenchArchive.json",
-      "sha256": "17738d409047f6819a73130980b673dbd263c2d365b2e5c46d94012484c41d7b"
+      "sha256": "0fcf95c76812c144b97d03e62b3babb7758044674987028d6123d464a54159a6"
     },
     "contracts/src/modules/ModuleWorkbench.sol:ModuleWorkbench": {
       "file": "ModuleWorkbench.json",
-      "sha256": "8082f9ca58f99ec45053e85e96dfa8af8b4b8822791d1586966ab704cf203682"
+      "sha256": "98ded866c167126b3948de29eb321c5fe51e04a7bd5573d9f8b399fa08467471"
     },
     "contracts/src/modules/TokenModuleRegistry.sol:IModuleAccount": {
       "file": "IModuleAccount.json",
-      "sha256": "cdd074a0b9ca2c9c0a361e44ca23afdd07fc73c0fd6d71194b8668f1eb6fe38e"
+      "sha256": "0a831d2b014a117df49cd63f2eb3e5ab83d267c7432afdd55e5204559a04c512"
     },
     "contracts/src/modules/TokenModuleRegistry.sol:IModuleCollection": {
       "file": "IModuleCollection.json",
-      "sha256": "75899e378e84c68069ea4bad42a2a1614222a1b15bdbb4f4184acd153776bdde"
+      "sha256": "1756223a90786387eda10b52ba28ea82712d1c87a4d7382bf4890de6a12c9884"
     },
     "contracts/src/modules/TokenModuleRegistry.sol:TokenModuleRegistry": {
       "file": "TokenModuleRegistry.json",
-      "sha256": "92ddf6465d812e18dad67f5997947e872df0eae932de781a24fccd792881ba03"
+      "sha256": "7bb6c6376a18fa19200b41d52aaea4981e8cca340ef8929b0102f21bdec3f33a"
     },
     "contracts/src/operating/BondedShelf.sol:BondedShelf": {
       "file": "BondedShelf.json",
-      "sha256": "fdde8764966cea9f799f5f8a8d1c3cacf79caf18c72a021a02a2a9b65276f753"
+      "sha256": "a3676ce4f07119ca209ab46a02f9be8a390432b5d7abaa646a8f55ea8035ad19"
     },
     "contracts/src/operating/BondedShelf.sol:IShelfNFT": {
       "file": "IShelfNFT.json",
@@ -969,15 +969,15 @@
     },
     "contracts/src/operating/CommitmentIndex.sol:CommitmentIndex": {
       "file": "CommitmentIndex.json",
-      "sha256": "3cb3e193d29795dadf88a0e2d57e98fa072c998ec2d16aaed19e15cfc2223fec"
+      "sha256": "404bdfbbb2978fe1c65954211479d034c58816754866e61983b3514df16a89d8"
     },
     "contracts/src/operating/EditionRegistry.sol:EditionRegistry": {
       "file": "EditionRegistry.json",
-      "sha256": "ee9750ce5aa6586554610af5e25238ddddac053e1b19be39bbe4b942814f748a"
+      "sha256": "e941a1da8d403c55d0acad51bf4dcab1be7f90f5223c63fe90a090d77c0be10e"
     },
     "contracts/src/operating/ExperimentCell.sol:ExperimentCell": {
       "file": "ExperimentCell.json",
-      "sha256": "1139d21145647f2ee7b159151a165e8c3376894cefe1a3d46e3b004a4632512b"
+      "sha256": "ac831357080cdeedbce696632e4b3f75ac27be8337bfe6fc7512bc4d1239d3e6"
     },
     "contracts/src/operating/ExperimentCell.sol:ExperimentCellFactory": {
       "file": "ExperimentCellFactory.json",
@@ -985,7 +985,7 @@
     },
     "contracts/src/operating/ExperimentGate.sol:ExperimentGate": {
       "file": "ExperimentGate.json",
-      "sha256": "6e44850f774499466a28917d02886f26dc84f8be6f261bd07840a635eea814ca"
+      "sha256": "7858f1c72a3a0d65a417a34eb7653b95d12c8c9a7782846a7200c411a87517d5"
     },
     "contracts/src/operating/ExperimentalAdapters.sol:ExperimentModule": {
       "file": "ExperimentModule.json",
@@ -993,27 +993,27 @@
     },
     "contracts/src/operating/ExperimentalAdapters.sol:FixedBasket": {
       "file": "FixedBasket.json",
-      "sha256": "e0a74b635eb22a2c6f6b64cd3c8ee82c865693f69fea0252ad63585b18a4e9c2"
+      "sha256": "9eb911a59bb9bd0b88b962cfe2d9f93ad68d52055a3bfadcd6e04e637ce43601"
     },
     "contracts/src/operating/ExperimentalAdapters.sol:MatchedRightsVault": {
       "file": "MatchedRightsVault.json",
-      "sha256": "b7ab31fbe78a62a2e081661b6aebfc18857247acd2c36c1f264312ed864f0d0f"
+      "sha256": "d48a294fe2e60d34e676dec2e01c6f5f8cf352be02129cb995d6d3627733d0f8"
     },
     "contracts/src/operating/ExperimentalAdapters.sol:ReceiverPinnedStrategy": {
       "file": "ReceiverPinnedStrategy.json",
-      "sha256": "9e9b1e052af34ff4fe7b055ac523d3b81f47d59bad26888f0e6189c9c5005a37"
+      "sha256": "caaa3cb14dd77f8e2f45c157e340fdc244a3314170a77c3be85c660ad7738b6f"
     },
     "contracts/src/operating/InstrumentRouter.sol:InstrumentRouter": {
       "file": "InstrumentRouter.json",
-      "sha256": "50b09f54bebd355e1c5cfe6c7ffffa14af41154f4e43874af5f7e88c27948d76"
+      "sha256": "b4a90acceef72cfa0fc12668b587c9c29db3602ba0e7a028702711f7baee1aee"
     },
     "contracts/src/operating/NegotiatedMarkets.sol:CoveredCallBook": {
       "file": "CoveredCallBook.json",
-      "sha256": "d4ac620d7999ba06698f77a1547c87bb17954357b466cd2baf42365916622961"
+      "sha256": "ee3393b13918c1e6bc8673c031110396a44c8385c036e708ba32e8b8b7f0914c"
     },
     "contracts/src/operating/NegotiatedMarkets.sol:FixedTermCredit": {
       "file": "FixedTermCredit.json",
-      "sha256": "94fac6b17dd3c30d46cfa74700070041c2c47a8907bb9d3e7fb356b41030fc5c"
+      "sha256": "2f243b93968d963ce544f2347b83d94b05dc48a2f6026280b9ef2fee6a09fb06"
     },
     "contracts/src/operating/OperatingInterfaces.sol:IAccountCommitment": {
       "file": "IAccountCommitment.json",
@@ -1033,7 +1033,7 @@
     },
     "contracts/src/protocol/GenesisLaunchpad.sol:GenesisLaunchpad": {
       "file": "GenesisLaunchpad.json",
-      "sha256": "1b68c8e1894f0f5ffe18bf417e57d97bcf1bcbbfecdbd56ce189949cd46f329c"
+      "sha256": "c92d63991c12d014ef407b1a0dad5ed73ebe53629624736510d13e0503968119"
     },
     "contracts/src/protocol/GenesisLaunchpad.sol:IGenesisMarket": {
       "file": "IGenesisMarket.json",
@@ -1041,11 +1041,11 @@
     },
     "contracts/src/protocol/GenesisToken.sol:GenesisToken": {
       "file": "GenesisToken.json",
-      "sha256": "3682c692216baf5af257867d9ddb86c35ae11e649d4a6cb8c4310c1f3554b163"
+      "sha256": "48ade42b745ab63e921f56f6e886705eec6a9e1817f85e188cb42514a15093e6"
     },
     "contracts/src/protocol/NativeMarket.sol:NativeMarket": {
       "file": "NativeMarket.json",
-      "sha256": "a48e73a21558a4ff9b93ab6794b4367b396d48fd594129ad76d79432dfc7985b"
+      "sha256": "c2e4f66a7313088ab5603925af335bf6b4f824030653870131beaa68d5ac482b"
     },
     "contracts/src/protocol/OnchainApp.sol:AppChunk": {
       "file": "AppChunk.json",
@@ -1053,7 +1053,7 @@
     },
     "contracts/src/protocol/OnchainApp.sol:OnchainApp": {
       "file": "OnchainApp.json",
-      "sha256": "2eba380d7aade96bfeebf061dc1a35f9543dba415211ab55c0f14e43679bcedd"
+      "sha256": "14ef99ff5f4521f159b5763ee96d34484eae961c7577d5d86e7f20a11541346c"
     },
     "contracts/src/protocol/OnchainAppDirectory.sol:IOnchainAppLeaf": {
       "file": "IOnchainAppLeaf.json",
@@ -1061,7 +1061,7 @@
     },
     "contracts/src/protocol/OnchainAppDirectory.sol:OnchainAppDirectory": {
       "file": "OnchainAppDirectory.json",
-      "sha256": "2dff458ae04c7a6bcb897e3ac06d2075fc3c13f5b79139cbb462168a83b2a3e4"
+      "sha256": "1f97417221ffff1d0c34e604cb21b9d17ff87e6aa797c6d0c005a7b5cbec4d11"
     },
     "contracts/src/protocol/OnchainModuleDirectory.sol:IModuleArchive": {
       "file": "IModuleArchive.json",
@@ -1069,7 +1069,7 @@
     },
     "contracts/src/protocol/OnchainModuleDirectory.sol:OnchainModuleDirectory": {
       "file": "OnchainModuleDirectory.json",
-      "sha256": "7d6665aa6ff045de0a7eb60f19b835feef02410cd8c7fbca79781f1d95cb4318"
+      "sha256": "fcffc11f56f87572441529076a8a90174d576871f1d22c8ff43300cc0446bca5"
     },
     "contracts/src/protocol/ProtocolPrimitives.sol:IProtocolCollection": {
       "file": "IProtocolCollection.json",
@@ -1093,11 +1093,11 @@
     },
     "contracts/src/protocol/ShardedResource.sol:ShardedResource": {
       "file": "ShardedResource.json",
-      "sha256": "6dd63342b938535a06bc7965dfd26ef5fc9017860c1af2319631de22256390d0"
+      "sha256": "3381998ed2921886df4c5c9b165ea62bfdb11d42a4a7073c5a033db55ebcbca0"
     },
     "contracts/src/protocol/TimeVault.sol:TimeVault": {
       "file": "TimeVault.json",
-      "sha256": "466867377ce9a98c3f611268833f2ef43713d532febdefd14845314fc2363a94"
+      "sha256": "c5087781ee5d6d87938edc37ae73f887a756870180c1697df5ac625a26deab8a"
     },
     "contracts/src/protocol/VestedExitVault.sol:IVestedExitMarket": {
       "file": "IVestedExitMarket.json",
@@ -1105,11 +1105,11 @@
     },
     "contracts/src/protocol/VestedExitVault.sol:VestedExitVault": {
       "file": "VestedExitVault.json",
-      "sha256": "19ece445971d34088f4052538af517906985aede234e7bc21a9351c2851f2bfb"
+      "sha256": "f603e8f2daf81c536a2ece8990adb2129caa36444d9bf811815a2a515e890058"
     },
     "contracts/src/protocol/WorldLedger.sol:WorldLedger": {
       "file": "WorldLedger.json",
-      "sha256": "d7f7f20103244d9178d0e7fefd7e1998b28e458c8213948929ff0c1bd451defc"
+      "sha256": "8b752b0ec6d6d80215793ac984b61cfc7b3507206cb941e93c1a36ed1bb9d989"
     },
     "contracts/src/test/CoreCleanupHarness.sol:AgentIdentityRegistryMock": {
       "file": "AgentIdentityRegistryMock.json",
@@ -1157,7 +1157,7 @@
     },
     "contracts/src/test/OperatingHarness.sol:OperatingTokenMock": {
       "file": "OperatingTokenMock.json",
-      "sha256": "4e6bd6fcb63ea14ed5464c93dd75864c2095698644e9354ef4f7784a65b2d2f0"
+      "sha256": "178af9cc13a9587b761cb39efb720868ce2918373ef45f8cbff6771e28cc0b2b"
     }
   }
 }

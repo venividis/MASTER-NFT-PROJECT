@@ -1,8 +1,8 @@
 {
   "schema": "anima.module-workbench/1",
   "compression": "raw",
-  "byteLength": 706939,
-  "sha256": "0xdd9336f296bfb2e6578d5ad7cf4580f995926dd504d494d3415286266ef71ac4",
+  "byteLength": 707014,
+  "sha256": "0xec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6",
   "chunks": [
     {
       "file": "chunks/000.bin",
@@ -17,17 +17,17 @@
     {
       "file": "chunks/002.bin",
       "byteLength": 23000,
-      "sha256": "0x8130d9f199f7f5af9ac7d75113d2bfae2a4cac162c20015b4c9c6583b8a5594b"
+      "sha256": "0x7681628a5eac39b7d3ff0b2554cad13d4c642ee7102ea289fc11be67cba74186"
     },
     {
       "file": "chunks/003.bin",
       "byteLength": 23000,
-      "sha256": "0xcf1dd1ce55a727e841f72f570c068ef26bd94d28b185c89196cc7ddfcb7aecda"
+      "sha256": "0xfa78bcc91e241c62814050590e8a4a287c6910113b24c7ff48cf2fc8d60379cd"
     },
     {
       "file": "chunks/004.bin",
       "byteLength": 23000,
-      "sha256": "0xb3b525bee3c6249ed970ac2379ea7f54b34cd5faf708c7b22419592be5e7c68f"
+      "sha256": "0x24d212594c30757b9b2a4559cfb07fe6a73ef04e885379e79cb94ee110e767a6"
     },
     {
       "file": "chunks/005.bin",
@@ -102,7 +102,7 @@
     {
       "file": "chunks/019.bin",
       "byteLength": 23000,
-      "sha256": "0x0ca33b3c53b3abe2c67a935a3dea3cf8d78f1a33c87d36078e6c4e834f401aa6"
+      "sha256": "0x61557309864ff88d988dcadc82784b6483dbeed1182e1eda42c5137c0cfdeed2"
     },
     {
       "file": "chunks/020.bin",
@@ -147,17 +147,17 @@
     {
       "file": "chunks/028.bin",
       "byteLength": 23000,
-      "sha256": "0x7f1661bb266f0eef84a783977c0ab60998d15174e65350b88c328c076fa70938"
+      "sha256": "0xc95e23eb7f7f683f67ffb8e622f0362c32f4c9e4947df451e1fe3a8cc6ffa681"
     },
     {
       "file": "chunks/029.bin",
       "byteLength": 23000,
-      "sha256": "0x35f45519d44e22817d785115f1696ddb8d247099cfe08a47b33d17bef27efc42"
+      "sha256": "0xb76827352aff9017abc468a60fd9830b1565907a92f2bc805ff437b6d4586b3b"
     },
     {
       "file": "chunks/030.bin",
-      "byteLength": 16939,
-      "sha256": "0xc2ea2a527abe2bfbef0fb8f4d83c0ca812ca1f99e452ee8ffb575ccc7d35b6f2"
+      "byteLength": 17014,
+      "sha256": "0xbb56c952b95483cb564764e4a7c67c7f47f4a9a08310fa399d54c844d5e02e69"
     }
   ],
   "inputs": {
@@ -194,7 +194,7 @@
     "web/kingdom/model.mjs": "0xb239c0da9731aacab6c87d5426bb5a52afa1b38b42b8e44c3944c11b612c1e8c",
     "web/memory/crypto.mjs": "0x9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523",
     "web/modules/adapter.mjs": "0x7e86dd9c560147418d5f946f39e0948db791f5f7773c003485d2f6bdb167a6d3",
-    "web/modules/app.mjs": "0x5958d6e031f8bc387d76ac626ae3afcbc526560694b6d264e28118ab9de26b11",
+    "web/modules/app.mjs": "0x897f194a8331cd843e64f49f18b85be19b12b3a2511187dbd11be4b4b99be202",
     "web/modules/examples.mjs": "0x4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
     "web/modules/host.mjs": "0xd0b5cfccb2cfb3c702ea6776baf6006ab6c781ff95bafc64b29969ddf20d45b7",
     "web/modules/html-worker.mjs": "0xc6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",

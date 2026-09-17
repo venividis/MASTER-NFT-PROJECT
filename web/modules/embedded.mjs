@@ -27688,6 +27688,7 @@ function mountWorkbench(container, options = {}) {
       q("migration-preview").textContent = json({ namespace: state.namespace, before: migration.before, after: migration.after, changedKeys: migration.changedKeys });
       q("migration-preview").hidden = false;
       q("commit-migration").disabled = false;
+      status("Migration preview ready. Review it before applying the browser draft.");
       return;
     }
     if (action === "commit-migration") {

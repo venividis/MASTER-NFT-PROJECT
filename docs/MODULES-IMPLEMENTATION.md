@@ -1,5 +1,7 @@
 # Module implementation map
 
+Direct-state storage now uses canonical immutable bytecode chunks so a full 32 KiB snapshot fits the transaction gas budget, including wallet headroom. The public state ABI and recovery commitments remain unchanged. See [the measured regression and deployment boundary](MODULE-STATE-GAS.md). Historical validation results below retain their original tested-commit scope.
+
 This document maps the 22 additions in [MODULAR-MEMORY-PLAN.md](MODULAR-MEMORY-PLAN.md) to the current implementation. The plan remains the original design review; this map records what was built and where its limits remain. Test links identify concrete assertions in source. They do not, by themselves, establish that a suite passed against the final distribution. Preserve the actual run logs and candidate identity with the release evidence.
 
 Actual Chromium acceptance passed on commit `5ac555093f288a898935cc8d2e94bccb47e5e4e8` in [run 35159655831](https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35159655831): 7 original-app scenarios, 5 workbench/isolation scenarios and 1 workbench-to-native-contract lifecycle. The same commit passed 7 native Solidity tests and 64 fuzz runs. These completed gates have separate scopes from the broader release suite; see [MASTER-BUILD.md](MASTER-BUILD.md) for the release evidence and remaining limits.
