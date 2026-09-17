@@ -3149,7 +3149,7 @@
     "test/browser/capture_demo.py": "7660cd9defc92fcbfe641ef9edddb9f83390db53b53066f253d223b49b04f54b",
     "test/browser/current-app-runner.test.mjs": "250bc42b36e8203cdac21174af39fbe56ecbab3efdd0f800fd8b4447bc66a6bf",
     "test/browser/current-app.mjs": "41ed9c415edf68697d621f17451f6558968cb2bc324aaad05ceb96d07ef8479c",
-    "test/browser/master-acceptance.mjs": "cfe3027f9800126ccde1d34354ea373ea0845b59ecfa30fed033dc13670799c0",
+    "test/browser/master-acceptance.mjs": "d4d413914cd34f3d6c5fa4b447a22e0a3900449f30fa8ee15a4d93923c5ebd62",
     "test/browser/modules-native.mjs": "58e61f06894ea287b5914d25f6615394c9b191642b0918126621b82b6a367e99",
     "test/browser/modules.mjs": "a41c3a4ef146d2132a1d5ca4364a1f38ea9c0ee504119d3455abd2bd4fb64f5e",
     "test/browser/optical_browser.py": "b6e0ab1a7b67de6993ea73ba0ac110bd7269c333bc8a73b9d55f3c83d2b0a44d",

@@ -132,7 +132,7 @@ async function execute(){
     const before=performance.now();await originalPage.goto(origin+'/original.html');await originalPage.waitForFunction(()=>window.__idfbi?.renderer.frames>0);
     await atlas();await originalPage.locator('[data-do="nav:connect"]').click();await originalPage.locator('#cf-collection').fill(genesis.collection);await originalPage.locator('#cf-token').fill('1');
     await originalPage.locator('#cf-connect-form button[type="submit"]').click();await originalPage.waitForFunction(()=>window.__confluence.wallet.connected);
-    await atlas();await originalPage.locator('[data-do="nav:cartridges"]').click();await originalPage.locator('#cf-cartridge-registry').fill(system.cartridges.target);await originalPage.locator('#cf-cartridge-id').fill(cartridge.id);
+    await atlas();await originalPage.locator('#cf-content > .cf-atlas [data-do="nav:cartridges"]').click();await originalPage.locator('#cf-cartridge-registry').fill(system.cartridges.target);await originalPage.locator('#cf-cartridge-id').fill(cartridge.id);
     await originalPage.locator('[data-do="load-cartridge"]').click();const frame=originalPage.frameLocator('#cf-game-frame');await frame.getByRole('heading',{name:'Lumen Drift',exact:true}).waitFor();
     assert.equal(await frame.locator('body').evaluate(()=>typeof window.ethereum),'undefined');
     assert.equal(await originalPage.locator('#cf-game-frame').getAttribute('sandbox'),'allow-scripts allow-pointer-lock');
@@ -141,7 +141,7 @@ async function execute(){
     assert.ok(await frame.locator('canvas').evaluate(c=>c.width>0&&c.height>0&&[...c.getContext('2d').getImageData(0,0,8,8).data].some(v=>v>0)));
     await frame.getByRole('button',{name:'Restart',exact:true}).click();assert.match(await frame.locator('#message').textContent(),/Gather the light/);
     await originalPage.screenshot({path:path.join(run,'legacy-game-'+cartridge.label+'.png'),fullPage:true});
-    await originalPage.locator('[data-do="nav:cartridges"]').click();assert.equal(await originalPage.locator('#cf-game-frame').count(),0);
+    await originalPage.getByRole('button',{name:'Exit game',exact:true}).click();assert.equal(await originalPage.locator('#cf-game-frame').count(),0);
     await originalPage.locator('#cf-close').click();await originalPage.locator('[data-genesis="interior"]').waitFor({state:'visible'});
     c.timeToPlayedGameMilliseconds=Math.round(performance.now()-before);c.htmlSha256=sdk.sha256(cartridge.bytes);assert.equal(report.transactions.length,0);
   });
