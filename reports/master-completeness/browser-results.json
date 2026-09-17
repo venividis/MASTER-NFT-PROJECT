@@ -1,0 +1,137 @@
+{
+  "schema": "anima.browser-regression/2",
+  "runId": "2026-09-17T01-53-54-810Z-SPIIBv",
+  "reportFile": "/home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT/reports/production/browser/2026-09-17T01-53-54-810Z-SPIIBv/results.json",
+  "startedAt": "2026-09-17T01:53:54.810Z",
+  "finishedAt": "2026-09-17T01:57:17.098Z",
+  "status": "passed",
+  "phase": "finished",
+  "artifact": {
+    "entry": "dist/index.html",
+    "htmlSha256": "89d27f3155400c4d0d17dc81bf1061ddfe8c3b0df1d2558c78b0060428553bfd",
+    "buildManifestSha256": "4c23333162b70f4e8d5f78a2b608c666a4f7dcc794a8b35e811dc2681468082d",
+    "provenance": "verified-current-build"
+  },
+  "requestedProvenance": "verified-current-build",
+  "provenanceVerified": true,
+  "scope": "Chromium desktop and emulated viewports; isolated local app; deterministic rejecting wallet fixture",
+  "exclusions": [
+    "physical phones",
+    "real wallets",
+    "real EVM execution",
+    "external services",
+    "production deployment",
+    "visual beauty approval"
+  ],
+  "plannedCases": [
+    "navigation-desktop",
+    "navigation-phone-emulation",
+    "navigation-landscape-emulation",
+    "wallet-absent",
+    "wallet-connection-rejected-fixture",
+    "wallet-review-cancel-reject-fixture",
+    "local-rehearsal-review-cancel"
+  ],
+  "cases": [
+    {
+      "name": "navigation-desktop",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "details": {
+        "backend": "WebGL 2 · lived field",
+        "instruments": [
+          "trade",
+          "launch",
+          "vault",
+          "memory",
+          "world",
+          "cartridges"
+        ]
+      }
+    },
+    {
+      "name": "navigation-phone-emulation",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "details": {
+        "backend": "WebGL 2 · lived field",
+        "instruments": [
+          "trade",
+          "launch",
+          "vault",
+          "memory",
+          "world",
+          "cartridges"
+        ]
+      }
+    },
+    {
+      "name": "navigation-landscape-emulation",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": [],
+      "details": {
+        "backend": "WebGL 2 · lived field",
+        "instruments": [
+          "trade",
+          "launch",
+          "vault",
+          "memory",
+          "world",
+          "cartridges"
+        ]
+      }
+    },
+    {
+      "name": "wallet-absent",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "name": "wallet-connection-rejected-fixture",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "name": "wallet-review-cancel-reject-fixture",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": []
+    },
+    {
+      "name": "local-rehearsal-review-cancel",
+      "status": "passed",
+      "pageErrors": [],
+      "consoleErrors": [],
+      "externalRequests": [],
+      "failedRequests": [],
+      "httpErrors": []
+    }
+  ],
+  "cleanupErrors": [],
+  "dependencyHooksInjected": false,
+  "browserVersion": "151.0.7922.34",
+  "notRunCases": []
+}

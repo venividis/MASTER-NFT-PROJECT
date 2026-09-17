@@ -1,0 +1,41 @@
+{
+  "schema": "anima.modules-browser/1",
+  "startedAt": "2026-09-17T01:57:17.259Z",
+  "status": "passed",
+  "scope": "Real Chromium, fixture wallet never connects or signs; viewport emulation is not physical-device coverage.",
+  "cases": [
+    {
+      "name": "desktop-workbench-draft-and-inert-gift",
+      "status": "passed"
+    },
+    {
+      "name": "phone-workbench",
+      "status": "passed"
+    },
+    {
+      "name": "html-worker-state-proposal-and-large-dependency",
+      "status": "passed"
+    },
+    {
+      "name": "html-worker-navigation-network-and-wallet-boundary",
+      "status": "passed"
+    },
+    {
+      "name": "html-worker-illegal-dom-and-message-flood-cleanup",
+      "status": "passed"
+    }
+  ],
+  "limitations": [
+    "No actual wallet or public RPC.",
+    "Worker DOM compatibility is a bounded subset, not full browser DOM.",
+    "Memory/process limits are browser best effort."
+  ],
+  "phase": "candidate-recheck",
+  "candidate": {
+    "directory": "/home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT/onchain-app/module-workbench",
+    "manifestSha256": "5fa35524ca0f2ca683c6a8dc88f1d5cbdc1f94362b69a235f244d5d5defb53cb",
+    "htmlSha256": "ec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6"
+  },
+  "browser": "151.0.7922.34",
+  "finishedAt": "2026-09-17T01:57:26.214Z"
+}

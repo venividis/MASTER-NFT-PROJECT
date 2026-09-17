@@ -1,0 +1,45 @@
+{
+  "schema": "anima.state-gas-evidence/1",
+  "commit": "84961c3f0f0112760d900668f3df490ed4b3d9be",
+  "evmProfile": "shanghai",
+  "walletHeadroomPercent": 20,
+  "transactionGasCap": "16777216",
+  "measurements": [
+    {
+      "method": "stageState",
+      "bytes": 32768,
+      "gasUsed": "7713661",
+      "gasLimit": "9461092"
+    },
+    {
+      "method": "stageState",
+      "bytes": 23001,
+      "gasUsed": "5476498",
+      "gasLimit": "6777358"
+    },
+    {
+      "method": "stageState",
+      "bytes": 23000,
+      "gasUsed": "5442605",
+      "gasLimit": "6737595"
+    },
+    {
+      "method": "stageState",
+      "bytes": 1,
+      "gasUsed": "323341",
+      "gasLimit": "417588"
+    },
+    {
+      "method": "stageState",
+      "bytes": 0,
+      "gasUsed": "244430",
+      "gasLimit": "322895"
+    },
+    {
+      "method": "writeState",
+      "bytes": 32768,
+      "gasUsed": "7871459",
+      "gasLimit": "9602817"
+    }
+  ]
+}

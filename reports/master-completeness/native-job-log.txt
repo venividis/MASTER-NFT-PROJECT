@@ -1,0 +1,249 @@
+﻿2026-09-17T01:51:59.0534279Z Current runner version: '2.337.0'
+2026-09-17T01:51:59.0571722Z ##[group]Runner Image Provisioner
+2026-09-17T01:51:59.0573063Z Hosted Compute Agent
+2026-09-17T01:51:59.0573946Z Version: 20260828.587
+2026-09-17T01:51:59.0574890Z Commit: abac92662cab4cc7352de4f9f9d2e2419aad9c29
+2026-09-17T01:51:59.0576126Z Build Date: 2026-08-28T16:44:25Z
+2026-09-17T01:51:59.0577234Z Worker ID: {bce935ef-08af-403c-bbb4-40e4542c60e5}
+2026-09-17T01:51:59.0578372Z Azure Region: eastus2
+2026-09-17T01:51:59.0579330Z ##[endgroup]
+2026-09-17T01:51:59.0581828Z ##[group]Operating System
+2026-09-17T01:51:59.0582937Z Ubuntu
+2026-09-17T01:51:59.0583771Z 24.04.5
+2026-09-17T01:51:59.0584596Z LTS
+2026-09-17T01:51:59.0585427Z ##[endgroup]
+2026-09-17T01:51:59.0586289Z ##[group]Runner Image
+2026-09-17T01:51:59.0587213Z Image: ubuntu-24.04
+2026-09-17T01:51:59.0588121Z Version: 20260907.300.1
+2026-09-17T01:51:59.0590557Z Included Software: https://github.com/actions/runner-images/blob/ubuntu24/20260907.300/images/ubuntu/Ubuntu2404-Readme.md
+2026-09-17T01:51:59.0593619Z Image Release: https://github.com/actions/runner-images/releases/tag/ubuntu24%2F20260907.300
+2026-09-17T01:51:59.0595347Z ##[endgroup]
+2026-09-17T01:51:59.0597146Z ##[group]GITHUB_TOKEN Permissions
+2026-09-17T01:51:59.0600479Z Contents: read
+2026-09-17T01:51:59.0601375Z Metadata: read
+2026-09-17T01:51:59.0602412Z ##[endgroup]
+2026-09-17T01:51:59.0606138Z Secret source: Actions
+2026-09-17T01:51:59.0607634Z Cache mode: write
+2026-09-17T01:51:59.0608975Z Prepare workflow directory
+2026-09-17T01:51:59.1091870Z Prepare all required actions
+2026-09-17T01:51:59.1160286Z Getting action download info
+2026-09-17T01:51:59.4102840Z Download action repository 'actions/checkout@v4' (SHA:11d5960a326750d5838078e36cf38b85af677262)
+2026-09-17T01:51:59.5408179Z Download action repository 'actions/setup-node@v4' (SHA:49933ea5288caeca8642d1e84afbd3f7d6820020)
+2026-09-17T01:51:59.6858351Z Download action repository 'foundry-rs/foundry-toolchain@v1' (SHA:908c540300062bd5a7e473851cdb4282204cee09)
+2026-09-17T01:51:59.9367758Z Download action repository 'actions/upload-artifact@v4' (SHA:ea165f8d65b6e75b540449e92b4886f43607fa02)
+2026-09-17T01:52:00.1755513Z Complete job name: module-solidity
+2026-09-17T01:52:00.2512876Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T01:52:00.2522421Z ##[group]Run actions/checkout@v4
+2026-09-17T01:52:00.2523184Z with:
+2026-09-17T01:52:00.2523696Z   repository: venividis/MASTER-NFT-PROJECT
+2026-09-17T01:52:00.2528384Z   token: ***
+2026-09-17T01:52:00.2528858Z   ssh-strict: true
+2026-09-17T01:52:00.2529335Z   ssh-user: git
+2026-09-17T01:52:00.2529816Z   persist-credentials: true
+2026-09-17T01:52:00.2530517Z   clean: true
+2026-09-17T01:52:00.2531023Z   sparse-checkout-cone-mode: true
+2026-09-17T01:52:00.2531624Z   fetch-depth: 1
+2026-09-17T01:52:00.2532106Z   fetch-tags: false
+2026-09-17T01:52:00.2532588Z   show-progress: true
+2026-09-17T01:52:00.2533082Z   lfs: false
+2026-09-17T01:52:00.2533591Z   submodules: false
+2026-09-17T01:52:00.2534076Z   set-safe-directory: true
+2026-09-17T01:52:00.2534617Z   allow-unsafe-pr-checkout: false
+2026-09-17T01:52:00.2535434Z ##[endgroup]
+2026-09-17T01:52:00.3729680Z Syncing repository: venividis/MASTER-NFT-PROJECT
+2026-09-17T01:52:00.3734512Z ##[group]Getting Git version info
+2026-09-17T01:52:00.3739301Z Working directory is '/home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT'
+2026-09-17T01:52:00.3743086Z [command]/usr/bin/git version
+2026-09-17T01:52:00.3889159Z git version 2.55.0
+2026-09-17T01:52:00.3923640Z ##[endgroup]
+2026-09-17T01:52:00.3941619Z Temporarily overriding HOME='/home/runner/work/_temp/fa519a61-e1f3-472a-98aa-2eaab2be34f3' before making global git config changes
+2026-09-17T01:52:00.3945184Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-17T01:52:00.3948473Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT
+2026-09-17T01:52:00.4010077Z Deleting the contents of '/home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT'
+2026-09-17T01:52:00.4014250Z ##[group]Initializing the repository
+2026-09-17T01:52:00.4016226Z [command]/usr/bin/git init /home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT
+2026-09-17T01:52:00.4142316Z hint: Using 'master' as the name for the initial branch. This default branch name
+2026-09-17T01:52:00.4166727Z hint: will change to "main" in Git 3.0. To configure the initial branch name
+2026-09-17T01:52:00.4172142Z hint: to use in all of your new repositories, which will suppress this warning,
+2026-09-17T01:52:00.4174094Z hint: call:
+2026-09-17T01:52:00.4198721Z hint:
+2026-09-17T01:52:00.4209674Z hint: 	git config --global init.defaultBranch <name>
+2026-09-17T01:52:00.4211417Z hint:
+2026-09-17T01:52:00.4213268Z hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+2026-09-17T01:52:00.4216338Z hint: 'development'. The just-created branch can be renamed via this command:
+2026-09-17T01:52:00.4219208Z hint:
+2026-09-17T01:52:00.4222822Z hint: 	git branch -m <name>
+2026-09-17T01:52:00.4227367Z hint:
+2026-09-17T01:52:00.4228736Z hint: Disable this message with "git config set advice.defaultBranchName false"
+2026-09-17T01:52:00.4232279Z Initialized empty Git repository in /home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT/.git/
+2026-09-17T01:52:00.4236448Z [command]/usr/bin/git remote add origin https://github.com/venividis/MASTER-NFT-PROJECT
+2026-09-17T01:52:00.4239474Z ##[endgroup]
+2026-09-17T01:52:00.4251553Z ##[group]Disabling automatic garbage collection
+2026-09-17T01:52:00.4253342Z [command]/usr/bin/git config --local gc.auto 0
+2026-09-17T01:52:00.4306250Z ##[endgroup]
+2026-09-17T01:52:00.4307528Z ##[group]Setting up auth
+2026-09-17T01:52:00.4308848Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-17T01:52:00.4383576Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-17T01:52:00.4952579Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-17T01:52:00.4957344Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-17T01:52:00.5457693Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-17T01:52:00.5497178Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-17T01:52:00.5806393Z [command]/usr/bin/git config --local http.https://github.com/.extraheader AUTHORIZATION: basic ***
+2026-09-17T01:52:00.5823522Z ##[endgroup]
+2026-09-17T01:52:00.5825759Z ##[group]Fetching the repository
+2026-09-17T01:52:00.5836299Z [command]/usr/bin/git -c protocol.version=2 fetch --no-tags --prune --no-recurse-submodules --depth=1 origin +84961c3f0f0112760d900668f3df490ed4b3d9be:refs/remotes/origin/main
+2026-09-17T01:52:08.9691248Z From https://github.com/venividis/MASTER-NFT-PROJECT
+2026-09-17T01:52:08.9701605Z  * [new ref]         84961c3f0f0112760d900668f3df490ed4b3d9be -> origin/main
+2026-09-17T01:52:08.9705384Z ##[endgroup]
+2026-09-17T01:52:08.9706450Z ##[group]Determining the checkout info
+2026-09-17T01:52:08.9707932Z ##[endgroup]
+2026-09-17T01:52:08.9709254Z [command]/usr/bin/git sparse-checkout disable
+2026-09-17T01:52:08.9768633Z [command]/usr/bin/git config --local --unset-all extensions.worktreeConfig
+2026-09-17T01:52:08.9807270Z ##[group]Checking out the ref
+2026-09-17T01:52:08.9811442Z [command]/usr/bin/git checkout --progress --force -B main refs/remotes/origin/main
+2026-09-17T01:52:09.6188930Z Switched to a new branch 'main'
+2026-09-17T01:52:09.6201867Z branch 'main' set up to track 'origin/main'.
+2026-09-17T01:52:09.6223494Z ##[endgroup]
+2026-09-17T01:52:09.6275369Z [command]/usr/bin/git log -1 --format=%H
+2026-09-17T01:52:09.6305923Z 84961c3f0f0112760d900668f3df490ed4b3d9be
+2026-09-17T01:52:09.6681539Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T01:52:09.6683346Z ##[group]Run actions/setup-node@v4
+2026-09-17T01:52:09.6683620Z with:
+2026-09-17T01:52:09.6683851Z   node-version: 24.19.0
+2026-09-17T01:52:09.6684089Z   cache: npm
+2026-09-17T01:52:09.6684317Z   always-auth: false
+2026-09-17T01:52:09.6684548Z   check-latest: false
+2026-09-17T01:52:09.6687448Z   token: ***
+2026-09-17T01:52:09.6687662Z ##[endgroup]
+2026-09-17T01:52:09.8186358Z Attempting to download 24.19.0...
+2026-09-17T01:52:09.8344000Z (node:2025) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-17T01:52:09.8361311Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-17T01:52:10.4096624Z Acquiring 24.19.0 - x64 from https://github.com/actions/node-versions/releases/download/24.19.0-30872449280/node-24.19.0-linux-x64.tar.gz
+2026-09-17T01:52:11.0670366Z Extracting ...
+2026-09-17T01:52:11.0807083Z [command]/usr/bin/tar xz --strip 1 --warning=no-unknown-keyword --overwrite -C /home/runner/work/_temp/b0d060c8-02e6-4b33-8634-b1a9c1572e59 -f /home/runner/work/_temp/85b2edf4-d3b3-4242-b9e0-f9095ec6cb63
+2026-09-17T01:52:12.5136945Z Adding to the cache ...
+2026-09-17T01:52:14.7652649Z ##[group]Environment details
+2026-09-17T01:52:15.0581310Z node: v24.19.0
+2026-09-17T01:52:15.0582122Z npm: 11.17.0
+2026-09-17T01:52:15.0582828Z yarn: 1.22.22
+2026-09-17T01:52:15.0583816Z ##[endgroup]
+2026-09-17T01:52:15.0616044Z [command]/opt/hostedtoolcache/node/24.19.0/x64/bin/npm config get cache
+2026-09-17T01:52:15.1611078Z /home/runner/.npm
+2026-09-17T01:52:15.2479060Z Cache hit for: node-cache-Linux-x64-npm-0b1d7bdde6e4c6c1e9e56df5eeb5e4fcc5a615ce84d6eb1c543614e736950616
+2026-09-17T01:52:15.2600270Z (node:2025) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-17T01:52:15.9662246Z Received 106374665 of 106374665 (100.0%), 153.9 MBs/sec
+2026-09-17T01:52:15.9663143Z Cache Size: ~101 MB (106374665 B)
+2026-09-17T01:52:15.9741195Z [command]/usr/bin/tar -xf /home/runner/work/_temp/3d1104af-1634-46de-9c58-567bda69f353/cache.tzst -P -C /home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT --use-compress-program unzstd
+2026-09-17T01:52:16.2670193Z Cache restored successfully
+2026-09-17T01:52:16.2732538Z Cache restored from key: node-cache-Linux-x64-npm-0b1d7bdde6e4c6c1e9e56df5eeb5e4fcc5a615ce84d6eb1c543614e736950616
+2026-09-17T01:52:16.2999634Z ##[group]Run npm ci --ignore-scripts
+2026-09-17T01:52:16.3000866Z [36;1mnpm ci --ignore-scripts[0m
+2026-09-17T01:52:16.3049006Z shell: /usr/bin/bash -e {0}
+2026-09-17T01:52:16.3049294Z ##[endgroup]
+2026-09-17T01:52:22.6573673Z 
+2026-09-17T01:52:22.6583311Z added 362 packages, and audited 392 packages in 6s
+2026-09-17T01:52:22.6585421Z 
+2026-09-17T01:52:22.6586007Z 13 packages are looking for funding
+2026-09-17T01:52:22.6586887Z   run `npm fund` for details
+2026-09-17T01:52:22.7046287Z 
+2026-09-17T01:52:22.7047541Z 36 vulnerabilities (2 low, 6 moderate, 23 high, 5 critical)
+2026-09-17T01:52:22.7048602Z 
+2026-09-17T01:52:22.7049260Z To address issues that do not require attention, run:
+2026-09-17T01:52:22.7050350Z   npm audit fix
+2026-09-17T01:52:22.7050782Z 
+2026-09-17T01:52:22.7051383Z To address all issues (including breaking changes), run:
+2026-09-17T01:52:22.7052253Z   npm audit fix --force
+2026-09-17T01:52:22.7053407Z 
+2026-09-17T01:52:22.7053930Z Run `npm audit` for details.
+2026-09-17T01:52:22.7980825Z ##[group]Run foundry-rs/foundry-toolchain@v1
+2026-09-17T01:52:22.7981183Z with:
+2026-09-17T01:52:22.7981409Z   version: v1.7.1
+2026-09-17T01:52:22.7981637Z   cache: false
+2026-09-17T01:52:22.7981858Z   network: ethereum
+2026-09-17T01:52:22.7982200Z   cache-key: module-solidity-84961c3f0f0112760d900668f3df490ed4b3d9be
+2026-09-17T01:52:22.7982622Z   cache-restore-keys: module-solidity-
+2026-09-17T01:52:22.7982906Z ##[endgroup]
+2026-09-17T01:52:22.9348934Z Installing Foundry (version: v1.7.1)
+2026-09-17T01:52:22.9352789Z Downloading foundryup installer from foundry-rs/foundryup@a27902ef04dcb43061fabf343365cb5afc95fc48...
+2026-09-17T01:52:22.9892466Z Running foundryup installer...
+2026-09-17T01:52:24.2963986Z Running: foundryup --install 1.7.1
+2026-09-17T01:52:26.7359213Z Added /home/runner/.foundry/bin to PATH
+2026-09-17T01:52:26.7367826Z Cache not requested, not restoring cache
+2026-09-17T01:52:26.7381814Z Running: forge --version
+2026-09-17T01:52:26.7411646Z forge Version: 1.7.1
+2026-09-17T01:52:26.7412626Z Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8
+2026-09-17T01:52:26.7413801Z Build Timestamp: 2026-05-08T07:50:55.527285345Z (1778226655)
+2026-09-17T01:52:26.7421351Z Build Profile: dist
+2026-09-17T01:52:26.7440824Z Running: cast --version
+2026-09-17T01:52:26.7505077Z cast Version: 1.7.1
+2026-09-17T01:52:26.7505735Z Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8
+2026-09-17T01:52:26.7519691Z Build Timestamp: 2026-05-08T07:50:55.527285345Z (1778226655)
+2026-09-17T01:52:26.7520648Z Build Profile: dist
+2026-09-17T01:52:26.7540748Z Running: anvil --version
+2026-09-17T01:52:26.7555130Z anvil Version: 1.7.1
+2026-09-17T01:52:26.7555932Z Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8
+2026-09-17T01:52:26.7557062Z Build Timestamp: 2026-05-08T07:50:55.527285345Z (1778226655)
+2026-09-17T01:52:26.7557880Z Build Profile: dist
+2026-09-17T01:52:26.7571430Z Running: chisel --version
+2026-09-17T01:52:26.7621473Z chisel Version: 1.7.1
+2026-09-17T01:52:26.7640736Z Commit SHA: 4072e48705af9d93e3c0f6e29e93b5e9a40caed8
+2026-09-17T01:52:26.7654048Z Build Timestamp: 2026-05-08T07:50:55.527285345Z (1778226655)
+2026-09-17T01:52:26.7655066Z Build Profile: dist
+2026-09-17T01:52:26.7751202Z ##[group]Run FORGE_BIN="$(command -v forge)" npm run test:modules:native
+2026-09-17T01:52:26.7751753Z [36;1mFORGE_BIN="$(command -v forge)" npm run test:modules:native[0m
+2026-09-17T01:52:26.7792816Z shell: /usr/bin/bash -e {0}
+2026-09-17T01:52:26.7793102Z ##[endgroup]
+2026-09-17T01:52:26.8870626Z 
+2026-09-17T01:52:26.8871368Z > master-nft-project@7.0.0 test:modules:native
+2026-09-17T01:52:26.8872511Z > node scripts/test-modules-native.mjs
+2026-09-17T01:52:26.8873170Z 
+2026-09-17T01:52:43.9812158Z Native module tests: passed (7 passed, 0 failed, 0 skipped, 64 fuzz runs)
+2026-09-17T01:52:43.9816447Z Native module evidence: /home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT/.local-genesis/modules-native/2026-09-17T01-52-26.924Z-03741fc2/results.json
+2026-09-17T01:52:43.9970237Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T01:52:43.9971529Z ##[group]Run actions/upload-artifact@v4
+2026-09-17T01:52:43.9971819Z with:
+2026-09-17T01:52:43.9972051Z   name: module-solidity-evidence
+2026-09-17T01:52:43.9972331Z   include-hidden-files: true
+2026-09-17T01:52:43.9972616Z   path: .local-genesis/modules-native/
+2026-09-17T01:52:43.9972902Z   if-no-files-found: warn
+2026-09-17T01:52:43.9973150Z   compression-level: 6
+2026-09-17T01:52:43.9973383Z   overwrite: false
+2026-09-17T01:52:43.9973611Z ##[endgroup]
+2026-09-17T01:52:44.1753479Z (node:2244) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-17T01:52:44.1755840Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-17T01:52:44.2363537Z With the provided path, there will be 20 files uploaded
+2026-09-17T01:52:44.2364623Z Artifact name is valid!
+2026-09-17T01:52:44.2365263Z Root directory input is valid!
+2026-09-17T01:52:44.4192591Z Beginning upload of artifact content to blob storage
+2026-09-17T01:52:44.4814236Z (node:2244) [DEP0169] DeprecationWarning: `url.parse()` behavior is not standardized and prone to errors that have security implications. Use the WHATWG URL API instead. CVEs are not issued for `url.parse()` vulnerabilities.
+2026-09-17T01:52:44.5403649Z Uploaded bytes 97852
+2026-09-17T01:52:44.5603867Z Finished uploading artifact content to blob storage!
+2026-09-17T01:52:44.5621553Z SHA256 digest of uploaded artifact zip is b2b2393827d6fb3848fc71a6529d79558f004f7658382bf655b02259c9c9d7f8
+2026-09-17T01:52:44.5622758Z Finalizing artifact upload
+2026-09-17T01:52:44.7599125Z Artifact module-solidity-evidence.zip successfully finalized. Artifact ID 10476908133
+2026-09-17T01:52:44.7601194Z Artifact module-solidity-evidence has been successfully uploaded! Final size is 97852 bytes. Artifact ID is 10476908133
+2026-09-17T01:52:44.7617210Z Artifact download URL: https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35172184548/artifacts/10476908133
+2026-09-17T01:52:44.7785621Z Post job cleanup.
+2026-09-17T01:52:44.9098301Z Cache not requested, not saving cache
+2026-09-17T01:52:44.9218530Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T01:52:44.9219713Z Post job cleanup.
+2026-09-17T01:52:45.0559138Z (node:2264) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+2026-09-17T01:52:45.0561034Z (Use `node --trace-deprecation ...` to show where the warning was created)
+2026-09-17T01:52:45.0563111Z Cache hit occurred on the primary key node-cache-Linux-x64-npm-0b1d7bdde6e4c6c1e9e56df5eeb5e4fcc5a615ce84d6eb1c543614e736950616, not saving cache.
+2026-09-17T01:52:45.0714488Z Node 20 is being deprecated. This workflow is running with Node 24 by default. If you need to temporarily use Node 20, you can set the ACTIONS_ALLOW_USE_UNSECURE_NODE_VERSION=true environment variable. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/
+2026-09-17T01:52:45.0715668Z Post job cleanup.
+2026-09-17T01:52:45.1759529Z [command]/usr/bin/git version
+2026-09-17T01:52:45.1820875Z git version 2.55.0
+2026-09-17T01:52:45.1875901Z Temporarily overriding HOME='/home/runner/work/_temp/5f6bd493-5415-4bab-936e-1a26093eeaf3' before making global git config changes
+2026-09-17T01:52:45.1881899Z Adding repository directory to the temporary git global config as a safe directory
+2026-09-17T01:52:45.1883688Z [command]/usr/bin/git config --global --add safe.directory /home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT
+2026-09-17T01:52:45.1971113Z [command]/usr/bin/git config --local --name-only --get-regexp core\.sshCommand
+2026-09-17T01:52:45.2061658Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'core\.sshCommand' && git config --local --unset-all 'core.sshCommand' || :"
+2026-09-17T01:52:45.2395549Z [command]/usr/bin/git config --local --name-only --get-regexp http\.https\:\/\/github\.com\/\.extraheader
+2026-09-17T01:52:45.2454125Z http.https://github.com/.extraheader
+2026-09-17T01:52:45.2466996Z [command]/usr/bin/git config --local --unset-all http.https://github.com/.extraheader
+2026-09-17T01:52:45.2553504Z [command]/usr/bin/git submodule foreach --recursive sh -c "git config --local --name-only --get-regexp 'http\.https\:\/\/github\.com\/\.extraheader' && git config --local --unset-all 'http.https://github.com/.extraheader' || :"
+2026-09-17T01:52:45.2990891Z [command]/usr/bin/git config --local --name-only --get-regexp ^includeIf\.gitdir:
+2026-09-17T01:52:45.3045602Z [command]/usr/bin/git submodule foreach --recursive git config --local --show-origin --name-only --get-regexp remote.origin.url
+2026-09-17T01:52:45.3876632Z Cleaning up orphan processes
+2026-09-17T01:52:45.4162185Z ##[warning]Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: actions/checkout@v4, actions/setup-node@v4, actions/upload-artifact@v4. For more information see: https://github.blog/changelog/2025-09-19-deprecation-of-node-20-on-github-actions-runners/

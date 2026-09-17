@@ -1,0 +1,12 @@
+{
+  "schema": "anima.native-verification/1",
+  "commit": "84961c3f0f0112760d900668f3df490ed4b3d9be",
+  "runId": 35172184548,
+  "jobId": 105046013793,
+  "status": "passed",
+  "passed": 7,
+  "failed": 0,
+  "skipped": 0,
+  "fixedSeedFuzzRuns": 64,
+  "logFile": "native-job-log.txt"
+}

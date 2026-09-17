@@ -1,0 +1,83 @@
+✔ a full 32 KiB state snapshot reaches exact reviewed calldata without increasing frame request limits (46.1106ms)
+✔ a draft for an unactivated version cannot be written under the installed version schema (5.245042ms)
+✔ finite decimal draft state survives both reviewed save and migration calldata (7.495638ms)
+✔ reviewed state preserves the full draft depth limit without expanding frame request depth (8.551539ms)
+✔ state snapshots require an enabled release and its verified nonzero schema (3.37583ms)
+✔ malformed public releases are isolated rows and cannot hide later valid releases (15.546918ms)
+✔ journal transaction encoding preserves explicit public/encrypted modes and exact payload bytes (95.980486ms)
+✔ journal review rejects invalid encrypted packets, another custody epoch and unspecified privacy (91.284296ms)
+✔ native evidence counts successful, failed and skipped cases and actual fuzz executions (1.855492ms)
+✔ native evidence rejects missing, truncated, empty and unknown test summaries (0.524635ms)
+✔ the npm JavaScript wrapper cannot be accepted as a native executable (0.760133ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ an already minted native ANIMA acquires a 48 KiB three-chunk edition through the unchanged wallet and launcher (72206.01766ms)
+ℹ {"nativeMintBlock":16,"registryDeploymentBlock":17,"htmlBytes":49152,"chunks":3,"legacyWalletAndLauncher":"unmodified source executed in Node DOM harness","masterSupply":"1","currentEpoch":"2","originalSourceAndBindings":"unchanged","normalAccountAudit":"advanced"}
+✔ chunked publication rejects missing, oversized, non-data, reordered or hash-mismatched bytes without minting (2016.370505ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ offline module planning validates exact bytes, constructor limits and explicit testnet identity (258.910115ms)
+✔ operator planning binds current compilation and independently rebuilt workbench, rejecting self-consistent substituted bytes (1632.73282ms)
+✔ exact unsigned module-system plan deploys beside an existing native NFT and independently recovers its workbench (13530.248819ms)
+✔ HTML archive scripts never run in the navigable frame; only one trusted bootstrap runs with restrictive CSP (6.8264ms)
+✔ HTML package asset resolution rejects remote paths and executable imports; markup cannot supply host DOM URL mutations (1.998484ms)
+✔ worker DOM subset executes an independent tool and exposes no fetch, child worker or navigation-capable window (5.231853ms)
+✔ workbench shells have unique scoped form labels, separate signing and migration consent, and no autoconnect markup (13.443171ms)
+✔ typed examples consume a recovered shared onchain-style dependency and preserve its actual audio values (12.16463ms)
+✔ a declared zero-byte state budget never expands to the default allowance (0.555852ms)
+✔ host permits declared reads and isolated state but rejects wallet/RPC requests, escalation and replay (3.317373ms)
+✔ ownership/epoch change during an awaited request closes resources before any local write (0.367383ms)
+✔ proposals are exact inert review requests and the host rejects malformed destination/calldata/value (0.711782ms)
+✔ only verified package/dependency bytes are readable; unrelated releases, traversal and oversize reads fail (0.670751ms)
+✔ state survives compatible releases and remains isolated by token, module and schema; migration is explicit and stale previews fail (0.722798ms)
+✔ review creation never sends; confirmation rechecks custody, consumes approvals and drops stale async preparations (3.82254ms)
+✔ message transport closes its port on a bounded queue flood, including a stalled authorization (0.442875ms)
+✔ typed runtime rejects executable entrypoints, URLs, unknown actions and excessive audio (0.856246ms)
+✔ renderer uses an opaque sandbox, a source+nonce handshake, and cleanup removes the frame and timers (0.851839ms)
+✔ public publication preserves the raw text and enforces the UTF-8 bound (1.864356ms)
+✔ encrypted transaction bytes contain no plaintext/passphrase and canonical export recovers exact text (177.529266ms)
+✔ wrong passphrase, authenticated header changes and ciphertext damage fail closed (455.868401ms)
+✔ maximum text recovers exactly through the existing padded memory format (169.65658ms)
+✔ npm distributable SDK imports outside the source tree with no installed dependencies and verifies exact module bytes (173.361195ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ native NFT: SDK publishes, recovers only selected closure, saves/migrates state and reconstructs public history (54236.013412ms)
+✔ invalid byte budgets fail before any chain request (0.788205ms)
+✔ public deployment plan executes with dedupe and reconciles receipts without a private key (2081.523908ms)
+✔ portable digest matches independent SHA-256 for empty, boundary and binary inputs (10.392241ms)
+✔ canonical manifest commits capabilities, entrypoint, exact dependencies and format (13.680101ms)
+✔ packaging is deterministic and verifies raw and gzip without executing payloads (4.865502ms)
+✔ unsafe paths, duplicate files, absent entrypoints/imports and unsupported permissions fail (2.659011ms)
+✔ stored corruption and bounded decompression fail before any code is returned (19.24076ms)
+✔ HTML packaging preserves exact original bytes and enforces the old host bound (1.861742ms)
+✔ dependency closure fetches only selected releases and detects substitution/bounds (4.055063ms)
+✔ chunk plans reuse repeated payloads and supplied addresses without changing order (8.389351ms)
+ℹ tests 47
+ℹ suites 0
+ℹ pass 47
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 74972.006569

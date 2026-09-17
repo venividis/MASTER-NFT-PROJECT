@@ -1,0 +1,29 @@
+{
+  "schema": "anima.completeness-local-evidence/1",
+  "gitTree": "185169b268806de66cfd533f3283af64e3665481",
+  "remoteCommit": "84961c3f0f0112760d900668f3df490ed4b3d9be",
+  "moduleTests": {
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0
+  },
+  "sourceFiles": 3462,
+  "compiledArtifacts": 204,
+  "onchainChunks": 101,
+  "runtimeSha256": "7ca876f33243c460d3527c0fdd6b8d01d7a0a84b62da5e63b8f66ab4e5cd5fb0",
+  "workbenchSha256": "ec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6",
+  "workbenchBytes": 707014,
+  "publicABIUnchanged": [
+    "ModuleStateStore",
+    "TokenModuleRegistry"
+  ],
+  "originalBytecodeUnchanged": [
+    "IDontFuckingBelieveIt",
+    "SovereignAccount",
+    "SovereignAccountFactory",
+    "ConfluenceRenderer"
+  ],
+  "transactionGasCap": 16777216,
+  "maximumSnapshotGasUsed": 7871459,
+  "maximumSnapshotReviewedGasLimit": 9602817
+}

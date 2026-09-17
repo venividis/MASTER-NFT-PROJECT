@@ -1,0 +1,166 @@
+{
+  "schema": "anima.ci-full-validation-evidence/1",
+  "runId": 35172184548,
+  "headSha": "84961c3f0f0112760d900668f3df490ed4b3d9be",
+  "gitTree": "185169b268806de66cfd533f3283af64e3665481",
+  "runUrl": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35172184548",
+  "jobId": 105046013650,
+  "jobUrl": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35172184548/job/105046013650",
+  "jobConclusion": "success",
+  "startedAt": "2026-09-17T01:51:58Z",
+  "completedAt": "2026-09-17T02:17:34Z",
+  "elapsedSeconds": 1536.0,
+  "status": "passed-local-validation",
+  "fullLocalValidationPassed": true,
+  "verdictEvidence": "The decoded job log contains the final passed-local-validation verdict and every expected stage passed; the job and workflow API conclusions are success.",
+  "counts": {
+    "passed": 24,
+    "failed": 0,
+    "blocked": 0,
+    "notSelected": 0
+  },
+  "stages": [
+    {
+      "id": "integrity",
+      "status": "passed"
+    },
+    {
+      "id": "setup",
+      "status": "passed"
+    },
+    {
+      "id": "syntax",
+      "status": "passed"
+    },
+    {
+      "id": "static",
+      "status": "passed"
+    },
+    {
+      "id": "compile-core",
+      "status": "passed"
+    },
+    {
+      "id": "compile-v4",
+      "status": "passed"
+    },
+    {
+      "id": "v4-encoder",
+      "status": "passed"
+    },
+    {
+      "id": "build",
+      "status": "passed"
+    },
+    {
+      "id": "verify-compilation",
+      "status": "passed"
+    },
+    {
+      "id": "javascript",
+      "status": "passed"
+    },
+    {
+      "id": "archive",
+      "status": "passed"
+    },
+    {
+      "id": "verify-archive",
+      "status": "passed"
+    },
+    {
+      "id": "local-mint",
+      "status": "passed"
+    },
+    {
+      "id": "master-mint",
+      "status": "passed"
+    },
+    {
+      "id": "fee-router",
+      "status": "passed"
+    },
+    {
+      "id": "v4-launch",
+      "status": "passed"
+    },
+    {
+      "id": "v4-hooks",
+      "status": "passed"
+    },
+    {
+      "id": "v4-normal",
+      "status": "passed"
+    },
+    {
+      "id": "v4-strategies",
+      "status": "passed"
+    },
+    {
+      "id": "official-launch",
+      "status": "passed"
+    },
+    {
+      "id": "communication",
+      "status": "passed"
+    },
+    {
+      "id": "privacy-offline",
+      "status": "passed"
+    },
+    {
+      "id": "native-keccak",
+      "status": "passed"
+    },
+    {
+      "id": "rust",
+      "status": "passed"
+    }
+  ],
+  "testSummaries": {
+    "validationRunner": {
+      "tests": 14,
+      "pass": 14,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "javascript": {
+      "tests": 760,
+      "pass": 760,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "officialLaunch": {
+      "tests": 11,
+      "pass": 11,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "communication": {
+      "tests": 1,
+      "pass": 1,
+      "fail": 0,
+      "cancelled": 0,
+      "skipped": 0,
+      "todo": 0
+    },
+    "rust": {
+      "passed": 9,
+      "failed": 0,
+      "ignored": 0
+    }
+  },
+  "logFile": "complete-local-suite-log.txt",
+  "logSha256": "a5ddae76fb21f0e493e680278ed59d1bd18510ad49c8f80cb3d1b9cc57961952",
+  "runnerEvidencePath": "/home/runner/work/MASTER-NFT-PROJECT/MASTER-NFT-PROJECT/.local-genesis/validation/2026-09-17T01-52-43-144Z-cq35qM/status.json",
+  "limits": [
+    "Disposable local EVM only; no public-chain deployment.",
+    "These results are not an independent security audit."
+  ]
+}

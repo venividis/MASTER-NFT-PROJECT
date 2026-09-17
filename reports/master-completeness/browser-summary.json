@@ -1,0 +1,23 @@
+{
+  "schema": "anima.browser-verification/1",
+  "commit": "84961c3f0f0112760d900668f3df490ed4b3d9be",
+  "gitTree": "185169b268806de66cfd533f3283af64e3665481",
+  "runId": 35172184548,
+  "jobId": 105046013861,
+  "status": "passed",
+  "counts": {
+    "browser": 7,
+    "modules-browser": 5,
+    "modules-native-browser": 1,
+    "full-mint-browser": 4
+  },
+  "totalCases": 17,
+  "reviewedFullRuntimeTransactions": 7,
+  "browser": "151.0.7922.34",
+  "limits": [
+    "Injected local EIP-1193 provider, not an extension or hardware wallet.",
+    "Heap values are sampled main-page JavaScript heap, not total browser/process/worker memory or a guaranteed peak.",
+    "Local RPC/gas/timing observations do not predict public-chain fees, latency or physical-device performance.",
+    "No public deployment or independent security audit."
+  ]
+}

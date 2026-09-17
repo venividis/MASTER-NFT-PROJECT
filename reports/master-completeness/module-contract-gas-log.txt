@@ -1,0 +1,31 @@
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ release publication pins immutable archives and exact versions, without publisher privilege over other namespaces (32663.977339ms)
+✔ native NFT owns module selection, atomic state migration, stale reviews and transfer revocation (21967.995943ms)
+✔ release identity has an independently encoded ABI commitment (516.957875ms)
+This version of µWS is not compatible with your Node.js build:
+
+Error: Cannot find module '../binaries/uws_linux_x64_137.node'
+Require stack:
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/node_modules/@trufflesuite/uws-js-unofficial/src/uws.js
+- /workspace/scratch/669fd7d79dc6/MASTER-NFT-PROJECT/node_modules/ganache/dist/node/core.js
+Falling back to a NodeJS implementation; performance may be degraded.
+
+
+✔ maximum direct state and chunk boundaries recover exactly within the transaction gas cap (56336.057175ms)
+ℹ {"transactionGasCap":"16777216","measurements":[{"method":"stageState","bytes":32768,"gasUsed":"7713661","gasLimit":"9461092"},{"method":"stageState","bytes":23001,"gasUsed":"5476498","gasLimit":"6777358"},{"method":"stageState","bytes":23000,"gasUsed":"5442605","gasLimit":"6737595"},{"method":"stageState","bytes":1,"gasUsed":"323341","gasLimit":"417588"},{"method":"stageState","bytes":0,"gasUsed":"244430","gasLimit":"322895"},{"method":"writeState","bytes":32768,"gasUsed":"7871459","gasLimit":"9602817"}]}
+ℹ tests 4
+ℹ suites 0
+ℹ pass 4
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 57095.464326

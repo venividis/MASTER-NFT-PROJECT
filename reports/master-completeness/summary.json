@@ -1,0 +1,114 @@
+{
+  "schema": "anima.master-completeness/1",
+  "status": "passed-local-validation",
+  "testedCommit": "84961c3f0f0112760d900668f3df490ed4b3d9be",
+  "testedGitTree": "185169b268806de66cfd533f3283af64e3665481",
+  "runId": 35172184548,
+  "runUrl": "https://github.com/venividis/MASTER-NFT-PROJECT/actions/runs/35172184548",
+  "workflowConclusion": "success",
+  "recordedAt": "2026-09-17T02:20:01.994954+00:00",
+  "evidenceCommitScope": "Documentation, retained evidence and the source inventory only; executable source and generated artifacts are unchanged from testedCommit.",
+  "completeSuite": {
+    "report": "complete-local-suite-summary.json",
+    "counts": {
+      "passed": 24,
+      "failed": 0,
+      "blocked": 0,
+      "notSelected": 0
+    },
+    "testSummaries": {
+      "validationRunner": {
+        "tests": 14,
+        "pass": 14,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "javascript": {
+        "tests": 760,
+        "pass": 760,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "officialLaunch": {
+        "tests": 11,
+        "pass": 11,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "communication": {
+        "tests": 1,
+        "pass": 1,
+        "fail": 0,
+        "cancelled": 0,
+        "skipped": 0,
+        "todo": 0
+      },
+      "rust": {
+        "passed": 9,
+        "failed": 0,
+        "ignored": 0
+      }
+    }
+  },
+  "browser": {
+    "report": "browser-summary.json",
+    "passed": 17,
+    "groups": {
+      "browser": 7,
+      "modules-browser": 5,
+      "modules-native-browser": 1,
+      "full-mint-browser": 4
+    }
+  },
+  "nativeSolidity": {
+    "report": "native-summary.json",
+    "passed": 7,
+    "failed": 0,
+    "skipped": 0,
+    "fixedSeedFuzzRuns": 64
+  },
+  "moduleRegression": {
+    "report": "local-evidence.json",
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0,
+    "note": "The focused 51-test run is also included in the root JavaScript suite; do not add it again to that total."
+  },
+  "maximumDirectState": {
+    "bytes": 32768,
+    "gasUsed": 7871459,
+    "reviewedGasLimit": 9602817,
+    "gasCap": 16777216,
+    "report": "state-gas-results.json",
+    "evmProfile": "shanghai"
+  },
+  "distribution": {
+    "compiledArtifacts": 204,
+    "onchainChunks": 101,
+    "workbenchBytes": 707014,
+    "workbenchSha256": "ec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6",
+    "sourceInventoryFilesAtTestedCommit": 3462
+  },
+  "publicABIUnchanged": [
+    "ModuleStateStore",
+    "TokenModuleRegistry"
+  ],
+  "originalBytecodeUnchanged": [
+    "IDontFuckingBelieveIt",
+    "SovereignAccount",
+    "SovereignAccountFactory",
+    "ConfluenceRenderer"
+  ],
+  "limits": [
+    "Injected local EIP-1193 provider, not an extension or hardware wallet.",
+    "Heap values are sampled main-page JavaScript heap, not total browser/process/worker memory or a guaranteed peak.",
+    "Local RPC/gas/timing observations do not predict public-chain fees, latency or physical-device performance.",
+    "No public deployment or independent security audit."
+  ]
+}
