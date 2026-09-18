@@ -8,6 +8,9 @@ proof-kernel/target/
 coverage/
 .cache/
 web/deployment.local.json
+sepolia-plan*.json
+sepolia-journal*.json
+sepolia-mint*.json
 
 __pycache__/
 *.pyc
