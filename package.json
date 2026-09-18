@@ -8,6 +8,7 @@
     "node": ">=22.13"
   },
   "scripts": {
+    "sepolia": "node scripts/sepolia.mjs",
     "modules:build": "node scripts/modules-build-workbench.mjs",
     "modules:package": "node scripts/modules-package.mjs",
     "modules:recover": "node scripts/modules-recover.mjs",
