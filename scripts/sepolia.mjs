@@ -54,8 +54,8 @@ Prepare a complete Genesis + module-system plan (no signing):
 Deploy or safely resume the reviewed plan:
   SEPOLIA_DEPLOYER_PRIVATE_KEY=... npm run sepolia -- deploy --rpc URL --plan sepolia-plan.json --journal sepolia-journal.json --confirm DEPLOY_ANIMA_TO_SEPOLIA
 
-Mint NFT #1 after deployment (the recovery file stores the reveal secret):
-  SEPOLIA_DEPLOYER_PRIVATE_KEY=... npm run sepolia -- mint --rpc URL --plan sepolia-plan.json --recovery sepolia-mint.json --confirm MINT_ANIMA_ON_SEPOLIA [--endowment-wei 0]
+Mint an NFT after deployment (use a distinct recovery file for every mint):
+  SEPOLIA_DEPLOYER_PRIVATE_KEY=... npm run sepolia -- mint --rpc URL --plan sepolia-plan.json --recovery sepolia-mint-1.json --recipient 0x... --confirm MINT_ANIMA_ON_SEPOLIA [--endowment-wei 0]
 
 The runner rejects every chain except Ethereum Sepolia. Keep plans/journals, never commit the
 private key or mint recovery file, and fund the deployer with enough Sepolia ETH before deploy.`;
@@ -149,13 +149,15 @@ async function mint(args) {
   let recovery = fs.existsSync(recoveryFile) ? readJson(recoveryFile) : null;
   if (!recovery) {
     const secret = '0x' + crypto.randomBytes(32).toString('hex');
+    const recipient = getAddress(required(args, 'recipient'));
     recovery = {schema: 'anima.sepolia-mint-recovery/1', chainId: CHAIN_ID, collection: bundle.collection,
-      awakener: wallet.address, recipient: wallet.address, secret, endowmentWei: String(args['endowment-wei'] ?? '0')};
+      awakener: wallet.address, recipient, secret, endowmentWei: String(args['endowment-wei'] ?? '0')};
     atomicWrite(recoveryFile, recovery);
     console.log('Saved mint recovery file before submission: ' + recoveryFile);
   }
   if (recovery.schema !== 'anima.sepolia-mint-recovery/1' || recovery.chainId !== CHAIN_ID ||
-      getAddress(recovery.collection) !== getAddress(bundle.collection) || getAddress(recovery.awakener) !== wallet.address) fail('Mint recovery file does not match this plan and signer.');
+      getAddress(recovery.collection) !== getAddress(bundle.collection) || getAddress(recovery.awakener) !== wallet.address ||
+      (typeof args.recipient === 'string' && getAddress(recovery.recipient) !== getAddress(args.recipient))) fail('Mint recovery file does not match this plan, signer, and recipient.');
   const artifact = readJson('contracts/artifacts/IDontFuckingBelieveIt.json');
   const collection = new Contract(bundle.collection, artifact.abi, wallet);
   if (!recovery.commitHash) {
