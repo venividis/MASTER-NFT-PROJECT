@@ -1,0 +1,215 @@
+{
+  "schema": "anima.public-deployment/1",
+  "network": "Ethereum Sepolia",
+  "chainId": 11155111,
+  "updatedAt": "2026-09-20T00:00:00.000Z",
+  "deployer": "0xc591C669162cD4da8aB9BfA2c2e68d538A312C00",
+  "collection": {
+    "address": "0xCB8Dc18d3Ca5C9c2aeA16c94fa0af6EF4dfc0aC6",
+    "sovereignAccountFactory": "0xd99D2e1aee792e074ff34495627D6213737e52d2",
+    "tokenIds": [
+      "1",
+      "2",
+      "3"
+    ]
+  },
+  "moduleSystem": {
+    "planSha256": "0xaeafbf232b8b933d5b3096eaae6bf394f4a073349c7e96a69ba095f9f0e4db22",
+    "ModuleArchiveFactory": "0x7751D929adeE4Ec9AA78505d5E9E047a510e27b1",
+    "ExtensionReleaseRegistry": "0x0bBdD0Ac5c95e1Bd42A620BDc5C432aBC2D76e9c",
+    "TokenModuleRegistry": "0x2ECcA4AE5AE809328703c624e7E82963EF4Ad8e1",
+    "ModuleStateStore": "0xf7acB81FD2610C7887bb1962bfD809a96DcF3264",
+    "ChunkedCartridgeRegistry": "0xD66A2D34AFF5d71cA27A80256e0Dfc223Ba5C4E1",
+    "ArtifactBinding": "0xCDd59f365788F271e73F366bC4eA2747F9B5f6D9",
+    "WorkbenchArchive": "0x5867e5A3B372CC17cc34e4130FdE583DF9822bED",
+    "ModuleWorkbench": "0x1d2bad62Fe47a63b7a2e51E03959a50B8767C2aD",
+    "transactions": [
+      {
+        "id": "deploy:ModuleArchiveFactory",
+        "hash": "0x5033d3d7d1ac39c3209266c2f916e56b3e0b5e1d0599769880636481011b281a",
+        "blockNumber": 11742089
+      },
+      {
+        "id": "deploy:ExtensionReleaseRegistry",
+        "hash": "0x003ce0995aff6964eb301b5dcd40fd8c77bbba613995a28ffa8f24f988524ac9",
+        "blockNumber": 11742092
+      },
+      {
+        "id": "deploy:TokenModuleRegistry",
+        "hash": "0xc4eb0290de6b10342f7a2e425676268f252ae492fa0bc84da116bf07aef091fe",
+        "blockNumber": 11742113
+      },
+      {
+        "id": "deploy:ChunkedCartridgeRegistry",
+        "hash": "0x4916da7c64b4bbfa5a77e148a2cca3a2d7715cb12b94aed76b367e576d5e8209",
+        "blockNumber": 11742114
+      },
+      {
+        "id": "chunk:0xd31b4ab828080fdfd56269c6f043a970541744b222a78114aeb09b02eb05017e",
+        "hash": "0xc58895b30cac6916b8b27efeda68243d89549f97c6d4bee2cb3831a33f7b7c52",
+        "blockNumber": 11742115
+      },
+      {
+        "id": "chunk:0x48f42010c4307ce79cc4df0e432ecb3bd74cbf2b3eaed9b6667ea98b2bf9f7a2",
+        "hash": "0xbce3506dcdcf946a31a877cc342b3756086c156ad6925f55a2a34b19ed6df4b5",
+        "blockNumber": 11742116
+      },
+      {
+        "id": "chunk:0x7681628a5eac39b7d3ff0b2554cad13d4c642ee7102ea289fc11be67cba74186",
+        "hash": "0xf2b844c43a64e227cf7a2120c1a40917d1b2816faf5adbfa113c3a1502b803ac",
+        "blockNumber": 11742117
+      },
+      {
+        "id": "chunk:0xfa78bcc91e241c62814050590e8a4a287c6910113b24c7ff48cf2fc8d60379cd",
+        "hash": "0x81b334f3e65e670a2b7161dd6fe8177a4896009e0fb21d2dea4c9f1083925a29",
+        "blockNumber": 11742118
+      },
+      {
+        "id": "chunk:0x24d212594c30757b9b2a4559cfb07fe6a73ef04e885379e79cb94ee110e767a6",
+        "hash": "0x4adb498e4682d737be3d04d8ec5b570f2b150ef40ff844836155a13f7ccb8a07",
+        "blockNumber": 11742119
+      },
+      {
+        "id": "chunk:0x2f02a8a0fc14bd6e5e506d0422feea3546bcfd7c22a0d6e980638dc7b76af0ad",
+        "hash": "0x861d66ce97949474105406023542e2dedab32eb32a171fb7046c654420795cdc",
+        "blockNumber": 11742120
+      },
+      {
+        "id": "chunk:0x8ec1ef094198c2855b54fa4ee52d971e8e013bec285122fe2a92a9f09c4bfa8c",
+        "hash": "0x6184d556407200cb64b41c73bbf85f8f87a2c6f22e67eac3e25fb8934b859b43",
+        "blockNumber": 11742121
+      },
+      {
+        "id": "chunk:0x1f869fdee6958952d8e0d2f27276f31825d8465fd3d99e14de3355b84573baa0",
+        "hash": "0x6fac7f1958c7f7c8ad258696df81b7d647c614eeebc41235d8de63ad718bfb15",
+        "blockNumber": 11742122
+      },
+      {
+        "id": "chunk:0x32cd3c65dff243b020fd89e79c950b1afc2ccfe849e5d48145f49aa9efc88edd",
+        "hash": "0x5fcfc26864347a838f63422da6961f2b5e0362e226cdd556918b49ce84435676",
+        "blockNumber": 11742123
+      },
+      {
+        "id": "chunk:0xc53fc9bf6d121814c5daa08d3a9ad4669c130509d21c12325d63d76c5f44fca5",
+        "hash": "0xf909826593fc56a66f5f0c2da778d5e16993db5b071da1564d95758d951dc54a",
+        "blockNumber": 11742124
+      },
+      {
+        "id": "chunk:0x45f06f108707a61f07fb34fd573a6b7203eb7f6f196269517a3cecf6f0964f3b",
+        "hash": "0xcdd85555237bff41114bee0617f1412cbc3a28c6ac972ffe9b99173e634cf8f2",
+        "blockNumber": 11742125
+      },
+      {
+        "id": "chunk:0xca5c554e5b231cb914ec09f9d34b7c7006666c29628f99b54ae9c68ae935b14c",
+        "hash": "0x5ebd8f95cf349c50c80110d1c7a344e110cfffd91b0844739f183345af32c6b3",
+        "blockNumber": 11742126
+      },
+      {
+        "id": "chunk:0xe2732c9f224646d3214f537a3157f4d68a933a61f0af9c1b0bb7007e4b4a1739",
+        "hash": "0x6792c2a9d66bbef5ac0c6421603c542ba6e49e0db02f24765a8df543ad8dce22",
+        "blockNumber": 11742127
+      },
+      {
+        "id": "chunk:0xfb1bbcad82cfc8bed6956b5b7b2becbca247dcc859848a1a728803aca0741dd1",
+        "hash": "0x054b887f8f314d50a50c61449d96c0039b1916a17248e8e2c70dc6bfa5348fd2",
+        "blockNumber": 11742128
+      },
+      {
+        "id": "chunk:0xc6c095963c8d122af9b8d02a3fe10d30599cb4c5a49a61310ecc2e4800e777b2",
+        "hash": "0xa4789b6908c27477fb62bcf8e97ed735d8d067f9829ae7ae5d7cf2bf44a9b5a7",
+        "blockNumber": 11742129
+      },
+      {
+        "id": "chunk:0xb79dfe36b64ec7b48f50f850fe8db764bc8c338bf9d0cfb1353f02fb29edf096",
+        "hash": "0x170e15011d9febf5f6ee7ac174b417b93dd47090d2857f49be95d17af2e4ebe0",
+        "blockNumber": 11742130
+      },
+      {
+        "id": "chunk:0x62670493f2da52e736b706a53a169f9d61f6240dc5b032dbce7a3f28335478fe",
+        "hash": "0x897e9c58014412894dd6adec815e713724d5192dcab2fdd0b72f095873c1b607",
+        "blockNumber": 11742131
+      },
+      {
+        "id": "chunk:0x559fcccf185d5bd3b8a79950708c71726267da0b3a445a2fbea44595134fd734",
+        "hash": "0x9d4709c358d80e057c9697e39947dcfce2fb4b1c095af5d4ac25eb27fdf9ffe6",
+        "blockNumber": 11742132
+      },
+      {
+        "id": "chunk:0xb53e53e07e9cf66ed9f238efac32186e6092404cab918144fe4e251f952ba424",
+        "hash": "0x6d4df78a81bb1c1e712fa4656e3c509a7deaf5e82bbf9d550c820770f7f12738",
+        "blockNumber": 11742133
+      },
+      {
+        "id": "chunk:0x61557309864ff88d988dcadc82784b6483dbeed1182e1eda42c5137c0cfdeed2",
+        "hash": "0x0d81890d128a97bd38b466381e7bb6045c9eb764cd745e77940d2b2bc0c6488f",
+        "blockNumber": 11742134
+      },
+      {
+        "id": "chunk:0x695ce8d83224c52390d9a4d08358f2b0e040ca2a0ba541d3ab4b529dc1ccec7f",
+        "hash": "0x794cd87937ab857265f91313c39ad7554aa9b12a55c112a2d62e89fc4b4f7030",
+        "blockNumber": 11742135
+      },
+      {
+        "id": "chunk:0x13ae53de07e5b4cc7915c4d180054198eb8e03b6dd4b8fe98955d8e64634b795",
+        "hash": "0xcd27be82630abeaf6639ed23fb87f0a997c922344d942028e7dd3e2bf8d71683",
+        "blockNumber": 11742136
+      },
+      {
+        "id": "chunk:0xd303d8a9b06867d2adcd4090c1e719e912280024bc59bd6ab44182b24170bbc0",
+        "hash": "0x370f241c2d9e0a1edec03c3a9f07697a5e55f36865f1cea41ee27a679eaa7ec1",
+        "blockNumber": 11742137
+      },
+      {
+        "id": "chunk:0x1bb940a573277ad8e2c5809a1666e5ea4c9f3cf1a3f334a07f680b8df5958333",
+        "hash": "0x87759b92ed8f474f97fed1da349a19cd6808b36776396f156f01ae90dffd8e6d",
+        "blockNumber": 11742138
+      },
+      {
+        "id": "chunk:0x4a87b24d95ddf41fbfdd1e046701534510c875447eac1a864d5f64d9753bde8b",
+        "hash": "0xe09b8e9249aa8bcb7cbc04ea30c8803c7ee7d263841b8b0703eaededfced18f3",
+        "blockNumber": 11742139
+      },
+      {
+        "id": "chunk:0x6340f1981c65d0cb3fda35e83077a01ddcdc7253bf062f40d09b44169550470d",
+        "hash": "0xf1b3cd5f72db57b9a212e55f4bb7bd9ead59bab51c6067b606beeec2d25622c8",
+        "blockNumber": 11742140
+      },
+      {
+        "id": "chunk:0x9f01f1a195d7d6102b401ac4a2b21d66c7ce554495b026bbbcad7e3d7697abe0",
+        "hash": "0xd5e95aa33f5d8806b886cb351eda77c0373b538adbc4038dbed8822b90116f8d",
+        "blockNumber": 11742141
+      },
+      {
+        "id": "chunk:0x2c9dccef8ebbba31d5f40f87eff029804c03d54636913a97d3d751c49a2654a4",
+        "hash": "0x457f6b09755ba44bccc7c37ca66e22f3a8cb029d8872e18f0757e312f540e5a7",
+        "blockNumber": 11742142
+      },
+      {
+        "id": "chunk:0xc95e23eb7f7f683f67ffb8e622f0362c32f4c9e4947df451e1fe3a8cc6ffa681",
+        "hash": "0xcb7873dcc89f0cf430af0345cd5b1c8f89486ca47c28c7aa08916f62c2e45a4b",
+        "blockNumber": 11742143
+      },
+      {
+        "id": "chunk:0xb76827352aff9017abc468a60fd9830b1565907a92f2bc805ff437b6d4586b3b",
+        "hash": "0x7ad09a0ae84a5799aa4cbdecc4e713136954ca261d44ef0defa94cf0a1f7c3bb",
+        "blockNumber": 11742145
+      },
+      {
+        "id": "chunk:0xbb56c952b95483cb564764e4a7c67c7f47f4a9a08310fa399d54c844d5e02e69",
+        "hash": "0xbd5738e81be2cd1c7e9a06f7b6fefe5b5f96bc3720545005fee57f0ccfce3260",
+        "blockNumber": 11742146
+      },
+      {
+        "id": "archive:0x5867e5a3b372cc17cc34e4130fde583df9822bed",
+        "hash": "0xde7460b8ea31e5ec2d7c4fc5b9e4a532ed98c433f658b6140a3eb23ef13d9e92",
+        "blockNumber": 11742147
+      },
+      {
+        "id": "deploy:ModuleWorkbench",
+        "hash": "0xd6fef91a6b27842b23a3e018fbfcaceefa5979efcea7149b9d493d184d925188",
+        "blockNumber": 11742148
+      }
+    ]
+  },
+  "explorer": "https://eth-sepolia.blockscout.com"
+}

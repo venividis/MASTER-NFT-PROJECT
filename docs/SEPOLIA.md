@@ -67,11 +67,14 @@ npm run sepolia -- mint \
   --rpc "$SEPOLIA_RPC" \
   --plan sepolia-plan.json \
   --recovery sepolia-mint.json \
+  --recipient 0xINTENDED_NFT_OWNER \
   --endowment-wei 0 \
   --confirm MINT_ANIMA_ON_SEPOLIA
 ```
 
 If two blocks have not elapsed, the command exits safely and prints the required block. Run the identical command again after that block. Reveal must occur no later than 200 blocks after commitment. On completion it prints the token ID and NFT-owned account. The default endowment is zero; any nonzero value is deposited into the new NFT account.
+
+`--recipient` is mandatory on both the first invocation and every recovery invocation. The runner checks it against the recovery file before submitting anything, so an operator cannot accidentally resume a mint for a different owner.
 
 The plan, journal, and mint recovery filenames are ignored by Git by default. Back them up securely. The private key is never stored by the runner.
 
@@ -89,3 +92,5 @@ npm run modules:recover-workbench -- \
 ```
 
 Serve the recovered directory from a trusted local origin and connect a wallet on Sepolia. Publishing the bundled example modules and installing them are separate publisher/owner transactions; deployment of the base system does not silently grant a module control over the NFT account.
+
+The current public Sepolia collection and module-system deployment is recorded in [the live deployment record](deployments/sepolia-11155111.json). That record contains public addresses and transaction hashes only; it contains no signing key or mint secret.
