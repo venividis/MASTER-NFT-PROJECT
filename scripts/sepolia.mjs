@@ -2,7 +2,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import crypto from 'node:crypto';
-import {Contract, JsonRpcProvider, Wallet, getAddress, keccak256} from 'ethers';
+import {Contract, Interface, JsonRpcProvider, Wallet, getAddress, keccak256} from 'ethers';
 import {prepareGenesisDeployment, verifyGenesisDeploymentPlan} from './lib/genesis-deployment.mjs';
 import {prepareModuleDeployment, verifyModuleDeploymentPlan} from './lib/modules-deployment.mjs';
 
@@ -94,11 +94,51 @@ async function verifiedBundle(file) {
   return bundle;
 }
 
-const normalizedSteps = bundle => [
-  ...bundle.genesis.requests.map(item => ({section: 'genesis', id: item.id, expectedAddress: item.address ?? null, ...item.transaction})),
-  ...bundle.modules.steps.map(item => ({section: 'modules', id: item.id, expectedAddress: item.expectedAddress ?? null,
-    chainId: Number(item.chainId), from: item.from, to: item.to, nonce: item.nonce, data: item.data, value: item.value})),
+const ARCHIVE_FACTORY_ABI = [
+  'event ArchiveCreated(address indexed archive,uint8 schema,bytes32 indexed digest,uint256 byteLength,bytes32 codeHash)',
+  'function archiveSchema(address) view returns (uint8)',
+  'function archiveCodeHash(address) view returns (bytes32)',
 ];
+const ARCHIVE_ABI = [
+  'function contentSha256() view returns (bytes32)',
+  'function byteLength() view returns (uint256)',
+  'function chunkCount() view returns (uint256)',
+];
+
+export const normalizedSteps = bundle => [
+  ...bundle.genesis.requests.map(item => ({section: 'genesis', id: item.id, expectedAddress: item.address ?? null, ...item.transaction})),
+  ...bundle.modules.steps.map(item => ({section: 'modules', ...item, expectedAddress: item.expectedAddress ?? null,
+    chainId: Number(item.chainId)})),
+];
+
+export async function verifyStepPostconditions(provider, step, receipt) {
+  if (step.expectedAddress && await provider.getCode(step.expectedAddress) === '0x') fail(`Expected contract was not created at ${step.expectedAddress}.`);
+  if (step.kind === 'createArchive') {
+    const parser = new Interface(ARCHIVE_FACTORY_ABI);
+    const events = receipt.logs.filter(log => getAddress(log.address) === getAddress(step.preconditions.factory)).flatMap(log => {
+      try { return [parser.parseLog(log)]; } catch { return []; }
+    }).filter(event => event?.name === 'ArchiveCreated');
+    if (events.length !== 1) fail(`Archive creation receipt for ${step.id} is missing its unique ArchiveCreated event.`);
+    const event = events[0].args;
+    const code = await provider.getCode(step.expectedAddress);
+    if (getAddress(event.archive) !== getAddress(step.expectedAddress) || Number(event.schema) !== step.archiveSchema ||
+        event.digest !== step.archiveHash || event.byteLength !== BigInt(step.archiveBytes) || event.codeHash !== keccak256(code)) {
+      fail(`Archive creation for ${step.id} diverged from the reviewed address or content commitments.`);
+    }
+  }
+  if (step.preconditions?.archiveFactory) {
+    const expected = step.preconditions, factory = new Contract(expected.archiveFactory, ARCHIVE_FACTORY_ABI, provider);
+    const archive = new Contract(expected.archive, ARCHIVE_ABI, provider), code = await provider.getCode(expected.archive);
+    const [schema, recordedCodeHash, digest, byteLength, chunkCount] = await Promise.all([
+      factory.archiveSchema(expected.archive), factory.archiveCodeHash(expected.archive), archive.contentSha256(),
+      archive.byteLength(), archive.chunkCount(),
+    ]);
+    if (Number(schema) !== expected.archiveSchema || recordedCodeHash !== keccak256(code) || digest !== expected.contentSha256 ||
+        byteLength !== BigInt(expected.byteLength) || chunkCount !== BigInt(expected.chunkCount)) {
+      fail(`Workbench archive for ${step.id} diverges from the reviewed integrity commitments.`);
+    }
+  }
+}
 
 async function deploy(args) {
   if (args.confirm !== 'DEPLOY_ANIMA_TO_SEPOLIA') fail('Deployment requires --confirm DEPLOY_ANIMA_TO_SEPOLIA.');
@@ -117,10 +157,15 @@ async function deploy(args) {
       const receipt = await provider.getTransactionReceipt(saved.hash);
       if (!receipt) fail(`Transaction ${saved.hash} is still pending or unavailable; do not resend it.`);
       if (receipt.status !== 1) fail(`Previously submitted transaction ${saved.hash} failed. Stop and inspect.`);
+      await verifyStepPostconditions(provider, step, receipt);
       continue;
     }
     const nonce = await provider.getTransactionCount(wallet.address, 'pending');
     if (nonce !== step.nonce) fail(`Pending nonce ${nonce} does not match reviewed nonce ${step.nonce} for ${step.id}. Stop and prepare/reconcile a new plan.`);
+    if (step.preconditions?.expectedFactoryNonce !== undefined) {
+      const factoryNonce = await provider.getTransactionCount(step.preconditions.factory, 'pending');
+      if (factoryNonce !== step.preconditions.expectedFactoryNonce) fail(`Archive factory nonce ${factoryNonce} does not match reviewed nonce ${step.preconditions.expectedFactoryNonce}. Stop and prepare a new plan.`);
+    }
     if (step.expectedAddress && await provider.getCode(step.expectedAddress) !== '0x') fail(`Predicted address is already used: ${step.expectedAddress}`);
     const request = {chainId: CHAIN_ID, nonce: step.nonce, to: step.to ?? undefined, data: step.data, value: BigInt(step.value)};
     const estimate = await wallet.estimateGas(request);
@@ -133,7 +178,7 @@ async function deploy(args) {
     if (!receipt || receipt.status !== 1) fail(`Transaction failed: ${transaction.hash}`);
     journal.receipts[index].blockNumber = receipt.blockNumber;
     journal.receipts[index].gasUsed = receipt.gasUsed.toString();
-    if (step.expectedAddress && await provider.getCode(step.expectedAddress) === '0x') fail(`Expected contract was not created at ${step.expectedAddress}.`);
+    await verifyStepPostconditions(provider, step, receipt);
     atomicWrite(journalFile, journal);
   }
   journal.completedAt = new Date().toISOString(); atomicWrite(journalFile, journal);
