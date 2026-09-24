@@ -84,8 +84,12 @@ npm run modules:recover-workbench -- \
   --rpc "$SEPOLIA_RPC" \
   --chain 11155111 \
   --workbench WORKBENCH_ADDRESS \
+  --expect-sha256 WORKBENCH_SHA256_FROM_REVIEWED_PLAN \
   --token-id 1 \
   --output ./recovered-workbench
 ```
+
+Use `modules.workbench.sha256` from the independently reviewed deployment plan. Do not recover or
+serve a workbench without pinning that commitment.
 
 Serve the recovered directory from a trusted local origin and connect a wallet on Sepolia. Publishing the bundled example modules and installing them are separate publisher/owner transactions; deployment of the base system does not silently grant a module control over the NFT account.
