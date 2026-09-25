@@ -233,6 +233,15 @@ export class GenesisField extends ParticleField {
     this.pos = next;
   }
   setMode(mode, instant = false) {
+    if (this.prismEnabled) {
+      this.mode = mode;
+      this.syncLayout();
+      this.fromUnfold = this.unfold = 0;
+      this.progress = 1;
+      this.closing = mode === "home" ? 1 : 0;
+      this.opticsCleared = false;
+      return;
+    }
     const initial = !this.home,
       old = this.layout,
       identityChanged = this.geometryDomain !== this.id.domain,
@@ -268,6 +277,12 @@ export class GenesisField extends ParticleField {
     this.pulse = 1;
   }
   beginCreation(groups, options = {}) {
+    if (this.prismEnabled) {
+      this.progress = 1;
+      this.fromUnfold = this.unfold = 0;
+      this.onFormation?.(1);
+      return;
+    }
     this.captureMatter();
     const data = allocateTargets(groups, this.count, (i, n) =>
       surfacePoint(i, n, this.id, this.layout),
@@ -283,7 +298,7 @@ export class GenesisField extends ParticleField {
   }
   finishCreation() {
     this.progress = 1;
-    this.unfold = this.closing ? 0 : 1;
+    this.unfold = this.prismEnabled || this.closing ? 0 : 1;
     this.onFormation?.(1);
   }
   uniform(p, name, value) {
@@ -394,7 +409,7 @@ export class GenesisField extends ParticleField {
     this.progress = this.motion
       ? Math.min(1, (this.progress ?? 1) + dt / (this.duration || 10))
       : 1;
-    this.unfold =
+    this.unfold = this.prismEnabled ? 0 :
       (this.fromUnfold || 0) +
       ((this.closing ? 0 : 1) - (this.fromUnfold || 0)) * ease(this.progress);
     this.pulse = Math.max(0, this.pulse - dt * 0.35);

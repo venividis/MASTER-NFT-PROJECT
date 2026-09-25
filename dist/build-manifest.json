@@ -365,8 +365,8 @@
     "integrations/official-launch/vendor/doppler/src/types/Position.sol": "ed34655f2d00fa3d4e8efa6ba722edee5fb8f5782dcf8ad3a1cf172ad8fbb505",
     "integrations/official-launch/vendor/doppler/src/types/RehypeTypes.sol": "7c1977521da1ac67b2d9c2ca3f78f0a084d3b1b8951655d534e710e119061769",
     "integrations/official-launch/vendor/doppler/src/types/Wad.sol": "58df1b00418c6a4f749894fb627499c5769f7b07fb830a415cfaa410d66c565a",
-    "package-lock.json": "7ae6a325c097a71cf16fef378531e0cfeedacab2914bbe590ccf3b8b2535abd6",
-    "package.json": "fe43e7d4f0768f6d2278528029979b951271585b65ee815038818216ba880edc",
+    "package-lock.json": "42d04b2c9a839efe47fc374a9f8ddbdbae81107a7aaf6d69f6daf26d99f7f85e",
+    "package.json": "ec6a47d433e6baaaa048a69bd89c9b64c2333f928a40e110f0075b94d2cad6c3",
     "packages/communication/build.mjs": "a410e0f9c285127f80798653fba37a2b36706f5bf4c6c12b15b12f93ca0bcc93",
     "packages/communication/package-lock.json": "e2ca9d65ad84c7207f8a51d4df4eac26a5380563c01975da9992c2626405a69d",
     "packages/communication/package.json": "ebca098a749e62f669cf808293d43c4feee4163b180b125d4cb2f991f511ca5c",
@@ -401,7 +401,7 @@
     "scripts/build-capabilities.mjs": "427f406d14ca6ff1e759b2a31c7ba88b0d931d89b107583444ed7352e280872a",
     "scripts/build-chain-loader.mjs": "84c4ee1eb34c606b67adea5fc37a7a0a25e5df5697e90ccc911043f811ff9d14",
     "scripts/build-commons.mjs": "90013f8017b8a2273d2bdfa1019d5d3d006faca07bd85be111cb51f853556998",
-    "scripts/build-confluence.mjs": "a578970bba75b4a19f07d08a43c44dbae67a452ef4bef319e64537c08a3a2208",
+    "scripts/build-confluence.mjs": "5726a4edbbb2e6618d30e764cce2b3eb6c5a679e2bc17bb00b52ee7516d64bdc",
     "scripts/build-exit.mjs": "b53cc4fdded447086a920c801b84cc68e3fa1e1e6b12408fbd4c7b929b557b5a",
     "scripts/build-extensions.mjs": "681cc4cf55c68f80a91c3319b774fc19d2f0a4c5541e46486606f99bc92c5073",
     "scripts/build-field.mjs": "c9a5aa7a791b7d62cf8c3e0d3c06f62f46eff8b51dbc6d746448111b4663e4b0",
@@ -439,17 +439,19 @@
     "scripts/lib/local-validation.mjs": "799ffe2e74afa1ea1589820392997926ae2ddb8f185198a7733e02673aa46d07",
     "scripts/lib/modules-deployment.mjs": "b49d972748b4987cf02af38064463c4fd067ad9f609c4b978c4efce544e9347f",
     "scripts/lib/modules-stack.mjs": "645791d0bd88b56f590259939acb3ad3ee0a96e3dadfee857c367bf2fcaa8ac1",
+    "scripts/lib/prism-simulator-export.mjs": "a68c9922d056d1757c8784c4d24f38964eea68602d67b08ec88a28239451c135",
+    "scripts/lib/prism-simulator.mjs": "454dfcd88011ee2c0ed4fe4a31559b915ec140a0014b323b9e411265ac413491",
     "scripts/lib/release-packages.mjs": "e265de461f52ec97b17b08f11bf4924afb24ff36730fb8169c62914a4f3331ca",
     "scripts/lib/runtime-archive.mjs": "451fcbbc26964c50052761b45eb634a9d36142ddfd1d9be819d656ea64b53ebc",
-    "scripts/lib/runtime-build.mjs": "2027d3e3ed6e02f4d96c55cc2887db83500acb01be022a7c0240cf912eb91bb4",
+    "scripts/lib/runtime-build.mjs": "1c37b53dba74f10ab4ad2a0a15615c5ae36c114777a795fc7d6dcb8c03262eff",
     "scripts/lib/runtime-graph.mjs": "9bc6e9f10ba862c4dfcda318765b8b94d798afb02092f7bc51c544caa47c61b6",
     "scripts/lib/runtime-html.mjs": "0abc3787db8404d5ac34f09620517b8db66b52ca560f63097c3f048f16c5c2a2",
     "scripts/lib/runtime-modules.mjs": "b44cdae2761776544f9a6c65032059261c431301e765a992014f63752870cc37",
-    "scripts/lib/source-integrity.mjs": "30cc5536e4cd2219cdf6f8929e02d4392e3eff3e8ccec656e5326fe39d92bffc",
+    "scripts/lib/source-integrity.mjs": "579ad408f3b8640afe94fa40dfbcf828f6c234d4f37d0944453c0a397520a665",
     "scripts/lib/static-server.mjs": "40d31f08fc113ae93438d64de453f3d53e10b9d8b08e57234170b3adce2bc413",
     "scripts/lib/v4-compilation.mjs": "979eab09747604fd7c99877cea998a942c68f77430292caba1fc988a720a7647",
     "scripts/local-world.mjs": "85a159f356b7701323f0ce766e7a3b990c8efe91e3123089aebde5fdd19f80fe",
-    "scripts/master-local.mjs": "f20b7d65e51b83c445b5b62a3c5fa3384dedc2da5da6d28a2538574789829887",
+    "scripts/master-local.mjs": "d85d00c8fe93b71c87093b2f575f83f341c73b447cfff636542b154d6609c3e1",
     "scripts/mine-hook.mjs": "d079ac1ae553d48176da365524707340c44ea472ca8c302298466f2c5d140ff3",
     "scripts/modules-build-workbench.mjs": "de7f7ffbf442e34a3a1006b96ae0146787fa9a389084485b28e885e0dc443ef4",
     "scripts/modules-deployment.mjs": "367d753e841ff9cc563b3c09c364ef237d14f519a929f4d07a8f16038c548ef4",
@@ -459,10 +461,13 @@
     "scripts/modules-recover.mjs": "b862a523d123dae985fc80bbc57a2c7dc31bdaa53a35d56d8e42e9ef1a26acb9",
     "scripts/operating-package-check.mjs": "e5045a1bc64bc80824f6f92c66d48c5de998d8e9307db616bf69d37919ccea79",
     "scripts/package-release.mjs": "4c5857c627c7c7d2f58b0a712a3d4fb81f4ced02794143e453b02b5fd3aa11a8",
+    "scripts/prism-simulator-export.mjs": "1abd514525d978f052d172f929eecb35965e675a2b3f3bbb3dae5e6892b9a26f",
+    "scripts/prism-simulator.mjs": "739199d6c144cbf4b35a806a32187232326212fa913e604f7dee12b46e3ffc00",
     "scripts/privacy-dependency-report.mjs": "8a7531a6a1a2f6cc8b4363609bb2db8d4fe87dc957e8001abf9167dd4a5ccb24",
     "scripts/recover-runtime.mjs": "d55e962da24c7191352b75505b28ac998f1b7c134b38cd5672655a1c0a1f3724",
     "scripts/release-gate.mjs": "69a4d6f28ea8f58b6b03f1543bc442e89514935b47c396afbe245bcb2d53fd0a",
     "scripts/release-report.mjs": "525dfd96e529eece04234dd4969b1fbf8f1ec07f886be593fbdb42cedbb3919c",
+    "scripts/sepolia.mjs": "b3308e5510e7d3e857b8028e07bf124d8fcb341404522aeda663d6ce49c7dd70",
     "scripts/serve-confluence.mjs": "82aaa81dd29ad368242f39e4bef314816fa60d288b57a69390b660ee9629da7e",
     "scripts/serve.mjs": "d0266ba6278a73e6d05292283aadf4bdd06ff5cebd9a525e573bb7aa445f0664",
     "scripts/setup-dependencies.mjs": "a09456eb4ffd0caa8c25ff3376d8a911593b7e3de68426b61d5560b5936f78b5",
@@ -493,19 +498,20 @@
     "web/commons/mls-desk.mjs": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
     "web/commons/mls-protocol.mjs": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
     "web/commons/mls-vault.mjs": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
-    "web/confluence/app.js": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
-    "web/confluence/archive.mjs": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
-    "web/confluence/capabilities.mjs": "64e4791947e37bb19fde6f02552dc3f8d9dbb5adecfe9007db5aafe91da9b258",
+    "web/confluence/app.js": "e6bf755b802b016a06a24ef1ef567db9d969697d00ac4f76524e71b97c0d407b",
+    "web/confluence/archive.mjs": "e909c8c666865f012f73457a5e00150cd33da0508599f2863620384705f7137d",
+    "web/confluence/capabilities.mjs": "61c3171ff7189c6270bedbef032be3e71e4dcf02d3a71e553f3b6092acf756b3",
     "web/confluence/console-core.mjs": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
     "web/confluence/economy.mjs": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
     "web/confluence/identity.mjs": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
     "web/confluence/minted-identity.mjs": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
     "web/confluence/particles.js": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+    "web/confluence/prism-presentation.mjs": "5a09e0510d62c7cb38e7ceb4af4863a9c9e03a47ac43cc5fbf37ca4e222807a4",
     "web/confluence/release-capabilities.mjs": "c254ebdb8304aa8252e7de3a9c8fd8fd75d8e1419caa34b7035f7ce1978615a1",
     "web/confluence/selected-context.mjs": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
-    "web/confluence/shell.html": "dddd078001a787097c9bf135ee3924729974550f3c1276fa59f058208eb10fca",
+    "web/confluence/shell.html": "032b3149aaafa0e8ae9b0b89bdaa3db73f0d42c7a8435b7bf2c4377a25112e87",
     "web/confluence/styles.css": "47fc348d445542d007b689e9907da5a3a63ed5f83644f550fc050e869a799594",
-    "web/confluence/surfaces.css": "eb7c20f4520ba1401438ff616f4601ff0790cb4e48cc23f31614e5da802f97d4",
+    "web/confluence/surfaces.css": "70074ab0d0f110d9f7c02b62e867c867aa740db625dae6574d75d56a29f24770",
     "web/confluence/wallet.mjs": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
     "web/crosschain/artifacts.mjs": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
     "web/crosschain/client.mjs": "59144eed58391309fb13316a8abe3fde395b6f6cd9683bee5d5077be761e37d3",
@@ -531,7 +537,7 @@
     "web/extensions/service-origin.mjs": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
     "web/extensions/worlds.mjs": "e32e536d9fff5f3f147396e3a7f5445c15ce65ee88c9c2f67edd0f87f7a76dd0",
     "web/genesis/atlas.mjs": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
-    "web/genesis/field.js": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+    "web/genesis/field.js": "e38e3b7c0cb5b2a306e5d77e1dcc172b5254b5424f4fa997b896f962a7317c43",
     "web/genesis/interior-cpu.mjs": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
     "web/genesis/interior-gestures.mjs": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
     "web/genesis/interior-kernel.mjs": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
@@ -542,7 +548,9 @@
     "web/genesis/interior.mjs": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
     "web/genesis/live-desk.mjs": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
     "web/genesis/live-protocol.mjs": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
-    "web/genesis/projection.mjs": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+    "web/genesis/prism-art.mjs": "ea674fee2bd8e2604660c9221e1dfadcc9047af1be7231ce0ca1056b748db4d7",
+    "web/genesis/prism-shader.mjs": "4c4bd66c15d6d9592dec298f40086f7aea2455c8b98fe5fb1d9c70c327fbb4ef",
+    "web/genesis/projection.mjs": "869f34aad5c2456546a011bc472ed72dcd755b7548b2b7c41323b421fb2f1255",
     "web/genesis/styles.css": "96f125944b83bf0abb0bb9d87d6663e0965e48423271fa1745dc3f47bed1f36b",
     "web/governance/artifacts.mjs": "1748dc212486949b4581e203fa47b4ad4b8169afdefafc439eb7df073d45df52",
     "web/governance/client.mjs": "08b867ff7f421ae60a404fe3adf243aafb76ea0f422be7d60340b83d5991285f",
@@ -604,16 +612,16 @@
     "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
     "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
     "web/modules/adapter.mjs": "7e86dd9c560147418d5f946f39e0948db791f5f7773c003485d2f6bdb167a6d3",
-    "web/modules/app.mjs": "897f194a8331cd843e64f49f18b85be19b12b3a2511187dbd11be4b4b99be202",
-    "web/modules/embedded.mjs": "43f1483e19d47f6fb0eed954c8ce214e6a190dde8455aee0082f89ed6fb9c42a",
+    "web/modules/app.mjs": "2d1294a918b7713dfefb09770ff82b2b77ace9c8da063d696231a4215fde5768",
+    "web/modules/embedded.mjs": "c287e0c09551ccb96756ea54d08cff899f4abc5ee83e937cbadea771e6ef6b35",
     "web/modules/examples.mjs": "4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
     "web/modules/host.mjs": "d0b5cfccb2cfb3c702ea6776baf6006ab6c781ff95bafc64b29969ddf20d45b7",
     "web/modules/html-worker.mjs": "c6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",
-    "web/modules/index.html": "a5e44f9a102e116a541f9b7eac0760fa0e054627678a8d51564b4a29687c4273",
+    "web/modules/index.html": "f084e86a362b45dd13960b59e26f457f8da867f92c791b610fabd50da93e74eb",
     "web/modules/journal.mjs": "f848056fb66177e343b93a1a63a222854a52485583c7bb601113e8573a5554de",
     "web/modules/runtime.mjs": "0c49176c56a9ca2cdf9252315f17f44a4b06fcf839429891f35957e2c2d0313d",
     "web/modules/standalone.mjs": "fc87712b2f9c6e453d3dc576a5d5fcea0e1a2b7668ebb7988201637a00461386",
-    "web/modules/workbench.css": "d5cabe4ca137bb89ce382fe24107dee07edc91ba64545fe14c8d8cd7c9763759",
+    "web/modules/workbench.css": "1d8bc5abe1a3a5b7017da7bd858c269c753ecf398b77f21715f6e32cde0c84c7",
     "web/operating/app.js": "9393bf4bd9d13891f3890c8d7fc5906eb17d1f3bddf615ef3a59392badfe5c56",
     "web/operating/engine.mjs": "280072bb1f2f41fb9bedae9322820195d6c9d7a9220c7345140b16bb1b88c3b7",
     "web/privacy/bridge.mjs": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
@@ -729,9 +737,10 @@
       ]
     },
     "web/confluence/app.js": {
-      "sha256": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
+      "sha256": "e6bf755b802b016a06a24ef1ef567db9d969697d00ac4f76524e71b97c0d407b",
       "dependencies": [
         "web/confluence/release-capabilities.mjs",
+        "web/confluence/prism-presentation.mjs",
         "web/modules/embedded.mjs",
         "web/confluence/selected-context.mjs",
         "web/confluence/capabilities.mjs",
@@ -759,15 +768,16 @@
       ]
     },
     "web/confluence/archive.mjs": {
-      "sha256": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
+      "sha256": "e909c8c666865f012f73457a5e00150cd33da0508599f2863620384705f7137d",
       "dependencies": [
         "web/model.mjs",
         "web/confluence/economy.mjs",
-        "web/confluence/console-core.mjs"
+        "web/confluence/console-core.mjs",
+        "web/confluence/prism-presentation.mjs"
       ]
     },
     "web/confluence/capabilities.mjs": {
-      "sha256": "64e4791947e37bb19fde6f02552dc3f8d9dbb5adecfe9007db5aafe91da9b258",
+      "sha256": "61c3171ff7189c6270bedbef032be3e71e4dcf02d3a71e553f3b6092acf756b3",
       "dependencies": []
     },
     "web/confluence/console-core.mjs": {
@@ -795,6 +805,10 @@
       "dependencies": [
         "web/confluence/identity.mjs"
       ]
+    },
+    "web/confluence/prism-presentation.mjs": {
+      "sha256": "5a09e0510d62c7cb38e7ceb4af4863a9c9e03a47ac43cc5fbf37ca4e222807a4",
+      "dependencies": []
     },
     "web/confluence/release-capabilities.mjs": {
       "sha256": "c254ebdb8304aa8252e7de3a9c8fd8fd75d8e1419caa34b7035f7ce1978615a1",
@@ -953,7 +967,7 @@
       "dependencies": []
     },
     "web/genesis/field.js": {
-      "sha256": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+      "sha256": "e38e3b7c0cb5b2a306e5d77e1dcc172b5254b5424f4fa997b896f962a7317c43",
       "dependencies": [
         "web/confluence/particles.js",
         "web/begins/geometry.mjs",
@@ -1010,12 +1024,22 @@
         "web/vendor/ethers.min.js"
       ]
     },
+    "web/genesis/prism-art.mjs": {
+      "sha256": "ea674fee2bd8e2604660c9221e1dfadcc9047af1be7231ce0ca1056b748db4d7",
+      "dependencies": []
+    },
+    "web/genesis/prism-shader.mjs": {
+      "sha256": "4c4bd66c15d6d9592dec298f40086f7aea2455c8b98fe5fb1d9c70c327fbb4ef",
+      "dependencies": []
+    },
     "web/genesis/projection.mjs": {
-      "sha256": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+      "sha256": "869f34aad5c2456546a011bc472ed72dcd755b7548b2b7c41323b421fb2f1255",
       "dependencies": [
         "web/genesis/interior-quality.mjs",
         "web/genesis/interior-shader.mjs",
-        "web/genesis/interior-cpu.mjs"
+        "web/genesis/interior-cpu.mjs",
+        "web/genesis/prism-art.mjs",
+        "web/genesis/prism-shader.mjs"
       ]
     },
     "web/governance/artifacts.mjs": {
@@ -1311,7 +1335,7 @@
       "dependencies": []
     },
     "web/modules/embedded.mjs": {
-      "sha256": "43f1483e19d47f6fb0eed954c8ce214e6a190dde8455aee0082f89ed6fb9c42a",
+      "sha256": "c287e0c09551ccb96756ea54d08cff899f4abc5ee83e937cbadea771e6ef6b35",
       "dependencies": []
     },
     "web/privacy/bridge.mjs": {
@@ -1452,9 +1476,9 @@
   ],
   "outputs": {
     "abis/CartridgeRegistry.json": "3c3d6c4dcd54ce14cec7cc7af9cb1de522eb68e98bf73502f05d059d59dd4e95",
-    "index.html": "89d27f3155400c4d0d17dc81bf1061ddfe8c3b0df1d2558c78b0060428553bfd",
-    "manifest.webmanifest": "3eeddcc5a0e5dd67917485d5966980e7013afa1b4876278c36f7099dca41edea",
-    "modules.html": "ec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6",
+    "index.html": "885006c64769f5a0a54d68d3042144c7bacbb8c35e2fcedb0ef8cabb83522917",
+    "manifest.webmanifest": "14d318837e091beb3a27aee948946c92f31b8542d87e1974499cb81787192608",
+    "modules.html": "56a0b0417665c78bde779cf50fe8e531d100ef30a97adacf228fe5b13eb3506e",
     "original.html": "6b1fb23f63cf5aa65283b8be2f1446dddae38622b7ea8c164249c8cc74146bb6",
     "web/begins/geometry.mjs": "89b2b617d60e7b5075209136458d77e158c6e1fd759b3484d5dff09782dd76a4",
     "web/begins/shaders.mjs": "64255b015d5f9c38aeccc6f76d1fccdeebe4e2bf5d2992b7b0aa84f88d9c3730",
@@ -1471,18 +1495,19 @@
     "web/commons/mls-desk.mjs": "ccfac898f8b75fe8251141b01dd45d30c0c9b5dbb64cb35ede9f9557d8196c36",
     "web/commons/mls-protocol.mjs": "0277f5f61423e2ad4d7ab99e601a7267e5d6491ad63f959cd7c2ea5d4a6eff8f",
     "web/commons/mls-vault.mjs": "6b84577c5639735c9865d97b93e1623115780199233a4ae80e85a32092ba8019",
-    "web/confluence/app.js": "d293f822065bd12efe8ea85422a9ecf1f109711a1d403dbeb595838489ee8f82",
-    "web/confluence/archive.mjs": "c1e6da074251f570ec809495bffa8de33a91530bc10d492dbbdd0ccc8faf49bb",
-    "web/confluence/capabilities.mjs": "64e4791947e37bb19fde6f02552dc3f8d9dbb5adecfe9007db5aafe91da9b258",
+    "web/confluence/app.js": "e6bf755b802b016a06a24ef1ef567db9d969697d00ac4f76524e71b97c0d407b",
+    "web/confluence/archive.mjs": "e909c8c666865f012f73457a5e00150cd33da0508599f2863620384705f7137d",
+    "web/confluence/capabilities.mjs": "61c3171ff7189c6270bedbef032be3e71e4dcf02d3a71e553f3b6092acf756b3",
     "web/confluence/console-core.mjs": "3d369b8387553f2f262a4c88f2e125198cfa9c021a1d2f7e9a44f34c9d964c6f",
     "web/confluence/economy.mjs": "923d84b5b21945fd7f7ea19eee0a35ace9e2ccab9c3a3413815c892df77dc1a0",
     "web/confluence/identity.mjs": "f51b5d204e63630da10131b640c0af328c650ecf750af76ddff4998f2fb04a32",
     "web/confluence/minted-identity.mjs": "62962a0ed9164c74fffa00d9c389ba0baa5e8f04f1fd81c16df312f46c02c5e4",
     "web/confluence/particles.js": "e2b73c7d7bad4220360f933203025a76fa554c856f0de797982b6873b6cccb20",
+    "web/confluence/prism-presentation.mjs": "5a09e0510d62c7cb38e7ceb4af4863a9c9e03a47ac43cc5fbf37ca4e222807a4",
     "web/confluence/release-capabilities.mjs": "c254ebdb8304aa8252e7de3a9c8fd8fd75d8e1419caa34b7035f7ce1978615a1",
     "web/confluence/selected-context.mjs": "f91880701ad10382ec1a492d155ab42b3dd52902969e137a2916db5d206ae0d8",
     "web/confluence/styles.css": "47fc348d445542d007b689e9907da5a3a63ed5f83644f550fc050e869a799594",
-    "web/confluence/surfaces.css": "eb7c20f4520ba1401438ff616f4601ff0790cb4e48cc23f31614e5da802f97d4",
+    "web/confluence/surfaces.css": "70074ab0d0f110d9f7c02b62e867c867aa740db625dae6574d75d56a29f24770",
     "web/confluence/wallet.mjs": "b7004c4c8726bb1eedad7a2efdd39aa875df6c2e82af4dbb8b519bea03be8f8c",
     "web/crosschain/artifacts.mjs": "bc880abbcbf64670345c29bf1cb7752dec9899a8deb3d92e62cf97b2c511138c",
     "web/crosschain/client.mjs": "59144eed58391309fb13316a8abe3fde395b6f6cd9683bee5d5077be761e37d3",
@@ -1506,7 +1531,7 @@
     "web/extensions/service-origin.mjs": "3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
     "web/extensions/worlds.mjs": "e32e536d9fff5f3f147396e3a7f5445c15ce65ee88c9c2f67edd0f87f7a76dd0",
     "web/genesis/atlas.mjs": "977e95e713608a0294c6b1084ecc7934b4fb7d60fc4c67a33f8606897dfad4d7",
-    "web/genesis/field.js": "03e0ee855b37b701f87263adff5f19673b06642f2ee9e12e2d80a7dc1c15577c",
+    "web/genesis/field.js": "e38e3b7c0cb5b2a306e5d77e1dcc172b5254b5424f4fa997b896f962a7317c43",
     "web/genesis/interior-cpu.mjs": "d30d618576d10cc52d41a73892e8c7b949be0250b572293bc5e1745982d5f343",
     "web/genesis/interior-gestures.mjs": "dd9ff1ac1c1a3c6d2445f505d2330bd0d3307452434ff5f21c6d7c5a4d858945",
     "web/genesis/interior-kernel.mjs": "44b7e83a99d18cf2ebb0bb2b23d90039ecd8f5949e91013e40d4456a55c8ef75",
@@ -1517,7 +1542,9 @@
     "web/genesis/interior.mjs": "7af1544ae8271df76ab000ac18d94db2f6e9dc3fda72e79ba44c0ff847dfbca5",
     "web/genesis/live-desk.mjs": "04a9a8554fecbe18c65d445aa6e77973238c28ee165769c19caa2f4c1339f07f",
     "web/genesis/live-protocol.mjs": "ed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
-    "web/genesis/projection.mjs": "a22ce72a1ccb61984c8366616d690e7418e044885271fa891d90db1364645bf3",
+    "web/genesis/prism-art.mjs": "ea674fee2bd8e2604660c9221e1dfadcc9047af1be7231ce0ca1056b748db4d7",
+    "web/genesis/prism-shader.mjs": "4c4bd66c15d6d9592dec298f40086f7aea2455c8b98fe5fb1d9c70c327fbb4ef",
+    "web/genesis/projection.mjs": "869f34aad5c2456546a011bc472ed72dcd755b7548b2b7c41323b421fb2f1255",
     "web/genesis/styles.css": "96f125944b83bf0abb0bb9d87d6663e0965e48423271fa1745dc3f47bed1f36b",
     "web/governance/artifacts.mjs": "1748dc212486949b4581e203fa47b4ad4b8169afdefafc439eb7df073d45df52",
     "web/governance/client.mjs": "08b867ff7f421ae60a404fe3adf243aafb76ea0f422be7d60340b83d5991285f",
@@ -1568,7 +1595,7 @@
     "web/launchpad/vault-ui.mjs": "15f020d9a92ccc88d03f767e025fee45300cec751abe4bac560ad72da7a0c162",
     "web/memory/styles.css": "de1971e56106a4f3a596cb25cd5d9cf88137a0f37a67dbc687137b0ba02a0b03",
     "web/model.mjs": "29b67f5b825ff2eb8074f6718658690a9d0abafb1dd21bae1b204132dc12aa5f",
-    "web/modules/embedded.mjs": "43f1483e19d47f6fb0eed954c8ce214e6a190dde8455aee0082f89ed6fb9c42a",
+    "web/modules/embedded.mjs": "c287e0c09551ccb96756ea54d08cff899f4abc5ee83e937cbadea771e6ef6b35",
     "web/privacy/bridge.mjs": "ec293e0b528b1d2fce5510057cbfc13f3986ddebe01e5cb0c08b3096dbe411b1",
     "web/privacy/railgun-worker.js": "40ef8c9a7504dd23c108205759dfca7e5219ceecef2ba58737e593e80397341b",
     "web/privacy/recover-resource.mjs": "77e319fced3daaba5b995b2f5593fef8df65f54378ce92154631079ced8eb7c6",
