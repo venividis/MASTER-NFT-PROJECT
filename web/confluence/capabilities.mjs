@@ -70,7 +70,10 @@ export function resolveCapabilityRoute(key) {
   );
 }
 const legacyCatalog = {
-  modules: ["Module workbench", "Install, open and evolve owner-selected onchain tools"],
+  modules: [
+    "Module workbench",
+    "Install, open and evolve owner-selected onchain tools",
+  ],
   security: [
     "Authority & recovery",
     "Inspect permissions, agent ownership and unresolved assets",
@@ -124,9 +127,14 @@ const legacyCatalog = {
   routes: ["Distribution", "Choose every recipient and asset"],
   cartridges: ["Worlds", "Load games inside your artifact"],
   agents: ["Agent studio", "Compose and review account actions"],
-  identity: ["Identity", "Inspect the source of this form"],
+  identity: ["Identity", "Inspect your origin, history and recovery"],
   atlas: ["Atlas", "Every function, always within reach"],
   connect: ["Connect NFT", "Read an owned onchain identity"],
+  settings: [
+    "Appearance & settings",
+    "Light, motion, sound and local recovery",
+  ],
+  tools: ["Tools", "Seven doors into the same living world"],
 };
 export const CAPABILITY_CATALOG = Object.freeze({
   ...legacyCatalog,

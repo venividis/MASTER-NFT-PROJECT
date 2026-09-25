@@ -111,7 +111,11 @@
     "test:modules:browser": "node test/browser/modules.mjs",
     "test:master:browser": "node test/browser/master-acceptance.mjs",
     "modules:sdk": "node scripts/build-module-sdk.mjs",
-    "modules:plan": "node scripts/modules-plan-package.mjs"
+    "modules:plan": "node scripts/modules-plan-package.mjs",
+    "dev": "vite --config vite.config.mjs",
+    "simulator:start": "node scripts/prism-simulator.mjs",
+    "simulator:export": "node scripts/prism-simulator-export.mjs",
+    "test:simulator": "node --test test/build/prism-simulator*.test.mjs"
   },
   "dependencies": {
     "ethers": "6.15.0",
@@ -123,6 +127,7 @@
     "esbuild": "0.25.12",
     "parse5": "7.3.0",
     "playwright": "1.62.1",
-    "prettier": "3.6.2"
+    "prettier": "3.6.2",
+    "vite": "7.3.6"
   }
 }

@@ -201,7 +201,7 @@ export async function composeRuntime(
     setAttr(body, "class", "anima-genesis");
     append(head, '<meta name="referrer" content="no-referrer">');
     const title = elements(head, (n) => n.tagName === "title")[0];
-    replace(title, "<title>Anima Genesis</title>");
+    replace(title, "<title>ANIMA · Prism Cathedral</title>");
     append(body, read(SHELLS[1]));
     append(body, '<script type="module" src="' + MODULE_ENTRY + '"></script>');
   }

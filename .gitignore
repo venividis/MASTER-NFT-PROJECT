@@ -23,3 +23,5 @@ __pycache__/
 
 # Reproducible binary shards are rebuilt from the pinned, tracked worker.
 /onchain-app/privacy-worker/
+
+simulator-export/

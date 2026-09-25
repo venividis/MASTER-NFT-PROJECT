@@ -1,6 +1,8 @@
 import { InteriorQualityController } from "./interior-quality.mjs";
 import { interiorShader } from "./interior-shader.mjs";
 import { InteriorSoftwareRenderer } from "./interior-cpu.mjs";
+import { PrismArtwork, prismMode } from "./prism-art.mjs";
+import { prismShader } from "./prism-shader.mjs";
 export function blueVector(hex) {
   const s = String(hex).replace(/^0x/, "").padEnd(64, "0");
   return [0, 1, 2, 3].map(
@@ -24,8 +26,11 @@ export function formationShader(source) {
  uniform vec4 genesisPanel,genesisIdentity;
  float genesisDistance(vec2 point,vec2 extent,float radius){vec2 q=abs(point)-extent+radius;return length(max(q,0.))+min(max(q.x,q.y),0.)-radius;}
  ${interiorShader}
+ ${prismShader}
  void main(){
   vec2 originalUV=(gl_FragCoord.xy-vec2(resolution.x*.5,resolution.y*(1.-center)))/resolution.y*3.2;
+  // Explicit opt-in keeps the approved projection and its hash regression intact.
+  if(prismEnabled>.5){outColor=vec4(prismBackdrop(originalUV),1.);return;}
   // One optical scene at every distance; only camera rays change.
   if(genesisDepth>0.){outColor=vec4(agInterior(originalUV),1.);return;}
   if(genesisOpening<=0.){outColor=vec4(radiance(originalUV.x,originalUV.y),1.);return;}
@@ -54,6 +59,82 @@ export function installBlueProjection(field, r) {
     rejected = null,
     lastProjection = "";
   const interiorQuality = new InteriorQualityController();
+  const prism = (field.prismArtwork = new PrismArtwork(r.overlay, {
+    identity: field.opticalIdentity || field.id,
+    mode: field.mode,
+  }));
+  field.prismEnabled = field.prismEnabled !== false;
+  field.spectrumIntensity = field.spectrumIntensity ?? 1;
+  field.setPrismEnabled = (enabled) => {
+    field.prismEnabled = !!enabled;
+    prism.lastKey = "";
+    r.dirty = true;
+  };
+  field.setSpectrumIntensity = (value) => {
+    prism.setSpectrumIntensity(value);
+    field.spectrumIntensity = prism.spectrum;
+    r.dirty = true;
+  };
+  field.setPrismQuality = (quality) => {
+    prism.setQuality(quality);
+    r.quality = prism.quality;
+    r.dirty = true;
+  };
+  const isPrism = () => field.prismEnabled && !r.original && !!prism.context;
+  function drawPrism(force = false) {
+    prism.setIdentity(field.opticalIdentity || field.id);
+    prism.setMode(field.mode || "home");
+    prism.setQuality(r.quality);
+    const instrument = field.mode !== "home" && !field.interiorState;
+    const compact = r.width < 900;
+    const rendered = prism.draw({
+      width: r.width,
+      height: r.height,
+      time: r.time,
+      yaw: r.cameraY,
+      pitch: r.cameraX,
+      zoom: r.zoom,
+      center: instrument && !compact ? .54 : r.center,
+      centerX: instrument && !compact ? .185 : .5,
+      sizeScale: instrument && !compact ? .50 : 1,
+      motion: r.motion,
+      interior: field.interiorState,
+      spectrum: field.spectrumIntensity,
+      fold: r.fold,
+      force,
+    });
+    // Preserve the existing lineage hit targets, always from the selected
+    // identity. An external token never inherits local-preview descendants.
+    const subject = field.opticalIdentity && field.selectionMode !== "local-preview"
+      ? field.opticalIdentity : r.state;
+    const children = subject?.children || [];
+    r.childPositions = [];
+    if (!field.interiorState) {
+      const radius = Math.min(r.height * .36, r.width * .31) / Math.max(.48, r.zoom || 1);
+      const c = prism.context;
+      if (rendered) {
+        c.save();
+        c.setTransform(Math.min(globalThis.devicePixelRatio || 1, prism.quality === "economy" ? 1 : 1.5), 0, 0,
+          Math.min(globalThis.devicePixelRatio || 1, prism.quality === "economy" ? 1 : 1.5), 0, 0);
+      }
+      children.slice(0, 12).forEach((child, i) => {
+        const a = i * 2.399963 + .6 + r.time * .035;
+        const x = r.width * .5 + Math.cos(a) * radius * 1.27;
+        const y = r.height * r.center + Math.sin(a) * radius * .76;
+        r.childPositions.push({ x, y, i });
+        if (!rendered) return;
+        const glow = c.createRadialGradient(x, y, 0, x, y, 21);
+        glow.addColorStop(0, "rgba(244,240,255,.9)");
+        glow.addColorStop(.15, "rgba(244,216,160,.68)");
+        glow.addColorStop(1, "rgba(176,155,255,0)");
+        c.fillStyle = glow; c.fillRect(x - 21, y - 21, 42, 42);
+        c.strokeStyle = "rgba(244,216,160,.55)"; c.lineWidth = .7;
+        c.beginPath(); c.arc(x, y, 5, 0, Math.PI * 2); c.stroke();
+      });
+      if (rendered) c.restore();
+    }
+    r.onChildren?.(r.childPositions);
+  }
   function ensure() {
     if (
       !r.gl ||
@@ -114,7 +195,7 @@ export function installBlueProjection(field, r) {
     let budget;
     try {
       ensure();
-      if (field.interiorState?.depth) {
+      if (field.interiorState?.depth && !isPrism()) {
         budget = interiorQuality.update(this.last || performance.now(), {
           quality,
           navigating: field.interiorState.moving,
@@ -133,6 +214,9 @@ export function installBlueProjection(field, r) {
           p = l.panel;
         gl.useProgram(installed.pr);
         const values = {
+          prismEnabled: isPrism() ? 1 : 0,
+          prismSpectrum: field.spectrumIntensity,
+          prismMode: prismMode(field.mode),
           genesisDepth: field.interiorState?.depth || 0,
           genesisCamera: field.interiorState?.camera || [0, 0, -2.6, Math.PI],
           genesisLook: field.interiorState?.look || [0, 2.6],
@@ -173,6 +257,11 @@ export function installBlueProjection(field, r) {
   const atmosphere = r.drawAtmosphere?.bind(r);
   if (atmosphere)
     r.drawAtmosphere = function () {
+      if (isPrism()) {
+        drawPrism();
+        return;
+      }
+      prism.lastKey = "";
       if (field.interiorState) {
         this.fx.setTransform(1, 0, 0, 1, 0, 0);
         this.fx.clearRect(0, 0, this.overlay.width, this.overlay.height);
@@ -212,6 +301,18 @@ export function installBlueProjection(field, r) {
   r.drawCPU = function (ts) {
     const prior = lens();
     try {
+      if (isPrism() && this.ctx) {
+        // The same geometry remains interactive without WebGL, WASM or workers.
+        if (this.canvas.width !== this.width || this.canvas.height !== this.height) {
+          this.canvas.width = this.width;
+          this.canvas.height = this.height;
+        }
+        this.ctx.globalAlpha = 1;
+        this.ctx.fillStyle = "#070b1b";
+        this.ctx.fillRect(0, 0, this.width, this.height);
+        if (fallback.started) fallback.reset();
+        return;
+      }
       if (field.interiorState?.depth) {
         fallback.draw(this, this.params, field.interiorState, ts);
         return;
@@ -282,14 +383,26 @@ export function installBlueProjection(field, r) {
         field.opticalIdentity?.genome,
         field.opticalIdentity?.root,
         field.opticalIdentity?.sovereign,
+        field.prismEnabled,
+        field.mode,
+        field.spectrumIntensity,
+        r.original,
         ...field.id.axes.slice(8, 12),
       ].join("|");
     if (key !== lastProjection) {
       r.dirty = true;
       lastProjection = key;
-      document.documentElement.style.setProperty("--ag-opening", opening);
+      document.documentElement.style.setProperty("--ag-opening", isPrism() ? 0 : opening);
     }
     field.motion = r.motion;
+    // A lost optical GPU context must not hide the independent filament view.
+    if (r.lost && isPrism()) drawPrism();
+  };
+  const dispose = r.dispose?.bind(r);
+  r.dispose = () => {
+    prism.dispose();
+    fallback.reset();
+    dispose?.();
   };
   field.blueRenderer = r;
   ensure();
