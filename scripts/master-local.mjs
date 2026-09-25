@@ -14,6 +14,7 @@ import {verifyV4Compilation} from './lib/v4-compilation.mjs';
 import {sharedScorePackage,exampleModules} from '../web/modules/examples.mjs';
 import {recoverRelease,recoverToken} from '../packages/modules/chain.mjs';
 import {sha256} from '../packages/modules/sdk.mjs';
+import {assertLocalEdition, recoverMintSnapshot, createSimulatorServer} from './lib/prism-simulator.mjs';
 
 const root=path.resolve(import.meta.dirname,'..');process.chdir(root);
 const args=process.argv.slice(2);if(args.some(a=>a!=='--once')||new Set(args).size!==args.length)throw Error('Usage: node scripts/master-local.mjs [--once]');
@@ -27,8 +28,8 @@ if(![chainPort,webPort].every(n=>Number.isInteger(n)&&n>=1024&&n<65536)||chainPo
 const mnemonic='test test test test test test test test test test test junk';
 const chain=ganache.server({chain:{chainId:31337,hardfork:'shanghai'},miner:{blockGasLimit:100000000},
   database:{dbPath:path.join(directory,'chain')},wallet:{mnemonic,totalAccounts:10,defaultBalance:10000},logging:{quiet:true}});
-let provider,web,stopping=false;
-const shutdown=async(code=0)=>{if(stopping)return;stopping=true;web?.kill('SIGTERM');provider?.destroy();await chain.close().catch(()=>{});process.exitCode=code;};
+let provider,web,simulator,stopping=false;
+const shutdown=async(code=0)=>{if(stopping)return;stopping=true;web?.kill('SIGTERM');if(simulator)await new Promise(resolve=>simulator.close(resolve));provider?.destroy();await chain.close().catch(()=>{});process.exitCode=code;};
 process.once('SIGINT',()=>shutdown());process.once('SIGTERM',()=>shutdown());
 const save=(file,value)=>{const next=file+'.next';fs.writeFileSync(next,JSON.stringify(value,null,2)+'\n',{mode:0o600});const fd=fs.openSync(next,'r');try{fs.fsyncSync(fd);}finally{fs.closeSync(fd);}fs.renameSync(next,file);};
 try {
@@ -39,11 +40,13 @@ try {
     record=JSON.parse(fs.readFileSync(recordFile,'utf8'));
     if(record.schema!=='anima.master-local/1'||record.chainId!==31337)throw Error('Existing local record has a different schema or chain.');
     for(const [name,address]of Object.entries(record.contracts))if(keccak256(await provider.getCode(address))!==record.codeHashes[name])throw Error('Saved contract differs from local chain: '+name);
-    if(record.workbenchHash!==sha256(fs.readFileSync('onchain-app/module-workbench/index.html')))throw Error('Workbench source changed since this local deployment. Select a new MASTER_INSTANCE name to preserve this chain and deploy another edition.');
+    assertLocalEdition(record,{buildManifestSha256:sha256(fs.readFileSync('dist/build-manifest.json')),runtimeHash:sha256(fs.readFileSync('onchain-app/confluence/runtime.html')),workbenchHash:sha256(fs.readFileSync('onchain-app/module-workbench/index.html'))});
   } else {
     let genesis;
     if(fs.existsSync(genesisFile)) {
       genesis=JSON.parse(fs.readFileSync(genesisFile,'utf8'));
+      const currentArchive=JSON.parse(fs.readFileSync('onchain-app/confluence/manifest.json','utf8'));
+      if(genesis.runtimeSha256!==currentArchive.sha256)throw Error('Runtime source changed since the interrupted local mint. Select a new MASTER_INSTANCE name to preserve the checkpoint.');
       for(const [name,address]of Object.entries(genesis.modules))if(keccak256(await provider.getCode(address))!==genesis.codeHashes[name])throw Error('Genesis checkpoint no longer matches '+name);
     } else {
       console.log('Minting the complete ANIMA application and its original protocols on local chain 31337…');
@@ -81,14 +84,20 @@ try {
       cartridge:{registry:system.cartridges.target,id:acquired.args.id.toString(),contentHash,bytes:legacyBytes.length},
       verification:{originalRuntimeRoundtrip:genesis.roundtripVerified,moduleRecovery:true,tokenRecovery:!!recovered,legacyContentHash:sha256(Buffer.from((await system.cartridges.contentOf(acquired.args.id)).slice(2),'hex'))===contentHash},
       measurements:{scope:'Local Node/Ganache observation; not browser memory or public-chain fees',recoveryMilliseconds:Math.round(performance.now()-recoveryStarted),moduleSetupMilliseconds:Math.round(performance.now()-started),processMemoryBytes:process.memoryUsage(),workbenchBytes:workbenchBytes.length,examples:examples.map(e=>({name:e.manifest.name,storedBytes:e.storedBytes,deployedChunkCount:e.deployedChunkCount,reusedChunkCount:e.reusedChunkCount}))},
-      buildManifestSha256:sha256(fs.readFileSync('dist/build-manifest.json'))};
+      runtimeHash:sha256(fs.readFileSync('onchain-app/confluence/runtime.html')),buildManifestSha256:sha256(fs.readFileSync('dist/build-manifest.json'))};
     save(recordFile,record);
   }
   const url=new URL('http://127.0.0.1:'+webPort+'/modules.html');
   for(const [key,value]of Object.entries({registry:record.registry,collection:record.collection,chainId:31337,tokenId:1}))url.searchParams.set(key,String(value));
   console.log(JSON.stringify({original:'http://127.0.0.1:'+webPort,workbench:url.href,rpc:'http://127.0.0.1:'+chainPort,record:path.relative(root,recordFile),...record},null,2));
   if(args.includes('--once'))await shutdown();
-  else {
+  else if(process.env.ANIMA_PRISM_SIMULATOR==='1') {
+    const snapshot=await recoverMintSnapshot({request:payload=>chain.provider.request(payload),record,expectedRuntime:fs.readFileSync('onchain-app/confluence/runtime.html'),expectedWorkbench:fs.readFileSync('onchain-app/module-workbench/index.html'),expectedBuildManifestSha256:sha256(fs.readFileSync('dist/build-manifest.json'))});
+    save(path.join(directory,'simulator-snapshot.json'),snapshot);
+    simulator=createSimulatorServer({snapshot,request:payload=>chain.provider.request(payload)});
+    await new Promise((resolve,reject)=>{simulator.once('error',reject);simulator.listen(webPort,'127.0.0.1',resolve);});
+    console.log(JSON.stringify({simulator:'http://127.0.0.1:'+webPort,edition:'http://127.0.0.1:'+webPort+'/simulator',proof:snapshot.provenance},null,2));
+  } else {
     web=spawn(process.execPath,['scripts/serve-confluence.mjs'],{cwd:root,env:{...process.env,PORT:String(webPort)},stdio:'inherit'});
     web.once('error',error=>{console.error(error.message);shutdown(1);});web.once('exit',code=>{if(!stopping)shutdown(code||0);});
     console.log('Use a separate local-only wallet with this PUBLIC DEVELOPMENT mnemonic; never fund it on a public chain:\n'+mnemonic);

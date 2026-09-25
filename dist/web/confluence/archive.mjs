@@ -1,6 +1,7 @@
 import { verifyBundle } from "../model.mjs";
 import { validateRoutePlan, launchTerms } from "./economy.mjs";
 import { validateWorld } from "./console-core.mjs";
+import { normalizePrismPreferences } from "./prism-presentation.mjs";
 export async function validateConfluenceArchive(raw, restoreEngine) {
   if (raw?.schema !== "awe.confluence/archive/1")
     throw Error("Choose a Confluence archive.");
@@ -32,6 +33,11 @@ export async function validateConfluenceArchive(raw, restoreEngine) {
     "chain-receipts": raw.chainReceipts,
   }))
     values["awe.confluence:" + seed + ":" + key] = JSON.stringify(value);
+  // Appearance is optional in older archives and carries no identity or authority.
+  if (raw.appearance !== undefined)
+    values["awe.confluence:" + seed + ":prism-preferences"] = JSON.stringify(
+      normalizePrismPreferences(raw.appearance),
+    );
   return {
     seed,
     values,
@@ -39,6 +45,47 @@ export async function validateConfluenceArchive(raw, restoreEngine) {
     instrumentEvents: engine.world.s.events.length,
   };
 }
+
+/** Remap only validated archive storage names into a reserved simulator scope.
+ * An omitted prefix preserves the normal application's exact storage names.
+ * This does not validate archive content; call validateConfluenceArchive first.
+ */
+export function scopeConfluenceArchiveStorage(values, prefix) {
+  if (
+    prefix !== undefined &&
+    (typeof prefix !== "string" ||
+      !/^anima\.simulator:[a-z0-9][a-z0-9._-]{0,63}:$/i.test(prefix))
+  )
+    throw Error("Unsupported simulator archive scope.");
+  if (!values || typeof values !== "object" || Array.isArray(values))
+    throw Error("Invalid archive storage values.");
+  let seed;
+  const mapped = Object.entries(values).map(([key, value]) => {
+    if (typeof value !== "string")
+      throw Error("Invalid archive storage value.");
+    let suffix;
+    if (key === "idfbi.optical.1.2") suffix = "optical";
+    else {
+      const instrument = key.match(
+        /^idfbi\.instruments\.1\.7:(0x[\da-f]{64})$/i,
+      );
+      const confluence = key.match(
+        /^awe\.confluence:(0x[\da-f]{64}):(routes|launch|world|chain-receipts|prism-preferences)$/i,
+      );
+      const identity = instrument?.[1] || confluence?.[1];
+      if (!identity) throw Error("Unsupported archive storage key.");
+      if (seed && seed !== identity)
+        throw Error("Archive storage mixes identities.");
+      seed = identity;
+      suffix = instrument
+        ? "instruments:" + identity
+        : "confluence:" + identity + ":" + confluence[2];
+    }
+    return [prefix === undefined ? key : prefix + suffix, value];
+  });
+  return Object.fromEntries(mapped);
+}
+
 export function replaceArchiveStorage(storage, values) {
   const previous = Object.fromEntries(
     Object.keys(values).map((k) => [k, storage.getItem(k)]),
@@ -67,6 +114,7 @@ export const archiveScope = Object.freeze({
     "saved launch definition",
     "Prism world",
     "saved transaction receipt records",
+    "appearance preferences",
   ]),
   excluded: Object.freeze([
     "private wallet recovery",
@@ -76,5 +124,5 @@ export const archiveScope = Object.freeze({
     "onchain application bytes and current chain state",
   ]),
   summary:
-    "Exports original local history, instrument rehearsals, encrypted notebook ciphertext, distribution plans, Prism world and saved receipt records. Keep the notebook passphrase separately. Private wallet and burner recovery, service settings and deployed chain content are separate exports.",
+    "Exports original local history, instrument rehearsals, encrypted notebook ciphertext, distribution plans, Prism world, saved receipt records and appearance preferences. Keep the notebook passphrase separately. Private wallet and burner recovery, service settings and deployed chain content are separate exports.",
 });

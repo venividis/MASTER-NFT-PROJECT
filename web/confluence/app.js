@@ -1,4 +1,11 @@
 import { RELEASE_CAPABILITIES } from "./release-capabilities.mjs";
+import {
+  PRISM_ROUTES,
+  PRISM_ATLAS_GROUPS,
+  prismArtRoute,
+  prismIcon,
+  normalizePrismPreferences,
+} from "./prism-presentation.mjs";
 import { mountWorkbench } from "../modules/embedded.mjs";
 import { selectedContext } from "./selected-context.mjs";
 import {
@@ -47,6 +54,7 @@ import { keccak256 } from "../evm.mjs";
 import {
   validateConfluenceArchive,
   replaceArchiveStorage,
+  scopeConfluenceArchiveStorage,
   archiveScope,
 } from "./archive.mjs";
 const $ = (s) => document.querySelector(s),
@@ -89,7 +97,7 @@ let visualSeed = null,
   id,
   mode = "home",
   oldSeed = "",
-  original = true,
+  original = false,
   lastForm = "",
   audioContext,
   analyser,
@@ -104,6 +112,7 @@ let visualSeed = null,
 let navigationTicket = 0,
   interior;
 let moduleWorkbench = null;
+let prismPreferences = normalizePrismPreferences();
 const selectionInput = () => ({
   preview: visualSeed,
   connected: wallet.connected,
@@ -221,41 +230,43 @@ function captureRoutes() {
 }
 function stage(next) {
   mode = next;
-  if (next !== "home") {
-    original = false;
-    document.body.classList.add("confluence");
-  }
-  field.onReturnComplete = () => {
-    if (mode === "home" && !document.querySelector(".ab-surface[open]")) {
-      original = true;
-      document.body.classList.remove("confluence");
-    }
-  };
-  // A function opens a surface around the same artwork; navigation never changes its matter.
-  field.open = false;
-  field.setMode("home");
-  original = next === "home";
-  document.body.classList.toggle("confluence", next !== "home");
+  original = false;
+  document.body.classList.add("confluence");
+  document.body.dataset.prismRoute = prismArtRoute(next, liveDesk.operation);
+  document.body.dataset.prismInterior = "false";
   document.body.dataset.cfOpen = String(next !== "home");
-  $("#cf-form").textContent = forms[next] || "Living whole";
+  field.setPrismEnabled?.(true);
+  field.active = true;
+  field.open = next !== "home";
+  field.setMode(prismArtRoute(next, liveDesk.operation));
+  field.onReturnComplete = () => {};
+  const visualKey =
+    next === "live"
+      ? { memory: "memory", post: "commons", swap: "v4" }[liveDesk.operation] ||
+        next
+      : next;
+  const visual = PRISM_ROUTES[visualKey] || [
+    catalog[next]?.[0] || next,
+    catalog[next]?.[1] || "",
+    forms[next] || "Within your artifact",
+  ];
+  const number = Math.max(0, Object.keys(PRISM_ROUTES).indexOf(next));
+  $("#cf-form").textContent = visual[2];
   $("#cf-chapter").textContent =
-    String(Math.max(0, Object.keys(catalog).indexOf(next))).padStart(2, "0") +
-    " / " +
-    (catalog[next]?.[0] || next).toUpperCase();
-  $("#cf-caption").innerHTML =
-    next === "home"
-      ? "Anima.<br><em>Genesis.</em>"
-      : esc(catalog[next]?.[0] || next) +
-        "<br><em>" +
-        esc(forms[next] || "Within your artifact") +
-        "</em>";
-  $("#cf-hint").textContent =
-    next === "home"
-      ? "One living object. A world within reach."
-      : catalog[next]?.[1] || "";
+    String(number).padStart(2, "0") + " / " + visual[2].toUpperCase();
+  $("#cf-caption").textContent = visual[0];
+  $("#cf-hint").textContent = visual[1];
+  $("#cf-return").hidden = true;
   document
-    .querySelectorAll(".cf-dock button")
-    .forEach((b) => b.classList.toggle("active", b.dataset.cf === next));
+    .querySelectorAll(
+      ".cf-dock button, .prism-mobile-nav button, .prism-mode-nav button",
+    )
+    .forEach((button) => {
+      const current = resolveCapabilityRoute(button.dataset.cf) === next;
+      button.classList.toggle("active", current);
+      if (current) button.setAttribute("aria-current", "page");
+      else button.removeAttribute("aria-current");
+    });
   const url = new URL(location.href);
   if (next === "home") url.searchParams.delete("realm");
   else url.searchParams.set("realm", next);
@@ -263,6 +274,7 @@ function stage(next) {
     history.replaceState(null, "", url);
   } catch {}
 }
+
 function closePanels() {
   moduleWorkbench?.destroy();
   moduleWorkbench = null;
@@ -304,7 +316,11 @@ async function open(next, { preserveLaunchLink = false } = {}) {
     next = resolveCapabilityRoute(next);
   }
   if (!catalog[next]) next = "home";
-  if (next !== "participant" && !preserveLaunchLink && location.hash.startsWith("#launch/")) {
+  if (
+    next !== "participant" &&
+    !preserveLaunchLink &&
+    location.hash.startsWith("#launch/")
+  ) {
     const url = new URL(location.href);
     url.hash = "";
     history.replaceState(null, "", url);
@@ -323,6 +339,7 @@ async function open(next, { preserveLaunchLink = false } = {}) {
     stage("home");
     field.finishCreation();
     interior.enter({ resume: !!interior.savedCamera });
+    document.body.dataset.prismInterior = "true";
     $("#ag-resume").hidden = true;
     return;
   }
@@ -379,30 +396,35 @@ async function open(next, { preserveLaunchLink = false } = {}) {
   if (next === "participant") participant.mount($("#cf-content"));
   if (next === "governance") governanceDesk.mount($("#cf-content"));
   if (next === "crosschain") crosschainDesk.mount($("#cf-content"));
-  if (next === "modules") moduleWorkbench = mountWorkbench($("#cf-module-workbench"), {
-    onClose: () => open("home"),
-    initial: {
-      collection: wallet.collection || window.AWE_CHAIN_IDENTITY?.collection || "",
-      tokenId: wallet.tokenId?.toString() || window.AWE_CHAIN_IDENTITY?.tokenId || "1",
-      chainId: wallet.chainId?.toString() || window.AWE_CHAIN_IDENTITY?.chainId || "31337",
-    },
-  });
+  if (next === "modules")
+    moduleWorkbench = mountWorkbench($("#cf-module-workbench"), {
+      onClose: () => open("home"),
+      initial: {
+        collection:
+          wallet.collection || window.AWE_CHAIN_IDENTITY?.collection || "",
+        tokenId:
+          wallet.tokenId?.toString() ||
+          window.AWE_CHAIN_IDENTITY?.tokenId ||
+          "1",
+        chainId:
+          wallet.chainId?.toString() ||
+          window.AWE_CHAIN_IDENTITY?.chainId ||
+          "31337",
+      },
+    });
 }
 
 function paintIdentity() {
   window.__idfbi?.audio?.tune(sourceIdentity());
-  document.documentElement.style.setProperty(
-    "--cf-accent",
-    `hsl(${id.hue} 65% 78%)`,
-  );
+  document.documentElement.style.setProperty("--cf-accent", "#7CEAFF");
   $("#cf-name").textContent = id.name;
   $("#cf-hash").textContent =
     id.domain.slice(0, 10) + " · " + id.domain.slice(-6);
   $("#cf-number").textContent = wallet.connected
     ? "#" + wallet.tokenId
-    : window.AWE_CHAIN_IDENTITY
+    : window.AWE_CHAIN_IDENTITY && !window.ANIMA_SIM_SAMPLE
       ? "#" + window.AWE_CHAIN_IDENTITY.tokenId
-      : "01";
+      : "PREVIEW";
   $("#cf-scope").textContent = visualSeed
     ? "VISUAL PREVIEW"
     : wallet.connected
@@ -411,9 +433,11 @@ function paintIdentity() {
         (wallet.snapshot?.stale
           ? " / SNAPSHOT STALE"
           : " / OWNER CONNECTED · BLOCK " + wallet.snapshot?.block)
-      : window.AWE_CHAIN_IDENTITY
-        ? "CHAIN " + window.AWE_CHAIN_IDENTITY.chainId + " / MINTED NFT"
-        : "LOCAL EXPLORATION"; // The semantic actions stay in place; the spatial arrangement varies with immutable origin.
+      : window.ANIMA_SIM_SAMPLE
+        ? "RECORDED LOCAL MINT · PREVIEW"
+        : window.AWE_CHAIN_IDENTITY
+          ? "CHAIN " + window.AWE_CHAIN_IDENTITY.chainId + " / MINTED NFT"
+          : "LOCAL PREVIEW"; // The semantic actions stay in place; the spatial arrangement varies with immutable origin.
   const compare = $("#sa-compare");
   if (compare) {
     const url = new URL("https://anima-begins.edwincardenas.chatgpt.site");
@@ -437,27 +461,11 @@ const originalButton = ([key, title, hint, selector]) =>
   `<button type="button" data-do="original:${key}" ${$(selector)?.disabled ? "disabled" : ""}>${title}<span>${hint}</span></button>`;
 function atlasPage() {
   return (
-    "<p>One object, one selected identity. Each instrument shows whether it uses your NFT, your personal wallet or a local rehearsal.</p>" +
-    atlasGrid(
-      PRIMARY_CAPABILITIES.filter((x) => x.key !== "atlas").map((x) =>
-        routeButton(x.key),
-      ),
-    ) +
-    "<h3>Your object</h3>" +
-    atlasGrid(
-      [
-        "interior",
-        "identity",
-        "privacy",
-        "burners",
-        "exit-live",
-        "workshop",
-        "modules",
-        "governance",
-        "crosschain",
-        "security",
-      ].map(routeButton),
-    ) +
+    '<p>Every instrument has a place. Search by name or purpose.</p><label class="prism-atlas-search" for="prism-atlas-query">Find an instrument<input id="prism-atlas-query" type="search" placeholder="Memory, mint, recovery…" autocomplete="off"></label><p id="prism-search-status" class="cf-small" role="status" aria-live="polite"></p>' +
+    PRISM_ATLAS_GROUPS.map(
+      ([label, keys]) =>
+        `<section class="prism-atlas-group"><h3>${label}</h3>${atlasGrid(keys.map(routeButton))}</section>`,
+    ).join("") +
     '<details class="cf-capability-inventory"><summary>What this NFT can do</summary><p>Open a capability to inspect its configured contracts and services. Listed functionality requires the dependencies shown.</p>' +
     RELEASE_CAPABILITIES.map(
       (c) =>
@@ -490,6 +498,69 @@ function atlasPage() {
     ) +
     `<div class="cf-actions">${B("original", "Original view")}${B("nav:connect", "Connect NFT")}${B("nav:advanced", "Advanced")}${B("export-all", "Export local experience")}${B("import-all", "Restore local experience")}</div><p class="cf-small">${archiveScope.summary}</p><p class="cf-small">Controls open around the same optical field. Closing a function returns you to your camera position.</p>`
   );
+}
+
+function toolsPage() {
+  return `<p>Seven doors into the same living world.</p><div class="prism-tools-grid">${PRIMARY_CAPABILITIES.map(({ key, label, description }) => `<button type="button" data-do="nav:${key}">${prismIcon(key)}<span><strong>${esc(label)}</strong><small>${esc(description)}</small></span><span aria-hidden="true">↗</span></button>`).join("")}</div><div class="cf-actions">${B("nav:settings", "Appearance & settings")}${B("nav:interior", "Explore interior")}${B("original", "Original view")}</div>`;
+}
+
+function settingsPage() {
+  return `<div class="prism-settings"><p>Prism Cathedral II. One material, a spectrum of light.</p><label for="prism-spectrum">Spectrum intensity <output id="prism-spectrum-value" for="prism-spectrum">${Math.round(prismPreferences.spectrum * 100)}%</output></label><input id="prism-spectrum" type="range" min="0" max="1.6" step="0.02" value="${prismPreferences.spectrum}"><p class="cf-small">Sapphire remains the foundation. Add cyan, amethyst, rose and rare champagne glints.</p><label for="prism-quality">Display quality</label><select id="prism-quality"><option value="auto" ${prismPreferences.quality === "auto" ? "selected" : ""}>Automatic · balanced for this display</option><option value="economy" ${prismPreferences.quality === "economy" ? "selected" : ""}>Gentle · fewer filaments</option><option value="detail" ${prismPreferences.quality === "detail" ? "selected" : ""}>Detailed · richer filaments</option></select><label class="prism-setting-check" for="prism-motion"><input id="prism-motion" type="checkbox" ${field.motion ? "checked" : ""}> Animate the living object</label><p class="cf-small">Motion starts with your device preference. Pausing keeps every tool available.</p><div class="cf-actions">${B("prism-sound", "Sound " + (soundState()?.enabled ? "on" : "off"))}${B("prism-reset", "Reset appearance")}${B("portrait", "Save portrait")}</div><h3>Keep your local experience</h3><p class="cf-small">${archiveScope.summary}</p><div class="cf-actions">${B("export-all", "Export local experience")}${B("import-all", "Restore local experience")}</div><h3>The preserved Original</h3><p>The original optical renderer remains available alongside Prism Cathedral.</p>${B("original", "Open Original")}</div>`;
+}
+
+function updateMotionLabel() {
+  const button = $("#cf-motion");
+  button.textContent = field.motion ? "Pause motion" : "Resume motion";
+  button.setAttribute("aria-label", button.textContent);
+  button.setAttribute("aria-pressed", String(field.motion));
+  document.body.dataset.prismMotion = String(field.motion);
+}
+
+function applyPrismPreferences() {
+  field.setSpectrumIntensity?.(prismPreferences.spectrum);
+  field.setPrismQuality?.(prismPreferences.quality);
+  if (prismPreferences.motion !== null) field.motion = prismPreferences.motion;
+  if (window.__idfbi?.renderer) {
+    window.__idfbi.renderer.motion = field.motion;
+    window.__idfbi.renderer.dirty = true;
+  }
+  updateMotionLabel();
+}
+
+function changePrismPreference(target) {
+  if (target.id === "prism-spectrum") {
+    prismPreferences.spectrum = Number(target.value);
+    $("#prism-spectrum-value").textContent =
+      Math.round(prismPreferences.spectrum * 100) + "%";
+  } else if (target.id === "prism-quality")
+    prismPreferences.quality = target.value;
+  else if (target.id === "prism-motion")
+    prismPreferences.motion = target.checked;
+  else return false;
+  prismPreferences = normalizePrismPreferences(prismPreferences);
+  applyPrismPreferences();
+  saved("prism-preferences", prismPreferences);
+  return true;
+}
+
+function searchAtlas(query) {
+  const terms = query.toLocaleLowerCase().trim().split(/\s+/).filter(Boolean);
+  let count = 0;
+  document.querySelectorAll(".prism-atlas-group").forEach((group) => {
+    let visible = false;
+    group.querySelectorAll("button").forEach((button) => {
+      const match = terms.every((term) =>
+        button.textContent.toLocaleLowerCase().includes(term),
+      );
+      button.hidden = !match;
+      visible ||= match;
+      if (match) count++;
+    });
+    group.hidden = !visible;
+  });
+  $("#prism-search-status").textContent = terms.length
+    ? `${count} instrument${count === 1 ? "" : "s"} found`
+    : "";
 }
 function advancedPage() {
   return (
@@ -610,6 +681,8 @@ const extensionDesk = new ExtensionDesk(
   note,
 );
 const pages = {
+  settings: settingsPage,
+  tools: toolsPage,
   modules: () => '<div id="cf-module-workbench"></div>',
   extensions: () => extensionDesk.render(),
   workshop: () => workshop.render(),
@@ -718,6 +791,18 @@ function worldEditor() {
     `<p>Paint a connected world. Both corner starts remain open.</p><label for="cf-brush">Brush</label><select id="cf-brush"><option>prism</option><option>wall</option><option>plain</option></select>${F("World name", "world-name", w.name)}<div class="cf-prism-grid" role="group" aria-label="World editor">${w.terrain.map((t, i) => `<button data-do="paint:${i}" aria-label="Cell ${i + 1}: ${t}" style="--cell:${t === "wall" ? "#435161" : t === "prism" ? "#305869" : "#101d29"}" ${i === 0 || i === 80 ? "disabled" : ""}>${t === "prism" ? "✧" : i === 0 || i === 80 ? "•" : ""}</button>`).join("")}</div><div class="cf-actions">${B("play-world", "Validate & play")}${B("export-world", "Export world")}${B("reset-world", "Reset world")}</div><label>Import world JSON</label><input type="file" id="cf-world-upload" accept=".json,application/json">`;
 }
 const actions = {
+  "prism-sound": async () => {
+    await sound();
+    return open("settings");
+  },
+  "prism-reset": () => {
+    prismPreferences = normalizePrismPreferences();
+    prismPreferences.motion = !matchMedia("(prefers-reduced-motion: reduce)")
+      .matches;
+    applyPrismPreferences();
+    saved("prism-preferences", prismPreferences);
+    return open("settings");
+  },
   "add-route": () => {
     routes = captureRoutes();
     if (routes.length >= 64) throw Error("Maximum 64 recipients.");
@@ -771,7 +856,8 @@ const actions = {
     // its closing animation and must not leave a cancelled review actionable.
     for (const button of document.querySelectorAll(
       '#cf-dialog [data-do="send-call"], #cf-dialog [data-do="cancel-call"]',
-    )) button.remove();
+    ))
+      button.remove();
     return open(mode);
   },
   "utility-review": async () =>
@@ -839,6 +925,7 @@ const actions = {
         launch: read("launch", null),
         world: customWorld,
         chainReceipts: read("chain-receipts", []),
+        appearance: { ...prismPreferences },
       },
       "awe-confluence-archive.json",
     ),
@@ -852,7 +939,11 @@ const actions = {
     if (wallet.connected || window.__idfbi.chain())
       throw Error("Disconnect the wallet before replacing local data.");
     actions["export-all"]();
-    replaceArchiveStorage(localStorage, archiveCandidate.values);
+    const scoped = scopeConfluenceArchiveStorage(
+      archiveCandidate.values,
+      window.ANIMA_SIM_PREFIX || undefined,
+    );
+    replaceArchiveStorage(localStorage, scoped);
     location.reload();
   },
   portrait: async () => {
@@ -992,7 +1083,9 @@ async function action(key) {
         stage("home");
         field.finishCreation();
         original = true;
+        field.setPrismEnabled?.(false);
         document.body.classList.remove("confluence");
+        $("#cf-return").hidden = false;
       },
     });
   if (key.startsWith("instrument:")) {
@@ -1081,8 +1174,16 @@ async function submit(e) {
     );
   }
 }
-function toggleOriginal() {
-  open("home");
+async function toggleOriginal() {
+  if (original) return open("home");
+  await open("home");
+  original = true;
+  field.setPrismEnabled?.(false);
+  field.finishCreation();
+  field.open = false;
+  document.body.classList.remove("confluence");
+  $("#cf-return").hidden = false;
+  $("#cf-return").textContent = "Return to Prism Cathedral ↗";
 }
 
 function soundState() {
@@ -1137,9 +1238,21 @@ async function boot() {
     id = identityVector({ seed, genome: seed });
   }
   const nav = PRIMARY_CAPABILITIES.map(
-    (x) => `<button data-cf="${x.key}">${x.label}</button>`,
+    (x) =>
+      `<button type="button" data-cf="${x.key}">${prismIcon(x.key)}<span>${x.label}</span></button>`,
   ).join("");
   $(".cf-dock").innerHTML = nav;
+  $(".prism-mobile-nav").innerHTML = [
+    ["home", "Home"],
+    ["tools", "Tools"],
+    ["memory", "Memory"],
+    ["atlas", "Atlas"],
+  ]
+    .map(
+      ([key, label]) =>
+        `<button type="button" data-cf="${key}">${prismIcon(key)}<span>${label}</span></button>`,
+    )
+    .join("");
   $("#ag-functions").innerHTML = PRIMARY_CAPABILITIES.map(
     (x) =>
       `<button type="button" data-interior-route="${x.key}">${x.label}</button>`,
@@ -1164,7 +1277,9 @@ async function boot() {
     canExplore: () =>
       mode === "home" && !document.querySelector("dialog[open]"),
   });
-  field.ceremonialReveal = read("formation-ceremony", false) === true;
+  field.ceremonialReveal = false;
+  prismPreferences = normalizePrismPreferences(read("prism-preferences", {}));
+  applyPrismPreferences();
   refreshIdentity();
   // The UI is independently legible and never harvests private text into the optical field.
   const panels = [$("#cf-dialog"), $("#instrument-dialog")];
@@ -1192,8 +1307,8 @@ async function boot() {
   };
   paintIdentity();
   $("#cf-motion").setAttribute("aria-pressed", String(field.motion));
-  $("#cf-motion").textContent = field.motion ? "Ⅱ" : "▷";
-  $("#cf-renderer").textContent = "ORIGINAL OPTICS · LIVING MATTER";
+  updateMotionLabel();
+  $("#cf-renderer").textContent = "PRISM CATHEDRAL II · LIVING MATTER";
   v4Desk.onLock = () => {
     commonsDesk.lock();
     launchDesk.chain.disconnect();
@@ -1226,7 +1341,13 @@ async function boot() {
           await Promise.resolve();
           field.motion = window.__idfbi.renderer.motion;
           $("#cf-motion").setAttribute("aria-pressed", String(field.motion));
-          $("#cf-motion").textContent = field.motion ? "Ⅱ" : "▷";
+          updateMotionLabel();
+          prismPreferences.motion = field.motion;
+          saved("prism-preferences", prismPreferences);
+        } else if (key === "interior-reset") {
+          await interior.leave();
+          interior.enter();
+          document.body.dataset.prismInterior = "true";
         } else if (key === "reset") {
           await open("home");
           window.__idfbi.renderer.reset();
@@ -1264,6 +1385,8 @@ async function boot() {
     }
   });
   $("#cf-dialog").addEventListener("input", (e) => {
+    if (changePrismPreference(e.target)) return;
+    if (e.target.id === "prism-atlas-query") return searchAtlas(e.target.value);
     if (e.target.closest(".ld-desk")) return;
     if (mode === "extensions") {
       if (e.target.closest("#ex-custom")) extensionDesk.invalidate();
@@ -1418,7 +1541,8 @@ async function boot() {
     capabilities: [...CAPABILITIES],
     selection: () => selectedContext.get(),
     capabilityRegistry: PRIMARY_CAPABILITIES,
-    version: "6.2.0",
+    version: "7.1.0-prism",
+    appearance: () => ({ ...prismPreferences }),
     originalActions: ORIGINAL_ACTIONS.map((x) => x[0]),
     secondaryViews: SECONDARY_VIEWS.map((x) => x[0]),
   };

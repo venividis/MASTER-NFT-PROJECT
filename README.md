@@ -1,5 +1,13 @@
 # ANIMA · MASTER NFT PROJECT
 
+## Prism Cathedral and exact mint simulator
+
+Prism Cathedral II is the default interface: a seed-bound luminous object, explorable interior, seven instrument tabs, a searchable Atlas, mobile navigation and an integrated module workbench. Appearance controls adjust spectrum intensity, rendering quality and motion; Original keeps the approved blue-object renderer available.
+
+The simulator deploys the real contracts and mints a local NFT, recovers its immutable application and workbench, and refuses any mismatch with the release build. It preserves the actual mint seed, genome and state root. A portable export provides the same recovered GUI and original NFT loader through a strictly read-only snapshot.
+
+See [the local mint guide](docs/PRISM-SIMULATOR.md) and [the hosted replay guide](docs/PRISM-FROZEN-EXPORT.md). No public-chain deployment or future mint prediction is implied.
+
 An Ethereum/EVM NFT with its original blue interface, an NFT-owned account, and owner-selected programs and saved state. The contracts are Solidity. Browser programs are JavaScript/HTML stored as immutable onchain bytes and recovered in the browser.
 
 Version 7 adds a modular system to the complete ANIMA 6.2 project. A holder can add a cartridge or install another module version on the same NFT. Each module has its own state history; publishing a new release never updates a holder's selected version automatically.

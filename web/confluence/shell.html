@@ -1,109 +1,105 @@
-<canvas
-  id="cf-field"
-  tabindex="0"
-  role="img"
-  aria-label="Your luminous Anima Genesis artifact. Drag or use arrow keys to orbit; scroll or press plus and minus to zoom."
-></canvas>
+<canvas id="cf-field" tabindex="0" role="img" aria-label="Your luminous ANIMA. Drag or use arrow keys to orbit; scroll or press plus and minus to approach."></canvas>
 <div id="cf-ui">
   <header class="cf-top">
-    <button
-      class="cf-brand"
-      data-cf="home"
-      aria-label="Return to your artifact"
-    >
-      <span class="cf-logomark">✧</span><span>Anima<small>GENESIS</small></span>
+    <button class="cf-brand" data-cf="home" aria-label="ANIMA home">
+      <span class="cf-logomark" aria-hidden="true">✧</span><span>ANIMA<small>A LIVING IDENTITY</small></span>
     </button>
     <div class="cf-top-center">
-      <span class="cf-rule"></span><span id="cf-scope">LOCAL EXPLORATION</span
-      ><span class="cf-rule"></span>
+      <span class="cf-rule"></span><span id="cf-scope">LOCAL PREVIEW</span><span class="cf-rule"></span>
     </div>
     <div class="cf-top-actions">
-      <button data-cf="sound" id="cf-sound" aria-pressed="false">
-        Sound off</button
-      ><button data-cf="atlas">Atlas</button
-      ><a
-        id="sa-compare"
-        href="https://awe-confluence.edwincardenas.chatgpt.site"
-        target="_blank"
-        rel="noopener"
-        >Compare</a
-      ><button data-cf="connect" class="cf-connect">
-        Connect NFT <span>↗</span>
+      <button data-cf="settings" aria-label="Appearance and settings">
+        Appearance</button><button data-cf="connect" class="cf-connect">
+        Connect NFT <span aria-hidden="true">↗</span>
       </button>
     </div>
   </header>
-  <aside class="cf-identity">
-    <span class="cf-eyebrow"
-      >LIVING ARTIFACT <span id="cf-number">01</span></span
-    >
+  <aside class="cf-identity" aria-label="Selected identity">
+    <span class="cf-eyebrow">GENESIS <span id="cf-number">PREVIEW</span></span>
     <h1 id="cf-name">Awakening…</h1>
+    <p>A world within.</p>
     <button class="cf-hash" data-cf="identity" id="cf-hash">
       Reading identity
     </button>
     <div class="cf-identity-line"></div>
+    <nav class="prism-mode-nav" aria-label="View the object">
+      <button data-cf="home" aria-current="page">
+        Whole <span aria-hidden="true">◉</span></button><button data-cf="interior">
+        Interior <span aria-hidden="true">◐</span></button><button data-cf="original">
+        Original <span aria-hidden="true">◎</span>
+      </button>
+    </nav>
+    <div class="prism-identity-orbit" aria-hidden="true">
+      <i></i><i></i><i></i><span>✧</span>
+    </div>
     <dl>
       <div>
         <dt>Form</dt>
-        <dd id="cf-form">Chrysalis</dd>
+        <dd id="cf-form">The Living Crown</dd>
       </div>
       <div>
-        <dt>Memories</dt>
-        <dd id="cf-traces">0 traces</dd>
+        <dt>Memory</dt>
+        <dd id="cf-traces">0 local traces</dd>
       </div>
       <div>
-        <dt>Origin</dt>
-        <dd>I don’t fucking<br />believe it</dd>
+        <dt>Edition</dt>
+        <dd>Prism Cathedral II</dd>
       </div>
     </dl>
+    <button class="prism-dossier-link" data-cf="identity">
+      Identity &amp; recovery <span aria-hidden="true">↗</span>
+    </button>
   </aside>
-  <div class="cf-orbits" id="cf-orbits" aria-label="Enter an experience">
-    <button data-cf="v4" class="cf-node cf-node-a">
-      <i>⇄</i><span>Swap<small>TRADE & REMEMBER</small></span></button
-    ><button data-cf="launch" class="cf-node cf-node-b">
-      <i>✧</i><span>Launch<small>LAUNCH & DISTRIBUTE</small></span></button
-    ><button data-cf="cartridges" class="cf-node cf-node-c">
-      <i>⌘</i><span>Worlds<small>ENTER & PLAY</small></span></button
-    ><button data-cf="memory" class="cf-node cf-node-d">
-      <i>◈</i><span>Memory<small>INSCRIBE & REFLECT</small></span>
-    </button>
-  </div>
-  <section class="cf-caption">
-    <span class="cf-eyebrow" id="cf-chapter">00 / THE LIVING WHOLE</span>
-    <h2 id="cf-caption">Anima.<br /><em>Genesis.</em></h2>
-    <p id="cf-hint">
-      Choose a path. Watch the same matter become something new.
-    </p>
+  <div class="cf-orbits" id="cf-orbits" aria-label="Enter an experience" hidden=""></div>
+  <section class="prism-home-content" aria-label="A living archive">
+    <article class="prism-home-card">
+      <span class="cf-eyebrow">01 / MEMORY</span>
+      <h2>Keep what matters.</h2>
+      <p>Something worth carrying forward.</p>
+      <button class="cf-button" data-cf="memory">
+        Write a memory <span aria-hidden="true">↗</span>
+      </button>
+    </article>
+    <article class="prism-home-card">
+      <span class="cf-eyebrow">02 / THE LIVING LIBRARY</span>
+      <h2>Room to become.</h2>
+      <p>Discover tools. Choose what grows with you.</p>
+      <button class="prism-cartridge" data-cf="modules">
+        <span class="prism-cartridge-mark" aria-hidden="true">❋</span><span><strong>Module workbench</strong><small>Discover · Installed · History · Journal</small></span><span aria-hidden="true">↗</span>
+      </button>
+      <button class="prism-cartridge" data-cf="cartridges">
+        <span class="prism-cartridge-mark" aria-hidden="true">◇</span><span><strong>Worlds &amp; cartridges</strong><small>Explore, play, and create</small></span><span aria-hidden="true">↗</span>
+      </button>
+      <button class="prism-cartridge" data-cf="workshop">
+        <span class="prism-cartridge-mark" aria-hidden="true">✧</span><span><strong>Instrument workshop</strong><small>Give an idea a place to live</small></span><span aria-hidden="true">↗</span>
+      </button>
+    </article>
+    <span class="cf-eyebrow prism-archive-label">A LIVING ARCHIVE <span aria-hidden="true">▏▎▍▏</span></span>
   </section>
-  <div class="cf-scene-tools">
-    <button
-      data-cf="motion"
-      id="cf-motion"
-      aria-pressed="true"
-      title="Pause particle motion"
-    >
-      Ⅱ</button
-    ><button data-cf="reset" title="Reset the camera">↺</button
-    ><button data-cf="portrait" title="Save the current particle portrait">
-      ↗</button
-    ><button
-      data-cf="original"
-      title="Explore the preserved original experience"
-    >
-      Original
-    </button>
+  <section class="cf-caption prism-route-heading" aria-live="polite">
+    <span class="cf-eyebrow" id="cf-chapter">00 / THE LIVING CROWN</span>
+    <h2 id="cf-caption">A world within.</h2>
+    <p id="cf-hint">One living identity. Infinite ways to become.</p>
+  </section>
+  <div class="prism-home-actions">
+    <button class="cf-button primary" data-cf="interior">
+      ◎ &nbsp; Explore interior</button><span>Drag to turn · Scroll to approach</span>
   </div>
-  <nav class="cf-dock" aria-label="Artifact capabilities">
-    <button data-cf="home" class="active"><span>✳</span>Artifact</button
-    ><button data-cf="trade"><span>⇄</span>Swap</button
-    ><button data-cf="launch"><span>✧</span>Launch</button
-    ><button data-cf="vault"><span>▱</span>Vault</button
-    ><button data-cf="cartridges"><span>⌘</span>Worlds</button
-    ><button data-cf="atlas"><span>⁙</span>Atlas</button>
+  <div class="prism-interior-toolbar" aria-label="Interior navigation">
+    <button data-cf="home">← Return outside</button><button data-cf="interior-reset">Reset view</button><button data-cf="tools">Open tools</button>
+  </div>
+  <div class="cf-scene-tools">
+    <button data-cf="motion" id="cf-motion" aria-pressed="true" aria-label="Pause motion">
+      Pause motion</button><button data-cf="reset" aria-label="Reset the camera">Reset view</button><button data-cf="portrait">Save portrait</button><button data-cf="original">Original</button>
+  </div>
+  <nav class="cf-dock" aria-label="Artifact capabilities"></nav>
+  <nav class="prism-mobile-nav" aria-label="Mobile navigation">
+    <button data-cf="home">Home</button><button data-cf="tools">Tools</button><button data-cf="memory">Memory</button><button data-cf="atlas">Atlas</button>
   </nav>
   <footer class="cf-bottom">
-    <span id="cf-renderer">Particle field initializing</span
-    ><span id="cf-feedback">Drag to orbit · Scroll to approach</span
-    ><button data-cf="identity">A unique form. Every capability.</button>
+    <span id="cf-renderer">PRISM CATHEDRAL II</span><span id="cf-feedback">A living identity. Your chosen tools.</span><button data-cf="sound" id="cf-sound" aria-pressed="false">
+      Sound off
+    </button>
   </footer>
 </div>
 <dialog id="cf-dialog" aria-labelledby="cf-dialog-title">
@@ -117,71 +113,40 @@
   <div id="cf-content"></div>
   <p id="cf-notice" role="status" aria-live="polite"></p>
 </dialog>
-<button id="cf-return" hidden>Enter Anima Genesis ↗</button>
+<button id="cf-return" hidden="">Return to Prism Cathedral ↗</button>
 <div id="cf-toast" role="status" aria-live="polite"></div>
 
 <nav id="ag-entry" aria-label="Anima Genesis">
-  <span>Anima <b>Genesis</b></span
-  ><button type="button" data-genesis="hide">Hide screen</button
-  ><button type="button" data-genesis="atlas">
-    Atlas <small>All functions</small></button
-  ><button type="button" data-genesis="interior">Enter the object ↗</button>
+  <span>Anima <b>Genesis</b></span><button type="button" data-genesis="hide">Hide screen</button><button type="button" data-genesis="atlas">
+    Atlas <small>All functions</small></button><button type="button" data-genesis="interior">Enter the object ↗</button>
 </nav>
-<section id="ag-interior" hidden aria-label="Explore Anima Genesis">
-  <div
-    id="ag-flight"
-    tabindex="0"
-    role="region"
-    aria-label="Explore inside and outside the object"
-    aria-describedby="ag-navigation-help"
-  ></div>
+<section id="ag-interior" hidden="" aria-label="Explore Anima Genesis">
+  <div id="ag-flight" tabindex="0" role="region" aria-label="Explore inside and outside the object" aria-describedby="ag-navigation-help"></div>
   <header class="ag-interior-top">
-    <button type="button" data-interior="leave">← Original interface</button
-    ><span>ANIMA <b>GENESIS</b></span
-    ><button type="button" data-interior="sound" aria-pressed="false">
+    <button type="button" data-interior="leave">← Return outside</button><span>ANIMA <b>GENESIS</b></span><button type="button" data-interior="sound" aria-pressed="false">
       Sound off
     </button>
   </header>
   <div class="ag-view-tools">
-    <button
-      type="button"
-      data-interior="functions"
-      aria-controls="ag-functions"
-      aria-expanded="false"
-    >
-      Functions ✧</button
-    ><button type="button" data-interior="whole">View whole object</button
-    ><button type="button" data-interior="motion" aria-pressed="true">
-      Pause motion</button
-    ><button type="button" data-interior="controls" aria-pressed="false">
+    <button type="button" data-interior="functions" aria-controls="ag-functions" aria-expanded="false">
+      Functions ✧</button><button type="button" data-interior="whole">View whole object</button><button type="button" data-interior="motion" aria-pressed="true">
+      Pause motion</button><button type="button" data-interior="controls" aria-pressed="false">
       Hide controls
     </button>
   </div>
-  <nav id="ag-functions" hidden aria-label="Functions within your NFT">
-    <button data-interior-route="v4">Swap</button
-    ><button data-interior-route="launch">Launch</button
-    ><button data-interior-route="vault">Vault</button
-    ><button data-interior-route="journal">Memory</button
-    ><button data-interior-route="cartridges">Worlds</button
-    ><button data-interior-route="atlas">All functions ↗</button>
+  <nav id="ag-functions" hidden="" aria-label="Functions within your NFT">
+    <button data-interior-route="v4">Swap</button><button data-interior-route="launch">Launch</button><button data-interior-route="vault">Vault</button><button data-interior-route="journal">Memory</button><button data-interior-route="cartridges">Worlds</button><button data-interior-route="atlas">All functions ↗</button>
   </nav>
   <div class="ag-navigation">
     <p id="ag-navigation-help">
       Spread / pinch to move in / out · Double-tap closer · Two-finger tap
-      back<br /><span
-        >Drag to look · Two-finger drag to pan · W A S D / Q E to fly · Scroll
-        or + / − to zoom</span
-      >
+      back<br><span>Drag to look · Two-finger drag to pan · W A S D / Q E to fly · Scroll
+        or + / − to zoom</span>
     </p>
     <div class="ag-move" role="group" aria-label="Move through the object">
-      <button data-move="a" type="button" aria-label="Move left">←</button
-      ><button data-move="w" type="button" aria-label="Move closer">In +</button
-      ><button data-move="s" type="button" aria-label="Move back">Out −</button
-      ><button data-move="d" type="button" aria-label="Move right">→</button
-      ><button data-move="q" type="button" aria-label="Descend">↓</button
-      ><button data-move="e" type="button" aria-label="Rise">↑</button>
+      <button data-move="a" type="button" aria-label="Move left">←</button><button data-move="w" type="button" aria-label="Move closer">In +</button><button data-move="s" type="button" aria-label="Move back">Out −</button><button data-move="d" type="button" aria-label="Move right">→</button><button data-move="q" type="button" aria-label="Descend">↓</button><button data-move="e" type="button" aria-label="Rise">↑</button>
     </div>
   </div>
 </section>
 
-<button id="ag-resume" type="button" hidden>↙ Return inside</button>
+<button id="ag-resume" type="button" hidden="">↙ Return inside</button>

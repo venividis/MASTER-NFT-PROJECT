@@ -1,163 +1,168 @@
 {
   "schema": "anima.module-workbench/1",
   "compression": "raw",
-  "byteLength": 707014,
-  "sha256": "0xec2a47d8697ecbce4560dbe5f07dede41b1616f223ea81196bb947dbe79dc2b6",
+  "byteLength": 735615,
+  "sha256": "0x56a0b0417665c78bde779cf50fe8e531d100ef30a97adacf228fe5b13eb3506e",
   "chunks": [
     {
       "file": "chunks/000.bin",
       "byteLength": 23000,
-      "sha256": "0xd31b4ab828080fdfd56269c6f043a970541744b222a78114aeb09b02eb05017e"
+      "sha256": "0xa24030685f63281129cbd281dd945cbe6885739d4dbf86c5327fbf6808c3909f"
     },
     {
       "file": "chunks/001.bin",
       "byteLength": 23000,
-      "sha256": "0x48f42010c4307ce79cc4df0e432ecb3bd74cbf2b3eaed9b6667ea98b2bf9f7a2"
+      "sha256": "0xce0758ea9ff29c2ac8480b7f9d27e5e7be853aa86dfab234dcd4c9b538e286ba"
     },
     {
       "file": "chunks/002.bin",
       "byteLength": 23000,
-      "sha256": "0x7681628a5eac39b7d3ff0b2554cad13d4c642ee7102ea289fc11be67cba74186"
+      "sha256": "0xf376f0b2f9705df10834c005da885efc8b1d6af11d022164f6fb9f31830365d0"
     },
     {
       "file": "chunks/003.bin",
       "byteLength": 23000,
-      "sha256": "0xfa78bcc91e241c62814050590e8a4a287c6910113b24c7ff48cf2fc8d60379cd"
+      "sha256": "0x6e5389fd1fec9075c0bc17ea84272322f8e1501185224bf9c149b7b4a890df17"
     },
     {
       "file": "chunks/004.bin",
       "byteLength": 23000,
-      "sha256": "0x24d212594c30757b9b2a4559cfb07fe6a73ef04e885379e79cb94ee110e767a6"
+      "sha256": "0x9418a22c8b94d057f4676a95316cd9b2978ad9b1689dfa9e78ba467e82210f0c"
     },
     {
       "file": "chunks/005.bin",
       "byteLength": 23000,
-      "sha256": "0x2f02a8a0fc14bd6e5e506d0422feea3546bcfd7c22a0d6e980638dc7b76af0ad"
+      "sha256": "0xcf1ca6639606edae02a25fd6d572e18db2f4b4f8eb46b43d0e52168ac1cea530"
     },
     {
       "file": "chunks/006.bin",
       "byteLength": 23000,
-      "sha256": "0x8ec1ef094198c2855b54fa4ee52d971e8e013bec285122fe2a92a9f09c4bfa8c"
+      "sha256": "0xb825a34a6e7baa7266abd1db0a824029c848efbeb3326b27fbe8dcd187ebdbe1"
     },
     {
       "file": "chunks/007.bin",
       "byteLength": 23000,
-      "sha256": "0x1f869fdee6958952d8e0d2f27276f31825d8465fd3d99e14de3355b84573baa0"
+      "sha256": "0x8aeb3f5feefcf0c42afde7acf5b45d503d2ec78491b838b5003ffdbdcb2122cb"
     },
     {
       "file": "chunks/008.bin",
       "byteLength": 23000,
-      "sha256": "0x32cd3c65dff243b020fd89e79c950b1afc2ccfe849e5d48145f49aa9efc88edd"
+      "sha256": "0xef10897f67317f38ae4c787706368c3ea0a83f6e0ba3842ea43de561fcf00d38"
     },
     {
       "file": "chunks/009.bin",
       "byteLength": 23000,
-      "sha256": "0xc53fc9bf6d121814c5daa08d3a9ad4669c130509d21c12325d63d76c5f44fca5"
+      "sha256": "0xbf8e55c06a396c10d54420680c0d951f307cf1bc588eb5ebe91918aa0e3ad1f4"
     },
     {
       "file": "chunks/010.bin",
       "byteLength": 23000,
-      "sha256": "0x45f06f108707a61f07fb34fd573a6b7203eb7f6f196269517a3cecf6f0964f3b"
+      "sha256": "0x0c82c91de55a1146194504c227abfe5eb4bf1c611fa722cdf5d4080324f3d3ac"
     },
     {
       "file": "chunks/011.bin",
       "byteLength": 23000,
-      "sha256": "0xca5c554e5b231cb914ec09f9d34b7c7006666c29628f99b54ae9c68ae935b14c"
+      "sha256": "0x6dbe568e7c026c5c8317a800b8599812b2e66f8eab424e132d4cc0f67f7c8f2d"
     },
     {
       "file": "chunks/012.bin",
       "byteLength": 23000,
-      "sha256": "0xe2732c9f224646d3214f537a3157f4d68a933a61f0af9c1b0bb7007e4b4a1739"
+      "sha256": "0xc9f253b155a1c53db7e2c452fca08636c70f3ad9bf302d98ad85cb3d6cda834f"
     },
     {
       "file": "chunks/013.bin",
       "byteLength": 23000,
-      "sha256": "0xfb1bbcad82cfc8bed6956b5b7b2becbca247dcc859848a1a728803aca0741dd1"
+      "sha256": "0x1c40ab88220fe9455704dba8d8e0e4c92a8a6eae0102e4b0203790e40d56aaf5"
     },
     {
       "file": "chunks/014.bin",
       "byteLength": 23000,
-      "sha256": "0xc6c095963c8d122af9b8d02a3fe10d30599cb4c5a49a61310ecc2e4800e777b2"
+      "sha256": "0x24c37f0cd8154301cd721e555f97b7b8d0cbac7d10d376e6c4ea57e1fad01c13"
     },
     {
       "file": "chunks/015.bin",
       "byteLength": 23000,
-      "sha256": "0xb79dfe36b64ec7b48f50f850fe8db764bc8c338bf9d0cfb1353f02fb29edf096"
+      "sha256": "0xb588a147512f7237d4cbe1e21bf683c62a384129fe862a3d6db4b5854b1679df"
     },
     {
       "file": "chunks/016.bin",
       "byteLength": 23000,
-      "sha256": "0x62670493f2da52e736b706a53a169f9d61f6240dc5b032dbce7a3f28335478fe"
+      "sha256": "0xe0ef1cc02adbdd7db2b21b2dcc0e89c7d65e117002cc028d2ca33483e36dc36f"
     },
     {
       "file": "chunks/017.bin",
       "byteLength": 23000,
-      "sha256": "0x559fcccf185d5bd3b8a79950708c71726267da0b3a445a2fbea44595134fd734"
+      "sha256": "0xffebfc6810fdd8300d334086ccc02642d889f29673ce1e69e9686aed92142f19"
     },
     {
       "file": "chunks/018.bin",
       "byteLength": 23000,
-      "sha256": "0xb53e53e07e9cf66ed9f238efac32186e6092404cab918144fe4e251f952ba424"
+      "sha256": "0x679bda46c5fd2d6d7797772068edec8928c65cb2c5562210dab6a6d6fb1f9d4b"
     },
     {
       "file": "chunks/019.bin",
       "byteLength": 23000,
-      "sha256": "0x61557309864ff88d988dcadc82784b6483dbeed1182e1eda42c5137c0cfdeed2"
+      "sha256": "0xfd9f4713de000d1a7417f6d5ae0850f4403928a91dfbd5ddf2255563ae3cc8ce"
     },
     {
       "file": "chunks/020.bin",
       "byteLength": 23000,
-      "sha256": "0x695ce8d83224c52390d9a4d08358f2b0e040ca2a0ba541d3ab4b529dc1ccec7f"
+      "sha256": "0xb9e83dcbdad1ab36fd1ceffa151e7840ace73357c5e9060cf362968edff2d069"
     },
     {
       "file": "chunks/021.bin",
       "byteLength": 23000,
-      "sha256": "0x13ae53de07e5b4cc7915c4d180054198eb8e03b6dd4b8fe98955d8e64634b795"
+      "sha256": "0x2cd80c45c5eaca781deb65805e04b1ab23af06fd95d9f977ca5ea9c703c37354"
     },
     {
       "file": "chunks/022.bin",
       "byteLength": 23000,
-      "sha256": "0xd303d8a9b06867d2adcd4090c1e719e912280024bc59bd6ab44182b24170bbc0"
+      "sha256": "0xf01bb313388542a6e331f958a11a2fbd3d764044906eef25d89d955e36c193dd"
     },
     {
       "file": "chunks/023.bin",
       "byteLength": 23000,
-      "sha256": "0x1bb940a573277ad8e2c5809a1666e5ea4c9f3cf1a3f334a07f680b8df5958333"
+      "sha256": "0x9f4144d3e799a753414bad0dc6a8bb7aa0ab9642508af5ecd26cfcc34e0aba23"
     },
     {
       "file": "chunks/024.bin",
       "byteLength": 23000,
-      "sha256": "0x4a87b24d95ddf41fbfdd1e046701534510c875447eac1a864d5f64d9753bde8b"
+      "sha256": "0x4cb8594487668771e24c27d70c181c5f1a79e9780b6fdd7d404d3b5f2b404f1a"
     },
     {
       "file": "chunks/025.bin",
       "byteLength": 23000,
-      "sha256": "0x6340f1981c65d0cb3fda35e83077a01ddcdc7253bf062f40d09b44169550470d"
+      "sha256": "0xcb022933c0eb0d1af471c583ae0ea2f54a8f934b760963ca2466024f8ec54617"
     },
     {
       "file": "chunks/026.bin",
       "byteLength": 23000,
-      "sha256": "0x9f01f1a195d7d6102b401ac4a2b21d66c7ce554495b026bbbcad7e3d7697abe0"
+      "sha256": "0xa6dc9fc27f9272d3b0a4152eb9e64ac7ff47c82abf94201c0b30b351e202d0e1"
     },
     {
       "file": "chunks/027.bin",
       "byteLength": 23000,
-      "sha256": "0x2c9dccef8ebbba31d5f40f87eff029804c03d54636913a97d3d751c49a2654a4"
+      "sha256": "0xfdb0199675f378f7349b5e787de41f3f7c19357bf6aeca9f201f52b880368a9d"
     },
     {
       "file": "chunks/028.bin",
       "byteLength": 23000,
-      "sha256": "0xc95e23eb7f7f683f67ffb8e622f0362c32f4c9e4947df451e1fe3a8cc6ffa681"
+      "sha256": "0xed1238676400b62ce505190d889592f981b016300cc5ceac30d229c4fcfb4f7d"
     },
     {
       "file": "chunks/029.bin",
       "byteLength": 23000,
-      "sha256": "0xb76827352aff9017abc468a60fd9830b1565907a92f2bc805ff437b6d4586b3b"
+      "sha256": "0xfd3d5213c871a0d453b8d8d50e64668ffda5a3cfe82ebe22648de3b13d17fede"
     },
     {
       "file": "chunks/030.bin",
-      "byteLength": 17014,
-      "sha256": "0xbb56c952b95483cb564764e4a7c67c7f47f4a9a08310fa399d54c844d5e02e69"
+      "byteLength": 23000,
+      "sha256": "0xf98ee7330dabadf2e9ba5c1ce3f16c31071518cc701f4160570ef9a8b058b6bf"
+    },
+    {
+      "file": "chunks/031.bin",
+      "byteLength": 22615,
+      "sha256": "0x90f756a28d96af695eca4087059db5fba8e4363dc4b1f31d2c01a0e8080c2bc8"
     }
   ],
   "inputs": {
@@ -191,18 +196,19 @@
     "web/extensions/proof.mjs": "0xad7d190e28107ed7faf9a831e1214b7c1830ada7b2a52cfb6ac846cef9e1e214",
     "web/extensions/service-origin.mjs": "0x3205b7f0d137e758afe367fdb48fdbb93bc264ecd80a1c13ab7242ac38491956",
     "web/genesis/live-protocol.mjs": "0xed2679204f647f4a4cfcbfdc13c9b631c50d31a9eea6e472027b97887b9d1401",
+    "web/genesis/prism-art.mjs": "0xea674fee2bd8e2604660c9221e1dfadcc9047af1be7231ce0ca1056b748db4d7",
     "web/kingdom/model.mjs": "0xb239c0da9731aacab6c87d5426bb5a52afa1b38b42b8e44c3944c11b612c1e8c",
     "web/memory/crypto.mjs": "0x9fe3dcede26e4daf7cdd75b71240be499fc536c197ee0a1a989d97ab962ba523",
     "web/modules/adapter.mjs": "0x7e86dd9c560147418d5f946f39e0948db791f5f7773c003485d2f6bdb167a6d3",
-    "web/modules/app.mjs": "0x897f194a8331cd843e64f49f18b85be19b12b3a2511187dbd11be4b4b99be202",
+    "web/modules/app.mjs": "0x2d1294a918b7713dfefb09770ff82b2b77ace9c8da063d696231a4215fde5768",
     "web/modules/examples.mjs": "0x4262771f6288a9b703b69aa1651611b5f77596c60cfe205b7fc3de518b024758",
     "web/modules/host.mjs": "0xd0b5cfccb2cfb3c702ea6776baf6006ab6c781ff95bafc64b29969ddf20d45b7",
     "web/modules/html-worker.mjs": "0xc6c31545e4a95e8f43f9c4eb78636c7e1da5e79a9869c1a2cf57f2a259dace93",
-    "web/modules/index.html": "0xa5e44f9a102e116a541f9b7eac0760fa0e054627678a8d51564b4a29687c4273",
+    "web/modules/index.html": "0xf084e86a362b45dd13960b59e26f457f8da867f92c791b610fabd50da93e74eb",
     "web/modules/journal.mjs": "0xf848056fb66177e343b93a1a63a222854a52485583c7bb601113e8573a5554de",
     "web/modules/runtime.mjs": "0x0c49176c56a9ca2cdf9252315f17f44a4b06fcf839429891f35957e2c2d0313d",
     "web/modules/standalone.mjs": "0xfc87712b2f9c6e453d3dc576a5d5fcea0e1a2b7668ebb7988201637a00461386",
-    "web/modules/workbench.css": "0xd5cabe4ca137bb89ce382fe24107dee07edc91ba64545fe14c8d8cd7c9763759",
+    "web/modules/workbench.css": "0x1d8bc5abe1a3a5b7017da7bd858c269c753ecf398b77f21715f6e32cde0c84c7",
     "web/rehearsal/client.mjs": "0x2c6101c1c63432d49312492db7712fdb1190e2ce16b76926f41a0244182311bb",
     "web/rehearsal/intent.mjs": "0x8884efef57f5d40671582182628239e59f8735f71273b948d057390e9f9db6c4",
     "web/vendor/ethers.min.js": "0x66580dbb32353addbbfd2c1880a29693436c2d41ebdd4bf4a4516b9ad6f5f5ea"

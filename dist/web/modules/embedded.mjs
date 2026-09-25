@@ -27320,28 +27320,495 @@ async function examplePackage(id2, { publisher: author = publisher, sharedReleas
   return { ...packaged, local: true, manifest: packaged.manifest, releaseId: manifestHash(packaged.manifest), moduleKey: moduleKeyFor(author.toLowerCase(), sha2562(enc2.encode(example.id))), files: [{ path: "scene.json", mime: "application/json", bytes: bytes2 }], entrypoint: "scene.json", dependencies: [], label: example.title };
 }
 
+// web/genesis/prism-art.mjs
+var TAU = Math.PI * 2;
+var clamp = (n2, a, b2) => Math.max(a, Math.min(b2, n2));
+var smooth = (n2) => {
+  n2 = clamp(n2, 0, 1);
+  return n2 * n2 * (3 - 2 * n2);
+};
+var PRISM_MODES = Object.freeze({
+  home: 0,
+  swap: 1,
+  trade: 1,
+  launch: 2,
+  launchpad: 2,
+  vault: 3,
+  memory: 4,
+  commons: 5,
+  chat: 5,
+  worlds: 6,
+  atlas: 7,
+  modules: 8,
+  identity: 9,
+  privacy: 10,
+  burners: 10,
+  burner: 10,
+  governance: 11,
+  crosschain: 12,
+  agents: 13,
+  distribution: 13
+});
+function prismMode(mode = "home") {
+  return PRISM_MODES[mode] ?? 8;
+}
+function prismIdentity(identity = {}) {
+  const domain = typeof identity === "string" ? identity : [
+    identity.domain || "",
+    identity.seed || "",
+    identity.genome || "",
+    identity.root || "",
+    ...identity.axes || []
+  ].join("|");
+  let h = 2166136261;
+  for (let i = 0; i < domain.length; i++) h = Math.imul(h ^ domain.charCodeAt(i), 16777619);
+  const random = () => {
+    h += 1831565813;
+    let n2 = Math.imul(h ^ h >>> 15, 1 | h);
+    n2 ^= n2 + Math.imul(n2 ^ n2 >>> 7, 61 | n2);
+    return ((n2 ^ n2 >>> 14) >>> 0) / 4294967296;
+  };
+  return { key: domain, axes: Array.from({ length: 16 }, random) };
+}
+function prismTopology(x, y, z, mode, phase = 0) {
+  const angle = Math.atan2(z, x), r = Math.hypot(x, z);
+  let a = 0, stretch = 1;
+  switch (prismMode(mode)) {
+    case 1:
+      x *= 0.64 + 0.54 * Math.abs(y);
+      x += 0.26 * Math.sin(y * Math.PI);
+      z *= 0.76;
+      y *= 1.02;
+      break;
+    case 2:
+      stretch = 1 + 0.26 * Math.max(0, y) * Math.cos(angle * 5 + phase);
+      x *= stretch;
+      z *= stretch;
+      y *= 1.12;
+      y += 0.13 * Math.max(0, y) * Math.cos(angle * 5 + phase);
+      break;
+    case 3:
+      x *= 0.84 + 0.17 * Math.cos(y * Math.PI);
+      z *= 0.86;
+      y *= 1.06;
+      break;
+    case 4:
+      a = 0.24 * Math.sin(y * 3 + phase);
+      x *= 1.12;
+      z *= 0.62;
+      y += 0.09 * Math.sin(angle * 3 + phase);
+      break;
+    case 5:
+      stretch = 1 + 0.14 * Math.cos(angle * 6 + phase) * (1 - y * y);
+      x *= stretch;
+      z *= stretch;
+      y *= 0.88;
+      break;
+    case 6:
+      y *= 0.79;
+      y += 0.14 * Math.sin(angle * 3 + phase) * r;
+      z *= 0.9;
+      x *= 1.08;
+      break;
+    case 7:
+      stretch = 1 + 0.22 * Math.pow(Math.cos(y * 1.7), 2);
+      x *= stretch;
+      z *= stretch;
+      y *= 0.82;
+      break;
+    case 8:
+      stretch = 1 + 0.075 * Math.cos(angle * 10 + phase);
+      x *= stretch;
+      z *= stretch;
+      y *= 1.03;
+      break;
+    case 9:
+      a = 0.12 * Math.sin(y * 4);
+      break;
+    case 10:
+      x *= 0.86;
+      z *= 1.12;
+      a = 0.17 * Math.sin(y * 3);
+      break;
+    case 11:
+      y *= 0.84;
+      x *= 1.1;
+      a = 0.15 * Math.cos(y * 3);
+      break;
+    case 12:
+      x += 0.19 * Math.sin(y * Math.PI);
+      z *= 0.8;
+      break;
+    case 13:
+      stretch = 1 + 0.1 * Math.cos(angle * 8);
+      x *= stretch;
+      z *= stretch;
+      break;
+  }
+  return [x * Math.cos(a) - z * Math.sin(a), y, x * Math.sin(a) + z * Math.cos(a)];
+}
+function createPrismGeometry(identity, { mode = "home", strands = 132, samples = 144 } = {}) {
+  const id2 = prismIdentity(identity), a = id2.axes, curves = [];
+  strands = Math.floor(clamp(strands, 16, 224));
+  samples = Math.floor(clamp(samples, 32, 192));
+  const phase = a[0] * TAU;
+  for (let i = 0; i < strands; i++) {
+    const group = Math.floor(i / 6), thread = (i % 6 - 2.5) * 8e-3;
+    const bias = group * 2.399963229728653 + phase;
+    const shell = group % 9 === 7 ? 0.67 + a[3] * 0.06 : 0.94 + 0.035 * Math.sin(group * 1.7 + a[4] * 6);
+    const inclination = group * 1.61803398875 + a[5] * TAU + thread;
+    const points = new Float32Array((samples + 1) * 3);
+    for (let j = 0; j <= samples; j++) {
+      const t = j / samples * TAU;
+      const wave = 0.075 * Math.sin(t * 3 + bias) + thread * 1.8;
+      const px = Math.cos(t), py = Math.sin(t) * Math.cos(inclination) + wave * Math.sin(inclination);
+      const pz = Math.sin(t) * Math.sin(inclination) - wave * Math.cos(inclination);
+      const norm = Math.hypot(px, py, pz);
+      const breathe = 1 + 0.012 * Math.sin(t * 7 + group + phase);
+      const x = (px * Math.cos(bias) - py * Math.sin(bias)) / norm * shell * breathe * (1 + (a[9] - 0.5) * 0.07);
+      const y = (px * Math.sin(bias) + py * Math.cos(bias)) / norm * shell;
+      const z = pz / norm * shell * breathe;
+      points.set(prismTopology(x, y, z, mode, phase), j * 3);
+    }
+    const color = [0, 0, 1, 0, 2, 3, 0, 1, 0, 4, 0, 3][group % 12];
+    curves.push({ points, kind: "fiber", color, strength: 0.7 + a[i % 16] * 0.35 });
+  }
+  for (let i = 0; i < 30; i++) {
+    const group = Math.floor(i / 5), thread = (i % 5 - 2) * 9e-3;
+    const radius = 0.27 + group * 0.057 + a[6] * 0.035;
+    const inclination = 0.35 + group * 0.61 + thread;
+    const points = new Float32Array((samples + 1) * 3);
+    for (let j = 0; j <= samples; j++) {
+      const t = j / samples * TAU, r = radius * (1 + 0.045 * Math.sin(t * 5 + phase));
+      const x = Math.cos(t) * r, y = Math.sin(t) * r * Math.cos(inclination);
+      const z = Math.sin(t) * r * Math.sin(inclination) + thread * 2;
+      points.set(prismTopology(x, y, z, mode, phase), j * 3);
+    }
+    curves.push({ points, kind: "inner", color: i % 10 < 5 ? 1 : 2, strength: 0.62 });
+  }
+  for (let i = 0; i < 9; i++) {
+    const points = new Float32Array((samples + 1) * 3);
+    const radius = i === 0 ? 1.015 : 1.08 + i * 0.028;
+    for (let j = 0; j <= samples; j++) {
+      const t = j / samples * TAU;
+      const tilt = i === 0 ? 0 : 0.35 + i * 0.28 + a[10];
+      const x = Math.sin(t) * Math.sin(tilt) * radius;
+      const y = Math.cos(t) * radius;
+      const z = Math.sin(t) * Math.cos(tilt) * radius;
+      points.set([x, y, z], j * 3);
+    }
+    curves.push({ points, kind: i === 0 ? "seam" : "orbit", color: i % 3 === 0 ? 4 : 1, strength: i === 0 ? 0.78 : 0.2 });
+  }
+  const stars = Array.from({ length: 184 }, (_, i) => {
+    const s = Math.sin((i + 1) * (19.731 + a[11] * 2)) * 43758.5453;
+    const q = Math.sin((i + 1) * (43.17 + a[12])) * 19283.134;
+    return [s - Math.floor(s), q - Math.floor(q), 0.25 + a[i % 16] * 0.6];
+  });
+  return { identity: id2.key, mode, curves, stars, axes: a, vertices: curves.reduce((n2, c) => n2 + c.points.length / 3, 0) };
+}
+var PrismArtwork = class {
+  constructor(canvas, { identity = "anima-prism-preview", mode = "home", quality = "auto" } = {}) {
+    this.canvas = canvas;
+    this.context = canvas?.getContext?.("2d");
+    this.identity = identity;
+    this.mode = mode;
+    this.quality = quality;
+    this.spectrum = 1;
+    this.enabled = true;
+    this.draws = 0;
+    this.lastDraw = -Infinity;
+    this.disposed = false;
+  }
+  setIdentity(identity) {
+    if (prismIdentity(identity).key === prismIdentity(this.identity).key) return;
+    this.identity = identity;
+    this.geometry = null;
+    this.previous = null;
+    this.lastKey = "";
+  }
+  setMode(mode = "home") {
+    if (this.mode === mode) return;
+    this.previous = this.geometry;
+    this.mode = mode;
+    this.geometry = null;
+    this.transitionStart = null;
+    this.lastKey = "";
+  }
+  setQuality(quality = "auto") {
+    const next = ["auto", "detail", "economy"].includes(quality) ? quality : "auto";
+    if (next !== this.quality) {
+      this.quality = next;
+      this.geometry = null;
+      this.previous = null;
+      this.lastKey = "";
+    }
+  }
+  setSpectrumIntensity(value) {
+    this.spectrum = clamp(Number.isFinite(Number(value)) ? Number(value) : 1, 0, 1.6);
+    this.lastKey = "";
+  }
+  build(compact) {
+    const economy = this.quality === "economy";
+    const strands = economy ? 54 : this.quality === "detail" ? 180 : compact ? 78 : 132;
+    const samples = economy ? 88 : this.quality === "detail" ? 176 : compact ? 112 : 144;
+    this.geometry = createPrismGeometry(this.identity, { mode: this.mode, strands, samples });
+    this.projected = this.geometry.curves.map((c) => new Float32Array(c.points.length));
+    if (this.previous?.curves.length !== this.geometry.curves.length) this.previous = null;
+  }
+  draw({
+    width = this.canvas?.clientWidth || 480,
+    height = this.canvas?.clientHeight || 480,
+    time = 12,
+    yaw = 0,
+    pitch = -0.08,
+    zoom = 1,
+    motion = true,
+    interior = null,
+    spectrum = this.spectrum,
+    center = 0.5,
+    opacity = 1,
+    background = false,
+    force = false,
+    fold = 0,
+    centerX = 0.5,
+    sizeScale = 1
+  } = {}) {
+    const c = this.context;
+    if (!c || this.disposed || !this.enabled || width < 1 || height < 1) return false;
+    const compact = width < 700;
+    if (this.compact !== compact) {
+      this.compact = compact;
+      this.geometry = null;
+      this.previous = null;
+    }
+    if (!this.geometry) this.build(compact);
+    const dpr = Math.min(globalThis.devicePixelRatio || 1, this.quality === "economy" ? 1 : 1.5);
+    const w = Math.round(width * dpr), h = Math.round(height * dpr);
+    const resized = this.canvas.width !== w || this.canvas.height !== h;
+    if (resized) {
+      this.canvas.width = w;
+      this.canvas.height = h;
+    }
+    time = Number.isFinite(time) ? time : 12;
+    const now = globalThis.performance?.now?.() || 0;
+    const key = [width, height, yaw, pitch, zoom, center, centerX, sizeScale, opacity, spectrum, fold, interior?.camera, interior?.look, this.mode, motion].join("|");
+    if (!force && !resized && key === this.lastKey && (!motion || now - this.lastDraw < (compact ? 32 : 23))) return false;
+    this.lastKey = key;
+    this.lastDraw = now;
+    if (this.transitionStart === null || this.transitionStart === void 0) this.transitionStart = time;
+    const transition = !motion ? 1 : smooth((time - this.transitionStart) / 0.8);
+    if (transition >= 1) this.previous = null;
+    const a = this.geometry.axes;
+    const turn = yaw + a[1] * 0.28 + time * 0.014;
+    const tilt = pitch + 0.09 * Math.sin(a[2] * TAU);
+    const sy = Math.sin(turn), cy = Math.cos(turn), sx = Math.sin(tilt), cx = Math.cos(tilt);
+    const camera = interior?.camera || [0, 0, -2.75 * Math.max(0.48, zoom), Math.PI];
+    const look = interior?.look?.[0] || 0;
+    const ca = (camera[3] ?? Math.PI) - Math.PI;
+    const sc = Math.sin(ca), cc = Math.cos(ca), sl = Math.sin(look), cl = Math.cos(look);
+    const focal = Math.min(height * 0.99, width * (compact ? 0.99 : 0.66)) * sizeScale;
+    const midX = width * centerX, midY = height * center;
+    const inside = !!interior;
+    c.save();
+    c.setTransform(dpr, 0, 0, dpr, 0, 0);
+    c.globalAlpha = 1;
+    c.globalCompositeOperation = "source-over";
+    c.clearRect(0, 0, width, height);
+    if (background) {
+      c.fillStyle = "#070b1b";
+      c.fillRect(0, 0, width, height);
+    }
+    c.globalAlpha = clamp(opacity, 0, 1);
+    const radius = focal / Math.max(1.05, -camera[2]);
+    const atmosphere = c.createRadialGradient(midX, midY, radius * 0.08, midX, midY, radius * 1.85);
+    atmosphere.addColorStop(0, "rgba(25,82,173,.2)");
+    atmosphere.addColorStop(0.25, "rgba(20,57,155,.08)");
+    atmosphere.addColorStop(0.52, "rgba(42,63,157,.16)");
+    atmosphere.addColorStop(0.7, "rgba(83,52,137,.09)");
+    atmosphere.addColorStop(1, "rgba(7,11,27,0)");
+    c.fillStyle = atmosphere;
+    c.fillRect(0, 0, width, height);
+    if (!inside) {
+      for (const [x, y, strength] of this.geometry.stars) {
+        c.fillStyle = `rgba(153,175,255,${strength * 0.62})`;
+        c.fillRect(x * width, y * height, strength > 0.76 ? 1.2 : 0.65, strength > 0.76 ? 1.2 : 0.65);
+      }
+    }
+    const project = (x, y, z) => {
+      const oldY = y;
+      y = y * cx - z * sx;
+      z = oldY * sx + z * cx;
+      const oldX = x;
+      x = x * cy + z * sy;
+      z = -oldX * sy + z * cy;
+      if (fold) {
+        const f2 = fold * 0.32, w4 = Math.sin(y * 2.4 + a[0] * TAU) * 0.24;
+        x = x * Math.cos(f2) - w4 * Math.sin(f2);
+      }
+      x -= camera[0];
+      y -= camera[1];
+      z -= camera[2];
+      const xx = x;
+      x = x * cc - z * sc;
+      z = xx * sc + z * cc;
+      const yy = y;
+      y = y * cl - z * sl;
+      z = yy * sl + z * cl;
+      if (z <= 0.065) return [NaN, NaN, z];
+      return [midX + x / z * focal, midY - y / z * focal, z];
+    };
+    const spectral = c.createLinearGradient(midX - radius, midY + radius * 0.7, midX + radius, midY - radius);
+    spectral.addColorStop(0, "#62dcff");
+    spectral.addColorStop(0.22, "#477cff");
+    spectral.addColorStop(0.43, "#a478ff");
+    spectral.addColorStop(0.64, "#f28aca");
+    spectral.addColorStop(0.78, "#f4ce91");
+    spectral.addColorStop(1, "#7ceaff");
+    const colors2 = ["#477cff", "#7ceaff", "#ab80ff", spectral, "#f4d8a0"];
+    for (let i = 0; i < this.geometry.curves.length; i++) {
+      const curve = this.geometry.curves[i], points = curve.points, out = this.projected[i];
+      const prior = this.previous?.curves[i]?.points;
+      for (let j = 0; j < points.length; j += 3) {
+        const x = prior ? prior[j] + (points[j] - prior[j]) * transition : points[j];
+        const y = prior ? prior[j + 1] + (points[j + 1] - prior[j + 1]) * transition : points[j + 1];
+        const z = prior ? prior[j + 2] + (points[j + 2] - prior[j + 2]) * transition : points[j + 2];
+        out.set(project(x, y, z), j);
+      }
+    }
+    c.globalCompositeOperation = "lighter";
+    const middle = Math.max(0.1, -camera[2]);
+    for (let i = 0; i + 5 < this.geometry.curves.length; i += 6) {
+      if (this.geometry.curves[i].kind !== "fiber") continue;
+      const left = this.projected[i], right = this.projected[i + 5];
+      c.fillStyle = colors2[this.geometry.curves[i].color];
+      const fillRibbon = (start2, end, front2) => {
+        if (end - start2 < 3) return;
+        c.globalAlpha = opacity * (front2 ? 0.22 : 0.066) * (this.geometry.curves[i].color > 1 ? Math.min(1.2, spectrum) : 1);
+        c.beginPath();
+        c.moveTo(left[start2], left[start2 + 1]);
+        for (let k = start2 + 3; k <= end; k += 3) c.lineTo(left[k], left[k + 1]);
+        for (let k = end; k >= start2; k -= 3) c.lineTo(right[k], right[k + 1]);
+        c.closePath();
+        c.fill();
+      };
+      let start = -1, front = false;
+      for (let j = 0; j < left.length; j += 3) {
+        const valid = Number.isFinite(left[j]) && Number.isFinite(right[j]) && Math.abs(left[j] - midX) < width * 2 && Math.abs(left[j + 1] - midY) < height * 2;
+        const nextFront = left[j + 2] < middle;
+        if (!valid || start >= 0 && nextFront !== front) {
+          if (start >= 0) fillRibbon(start, j - 3, front);
+          start = -1;
+        }
+        if (valid && start < 0) {
+          start = j;
+          front = nextFront;
+        }
+      }
+      if (start >= 0) fillRibbon(start, left.length - 3, front);
+    }
+    for (let pass = this.quality === "economy" ? 0 : -2; pass < 3; pass++) {
+      for (let i = 0; i < this.geometry.curves.length; i++) {
+        const curve = this.geometry.curves[i], out = this.projected[i];
+        const isFiber = curve.kind === "fiber" || curve.kind === "inner";
+        if (pass < 0 && (!isFiber || i % 6)) continue;
+        if (pass === 0 && (!isFiber || i % 2)) continue;
+        const color = spectrum <= 0.02 || curve.color === 0 ? colors2[0] : colors2[curve.color];
+        c.strokeStyle = color;
+        c.lineWidth = pass === -2 ? 23 : pass === -1 ? 12 : pass === 0 ? inside ? 5.4 : 4.4 : curve.kind === "seam" ? 0.85 : inside ? 0.9 : 0.77;
+        const chroma = curve.color > 1 ? Math.min(1.2, 0.3 + spectrum * 0.7) : 1;
+        c.globalAlpha = opacity * curve.strength * chroma * (pass === -2 ? 0.027 : pass === -1 ? 0.055 : pass === 0 ? 0.15 : pass === 1 ? 0.23 : 0.66);
+        c.beginPath();
+        let pen = false;
+        for (let j = 0; j < out.length; j += 3) {
+          const x = out[j], y = out[j + 1], z = out[j + 2];
+          const visible = Number.isFinite(x) && Math.abs(x - midX) < width * 3 && Math.abs(y - midY) < height * 3;
+          const depth = pass <= 0 || (pass === 1 ? z >= middle : z < middle);
+          if (!visible || !depth) {
+            pen = false;
+            continue;
+          }
+          if (pen) c.lineTo(x, y);
+          else c.moveTo(x, y);
+          pen = true;
+        }
+        c.stroke();
+      }
+    }
+    const light = (point, size, tint = "124,234,255", intensity = 1) => {
+      const p = project(...point);
+      if (!Number.isFinite(p[0]) || p[0] < -40 || p[0] > width + 40 || p[1] < -40 || p[1] > height + 40) return;
+      const s = clamp(size * focal / Math.max(0.5, p[2]) / 220, 1.2, 32);
+      const g = c.createRadialGradient(p[0], p[1], 0, p[0], p[1], s * 7);
+      g.addColorStop(0, `rgba(244,240,255,${intensity})`);
+      g.addColorStop(0.055, `rgba(${tint},${intensity * 0.88})`);
+      g.addColorStop(0.2, `rgba(${tint},${intensity * 0.18})`);
+      g.addColorStop(1, `rgba(${tint},0)`);
+      c.globalAlpha = opacity;
+      c.fillStyle = g;
+      c.fillRect(p[0] - s * 7, p[1] - s * 7, s * 14, s * 14);
+      if (size > 4) {
+        c.strokeStyle = "rgba(244,240,255,.66)";
+        c.lineWidth = 0.55;
+        c.beginPath();
+        c.moveTo(p[0] - s * 7, p[1]);
+        c.lineTo(p[0] + s * 7, p[1]);
+        c.moveTo(p[0], p[1] - s * 7);
+        c.lineTo(p[0], p[1] + s * 7);
+        c.stroke();
+      }
+    };
+    light([0, 0, 0], 5.6, "244,216,160", 0.95);
+    light([0, 1.015, 0], 2.3, "124,234,255", 0.85);
+    light([0, -1.015, 0], 1.8, "176,155,255", 0.6);
+    for (let i = 0; i < 25; i++) {
+      const curve = this.geometry.curves[i * 7 % this.geometry.curves.length];
+      const idx = Math.floor((i * 0.137 + a[i % 16] * 0.25) % 1 * (curve.points.length / 3 - 1)) * 3;
+      light(
+        Array.from(curve.points.subarray(idx, idx + 3)),
+        i % 5 === 0 ? 2.6 : 1.3,
+        i % 4 === 0 ? "244,216,160" : i % 3 === 0 ? "242,169,218" : "124,234,255",
+        0.65
+      );
+    }
+    c.restore();
+    this.draws++;
+    this.lastFrame = { mode: this.mode, vertices: this.geometry.vertices, interior: inside, backend: "projected-3d-filaments", spectrum, width, height };
+    return true;
+  }
+  dispose() {
+    this.disposed = true;
+    this.geometry = null;
+    this.previous = null;
+    this.projected = null;
+  }
+};
+
 // web/modules/app.mjs
 var escape = (value) => String(value ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[c]);
 var short = (value) => value ? String(value).slice(0, 8) + "\u2026" + String(value).slice(-6) : "\u2014";
 var json = (value) => JSON.stringify(value, (_, v) => typeof v === "bigint" ? v.toString() : v, 2);
 var mounts = 0;
+var tabGlyph = { catalog: '<circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/>', installed: '<path d="m12 2 9 5v10l-9 5-9-5V7zm0 10 9-5M12 12 3 7m9 5v10"/>', history: '<circle cx="12" cy="12" r="9"/><path d="M12 6v6l4 2"/>', journal: '<path d="M12 5C8 2 5 3 2 4v15c4-2 7-1 10 1 3-2 6-3 10-1V4c-3-1-6-2-10 1zm0 0v15"/>' };
+var tabIcon = (id2) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.25" aria-hidden="true">${tabGlyph[id2]}</svg>`;
+var moduleEmblem = (index = 0) => `<svg viewBox="0 0 120 120" fill="none" aria-hidden="true"><circle cx="60" cy="60" r="49" stroke="#477cff" stroke-opacity=".3"/>${Array.from({ length: 12 }, (_, n2) => `<ellipse cx="60" cy="60" rx="${17 + index * 3}" ry="43" transform="rotate(${n2 * 15} 60 60)" stroke="${["#7ceaff", "#b09bff", "#f2a9da"][index % 3]}" stroke-opacity="${n2 % 3 === 0 ? ".7" : ".3"}" stroke-width=".7"/>`).join("")}<circle cx="60" cy="60" r="4" fill="#f4f0ff"/><path d="M60 6v12m0 84v12M6 60h12m84 0h12" stroke="#b09bff" stroke-width=".6"/></svg>`;
 var fields3 = (prefix, values) => [["chainId", "Chain ID", "31337"], ["collection", "NFT collection", "0x\u2026"], ["tokenId", "Token ID", "1"], ["registry", "Module registry", "0x\u2026"]].map(([name, label, placeholder]) => `<label for="${prefix}-${name}">${label}<input id="${prefix}-${name}" name="${name}" value="${escape(values[name] ?? "")}" placeholder="${placeholder}" ${["chainId", "tokenId"].includes(name) ? 'inputmode="numeric"' : ""} autocomplete="off" required></label>`).join("");
 function workbenchMarkup(prefix, options = {}) {
-  return `<div class="am-backdrop" aria-hidden="true"></div><header class="am-top"><a class="am-brand" href="${escape(options.originalHref ?? "../index.html")}" data-action="original"><span class="am-mark">a</span><span>ANIMA<small>MODULE WORKBENCH</small></span></a><div class="am-top-right"><span class="am-status-pill" data-node="connection">Not connected</span><button class="am-text-button" data-action="close">Return to the original \u2197</button></div></header>
- <section class="am-intro"><div><span class="am-eyebrow">ONE IDENTITY. ROOM TO GROW.</span><h1>Make room for<br><em>what comes next.</em></h1><p>Bring new tools, memories and small worlds into the NFT you already own. Recover each release from its onchain package. Choose what runs.</p></div><div class="am-sigil" aria-hidden="true"><div></div><span>YOUR NFT<br>YOUR CONTINUITY</span></div></section>
- <section class="am-identity am-card" aria-labelledby="${prefix}-identity-title"><div class="am-section-heading"><div><span class="am-eyebrow">01 \xB7 YOUR ANCHOR</span><h2 id="${prefix}-identity-title">The same NFT. The same account.</h2></div><button class="am-text-button" data-action="disconnect" hidden data-node="disconnect">Disconnect workbench</button></div><form data-form="identity" class="am-identity-form">${fields3(prefix, options)}<button class="am-primary" type="submit">Connect & read</button></form><p class="am-muted" data-node="identity-summary">Connecting checks the current owner, account and custody epoch. It does not install or send anything.</p></section>
+  return `<div class="am-backdrop" aria-hidden="true"></div><header class="am-top"><a class="am-brand" href="${escape(options.originalHref ?? "../index.html")}" data-action="original"><span>ANIMA<small>A LIVING IDENTITY</small></span></a><span class="am-edition">PRISM CATHEDRAL <span>/ II</span></span><div class="am-top-right"><span class="am-status-pill" data-node="connection">Not connected</span><button class="am-text-button" data-action="close">Original \u2197</button></div></header>
+ <section class="am-intro" aria-labelledby="${prefix}-title"><div><span class="am-eyebrow">ATLAS / MODULE WORKBENCH</span><h1 id="${prefix}-title">A living library.</h1></div><p>Tools, memories and small worlds for the NFT you already own. Recover a release. Read its permissions. Choose what runs.</p></section>
+ <section class="am-identity am-card" aria-labelledby="${prefix}-identity-title"><div class="am-section-heading"><div><span class="am-eyebrow">YOUR NFT / CONNECTION</span><h2 id="${prefix}-identity-title">The same NFT. The same account.</h2></div><button class="am-text-button" data-action="disconnect" hidden data-node="disconnect">Disconnect workbench</button></div><form data-form="identity" class="am-identity-form">${fields3(prefix, options)}<button class="am-primary" type="submit">Connect & read</button></form><p class="am-muted" data-node="identity-summary">Connecting checks the current owner, account and custody epoch. It does not install or send anything.</p></section>
  <p class="am-notice" role="status" aria-live="polite" data-node="status">Explore a local example, or connect your NFT to read its module registry.</p>
- <div class="am-layout"><section class="am-main"><div class="am-section-heading"><div><span class="am-eyebrow">02 \xB7 YOUR COLLECTION OF TOOLS</span><h2>A workbench that can evolve.</h2></div><button data-action="refresh" class="am-secondary">Refresh \u21BB</button></div><nav class="am-tabs" aria-label="Workbench views">${[["catalog", "Discover"], ["installed", "Installed"], ["history", "History"], ["journal", "Journal"]].map(([id2, label], i) => `<button type="button" data-tab="${id2}" aria-pressed="${i === 0}">${label}</button>`).join("")}</nav>
- <section data-panel="catalog"><div class="am-list" data-node="catalog"><div class="am-empty">Published releases will appear here after connecting to a registry.</div></div><button class="am-text-button" data-action="more-catalog" hidden data-node="more-catalog">Read next releases \u2192</button></section>
- <section data-panel="installed" hidden><div class="am-list" data-node="installed"><div class="am-empty">Your NFT\u2019s selected versions and enabled modules will appear here.</div></div><button class="am-text-button" data-action="more-installed" hidden data-node="more-installed">Read next modules \u2192</button></section>
- <section data-panel="history" hidden><div class="am-list" data-node="history"><div class="am-empty">Installations, version changes, state writes and disables remain in the registry history.</div></div><button class="am-text-button" data-action="more-history" hidden data-node="more-history">Read next history page \u2192</button></section>
- <section data-panel="journal" hidden><form data-form="journal" class="am-card am-form"><span class="am-eyebrow">PERSONAL MEMORY</span><h3>A note you choose to keep.</h3><label for="${prefix}-ledger">Existing MemoryLedger<input id="${prefix}-ledger" name="ledger" placeholder="0x\u2026" autocomplete="off" required></label><label for="${prefix}-note">Your words<textarea id="${prefix}-note" name="text" rows="5" maxlength="3000" placeholder="An idea, a dedication, a moment\u2026" required></textarea></label><p class="am-muted">Up to 3,000 UTF-8 bytes. Encrypted entries keep the words private with your passphrase; their identity metadata remains public.</p><label for="${prefix}-privacy">Publication privacy<select id="${prefix}-privacy" name="mode"><option value="encrypted" selected>Encrypted words \xB7 public ciphertext</option><option value="public">Public words</option></select></label><label for="${prefix}-passphrase" data-node="journal-passphrase-group">Encryption passphrase<input id="${prefix}-passphrase" type="password" name="passphrase" autocomplete="new-password" minlength="12" maxlength="1024" placeholder="At least 12 characters; never a wallet seed" required></label><label class="am-check"><input type="checkbox" name="consent" required><span data-node="journal-consent">Publish this encrypted packet permanently. Its identity metadata remains public; I will keep the passphrase to recover the words.</span></label><button class="am-primary" type="submit">Review personal inscription</button><button type="button" class="am-text-button" data-action="export-journal" data-node="export-journal" disabled>Export prepared encrypted packet \u2193</button><p class="am-muted">Encryption happens locally before transaction review. No module can inscribe automatically. Exporting a packet does not publish it.</p></form><details class="am-card am-journal-recovery"><summary>Recover an encrypted journal packet</summary><div class="am-form"><p class="am-muted">Paste its exact exported JSON or import the file. Recovery is local and needs no wallet. The authenticated header shows the original NFT, owner and custody epoch, including historical entries.</p><label for="${prefix}-packet">Encrypted packet<textarea id="${prefix}-packet" rows="5" data-node="journal-packet" spellcheck="false"></textarea></label><label class="am-file" for="${prefix}-packet-file">Read an exported packet<input id="${prefix}-packet-file" type="file" accept="application/json,.json" data-node="journal-packet-file"></label><label for="${prefix}-recovery-passphrase">Recovery passphrase<input id="${prefix}-recovery-passphrase" type="password" autocomplete="off" data-node="recovery-passphrase"></label><button type="button" class="am-secondary" data-action="decrypt-journal">Decrypt local preview</button><button type="button" class="am-text-button" data-action="clear-journal-preview">Clear recovered words</button><pre data-node="journal-decrypted" hidden></pre></div></details></section>
- <section class="am-example-section"><div class="am-section-heading"><div><span class="am-eyebrow">TRY A SMALL POSSIBILITY</span><h3>Made of light, sound and intent.</h3></div><span class="am-small-badge">LOCAL EXAMPLES</span></div><div class="am-examples">${EXAMPLES.map((example, i) => `<button class="am-example am-example-${i}" data-example="${example.id}"><span class="am-example-art" aria-hidden="true">${["\u273A", "\u223F", "\u25C7"][i]}</span><small>${escape(example.kind)}</small><strong>${escape(example.title)}</strong><span>${escape(example.description)}</span><b>Open example \u2197</b></button>`).join("")}</div><p class="am-muted">These samples are not published or installed. Their signing requests remain previews until a verified release is installed.</p></section></section>
- <aside class="am-inspector am-card"><span class="am-eyebrow">03 \xB7 RECOVER & INSPECT</span><h2>Know what you open.</h2><form data-form="recover" class="am-form"><label for="${prefix}-release">Exact release ID<input id="${prefix}-release" name="releaseId" placeholder="0x\u2026" autocomplete="off" required></label><button class="am-secondary" type="submit">Recover package</button></form><div data-node="package" class="am-package"><div class="am-empty">Select a release to inspect its publisher, exact version, capabilities and recovered files.</div></div><div class="am-actions"><button data-action="install" class="am-primary" disabled data-node="install">Review installation</button><button data-action="launch" class="am-secondary" disabled data-node="launch">Open isolated module</button><button data-action="disable" class="am-text-button" disabled data-node="disable">Review disable</button><button data-action="export-package" class="am-text-button" disabled data-node="export-package">Export recovered package \u2193</button></div>
- <details class="am-state"><summary>Saved state & migration</summary><p class="am-muted">Local drafts are namespaced to this NFT, module and schema. Chain snapshots are public and require a separate review.</p><div data-node="state-summary" class="am-muted">No module selected.</div><div class="am-actions"><button data-action="restore-chain" data-node="restore-chain" class="am-secondary">Preview chain state</button><button data-action="export-state" class="am-text-button">Export browser draft \u2193</button></div><label for="${prefix}-migration">Candidate state \xB7 JSON<textarea id="${prefix}-migration" data-node="migration-json" rows="5" placeholder='{"draft": {}}'></textarea></label><label class="am-file">Read a JSON file<input type="file" accept="application/json,.json" data-node="migration-file"></label><button data-action="preview-migration" class="am-secondary">Preview migration</button><pre data-node="migration-preview" hidden></pre><button data-action="commit-migration" class="am-secondary" disabled data-node="commit-migration">Apply reviewed browser draft</button><label class="am-check"><input type="checkbox" data-node="state-consent"><span>I approve publishing this state onchain.</span></label><div class="am-actions"><button data-action="save-state" class="am-secondary">Review chain snapshot</button><button data-action="stage-state" class="am-secondary">Review staged migration</button></div><p class="am-muted" data-node="staged">A schema change requires a staged snapshot, then a separate reviewed activation.</p></details></aside></div>
+ <div class="am-layout"><aside class="am-loom-panel am-card" aria-labelledby="${prefix}-loom-title"><div class="am-loom-heading"><span class="am-eyebrow">THE LIVING LOOM</span><span class="am-small-badge">PROCEDURAL STUDY</span></div><div class="am-loom-stage"><canvas class="am-loom-canvas" data-node="loom-canvas" aria-hidden="true"></canvas><div class="am-loom-axis" aria-hidden="true"></div></div><div class="am-loom-caption"><h2 id="${prefix}-loom-title">One identity.<br> Room to grow.</h2><p>The artwork is a visual study. Releases and permissions are read separately from the selected registry.</p><button class="am-text-button" type="button" data-action="toggle-motion" data-node="motion" aria-pressed="true">Pause artwork</button></div></aside><section class="am-main" aria-label="Module library"><div class="am-section-heading"><div><span class="am-eyebrow">RELEASE DIRECTORY</span><h2>Choose what becomes possible.</h2></div><button data-action="refresh" class="am-secondary">Refresh \u21BB</button></div><nav class="am-tabs" role="tablist" aria-label="Workbench views">${[["catalog", "Discover"], ["installed", "Installed"], ["history", "History"], ["journal", "Journal"]].map(([id2, label], i) => `<button type="button" role="tab" id="${prefix}-tab-${id2}" data-tab="${id2}" aria-controls="${prefix}-panel-${id2}" aria-selected="${i === 0}" aria-pressed="${i === 0}" tabindex="${i === 0 ? "0" : "-1"}">${tabIcon(id2)}<span>${label}</span></button>`).join("")}</nav>
+ <section role="tabpanel" id="${prefix}-panel-catalog" aria-labelledby="${prefix}-tab-catalog" tabindex="0" data-panel="catalog"><div class="am-list" data-node="catalog"><div class="am-empty">Published releases will appear here after connecting to a registry.</div></div><button class="am-text-button" data-action="more-catalog" hidden data-node="more-catalog">Read next releases \u2192</button> <section class="am-example-section"><div class="am-section-heading"><div><span class="am-eyebrow">LOCAL PREVIEWS</span><h3>A small beginning.</h3></div><span class="am-small-badge">LOCAL EXAMPLES</span></div><div class="am-examples">${EXAMPLES.map((example, i) => `<button class="am-example am-example-${i}" data-example="${example.id}"><span class="am-example-art" aria-hidden="true">${moduleEmblem(i)}</span><small>${escape(example.kind)}</small><strong>${escape(example.title)}</strong><span>${escape(example.description)}</span><b>Open local preview <span aria-hidden="true">\u2197</span></b></button>`).join("")}</div><p class="am-muted">These samples are not published or installed. Their signing requests remain previews until a verified release is installed.</p></section></section>
+ <section role="tabpanel" id="${prefix}-panel-installed" aria-labelledby="${prefix}-tab-installed" tabindex="0" data-panel="installed" hidden><div class="am-list" data-node="installed"><div class="am-empty">Your NFT\u2019s selected versions and enabled modules will appear here.</div></div><button class="am-text-button" data-action="more-installed" hidden data-node="more-installed">Read next modules \u2192</button></section>
+ <section role="tabpanel" id="${prefix}-panel-history" aria-labelledby="${prefix}-tab-history" tabindex="0" data-panel="history" hidden><div class="am-list" data-node="history"><div class="am-empty">Installations, version changes, state writes and disables remain in the registry history.</div></div><button class="am-text-button" data-action="more-history" hidden data-node="more-history">Read next history page \u2192</button></section>
+ <section role="tabpanel" id="${prefix}-panel-journal" aria-labelledby="${prefix}-tab-journal" tabindex="0" data-panel="journal" hidden><form data-form="journal" class="am-card am-form"><span class="am-eyebrow">PERSONAL MEMORY</span><h3>A note you choose to keep.</h3><label for="${prefix}-ledger">Existing MemoryLedger<input id="${prefix}-ledger" name="ledger" placeholder="0x\u2026" autocomplete="off" required></label><label for="${prefix}-note">Your words<textarea id="${prefix}-note" name="text" rows="5" maxlength="3000" placeholder="An idea, a dedication, a moment\u2026" required></textarea></label><p class="am-muted">Up to 3,000 UTF-8 bytes. Encrypted entries keep the words private with your passphrase; their identity metadata remains public.</p><label for="${prefix}-privacy">Publication privacy<select id="${prefix}-privacy" name="mode"><option value="encrypted" selected>Encrypted words \xB7 public ciphertext</option><option value="public">Public words</option></select></label><label for="${prefix}-passphrase" data-node="journal-passphrase-group">Encryption passphrase<input id="${prefix}-passphrase" type="password" name="passphrase" autocomplete="new-password" minlength="12" maxlength="1024" placeholder="At least 12 characters; never a wallet seed" required></label><label class="am-check"><input type="checkbox" name="consent" required><span data-node="journal-consent">Publish this encrypted packet permanently. Its identity metadata remains public; I will keep the passphrase to recover the words.</span></label><button class="am-primary" type="submit">Review personal inscription</button><button type="button" class="am-text-button" data-action="export-journal" data-node="export-journal" disabled>Export prepared encrypted packet \u2193</button><p class="am-muted">Encryption happens locally before transaction review. No module can inscribe automatically. Exporting a packet does not publish it.</p></form><details class="am-card am-journal-recovery"><summary>Recover an encrypted journal packet</summary><div class="am-form"><p class="am-muted">Paste its exact exported JSON or import the file. Recovery is local and needs no wallet. The authenticated header shows the original NFT, owner and custody epoch, including historical entries.</p><label for="${prefix}-packet">Encrypted packet<textarea id="${prefix}-packet" rows="5" data-node="journal-packet" spellcheck="false"></textarea></label><label class="am-file" for="${prefix}-packet-file">Read an exported packet<input id="${prefix}-packet-file" type="file" accept="application/json,.json" data-node="journal-packet-file"></label><label for="${prefix}-recovery-passphrase">Recovery passphrase<input id="${prefix}-recovery-passphrase" type="password" autocomplete="off" data-node="recovery-passphrase"></label><button type="button" class="am-secondary" data-action="decrypt-journal">Decrypt local preview</button><button type="button" class="am-text-button" data-action="clear-journal-preview">Clear recovered words</button><pre data-node="journal-decrypted" hidden></pre></div></details></section>
+</section>
+ <aside class="am-inspector am-card" aria-labelledby="${prefix}-inspector-title"><span class="am-eyebrow">RECOVER / INSPECT</span><h2 id="${prefix}-inspector-title" tabindex="-1">Release inspector</h2><form data-form="recover" class="am-form"><label for="${prefix}-release">Exact release ID<input id="${prefix}-release" name="releaseId" placeholder="0x\u2026" autocomplete="off" required></label><button class="am-secondary" type="submit">Recover package</button></form><div data-node="package" class="am-package"><div class="am-empty">Select a release to inspect its publisher, exact version, capabilities and recovered files.</div></div><div class="am-actions"><button data-action="install" class="am-primary" disabled data-node="install">Review installation</button><button data-action="launch" class="am-secondary" disabled data-node="launch">Open isolated module</button><button data-action="disable" class="am-text-button" disabled data-node="disable">Review disable</button><button data-action="export-package" class="am-text-button" disabled data-node="export-package">Export recovered package \u2193</button></div>
+ <details class="am-state" data-node="state-details"><summary>State, history & migration</summary><p class="am-muted">Local drafts are namespaced to this NFT, module and schema. Chain snapshots are public and require a separate review.</p><div data-node="state-summary" class="am-muted">No module selected.</div><div class="am-actions"><button data-action="restore-chain" data-node="restore-chain" class="am-secondary" disabled>Preview chain state</button><button data-action="export-state" class="am-text-button" disabled>Export browser draft \u2193</button></div><label for="${prefix}-migration">Candidate state \xB7 JSON<textarea id="${prefix}-migration" data-node="migration-json" rows="5" placeholder='{"draft": {}}'></textarea></label><label class="am-file">Read a JSON file<input type="file" accept="application/json,.json" data-node="migration-file"></label><button data-action="preview-migration" class="am-secondary" disabled>Preview migration</button><pre data-node="migration-preview" hidden></pre><button data-action="commit-migration" class="am-secondary" disabled data-node="commit-migration">Apply reviewed browser draft</button><label class="am-check"><input type="checkbox" data-node="state-consent"><span>I approve publishing this state onchain.</span></label><div class="am-actions"><button data-action="save-state" class="am-secondary" disabled>Review chain snapshot</button><button data-action="stage-state" class="am-secondary" disabled>Review staged migration</button></div><p class="am-muted" data-node="staged">A schema change requires a staged snapshot, then a separate reviewed activation.</p></details></aside></div>
+ <section class="am-continuity am-card" aria-labelledby="${prefix}-continuity-title"><div class="am-section-heading"><div><span class="am-eyebrow">YOUR CONTINUITY</span><h2 id="${prefix}-continuity-title">Every version has a way home.</h2></div><button class="am-secondary" type="button" data-action="open-state">Open state & migration</button></div><ol class="am-steps"><li><span>01</span><div><strong>Recover release</strong><p>Read its exact package and permissions.</p></div></li><li><span>02</span><div><strong>Preview state</strong><p>Inspect a snapshot before applying it.</p></div></li><li><span>03</span><div><strong>Stage migration</strong><p>Review the next state separately.</p></div></li><li><span>04</span><div><strong>Activate version</strong><p>Select only the release you reviewed.</p></div></li></ol></section>
  <section class="am-runtime am-card" hidden data-node="runtime"><div class="am-section-heading"><div><span class="am-eyebrow">ISOLATED SESSION</span><h2 data-node="runtime-title">Your module</h2></div><button data-action="close-runtime" class="am-secondary">Close module \xD7</button></div><p class="am-muted" data-node="runtime-status">Only declared capabilities are available. Every transaction returns here for review.</p><div class="am-frame" data-node="runtime-container"></div></section>
- <footer class="am-footer"><span>ANIMA \xB7 A continuing identity</span><span>The original object stays yours. Modules are choices around it.</span></footer>
- <dialog class="am-review" data-node="review"><div class="am-review-body"><span class="am-eyebrow">PAUSE \xB7 READ \xB7 CHOOSE</span><h2 data-node="review-title">Review this action</h2><div data-node="review-summary"></div><pre data-node="review-content"></pre><div class="am-actions"><button data-action="cancel-review" class="am-secondary">Cancel</button><button data-action="confirm-review" class="am-primary" data-node="confirm-review">Sign this reviewed transaction</button></div><p class="am-muted" data-node="review-note">Only this exact action will be submitted. A changed owner, epoch, module or review invalidates it.</p></div></dialog>`;
+ <footer class="am-footer"><span>ANIMA <span aria-hidden="true">/</span> PRISM CATHEDRAL II</span><span>Publishing a release does not change your selected version.</span></footer>
+ <dialog class="am-review" data-node="review" aria-labelledby="${prefix}-review-title" aria-describedby="${prefix}-review-note"><div class="am-review-body"><span class="am-eyebrow">PAUSE \xB7 READ \xB7 CHOOSE</span><h2 id="${prefix}-review-title" data-node="review-title">Review this action</h2><div data-node="review-summary"></div><pre data-node="review-content"></pre><div class="am-actions"><button data-action="cancel-review" class="am-secondary">Cancel</button><button data-action="confirm-review" class="am-primary" data-node="confirm-review">Sign this reviewed transaction</button></div><p id="${prefix}-review-note" class="am-muted" data-node="review-note">Only this exact action will be submitted. A changed owner, epoch, module or review invalidates it.</p></div></dialog>`;
 }
 function mountWorkbench(container, options = {}) {
   if (!container?.ownerDocument) throw Error("A workbench container is required.");
@@ -27356,6 +27823,47 @@ function mountWorkbench(container, options = {}) {
   let adapter, identity, view, selected, state, migration, staged, runtime, session, review, reviewMode = "transaction", runtimeApproval, journalPacket, journalDecryptRevision = 0, disposed = false, generation = 0, busy = 0;
   let cursors = { catalog: 0, modules: 0, history: 0 };
   const storage = options.storage ?? win.localStorage;
+  const reducedMotion = win.matchMedia?.("(prefers-reduced-motion: reduce)");
+  let motionEnabled = !reducedMotion?.matches, artFrame = 0, artVisible = true, artClock = 12, artTick = null;
+  const artwork = new PrismArtwork(q("loom-canvas"), { identity: "ANIMA Prism Cathedral Module Workbench", mode: "modules", quality: "auto" });
+  const motionLabel = () => {
+    q("motion").textContent = motionEnabled ? "Pause artwork" : "Animate artwork";
+    q("motion").setAttribute("aria-pressed", String(motionEnabled));
+  };
+  const stopArtwork = () => {
+    if (artFrame) win.cancelAnimationFrame(artFrame);
+    artFrame = 0;
+    artTick = null;
+  };
+  const drawArtwork = (time = 0) => {
+    artFrame = 0;
+    if (disposed || doc.hidden || !artVisible) return;
+    if (motionEnabled && artTick !== null) artClock += Math.min((time - artTick) / 1e3, 0.1);
+    artTick = time;
+    const rect = q("loom-canvas").getBoundingClientRect();
+    artwork.draw({ width: rect.width, height: rect.height, time: artClock, motion: motionEnabled, zoom: 0.91, background: false });
+    if (motionEnabled) artFrame = win.requestAnimationFrame(drawArtwork);
+  };
+  const refreshArtwork = () => {
+    stopArtwork();
+    if (!disposed && !doc.hidden && artVisible) artFrame = win.requestAnimationFrame(drawArtwork);
+  };
+  const systemMotion = () => {
+    if (reducedMotion.matches) motionEnabled = false;
+    motionLabel();
+    refreshArtwork();
+  };
+  const artResize = win.ResizeObserver ? new win.ResizeObserver(refreshArtwork) : null;
+  artResize?.observe(q("loom-canvas"));
+  const artIntersection = win.IntersectionObserver ? new win.IntersectionObserver((entries) => {
+    artVisible = entries[0]?.isIntersecting ?? true;
+    refreshArtwork();
+  }, { rootMargin: "100px" }) : null;
+  artIntersection?.observe(q("loom-canvas"));
+  reducedMotion?.addEventListener?.("change", systemMotion);
+  doc.addEventListener("visibilitychange", refreshArtwork);
+  motionLabel();
+  refreshArtwork();
   const status = (message, error = false) => {
     if (disposed) return;
     q("status").textContent = message;
@@ -27397,6 +27905,17 @@ function mountWorkbench(container, options = {}) {
     staged = null;
     q("connection").textContent = "Not connected";
     q("disconnect").hidden = true;
+    q("migration-json").value = "";
+    q("migration-preview").textContent = "";
+    q("migration-preview").hidden = true;
+    q("commit-migration").disabled = true;
+    q("state-consent").checked = false;
+    q("staged").textContent = "A schema change requires a staged snapshot, then a separate reviewed activation.";
+    q("identity-summary").textContent = "Connecting checks the current owner, account and custody epoch. It does not install or send anything.";
+    drawList("catalog", [], "Published releases will appear here after connecting to a registry.");
+    drawList("installed", [], "Your NFT\u2019s selected versions and enabled modules will appear here.");
+    drawList("history", [], "Connect a registry to read this NFT\u2019s release and state history.");
+    for (const node of ["more-catalog", "more-installed", "more-history"]) q(node).hidden = true;
     renderPackage();
     status(message);
   }
@@ -27447,6 +27966,10 @@ function mountWorkbench(container, options = {}) {
   }
   function renderPackage() {
     for (const name of ["install", "disable", "launch", "export-package"]) q(name).disabled = !selected;
+    for (const name of ["export-state", "preview-migration"]) container.querySelector(`[data-action="${name}"]`).disabled = !selected;
+    for (const name of ["restore-chain", "save-state", "stage-state"]) container.querySelector(`[data-action="${name}"]`).disabled = !selected || selected.local || !identity;
+    for (const node of container.querySelectorAll("[data-release]")) node.setAttribute("aria-pressed", String(!!selected && !selected.local && node.dataset.release === selected.releaseId));
+    for (const node of container.querySelectorAll("[data-example]")) node.setAttribute("aria-pressed", String(!!selected && !!selected.local && node.dataset.example === selected.manifest.name));
     if (!selected) {
       q("package").innerHTML = '<div class="am-empty">Select a release to inspect its publisher, exact version, capabilities and recovered files.</div>';
       q("state-summary").textContent = "No module selected.";
@@ -27534,7 +28057,7 @@ function mountWorkbench(container, options = {}) {
     q("runtime-title").textContent = selected.manifest.name;
     q("runtime-status").textContent = html ? "HTML is inert in the frame; its scripts run in a worker with a bounded #id text/value/event bridge. Full browser DOM APIs are not supported." : "Typed visual/audio data uses a trusted renderer and bounded worker. Sound starts only with your click.";
     runtime = html ? mountHTML({ container: q("runtime-container"), recovered: selected, session, window: win, maxRuntimeMs: selected.manifest.resources?.maxRuntimeMs }) : mountScene({ container: q("runtime-container"), scene: sceneFromRelease(selected), session, window: win, maxRuntimeMs: selected.manifest.resources?.maxRuntimeMs });
-    q("runtime").scrollIntoView?.({ behavior: "smooth", block: "start" });
+    q("runtime").scrollIntoView?.({ behavior: reducedMotion?.matches ? "auto" : "smooth", block: "start" });
   }
   function localRequestPreview(proposal) {
     closeRuntime();
@@ -27564,8 +28087,14 @@ function mountWorkbench(container, options = {}) {
     } else await launchApproved();
   }
   function switchTab(tab) {
+    if (!Object.hasOwn(tabGlyph, tab)) return;
     for (const node of container.querySelectorAll("[data-panel]")) node.hidden = node.dataset.panel !== tab;
-    for (const node of container.querySelectorAll("[data-tab]")) node.setAttribute("aria-pressed", String(node.dataset.tab === tab));
+    for (const node of container.querySelectorAll("[data-tab]")) {
+      const active = node.dataset.tab === tab;
+      node.setAttribute("aria-pressed", String(active));
+      node.setAttribute("aria-selected", String(active));
+      node.tabIndex = active ? 0 : -1;
+    }
   }
   function download(name, value) {
     const blob = new Blob([typeof value === "string" ? value : json(value)], { type: "application/json" }), url = win.URL.createObjectURL(blob), a = doc.createElement("a");
@@ -27575,6 +28104,18 @@ function mountWorkbench(container, options = {}) {
     win.setTimeout(() => win.URL.revokeObjectURL(url), 1e3);
   }
   async function handleAction(action) {
+    if (action === "toggle-motion") {
+      motionEnabled = !motionEnabled;
+      motionLabel();
+      refreshArtwork();
+      return;
+    }
+    if (action === "open-state") {
+      q("state-details").open = true;
+      q("state-details").scrollIntoView?.({ behavior: reducedMotion?.matches ? "auto" : "smooth", block: "start" });
+      q("state-details").querySelector("summary").focus();
+      return;
+    }
     if (action === "close" || action === "original") {
       closeRuntime();
       closeReview();
@@ -27798,9 +28339,17 @@ function mountWorkbench(container, options = {}) {
     });
   };
   const cancelled = () => closeReview();
+  const tabKeydown = (event) => {
+    if (!event.target.matches?.('[role="tab"]') || !["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
+    event.preventDefault();
+    const tabs = [...container.querySelectorAll("[data-tab]")], at = tabs.indexOf(event.target), next = event.key === "Home" ? 0 : event.key === "End" ? tabs.length - 1 : (at + (event.key === "ArrowRight" ? 1 : -1) + tabs.length) % tabs.length;
+    switchTab(tabs[next].dataset.tab);
+    tabs[next].focus();
+  };
   container.addEventListener("click", click);
   container.addEventListener("submit", submit);
   container.addEventListener("change", change);
+  container.addEventListener("keydown", tabKeydown);
   q("review").addEventListener("cancel", cancelled);
   const walletChanged = () => invalidate("Wallet account or chain changed. Connect this NFT again.");
   win.ethereum?.on?.("accountsChanged", walletChanged);
@@ -27816,9 +28365,16 @@ function mountWorkbench(container, options = {}) {
     closeRuntime();
     closeReview();
     disposed = true;
+    stopArtwork();
+    artResize?.disconnect();
+    artIntersection?.disconnect();
+    artwork.dispose();
+    reducedMotion?.removeEventListener?.("change", systemMotion);
+    doc.removeEventListener("visibilitychange", refreshArtwork);
     container.removeEventListener("click", click);
     container.removeEventListener("submit", submit);
     container.removeEventListener("change", change);
+    container.removeEventListener("keydown", tabKeydown);
     q("review").removeEventListener("cancel", cancelled);
     win.ethereum?.removeListener?.("accountsChanged", walletChanged);
     win.ethereum?.removeListener?.("chainChanged", walletChanged);
@@ -27830,10 +28386,7 @@ function mountWorkbench(container, options = {}) {
 var previewIdentity = Object.freeze({ chainId: "0", collection: "0x" + "01".repeat(20), tokenId: "0", account: "0x" + "02".repeat(20), registry: "0x" + "03".repeat(20), owner: "0x" + "04".repeat(20), epoch: "0" });
 
 // web/modules/workbench.css
-var workbench_default = `.am-standalone{margin:0;background:#06111f}.anima-modules{--am-bg:#06111f;--am-panel:#0b1b2a;--am-line:#294051;--am-ink:#e6f3ff;--am-muted:#9db3c5;--am-blue:#93d7fa;position:relative;isolation:isolate;box-sizing:border-box;min-height:100%;padding:0 clamp(20px,4.5vw,80px);overflow:hidden;background:var(--am-bg);color:var(--am-ink);font:15px/1.55 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}.anima-modules *{box-sizing:border-box}.anima-modules [hidden]{display:none!important}.anima-modules button,.anima-modules input,.anima-modules textarea,.anima-modules select{font:inherit}.anima-modules button{cursor:pointer}.anima-modules button:disabled{cursor:not-allowed;opacity:.42}.anima-modules :focus-visible{outline:2px solid #acdeff;outline-offset:4px}.anima-modules h1,.anima-modules h2,.anima-modules h3,.anima-modules p{margin:0}.anima-modules h2{font-size:clamp(21px,2vw,29px);font-weight:450;line-height:1.3;letter-spacing:-.035em}.anima-modules h3{font-size:21px;font-weight:500;letter-spacing:-.025em}.anima-modules code{font:12px/1.6 ui-monospace,SFMono-Regular,monospace;overflow-wrap:anywhere}.anima-modules .am-backdrop{pointer-events:none;position:absolute;z-index:-1;inset:0;background:radial-gradient(ellipse at 80% 12%,#263e7440,transparent 35%),radial-gradient(ellipse at 7% 8%,#187a822b,transparent 30%),linear-gradient(transparent,#02081066)}.anima-modules .am-top{height:98px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #a2c8ee1c;gap:20px;max-width:1480px;margin:auto}.anima-modules .am-brand{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--am-ink);letter-spacing:.19em;font-size:15px;font-weight:650}.anima-modules .am-brand small{display:block;font:9px/1.7 ui-sans-serif,system-ui;letter-spacing:.24em;color:#97b5cb;margin-top:4px}.anima-modules .am-mark{width:39px;height:42px;display:grid;place-items:center;border-radius:48% 52% 63% 37%/45% 59% 41% 55%;font:italic 34px/1 Georgia,serif;letter-spacing:-.13em;padding-right:5px;color:#132b47;background:linear-gradient(130deg,#beecf1,#92b0e9 48%,#d7bcf1);box-shadow:0 0 30px #7abae02b}.anima-modules .am-top-right{display:flex;align-items:center;gap:24px}.anima-modules .am-status-pill{font-size:11px;letter-spacing:.06em;color:#a4c6d6;border:1px solid #6795ad3a;border-radius:20px;padding:7px 13px;white-space:nowrap}.anima-modules .am-status-pill:before{content:'';display:inline-block;width:5px;height:5px;margin-right:8px;border-radius:50%;background:#99bfd3}.anima-modules .am-intro{max-width:1480px;margin:auto;display:grid;grid-template-columns:minmax(0,1.2fr) minmax(220px,.8fr);align-items:center;padding:64px 0 54px;gap:45px}.anima-modules .am-eyebrow{display:block;font-size:10px;letter-spacing:.19em;font-weight:550;color:#93b6cf;margin-bottom:15px}.anima-modules h1{font-weight:350;letter-spacing:-.06em;line-height:1.06;font-size:clamp(40px,5.3vw,77px)}.anima-modules h1 em{font-family:Georgia,"Times New Roman",serif;font-weight:400;letter-spacing:-.045em;color:#c4e3f7}.anima-modules .am-intro p{max-width:540px;margin-top:24px;font-size:15px;line-height:1.8;color:#a5bccf}.anima-modules .am-sigil{position:relative;width:250px;height:250px;justify-self:center;display:grid;place-items:center}.anima-modules .am-sigil:before,.anima-modules .am-sigil:after{content:'';position:absolute;inset:4%;border:1px solid #9bcaed26;border-radius:50%;transform:rotate(-28deg) scaleY(.75)}.anima-modules .am-sigil:after{inset:-10%;transform:rotate(38deg) scaleY(.55)}.anima-modules .am-sigil div{width:145px;height:155px;border-radius:49% 51% 40% 60%/43% 35% 65% 57%;background:radial-gradient(ellipse at 38% 22%,#e0f6ffce,transparent 25%),radial-gradient(ellipse at 77% 67%,#caaef1bb,transparent 44%),radial-gradient(ellipse at 25% 58%,#3bd1d0b3,transparent 40%),linear-gradient(155deg,#264579,#84bdcc78,#151e57);box-shadow:inset -8px -5px 30px #081222d9,inset 3px 3px 15px #dcf3fa82,0 12px 90px #79b8e124;transform:rotate(-18deg)}.anima-modules .am-sigil span{position:absolute;bottom:-7px;font-size:8px;line-height:1.6;text-align:center;letter-spacing:.28em;color:#7597ad}.anima-modules .am-card{background:linear-gradient(120deg,#102333ac,#0a1a2bcc);border:1px solid #789dbc30;border-radius:19px;box-shadow:0 20px 70px #0000000d}.anima-modules .am-identity{max-width:1480px;margin:auto;padding:27px 30px}.anima-modules .am-section-heading{display:flex;justify-content:space-between;gap:15px;align-items:center;margin-bottom:22px}.anima-modules .am-section-heading .am-eyebrow{margin-bottom:9px}.anima-modules .am-identity h2{font-size:22px}.anima-modules .am-identity-form{display:grid;grid-template-columns:.65fr 1.9fr .65fr 1.9fr auto;gap:14px;align-items:end}.anima-modules label{display:grid;gap:8px;font-size:11px;letter-spacing:.035em;color:#a8c1d2}.anima-modules input,.anima-modules textarea,.anima-modules select{width:100%;min-width:0;display:block;padding:12px 13px;border:1px solid #6a92ad42;border-radius:9px;background:#06132299;color:var(--am-ink);font-size:13px;outline-offset:3px}.anima-modules input::placeholder,.anima-modules textarea::placeholder{color:#577589}.anima-modules textarea{resize:vertical;line-height:1.6}.anima-modules .am-primary,.anima-modules .am-secondary{border:1px solid #769bad66;border-radius:10px;padding:12px 17px;font-size:12px;line-height:1.5;font-weight:600;letter-spacing:.015em;white-space:nowrap}.anima-modules .am-primary{color:#08203a;background:linear-gradient(115deg,#b7e6e7,#a5c6f1 58%,#c0b9e8);border-color:#c6e5f1b3;box-shadow:0 2px 18px #a7cfff0d}.anima-modules .am-secondary{background:#122c40;color:#c5e2f3}.anima-modules .am-primary:hover:not(:disabled){filter:brightness(1.1)}.anima-modules .am-secondary:hover:not(:disabled){background:#1c3b53}.anima-modules .am-text-button{padding:8px 0;font-size:11px;color:#a9c9df;background:none;border:0;font-weight:500}.anima-modules .am-muted{font-size:11px;line-height:1.7;color:#819fb5;overflow-wrap:anywhere}.anima-modules .am-identity>.am-muted{margin-top:16px}.anima-modules .am-notice{max-width:1480px;margin:16px auto 26px;padding:12px 0;min-height:41px;font-size:12px;color:#a4c9d6}.anima-modules .am-notice.am-error{color:#f1b6bc}.anima-modules .am-layout{max-width:1480px;margin:0 auto;display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,340px);gap:38px;align-items:start}.anima-modules .am-main>.am-section-heading{margin-top:11px}.anima-modules .am-tabs{display:flex;gap:27px;border-bottom:1px solid #53748a4d;margin-bottom:22px}.anima-modules .am-tabs button{background:none;border:0;border-bottom:2px solid transparent;color:#7e9caf;padding:13px 0;font-size:13px}.anima-modules .am-tabs button[aria-pressed=true]{color:#d2ebfc;border-color:#a4d8f4}.anima-modules .am-list{display:grid;gap:10px;min-height:125px}.anima-modules .am-empty{padding:30px 22px;border:1px dashed #759ab733;border-radius:13px;text-align:center;font-size:12px;line-height:1.8;color:#7693a9}.anima-modules .am-release{display:flex;gap:15px;align-items:center;width:100%;padding:18px;text-align:left;color:var(--am-ink);border:1px solid #47647a40;border-radius:13px;background:#0c1d2cb3}.anima-modules .am-release:hover{border-color:#9ac5d780;background:#102839}.anima-modules .am-release strong{display:block;font-size:14px;font-weight:550}.anima-modules .am-release small{display:block;font-size:10px;color:#8eabc0;margin-top:4px;overflow-wrap:anywhere}.anima-modules .am-release-icon{width:42px;height:44px;border-radius:12px;flex:none;display:grid;place-items:center;font-size:23px;color:#b6dcf0;background:linear-gradient(145deg,#35597b66,#61659733)}.anima-modules .am-release-arrow{margin-left:auto;color:#91bacf;font-size:20px}.anima-modules .am-history-item{background:#0c1d2c;border:1px solid #47647a40;border-radius:11px;display:grid;grid-template-columns:auto 1fr;gap:6px 20px;padding:15px;text-align:left;color:#aac9de;font-size:12px}.anima-modules .am-history-item small{color:#6f94ad;font-size:10px}.anima-modules .am-history-item strong{justify-self:end;font-size:12px}.anima-modules .am-history-item code{text-align:right}.anima-modules .am-example-section{margin-top:39px}.anima-modules .am-small-badge{font-size:8px;letter-spacing:.11em;white-space:nowrap;padding:5px 8px;border:1px solid #58788f6b;border-radius:5px;color:#a4bfd2}.anima-modules .am-examples{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}.anima-modules .am-example{padding:0 17px 17px;border:1px solid #63829e4d;border-radius:14px;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:var(--am-ink);background:#102133;transition:transform .2s,border-color .2s}.anima-modules .am-example:hover{transform:translateY(-3px);border-color:#b8dce688}.anima-modules .am-example-art{width:calc(100% + 34px);height:108px;margin:0 -17px 18px;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 100%,#75c1e73b,transparent 75%),linear-gradient(135deg,#1c2d4c,#0a2738);font-family:Georgia,serif;font-size:69px;line-height:1;color:#a9dce0b3;text-shadow:0 0 26px #68d6ff80}.anima-modules .am-example-1 .am-example-art{background:radial-gradient(ellipse at 50% 90%,#8b81c847,transparent 70%),#14273a;color:#c1bdea}.anima-modules .am-example-2 .am-example-art{background:radial-gradient(ellipse at 50% 90%,#62b5b54a,transparent 70%),#122b32;color:#a0e4d9}.anima-modules .am-example small{font-size:9px;line-height:1.7;color:#7cacc7;margin-bottom:7px}.anima-modules .am-example strong{font-size:15px;font-weight:500;letter-spacing:-.02em}.anima-modules .am-example>span:not(.am-example-art){font-size:10px;line-height:1.7;color:#87a6bc;min-height:67px;margin-top:9px}.anima-modules .am-example b{margin-top:17px;font-size:10px;font-weight:500;color:#bdd9e9}.anima-modules .am-example-section>.am-muted{margin-top:14px}.anima-modules .am-inspector{padding:26px 23px;min-width:0}.anima-modules .am-inspector h2{font-size:24px;margin-bottom:23px}.anima-modules .am-form{display:grid;gap:16px}.anima-modules .am-package{margin-top:22px}.anima-modules .am-package .am-empty{padding:21px 13px;font-size:11px}.anima-modules .am-package h3{margin-top:18px;overflow-wrap:anywhere}.anima-modules dl{display:grid;grid-template-columns:75px minmax(0,1fr);gap:10px;margin:20px 0;font-size:11px}.anima-modules dt{color:#718fa4}.anima-modules dd{margin:0;color:#b8d4e5;overflow-wrap:anywhere}.anima-modules .am-capabilities{display:flex;flex-wrap:wrap;gap:6px}.anima-modules .am-capabilities span{font:9px ui-monospace,monospace;padding:5px 7px;border-radius:5px;background:#1a3447;color:#8fbed0}.anima-modules details{font-size:11px;color:#8dadc5;margin-top:20px}.anima-modules summary{cursor:pointer;color:#abc9dc;font-size:12px}.anima-modules details ul{padding-left:18px}.anima-modules .am-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}.anima-modules .am-inspector>.am-actions{display:grid}.anima-modules .am-inspector>.am-actions .am-text-button{text-align:left}.anima-modules .am-state{padding-top:18px;border-top:1px solid #718fa338}.anima-modules .am-state>*:not(summary){margin-top:16px}.anima-modules .am-check{display:flex;align-items:flex-start;gap:10px;line-height:1.65;letter-spacing:0}.anima-modules .am-check input{width:14px;height:14px;flex:none;margin:3px 0 0;accent-color:#b7dafa}.anima-modules .am-file{font-size:10px}.anima-modules .am-file input{padding:8px;font-size:10px}.anima-modules pre{max-height:350px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;font:11px/1.7 ui-monospace,monospace;color:#a5c9dd;background:#030c1680;padding:14px;border:1px solid #7491a236;border-radius:9px}.anima-modules .am-runtime{max-width:1480px;margin:40px auto 0;padding:25px}.anima-modules .am-runtime h2{font-size:23px}.anima-modules .am-frame{margin-top:20px;min-height:520px}.anima-modules .am-frame iframe{display:block;width:100%;height:650px;max-height:80vh;border:1px solid #36516c;border-radius:11px;background:#071221}.anima-modules .am-footer{max-width:1480px;margin:52px auto 0;padding:27px 0;display:flex;justify-content:space-between;gap:15px;border-top:1px solid #86a3ba25;font-size:9px;letter-spacing:.07em;color:#587f98}.anima-modules .am-review{width:min(780px,calc(100% - 32px));max-height:90vh;overflow:auto;background:#0b1d2d;color:var(--am-ink);border:1px solid #7697b36b;border-radius:20px;padding:0;box-shadow:0 30px 120px #0008}.anima-modules .am-review::backdrop{background:#020811c9;backdrop-filter:blur(7px)}.anima-modules .am-review-body{padding:30px}.anima-modules .am-review h2{margin-bottom:17px}.anima-modules .am-review [data-node=review-summary]{font-size:12px;color:#a5c3d6;line-height:1.8}.anima-modules .am-review pre{max-height:45vh;margin-top:20px}.anima-modules .am-review .am-muted{margin-top:20px}.anima-modules [data-panel=journal]>.am-card{padding:25px}.anima-modules [aria-busy=true]{cursor:progress}@media(max-width:1080px){.anima-modules .am-identity-form{grid-template-columns:1fr 2fr 1fr 2fr}.anima-modules .am-identity-form .am-primary{grid-column:1/-1}.anima-modules .am-layout{gap:23px;grid-template-columns:minmax(0,1fr) 285px}.anima-modules .am-examples{grid-template-columns:1fr}.anima-modules .am-example{position:relative;padding:18px 18px 18px 116px;min-height:150px}.anima-modules .am-example-art{position:absolute;left:17px;top:0;margin:0;width:82px;height:100%;background:none!important;font-size:62px}.anima-modules .am-example>span:not(.am-example-art){min-height:0}.anima-modules .am-example b{margin-top:10px}.anima-modules .am-intro{padding-top:47px}.anima-modules .am-sigil{width:210px;height:210px}}@media(max-width:760px){.anima-modules{padding:0 19px}.anima-modules .am-top{height:79px}.anima-modules .am-top-right{gap:9px}.anima-modules .am-top-right .am-text-button{display:none}.anima-modules .am-brand{font-size:12px}.anima-modules .am-brand small{font-size:7px}.anima-modules .am-intro{grid-template-columns:1fr;padding:44px 0 33px;gap:0}.anima-modules .am-intro h1{font-size:49px}.anima-modules .am-intro p{font-size:13px;max-width:440px}.anima-modules .am-sigil{display:none}.anima-modules .am-identity{padding:22px 18px}.anima-modules .am-identity h2{font-size:20px}.anima-modules .am-identity-form{grid-template-columns:1fr 1fr;gap:14px}.anima-modules .am-identity-form label:nth-child(2),.anima-modules .am-identity-form label:nth-child(4){grid-column:1/-1}.anima-modules .am-identity-form label:nth-child(3){grid-column:2;grid-row:1}.anima-modules .am-section-heading{align-items:flex-start}.anima-modules .am-eyebrow{font-size:8px}.anima-modules .am-layout{grid-template-columns:1fr;gap:30px}.anima-modules .am-tabs{gap:25px}.anima-modules .am-inspector{padding:24px 20px}.anima-modules .am-footer{margin-top:36px;flex-direction:column;gap:8px}.anima-modules .am-runtime{padding:20px 14px}.anima-modules .am-frame iframe{height:640px}.anima-modules .am-review-body{padding:23px 19px}.anima-modules .am-status-pill{font-size:9px;padding:6px 9px}.anima-modules .am-example-section .am-section-heading{display:block}.anima-modules .am-example-section .am-small-badge{display:inline-block;margin-top:12px}.anima-modules .am-notice{margin-bottom:20px}}@media(prefers-reduced-motion:reduce){.anima-modules *{scroll-behavior:auto!important;transition:none!important}}
-
-.anima-modules .am-journal-recovery>.am-form{margin-top:20px}.anima-modules select option{color:var(--am-ink);background:var(--am-bg)}
-`;
+var workbench_default = '/* Prism Cathedral II \u2014 a quiet instrument around a living, procedural loom. */\n.am-standalone{margin:0;background:#070b1b;color:#f4f0ff;color-scheme:dark}\n.am-standalone noscript{display:block;padding:24px;font:16px/1.6 system-ui,sans-serif}\n.anima-modules{\n  --am-bg:#070b1b;--am-panel:#10142a;--am-line:#536397;--am-ink:#f4f0ff;\n  --am-muted:#b7bdda;--am-blue:#477cff;--am-cyan:#7ceaff;--am-violet:#b09bff;\n  --am-rose:#f2a9da;--am-mono:ui-monospace,SFMono-Regular,Consolas,"Liberation Mono",monospace;\n  position:relative;isolation:isolate;container-type:inline-size;box-sizing:border-box;min-height:100%;padding:0 clamp(16px,3vw,56px);\n  overflow:hidden;background:var(--am-bg);color:var(--am-ink);color-scheme:dark;\n  font:15px/1.6 ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;\n  -webkit-font-smoothing:antialiased;\n}\n.anima-modules *{box-sizing:border-box}\n.anima-modules [hidden]{display:none!important}\n.anima-modules button,.anima-modules input,.anima-modules textarea,.anima-modules select{font:inherit}\n.anima-modules button{cursor:pointer;touch-action:manipulation}\n.anima-modules button:disabled{cursor:not-allowed;opacity:.48}\n.anima-modules :focus-visible{outline:3px solid var(--am-cyan);outline-offset:4px}\n.anima-modules ::selection{background:#477cff66;color:#fff}\n.anima-modules h1,.anima-modules h2,.anima-modules h3,.anima-modules p{margin:0}\n.anima-modules h2{font-size:clamp(20px,1.65vw,27px);font-weight:450;line-height:1.3;letter-spacing:-.02em}\n.anima-modules h3{font-size:21px;font-weight:500;line-height:1.35;letter-spacing:-.015em}\n.anima-modules code{font:14px/1.65 var(--am-mono);overflow-wrap:anywhere}\n.anima-modules .am-backdrop{\n  pointer-events:none;position:absolute;z-index:-1;inset:0;\n  background:radial-gradient(ellipse at 0% 16%,#2649b022,transparent 35%),radial-gradient(ellipse at 100% 27%,#60418a1b,transparent 36%),radial-gradient(ellipse at 35% 80%,#295d8a0e,transparent 40%);\n}\n.anima-modules .am-backdrop:before{\n  content:"";position:absolute;inset:0;opacity:.4;\n  background-image:radial-gradient(circle,#b09bff 0 .55px,transparent .9px),radial-gradient(circle,#7ceaff 0 .55px,transparent .9px);\n  background-size:149px 193px,211px 137px;background-position:31px 47px,103px 89px;\n  mask-image:linear-gradient(#000,transparent 80%);\n}\n.anima-modules .am-top,.anima-modules .am-intro,.anima-modules .am-identity,.anima-modules .am-notice,.anima-modules .am-layout,.anima-modules .am-continuity,.anima-modules .am-runtime,.anima-modules .am-footer{max-width:1640px;margin-inline:auto}\n.anima-modules .am-top{position:relative;min-height:92px;display:flex;align-items:center;justify-content:space-between;gap:24px;border-bottom:1px solid #b09bff65}\n.anima-modules .am-top:after{content:"";position:absolute;inset:auto 0 -1px;height:1px;background:linear-gradient(90deg,#7ceaff,transparent 30%,#b09bff 70%,#f2a9da);box-shadow:0 0 12px #7c9aff4d;pointer-events:none}\n.anima-modules .am-brand{display:flex;align-items:center;text-decoration:none;color:var(--am-ink);letter-spacing:.32em;font-size:28px;font-weight:350;line-height:1.1;min-height:48px}\n.anima-modules .am-brand small{display:block;font:10px/1.8 var(--am-mono);letter-spacing:.17em;color:var(--am-violet);margin-top:7px}\n.anima-modules .am-edition{font:14px/1.5 var(--am-mono);letter-spacing:.17em;color:#d8d2ef;white-space:nowrap}\n.anima-modules .am-edition span{color:var(--am-violet)}\n.anima-modules .am-top-right{display:flex;align-items:center;gap:18px}\n.anima-modules .am-status-pill{font:14px/1.6 var(--am-mono);color:var(--am-muted);border:1px solid #8177b982;border-radius:4px;padding:8px 12px;max-width:260px;overflow-wrap:anywhere}\n.anima-modules .am-status-pill:before{content:"";display:inline-block;width:6px;height:6px;margin-right:9px;border:1px solid var(--am-muted);border-radius:50%}\n.anima-modules .am-intro{display:flex;justify-content:space-between;align-items:center;padding:34px 0 30px;gap:36px}\n.anima-modules .am-eyebrow{display:block;font:10px/1.6 var(--am-mono);letter-spacing:.15em;color:var(--am-violet);margin-bottom:10px}\n.anima-modules h1{font-weight:350;letter-spacing:-.045em;line-height:1.08;font-size:clamp(36px,3.7vw,58px)}\n.anima-modules .am-intro p{max-width:485px;color:var(--am-muted);font-size:14px;line-height:1.8}\n.anima-modules .am-card{background:linear-gradient(135deg,#11172df5,#0a1021f5);border:1px solid #6776ad70;border-radius:7px;box-shadow:inset 0 1px 0 #d7d3ff0a,0 16px 45px #02040c24}\n.anima-modules .am-identity{padding:20px 24px}\n.anima-modules .am-section-heading{display:flex;justify-content:space-between;gap:16px;align-items:center;margin-bottom:18px;min-width:0}\n.anima-modules .am-section-heading .am-eyebrow{margin-bottom:5px}\n.anima-modules .am-identity h2{font-size:19px}\n.anima-modules .am-identity-form{display:grid;grid-template-columns:minmax(80px,.65fr) minmax(180px,1.9fr) minmax(70px,.65fr) minmax(180px,1.9fr) auto;gap:14px;align-items:end}\n.anima-modules label{display:grid;gap:7px;font-size:14px;letter-spacing:.015em;color:#d0d2e9;min-width:0}\n.anima-modules input,.anima-modules textarea,.anima-modules select{width:100%;min-width:0;min-height:46px;display:block;padding:11px 12px;border:1px solid #717ba772;border-radius:4px;background:#070d20;color:var(--am-ink);font-size:16px;outline-offset:3px}\n.anima-modules input:hover,.anima-modules textarea:hover,.anima-modules select:hover{border-color:#999bd1b3}\n.anima-modules input::placeholder,.anima-modules textarea::placeholder{color:#969fbc;opacity:1}\n.anima-modules textarea{resize:vertical;line-height:1.7}\n.anima-modules select option{color:var(--am-ink);background:var(--am-bg)}\n.anima-modules .am-primary,.anima-modules .am-secondary{min-height:46px;border:1px solid #8a8ec382;border-radius:4px;padding:11px 16px;font-size:14px;line-height:1.55;font-weight:550;letter-spacing:.01em;white-space:normal;transition:background .16s,border-color .16s,box-shadow .16s}\n.anima-modules .am-primary{color:#fbf9ff;background:linear-gradient(115deg,#203980,#372965);border-color:#afa8f5;box-shadow:inset 0 0 14px #6681e42b,0 0 14px #6983ff1c}\n.anima-modules .am-primary:hover:not(:disabled){background:linear-gradient(115deg,#2c4c9a,#503986);border-color:#ddd6ff;box-shadow:0 0 20px #847cff3b}\n.anima-modules .am-secondary{background:#131c35;color:#e6e3fc}\n.anima-modules .am-secondary:hover:not(:disabled){background:#202b4b;border-color:#b5b6df}\n.anima-modules .am-text-button{min-height:44px;padding:10px 3px;font-size:14px;line-height:1.5;color:#c4caf0;background:transparent;border:0;font-weight:500;text-underline-offset:5px}\n.anima-modules .am-text-button:hover:not(:disabled){color:var(--am-cyan);text-decoration:underline}\n.anima-modules .am-top-right .am-text-button{border:1px solid #a8a0da8c;border-radius:4px;padding:10px 16px}\n.anima-modules .am-muted{font-size:14px;line-height:1.75;color:var(--am-muted);overflow-wrap:anywhere}\n.anima-modules .am-identity>.am-muted{margin-top:13px}\n.anima-modules .am-notice{margin-block:15px 22px;padding:12px 16px;min-height:46px;font-size:14px;color:#c7d5ef;border-left:2px solid #7ceaff8c;background:#18254445;border-radius:0 4px 4px 0}\n.anima-modules .am-notice.am-error{color:#ffd0dc;border-left-color:#ffa9bc;background:#44203459}\n.anima-modules .am-layout{display:grid;grid-template-columns:minmax(220px,.87fr) minmax(320px,1.35fr) minmax(275px,1fr);gap:22px;align-items:start}\n.anima-modules .am-main{min-width:0}\n.anima-modules .am-main>.am-section-heading{min-height:48px;margin-bottom:16px}\n.anima-modules .am-main>.am-section-heading h2{font-size:19px}\n.anima-modules .am-loom-panel{position:relative;overflow:hidden;border-color:#969ce78c;box-shadow:inset 0 0 36px #477cff12,0 0 24px #477cff0c;background:radial-gradient(ellipse at 45% 35%,#173e7130,transparent 65%),#080e1e}\n.anima-modules .am-loom-heading{position:relative;z-index:1;display:flex;justify-content:space-between;align-items:center;gap:10px;padding:19px 17px 0;flex-wrap:wrap}\n.anima-modules .am-loom-heading .am-eyebrow{margin:0}\n.anima-modules .am-loom-heading .am-small-badge{font-size:8px;padding:3px 5px}\n.anima-modules .am-loom-stage{position:relative;aspect-ratio:1/1.2;min-height:300px}\n.anima-modules .am-loom-canvas{display:block;position:absolute;inset:0;width:100%;height:100%;pointer-events:none}\n.anima-modules .am-loom-axis{pointer-events:none;position:absolute;inset:10% 9%;border-top:1px solid #af9cff33;border-bottom:1px solid #af9cff33}\n.anima-modules .am-loom-axis:before,.anima-modules .am-loom-axis:after{content:"";position:absolute;left:50%;width:1px;height:12px;background:#c8b9f180}\n.anima-modules .am-loom-axis:before{top:-6px}.anima-modules .am-loom-axis:after{bottom:-6px}\n.anima-modules .am-loom-caption{padding:0 22px 17px;position:relative}\n.anima-modules .am-loom-caption h2{font-size:26px;line-height:1.35;letter-spacing:.015em;font-weight:350}\n.anima-modules .am-loom-caption p{margin-top:14px;color:var(--am-muted);font-size:14px;line-height:1.8}\n.anima-modules .am-loom-caption button{margin-top:8px;color:var(--am-cyan)}\n.anima-modules .am-tabs{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:2px;border:1px solid #8b88c787;border-radius:4px;padding:3px;margin-bottom:17px;background:#0a1023}\n.anima-modules .am-tabs button{display:flex;gap:8px;align-items:center;justify-content:center;min-height:48px;background:transparent;border:1px solid transparent;border-radius:2px;color:#b5bedb;padding:10px 5px;font:14px/1.5 var(--am-mono);position:relative}\n.anima-modules .am-tabs svg{width:18px;height:18px;flex:none}\n.anima-modules .am-tabs button[aria-selected=true]{color:#fff;border-color:#c2b5ff;background:linear-gradient(120deg,#26387c99,#45367799);box-shadow:inset 0 0 12px #7d8ee329,0 0 13px #b49cff38}\n.anima-modules .am-tabs button:hover:not([aria-selected=true]){background:#1a2444;color:#e8e5ff}\n.anima-modules [role=tabpanel]{min-width:0;scroll-margin-top:20px}\n.anima-modules .am-list{display:grid;gap:11px}\n.anima-modules .am-empty{padding:22px 18px;border:1px dashed #7787bb65;border-radius:5px;font-size:14px;line-height:1.8;color:#bac2df;background:#0b1122}\n.anima-modules .am-release{display:flex;gap:14px;align-items:center;width:100%;padding:18px;text-align:left;color:var(--am-ink);border:1px solid #677cb080;border-radius:5px;background:linear-gradient(120deg,#141e35,#0c1428);min-width:0}\n.anima-modules .am-release>span:nth-child(2){min-width:0}\n.anima-modules .am-release:hover,.anima-modules .am-release[aria-pressed=true]{border-color:#c2b5ff;background:#1a2141;box-shadow:inset 0 0 18px #6e78c418}\n.anima-modules .am-release strong{display:block;font-size:15px;font-weight:550;overflow-wrap:anywhere}\n.anima-modules .am-release small{display:block;font-size:14px;line-height:1.6;color:var(--am-muted);margin-top:5px;overflow-wrap:anywhere}\n.anima-modules .am-release-icon{width:46px;height:52px;border-radius:4px;flex:none;display:grid;place-items:center;font-size:26px;color:#c8c0ff;background:radial-gradient(ellipse,#536ed73b,transparent 72%)}\n.anima-modules .am-release-arrow{margin-left:auto;color:var(--am-cyan);font-size:20px}\n.anima-modules .am-history-item{background:#101a31;border:1px solid #7186b76b;border-radius:4px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:7px 16px;padding:16px;text-align:left;color:#d0d8f2;font-size:14px;min-width:0}\n.anima-modules .am-history-item:hover,.anima-modules .am-history-item[aria-pressed=true]{border-color:#c2b5ff}\n.anima-modules .am-history-item small{color:var(--am-muted);font-size:11px;overflow-wrap:anywhere}\n.anima-modules .am-history-item strong{justify-self:end;font-size:14px}\n.anima-modules .am-history-item code{text-align:right}\n.anima-modules .am-example-section{margin-top:25px}\n.anima-modules .am-example-section h3{font-size:18px}\n.anima-modules .am-small-badge{display:inline-block;font:9px/1.5 var(--am-mono);letter-spacing:.055em;padding:5px 8px;border:1px solid #878ac278;border-radius:3px;color:#c5c8e5;overflow-wrap:anywhere}\n.anima-modules .am-examples{display:grid;gap:12px}\n.anima-modules .am-example{position:relative;padding:18px 18px 17px 126px;min-height:157px;border:1px solid #7988be75;border-radius:5px;overflow:hidden;display:flex;flex-direction:column;align-items:flex-start;text-align:left;color:var(--am-ink);background:linear-gradient(110deg,#17234480,#10162cf2 42%);transition:border-color .16s,box-shadow .16s}\n.anima-modules .am-example:hover,.anima-modules .am-example[aria-pressed=true]{border-color:#b9b1f1;box-shadow:0 0 18px #9d87ff1a,inset 0 0 20px #727dec0a}\n.anima-modules .am-example-art{position:absolute;left:9px;top:0;width:108px;height:100%;display:grid;place-items:center;pointer-events:none;background:radial-gradient(ellipse,#497ed02b,transparent 70%)}\n.anima-modules .am-example-art svg{width:100%;height:auto;filter:drop-shadow(0 0 7px #6583e02b)}\n.anima-modules .am-example-1 .am-example-art{background:radial-gradient(ellipse,#7d5bbc2b,transparent 70%)}\n.anima-modules .am-example-2 .am-example-art{background:radial-gradient(ellipse,#a1519c24,transparent 70%)}\n.anima-modules .am-example small{font:10px/1.6 var(--am-mono);color:#b8b8e5;margin-bottom:6px}\n.anima-modules .am-example strong{font-size:17px;font-weight:500;letter-spacing:.005em}\n.anima-modules .am-example>span:not(.am-example-art){font-size:14px;line-height:1.7;color:var(--am-muted);margin-top:8px}\n.anima-modules .am-example b{margin-top:13px;font-size:14px;font-weight:500;color:#d3cbfa}\n.anima-modules .am-example b span{margin-left:8px;color:var(--am-cyan)}\n.anima-modules .am-example-section>.am-muted{margin-top:15px}\n.anima-modules .am-inspector{padding:23px 20px;min-width:0;border-color:#aaa1db91;scroll-margin-top:20px}\n.anima-modules .am-inspector h2{font-size:25px;margin-bottom:23px}\n.anima-modules .am-form{display:grid;gap:16px}\n.anima-modules .am-package{margin-top:23px;min-width:0}\n.anima-modules .am-package .am-empty{padding:20px 14px;font-size:14px}\n.anima-modules .am-package h3{margin-top:18px;overflow-wrap:anywhere}\n.anima-modules dl{display:grid;grid-template-columns:82px minmax(0,1fr);gap:0;margin:20px 0;font-size:14px}\n.anima-modules dt,.anima-modules dd{padding:10px 0;border-bottom:1px solid #8197c22b}\n.anima-modules dt{color:#b5bcdb}\n.anima-modules dd{margin:0;color:#e0dff5;overflow-wrap:anywhere;padding-left:10px}\n.anima-modules .am-capabilities{display:flex;flex-wrap:wrap;gap:7px}\n.anima-modules .am-capabilities span{font:12px/1.6 var(--am-mono);padding:5px 7px;border-radius:3px;border:1px solid #677cc663;background:#1a2543;color:#ced9fc;overflow-wrap:anywhere}\n.anima-modules details{font-size:14px;color:var(--am-muted);margin-top:20px}\n.anima-modules summary{cursor:pointer;color:#e0dbfb;font-size:14px;min-height:44px;line-height:1.65;padding-block:11px;touch-action:manipulation}\n.anima-modules details ul{padding-left:18px;line-height:1.85}\n.anima-modules .am-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:18px}\n.anima-modules .am-inspector>.am-actions{display:grid;gap:9px}\n.anima-modules .am-inspector>.am-actions .am-text-button{text-align:left}\n.anima-modules .am-state{padding-top:14px;border-top:1px solid #8294c85e}\n.anima-modules .am-state>*:not(summary){margin-top:16px}\n.anima-modules .am-check{display:flex;align-items:flex-start;gap:12px;line-height:1.75;letter-spacing:0;min-height:44px;padding-block:7px}\n.anima-modules .am-check input{width:20px;height:20px;min-height:20px;flex:none;margin:1px 0 0;accent-color:#a99af2}\n.anima-modules .am-file{font-size:14px}\n.anima-modules .am-file input{padding:8px;font-size:14px}\n.anima-modules input::file-selector-button{padding:8px 10px;background:#202c4e;border:1px solid #8794c3;border-radius:3px;color:var(--am-ink);margin-right:9px;font:inherit;cursor:pointer}\n.anima-modules pre{max-height:350px;overflow:auto;white-space:pre-wrap;overflow-wrap:anywhere;text-align:left;font:14px/1.75 var(--am-mono);color:#d2def7;background:#070d1f;padding:15px;border:1px solid #8294c65e;border-radius:4px;tab-size:2}\n.anima-modules .am-continuity{margin-top:26px;padding:23px 25px}\n.anima-modules .am-continuity h2{font-size:22px}\n.anima-modules .am-steps{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:24px;list-style:none;padding:0;margin:24px 0 0}\n.anima-modules .am-steps li{display:flex;align-items:flex-start;gap:13px;position:relative}\n.anima-modules .am-steps li>span{display:grid;place-items:center;flex:none;width:30px;height:30px;border:1px solid #a9a1e699;border-radius:50%;color:var(--am-cyan);font:10px var(--am-mono);box-shadow:0 0 13px #648dfa15}\n.anima-modules .am-steps strong{font:14px/1.65 var(--am-mono);color:#e1dafa}\n.anima-modules .am-steps p{margin-top:5px;font-size:14px;line-height:1.7;color:var(--am-muted)}\n.anima-modules .am-runtime{margin-top:30px;padding:25px}\n.anima-modules .am-runtime h2{font-size:25px}\n.anima-modules .am-frame{margin-top:20px;min-height:520px}\n.anima-modules .am-frame iframe{display:block;width:100%;height:650px;max-height:80vh;border:1px solid #8392c1;border-radius:5px;background:#071221}\n.anima-modules .am-footer{margin-top:34px;padding:25px 0;display:flex;justify-content:space-between;gap:20px;border-top:1px solid #9494c957;font:10px/1.8 var(--am-mono);letter-spacing:.035em;color:#aab5d3}\n.anima-modules .am-footer>span:first-child{color:#c5bbf4}\n.anima-modules .am-review{width:min(800px,calc(100% - 32px));max-height:90vh;max-height:90dvh;overflow:auto;background:#0d1429;color:var(--am-ink);border:1px solid #a49bd6;border-radius:7px;padding:0;box-shadow:0 24px 120px #000c,0 0 30px #557ee124}\n.anima-modules .am-review::backdrop{background:#030713dd;backdrop-filter:blur(7px)}\n.anima-modules .am-review-body{padding:30px}\n.anima-modules .am-review h2{margin-bottom:18px}\n.anima-modules .am-review [data-node=review-summary]{font-size:14px;color:#c7d0e9;line-height:1.8}\n.anima-modules .am-review pre{max-height:42vh;margin-top:22px}\n.anima-modules .am-review .am-muted{margin-top:20px}\n.anima-modules [data-panel=journal]>.am-card{padding:24px}\n.anima-modules .am-journal-recovery>.am-form{margin-top:18px}\n.anima-modules[aria-busy=true]{cursor:progress}\n@media(min-width:1600px){.anima-modules .am-example{padding-left:144px}.anima-modules .am-example-art{width:125px}}\n@media(max-width:1200px){\n  .anima-modules .am-layout{grid-template-columns:minmax(0,1.4fr) minmax(290px,1fr)}\n  .anima-modules .am-loom-panel{grid-column:1/-1;display:grid;grid-template-columns:1fr 260px 1fr;align-items:center;min-height:230px}\n  .anima-modules .am-loom-heading{align-self:start;padding:24px;display:block}\n  .anima-modules .am-loom-heading .am-small-badge{margin-top:13px}\n  .anima-modules .am-loom-stage{min-height:220px;aspect-ratio:auto;height:240px}\n  .anima-modules .am-loom-caption{padding:24px}\n  .anima-modules .am-identity-form{grid-template-columns:minmax(70px,.6fr) minmax(170px,1.5fr) minmax(70px,.6fr) minmax(170px,1.5fr)}\n  .anima-modules .am-identity-form .am-primary{grid-column:1/-1;justify-self:end;min-width:150px}\n  .anima-modules .am-edition{font-size:10px;letter-spacing:.1em}\n  .anima-modules .am-steps{grid-template-columns:repeat(2,minmax(0,1fr))}\n}\n@media(max-width:820px){\n  .anima-modules{padding:0 20px}\n  .anima-modules .am-top{gap:15px;min-height:88px}\n  .anima-modules .am-edition{display:none}\n  .anima-modules .am-top-right{gap:10px}\n  .anima-modules .am-brand{font-size:25px}\n  .anima-modules .am-intro{align-items:flex-start;flex-direction:column;gap:18px;padding-block:28px}\n  .anima-modules .am-intro p{max-width:600px}\n  .anima-modules .am-layout{grid-template-columns:1fr;gap:23px}\n  .anima-modules .am-loom-panel{grid-template-columns:1fr 1fr;min-height:245px}\n  .anima-modules .am-loom-heading{position:absolute;top:0;left:0;right:0;display:flex;padding:17px}\n  .anima-modules .am-loom-heading .am-small-badge{margin:0}\n  .anima-modules .am-loom-stage{margin-top:35px;height:245px}\n  .anima-modules .am-loom-caption{padding:50px 20px 16px 10px}\n  .anima-modules .am-loom-caption h2{font-size:24px}\n  .anima-modules .am-inspector{padding:24px}\n  .anima-modules .am-identity-form{grid-template-columns:1fr 1fr;gap:14px}\n  .anima-modules .am-identity-form label:nth-child(2),.anima-modules .am-identity-form label:nth-child(4){grid-column:1/-1}\n  .anima-modules .am-identity-form label:nth-child(3){grid-column:2;grid-row:1}\n  .anima-modules .am-identity-form .am-primary{justify-self:stretch}\n  .anima-modules input,.anima-modules textarea,.anima-modules select{font-size:16px}\n  .anima-modules .am-tabs button{font-size:14px;min-height:50px}\n  .anima-modules .am-example{min-height:142px;padding-left:145px}\n  .anima-modules .am-example-art{width:125px}\n  .anima-modules .am-continuity .am-section-heading{align-items:flex-start}\n}\n@media(max-width:480px){\n  .anima-modules{padding:0 14px}\n  .anima-modules .am-top{align-items:center;min-height:100px;gap:10px}\n  .anima-modules .am-brand{font-size:23px;letter-spacing:.24em}\n  .anima-modules .am-brand small{font-size:8px;letter-spacing:.08em}\n  .anima-modules .am-top-right{align-items:flex-end;flex-direction:column;gap:3px}\n  .anima-modules .am-status-pill{font-size:9px;padding:5px 8px;max-width:182px}\n  .anima-modules .am-top-right .am-text-button{border:0;padding:9px 2px;min-height:40px}\n  .anima-modules h1{font-size:39px}\n  .anima-modules .am-identity{padding:19px 16px}\n  .anima-modules .am-identity h2{font-size:18px}\n  .anima-modules .am-section-heading{gap:11px;align-items:flex-start}\n  .anima-modules .am-main>.am-section-heading{align-items:center}\n  .anima-modules .am-main>.am-section-heading h2{font-size:18px}\n  .anima-modules .am-main>.am-section-heading .am-secondary{padding-inline:11px}\n  .anima-modules .am-loom-panel{display:block}\n  .anima-modules .am-loom-stage{height:265px;margin-top:35px}\n  .anima-modules .am-loom-caption{padding:0 20px 14px}\n  .anima-modules .am-loom-caption h2{font-size:24px}\n  .anima-modules .am-loom-caption h2 br{display:none}\n  .anima-modules .am-loom-caption h2 br:after{content:" "}\n  .anima-modules .am-tabs{padding:2px;gap:1px}\n  .anima-modules .am-tabs button{flex-direction:column;gap:5px;font-size:12px;min-height:64px;padding:8px 2px}\n  .anima-modules .am-example{padding:15px 14px 15px 101px}\n  .anima-modules .am-example-art{left:5px;width:88px}\n  .anima-modules .am-example strong{font-size:16px}\n  .anima-modules .am-example small{font-size:9px}\n  .anima-modules .am-example-section .am-section-heading{align-items:center}\n  .anima-modules .am-example-section .am-small-badge{font-size:8px;padding:4px 5px}\n  .anima-modules .am-inspector{padding:22px 17px}\n  .anima-modules .am-inspector h2{font-size:24px}\n  .anima-modules .am-continuity{padding:21px 17px}\n  .anima-modules .am-continuity .am-section-heading{display:grid;gap:16px}\n  .anima-modules .am-steps{grid-template-columns:1fr;gap:19px;margin-top:22px}\n  .anima-modules .am-steps li>span{width:32px;height:32px}\n  .anima-modules .am-history-item{grid-template-columns:1fr;gap:7px}\n  .anima-modules .am-history-item strong{justify-self:start}\n  .anima-modules .am-history-item code{text-align:left}\n  .anima-modules .am-runtime{padding:20px 14px}\n  .anima-modules .am-runtime h2{font-size:21px}\n  .anima-modules .am-frame iframe{height:640px}\n  .anima-modules .am-footer{flex-direction:column;gap:8px;margin-top:27px}\n  .anima-modules .am-review-body{padding:23px 18px}\n  .anima-modules .am-review .am-actions{display:grid}\n  .anima-modules [data-panel=journal]>.am-card{padding:21px 16px}\n}\n@media(prefers-reduced-motion:reduce){.anima-modules *{scroll-behavior:auto!important;transition:none!important;animation:none!important}}\n@media(forced-colors:active){\n  .anima-modules .am-tabs button[aria-selected=true]{border:2px solid Highlight}\n  .anima-modules .am-card,.anima-modules .am-release,.anima-modules .am-example,.anima-modules .am-primary,.anima-modules .am-secondary{border:1px solid CanvasText}\n  .anima-modules :focus-visible{outline:3px solid Highlight}\n  .anima-modules .am-backdrop,.anima-modules .am-loom-axis{display:none}\n}\n\n/* Embedded workbenches size themselves to their host, even on wide browser windows. */\n@container (max-width:1120px){\n  .anima-modules .am-layout{grid-template-columns:minmax(0,1.35fr) minmax(275px,1fr)}\n  .anima-modules .am-loom-panel{grid-column:1/-1;display:grid;grid-template-columns:1fr 250px 1fr;align-items:center}\n  .anima-modules .am-loom-heading{position:static;display:block;align-self:start;padding:22px}\n  .anima-modules .am-loom-heading .am-small-badge{margin-top:12px}\n  .anima-modules .am-loom-stage{height:240px;aspect-ratio:auto;min-height:220px;margin-top:0}\n  .anima-modules .am-loom-caption{padding:24px}\n  .anima-modules .am-identity-form{grid-template-columns:minmax(70px,.65fr) minmax(130px,1.5fr) minmax(70px,.65fr) minmax(130px,1.5fr)}\n  .anima-modules .am-identity-form .am-primary{grid-column:1/-1;justify-self:end;min-width:160px}\n  .anima-modules .am-steps{grid-template-columns:repeat(2,minmax(0,1fr))}\n}\n@container (max-width:760px){\n  .anima-modules .am-layout{grid-template-columns:1fr}\n  .anima-modules .am-loom-panel{grid-template-columns:1fr 1fr;position:relative}\n  .anima-modules .am-loom-heading{position:absolute;top:0;left:0;right:0;display:flex;padding:17px}\n  .anima-modules .am-loom-heading .am-small-badge{margin:0}\n  .anima-modules .am-loom-stage{margin-top:35px;height:245px}\n  .anima-modules .am-loom-caption{padding:50px 20px 16px 10px}\n  .anima-modules .am-identity-form{grid-template-columns:1fr 1fr}\n  .anima-modules .am-identity-form label:nth-child(2),.anima-modules .am-identity-form label:nth-child(4){grid-column:1/-1}\n  .anima-modules .am-identity-form label:nth-child(3){grid-column:2;grid-row:1}\n  .anima-modules .am-identity-form .am-primary{justify-self:stretch}\n  .anima-modules .am-edition{display:none}\n  .anima-modules .am-intro{flex-direction:column;align-items:flex-start;gap:18px}\n}\n@container (max-width:420px){\n  .anima-modules .am-loom-panel{display:block}\n  .anima-modules .am-loom-stage{height:265px}\n  .anima-modules .am-loom-caption{padding:0 20px 14px}\n  .anima-modules .am-steps{grid-template-columns:1fr}\n  .anima-modules .am-continuity .am-section-heading{display:grid;gap:16px}\n  .anima-modules .am-tabs button{flex-direction:column;gap:5px;font-size:12px;min-height:64px;padding:8px 2px}\n  .anima-modules .am-tabs svg{width:17px;height:17px}\n  .anima-modules .am-example{padding:16px 15px 16px 101px}\n  .anima-modules .am-example-art{left:5px;width:88px}\n}\n/* Status, permission and navigation text are reading surfaces, not decorative microtype. */\n.anima-modules .am-status-pill,.anima-modules .am-small-badge,\n.anima-modules .am-capabilities span,.anima-modules .am-example small,\n.anima-modules .am-history-item small,.anima-modules .am-history-item strong,\n.anima-modules .am-tabs button,.anima-modules .am-example-section .am-small-badge{font-size:14px;letter-spacing:0}\n.anima-modules .am-loom-heading .am-small-badge{font-size:11px}\n@media(max-width:480px){\n  .anima-modules .am-status-pill{padding:5px 7px}\n  .anima-modules .am-example-section .am-section-heading{align-items:flex-start;flex-wrap:wrap}\n}\n';
 
 // anima-embedded-modules.mjs
 function mountWorkbench2(container, options = {}) {

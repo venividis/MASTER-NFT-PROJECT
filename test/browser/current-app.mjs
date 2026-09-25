@@ -169,8 +169,8 @@ async function waitMode(page, mode) {
 }
 
 export async function openAtlas(page) {
-  // Use the visible navigation. The original entry is hidden while a surface is open.
-  const entry = page.locator('[data-genesis="atlas"]');
+  // The phone navigation remains available while the desktop dock is hidden.
+  const entry = page.locator('.prism-mobile-nav [data-cf="atlas"]');
   if (await entry.isVisible()) await entry.click();
   else await page.locator('.cf-dock [data-cf="atlas"]').click();
   await waitMode(page, "atlas");
@@ -180,14 +180,14 @@ export async function openAtlas(page) {
 async function route(page, key, mode = key) {
   await openAtlas(page);
   await page
-    .locator('#cf-content > .cf-atlas [data-do="nav:' + key + '"]')
+    .locator('#cf-content .prism-atlas-group [data-do="nav:' + key + '"]')
     .click();
   await waitMode(page, mode);
 }
 
 async function openDeveloperConsole(page) {
   await openAtlas(page);
-  await page.locator('#cf-content [data-do="nav:advanced"]').click();
+  await page.locator('#cf-content .prism-atlas-group [data-do="nav:advanced"]').click();
   await waitMode(page, "advanced");
   await page.locator('#cf-content > .cf-atlas [data-do="nav:agents"]').click();
   await waitMode(page, "agents");
@@ -196,7 +196,7 @@ async function openDeveloperConsole(page) {
 
 async function openConnect(page) {
   await openAtlas(page);
-  await page.locator('#cf-content [data-do="nav:connect"]').click();
+  await page.locator('#cf-content .prism-atlas-group [data-do="nav:connect"]').click();
   await waitMode(page, "connect");
   await page.locator("#cf-collection").fill(COLLECTION);
   await page.locator("#cf-token").fill("1");
@@ -248,9 +248,9 @@ async function assertViewport(page) {
 }
 
 async function navigationCase(page, capture) {
-  assert.equal(await page.title(), "Anima Genesis");
+  assert.equal(await page.title(), "ANIMA · Prism Cathedral");
   await page.waitForFunction(() => window.__idfbi.renderer.frames > 0);
-  await page.locator('[data-genesis="interior"]').waitFor({ state: "visible" });
+  await page.locator('.prism-home-actions [data-cf="interior"]').waitFor({ state: "visible" });
   const initial = await page.evaluate(() => ({
     seed: window.__idfbi.state().seed,
     audit: window.__idfbi.world().state.audit,
@@ -270,9 +270,9 @@ async function navigationCase(page, capture) {
     /wasm|webgl/i,
     "Original optical renderer did not initialize",
   );
-  await capture("original");
+  await capture("prism-home");
 
-  await page.locator('[data-genesis="interior"]').click();
+  await page.locator('.prism-home-actions [data-cf="interior"]').click();
   await page.waitForFunction(
     () =>
       window.__confluence.interior.active &&
@@ -298,6 +298,8 @@ async function navigationCase(page, capture) {
   );
   await capture("interior");
   await openAtlas(page);
+  if (await page.locator('.prism-mobile-nav').isVisible())
+    assert.deepEqual(await page.locator('.prism-mobile-nav [data-cf]').allTextContents(), ['Home', 'Tools', 'Memory', 'Atlas']);
   await page.waitForFunction(
     () =>
       !window.__confluence.interior.active &&
@@ -462,7 +464,7 @@ async function rejectedTransactionCase(page, capture) {
 
 async function rehearsalCase(page) {
   await openAtlas(page);
-  await page.locator('[data-do="nav:advanced"]').click();
+  await page.locator('.prism-atlas-group [data-do="nav:advanced"]').click();
   await waitMode(page, "advanced");
   await page.getByText("Local economic rehearsals", { exact: true }).click();
   await page.locator('[data-do="nav:rehearsal:trade"]').click();

@@ -155,12 +155,12 @@ const result = await atomicDirectory(path.join(root, "dist"), async (stage) => {
   write(
     "manifest.webmanifest",
     JSON.stringify({
-      name: "Anima Genesis",
-      short_name: "Genesis",
+      name: "ANIMA · Prism Cathedral",
+      short_name: "ANIMA",
       start_url: "/",
       display: "standalone",
-      background_color: "#04060a",
-      theme_color: "#04060a",
+      background_color: "#04091a",
+      theme_color: "#04091a",
     }),
   );
   const manifest = {
@@ -187,7 +187,7 @@ fs.renameSync(
 );
 console.log(
   JSON.stringify({
-    application: "Anima Genesis",
+    application: "ANIMA · Prism Cathedral",
     ...result,
     source: "authored modules",
     original: "byte-identical comparison fixture",

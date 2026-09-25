@@ -8,7 +8,7 @@ export const exclusionPolicy = {
   generatedDirectoryPrefixes: ['release.stage-', 'release.previous-', 'dist.stage-', 'dist.previous-', 'onchain-app/confluence.stage-', 'onchain-app/confluence.previous-'],
   fileNames: ['.DS_Store'],
   suffixes: ['.log', '.pyc'],
-  rootPaths: ['web/deployment.local.json'],
+  rootPaths: ['web/deployment.local.json', 'simulator-export'],
   environment: 'Exclude .env and .env.* except .env.example; never package local credentials.',
   manifest: manifestName,
 };

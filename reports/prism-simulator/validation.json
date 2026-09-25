@@ -1,0 +1,37 @@
+{
+  "ui": {
+    "passed": 234,
+    "failed": 0
+  },
+  "confluence": {
+    "passed": 38,
+    "failed": 0
+  },
+  "ownerSafety": {
+    "passed": 8,
+    "failed": 0
+  },
+  "prismFocused": {
+    "passed": 9,
+    "failed": 0
+  },
+  "workbenchFocused": {
+    "passed": 19,
+    "failed": 0
+  },
+  "liveSimulatorFixture": {
+    "passed": 5,
+    "failed": 0
+  },
+  "frozenReplayGuards": {
+    "passed": 6,
+    "failed": 0
+  },
+  "sourceSyntax": {
+    "passed": true,
+    "files": 1638
+  },
+  "staticAudit": "heuristic scan passed; not a security audit",
+  "runtimeRecovery": "Complete bytes identical to minted archive",
+  "publicDeployment": false
+}

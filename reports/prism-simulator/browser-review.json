@@ -1,0 +1,13 @@
+{
+  "schema": "anima.browser-review/1",
+  "surface": "Frozen local mint export via supervised preview",
+  "checks": {
+    "desktopMintIdentity": "Lumin Crown; chain31337; genesis1",
+    "interior": "Visible interior and Return outside navigation succeeded",
+    "phone": "390px preview, Home/Tools/Memory/Atlas, seven-door Tools dialog",
+    "originalMetadataLoader": "Unfold recovered full immutable application and same Lumin Crown identity",
+    "workbench": "Recovered workbench rendered; Aurora notebook opened in isolated frame"
+  },
+  "runtimeSha256": "6a0c5f4c3855e19831734250ada8073aabc319484938dde509cc368d8009b3a0",
+  "scope": "Browser review of the exported local mint; no public mint or wallet transaction"
+}
