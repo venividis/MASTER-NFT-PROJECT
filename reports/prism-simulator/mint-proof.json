@@ -1,0 +1,37 @@
+{
+  "schema": "anima.prism-mint-proof/1",
+  "scope": "Actual local-chain mint; no public deployment",
+  "chainId": 31337,
+  "collection": "0xC976c932092ECcD8f328FfD85066C0c05ED54044",
+  "tokenId": "1",
+  "blockNumber": "0x1b7",
+  "blockHash": "0x9f9d164d42f57f133e89df0653aea7482a423a3482661b224f74ea3a1fec810e",
+  "identity": {
+    "seed": "0xb127fc798a20dda695ba61cbfbb6a75ae7fe7634511a243eaa986d25aa3a989f",
+    "genome": "0x7f0286cb5e36bd7ea30fed0ed63627f20e6e04d8e4e40a40542d6d3834065a3e",
+    "root": "0x0b9bd87878baecd5d652b7b5970d8f0d8de6899aff9c3218c34f7f130ef0fab8",
+    "chainId": "31337",
+    "collection": "0xc976c932092eccd8f328ffd85066c0c05ed54044",
+    "tokenId": "1",
+    "manifest": "0xec827421505972a2ae9c320302d3573b42363c26",
+    "privacyResource": "0x6b39b761b1b64c8c095bf0e3bb0c6a74705b4788",
+    "runtime": "0x457ccf29090fe5a24c19c1bc95f492168c0eafdb",
+    "sha256": "0x3b20e2e11e08db9435d492d53dca7bb09bbe878cca9e5463f6b9afd7a14c040b",
+    "archiveVersion": "3"
+  },
+  "runtimeArchiveSha256": "0x3b20e2e11e08db9435d492d53dca7bb09bbe878cca9e5463f6b9afd7a14c040b",
+  "runtimeSha256": "0x6a0c5f4c3855e19831734250ada8073aabc319484938dde509cc368d8009b3a0",
+  "runtimeBytes": 8120812,
+  "workbenchSha256": "0x56a0b0417665c78bde779cf50fe8e531d100ef30a97adacf228fe5b13eb3506e",
+  "workbenchBytes": 735615,
+  "loaderSha256": "0xc1319cc6a9f63c3fc80767567d0f83ec005902f8c76e9cc8a293fdae57c945e3",
+  "verification": {
+    "runtimeByteEquality": true,
+    "workbenchByteEquality": true,
+    "tokenModuleRecovery": true,
+    "installedModules": 3,
+    "recoveredPackages": 4,
+    "historyEntries": 6
+  },
+  "buildManifestSha256": "0x73871dae7a45d4c4895e8871bda0c6835790b0bef6e8405f5ca7b9a146a4af3f"
+}

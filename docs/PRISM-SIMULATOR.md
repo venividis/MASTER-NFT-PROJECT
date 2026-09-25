@@ -7,7 +7,7 @@ The default instance is `prism-cathedral`. Its addresses, seed, genome and state
 ## Run a complete local edition
 
 ```sh
-npm ci
+npm run setup:validation
 npm run compile:local
 npm run compile:v4
 npm run build
